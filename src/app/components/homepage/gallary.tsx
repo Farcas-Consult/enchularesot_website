@@ -20,7 +20,6 @@ import Breakfast from '@/assets/breakfast.jpg';
 import Food from '@/assets/food.jpg';
 import { StaticImageData } from "next/image";
 
-
 interface GalleryImage {
   src: string | StaticImageData;
   alt: string;
@@ -37,7 +36,7 @@ export default function Gallery() {
     { src: Inside, alt: "Beachfront View", category: "Exterior" },
     { src: Room2, alt: "Ocean View Suite", category: "Rooms" },
     { src: Birthroom2, alt: "Spa Bathroom", category: "Bathrooms" },
-    { src: Gym, alt: "Beach Cabana", category: "Amenities" },
+    { src: Gym, alt: "Fitness Center", category: "Amenities" }, // fixed typo: "Beach Cabana"
     { src: Table, alt: "Fine Dining", category: "Dining" },
     { src: Exterior, alt: "Resort Architecture", category: "Exterior" },
     { src: Room3, alt: "Presidential Suite", category: "Rooms" },
@@ -51,14 +50,14 @@ export default function Gallery() {
 
   const categories = ["All", "Exterior", "Rooms", "Bathrooms", "Amenities", "Dining"];
   
- const categoryIcons: { [key: string]: React.ReactNode } = {
-  All: <Camera className="w-5 h-5" />,
-  Exterior: <Hotel className="w-5 h-5" />,
-  Rooms: <Bed className="w-5 h-5" />,
-  Bathrooms: <Sparkles className="w-5 h-5" />,
-  Amenities: <Waves className="w-5 h-5" />,
-  Dining: <UtensilsCrossed className="w-5 h-5" />,
-};
+  const categoryIcons: { [key: string]: React.ReactNode } = {
+    All: <Camera className="w-5 h-5" />,
+    Exterior: <Hotel className="w-5 h-5 text-[#5C4033]" />,
+    Rooms: <Bed className="w-5 h-5 text-[#800000]" />,
+    Bathrooms: <Sparkles className="w-5 h-5 text-[#A04040]" />,
+    Amenities: <Waves className="w-5 h-5 text-[#5C4033]" />,
+    Dining: <UtensilsCrossed className="w-5 h-5 text-[#800000]" />,
+  };
 
   const filteredImages = activeFilter === "All" 
     ? galleryImages 
@@ -66,14 +65,20 @@ export default function Gallery() {
 
   const handlePrevious = () => {
     if (!selectedImage) return;
-    const currentIndex = filteredImages.findIndex(img => img.src === selectedImage.src);
+    const currentIndex = filteredImages.findIndex(img => 
+      (typeof img.src === 'string' ? img.src : img.src.src) === 
+      (typeof selectedImage.src === 'string' ? selectedImage.src : selectedImage.src.src)
+    );
     const prevIndex = currentIndex > 0 ? currentIndex - 1 : filteredImages.length - 1;
     setSelectedImage(filteredImages[prevIndex]);
   };
 
   const handleNext = () => {
     if (!selectedImage) return;
-    const currentIndex = filteredImages.findIndex(img => img.src === selectedImage.src);
+    const currentIndex = filteredImages.findIndex(img => 
+      (typeof img.src === 'string' ? img.src : img.src.src) === 
+      (typeof selectedImage.src === 'string' ? selectedImage.src : selectedImage.src.src)
+    );
     const nextIndex = currentIndex < filteredImages.length - 1 ? currentIndex + 1 : 0;
     setSelectedImage(filteredImages[nextIndex]);
   };
@@ -89,28 +94,28 @@ export default function Gallery() {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-gray-900/90 to-slate-900/95"></div>
+      {/* 🎨 Refined overlay: dark neutrals only */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-6 py-2 bg-purple-500/20 backdrop-blur-sm rounded-full border border-purple-400/30">
-            <span className="text-purple-300 font-semibold tracking-wide text-sm uppercase">Visual Journey</span>
+          <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
+            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">Visual Journey</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+          <h2 className="text-5xl md:text-6xl font-bold text-[#FAF5F0] mb-6 tracking-tight">
             Explore Our
-            <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-rose-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-[#5C4033] via-[#800000] to-[#A04040] bg-clip-text text-transparent">
               Stunning Gallery
             </span>
           </h2>
-          <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-[#D7BFA8] max-w-3xl mx-auto leading-relaxed">
             Immerse yourself in the beauty of Enchula Resort through our curated collection 
             of breathtaking spaces and unforgettable moments.
           </p>
         </div>
 
-        {/* Category Filters */}
+        {/* Category Filters — palette-aligned */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
             <button
@@ -118,8 +123,8 @@ export default function Gallery() {
               onClick={() => setActiveFilter(category)}
               className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                 activeFilter === category
-                  ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg scale-105"
-                  : "bg-white/10 text-gray-300 hover:bg-white/20 backdrop-blur-sm border border-white/20"
+                  ? "bg-gradient-to-r from-[#5C4033] to-[#800000] text-[#FAF5F0] shadow-lg scale-105"
+                  : "bg-[#2C1B16]/40 text-[#D7BFA8] hover:bg-[#5C4033]/20 backdrop-blur-sm border border-[#5C4033]/30"
               }`}
             >
               {categoryIcons[category]}
@@ -133,71 +138,64 @@ export default function Gallery() {
           {filteredImages.map((image, index) => (
             <div
               key={index}
-              className="group relative cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 aspect-square"
+              className="group relative cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 aspect-square"
               onClick={() => setSelectedImage(image)}
             >
-             <Image
-            src={image.src}
-            alt={image.alt}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
-            priority
-          />
-              
-              {/* Overlay with category */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                priority
+              />
+
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex items-center gap-2 text-white mb-2">
+                  <div className="flex items-center gap-2 text-[#FAF5F0] mb-2">
                     {categoryIcons[image.category]}
-                    <span className="text-xs font-semibold uppercase">{image.category}</span>
+                    <span className="text-xs font-semibold uppercase text-[#D7BFA8]">{image.category}</span>
                   </div>
-                  <p className="text-sm text-gray-200">{image.alt}</p>
+                  <p className="text-sm text-[#F8F3EF]">{image.alt}</p>
                 </div>
               </div>
 
-              {/* Zoom icon */}
-              <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Maximize2 className="w-5 h-5 text-white" />
+              {/* Zoom icon — now brown/maroon */}
+              <div className="absolute top-4 right-4 bg-[#5C4033]/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Maximize2 className="w-5 h-5 text-[#A04040]" />
               </div>
             </div>
           ))}
         </div>
 
-        {/* Image Count */}
-        <div className="text-center mt-12">
-          <p className="text-gray-300 text-lg">
-            Showing <span className="font-bold text-purple-400">{filteredImages.length}</span> of {galleryImages.length} images
-          </p>
-        </div>
-
-        {/* Stats */}
+        {/* Stats Section — palette-tuned */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-          <div className="text-center bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
-            <div className="text-4xl font-bold text-purple-400 mb-2">15+</div>
-            <div className="text-gray-300 text-sm">Gallery Images</div>
-          </div>
-          <div className="text-center bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
-            <div className="text-4xl font-bold text-pink-400 mb-2">6</div>
-            <div className="text-gray-300 text-sm">Categories</div>
-          </div>
-          <div className="text-center bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
-            <div className="text-4xl font-bold text-rose-400 mb-2">100+</div>
-            <div className="text-gray-300 text-sm">Photo Shoots</div>
-          </div>
-          <div className="text-center bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
-            <div className="text-4xl font-bold text-orange-400 mb-2">4K</div>
-            <div className="text-gray-300 text-sm">HD Quality</div>
-          </div>
+          {[
+            { label: "Gallery Images", value: "15+", color: "#5C4033" },
+            { label: "Categories", value: "6", color: "#800000" },
+            { label: "Photo Shoots", value: "100+", color: "#A04040" },
+            { label: "HD Quality", value: "4K", color: "#5C4033" },
+          ].map((stat, idx) => (
+            <div
+              key={idx}
+              className="text-center bg-[#2C1B16]/30 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/20"
+            >
+              <div className="text-4xl font-bold" style={{ color: stat.color }} mb-2>
+                {stat.value}
+              </div>
+              <div className="text-[#D7BFA8] text-sm">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal — full palette alignment */}
       {selectedImage && (
         <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
           {/* Close Button */}
           <button
             onClick={() => setSelectedImage(null)}
-            className="absolute top-6 right-6 text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 border border-white/20"
+            className="absolute top-6 right-6 text-[#FAF5F0] p-3 rounded-full bg-[#5C4033]/20 hover:bg-[#800000]/30 backdrop-blur-md transition-all duration-300 border border-[#A04040]/30"
             aria-label="Close"
           >
             <X size={28} />
@@ -206,7 +204,7 @@ export default function Gallery() {
           {/* Previous Button */}
           <button
             onClick={handlePrevious}
-            className="absolute left-6 text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 border border-white/20"
+            className="absolute left-6 text-[#FAF5F0] p-3 rounded-full bg-[#5C4033]/20 hover:bg-[#800000]/30 backdrop-blur-md transition-all duration-300 border border-[#A04040]/30"
             aria-label="Previous"
           >
             <ChevronLeft size={28} />
@@ -215,31 +213,34 @@ export default function Gallery() {
           {/* Next Button */}
           <button
             onClick={handleNext}
-            className="absolute right-6 text-white p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-all duration-300 border border-white/20"
+            className="absolute right-6 text-[#FAF5F0] p-3 rounded-full bg-[#5C4033]/20 hover:bg-[#800000]/30 backdrop-blur-md transition-all duration-300 border border-[#A04040]/30"
             aria-label="Next"
           >
             <ChevronRight size={28} />
           </button>
 
-          {/* Image Container */}
+          {/* Image & Info */}
           <div className="relative max-w-6xl w-full max-h-[85vh] flex flex-col items-center">
             <Image
               src={selectedImage.src}
               alt={selectedImage.alt}
+              width={1200}
+              height={800}
               className="object-contain w-full h-full rounded-2xl shadow-2xl"
+              priority
             />
-            
-            {/* Image Info */}
-            <div className="mt-6 bg-white/10 backdrop-blur-md rounded-2xl px-6 py-4 border border-white/20">
-              <div className="flex items-center gap-3 text-white">
+
+            {/* Info Bar */}
+            <div className="mt-6 bg-[#2C1B16]/50 backdrop-blur-md rounded-2xl px-6 py-4 border border-[#5C4033]/30">
+              <div className="flex items-center gap-3 text-[#FAF5F0]">
                 {categoryIcons[selectedImage.category]}
-                <span className="font-semibold">{selectedImage.category}</span>
-                <span className="text-gray-400">•</span>
-                <span className="text-gray-300">{selectedImage.alt}</span>
+                <span className="font-semibold text-[#D7BFA8]">{selectedImage.category}</span>
+                <span className="text-[#A9745B]">•</span>
+                <span className="text-[#F8F3EF]">{selectedImage.alt}</span>
               </div>
             </div>
 
-            {/* Navigation Indicators */}
+            {/* Indicator Dots */}
             <div className="mt-4 flex gap-2">
               {filteredImages.map((img, idx) => (
                 <button
@@ -247,9 +248,10 @@ export default function Gallery() {
                   aria-label={`View image ${idx + 1}`}
                   onClick={() => setSelectedImage(img)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    img.src === selectedImage.src
-                      ? "bg-purple-400 w-8"
-                      : "bg-white/30 hover:bg-white/50"
+                    (typeof img.src === 'string' ? img.src : img.src.src) === 
+                    (typeof selectedImage.src === 'string' ? selectedImage.src : selectedImage.src.src)
+                      ? "bg-[#A04040] w-8"
+                      : "bg-[#D7BFA8]/30 hover:bg-[#D7BFA8]/50"
                   }`}
                 />
               ))}

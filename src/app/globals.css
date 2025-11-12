@@ -1,20 +1,31 @@
 @import "tailwindcss";
-:root {
-    --background: #ffffff;
-    --foreground: #171717;
-}
 
-@theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
+/* Enchula Resort brand palette - CSS variables available globally */
+
+:root {
+    /* Primary */
+    --brand-primary-brown: #4E2E0E;
+    /* Secondary */
+    --brand-secondary-maroon: #7A1F2E;
+    /* Light / neutrals */
+    --brand-light-brown: #DCC7A1;
+    --brand-beige: #F8F3ED;
+    /* Dark neutrals */
+    --brand-dark-neutral: #221812;
+    --overlay-charcoal: rgba(34, 24, 18, 0.6);
+    /* Text colors */
+    --text-primary: #3E2C20;
+    --text-on-dark: #FFFFFF;
+    /* Aliases */
+    --background: var(--brand-beige);
+    --foreground: var(--text-primary);
 }
 
 @media (prefers-color-scheme: dark) {
      :root {
         --background: #0a0a0a;
-        --foreground: #ededed;
+        --foreground: #f5f5f5;
+        --overlay-charcoal: rgba(0, 0, 0, 0.6);
     }
 }
 
@@ -22,13 +33,38 @@ body {
     background: var(--background);
     color: var(--foreground);
     font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
-.hero-section {
-    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=80');
-    background-size: cover;
-    background-position: center;
+
+/* Remove duplicate rule */
+
+.image-with-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--overlay-charcoal);
+    pointer-events: none;
 }
+
+
+/* 
+   NOTE: Hero section background is now handled by React component 
+   using an image carousel + dynamic overlay. 
+   Therefore, the static .hero-section background rule is REMOVED.
+*/
+
+
+/* 
+   If you still need a fallback or global hero class for non-React contexts,
+   you could keep a minimal version, but for your current Hero.jsx,
+   it's unnecessary and conflicting. So we remove it entirely.
+*/
+
+
+/* Animations */
 
 @keyframes fadeInUp {
     from {
@@ -50,13 +86,82 @@ body {
     }
 }
 
-
-/* Utility classes for animations */
-
 .animate-fadeInUp {
     animation: fadeInUp 1s ease-out;
 }
 
 .animate-zoomIn {
     animation: zoomIn 20s ease-in-out infinite alternate;
+}
+
+.animate-zoomIn-slow {
+    animation: zoomIn 40s ease-in-out infinite alternate;
+}
+
+
+/* Utility classes */
+
+.btn-primary {
+    background-color: var(--brand-primary-brown);
+    color: var(--text-on-dark);
+    padding: 0.65rem 1.25rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(20, 12, 6, 0.12);
+    transition: transform 160ms ease, background-color 160ms ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background-color: var(--brand-secondary-maroon);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--brand-primary-brown);
+    border: 2px solid var(--brand-primary-brown);
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+.bg-overlay-dark {
+    background: var(--overlay-charcoal);
+}
+
+.text-brand {
+    color: var(--brand-primary-brown);
+}
+
+.bg-brand {
+    background: linear-gradient(90deg, var(--brand-primary-brown), var(--brand-secondary-maroon));
+    color: var(--text-on-dark);
+}
+
+.section-light {
+    background: var(--brand-beige);
+    color: var(--text-primary);
+}
+
+.card-bg {
+    background: var(--brand-light-brown);
+    color: var(--text-primary);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.card-hover:hover {
+    background: color-mix(in srgb, var(--brand-light-brown) 85%, var(--brand-beige));
+}
+
+.navbar-bg {
+    background: var(--brand-dark-neutral);
+    color: var(--text-on-dark);
+}
+
+.footer-bg {
+    background: var(--brand-dark-neutral);
+    color: var(--text-on-dark);
 }
