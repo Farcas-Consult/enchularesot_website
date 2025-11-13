@@ -1,8 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-
+import React from "react";
 import {
   Wifi,
   Coffee,
@@ -11,16 +9,12 @@ import {
   Bed,
   Bath,
   Briefcase,
-  Baby,
   CreditCard,
   Bus,
   Building2,
   ConciergeBell,
-  X,
-  ChevronRight,
-  Sparkles,
-  CheckCircle,
   Star,
+  CheckCircle,
 } from "lucide-react";
 
 /* ----------------------------- TYPES ----------------------------- */
@@ -28,13 +22,13 @@ interface AmenityItem {
   name: string;
   icon: React.ReactNode;
   detail: string;
+  image: string;
 }
 
 interface AmenityCategory {
   category: string;
   image: string;
   description: string;
-  detailImages: string[];
   items: AmenityItem[];
 }
 
@@ -44,139 +38,162 @@ const amenitiesData: AmenityCategory[] = [
     category: "Popular Amenities",
     image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
     description: "Our most sought-after facilities designed for your ultimate comfort and convenience.",
-    detailImages: [
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800&q=80",
-    ],
     items: [
-      { name: "Free Parking", icon: <Car className="w-5 h-5" />, detail: "Secure parking available 24/7 for all guests" },
-      { name: "Free Breakfast", icon: <Coffee className="w-5 h-5" />, detail: "Complimentary buffet breakfast daily 7AM–10AM" },
-      { name: "Free Wi-Fi", icon: <Wifi className="w-5 h-5" />, detail: "High-speed internet throughout the resort" },
-      { name: "Restaurant", icon: <Utensils className="w-5 h-5" />, detail: "Fine dining with international and local cuisine" },
+      { 
+        name: "Free Parking", 
+        icon: <Car className="w-5 h-5" />, 
+        detail: "Secure parking available 24/7 for all guests with covered and open spaces. CCTV surveillance ensures your vehicle's safety throughout your stay.",
+        image: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=800&q=80"
+      },
+      { 
+        name: "Free Breakfast", 
+        icon: <Coffee className="w-5 h-5" />, 
+        detail: "Complimentary buffet breakfast daily 7AM–10AM featuring international and local cuisine. Fresh pastries, tropical fruits, and made-to-order options available.",
+        image: "https://images.unsplash.com/photo-1533777419517-3e4017e2e15a?w=800&q=80"
+      },
+      { 
+        name: "Free Wi-Fi", 
+        icon: <Wifi className="w-5 h-5" />, 
+        detail: "High-speed fiber optic internet throughout the resort with no data limits. Perfect for streaming, video calls, and remote work needs.",
+        image: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=800&q=80"
+      },
+      { 
+        name: "Restaurant", 
+        icon: <Utensils className="w-5 h-5" />, 
+        detail: "Fine dining with international and local cuisine prepared by award-winning chefs. Open for breakfast, lunch, and dinner with both indoor and outdoor seating.",
+        image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80"
+      },
     ],
   },
   {
-    category: "Internet",
+    category: "Internet & Business",
     image: "https://images.unsplash.com/photo-1588004965885-6639b07d8439?w=800&q=80",
-    description: "Stay connected with blazing-fast internet throughout your stay.",
-    detailImages: [
-      "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=800&q=80",
-    ],
+    description: "Stay connected and productive with our state-of-the-art business facilities.",
     items: [
-      { name: "High-Speed Wi-Fi", icon: <Wifi className="w-5 h-5" />, detail: "Fiber optic connection in all areas" },
-      { name: "Business Center", icon: <Briefcase className="w-5 h-5" />, detail: "Workstations with printing facilities" },
+      { 
+        name: "High-Speed Wi-Fi", 
+        icon: <Wifi className="w-5 h-5" />, 
+        detail: "Fiber optic connection in all areas with speeds up to 500 Mbps. Dedicated business network available for enhanced security and reliability.",
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80"
+      },
+      { 
+        name: "Business Center", 
+        icon: <Briefcase className="w-5 h-5" />, 
+        detail: "Fully equipped workstations with printing, scanning, and copying facilities. Private meeting rooms and video conferencing capabilities available 24/7.",
+        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
+      },
     ],
   },
   {
-    category: "Food & Drinks",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
-    description: "Indulge in exquisite culinary experiences from morning till night.",
-    detailImages: [
-      "https://images.unsplash.com/photo-1559339594-58d7cb561ad1?w=800&q=80",
-      "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80",
-      "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
-    ],
-    items: [
-      { name: "Fine Dining Restaurant", icon: <Utensils className="w-5 h-5" />, detail: "Award-winning chefs and seasonal menus" },
-      { name: "Rooftop Bar", icon: <Coffee className="w-5 h-5" />, detail: "Cocktails with panoramic sunset views" },
-      { name: "Buffet Dinner", icon: <Utensils className="w-5 h-5" />, detail: "International buffet every evening 6PM–10PM" },
-      { name: "24/7 Room Service", icon: <ConciergeBell className="w-5 h-5" />, detail: "Full menu available around the clock" },
-      { name: "Free Breakfast", icon: <Coffee className="w-5 h-5" />, detail: "Continental and local breakfast options" },
-    ],
-  },
-  // Add other categories as needed...
-    {
-    category: "Services",
+    category: "Guest Services",
     image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80",
     description: "Personalized services to make your stay effortless and memorable.",
-    detailImages: [
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80",
-    ],
     items: [
-      { name: "24/7 Front Desk", icon: <ConciergeBell className="w-5 h-5" />, detail: "Multilingual staff always at your service" },
-      { name: "Laundry Service", icon: <Building2 className="w-5 h-5" />, detail: "Same-day dry cleaning and pressing" },
-      { name: "Daily Housekeeping", icon: <Bed className="w-5 h-5" />, detail: "Twice-daily cleaning service" },
-      { name: "Turndown Service", icon: <Bed className="w-5 h-5" />, detail: "Evening preparation with treats" },
+      { 
+        name: "24/7 Front Desk", 
+        icon: <ConciergeBell className="w-5 h-5" />, 
+        detail: "Multilingual staff always at your service for check-in, concierge assistance, and local recommendations. We speak English, Swahili, French, and German.",
+        image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80"
+      },
+      { 
+        name: "Laundry Service", 
+        icon: <Building2 className="w-5 h-5" />, 
+        detail: "Same-day dry cleaning, pressing, and laundry service available. Express service within 4 hours for urgent needs. Eco-friendly cleaning products used.",
+        image: "https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&q=80"
+      },
+      { 
+        name: "Daily Housekeeping", 
+        icon: <Bed className="w-5 h-5" />, 
+        detail: "Twice-daily cleaning service with morning refresh and evening turndown. Premium linens changed daily and fresh towels provided throughout the day.",
+        image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80"
+      },
+      { 
+        name: "Turndown Service", 
+        icon: <Bed className="w-5 h-5" />, 
+        detail: "Evening preparation with complimentary chocolates, fresh flowers, and ambient lighting. Your room transformed into a peaceful sanctuary each night.",
+        image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80"
+      },
     ],
   },
   {
     category: "Payment Options",
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-    description: "Flexible payment methods for your convenience.",
-    detailImages: [
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
-    ],
+    description: "Flexible and secure payment methods for your convenience.",
     items: [
-      { name: "All Major Cards", icon: <CreditCard className="w-5 h-5" />, detail: "Visa, Mastercard, Amex accepted" },
-      { name: "Mobile Money", icon: <CreditCard className="w-5 h-5" />, detail: "M-Pesa and other mobile payments" },
-      { name: "Bank Transfer", icon: <CreditCard className="w-5 h-5" />, detail: "Direct bank transfers accepted" },
+      { 
+        name: "All Major Cards", 
+        icon: <CreditCard className="w-5 h-5" />, 
+        detail: "We accept Visa, Mastercard, American Express, and Discover. Secure contactless payment terminals available throughout the property.",
+        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80"
+      },
+      { 
+        name: "Mobile Money", 
+        icon: <CreditCard className="w-5 h-5" />, 
+        detail: "M-Pesa, Airtel Money, and other mobile payment platforms accepted. Instant confirmation and digital receipts sent directly to your phone.",
+        image: "https://images.unsplash.com/photo-1556742111-a301076d9d18?w=800&q=80"
+      },
+      { 
+        name: "Bank Transfer", 
+        icon: <CreditCard className="w-5 h-5" />, 
+        detail: "Direct bank transfers accepted for advance bookings. Multiple currency options available with competitive exchange rates and no hidden fees.",
+        image: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&q=80"
+      },
     ],
   },
- 
   {
-    category: "Recreation",
+    category: "Recreation & Wellness",
     image: "https://images.unsplash.com/photo-1575429198097-0414ec08e8cd?w=800&q=80",
     description: "Relax and rejuvenate with our premium wellness facilities.",
-    detailImages: [
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80",
-      "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80",
-    ],
     items: [
-      { name: "Infinity Pool", icon: <Bath className="w-5 h-5" />, detail: "Heated pool with ocean views" },
-      { name: "Fitness Center", icon: <Bath className="w-5 h-5" />, detail: "State-of-the-art gym equipment 24/7" },
-      { name: "Spa & Wellness", icon: <Bath className="w-5 h-5" />, detail: "Massage, sauna, and beauty treatments" },
+      { 
+        name: "Infinity Pool", 
+        icon: <Bath className="w-5 h-5" />, 
+        detail: "Heated infinity pool with breathtaking ocean views and underwater LED lighting. Poolside bar service available with comfortable loungers and cabanas.",
+        image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80"
+      },
+      { 
+        name: "Fitness Center", 
+        icon: <Bath className="w-5 h-5" />, 
+        detail: "State-of-the-art gym equipment available 24/7 including cardio machines, free weights, and resistance training. Personal trainers available upon request.",
+        image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80"
+      },
+      { 
+        name: "Spa & Wellness", 
+        icon: <Bath className="w-5 h-5" />, 
+        detail: "Full-service spa offering massage therapy, sauna, steam room, and beauty treatments. Traditional and modern therapies using organic, locally-sourced products.",
+        image: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80"
+      },
     ],
   },
   {
     category: "Transportation",
     image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80",
-    description: "Easy access and convenient transport options.",
-    detailImages: [
-      "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=800&q=80",
-    ],
+    description: "Easy access and convenient transport options for seamless travel.",
     items: [
-      { name: "Free Parking", icon: <Car className="w-5 h-5" />, detail: "Covered and open parking available" },
-      { name: "Airport Shuttle", icon: <Bus className="w-5 h-5" />, detail: "Complimentary airport transfers" },
-      { name: "Car Rental Desk", icon: <Car className="w-5 h-5" />, detail: "On-site vehicle rental service" },
+      { 
+        name: "Free Parking", 
+        icon: <Car className="w-5 h-5" />, 
+        detail: "Covered and open parking spaces available with 24/7 security. Electric vehicle charging stations and valet parking service included for all guests.",
+        image: "https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800&q=80"
+      },
+      { 
+        name: "Airport Shuttle", 
+        icon: <Bus className="w-5 h-5" />, 
+        detail: "Complimentary airport transfers available on request. Luxury vehicles with professional drivers ensure comfortable transportation to and from the airport.",
+        image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80"
+      },
+      { 
+        name: "Car Rental Desk", 
+        icon: <Car className="w-5 h-5" />, 
+        detail: "On-site vehicle rental service with a wide selection of cars. Economy to luxury vehicles available with GPS navigation and full insurance coverage included.",
+        image: "https://images.unsplash.com/photo-1552930151-3fa4062a5ac8?w=800&q=80"
+      },
     ],
   },
-    {
-    category: "Business & Events",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80",
-    description: "Professional facilities for meetings and special events.",
-    detailImages: [
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&q=80",
-      "https://images.unsplash.com/photo-1519167758481-83f29da8c796?w=800&q=80",
-    ],
-    items: [
-      { name: "Conference Rooms", icon: <Briefcase className="w-5 h-5" />, detail: "Capacity up to 200 people" },
-      { name: "Business Center", icon: <Briefcase className="w-5 h-5" />, detail: "Printing, scanning, and office services" },
-      { name: "Event Planning", icon: <Briefcase className="w-5 h-5" />, detail: "Dedicated event coordinator" },
-    ],
-  },
-    {
-    category: "Room Features",
-    image: "https://images.unsplash.com/photo-1631049552057-403cdb8f0658?w=800&q=80",
-    description: "Luxurious amenities in every room for your comfort.",
-    detailImages: [
-      "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80",
-      "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=800&q=80",
-    ],
-    items: [
-      { name: "Rainfall Shower", icon: <Bath className="w-5 h-5" />, detail: "Premium bathrooms with luxury fixtures" },
-      { name: "Soaking Tubs", icon: <Bath className="w-5 h-5" />, detail: "Available in premium suites" },
-      { name: "Smart TV", icon: <Bath className="w-5 h-5" />, detail: "65-inch 4K with streaming services" },
-      { name: "Climate Control", icon: <Bath className="w-5 h-5" />, detail: "Individual temperature control" },
-    ],
-  },
-
 ];
 
 /* --------------------------- COMPONENT --------------------------- */
 const Amenities: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<AmenityCategory | null>(null);
-  const [showGuide, setShowGuide] = useState(true);
-
   return (
     <section
       id="amenities"
@@ -207,179 +224,104 @@ const Amenities: React.FC = () => {
             </span>
           </h2>
           <p className="text-xl text-[#D7BFA8] max-w-3xl mx-auto leading-relaxed">
-            Click any category below to explore our comprehensive range of luxury facilities and services.
+            Explore our comprehensive range of luxury facilities and services designed for your ultimate comfort.
           </p>
         </div>
-        </div>
 
-        {/* Interactive Guide */}
-        {showGuide && (
-          <div className="mb-8 bg-gradient-to-r from-[#5C4033]/20 to-[#800000]/20 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30 animate-pulse">
-            <div className="flex items-start gap-4">
-              <Sparkles className="w-8 h-8 text-[#A04040] flex-shrink-0 mt-1" />
-              <div className="flex-1">
-                <h3 className="text-xl font-bold text-[#FAF5F0] mb-2">How to Explore</h3>
-                <p className="text-[#F8F3EF] mb-3">
-                  Click on any amenity category card below to view detailed information, images, and full descriptions of our facilities.
-                </p>
-                <div className="flex items-center gap-2 text-sm text-[#A9745B]">
-                  <ChevronRight className="w-4 h-4" />
-                  <span>Interactive cards • Detailed views • High-quality images</span>
+        {/* Amenities Sections */}
+        <div className="space-y-20">
+          {amenitiesData.map((category, index) => (
+            <div
+              key={index}
+              className="bg-[#2C1B16]/40 backdrop-blur-md rounded-3xl border border-[#5C4033]/30 overflow-hidden shadow-2xl"
+            >
+              {/* Category Header */}
+              <div className="relative h-80 overflow-hidden">
+                <img
+                  src={category.image}
+                  alt={category.category}
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/95 via-[#2E1A15]/50 to-transparent" />
+                <div className="absolute bottom-8 left-8 right-8">
+                  <div className="flex items-center gap-1 mb-3">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`w-6 h-6 ${
+                          i < 4 ? 'text-[#A04040] fill-[#A04040]' : 'text-[#D7BFA8]/50'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <h2 className="text-4xl font-bold text-[#FAF5F0] mb-3">{category.category}</h2>
+                  <p className="text-xl text-[#D7BFA8] max-w-3xl">{category.description}</p>
+                  <div className="mt-4 inline-block px-4 py-2 bg-[#5C4033]/60 backdrop-blur-sm rounded-full border border-[#800000]/30">
+                    <span className="text-[#FAF5F0] font-semibold text-sm">
+                      {category.items.length} Premium Features
+                    </span>
+                  </div>
                 </div>
               </div>
-              <button
-                type="button"
-                onClick={() => setShowGuide(false)}
-                aria-label="Close guide"
-                className="text-[#FAF5F0] hover:text-[#D7BFA8] transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-          </div>
-        )}
 
-        {/* Amenities Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-        {amenitiesData.map((group, index) => {
-  // Card content without onClick if it's Food & Drinks
-  const cardContent = (
-    <div
-      className="group relative bg-[#2C1B16]/30 backdrop-blur-md rounded-3xl overflow-hidden border border-[#5C4033]/20 hover:border-[#800000]/50 transition-all duration-500 hover:scale-105 cursor-pointer shadow-xl"
-    >
-      <div className="relative h-48 overflow-hidden">
-        <img
-          src={group.image}
-          alt={group.category}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/80 via-transparent to-transparent" />
-        <h3 className="absolute bottom-4 left-6 text-2xl font-bold text-[#FAF5F0] z-10">
-          {group.category}
-        </h3>
-        <div className="absolute top-4 right-4 bg-[#5C4033] text-[#FAF5F0] px-3 py-1 rounded-full text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
-          <span>Explore</span>
-          <ChevronRight className="w-4 h-4" />
-        </div>
-      </div>
-
-      <div className="p-6">
-        <p className="text-[#D7BFA8] text-sm mb-4">{group.description}</p>
-        <div className="flex items-center justify-between">
-          <span className="text-[#A04040] font-semibold">{group.items.length} Features</span>
-          <div className="w-10 h-10 bg-[#5C4033] rounded-full flex items-center justify-center text-[#FAF5F0]">
-            <ChevronRight className="w-5 h-5" />
-          </div>
-        </div>
-      </div>
-
-      <div className="absolute top-4 left-4 w-12 h-12 bg-[#2C1B16]/60 backdrop-blur-sm rounded-full flex items-center justify-center text-[#FAF5F0] font-bold shadow-lg border border-[#5C4033]/30">
-        {group.items.length}
-      </div>
-    </div>
-  );
-
-  if (group.category === "Food & Drinks") {
-    return (
-      <Link href="/posters/food-drinks" key={index} passHref>
-        {cardContent}
-      </Link>
-    );
-  }
-
-  // For all other cards, keep the modal behavior
-  return (
-    <div key={index} onClick={() => setSelectedCategory(group)}>
-      {cardContent}
-    </div>
-  );
-})}
-
-        {/* Detail Modal */}
-        {selectedCategory && (
-          <div className="fixed inset-0 bg-black/95 z-50 overflow-y-auto">
-            <div className="min-h-screen px-4 py-8">
-              <div className="max-w-5xl mx-auto">
-                <button
-                  type="button"
-                  onClick={() => setSelectedCategory(null)}
-                  aria-label="Close category view"
-                  className="fixed top-6 right-6 text-[#FAF5F0] p-3 rounded-full bg-[#2C1B16]/40 hover:bg-[#5C4033]/30 backdrop-blur-md transition-all duration-300 border border-[#5C4033]/30"
-                >
-                  <X size={28} />
-                </button>
-
-                <div className="bg-[#2C1B16]/40 backdrop-blur-md rounded-3xl border border-[#5C4033]/30 overflow-hidden">
-                  <div className="relative h-80 overflow-hidden">
-                    <img
-                      src={selectedCategory.image}
-                      alt={selectedCategory.category}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/80 via-transparent to-transparent" />
-                    <div className="absolute bottom-8 left-8">
-                      <div className="flex items-center gap-1 mb-3">
-                        {[...Array(5)].map((_, i) => (
-                          <Star
-                            key={i}
-                            className={`w-6 h-6 ${
-                              i < 3 ? 'text-[#A04040] fill-[#A04040]' : 'text-[#D7BFA8]/50'
-                            }`}
+              {/* Features Grid with Images */}
+              <div className="p-8">
+                <div className="grid gap-8">
+                  {category.items.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="group bg-[#2C1B16]/40 backdrop-blur-sm rounded-2xl overflow-hidden border border-[#5C4033]/20 hover:bg-[#5C4033]/20 hover:border-[#800000]/50 transition-all duration-300 shadow-lg"
+                    >
+                      <div className="grid md:grid-cols-2 gap-0">
+                        {/* Image Section */}
+                        <div className="relative h-64 md:h-full overflow-hidden">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                           />
-                        ))}
-                      </div>
-                      <h2 className="text-4xl font-bold text-[#FAF5F0] mb-2">{selectedCategory.category}</h2>
-                      <p className="text-xl text-[#D7BFA8]">{selectedCategory.description}</p>
-                    </div>
-                  </div>
-
-                  {selectedCategory.detailImages.length > 0 && (
-                    <div className="p-8 border-b border-[#5C4033]/20">
-                      <h3 className="text-2xl font-bold text-[#FAF5F0] mb-4">Gallery</h3>
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                        {selectedCategory.detailImages.map((img, idx) => (
-                          <div key={idx} className="relative h-48 rounded-2xl overflow-hidden group">
-                            <img
-                              src={img}
-                              alt={`${selectedCategory.category} ${idx + 1}`}
-                              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold text-[#FAF5F0] mb-6 flex items-center gap-3">
-                      <CheckCircle className="w-7 h-7 text-[#5C4033]" />
-                      Available Features
-                    </h3>
-                    <div className="grid gap-4">
-                      {selectedCategory.items.map((item, idx) => (
-                        <div
-                          key={idx}
-                          className="bg-[#2C1B16]/30 backdrop-blur-sm rounded-2xl p-6 border border-[#5C4033]/20 hover:bg-[#5C4033]/10 transition-all duration-300"
-                        >
-                          <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 bg-gradient-to-r from-[#5C4033] to-[#800000] rounded-xl flex items-center justify-center text-[#FAF5F0] flex-shrink-0">
-                              {item.icon}
-                            </div>
-                            <div className="flex-1">
-                              <h4 className="text-xl font-bold text-[#FAF5F0] mb-2">{item.name}</h4>
-                              <p className="text-[#F8F3EF] leading-relaxed">{item.detail}</p>
-                            </div>
-                            <CheckCircle className="w-6 h-6 text-[#5C4033]" />
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#2C1B16]/30"></div>
+                          <div className="absolute top-4 left-4 w-14 h-14 bg-gradient-to-br from-[#5C4033] to-[#800000] rounded-xl flex items-center justify-center text-[#FAF5F0] shadow-lg">
+                            {item.icon}
                           </div>
                         </div>
-                      ))}
+
+                        {/* Content Section */}
+                        <div className="p-6 md:p-8 flex flex-col justify-center">
+                          <div className="flex items-start gap-3 mb-4">
+                            <h4 className="text-2xl font-bold text-[#FAF5F0] flex-1">{item.name}</h4>
+                            <CheckCircle className="w-6 h-6 text-[#5C4033] flex-shrink-0 mt-1" />
+                          </div>
+                          <p className="text-[#D7BFA8] leading-relaxed text-lg">
+                            {item.detail}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-20 text-center">
+          <div className="inline-block bg-gradient-to-r from-[#5C4033]/20 to-[#800000]/20 backdrop-blur-md rounded-2xl p-8 border border-[#5C4033]/30">
+            <h3 className="text-2xl font-bold text-[#FAF5F0] mb-3">
+              Experience Luxury Like Never Before
+            </h3>
+            <p className="text-[#D7BFA8] mb-6 max-w-2xl">
+              All these premium amenities and more await you at our resort. Book your stay today and indulge in world-class hospitality.
+            </p>
+            <button className="px-8 py-4 bg-gradient-to-r from-[#5C4033] to-[#800000] text-[#FAF5F0] rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
+              <a 
+              href="#booking">
+              Book Your Stay Now
+              </a>
+            </button>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

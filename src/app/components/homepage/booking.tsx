@@ -34,15 +34,19 @@ const roomTypes = [
     amenities: ["Free Wi-Fi", "TV", "Air Conditioning", "Private Bathroom", "Garden View"],
     available: true,
   },
-
 ];
 
+// ✅ UPDATED: Add gym memberships to add-ons
 const addOns = [
   { id: "breakfast", name: "Breakfast (per person/day)", price: 800 },
   { id: "airport", name: "Airport Pickup (One-way)", price: 3500 },
   { id: "camel", name: "Sunset Camel Ride", price: 2000 },
   { id: "massage", name: "60-min Massage", price: 3000 },
   { id: "cultural", name: "Maasai Cultural Tour", price: 1500 },
+  // ✅ GYM MEMBERSHIPS AS ADD-ONS
+  { id: "gym-day", name: "Gym Day Pass", price: 1200, category: "gym" },
+  { id: "gym-weekly", name: "Gym Weekly Pass", price: 6000, category: "gym" },
+  { id: "gym-monthly", name: "Gym Monthly Pass", price: 20000, category: "gym" },
 ];
 
 const BookingPage = () => {
@@ -51,9 +55,7 @@ const BookingPage = () => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [adults, setAdults] = useState(2);
-  // ✅ REMOVED: const [children, setChildren] = useState(0);
-  // ✅ ADDED: childrenAges state
-  const [childrenAges, setChildrenAges] = useState<string[]>(["", "", "", ""]); // for up to 4 children
+  const [childrenAges, setChildrenAges] = useState<string[]>(["", "", "", ""]);
   const [selectedAddOns, setSelectedAddOns] = useState<string[]>([]);
   const [guestInfo, setGuestInfo] = useState({
     name: "",
@@ -62,14 +64,13 @@ const BookingPage = () => {
     specialRequests: "",
   });
   const [showConfirmation, setShowConfirmation] = useState(false);
-
-  // ✅ Helper: total number of children (for display if needed)
   const totalChildren = childrenAges.filter(age => age !== "").length;
+  const today = new Date().toISOString().split('T')[0];
 
   const isWeekend = (date: string) => {
     if (!date) return false;
     const day = new Date(date).getDay();
-    return day === 5 || day === 6; // Friday or Saturday
+    return day === 5 || day === 6;
   };
 
   const calculateNights = () => {
@@ -97,11 +98,25 @@ const BookingPage = () => {
   };
 
   const handleAddOnToggle = (addOnId: string) => {
-    setSelectedAddOns(prev =>
-      prev.includes(addOnId)
-        ? prev.filter(id => id !== addOnId)
-        : [...prev, addOnId]
-    );
+    // ✅ Prevent multiple gym selections (optional but recommended)
+    const isGymAddOn = addOnId.startsWith("gym-");
+    const hasGym = selectedAddOns.some(id => id.startsWith("gym-"));
+    
+    if (isGymAddOn && hasGym) {
+      // Remove existing gym if selecting a new one
+      const newAddOns = selectedAddOns.filter(id => !id.startsWith("gym-"));
+      setSelectedAddOns([...newAddOns, addOnId]);
+    } else if (isGymAddOn && !hasGym) {
+      // Add gym
+      setSelectedAddOns([...selectedAddOns, addOnId]);
+    } else if (!isGymAddOn) {
+      // Toggle non-gym add-ons normally
+      setSelectedAddOns(prev =>
+        prev.includes(addOnId)
+          ? prev.filter(id => id !== addOnId)
+          : [...prev, addOnId]
+      );
+    }
   };
 
   const handleBooking = () => {
@@ -115,12 +130,10 @@ const BookingPage = () => {
         setCheckOut("");
         setSelectedAddOns([]);
         setGuestInfo({ name: "", email: "", phone: "", specialRequests: "" });
-        setChildrenAges(["", "", "", ""]); // ✅ reset children
+        setChildrenAges(["", "", "", ""]);
       }, 5000);
     }
   };
-
-  const today = new Date().toISOString().split('T')[0];
 
   return (
     <section
@@ -231,7 +244,6 @@ const BookingPage = () => {
                     ))}
                   </select>
                 </div>
-                {/* ✅ REPLACED: Children dropdown with age selector */}
                 <div className="md:col-span-1">
                   <label className="block text-[#D7BFA8] mb-2">Children</label>
                   <div className="space-y-2">
@@ -253,7 +265,7 @@ const BookingPage = () => {
                           <option value="">—</option>
                           <option value="infant">Infant (0–1)</option>
                           {[...Array(17)].map((_, i) => {
-                            const age = i + 2; // 2 to 18
+                            const age = i + 2;
                             return <option key={age} value={age}>{age} years</option>;
                           })}
                         </select>
@@ -352,45 +364,93 @@ const BookingPage = () => {
           </div>
         )}
 
-        {/* Step 2: Add-ons & Extras */}
+        {/* Step 2: Add-ons & Extras (✅ Includes Gym) */}
         {step === 2 && !showConfirmation && (
           <div className="space-y-8">
             <div className="bg-[#3D2517]/70 backdrop-blur-md rounded-3xl p-8 border-2 border-[#5C4033]/50">
               <h2 className="text-3xl font-bold text-[#FAF5F0] mb-6">Enhance Your Stay</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {addOns.map((addOn) => (
-                  <div
-                    key={addOn.id}
-                    className={`p-6 rounded-2xl border-2 cursor-pointer transition-all ${
-                      selectedAddOns.includes(addOn.id)
-                        ? "bg-[#800000]/20 border-[#800000]"
-                        : "bg-[#2C1B16]/60 border-[#5C4033]/50 hover:border-[#800000]/50"
-                    }`}
-                    onClick={() => handleAddOnToggle(addOn.id)}
-                  >
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h3 className="text-xl font-bold text-[#FAF5F0] mb-2">{addOn.name}</h3>
-                        <p className="text-2xl font-bold text-[#800000]">
-                          KES {addOn.price.toLocaleString()}
-                        </p>
-                      </div>
-                      <div
-                        className={`w-6 h-6 rounded border-2 flex items-center justify-center ${
-                          selectedAddOns.includes(addOn.id)
-                            ? "bg-[#800000] border-[#800000]"
-                            : "border-[#5C4033]"
-                        }`}
-                      >
-                        {selectedAddOns.includes(addOn.id) && (
-                          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                          </svg>
-                        )}
+              
+              {/* Standard Add-ons */}
+              <h3 className="text-xl font-bold text-[#D7BFA8] mb-4">Experiences & Services</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                {addOns
+                  .filter(addOn => !addOn.category)
+                  .map((addOn) => (
+                    <div
+                      key={addOn.id}
+                      className={`p-6 rounded-2xl border-2 cursor-pointer transition-all ${
+                        selectedAddOns.includes(addOn.id)
+                          ? "bg-[#800000]/20 border-[#800000]"
+                          : "bg-[#2C1B16]/60 border-[#5C4033]/50 hover:border-[#800000]/50"
+                      }`}
+                      onClick={() => handleAddOnToggle(addOn.id)}
+                    >
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="text-xl font-bold text-[#FAF5F0] mb-2">{addOn.name}</h3>
+                          <p className="text-2xl font-bold text-[#800000]">
+                            KES {addOn.price.toLocaleString()}
+                          </p>
+                        </div>
+                        <div
+                          className={`w-6 h-6 rounded border-2 flex items-center justify-center ${
+                            selectedAddOns.includes(addOn.id)
+                              ? "bg-[#800000] border-[#800000]"
+                              : "border-[#5C4033]"
+                          }`}
+                        >
+                          {selectedAddOns.includes(addOn.id) && (
+                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+              </div>
+
+              {/* ✅ GYM MEMBERSHIPS SECTION */}
+              <h3 className="text-xl font-bold text-[#D7BFA8] mb-4">Gym Access</h3>
+              <p className="text-[#A9745B] text-sm mb-4">
+                Train in our premium fitness center with panoramic savannah views.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {addOns
+                  .filter(addOn => addOn.category === "gym")
+                  .map((addOn) => (
+                    <div
+                      key={addOn.id}
+                      className={`p-6 rounded-2xl border-2 cursor-pointer transition-all ${
+                        selectedAddOns.includes(addOn.id)
+                          ? "bg-[#800000]/20 border-[#800000]"
+                          : "bg-[#2C1B16]/60 border-[#5C4033]/50 hover:border-[#800000]/50"
+                      }`}
+                      onClick={() => handleAddOnToggle(addOn.id)}
+                    >
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="text-xl font-bold text-[#FAF5F0] mb-2">{addOn.name}</h3>
+                          <p className="text-2xl font-bold text-[#800000]">
+                            KES {addOn.price.toLocaleString()}
+                          </p>
+                        </div>
+                        <div
+                          className={`w-6 h-6 rounded border-2 flex items-center justify-center ${
+                            selectedAddOns.includes(addOn.id)
+                              ? "bg-[#800000] border-[#800000]"
+                              : "border-[#5C4033]"
+                          }`}
+                        >
+                          {selectedAddOns.includes(addOn.id) && (
+                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                            </svg>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
               </div>
             </div>
 

@@ -58,6 +58,7 @@ export default function Navbar() {
         { name: "Wellness & Spa", id: "wellness" },
         { name: "Events & Weddings", id: "events" },
         { name: "Experience & Activities", id: "experience_activities" },
+        { name: "Gym", id: "gym" },
       ],
     },
     {
