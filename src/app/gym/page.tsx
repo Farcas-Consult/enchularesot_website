@@ -83,7 +83,7 @@ const activities = [
 const services = [
   {
     name: "Personal Training",
-    price: "KSh 3,500/session",
+    price: "KSh 2,500/session",
     desc: "Tailored 1-on-1 coaching with certified trainers.",
   },
   {
@@ -98,7 +98,7 @@ const services = [
   },
   {
     name: "Recovery Therapy",
-    price: "KSh 4,000/session",
+    price: "KSh 2,500/session",
     desc: "Massage, cryotherapy, and stretching sessions.",
   },
 ];
