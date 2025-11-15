@@ -45,7 +45,7 @@ const reservationCategories = {
   ],
   gym: [
     { id: "gym-day", name: "Gym Day Pass", description: "Full access to cardio & strength zone" },
-    { id: "gym-weekly", name: "Gym Weekly Pass", description: "7 days unlimited access" },
+    { id: "gym-weekly", name: "Gym Weekly subscription", description: "7 days unlimited access" },
     { id: "cardio-only", name: "Cardio Zone Access", description: "Treadmills, bikes & ellipticals" },
   ],
   pool: [
