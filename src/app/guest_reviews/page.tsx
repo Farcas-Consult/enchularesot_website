@@ -97,7 +97,7 @@ const ReviewsPage = () => {
   return (
     <section
       id="guest-reviews"
-      className="relative py-20 px-4 min-h-screen"
+      className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1920&q=80')",
@@ -108,58 +108,63 @@ const ReviewsPage = () => {
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-6xl font-bold text-[#FAF5F0] mb-4">
-            REVIEWS & TESTIMONIALS
+      <div className="relative z-10 max-w-6xl mx-auto">
+        {/* Header with Badge */}
+        <div className="text-center mb-16">
+          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
+            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
+              GUEST REVIEWS
+            </span>
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
+            Real Stories from Our <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Guests</span>
           </h1>
-          <p className="text-xl text-[#D7BFA8] mb-8">
+          <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto mb-10">
             Real experiences from travelers who&apos;ve stayed with us
           </p>
-          
+
           {/* Stats Bar */}
-          <div className="flex flex-wrap justify-center gap-8 mb-8">
-            <div className="bg-[#3D2517]/60 backdrop-blur-sm px-8 py-4 rounded-2xl border border-[#5C4033]/50">
-              <div className="text-4xl font-bold text-[#800000] mb-1">4.8/5</div>
+          <div className="flex flex-wrap justify-center gap-6 mb-10">
+            <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30">
+              <div className="text-3xl font-bold text-[#800000] mb-1">4.8/5</div>
               <div className="text-[#D7BFA8] text-sm">Average Rating</div>
             </div>
-            <div className="bg-[#3D2517]/60 backdrop-blur-sm px-8 py-4 rounded-2xl border border-[#5C4033]/50">
-              <div className="text-4xl font-bold text-[#800000] mb-1">200+</div>
+            <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30">
+              <div className="text-3xl font-bold text-[#800000] mb-1">200+</div>
               <div className="text-[#D7BFA8] text-sm">Happy Guests</div>
             </div>
-            <div className="bg-[#3D2517]/60 backdrop-blur-sm px-8 py-4 rounded-2xl border border-[#5C4033]/50">
-              <div className="text-4xl font-bold text-[#800000] mb-1">98%</div>
+            <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30">
+              <div className="text-3xl font-bold text-[#800000] mb-1">98%</div>
               <div className="text-[#D7BFA8] text-sm">Would Recommend</div>
             </div>
           </div>
 
           <button
             onClick={() => setShowForm(!showForm)}
-            className="inline-flex items-center gap-2 bg-[#800000] hover:bg-[#A04040] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            <span className="text-2xl">✍️</span>
+            <span className="text-xl">✍️</span>
             Write Your Review
           </button>
         </div>
 
         {/* Review Submission Form */}
         {showForm && (
-          <div className="mb-12 bg-[#3D2517]/70 backdrop-blur-md rounded-3xl p-8 border-2 border-[#5C4033]/50 shadow-2xl">
+          <div className="mb-16 bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-8 border border-[#5C4033]/30">
             {submitted ? (
-              <div className="text-center py-12">
-                <span className="text-6xl mb-4 block">🎉</span>
-                <h3 className="text-3xl font-bold text-[#FAF5F0] mb-3">Thank You!</h3>
-                <p className="text-[#D7BFA8] text-lg">Your review has been submitted successfully.</p>
+              <div className="text-center py-10">
+                <span className="text-5xl mb-4 block">🎉</span>
+                <h3 className="text-2xl font-bold text-[#FAF5F0] mb-3">Thank You!</h3>
+                <p className="text-[#D7BFA8]">Your review has been submitted successfully.</p>
               </div>
             ) : (
               <div className="max-w-3xl mx-auto">
-                <h3 className="text-3xl font-bold text-[#FAF5F0] mb-6 text-center">Share Your Experience</h3>
-                
+                <h3 className="text-2xl font-bold text-[#FAF5F0] mb-6 text-center">Share Your Experience</h3>
+
                 {/* Rating Stars */}
                 <div className="mb-6 text-center">
-                  <label className="block text-[#D7BFA8] mb-3 text-lg">Your Rating</label>
-                  <div className="flex justify-center gap-2 text-4xl">
+                  <label className="block text-[#D7BFA8] mb-3">Your Rating</label>
+                  <div className="flex justify-center gap-2 text-3xl">
                     {renderStars(hoverRating || rating, true)}
                   </div>
                   {rating > 0 && (
@@ -171,49 +176,49 @@ const ReviewsPage = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <label className="block text-[#D7BFA8] mb-2">Your Name *</label>
+                    <label className="block text-[#D7BFA8] mb-2 text-sm">Your Name *</label>
                     <input
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full px-4 py-3 bg-[#2C1B16]/60 border border-[#5C4033]/50 rounded-xl text-[#FAF5F0] focus:border-[#800000] focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-[#2C1B16]/60 border border-[#5C4033]/30 rounded-xl text-[#FAF5F0] focus:border-[#800000] focus:outline-none transition-colors"
                       placeholder="Name"
                     />
                   </div>
                   <div>
-                    <label className="block text-[#D7BFA8] mb-2">Location</label>
+                    <label className="block text-[#D7BFA8] mb-2 text-sm">Location</label>
                     <input
                       type="text"
                       value={formData.location}
                       onChange={(e) => setFormData({...formData, location: e.target.value})}
-                      className="w-full px-4 py-3 bg-[#2C1B16]/60 border border-[#5C4033]/50 rounded-xl text-[#FAF5F0] focus:border-[#800000] focus:outline-none transition-colors"
+                      className="w-full px-4 py-3 bg-[#2C1B16]/60 border border-[#5C4033]/30 rounded-xl text-[#FAF5F0] focus:border-[#800000] focus:outline-none transition-colors"
                       placeholder="Location"
                     />
                   </div>
                 </div>
 
                 <div className="mb-6">
-                  <label className="block text-[#D7BFA8] mb-2">Your Review *</label>
+                  <label className="block text-[#D7BFA8] mb-2 text-sm">Your Review *</label>
                   <textarea
                     value={formData.review}
                     onChange={(e) => setFormData({...formData, review: e.target.value})}
                     rows={5}
-                    className="w-full px-4 py-3 bg-[#2C1B16]/60 border border-[#5C4033]/50 rounded-xl text-[#FAF5F0] focus:border-[#800000] focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-[#2C1B16]/60 border border-[#5C4033]/30 rounded-xl text-[#FAF5F0] focus:border-[#800000] focus:outline-none transition-colors resize-none"
                     placeholder="Tell us about your experience at Enchula Resort..."
                   />
                 </div>
 
-                <div className="flex gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     onClick={handleSubmit}
                     disabled={rating === 0}
-                    className="px-8 py-3 bg-[#800000] hover:bg-[#A04040] disabled:bg-[#5C4033] text-white font-semibold rounded-full transition-all duration-300 disabled:cursor-not-allowed"
+                    className="px-8 py-3 bg-[#800000] hover:bg-[#A04040] disabled:bg-[#5C4033] disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold rounded-full transition-all duration-300"
                   >
                     Submit Review
                   </button>
                   <button
                     onClick={() => setShowForm(false)}
-                    className="px-8 py-3 bg-[#2C1B16]/80 hover:bg-[#3D2517] text-[#D7BFA8] font-semibold rounded-full border border-[#5C4033]/50 transition-all duration-300"
+                    className="px-8 py-3 bg-[#2C1B16]/80 hover:bg-[#3D2517] text-[#D7BFA8] font-semibold rounded-full border border-[#5C4033]/30 transition-all duration-300"
                   >
                     Cancel
                   </button>
@@ -223,67 +228,63 @@ const ReviewsPage = () => {
           </div>
         )}
 
-        {/* Reviews Grid with Images */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Reviews Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="bg-[#3D2517]/60 backdrop-blur-md rounded-3xl overflow-hidden border-2 border-[#5C4033]/50 hover:border-[#800000]/70 transition-all duration-500 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 group"
+              className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group"
             >
-              {/* Guest Images */}
               <div className="grid grid-cols-2 gap-2 p-3">
                 {review.images.map((img, idx) => (
-                  <div key={idx} className="relative h-48 rounded-2xl overflow-hidden">
+                  <div key={idx} className="relative h-44 rounded-xl overflow-hidden">
                     <img
                       src={img}
                       alt={`${review.name} photo ${idx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 ))}
               </div>
 
-              {/* Content */}
               <div className="p-6 bg-[#2C1B16]/80">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-[#FAF5F0] mb-1">{review.name}</h3>
-                    <p className="text-[#D7BFA8] text-sm mb-2">
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-lg font-bold text-[#FAF5F0] mb-1">{review.name}</h3>
+                    <p className="text-[#D7BFA8] text-xs">
                       {review.location} • {review.date}
                     </p>
-                    <div>{renderStars(review.rating)}</div>
                   </div>
+                  <div className="flex gap-0.5">{renderStars(review.rating)}</div>
                 </div>
 
-                <blockquote className="text-[#F8F3EF] leading-relaxed italic">
-                  &aquot;{review.content}&aquot;
+                <blockquote className="text-[#F8F3EF] text-sm leading-relaxed italic">
+                  &ldquo;{review.content}&rdquo;
                 </blockquote>
 
-                <div className="mt-4 w-12 h-1 bg-[#800000] rounded-full"></div>
+                <div className="mt-4 w-10 h-0.5 bg-[#800000] rounded-full"></div>
               </div>
             </div>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-16 bg-[#2C1B16]/70 p-10 rounded-3xl border-2 border-[#800000]/40 backdrop-blur-sm">
-          
-          <h3 className="text-3xl font-bold text-[#FAF5F0] mb-4">
+        <div className="text-center bg-[#2C1B16]/40 backdrop-blur-md p-8 rounded-2xl border border-[#5C4033]/30">
+          <h3 className="text-2xl font-bold text-[#FAF5F0] mb-4">
             Ready to Create Your Own Story?
           </h3>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6">
-            <a
-              href="#booking"
-              className="inline-flex items-center gap-3 bg-[#800000] hover:bg-[#A04040] text-white font-semibold px-10 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+            <Link
+              href="/booking"
+              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Book Your Stay
-              
-            </a>
+            </Link>
             <Link
               href="https://wa.me/254727000027"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 border-2 border-[#800000] text-[#FAF5F0] hover:bg-[#800000] font-semibold px-10 py-4 rounded-full transition-all duration-300"
+              className="inline-flex items-center gap-3 border-2 border-[#800000] text-[#FAF5F0] hover:bg-[#800000] font-semibold px-8 py-4 rounded-full transition-all duration-300"
             >
               <span className="text-xl">💬</span>
               Chat on WhatsApp

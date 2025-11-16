@@ -124,7 +124,7 @@ export default function Health_Sanity() {
         {/* CTA */}
         <div className="mt-16 text-center">
           <a 
-            href="#booking" 
+            href="/booking" 
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#5C4033] via-[#800000] to-[#A04040] text-white font-semibold rounded-full hover:from-[#800000] hover:via-[#A04040] hover:to-[#5C4033] transition-all duration-300 shadow-lg hover:shadow-[#800000]/40 transform hover:scale-105"
           >
             <Shield size={20} />

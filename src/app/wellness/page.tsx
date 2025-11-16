@@ -5,46 +5,52 @@ import React from "react";
 export default function WellnessPage() {
   return (
     <section
-      className="py-20 px-4"
+      id="wellness"
+      className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1920&q=80')",
         backgroundSize: "cover",
         backgroundPosition: "center",
+        backgroundAttachment: "fixed",
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
             <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
               WELLNESS & SPA
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-4">Rejuvenate & Restore</h1>
-          <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto">Reconnect with yourself in peace and nature.</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
+            Rejuvenate & Restore
+          </h1>
+          <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto">
+            Reconnect with yourself in peace and nature.
+          </p>
         </div>
 
         {/* Massage Treatments - Large Feature */}
-        <div className="mb-12 bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30">
+        <div className="mb-12 bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group">
           <div className="grid md:grid-cols-2 gap-0">
-            <div className="relative h-64 md:h-96 overflow-hidden group">
+            <div className="relative h-64 md:h-96 overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&q=80" 
                 alt="Massage Treatment"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute top-4 right-4 bg-[#800000] text-white px-4 py-2 rounded-full text-lg font-bold">
+              <div className="absolute top-4 right-4 bg-[#800000] text-white px-4 py-2 rounded-full text-sm font-bold">
                 From KSh 2,500
               </div>
             </div>
-            <div className="p-8 flex flex-col justify-center">
-              <h2 className="text-3xl font-bold text-[#FAF5F0] mb-4"> Massage Treatments</h2>
+            <div className="p-6 md:p-8 flex flex-col justify-center">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-4">Massage Treatments</h2>
               <p className="text-[#F8F3EF] mb-6 leading-relaxed">
                 Traditional and aromatherapy massages using natural oils. Available in-room or under the trees for a truly immersive experience.
               </p>
-              <div className="space-y-3 text-[#D7BFA8]">
+              <div className="space-y-3 text-[#D7BFA8] text-sm">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-[#800000] rounded-full"></span>
                   <span>Swedish Massage - 60 min (KSh 2,500)</span>
@@ -67,14 +73,14 @@ export default function WellnessPage() {
         </div>
 
         {/* Yoga & Meditation */}
-        <div className="mb-12 bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30">
+        <div className="mb-12 bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group">
           <div className="grid md:grid-cols-2 gap-0">
-            <div className="p-8 flex flex-col justify-center md:order-2">
-              <h2 className="text-3xl font-bold text-[#FAF5F0] mb-4"> Yoga & Meditation</h2>
+            <div className="p-6 md:p-8 flex flex-col justify-center md:order-2">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-4">Yoga & Meditation</h2>
               <p className="text-[#F8F3EF] mb-6 leading-relaxed">
                 Morning sessions by the pool. Mats provided. Suitable for all levels from beginners to advanced practitioners.
               </p>
-              <div className="space-y-3 text-[#D7BFA8]">
+              <div className="space-y-3 text-[#D7BFA8] text-sm">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-[#800000] rounded-full"></span>
                   <span>Group Morning Yoga - 7:00 AM (Free for guests)</span>
@@ -89,13 +95,13 @@ export default function WellnessPage() {
                 </div>
               </div>
             </div>
-            <div className="relative h-64 md:h-96 overflow-hidden group md:order-1">
+            <div className="relative h-64 md:h-96 overflow-hidden md:order-1">
               <img 
                 src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80" 
                 alt="Yoga Session"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              <div className="absolute top-4 left-4 bg-[#800000] text-white px-4 py-2 rounded-full text-lg font-bold">
+              <div className="absolute top-4 left-4 bg-[#800000] text-white px-4 py-2 rounded-full text-sm font-bold">
                 Free Daily Classes
               </div>
             </div>
@@ -103,28 +109,28 @@ export default function WellnessPage() {
         </div>
 
         {/* Grid of Additional Services */}
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
+        <div className="grid md:grid-cols-2 gap-6 mb-12">
           {/* Sauna & Steam Room */}
-          <div className="bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 group">
+          <div className="bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group">
             <div className="relative h-56 overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1521543992380-d5ff5e6b5f94?w=800&q=80" 
                 alt="Sauna and Steam Room"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="flex justify-between items-end">
-                  <h2 className="text-2xl font-bold text-[#FAF5F0]"> Sauna & Steam Room</h2>
-                  <span className="text-[#D7BFA8] font-bold text-lg">KSh 1,200</span>
+                  <h2 className="text-xl font-bold text-[#FAF5F0]">Sauna & Steam Room</h2>
+                  <span className="text-[#D7BFA8] font-bold text-sm">KSh 1,200</span>
                 </div>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#F8F3EF] mb-4">
+              <p className="text-[#F8F3EF] mb-4 text-sm">
                 Detox and relax after a long journey or safari. Perfect for muscle recovery and stress relief.
               </p>
-              <div className="space-y-2 text-[#D7BFA8] text-sm">
+              <div className="space-y-2 text-[#D7BFA8] text-xs">
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-[#800000] rounded-full"></span>
                   <span>45-minute session</span>
@@ -142,26 +148,26 @@ export default function WellnessPage() {
           </div>
 
           {/* Herbal Teas */}
-          <div className="bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 group">
+          <div className="bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group">
             <div className="relative h-56 overflow-hidden">
               <img 
                 src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=800&q=80" 
                 alt="Herbal Teas and Infusions"
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
                 <div className="flex justify-between items-end">
-                  <h2 className="text-2xl font-bold text-[#FAF5F0]"> Herbal Teas & Infusions</h2>
-                  <span className="text-[#D7BFA8] font-bold text-lg">Complimentary</span>
+                  <h2 className="text-xl font-bold text-[#FAF5F0]">Herbal Teas & Infusions</h2>
+                  <span className="text-[#D7BFA8] font-bold text-sm">Complimentary</span>
                 </div>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#F8F3EF] mb-4">
+              <p className="text-[#F8F3EF] mb-4 text-sm">
                 Complimentary wellness teas available throughout the day. Locally sourced herbs and botanicals.
               </p>
-              <div className="space-y-2 text-[#D7BFA8] text-sm">
+              <div className="space-y-2 text-[#D7BFA8] text-xs">
                 <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 bg-[#800000] rounded-full"></span>
                   <span>Chamomile & Lavender</span>
@@ -203,19 +209,19 @@ export default function WellnessPage() {
                 desc: "Therapeutic foot massage for relaxation"
               }
             ].map((service, i) => (
-              <div key={i} className="bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all group">
+              <div key={i} className="bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group">
                 <div className="relative h-48 overflow-hidden">
                   <img 
                     src={service.image} 
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-3 right-3 bg-[#800000] text-white px-3 py-1.5 rounded-full text-sm font-bold">
+                  <div className="absolute top-3 right-3 bg-[#800000] text-white px-3 py-1.5 rounded-full text-xs font-bold">
                     {service.price}
                   </div>
                 </div>
                 <div className="p-5">
-                  <h3 className="text-xl font-bold text-[#FAF5F0] mb-2">{service.title}</h3>
+                  <h3 className="text-lg font-bold text-[#FAF5F0] mb-2">{service.title}</h3>
                   <p className="text-[#F8F3EF] text-sm">{service.desc}</p>
                 </div>
               </div>
@@ -224,57 +230,57 @@ export default function WellnessPage() {
         </div>
 
         {/* Wellness Packages */}
-        <div className="bg-gradient-to-r from-[#2C1B16]/80 to-[#5C4033]/60 backdrop-blur-md rounded-2xl p-8 border border-[#800000]/30 mb-12">
+        <div className="bg-[#2C1B16]/60 backdrop-blur-sm rounded-2xl p-8 border border-[#5C4033]/30 mb-12">
           <h2 className="text-3xl font-bold text-[#FAF5F0] mb-6 text-center">Wellness Packages</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-[#2E1A15]/60 p-6 rounded-xl border border-[#5C4033]/30">
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold text-[#FAF5F0]">Half-Day Retreat</h3>
-                <span className="text-[#D7BFA8] font-bold text-xl">KSh 6,500</span>
+                <h3 className="text-xl font-bold text-[#FAF5F0]">Half-Day Retreat</h3>
+                <span className="text-[#D7BFA8] font-bold">KSh 6,500</span>
               </div>
-              <ul className="space-y-2 text-[#F8F3EF]">
+              <ul className="space-y-2 text-[#F8F3EF] text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#800000] mt-1">✓</span>
+                  <span className="text-[#800000] mt-0.5">✓</span>
                   <span>60-min massage of your choice</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#800000] mt-1">✓</span>
+                  <span className="text-[#800000] mt-0.5">✓</span>
                   <span>Facial treatment</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#800000] mt-1">✓</span>
+                  <span className="text-[#800000] mt-0.5">✓</span>
                   <span>Sauna & steam access</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#800000] mt-1">✓</span>
+                  <span className="text-[#800000] mt-0.5">✓</span>
                   <span>Healthy lunch included</span>
                 </li>
               </ul>
             </div>
             <div className="bg-[#2E1A15]/60 p-6 rounded-xl border border-[#5C4033]/30">
               <div className="flex justify-between items-start mb-4">
-                <h3 className="text-2xl font-bold text-[#FAF5F0]">Full-Day Escape</h3>
-                <span className="text-[#D7BFA8] font-bold text-xl">KSh 11,000</span>
+                <h3 className="text-xl font-bold text-[#FAF5F0]">Full-Day Escape</h3>
+                <span className="text-[#D7BFA8] font-bold">KSh 11,000</span>
               </div>
-              <ul className="space-y-2 text-[#F8F3EF]">
+              <ul className="space-y-2 text-[#F8F3EF] text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#800000] mt-1">✓</span>
+                  <span className="text-[#800000] mt-0.5">✓</span>
                   <span>90-min aromatherapy massage</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#800000] mt-1">✓</span>
+                  <span className="text-[#800000] mt-0.5">✓</span>
                   <span>Body scrub & facial</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#800000] mt-1">✓</span>
+                  <span className="text-[#800000] mt-0.5">✓</span>
                   <span>Yoga & meditation session</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#800000] mt-1">✓</span>
+                  <span className="text-[#800000] mt-0.5">✓</span>
                   <span>All-day spa access</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#800000] mt-1">✓</span>
+                  <span className="text-[#800000] mt-0.5">✓</span>
                   <span>Lunch & wellness teas</span>
                 </li>
               </ul>
@@ -286,7 +292,7 @@ export default function WellnessPage() {
         <div className="bg-[#2C1B16]/40 backdrop-blur-md rounded-2xl p-8 border border-[#5C4033]/30 text-center mb-12">
           <h3 className="text-2xl font-bold text-[#FAF5F0] mb-4">What Our Guests Say</h3>
           <p className="text-[#D7BFA8] text-lg italic">
-            &aquot;The massage was heavenly and the yoga sessions helped me truly unwind. I left feeling completely rejuvenated!&aquot;
+            “The massage was heavenly and the yoga sessions helped me truly unwind. I left feeling completely rejuvenated!”
           </p>
           <p className="text-[#A9745B] mt-3">— Sarah M., Nairobi</p>
         </div>
@@ -296,13 +302,12 @@ export default function WellnessPage() {
           <p className="text-[#D7BFA8] mb-6 text-lg">
             Ready to relax and restore your inner peace?
           </p>
-          <a
-            href="#booking"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-xl transform hover:scale-105"
+          <Link
+            href="/booking"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Book Your Wellness Session
-           
-          </a>
+          </Link>
         </div>
       </div>
     </section>

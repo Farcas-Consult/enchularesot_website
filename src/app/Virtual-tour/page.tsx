@@ -125,7 +125,7 @@ export default function VirtualTourPage() {
         {/* Navigation Buttons (top-right, below navbar) */}
         <div className="flex justify-end gap-3 mb-8">
           <Link
-            href="/#rooms"
+            href="/rooms"
             className="px-5 py-2.5 bg-[#2C1B16]/60 hover:bg-[#5C4033]/60 text-[#FAF5F0] rounded-full backdrop-blur-sm border border-[#5C4033]/40 transition-all duration-300 hover:border-[#800000] flex items-center gap-2 text-sm font-medium"
           >
             ← Return to Rooms

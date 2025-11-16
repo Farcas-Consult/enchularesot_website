@@ -219,7 +219,7 @@ const Amenities: React.FC = () => {
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-[#FAF5F0] mb-6 tracking-tight">
             Premium
-            <span className="block bg-gradient-to-r from-[#5C4033] via-[#800000] to-[#A04040] bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
               World-Class Facilities
             </span>
           </h2>
@@ -316,7 +316,7 @@ const Amenities: React.FC = () => {
             </p>
             <button className="px-8 py-4 bg-gradient-to-r from-[#5C4033] to-[#800000] text-[#FAF5F0] rounded-full font-bold text-lg hover:shadow-2xl hover:scale-105 transition-all duration-300">
               <a 
-              href="#booking">
+              href="/booking">
               Book Your Stay Now
               </a>
             </button>

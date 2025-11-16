@@ -82,7 +82,7 @@ export default function About() {
           </div>
           <h2 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-[#FAF5F0]">
             Where Luxury Meets{" "}
-            <span className="block bg-gradient-to-r from-[#5C4033] via-[#800000] to-[#A04040] bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
               Kenyan Serenity
             </span>
           </h2>
@@ -211,7 +211,7 @@ export default function About() {
         {/* CTA */}
         <div className="mt-12 text-center">
           <a
-            href="#booking"
+            href="/booking"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#5C4033] to-[#800000] text-[#FAF5F0] font-semibold rounded-full hover:from-[#800000] hover:to-[#A04040] transition-all duration-300 shadow-lg transform hover:scale-105 active:scale-95"
           >
             <Heart className="w-5 h-5" /> Plan Your Escape

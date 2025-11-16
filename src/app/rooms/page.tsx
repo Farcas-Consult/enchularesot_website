@@ -85,7 +85,7 @@ export default function Rooms() {
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-[#FAF5F0] mb-6 tracking-tight">
             Discover Your
-            <span className="block bg-gradient-to-r from-[#5C4033] via-[#800000] to-[#A04040] bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
               Perfect Sanctuary
             </span>
           </h2>
@@ -180,16 +180,9 @@ export default function Rooms() {
             {/* Action Buttons */}
             <div className="flex gap-4">
              <button
-  className={`flex-1 px-8 py-4 bg-gradient-to-r ${rooms[activeRoom].color} text-[#FAF5F0] rounded-xl font-semibold 
-    shadow-lg hover:shadow-xl 
-    transition-all duration-300 ease-out 
-    flex items-center justify-center gap-2 
-    hover:scale-[1.02] active:scale-[0.98] 
-    border border-white/10 hover:border-[#D7BFA8]/30
-    group relative overflow-hidden`}
-     >
-      <a
-       href="#booking"
+  className="relative px-6 py-4 bg-gradient-to-r from-[#A04040] to-[#5C2E2E] text-white rounded-xl font-semibold shadow-2xl overflow-hidden group border border-transparent hover:border-[#800000] transition-all duration-300"
+      ><a
+       href="/booking"
        className="flex items-center gap-2 w-full h-full"
      >
        Book Now

@@ -114,7 +114,7 @@ const Contact: React.FC = () => {
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-[#F8F3EF] mb-6 tracking-tight">
             Start Your
-            <span className="block bg-gradient-to-r from-[#5C4033] to-[#800000] bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
               Journey With Us
             </span>
           </h2>

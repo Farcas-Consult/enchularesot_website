@@ -29,10 +29,15 @@ const slides = [
 
 export default function Hero() {
   const [index, setIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % slides.length);
+        setIsTransitioning(false);
+      }, 1000); // Match this with CSS transition duration
     }, 6000);
     return () => clearInterval(interval);
   }, []);
@@ -45,84 +50,68 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      {slides.map((slide, idx) => (
-        <div
-          key={idx}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-[2000ms] ease-in-out ${
-            idx === index ? "opacity-100 z-10" : "opacity-0 z-0"
-          }`}
-        >
-          {/* Background Image */}
-          <Image
-            src={slide.img}
-            alt={slide.title}
-            fill
-            className="object-cover"
-          />
+      {slides.map((slide, idx) => {
+        const isActive = idx === index;
+        const isLeaving = idx === (index - 1 + slides.length) % slides.length && isTransitioning;
 
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
+        return (
+          <div
+            key={idx}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+              isActive
+                ? "opacity-100 z-10"
+                : isLeaving
+                ? "opacity-0 z-10" // Keep z-10 so it fades out on top
+                : "opacity-0 z-0"
+            }`}
+          >
+            <Image
+              src={slide.img}
+              alt={slide.title}
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
 
-          {/* Hero Content (only active slide) */}
-          {idx === index && (
-            <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-[#F8F3EF] px-6">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#A9745B]/20 backdrop-blur-md rounded-full border border-[#A9745B]/30 mb-6 animate-fadeIn">
-                <Sparkles className="w-5 h-5 text-[#A9745B]" />
-                <span className="text-sm font-semibold tracking-wide">
-                  LUXURY RESORT EXPERIENCE
-                </span>
+            {isActive && (
+              <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-[#F8F3EF] px-6">
+                <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#A9745B]/20 backdrop-blur-md rounded-full border border-[#A9745B]/30 mb-6 animate-fadeIn">
+                  <Sparkles className="w-5 h-5 text-[#A9745B]" />
+                  <span className="text-sm font-semibold tracking-wide">
+                    LUXURY RESORT EXPERIENCE
+                  </span>
+                </div>
+
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight animate-fadeInUp">
+                  {slide.title}
+                </h1>
+
+                <p className="text-lg md:text-2xl text-[#F8F3EF]/90 mb-10 max-w-3xl mx-auto leading-relaxed animate-fadeInUp">
+                  {slide.subtitle}
+                </p>
+
+                <div className="flex flex-wrap justify-center items-center gap-6 mb-12 animate-fadeInUp">
+                  {highlights.map((item, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-2 px-4 py-2 bg-[#F8F3EF]/10 backdrop-blur-md rounded-full border border-[#D7BFA8]/30"
+                    >
+                      <span className="text-[#A9745B]">{item.icon}</span>
+                      <span className="text-sm font-semibold">{item.text}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-6 animate-fadeInUp">
+                  <button className="group relative px-10 py-4 bg-gradient-to-r from-[#A04040] to-[#5C2E2E] text-white text-lg font-semibold rounded-full shadow-2xl transition-all duration-300 hover:scale-110">
+                    <a href="/booking">Book Your Stay</a>
+                  </button>
+                </div>
               </div>
-
-              {/* Heading */}
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight animate-fadeInUp">
-                {slide.title}
-              </h1>
-
-              {/* Subtitle */}
-              <p className="text-lg md:text-2xl text-[#F8F3EF]/90 mb-10 max-w-3xl mx-auto leading-relaxed animate-fadeInUp">
-                {slide.subtitle}
-              </p>
-
-              {/* Highlights */}
-              <div className="flex flex-wrap justify-center items-center gap-6 mb-12 animate-fadeInUp">
-                {highlights.map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-2 px-4 py-2 bg-[#F8F3EF]/10 backdrop-blur-md rounded-full border border-[#D7BFA8]/30"
-                  >
-                    <span className="text-[#A9745B]">{item.icon}</span>
-                    <span className="text-sm font-semibold">{item.text}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Buttons */}
-              <div className="flex flex-col sm:flex-row justify-center items-center gap-6 animate-fadeInUp">
-                <button
-                  onClick={() => {
-                    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="group relative px-10 py-4 bg-gradient-to-r from-[#A04040] to-[#5C2E2E] text-white text-lg font-semibold rounded-full shadow-2xl transition-all duration-300 hover:scale-110"
-                >
-                  <a
-                  href="#booking">
-                  Book Your Stay
-                  </a>
-                </button>
-                <button
-                  onClick={() => {
-                    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="px-10 py-4 border-2 border-[#F8F3EF]/70 text-[#F8F3EF] text-lg font-semibold rounded-full bg-[#F8F3EF]/10 hover:bg-[#F8F3EF]/20 transition-all duration-300 hover:scale-110 flex items-center gap-2"
-                >
-                  Discover More
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      ))}
+            )}
+          </div>
+        );
+      })}
 
       <style jsx>{`
         @keyframes fadeInUp {
@@ -136,10 +125,10 @@ export default function Hero() {
           }
         }
         .animate-fadeInUp {
-          animation: fadeInUp 1s ease-out;
+          animation: fadeInUp 0.8s ease-out forwards;
         }
         .animate-fadeIn {
-          animation: fadeInUp 1.2s ease-out;
+          animation: fadeInUp 1s ease-out forwards;
         }
       `}</style>
     </section>

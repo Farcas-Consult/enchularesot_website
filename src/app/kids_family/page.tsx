@@ -29,7 +29,7 @@ const KidsFamilyPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            A <span className="bg-gradient-to-r from-[#800000] to-[#5C4033] bg-clip-text text-transparent">Kid-Friendly</span> Getaway
+            A <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Kid-Friendly</span> Getaway
           </h1>
           <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto leading-relaxed">
             At Enchula Resort, we welcome families with open arms. From supervised play areas to fun cultural activities, your children will have just as much fun as you do.
@@ -178,7 +178,7 @@ const KidsFamilyPage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="#booking"
+              href="/booking"
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Book Your Family Stay
