@@ -1,27 +1,45 @@
 "use client";
 
-import React, { useState } from "react";
-import { X, ChevronLeft, ChevronRight, Maximize2, Camera, Hotel, UtensilsCrossed, Waves, Bed, Sparkles } from "lucide-react";
-import Image from "next/image";
-import Outside from '@/assets/Exterior1.webp';
-import Inside from '@/assets/Exterior3.jpg';
-import Exterior from '@/assets/Exterior4.jpg';
-import Room1 from '@/assets/room3.webp';
-import Room2 from '@/assets/twinroom.webp';
-import Room3 from '@/assets/room2.jpg';
-import Birthroom1 from '@/assets/bathroom1.jpg';
-import Birthroom2 from '@/assets/bathroom2.jpg';
-import Birthroom3 from '@/assets/bathroom3.jpg';
-import Gym from '@/assets/gym.jpeg';
-import Spa from '@/assets/spa.jpeg';
-import Swimmingpool from '@/assets/swimmingpool.jpeg';
-import Table from '@/assets/table.jpg';
-import Breakfast from '@/assets/breakfast.jpg';
-import Food from '@/assets/food.jpg';
-import { StaticImageData } from "next/image";
+import React, { useState, useEffect } from "react";
+import {
+  X,
+  ChevronLeft,
+  ChevronRight,
+  Maximize2,
+  Camera,
+  Hotel,
+  UtensilsCrossed,
+  Waves,
+  Bed,
+  Sparkles,
+} from "lucide-react";
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+
+// 🖼️ Background Images for Section Carousel
+import GalleryBg1 from "@/assets/room4_result.png";
+import GalleryBg2 from "@/assets/Room7_result.png";
+import GalleryBg3 from "@/assets/Room19_result.png";
+
+// 📸 Gallery Assets (as before)
+import Outside from "@/assets/Exterior1.webp";
+import Inside from "@/assets/Exterior3.jpg";
+import Exterior from "@/assets/Environment3_result.png";
+import Room1 from "@/assets/Room21_result.png";
+import Room2 from "@/assets/twinroom.webp";
+import Room3 from "@/assets/room2.jpg";
+import Birthroom1 from "@/assets/bathroom1.jpg";
+import Birthroom2 from "@/assets/Bathroom7_result.png";
+import Birthroom3 from "@/assets/Bathroom9_result_result.png";
+import Gym from "@/assets/Gym10_result.png";
+import Spa from "@/assets/spa.jpeg";
+import Swimmingpool from "@/assets/Swimmingpool12_result.png";
+import Table from "@/assets/Dining3_result.png";
+import Breakfast from "@/assets/breakfast.jpg";
+import Food from "@/assets/food.jpg";
 
 interface GalleryImage {
-  src: string | StaticImageData;
+  src: StaticImageData; // Now strictly static imports
   alt: string;
   category: string;
 }
@@ -29,27 +47,28 @@ interface GalleryImage {
 export default function Gallery() {
   const galleryImages: GalleryImage[] = [
     { src: Outside, alt: "Luxury Resort Exterior", category: "Exterior" },
-    { src: Room1, alt: "Premium Bedroom Suite", category: "Rooms" },
-    { src: Birthroom1, alt: "Modern Bathroom", category: "Bathrooms" },
+    { src: Room1, alt: "Elegant Retreat", category: "Rooms" },
+    { src: Birthroom1, alt: "Modern Washroom", category: "Bathrooms" },
     { src: Swimmingpool, alt: "Infinity Pool", category: "Amenities" },
     { src: Breakfast, alt: "Gourmet Cuisine", category: "Dining" },
-    { src: Inside, alt: "Beachfront View", category: "Exterior" },
-    { src: Room2, alt: "Ocean View Suite", category: "Rooms" },
-    { src: Birthroom2, alt: "Spa Bathroom", category: "Bathrooms" },
-    { src: Gym, alt: "Fitness Center", category: "Amenities" }, // fixed typo: "Beach Cabana"
+    { src: Inside, alt: "Tranquil Haven", category: "Exterior" },
+    { src: Room2, alt: "Bedroom Suite", category: "Rooms" },
+    { src: Birthroom2, alt: "Modern Bathroom", category: "Bathrooms" },
+    { src: Gym, alt: "Fitness Center", category: "Amenities" },
     { src: Table, alt: "Fine Dining", category: "Dining" },
-    { src: Exterior, alt: "Resort Architecture", category: "Exterior" },
+    { src: Exterior, alt: "Scenic Retreat", category: "Exterior" },
     { src: Room3, alt: "Presidential Suite", category: "Rooms" },
     { src: Birthroom3, alt: "Luxury Bathroom", category: "Bathrooms" },
     { src: Spa, alt: "Wellness Spa", category: "Amenities" },
-    { src: Food, alt: "Chef's Special", category: "Dining" },
+    { src: Food, alt: "Elegant Meals", category: "Dining" },
   ];
 
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>("All");
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
   const categories = ["All", "Exterior", "Rooms", "Bathrooms", "Amenities", "Dining"];
-  
+
   const categoryIcons: { [key: string]: React.ReactNode } = {
     All: <Camera className="w-5 h-5" />,
     Exterior: <Hotel className="w-5 h-5 text-[#5C4033]" />,
@@ -59,15 +78,14 @@ export default function Gallery() {
     Dining: <UtensilsCrossed className="w-5 h-5 text-[#800000]" />,
   };
 
-  const filteredImages = activeFilter === "All" 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === activeFilter);
+  const filteredImages = activeFilter === "All"
+    ? galleryImages
+    : galleryImages.filter((img) => img.category === activeFilter);
 
   const handlePrevious = () => {
     if (!selectedImage) return;
-    const currentIndex = filteredImages.findIndex(img => 
-      (typeof img.src === 'string' ? img.src : img.src.src) === 
-      (typeof selectedImage.src === 'string' ? selectedImage.src : selectedImage.src.src)
+    const currentIndex = filteredImages.findIndex(
+      (img) => img.src.src === selectedImage.src.src
     );
     const prevIndex = currentIndex > 0 ? currentIndex - 1 : filteredImages.length - 1;
     setSelectedImage(filteredImages[prevIndex]);
@@ -75,33 +93,55 @@ export default function Gallery() {
 
   const handleNext = () => {
     if (!selectedImage) return;
-    const currentIndex = filteredImages.findIndex(img => 
-      (typeof img.src === 'string' ? img.src : img.src.src) === 
-      (typeof selectedImage.src === 'string' ? selectedImage.src : selectedImage.src.src)
+    const currentIndex = filteredImages.findIndex(
+      (img) => img.src.src === selectedImage.src.src
     );
     const nextIndex = currentIndex < filteredImages.length - 1 ? currentIndex + 1 : 0;
     setSelectedImage(filteredImages[nextIndex]);
   };
 
+  // Auto-rotate background every 8 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % 3);
+    }, 8000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Background images array
+  const backgroundImages = [GalleryBg1, GalleryBg2, GalleryBg3];
+
   return (
-    <section 
-      id="gallery" 
-      className="relative py-24 px-4 overflow-hidden"
-      style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=80')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      {/* 🎨 Refined overlay: dark neutrals only */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
+    <section id="gallery" className="relative py-24 px-4 overflow-hidden">
+      {/* 🎞️ Background Carousel */}
+      <div className="absolute inset-0">
+        {backgroundImages.map((bg, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentBgIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Image
+              src={bg}
+              alt={`Gallery background ${index + 1}`}
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
+          </div>
+        ))}
+        {/* Overlay on top of background carousel */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95" />
+      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">Visual Journey</span>
+            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
+              Visual Journey
+            </span>
           </div>
           <h2 className="text-5xl md:text-6xl font-bold text-[#FAF5F0] mb-6 tracking-tight">
             Explore Our
@@ -110,12 +150,12 @@ export default function Gallery() {
             </span>
           </h2>
           <p className="text-xl text-[#D7BFA8] max-w-3xl mx-auto leading-relaxed">
-            Immerse yourself in the beauty of Enchula Resort through our curated collection 
+            Immerse yourself in the beauty of Enchula Resort through our curated collection
             of breathtaking spaces and unforgettable moments.
           </p>
         </div>
 
-        {/* Category Filters — palette-aligned */}
+        {/* Category Filters */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
             <button
@@ -146,21 +186,23 @@ export default function Gallery() {
                 alt={image.alt}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
-                priority
+                priority={index < 6} // Prioritize first 6 images
               />
 
-              {/* Overlay */}
+              {/* Hover Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex items-center gap-2 text-[#FAF5F0] mb-2">
                     {categoryIcons[image.category]}
-                    <span className="text-xs font-semibold uppercase text-[#D7BFA8]">{image.category}</span>
+                    <span className="text-xs font-semibold uppercase text-[#D7BFA8]">
+                      {image.category}
+                    </span>
                   </div>
                   <p className="text-sm text-[#F8F3EF]">{image.alt}</p>
                 </div>
               </div>
 
-              {/* Zoom icon — now brown/maroon */}
+              {/* Zoom Icon */}
               <div className="absolute top-4 right-4 bg-[#5C4033]/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <Maximize2 className="w-5 h-5 text-[#A04040]" />
               </div>
@@ -168,7 +210,7 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Stats Section — palette-tuned */}
+        {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           {[
             { label: "Gallery Images", value: "15+", color: "#5C4033" },
@@ -189,7 +231,7 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* Lightbox Modal — full palette alignment */}
+      {/* 🔍 Lightbox Modal */}
       {selectedImage && (
         <div className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
           {/* Close Button */}
@@ -201,7 +243,7 @@ export default function Gallery() {
             <X size={28} />
           </button>
 
-          {/* Previous Button */}
+          {/* Navigation */}
           <button
             onClick={handlePrevious}
             className="absolute left-6 text-[#FAF5F0] p-3 rounded-full bg-[#5C4033]/20 hover:bg-[#800000]/30 backdrop-blur-md transition-all duration-300 border border-[#A04040]/30"
@@ -209,8 +251,6 @@ export default function Gallery() {
           >
             <ChevronLeft size={28} />
           </button>
-
-          {/* Next Button */}
           <button
             onClick={handleNext}
             className="absolute right-6 text-[#FAF5F0] p-3 rounded-full bg-[#5C4033]/20 hover:bg-[#800000]/30 backdrop-blur-md transition-all duration-300 border border-[#A04040]/30"
@@ -248,8 +288,7 @@ export default function Gallery() {
                   aria-label={`View image ${idx + 1}`}
                   onClick={() => setSelectedImage(img)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    (typeof img.src === 'string' ? img.src : img.src.src) === 
-                    (typeof selectedImage.src === 'string' ? selectedImage.src : selectedImage.src.src)
+                    img.src.src === selectedImage.src.src
                       ? "bg-[#A04040] w-8"
                       : "bg-[#D7BFA8]/30 hover:bg-[#D7BFA8]/50"
                   }`}
