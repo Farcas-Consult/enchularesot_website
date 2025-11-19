@@ -1,7 +1,10 @@
-"use client";
-
+"use-client";
 import Hero from "./components/homepage/hero";
-
 export default function Home() {
-  return <Hero />;
+  return (
+    <div>
+      {/* Hero Section */}
+      <Hero />
+    </div>
+  );
 }

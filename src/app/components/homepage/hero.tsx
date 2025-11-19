@@ -3,27 +3,37 @@
 import React, { useState, useEffect } from "react";
 import { Star, MapPin, Sparkles, Award } from "lucide-react";
 import Image from "next/image";
+import Exterior1 from "@/assets/Exterior7_result.png";
+import Environment1 from "@/assets/Scenery2_result.png";
+import Entrance1 from "@/assets/Entrance2_result.png";
+import Exterior2 from "@/assets/Exterior21_result.png";
+import Swimmingpool1 from "@/assets/Swimmingpool4_result.png";
 
 const slides = [
   {
-    img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80",
+    src: Entrance1,
     title: "Welcome to Enchula Resort",
     subtitle: "Discover luxury living and authentic Kenyan hospitality",
   },
   {
-    img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=80",
+    src: Environment1,
     title: "Experience Serenity",
     subtitle: "Surrounded by breathtaking landscapes and elegance",
   },
   {
-    img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&q=80",
+    src: Exterior1,
     title: "Award-Winning Luxury",
     subtitle: "Five-star resort experience awaits",
   },
   {
-    img: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1920&q=80",
+    src: Exterior2,
     title: "Your Perfect Getaway",
     subtitle: "Relax, unwind, and enjoy world-class hospitality",
+  },
+  {
+    src: Swimmingpool1,
+    title: "Unforgettable Memories",
+    subtitle: "Create moments that last a lifetime",
   },
 ];
 
@@ -52,26 +62,31 @@ export default function Hero() {
     <section className="relative min-h-screen w-full overflow-hidden">
       {slides.map((slide, idx) => {
         const isActive = idx === index;
-        const isLeaving = idx === (index - 1 + slides.length) % slides.length && isTransitioning;
+        const isLeaving =
+          idx === (index - 1 + slides.length) % slides.length && isTransitioning;
 
         return (
           <div
-            key={idx}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-              isActive
-                ? "opacity-100 z-10"
-                : isLeaving
-                ? "opacity-0 z-10" // Keep z-10 so it fades out on top
-                : "opacity-0 z-0"
-            }`}
-          >
-            <Image
-              src={slide.img}
-              alt={slide.title}
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/70" />
+  key={idx}
+  className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+    isActive
+      ? "opacity-100 z-10"
+      : isLeaving
+      ? "opacity-0 z-10"
+      : "opacity-0 z-0"
+  }`}
+>
+  <Image
+    src={slide.src}
+    alt={slide.title}
+    fill
+    priority
+    className="object-cover"
+    quality={100}
+  />
+
+  <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/40" />
+
 
             {isActive && (
               <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-[#F8F3EF] px-6">

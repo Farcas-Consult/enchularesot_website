@@ -3,49 +3,58 @@
 import React from "react";
 import { Droplets, Leaf, Sun, Recycle, Heart, TreePine } from "lucide-react";
 
+// ✅ Import local images from assets
+import Solar from "@/assets/SolarEnergy2_result.png";
+import Water from "@/assets/Waterconservation1.jpg";
+import Waste from "@/assets/Zerowaste1.jpg";
+import Gardens from "@/assets/OrganicGarden1.jpg";
+import Reforestation from "@/assets/Nativeforest1.jpg";
+import Community from "@/assets/communityimpact1.jpg";
+import Background from "@/assets/Sustainability1.jpg";
+
 export default function Sustainability() {
   const sustainabilityData = [
     {
       title: "Solar Energy",
       description:
         "100% of our resort is powered by renewable solar energy, reducing carbon emissions and embracing clean technology for a greener future.",
-      icon: <Sun size={48} className="text-[#800000]" />, // Rich Maroon
-      image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80",
+      icon: <Sun size={48} className="text-[#800000]" />,
+      image: Solar,
     },
     {
       title: "Water Conservation",
       description:
         "Advanced rainwater harvesting and greywater recycling systems reduce water consumption by 60% while maintaining luxury standards.",
-      icon: <Droplets size={48} className="text-[#A04040]" />, // Muted Maroon
-      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
+      icon: <Droplets size={48} className="text-[#A04040]" />,
+      image: Water,
     },
     {
       title: "Zero Waste Initiative",
       description:
         "Our comprehensive recycling program and composting systems divert 95% of waste from landfills, creating a circular economy.",
-      icon: <Recycle size={48} className="text-[#5C4033]" />, // Deep Brown
-      image: "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&q=80",
+      icon: <Recycle size={48} className="text-[#5C4033]" />,
+      image: Waste,
     },
     {
       title: "Organic Gardens",
       description:
         "Farm-to-table dining featuring ingredients from our organic gardens, eliminating pesticides and supporting local biodiversity.",
-      icon: <Leaf size={48} className="text-[#D7BFA8]" />, // Warm Beige
-      image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800&q=80",
+      icon: <Leaf size={48} className="text-[#D7BFA8]" />,
+      image: Gardens,
     },
     {
       title: "Native Reforestation",
       description:
         "We plant 10 native trees for every guest stay, actively restoring local ecosystems and offsetting your carbon footprint.",
       icon: <TreePine size={48} className="text-[#800000]" />,
-      image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80",
+      image: Reforestation,
     },
     {
       title: "Community Impact",
       description:
         "Supporting local artisans and conservation projects, ensuring your stay creates positive social and environmental change.",
       icon: <Heart size={48} className="text-[#A04040]" />,
-      image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80",
+      image: Community,
     },
   ];
 
@@ -54,8 +63,7 @@ export default function Sustainability() {
       id="sustainability"
       className="relative py-24 px-4 overflow-hidden"
       style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&q=80')",
+        backgroundImage: `url(${Background.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -94,7 +102,7 @@ export default function Sustainability() {
               {/* Image Background */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
                 <img
-                  src={item.image}
+                  src={item.image.src}
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />

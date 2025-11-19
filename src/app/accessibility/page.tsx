@@ -4,63 +4,67 @@ import Link from "next/link";
 import React from "react";
 import { Heart } from "lucide-react";
 
+// ✅ Import local images from assets
+import Step1Img1 from "@/assets/Entrance5_result.png";
+import Step1Img2 from "@/assets/Entrace9_result.png";
+import Step2Img1 from "@/assets/Reception1_result.png";
+import Step2Img2 from "@/assets/Reception6_result.png";
+import Step3Img1 from "@/assets/Hallway4_result.png";
+import Step3Img2 from "@/assets/RoomHallway3_result.png";
+import Step4Img1 from "@/assets/room4_result.png";
+import Step4Img2 from "@/assets/Hallway5_result.png";
+import Step5Img1 from "@/assets/Luxury1_result.png";
+import Step5Img2 from "@/assets/Scenery1_result.png";
+import Overview1 from "@/assets/Balcony1_result.png";
+import Overview2 from "@/assets/Cabinets1_result_result.png";
+import Overview3 from "@/assets/Directions2_result.png";
+import Overview4 from "@/assets/EntranceRoom1_result.png";
+import Background from "@/assets/Entrance1_result.png";
+
 const accessibilitySteps = [
   {
     step: 1,
     title: "Arrival & Entry",
     location: "Main Gate",
-    images: [
-      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80",
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
-    ],
+    images: [Step1Img1, Step1Img2],
     features: ["Gradual ramp (1:12 slope)", "Tactile paving", "Staff assistance"],
-    landmark: "Tall acacia tree before gate",
+    landmark: "Gate with Enchula Logo",
   },
   {
     step: 2,
     title: "Reception & Check-In",
     location: "Main Lodge",
-    images: [
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80",
-      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&q=80",
-    ],
+    images: [Step2Img1, Step2Img2],
     features: ["Lowered counter (75cm)", "Braille signage", "Hearing loop system"],
-    landmark: "Thatched roof with carved wooden sign",
+    landmark: "Wide Door with Plaque",
   },
   {
     step: 3,
     title: "Pathway to Rooms",
     location: "Central Walkway",
-    images: [
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80",
-      "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?w=800&q=80",
-    ],
+    images: [Step3Img1, Step3Img2],
     features: ["Wide pathway (1.5m)", "Handrails both sides", "Gentle slopes, no stairs"],
-    landmark: "Water fountain on right side",
+    landmark: "Plarcards on walls",
   },
   {
     step: 4,
     title: "Accessible Rooms",
     location: "Block A - Ground Floor",
-    images: [
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
-      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&q=80",
-    ],
+    images: [Step4Img1, Step4Img2],
     features: ["36-inch wide doors", "Roll-in showers", "Grab bars & emergency cord"],
-    landmark: "Green accessibility plaque",
+    landmark: "Accessibility Plaque on door frame",
   },
   {
     step: 5,
     title: "Key Facilities",
     location: "Throughout Resort",
-    images: [
-      "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80",
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80",
-    ],
+    images: [Step5Img1, Step5Img2],
     features: ["Accessible restaurant", "Pool lift available", "Dedicated parking spots"],
     landmark: "Universal access symbols",
   },
 ];
+
+const overviewGallery = [Overview1, Overview2, Overview3, Overview4];
 
 const AccessibilityPage = () => {
   const whatsappMessage = encodeURIComponent(
@@ -73,8 +77,7 @@ const AccessibilityPage = () => {
       id="accessibility"
       className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
       style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1920&q=80')",
+        backgroundImage: `url(${Background.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -143,7 +146,7 @@ const AccessibilityPage = () => {
                       className="relative h-56 rounded-xl overflow-hidden"
                     >
                       <img
-                        src={img}
+                        src={img.src}
                         alt={`${item.title} view ${idx + 1}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
@@ -189,15 +192,10 @@ const AccessibilityPage = () => {
             Accessibility in Every Corner
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80",
-              "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=600&q=80",
-              "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=80",
-              "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80",
-            ].map((img, idx) => (
+            {overviewGallery.map((img, idx) => (
               <div key={idx} className="relative h-40 rounded-xl overflow-hidden">
                 <img
-                  src={img}
+                  src={img.src}
                   alt={`Accessibility feature ${idx + 1}`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
