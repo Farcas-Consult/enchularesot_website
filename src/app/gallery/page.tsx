@@ -17,24 +17,24 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 // 🖼️ Background Images for Section Carousel
-import GalleryBg1 from "@/assets/doubleroom.webp";
-import GalleryBg2 from "@/assets/twinroom.webp";
-import GalleryBg3 from "@/assets/room3.webp";
+import GalleryBg1 from "@/assets/room4_result.png";
+import GalleryBg2 from "@/assets/Room7_result.png";
+import GalleryBg3 from "@/assets/Room19_result.png";
 
 // 📸 Gallery Assets (as before)
 import Outside from "@/assets/Exterior1.webp";
 import Inside from "@/assets/Exterior3.jpg";
-import Exterior from "@/assets/Exterior4.jpg";
-import Room1 from "@/assets/doubleroom.webp";
+import Exterior from "@/assets/Environment3_result.png";
+import Room1 from "@/assets/Room21_result.png";
 import Room2 from "@/assets/twinroom.webp";
 import Room3 from "@/assets/room2.jpg";
 import Birthroom1 from "@/assets/bathroom1.jpg";
-import Birthroom2 from "@/assets/bathroom2.jpg";
-import Birthroom3 from "@/assets/bathroom3.jpg";
-import Gym from "@/assets/gym.jpeg";
+import Birthroom2 from "@/assets/Bathroom7_result.png";
+import Birthroom3 from "@/assets/Bathroom9_result_result.png";
+import Gym from "@/assets/Gym10_result.png";
 import Spa from "@/assets/spa.jpeg";
-import Swimmingpool from "@/assets/swimmingpool.jpeg";
-import Table from "@/assets/table.jpg";
+import Swimmingpool from "@/assets/Swimmingpool12_result.png";
+import Table from "@/assets/Dining3_result.png";
 import Breakfast from "@/assets/breakfast.jpg";
 import Food from "@/assets/food.jpg";
 

@@ -5,21 +5,21 @@ import React from "react";
 import { Heart } from "lucide-react";
 
 // ✅ Import local images from assets
-import Step1Img1 from "@/assets/exterior1.jpg";
-import Step1Img2 from "@/assets/Exterior1.webp";
-import Step2Img1 from "@/assets/Exterior2.webp";
-import Step2Img2 from "@/assets/Exterior3.jpg";
-import Step3Img1 from "@/assets/Exterior4.jpg";
-import Step3Img2 from "@/assets/room2.jpg";
-import Step4Img1 from "@/assets/doubleroom.webp";
-import Step4Img2 from "@/assets/twinroom.webp";
-import Step5Img1 from "@/assets/room3.webp";
-import Step5Img2 from "@/assets/dining.jpeg";
-import Overview1 from "@/assets/bathroom1.jpg";
-import Overview2 from "@/assets/bathroom2.jpg";
-import Overview3 from "@/assets/bathroom3.jpg";
-import Overview4 from "@/assets/food.jpg";
-import Background from "@/assets/swimmingpool.jpeg";
+import Step1Img1 from "@/assets/Entrance5_result.png";
+import Step1Img2 from "@/assets/Entrace9_result.png";
+import Step2Img1 from "@/assets/Reception1_result.png";
+import Step2Img2 from "@/assets/Reception6_result.png";
+import Step3Img1 from "@/assets/Hallway4_result.png";
+import Step3Img2 from "@/assets/RoomHallway3_result.png";
+import Step4Img1 from "@/assets/room4_result.png";
+import Step4Img2 from "@/assets/Hallway5_result.png";
+import Step5Img1 from "@/assets/Luxury1_result.png";
+import Step5Img2 from "@/assets/Scenery1_result.png";
+import Overview1 from "@/assets/Balcony1_result.png";
+import Overview2 from "@/assets/Cabinets1_result_result.png";
+import Overview3 from "@/assets/Directions2_result.png";
+import Overview4 from "@/assets/EntranceRoom1_result.png";
+import Background from "@/assets/Entrance1_result.png";
 
 const accessibilitySteps = [
   {
