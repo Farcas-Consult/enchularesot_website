@@ -8,7 +8,7 @@ const roomTypes = [
     id: 1,
     name: "Standard Double Room",
     capacity: "2 Adults",
-    size: "25 m²",
+    size: "30 m²",
     beds: "1 Queen Bed",
     images: [
       "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
@@ -16,12 +16,22 @@ const roomTypes = [
     ],
     amenities: ["Free Wi-Fi", "TV", "Air Conditioning", "Private Bathroom", "Mountain View"],
     available: true,
+    pricing: {
+      kenyans: {
+        single: { bedBreakfast: 7000, halfBoard: 9000, fullBoard: 11000 },
+        double: { bedBreakfast: 10000, halfBoard: 12000, fullBoard: 14000 }
+      },
+      nonResidents: {
+        single: { bedBreakfast: 9000, halfBoard: 11000, fullBoard: 13000 },
+        double: { bedBreakfast: 12000, halfBoard: 14000, fullBoard: 16000 }
+      }
+    }
   },
   {
     id: 2,
     name: "Twin Room",
     capacity: "2 Adults",
-    size: "28 m²",
+    size: "26 m²",
     beds: "2 Single Beds",
     images: [
       "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=800&q=80",
@@ -29,10 +39,48 @@ const roomTypes = [
     ],
     amenities: ["Free Wi-Fi", "TV", "Air Conditioning", "Private Bathroom", "Garden View"],
     available: true,
+    pricing: {
+      kenyans: {
+        single: { bedBreakfast: 7000, halfBoard: 9000, fullBoard: 11000 },
+        double: { bedBreakfast: 10000, halfBoard: 12000, fullBoard: 14000 }
+      },
+      nonResidents: {
+        single: { bedBreakfast: 9000, halfBoard: 11000, fullBoard: 13000 },
+        double: { bedBreakfast: 12000, halfBoard: 14000, fullBoard: 16000 }
+      }
+    }
+  },
+  {
+    id: 3,
+    name: "Superior Room",
+    capacity: "2 Adults",
+    size: "35 m²",
+    beds: "1 King/2 Twin Beds",
+    images: [
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80",
+    ],
+    amenities: ["Free Wi-Fi", "Smart TV", "Air Conditioning", "Luxury Bathroom", "Mini Bar", "Premium View"],
+    available: true,
+    pricing: {
+      kenyans: {
+        single: { bedBreakfast: 10000, halfBoard: 12000, fullBoard: 14000 },
+        double: { bedBreakfast: 12000, halfBoard: 14000, fullBoard: 16000 }
+      },
+      nonResidents: {
+        single: { bedBreakfast: 12000, halfBoard: 14000, fullBoard: 16000 },
+        double: { bedBreakfast: 14000, halfBoard: 16000, fullBoard: 18000 }
+      }
+    }
   },
 ];
 
 const reservationCategories = {
+  conference: [
+    { id: "conf-full", name: "Full Day Conference", description: "Kshs. 4,000/participant - Includes conference room, meals, materials & projector" },
+    { id: "conf-half", name: "Half Day Conference", description: "Kshs. 3,500/participant - Conference facilities with refreshments" },
+    { id: "pa-system", name: "PA System Rental", description: "Kshs. 10,000 per day" },
+  ],
   dining: [
     { id: "half-board", name: "Half-Board Package", description: "Breakfast + Lunch daily" },
     { id: "full-board", name: "Full-Board Package", description: "Breakfast + Lunch + Dinner daily" },
@@ -63,6 +111,9 @@ const reservationCategories = {
 const BookingPage = () => {
   const [step, setStep] = useState(1);
   const [selectedRoom, setSelectedRoom] = useState<number | null>(null);
+  const [isKenyanResident, setIsKenyanResident] = useState(true);
+  const [occupancyType, setOccupancyType] = useState<'single' | 'double'>('double');
+  const [mealPlan, setMealPlan] = useState<'bedBreakfast' | 'halfBoard' | 'fullBoard'>('bedBreakfast');
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [adults, setAdults] = useState(2);
@@ -269,6 +320,102 @@ const BookingPage = () => {
               )}
             </div>
 
+            {/* Residency Status & Meal Plan */}
+            <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30">
+              <h2 className="text-xl font-bold text-[#FAF5F0] mb-4">Pricing Options</h2>
+              
+              {/* Residency Status */}
+              <div className="mb-4">
+                <label className="block text-[#D7BFA8] text-sm mb-2">Residency Status</label>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setIsKenyanResident(true)}
+                    className={`flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                      isKenyanResident
+                        ? "bg-[#800000] text-white"
+                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                    }`}
+                  >
+                    Kenyan Resident
+                  </button>
+                  <button
+                    onClick={() => setIsKenyanResident(false)}
+                    className={`flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                      !isKenyanResident
+                        ? "bg-[#800000] text-white"
+                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                    }`}
+                  >
+                    Non-Resident
+                  </button>
+                </div>
+              </div>
+
+              {/* Occupancy Type */}
+              <div className="mb-4">
+                <label className="block text-[#D7BFA8] text-sm mb-2">Occupancy</label>
+                <div className="flex gap-3">
+                  <button
+                    onClick={() => setOccupancyType('single')}
+                    className={`flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                      occupancyType === 'single'
+                        ? "bg-[#800000] text-white"
+                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                    }`}
+                  >
+                    Single Occupancy
+                  </button>
+                  <button
+                    onClick={() => setOccupancyType('double')}
+                    className={`flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                      occupancyType === 'double'
+                        ? "bg-[#800000] text-white"
+                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                    }`}
+                  >
+                    Double Occupancy
+                  </button>
+                </div>
+              </div>
+
+              {/* Meal Plan */}
+              <div>
+                <label className="block text-[#D7BFA8] text-sm mb-2">Meal Plan</label>
+                <div className="grid grid-cols-3 gap-3">
+                  <button
+                    onClick={() => setMealPlan('bedBreakfast')}
+                    className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all ${
+                      mealPlan === 'bedBreakfast'
+                        ? "bg-[#800000] text-white"
+                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                    }`}
+                  >
+                    Bed & Breakfast
+                  </button>
+                  <button
+                    onClick={() => setMealPlan('halfBoard')}
+                    className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all ${
+                      mealPlan === 'halfBoard'
+                        ? "bg-[#800000] text-white"
+                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                    }`}
+                  >
+                    Half Board
+                  </button>
+                  <button
+                    onClick={() => setMealPlan('fullBoard')}
+                    className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all ${
+                      mealPlan === 'fullBoard'
+                        ? "bg-[#800000] text-white"
+                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                    }`}
+                  >
+                    Full Board
+                  </button>
+                </div>
+              </div>
+            </div>
+
             {/* Room Selection */}
             <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30">
               <h2 className="text-xl font-bold text-[#FAF5F0] mb-4">Choose Your Room</h2>
@@ -301,6 +448,17 @@ const BookingPage = () => {
                             </span>
                           ))}
                         </div>
+                        {room.pricing && (
+                          <div className="mt-3 pt-3 border-t border-[#5C4033]/30">
+                            <p className="text-[#A04040] font-bold text-lg">
+                              Kshs. {room.pricing[isKenyanResident ? 'kenyans' : 'nonResidents'][occupancyType][mealPlan].toLocaleString()}
+                              <span className="text-[#D7BFA8] text-xs font-normal ml-2">per night</span>
+                            </p>
+                            <p className="text-[#D7BFA8] text-xs mt-1">
+                              {isKenyanResident ? 'Kenyan Resident' : 'Non-Resident'} • {occupancyType === 'single' ? 'Single' : 'Double'} • {mealPlan === 'bedBreakfast' ? 'Bed & Breakfast' : mealPlan === 'halfBoard' ? 'Half Board' : 'Full Board'}
+                            </p>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -329,14 +487,17 @@ const BookingPage = () => {
                 className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30"
               >
                 <h2 className="text-xl font-bold text-[#FAF5F0] mb-3">
-                  {key === 'dining' ? 'Dining Packages' :
+                  {key === 'conference' ? 'Conference Packages' :
+                   key === 'dining' ? 'Dining Packages' :
                    key === 'wellness' ? 'Wellness & Spa' :
                    key === 'gym' ? 'Gym & Fitness' :
                    key === 'pool' ? 'Swimming Pool' :
                    'Games Centre'}
                 </h2>
                 <p className="text-[#D7BFA8] text-xs mb-3">
-                  {key === 'wellness' || key === 'games'
+                  {key === 'conference'
+                    ? "Professional conference facilities with complete amenities for your corporate events."
+                    : key === 'wellness' || key === 'games'
                     ? `Select your preferred ${key} activities.`
                     : key === 'dining'
                     ? "Select your meal plan for the duration of your stay."

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
-const Logo = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets/IMG_0503.HEIC";
+import Logo from "@/assets/Enchula_Logo.png";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
