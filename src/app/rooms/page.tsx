@@ -56,12 +56,12 @@ export default function Rooms() {
       id: 1,
       name: "Standard Double Room",
       category: "Comfort",
-      price: "$19",
+      price: "From Kshs. 10,000",
       images: [DoubleRoom1, DoubleRoom2, DoubleRoom3],
       guests: "2 Guests",
       size: "30m²",
       description:
-        "Designed for comfort and simplicity, the Standard Double Room features a cozy double bed, modern bathroom, and all essential amenities.",
+        "Designed for comfort and simplicity, featuring a cozy double bed, modern bathroom, and all essential amenities. Kenyan residents and non-residents rates available.",
       amenities: [
         "Double Bed",
         "Air Conditioning",
@@ -77,7 +77,7 @@ export default function Rooms() {
       id: 2,
       name: "Twin Room",
       category: "Standard",
-      price: "$21",
+      price: "From Kshs. 10,000",
       images: [TwinRoom1, TwinRoom2, TwinRoom3],
       guests: "2 Guests",
       size: "26m²",
@@ -93,6 +93,27 @@ export default function Rooms() {
       ],
       color: "from-[#5C4033] to-[#A04040]",
       hoverColor: "from-[#A04040] to-[#5C4033]",
+    },
+    {
+      id: 3,
+      name: "Superior Room",
+      category: "Luxury",
+      price: "From Kshs. 12,000",
+      images: [DoubleRoom1, DoubleRoom2, DoubleRoom3],
+      guests: "2 Guests",
+      size: "35m²",
+      description:
+        "Experience enhanced luxury in our Superior Rooms with premium amenities, spacious layout, and elegant furnishings.",
+      amenities: [
+        "King/Twin Beds",
+        "Premium Bedding",
+        "Mini Bar",
+        "Free WiFi",
+        "Smart TV",
+        "Luxury Bathroom",
+      ],
+      color: "from-[#800000] to-[#A04040]",
+      hoverColor: "from-[#A04040] to-[#800000]",
     },
   ];
 
