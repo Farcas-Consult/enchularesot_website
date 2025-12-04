@@ -19,37 +19,37 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-// Assets
-import ParkingImg from '@/assets/CarParking.jpg';
-import BreakfastImg from '@/assets/breakfast.jpg';
-import WifiImg from '@/assets/Wifi1.jpg';
-import RestaurantImg from '@/assets/Restaurant1_result.png';
-import BusinessWifiImg from '@/assets/ConferenceRoom_result.png';
-import BusinessCenterImg from '@/assets/BusinessCentered.jpg';
-import FrontDeskImg from '@/assets/Reception6_result.png';
-import LaundryImg from '@/assets/Laundry.jpg';
-import HousekeepingImg from '@/assets/Housekeeping.jpg';
-import TurndownImg from '@/assets/Turndown1.jpg';
-import CardsImg from '@/assets/CardPayment.jpg';
-import MobileMoneyImg from '@/assets/MobilePayment.jpg';
-import BankTransferImg from '@/assets/Bank.jpg';
-import PoolImg from '@/assets/Swimmingpool7_result.png';
-import GymImg from '@/assets/Gym9_result.png';
-import SpaImg from '@/assets/Spa.jpg';
-import ShuttleImg from '@/assets/Transport.jpg';
-import CarRentalImg from '@/assets/Transport2_result.png';
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
+const ParkingImg = `${S3_BASE}/IMG_2230.HEIC`;
+const BreakfastImg = `${S3_BASE}/IMG_2236.HEIC`;
+const WifiImg = `${S3_BASE}/IMG_2237.HEIC`;
+const RestaurantImg = `${S3_BASE}/IMG_2240.HEIC`;
+const BusinessWifiImg = `${S3_BASE}/IMG_2242.HEIC`;
+const BusinessCenterImg = `${S3_BASE}/IMG_2246.HEIC`;
+const FrontDeskImg = `${S3_BASE}/IMG_2248.HEIC`;
+const LaundryImg = `${S3_BASE}/IMG_2249.HEIC`;
+const HousekeepingImg = `${S3_BASE}/IMG_2251.HEIC`;
+const TurndownImg = `${S3_BASE}/IMG_2252.HEIC`;
+const CardsImg = `${S3_BASE}/IMG_2256.HEIC`;
+const MobileMoneyImg = `${S3_BASE}/IMG_2257.HEIC`;
+const BankTransferImg = `${S3_BASE}/IMG_2259.HEIC`;
+const PoolImg = `${S3_BASE}/IMG_0523.HEIC`;
+const GymImg = `${S3_BASE}/IMG_2260.HEIC`;
+const SpaImg = `${S3_BASE}/IMG_2261.HEIC`;
+const ShuttleImg = `${S3_BASE}/IMG_2263.HEIC`;
+const CarRentalImg = `${S3_BASE}/IMG_2266.HEIC`;
 
 // Types
 interface AmenityItem {
   name: string;
   icon: React.ReactNode;
   detail: string;
-  image: StaticImageData;
+  image: string;
 }
 
 interface AmenityCategory {
   category: string;
-  image: StaticImageData;
+  image: string;
   description: string;
   items: AmenityItem[];
 }

@@ -18,20 +18,16 @@ import {
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
-// Background Images for Section Carousel
-import BgRoom1 from "@/assets/Room7_result.png";
-import BgRoom2 from "@/assets/Room11_result.png";
-import BgRoom3 from "@/assets/Room14_result.png";
-
-// Double Room Images
-import DoubleRoom1 from "@/assets/Room14_result.png";
-import DoubleRoom2 from "@/assets/Room28_result.png";
-import DoubleRoom3 from "@/assets/Room17_result.png";
-
-// Twin Room Images
-import TwinRoom1 from "@/assets/Room26_result.png";
-import TwinRoom2 from "@/assets/Room23_result.png";
-import TwinRoom3 from "@/assets/Room6_result.png";
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
+const BgRoom1 = `${S3_BASE}/IMG_2214.HEIC`;
+const BgRoom2 = `${S3_BASE}/IMG_2215.HEIC`;
+const BgRoom3 = `${S3_BASE}/IMG_2217.HEIC`;
+const DoubleRoom1 = `${S3_BASE}/IMG_2219.HEIC`;
+const DoubleRoom2 = `${S3_BASE}/IMG_2221.HEIC`;
+const DoubleRoom3 = `${S3_BASE}/IMG_2223.HEIC`;
+const TwinRoom1 = `${S3_BASE}/IMG_2225.HEIC`;
+const TwinRoom2 = `${S3_BASE}/IMG_2227.HEIC`;
+const TwinRoom3 = `${S3_BASE}/IMG_2229.HEIC`;
 
 export default function Rooms() {
   const [activeRoomIndex, setActiveRoomIndex] = useState(0);
@@ -39,14 +35,14 @@ export default function Rooms() {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
 
   // Background carousel images
-  const backgroundImages: StaticImageData[] = [BgRoom1, BgRoom2, BgRoom3];
+  const backgroundImages: string[] = [BgRoom1, BgRoom2, BgRoom3];
 
   interface Room {
     id: number;
     name: string;
     category: string;
     price: string;
-    images: StaticImageData[];
+    images: string[];
     guests: string;
     size: string;
     description: string;

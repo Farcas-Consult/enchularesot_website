@@ -16,30 +16,28 @@ import {
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
-// 🖼️ Background Images for Section Carousel
-import GalleryBg1 from "@/assets/room4_result.png";
-import GalleryBg2 from "@/assets/Room7_result.png";
-import GalleryBg3 from "@/assets/Room19_result.png";
-
-// 📸 Gallery Assets (as before)
-import Outside from "@/assets/Exterior1.webp";
-import Inside from "@/assets/Exterior3.jpg";
-import Exterior from "@/assets/Environment3_result.png";
-import Room1 from "@/assets/Room21_result.png";
-import Room2 from "@/assets/twinroom.webp";
-import Room3 from "@/assets/room2.jpg";
-import Birthroom1 from "@/assets/bathroom1.jpg";
-import Birthroom2 from "@/assets/Bathroom7_result.png";
-import Birthroom3 from "@/assets/Bathroom9_result_result.png";
-import Gym from "@/assets/Gym10_result.png";
-import Spa from "@/assets/spa.jpeg";
-import Swimmingpool from "@/assets/Swimmingpool12_result.png";
-import Table from "@/assets/Dining3_result.png";
-import Breakfast from "@/assets/breakfast.jpg";
-import Food from "@/assets/food.jpg";
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
+const GalleryBg1 = `${S3_BASE}/IMG_2267.HEIC`;
+const GalleryBg2 = `${S3_BASE}/IMG_2269.HEIC`;
+const GalleryBg3 = `${S3_BASE}/IMG_2271.HEIC`;
+const Outside = `${S3_BASE}/IMG_2272.HEIC`;
+const Inside = `${S3_BASE}/IMG_2275.HEIC`;
+const Exterior = `${S3_BASE}/IMG_2277.HEIC`;
+const Room1 = `${S3_BASE}/IMG_2280.HEIC`;
+const Room2 = `${S3_BASE}/IMG_2282.HEIC`;
+const Room3 = `${S3_BASE}/IMG_2284.HEIC`;
+const Birthroom1 = `${S3_BASE}/IMG_2285.HEIC`;
+const Birthroom2 = `${S3_BASE}/IMG_2287.HEIC`;
+const Birthroom3 = `${S3_BASE}/IMG_2291.HEIC`;
+const Gym = `${S3_BASE}/IMG_2292.HEIC`;
+const Spa = `${S3_BASE}/IMG_2294.HEIC`;
+const Swimmingpool = `${S3_BASE}/IMG_2295.HEIC`;
+const Table = `${S3_BASE}/IMG_2300.HEIC`;
+const Breakfast = `${S3_BASE}/IMG_2303.HEIC`;
+const Food = `${S3_BASE}/IMG_2305.HEIC`;
 
 interface GalleryImage {
-  src: StaticImageData; // Now strictly static imports
+  src: string;
   alt: string;
   category: string;
 }
@@ -85,7 +83,7 @@ export default function Gallery() {
   const handlePrevious = () => {
     if (!selectedImage) return;
     const currentIndex = filteredImages.findIndex(
-      (img) => img.src.src === selectedImage.src.src
+      (img) => img.src === selectedImage.src
     );
     const prevIndex = currentIndex > 0 ? currentIndex - 1 : filteredImages.length - 1;
     setSelectedImage(filteredImages[prevIndex]);
@@ -94,7 +92,7 @@ export default function Gallery() {
   const handleNext = () => {
     if (!selectedImage) return;
     const currentIndex = filteredImages.findIndex(
-      (img) => img.src.src === selectedImage.src.src
+      (img) => img.src === selectedImage.src
     );
     const nextIndex = currentIndex < filteredImages.length - 1 ? currentIndex + 1 : 0;
     setSelectedImage(filteredImages[nextIndex]);
@@ -288,7 +286,7 @@ export default function Gallery() {
                   aria-label={`View image ${idx + 1}`}
                   onClick={() => setSelectedImage(img)}
                   className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    img.src.src === selectedImage.src.src
+                    img.src === selectedImage.src
                       ? "bg-[#A04040] w-8"
                       : "bg-[#D7BFA8]/30 hover:bg-[#D7BFA8]/50"
                   }`}
