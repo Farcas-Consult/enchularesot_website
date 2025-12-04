@@ -3,7 +3,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from "lucide-react";
 import Image from "next/image";
-const Luxury = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets/IMG_2172.HEIC";
+const Luxury = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2172.webp";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({

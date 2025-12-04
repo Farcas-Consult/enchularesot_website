@@ -15,27 +15,26 @@ import {
 } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import Exterior1 from "@/assets/Exterior1.webp";
 
-const S3_BASE = "https://eu-west-1.console.aws.amazon.com/s3://enchula-resort-4376242942/assets/enchula2/Upload";
-const GalleryBg1 = `${S3_BASE}/IMG_2267.HEIC`;
-const GalleryBg2 = `${S3_BASE}/IMG_2269.HEIC`;
-const GalleryBg3 = `${S3_BASE}/IMG_2271.HEIC`;
-const Outside = Exterior1;
-const Inside = `${S3_BASE}/IMG_2275.HEIC`;
-const Exterior = `${S3_BASE}/IMG_2277.HEIC`;
-const Room1 = `${S3_BASE}/IMG_2280.HEIC`;
-const Room2 = `${S3_BASE}/IMG_2282.HEIC`;
-const Room3 = `${S3_BASE}/IMG_2284.HEIC`;
-const Birthroom1 = `${S3_BASE}/IMG_2285.HEIC`;
-const Birthroom2 = `${S3_BASE}/IMG_2287.HEIC`;
-const Birthroom3 = `${S3_BASE}/IMG_2291.HEIC`;
-const Gym = `${S3_BASE}/IMG_2292.HEIC`;
-const Spa = `${S3_BASE}/IMG_2294.HEIC`;
-const Swimmingpool = `${S3_BASE}/IMG_2295.HEIC`;
-const Table = `${S3_BASE}/IMG_2300.HEIC`;
-const Breakfast = `${S3_BASE}/IMG_2303.HEIC`;
-const Food = `${S3_BASE}/IMG_2305.HEIC`;
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+const GalleryBg1 = `${S3_BASE}/IMG_2267.webp`;
+const GalleryBg2 = `${S3_BASE}/IMG_2269.webp`;
+const GalleryBg3 = `${S3_BASE}/IMG_2271.webp`;
+const Outside = `${S3_BASE}/IMG_2272.webp`;
+const Inside = `${S3_BASE}/IMG_2275.webp`;
+const Exterior = `${S3_BASE}/IMG_2277.webp`;
+const Room1 = `${S3_BASE}/IMG_2280.webp`;
+const Room2 = `${S3_BASE}/IMG_2282.webp`;
+const Room3 = `${S3_BASE}/IMG_2284.webp`;
+const Birthroom1 = `${S3_BASE}/IMG_2285.webp`;
+const Birthroom2 = `${S3_BASE}/IMG_2287.webp`;
+const Birthroom3 = `${S3_BASE}/IMG_2291.webp`;
+const Gym = `${S3_BASE}/IMG_2292.webp`;
+const Spa = `${S3_BASE}/IMG_2294.webp`;
+const Swimmingpool = `${S3_BASE}/IMG_2295.webp`;
+const Table = `${S3_BASE}/IMG_2300.webp`;
+const Breakfast = `${S3_BASE}/IMG_2303.webp`;
+const Food = `${S3_BASE}/IMG_2305.webp`;
 
 interface GalleryImage {
   src: string;
