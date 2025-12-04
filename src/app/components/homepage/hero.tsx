@@ -3,11 +3,11 @@
 import React, { useState, useEffect } from "react";
 import { Star, MapPin, Sparkles, Award } from "lucide-react";
 import Image from "next/image";
-import Exterior1 from "@/assets/Exterior7_result.png";
-import Environment1 from "@/assets/Scenery2_result.png";
-import Entrance1 from "@/assets/Entrance2_result.png";
-import Exterior2 from "@/assets/Exterior21_result.png";
-import Swimmingpool1 from "@/assets/Swimmingpool4_result.png";
+import Exterior1 from "@/assets/Exterior1.webp";
+import Environment1 from "@/assets/Exterior2.webp";
+import Entrance1 from "@/assets/exterior1.jpg";
+import Exterior2 from "@/assets/Exterior3.jpg";
+import Swimmingpool1 from "@/assets/swimmingpool.jpeg";
 
 const slides = [
   {

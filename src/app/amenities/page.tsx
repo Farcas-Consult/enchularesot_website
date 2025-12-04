@@ -20,24 +20,24 @@ import {
 } from "lucide-react";
 
 // Assets
-import ParkingImg from '@/assets/CarParking.jpg';
+import ParkingImg from '@/assets/exterior1.jpg';
 import BreakfastImg from '@/assets/breakfast.jpg';
-import WifiImg from '@/assets/Wifi1.jpg';
-import RestaurantImg from '@/assets/Restaurant1_result.png';
-import BusinessWifiImg from '@/assets/ConferenceRoom_result.png';
-import BusinessCenterImg from '@/assets/BusinessCentered.jpg';
-import FrontDeskImg from '@/assets/Reception6_result.png';
-import LaundryImg from '@/assets/Laundry.jpg';
-import HousekeepingImg from '@/assets/Housekeeping.jpg';
-import TurndownImg from '@/assets/Turndown1.jpg';
-import CardsImg from '@/assets/CardPayment.jpg';
-import MobileMoneyImg from '@/assets/MobilePayment.jpg';
-import BankTransferImg from '@/assets/Bank.jpg';
-import PoolImg from '@/assets/Swimmingpool7_result.png';
-import GymImg from '@/assets/Gym9_result.png';
-import SpaImg from '@/assets/Spa.jpg';
-import ShuttleImg from '@/assets/Transport.jpg';
-import CarRentalImg from '@/assets/Transport2_result.png';
+import WifiImg from '@/assets/Amenities.webp';
+import RestaurantImg from '@/assets/dining.jpeg';
+import BusinessWifiImg from '@/assets/table.jpg';
+import BusinessCenterImg from '@/assets/Cook1.jpg';
+import FrontDeskImg from '@/assets/Exterior1.webp';
+import LaundryImg from '@/assets/bathroom1.jpg';
+import HousekeepingImg from '@/assets/bathroom2.jpg';
+import TurndownImg from '@/assets/bathroom3.jpg';
+import CardsImg from '@/assets/food.jpg';
+import MobileMoneyImg from '@/assets/food1.jpeg';
+import BankTransferImg from '@/assets/about1.jpeg';
+import PoolImg from '@/assets/swimmingpool.jpeg';
+import GymImg from '@/assets/gym.jpeg';
+import SpaImg from '@/assets/spa.jpeg';
+import ShuttleImg from '@/assets/Exterior2.webp';
+import CarRentalImg from '@/assets/Exterior3.jpg';
 
 // Types
 interface AmenityItem {

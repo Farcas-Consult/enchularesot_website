@@ -4,13 +4,13 @@ import React from "react";
 import { Droplets, Leaf, Sun, Recycle, Heart, TreePine } from "lucide-react";
 
 // ✅ Import local images from assets
-import Solar from "@/assets/SolarEnergy2_result.png";
-import Water from "@/assets/Waterconservation1.jpg";
-import Waste from "@/assets/Zerowaste1.jpg";
-import Gardens from "@/assets/OrganicGarden1.jpg";
-import Reforestation from "@/assets/Nativeforest1.jpg";
-import Community from "@/assets/communityimpact1.jpg";
-import Background from "@/assets/Sustainability1.jpg";
+import Solar from "@/assets/sunset.jpeg";
+import Water from "@/assets/swimmingpool.jpeg";
+import Waste from "@/assets/food1.jpeg";
+import Gardens from "@/assets/dining.jpeg";
+import Reforestation from "@/assets/Exterior4.jpg";
+import Community from "@/assets/about2.jpeg";
+import Background from "@/assets/about3.jpeg";
 
 export default function Sustainability() {
   const sustainabilityData = [

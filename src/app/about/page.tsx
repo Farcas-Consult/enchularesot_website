@@ -10,16 +10,15 @@ import {
   Users,
   Sparkles,
   Heart,
-  CheckCircle,
 } from "lucide-react";
 import Image from "next/image";
 
 // ✅ Import local images from assets
-import Exterior1 from "@/assets/Balcony2_result_result.png";
-import Environment1 from "@/assets/Exterior2_result.png";
-import Entrance1 from "@/assets/Entrance5_result.png";
-import Exterior2 from "@/assets/Exterior13_result.png";
-import Outside1 from "@/assets/Outside5_result.png";
+import Exterior1 from "@/assets/Exterior1.webp";
+import Environment1 from "@/assets/Exterior2.webp";
+import Entrance1 from "@/assets/exterior1.jpg";
+import Exterior2 from "@/assets/Exterior3.jpg";
+import Outside1 from "@/assets/Exterior4.jpg";
 
 export default function About() {
   // Use local images
@@ -39,15 +38,6 @@ export default function About() {
     { icon: <Users className="w-8 h-8" />, title: "Expert Team", description: "Dedicated hospitality" },
     { icon: <Sparkles className="w-8 h-8" />, title: "Premium Amenities", description: "World-class facilities" },
     { icon: <Heart className="w-8 h-8" />, title: "Warm Hospitality", description: "Kenyan excellence" },
-  ];
-
-  const highlights = [
-    "Panoramic views of Kajiado plains",
-    "Exquisite farm-to-table dining",
-    "Infinity pool with sunset vistas",
-    "Private event spaces available",
-    "Wellness spa and fitness center",
-    "Guided safari experiences",
   ];
 
   return (

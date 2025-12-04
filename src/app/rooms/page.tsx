@@ -19,19 +19,19 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 // Background Images for Section Carousel
-import BgRoom1 from "@/assets/Room7_result.png";
-import BgRoom2 from "@/assets/Room11_result.png";
-import BgRoom3 from "@/assets/Room14_result.png";
+import BgRoom1 from "@/assets/doubleroom.webp";
+import BgRoom2 from "@/assets/twinroom.webp";
+import BgRoom3 from "@/assets/room3.webp";
 
 // Double Room Images
-import DoubleRoom1 from "@/assets/Room14_result.png";
-import DoubleRoom2 from "@/assets/Room28_result.png";
-import DoubleRoom3 from "@/assets/Room17_result.png";
+import DoubleRoom1 from "@/assets/doubleroom.webp";
+import DoubleRoom2 from "@/assets/room2.jpg";
+import DoubleRoom3 from "@/assets/bathroom1.jpg";
 
 // Twin Room Images
-import TwinRoom1 from "@/assets/Room26_result.png";
-import TwinRoom2 from "@/assets/Room23_result.png";
-import TwinRoom3 from "@/assets/Room6_result.png";
+import TwinRoom1 from "@/assets/twinroom.webp";
+import TwinRoom2 from "@/assets/room3.webp";
+import TwinRoom3 from "@/assets/bathroom2.jpg";
 
 export default function Rooms() {
   const [activeRoomIndex, setActiveRoomIndex] = useState(0);
