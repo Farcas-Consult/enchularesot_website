@@ -16,11 +16,11 @@ import {
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
-const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
+const S3_BASE = "https://eu-west-1.console.aws.amazon.com/s3/upload/enchula-resort-4376242942?region=eu-west-1&prefix=assets/enchula2/";
 const GalleryBg1 = `${S3_BASE}/IMG_2267.HEIC`;
 const GalleryBg2 = `${S3_BASE}/IMG_2269.HEIC`;
 const GalleryBg3 = `${S3_BASE}/IMG_2271.HEIC`;
-const Outside = `${S3_BASE}/IMG_2272.HEIC`;
+const Outside = `${S3_BASE}/IMG_0487.png`;
 const Inside = `${S3_BASE}/IMG_2275.HEIC`;
 const Exterior = `${S3_BASE}/IMG_2277.HEIC`;
 const Room1 = `${S3_BASE}/IMG_2280.HEIC`;
