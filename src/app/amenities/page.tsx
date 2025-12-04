@@ -19,25 +19,25 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
-const ParkingImg = `${S3_BASE}/IMG_2230.HEIC`;
-const BreakfastImg = `${S3_BASE}/IMG_2236.HEIC`;
-const WifiImg = `${S3_BASE}/IMG_2237.HEIC`;
-const RestaurantImg = `${S3_BASE}/IMG_2240.HEIC`;
-const BusinessWifiImg = `${S3_BASE}/IMG_2242.HEIC`;
-const BusinessCenterImg = `${S3_BASE}/IMG_2246.HEIC`;
-const FrontDeskImg = `${S3_BASE}/IMG_2248.HEIC`;
-const LaundryImg = `${S3_BASE}/IMG_2249.HEIC`;
-const HousekeepingImg = `${S3_BASE}/IMG_2251.HEIC`;
-const TurndownImg = `${S3_BASE}/IMG_2252.HEIC`;
-const CardsImg = `${S3_BASE}/IMG_2256.HEIC`;
-const MobileMoneyImg = `${S3_BASE}/IMG_2257.HEIC`;
-const BankTransferImg = `${S3_BASE}/IMG_2259.HEIC`;
-const PoolImg = `${S3_BASE}/IMG_0523.HEIC`;
-const GymImg = `${S3_BASE}/IMG_2260.HEIC`;
-const SpaImg = `${S3_BASE}/IMG_2261.HEIC`;
-const ShuttleImg = `${S3_BASE}/IMG_2263.HEIC`;
-const CarRentalImg = `${S3_BASE}/IMG_2266.HEIC`;
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+const ParkingImg = `${S3_BASE}/IMG_2230.webp`;
+const BreakfastImg = `${S3_BASE}/IMG_2236.webp`;
+const WifiImg = `${S3_BASE}/IMG_2237.webp`;
+const RestaurantImg = `${S3_BASE}/IMG_2240.webp`;
+const BusinessWifiImg = `${S3_BASE}/IMG_2242.webp`;
+const BusinessCenterImg = `${S3_BASE}/IMG_2246.webp`;
+const FrontDeskImg = `${S3_BASE}/IMG_2248.webp`;
+const LaundryImg = `${S3_BASE}/IMG_2249.webp`;
+const HousekeepingImg = `${S3_BASE}/IMG_2251.webp`;
+const TurndownImg = `${S3_BASE}/IMG_2252.webp`;
+const CardsImg = `${S3_BASE}/IMG_2256.webp`;
+const MobileMoneyImg = `${S3_BASE}/IMG_2257.webp`;
+const BankTransferImg = `${S3_BASE}/IMG_2259.webp`;
+const PoolImg = `${S3_BASE}/IMG_0523.webp`;
+const GymImg = `${S3_BASE}/IMG_2260.webp`;
+const SpaImg = `${S3_BASE}/IMG_2261.webp`;
+const ShuttleImg = `${S3_BASE}/IMG_2263.webp`;
+const CarRentalImg = `${S3_BASE}/IMG_2266.webp`;
 
 // Types
 interface AmenityItem {

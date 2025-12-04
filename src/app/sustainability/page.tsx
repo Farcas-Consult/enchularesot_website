@@ -3,14 +3,14 @@
 import React from "react";
 import { Droplets, Leaf, Sun, Recycle, Heart, TreePine } from "lucide-react";
 
-const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
-const Solar = `${S3_BASE}/IMG_2307.HEIC`;
-const Water = `${S3_BASE}/IMG_2310.HEIC`;
-const Waste = `${S3_BASE}/IMG_2312.HEIC`;
-const Gardens = `${S3_BASE}/IMG_2314.HEIC`;
-const Reforestation = `${S3_BASE}/IMG_2315.HEIC`;
-const Community = `${S3_BASE}/IMG_2318.HEIC`;
-const Background = `${S3_BASE}/IMG_2320.HEIC`;
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+const Solar = `${S3_BASE}/IMG_2307.webp`;
+const Water = `${S3_BASE}/IMG_2310.webp`;
+const Waste = `${S3_BASE}/IMG_2312.webp`;
+const Gardens = `${S3_BASE}/IMG_2314.webp`;
+const Reforestation = `${S3_BASE}/IMG_2315.webp`;
+const Community = `${S3_BASE}/IMG_2318.webp`;
+const Background = `${S3_BASE}/IMG_2320.webp`;
 
 export default function Sustainability() {
   const sustainabilityData = [

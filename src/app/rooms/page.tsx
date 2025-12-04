@@ -18,16 +18,16 @@ import {
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
-const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
-const BgRoom1 = `${S3_BASE}/IMG_2214.HEIC`;
-const BgRoom2 = `${S3_BASE}/IMG_2215.HEIC`;
-const BgRoom3 = `${S3_BASE}/IMG_2217.HEIC`;
-const DoubleRoom1 = `${S3_BASE}/IMG_2219.HEIC`;
-const DoubleRoom2 = `${S3_BASE}/IMG_2221.HEIC`;
-const DoubleRoom3 = `${S3_BASE}/IMG_2223.HEIC`;
-const TwinRoom1 = `${S3_BASE}/IMG_2225.HEIC`;
-const TwinRoom2 = `${S3_BASE}/IMG_2227.HEIC`;
-const TwinRoom3 = `${S3_BASE}/IMG_2229.HEIC`;
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+const BgRoom1 = `${S3_BASE}/IMG_2214.webp`;
+const BgRoom2 = `${S3_BASE}/IMG_2215.webp`;
+const BgRoom3 = `${S3_BASE}/IMG_2217.webp`;
+const DoubleRoom1 = `${S3_BASE}/IMG_2219.webp`;
+const DoubleRoom2 = `${S3_BASE}/IMG_2221.webp`;
+const DoubleRoom3 = `${S3_BASE}/IMG_2223.webp`;
+const TwinRoom1 = `${S3_BASE}/IMG_2225.webp`;
+const TwinRoom2 = `${S3_BASE}/IMG_2227.webp`;
+const TwinRoom3 = `${S3_BASE}/IMG_2229.webp`;
 
 export default function Rooms() {
   const [activeRoomIndex, setActiveRoomIndex] = useState(0);

@@ -14,15 +14,15 @@ import {
 import Image from "next/image";
 
 // S3 hosted images
-const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 export default function About() {
   const images = [
-    `${S3_BASE}/IMG_2158.HEIC`,
-    `${S3_BASE}/IMG_2159.HEIC`,
-    `${S3_BASE}/IMG_2160.HEIC`,
-    `${S3_BASE}/IMG_2161.HEIC`,
-    `${S3_BASE}/IMG_0480.HEIC`,
+    `${S3_BASE}/IMG_2158.webp`,
+    `${S3_BASE}/IMG_2159.webp`,
+    `${S3_BASE}/IMG_2160.webp`,
+    `${S3_BASE}/IMG_2161.webp`,
+    `${S3_BASE}/IMG_0480.webp`,
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
