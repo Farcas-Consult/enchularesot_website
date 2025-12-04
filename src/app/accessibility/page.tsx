@@ -4,22 +4,22 @@ import Link from "next/link";
 import React from "react";
 import { Heart } from "lucide-react";
 
-// ✅ Import local images from assets
-import Step1Img1 from "@/assets/Entrance5_result.png";
-import Step1Img2 from "@/assets/Entrace9_result.png";
-import Step2Img1 from "@/assets/Reception1_result.png";
-import Step2Img2 from "@/assets/Reception6_result.png";
-import Step3Img1 from "@/assets/Hallway4_result.png";
-import Step3Img2 from "@/assets/RoomHallway3_result.png";
-import Step4Img1 from "@/assets/room4_result.png";
-import Step4Img2 from "@/assets/Hallway5_result.png";
-import Step5Img1 from "@/assets/Luxury1_result.png";
-import Step5Img2 from "@/assets/Scenery1_result.png";
-import Overview1 from "@/assets/Balcony1_result.png";
-import Overview2 from "@/assets/Cabinets1_result_result.png";
-import Overview3 from "@/assets/Directions2_result.png";
-import Overview4 from "@/assets/EntranceRoom1_result.png";
-import Background from "@/assets/Entrance1_result.png";
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
+const Step1Img1 = `${S3_BASE}/IMG_2173.HEIC`;
+const Step1Img2 = `${S3_BASE}/IMG_2174.HEIC`;
+const Step2Img1 = `${S3_BASE}/IMG_2176.HEIC`;
+const Step2Img2 = `${S3_BASE}/IMG_2177.HEIC`;
+const Step3Img1 = `${S3_BASE}/IMG_2182.HEIC`;
+const Step3Img2 = `${S3_BASE}/IMG_2184.HEIC`;
+const Step4Img1 = `${S3_BASE}/IMG_2187.HEIC`;
+const Step4Img2 = `${S3_BASE}/IMG_2189.HEIC`;
+const Step5Img1 = `${S3_BASE}/IMG_2191.HEIC`;
+const Step5Img2 = `${S3_BASE}/IMG_2195.HEIC`;
+const Overview1 = `${S3_BASE}/IMG_2198.HEIC`;
+const Overview2 = `${S3_BASE}/IMG_2204.HEIC`;
+const Overview3 = `${S3_BASE}/IMG_2209.HEIC`;
+const Overview4 = `${S3_BASE}/IMG_2212.HEIC`;
+const Background = `${S3_BASE}/IMG_2213.HEIC`;
 
 const accessibilitySteps = [
   {
@@ -77,7 +77,7 @@ const AccessibilityPage = () => {
       id="accessibility"
       className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
       style={{
-        backgroundImage: `url(${Background.src})`,
+        backgroundImage: `url(${Background})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -146,7 +146,7 @@ const AccessibilityPage = () => {
                       className="relative h-56 rounded-xl overflow-hidden"
                     >
                       <img
-                        src={img.src}
+                        src={img}
                         alt={`${item.title} view ${idx + 1}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       />
@@ -195,7 +195,7 @@ const AccessibilityPage = () => {
             {overviewGallery.map((img, idx) => (
               <div key={idx} className="relative h-40 rounded-xl overflow-hidden">
                 <img
-                  src={img.src}
+                  src={img}
                   alt={`Accessibility feature ${idx + 1}`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />

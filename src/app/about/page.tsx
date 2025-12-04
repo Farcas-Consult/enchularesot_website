@@ -13,16 +13,17 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-// ✅ Import local images from assets
-import Exterior1 from "@/assets/Balcony2_result_result.png";
-import Environment1 from "@/assets/Exterior2_result.png";
-import Entrance1 from "@/assets/Entrance5_result.png";
-import Exterior2 from "@/assets/Exterior13_result.png";
-import Outside1 from "@/assets/Outside5_result.png";
+// S3 hosted images
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
 
 export default function About() {
-  // Use local images
-  const images = [Exterior1, Environment1, Entrance1, Exterior2, Outside1];
+  const images = [
+    `${S3_BASE}/IMG_2158.HEIC`,
+    `${S3_BASE}/IMG_2159.HEIC`,
+    `${S3_BASE}/IMG_2160.HEIC`,
+    `${S3_BASE}/IMG_2161.HEIC`,
+    `${S3_BASE}/IMG_0480.HEIC`,
+  ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 

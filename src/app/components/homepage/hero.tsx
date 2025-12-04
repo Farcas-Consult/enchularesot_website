@@ -3,11 +3,13 @@
 import React, { useState, useEffect } from "react";
 import { Star, MapPin, Sparkles, Award } from "lucide-react";
 import Image from "next/image";
-import Exterior1 from "@/assets/Exterior7_result.png";
-import Environment1 from "@/assets/Scenery2_result.png";
-import Entrance1 from "@/assets/Entrance2_result.png";
-import Exterior2 from "@/assets/Exterior21_result.png";
-import Swimmingpool1 from "@/assets/Swimmingpool4_result.png";
+
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
+const Exterior1 = `${S3_BASE}/IMG_2167.HEIC`;
+const Environment1 = `${S3_BASE}/IMG_2168.HEIC`;
+const Entrance1 = `${S3_BASE}/IMG_2169.HEIC`;
+const Exterior2 = `${S3_BASE}/IMG_2171.HEIC`;
+const Swimmingpool1 = `${S3_BASE}/IMG_0523.HEIC`;
 
 const slides = [
   {

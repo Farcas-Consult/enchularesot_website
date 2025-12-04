@@ -3,14 +3,14 @@
 import React from "react";
 import { Droplets, Leaf, Sun, Recycle, Heart, TreePine } from "lucide-react";
 
-// ✅ Import local images from assets
-import Solar from "@/assets/SolarEnergy2_result.png";
-import Water from "@/assets/Waterconservation1.jpg";
-import Waste from "@/assets/Zerowaste1.jpg";
-import Gardens from "@/assets/OrganicGarden1.jpg";
-import Reforestation from "@/assets/Nativeforest1.jpg";
-import Community from "@/assets/communityimpact1.jpg";
-import Background from "@/assets/Sustainability1.jpg";
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
+const Solar = `${S3_BASE}/IMG_2307.HEIC`;
+const Water = `${S3_BASE}/IMG_2310.HEIC`;
+const Waste = `${S3_BASE}/IMG_2312.HEIC`;
+const Gardens = `${S3_BASE}/IMG_2314.HEIC`;
+const Reforestation = `${S3_BASE}/IMG_2315.HEIC`;
+const Community = `${S3_BASE}/IMG_2318.HEIC`;
+const Background = `${S3_BASE}/IMG_2320.HEIC`;
 
 export default function Sustainability() {
   const sustainabilityData = [
@@ -63,7 +63,7 @@ export default function Sustainability() {
       id="sustainability"
       className="relative py-24 px-4 overflow-hidden"
       style={{
-        backgroundImage: `url(${Background.src})`,
+        backgroundImage: `url(${Background})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -102,7 +102,7 @@ export default function Sustainability() {
               {/* Image Background */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
                 <img
-                  src={item.image.src}
+                  src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover"
                 />
