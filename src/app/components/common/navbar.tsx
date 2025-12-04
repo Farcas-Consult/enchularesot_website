@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
-import Logo from "@/assets/Enchula_Logo.png";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -82,13 +81,9 @@ export default function Navbar() {
         
         {/* Logo */}
         <Link href="/" className="flex items-center cursor-pointer">
-          <Image
-            src={Logo}
-            alt="Enchula Resort Logo"
-            width={48}
-            height={48}
-            className="rounded-full border-2 border-[#5C4033]"
-          />
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#A04040] to-[#5C4033] flex items-center justify-center border-2 border-[#5C4033]">
+            <span className="text-white font-bold text-xl">E</span>
+          </div>
           <span className="ml-2 text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#A04040] to-[#A9745B]">
             Enchula Resort
           </span>
