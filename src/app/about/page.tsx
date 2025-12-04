@@ -14,11 +14,11 @@ import {
 import Image from "next/image";
 
 // ✅ Import local images from assets
-import Exterior1 from "@/assets/Exterior1.webp";
-import Environment1 from "@/assets/Exterior2.webp";
-import Entrance1 from "@/assets/exterior1.jpg";
-import Exterior2 from "@/assets/Exterior3.jpg";
-import Outside1 from "@/assets/Exterior4.jpg";
+import Exterior1 from "@/assets/Balcony2_result_result.png";
+import Environment1 from "@/assets/Exterior2_result.png";
+import Entrance1 from "@/assets/Entrance5_result.png";
+import Exterior2 from "@/assets/Exterior13_result.png";
+import Outside1 from "@/assets/Outside5_result.png";
 
 export default function About() {
   // Use local images
