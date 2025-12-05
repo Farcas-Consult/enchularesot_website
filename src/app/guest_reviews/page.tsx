@@ -3,6 +3,14 @@
 import React, { useState } from "react";
 import Link from "next/link";
 
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+
+const BACKGROUND_IMAGES = [
+  `${S3_BASE}/IMG_2275.webp`,
+  `${S3_BASE}/IMG_2272.webp`,
+  `${S3_BASE}/IMG_2248.webp`,
+];
+
 const reviews = [
   {
     id: 1,
@@ -11,10 +19,6 @@ const reviews = [
     rating: 5,
     date: "November 3, 2025",
     content: "Perfect escape from the city! The staff were so warm and welcoming. My kids loved the play area, and we enjoyed a beautiful sunset dinner by the pool.",
-    images: [
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=400&q=80",
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&q=80",
-    ],
   },
   {
     id: 2,
@@ -23,10 +27,6 @@ const reviews = [
     rating: 5,
     date: "October 28, 2025",
     content: "We booked Enchula for our mini-moon and it was magical. The room was cozy, clean, and had such a peaceful view of the savannah.",
-    images: [
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&q=80",
-      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=400&q=80",
-    ],
   },
   {
     id: 3,
@@ -35,10 +35,6 @@ const reviews = [
     rating: 5,
     date: "September 30, 2025",
     content: "Visited during my East Africa tour. Enchula offered a peaceful, authentic experience. I appreciated the sustainability efforts — solar power, recycling, and support for local artisans.",
-    images: [
-      "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&q=80",
-      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&q=80",
-    ],
   },
   {
     id: 4,
@@ -47,10 +43,6 @@ const reviews = [
     rating: 5,
     date: "September 20, 2025",
     content: "Best family weekend in years! Kids enjoyed camel rides and the mini club. Rooms connected perfectly for us. Food was delicious — especially the local dishes.",
-    images: [
-      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=400&q=80",
-      "https://images.unsplash.com/photo-1590004448324-879d7ea9e954?w=400&q=80",
-    ],
   },
 ];
 
@@ -64,6 +56,14 @@ const ReviewsPage = () => {
     review: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = () => {
     if (rating > 0 && formData.name && formData.review) {
@@ -100,10 +100,11 @@ const ReviewsPage = () => {
       className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
       style={{
         backgroundImage:
-          "url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1920&q=80')",
+          `url('${BACKGROUND_IMAGES[currentBgIndex]}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
+        transition: "background-image 1s ease-in-out",
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
@@ -235,18 +236,6 @@ const ReviewsPage = () => {
               key={review.id}
               className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group"
             >
-              <div className="grid grid-cols-2 gap-2 p-3">
-                {review.images.map((img, idx) => (
-                  <div key={idx} className="relative h-44 rounded-xl overflow-hidden">
-                    <img
-                      src={img}
-                      alt={`${review.name} photo ${idx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                ))}
-              </div>
-
               <div className="p-6 bg-[#2C1B16]/80">
                 <div className="flex items-start justify-between mb-4">
                   <div>

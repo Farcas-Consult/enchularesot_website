@@ -1,84 +1,132 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { ChevronLeft, ChevronRight, Home, Users, BedDouble, Utensils, TreePine, Mountain, Camera, Globe } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, Users, BedDouble, Utensils, TreePine, Dumbbell, Camera, Globe, Sparkles } from "lucide-react";
 import Link from "next/link";
+
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const tourSpots = [
   // ===== RESORT INTERIORS =====
   {
     id: "entrance",
     title: "Grand Entrance",
-    description: "Accessible ramp under majestic acacia trees. Staff ready to assist with luggage and orientation.",
-    image: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1920&q=80",
+    description: "Welcome to Enchula Resort - where luxury meets nature in the heart of Kajiado.",
+    image: `${S3_BASE}/IMG_2256.webp`,
     icon: Home,
     color: "#800000",
     category: "resort"
   },
   {
     id: "lobby",
-    title: "Main Lodge",
-    description: "Thatched-roof reception with Braille signage, hearing loop, and lowered counter for wheelchair users.",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80",
+    title: "Main Reception",
+    description: "Our welcoming reception area with modern amenities and warm hospitality.",
+    image: `${S3_BASE}/IMG_2246.webp`,
     icon: Users,
     color: "#A9745B",
     category: "resort"
   },
   {
-    id: "accessible-room",
-    title: "Accessible Deluxe Room",
-    description: "Ground-floor suite with wide doors, roll-in shower, grab bars, and emergency alert system.",
-    image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1920&q=80",
+    id: "deluxe-room",
+    title: "Deluxe Double Room",
+    description: "Spacious rooms with king-size beds, modern amenities, and stunning views.",
+    image: `${S3_BASE}/IMG_2346.webp`,
     icon: BedDouble,
     color: "#D7BFA8",
     category: "resort"
   },
   {
     id: "restaurant",
-    title: "Savanna Restaurant",
-    description: "Open-air dining with lowered tables, allergy-aware menu, and views of the surrounding plains.",
-    image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80",
+    title: "Dining Experience",
+    description: "Exquisite dining with local and international cuisine in elegant settings.",
+    image: `${S3_BASE}/IMG_2236.webp`,
     icon: Utensils,
     color: "#A04040",
     category: "resort"
   },
 
-  // ===== SURROUNDINGS =====
   {
-    id: "savanna-view",
-    title: "Savanna Panorama",
-    description: "Step outside to sweeping views of Kajiado’s golden grasslands, dotted with acacia trees and grazing wildlife.",
-    image: "https://images.unsplash.com/photo-1544797073-e9707573b560?w=1920&q=80",
-    icon: TreePine,
-    color: "#8A653B",
-    category: "surroundings"
+    id: "twin-room",
+    title: "Twin Room",
+    description: "Comfortable twin rooms perfect for friends or family traveling together.",
+    image: `${S3_BASE}/IMG_2321.webp`,
+    icon: BedDouble,
+    color: "#A9745B",
+    category: "resort"
   },
   {
-    id: "maasai-village",
+    id: "superior-room",
+    title: "Superior Room",
+    description: "Premium accommodations with enhanced amenities and elegant decor.",
+    image: `${S3_BASE}/IMG_2300.webp`,
+    icon: BedDouble,
+    color: "#D7BFA8",
+    category: "resort"
+  },
+  {
+    id: "events",
+    title: "Event Spaces",
+    description: "Versatile venues for weddings, corporate events, and special celebrations.",
+    image: `${S3_BASE}/Marriage1.webp`,
+    icon: Camera,
+    color: "#C23B22",
+    category: "resort"
+  },
+  {
+    id: "wellness",
+    title: "Wellness & Spa",
+    description: "Rejuvenating spa treatments and wellness experiences for complete relaxation.",
+    image: `${S3_BASE}/Wellness.webp`,
+    icon: Sparkles,
+    color: "#8A653B",
+    category: "resort"
+  },
+  {
+    id: "gym",
+    title: "Fitness Center",
+    description: "State-of-the-art gym facilities to maintain your fitness routine.",
+    image: `${S3_BASE}/IMG_2174.webp`,
+    icon: Dumbbell,
+    color: "#2E8B57",
+    category: "resort"
+  },
+
+  // ===== EXPERIENCES =====
+  {
+    id: "nature-walks",
+    title: "Nature Walks",
+    description: "Guided walks through the beautiful Kenyan landscape surrounding our resort.",
+    image: `${S3_BASE}/Nature2.webp`,
+    icon: TreePine,
+    color: "#2E8B57",
+    category: "experiences"
+  },
+  {
+    id: "cultural",
     title: "Maasai Cultural Experience",
-    description: "Visit a nearby Maasai manyatta (village). Learn beadwork, traditional dance, and sustainable coexistence with nature.",
-    image: "https://images.unsplash.com/photo-1534351590666-13e3e7a1aa4e?w=1920&q=80",
+    description: "Immerse yourself in authentic Maasai traditions and cultural heritage.",
+    image: `${S3_BASE}/Maasai1.webp`,
     icon: Globe,
     color: "#C23B22",
-    category: "surroundings"
+    category: "experiences"
   },
   {
-    id: "wildlife-corridor",
-    title: "Wildlife Corridor",
-    description: "Enchula lies near Nairobi National Park’s southern buffer zone. Spot giraffes, zebras, and antelopes from our garden.",
-    image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?w=1920&q=80",
-    icon: Mountain,
-    color: "#2E8B57",
-    category: "surroundings"
-  },
-  {
-    id: "sunset-point",
-    title: "Sunset Over the Rift",
-    description: "End your day at our hillside viewpoint — watch the sun dip behind the Ngong Hills in fiery orange and purple hues.",
-    image: "https://images.unsplash.com/photo-1506018718741-2e1f1b3d1f1e?w=1920&q=80",
+    id: "stargazing",
+    title: "Stargazing",
+    description: "Experience the clear African night sky with guided stargazing sessions.",
+    image: `${S3_BASE}/Stargazing.webp`,
     icon: Camera,
     color: "#D2691E",
-    category: "surroundings"
+    category: "experiences"
+  },
+  {
+    id: "outdoor",
+    title: "Outdoor Activities",
+    description: "Adventure awaits with various outdoor activities and excursions.",
+    image: `${S3_BASE}/Outdoor1.webp`,
+    icon: TreePine,
+    color: "#8A653B",
+    category: "experiences"
   },
 ];
 
@@ -107,7 +155,7 @@ export default function VirtualTourPage() {
   const Icon = currentSpot.icon;
   const categoryLabel = currentSpot.category === "resort" 
     ? "Inside Enchula Resort" 
-    : "Around Kajiado";
+    : "Experiences & Activities";
 
   return (
     // ✅ Main wrapper: adds top padding to avoid navbar overlap

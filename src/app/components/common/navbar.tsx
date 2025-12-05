@@ -27,6 +27,7 @@ export default function Navbar() {
       dropdown: true,
       items: [
         { name: "About Us", href: "/about" },
+        { name: "Our Staff", href: "/staff" },
         { name: "Health & Safety", href: "/health_safety" },
         { name: "Sustainability", href: "/sustainability" },
         { name: "Accessibility", href: "/accessibility" },
@@ -51,6 +52,7 @@ export default function Navbar() {
         { name: "Events & Weddings", href: "/events" },
         { name: "Experience & Activities", href: "/experience_activities" },
         { name: "Gym", href: "/gym" },
+        { name: "Games", href: "/games" },
       ],
     },
     {
@@ -81,11 +83,15 @@ export default function Navbar() {
         
         {/* Logo */}
         <Link href="/" className="flex items-center cursor-pointer">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#A04040] to-[#5C4033] flex items-center justify-center border-2 border-[#5C4033]">
-            <span className="text-white font-bold text-xl">E</span>
-          </div>
-          <span className="ml-2 text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#A04040] to-[#A9745B]">
-            Enchula Resort
+          <Image 
+            src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Enchula_Logo.webp"
+            alt="Enchula Resort Logo"
+            width={50}
+            height={50}
+            className="rounded-full object-cover"
+          />
+          <span className="ml-3 text-xl md:text-2xl font-bold text-[#A9745B]">
+            ENCHULA
           </span>
         </Link>
 

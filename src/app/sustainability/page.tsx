@@ -1,60 +1,62 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Droplets, Leaf, Sun, Recycle, Heart, TreePine } from "lucide-react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
-const Solar = `${S3_BASE}/IMG_2307.webp`;
-const Water = `${S3_BASE}/IMG_2310.webp`;
-const Waste = `${S3_BASE}/IMG_2312.webp`;
-const Gardens = `${S3_BASE}/IMG_2314.webp`;
-const Reforestation = `${S3_BASE}/IMG_2315.webp`;
-const Community = `${S3_BASE}/IMG_2318.webp`;
-const Background = `${S3_BASE}/IMG_2320.webp`;
+
+const BACKGROUND_IMAGES = [
+  `${S3_BASE}/IMG_2257.webp`,
+  `${S3_BASE}/IMG_2248.webp`,
+  `${S3_BASE}/IMG_3385.webp`,
+];
 
 export default function Sustainability() {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const sustainabilityData = [
     {
       title: "Solar Energy",
       description:
         "100% of our resort is powered by renewable solar energy, reducing carbon emissions and embracing clean technology for a greener future.",
       icon: <Sun size={48} className="text-[#800000]" />,
-      image: Solar,
     },
     {
       title: "Water Conservation",
       description:
         "Advanced rainwater harvesting and greywater recycling systems reduce water consumption by 60% while maintaining luxury standards.",
       icon: <Droplets size={48} className="text-[#A04040]" />,
-      image: Water,
     },
     {
       title: "Zero Waste Initiative",
       description:
         "Our comprehensive recycling program and composting systems divert 95% of waste from landfills, creating a circular economy.",
       icon: <Recycle size={48} className="text-[#5C4033]" />,
-      image: Waste,
     },
     {
       title: "Organic Gardens",
       description:
         "Farm-to-table dining featuring ingredients from our organic gardens, eliminating pesticides and supporting local biodiversity.",
       icon: <Leaf size={48} className="text-[#D7BFA8]" />,
-      image: Gardens,
     },
     {
       title: "Native Reforestation",
       description:
         "We plant 10 native trees for every guest stay, actively restoring local ecosystems and offsetting your carbon footprint.",
       icon: <TreePine size={48} className="text-[#800000]" />,
-      image: Reforestation,
     },
     {
       title: "Community Impact",
       description:
         "Supporting local artisans and conservation projects, ensuring your stay creates positive social and environmental change.",
       icon: <Heart size={48} className="text-[#A04040]" />,
-      image: Community,
     },
   ];
 
@@ -63,10 +65,11 @@ export default function Sustainability() {
       id="sustainability"
       className="relative py-24 px-4 overflow-hidden"
       style={{
-        backgroundImage: `url(${Background})`,
+        backgroundImage: `url('${BACKGROUND_IMAGES[currentBgIndex]}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
+        transition: "background-image 1s ease-in-out",
       }}
     >
       {/* Dark Overlay */}
@@ -97,32 +100,20 @@ export default function Sustainability() {
           {sustainabilityData.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-[#D7BFA8]/10 backdrop-blur-md rounded-3xl overflow-hidden hover:scale-105 transition-all duration-500 border border-[#A04040]/30 hover:border-[#A04040] shadow-2xl"
+              className="group relative bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl overflow-hidden hover:border-[#800000]/50 transition-all duration-300 border border-[#5C4033]/30"
             >
-              {/* Image Background */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
               {/* Content */}
               <div className="relative z-10 p-8">
-                <div className="mb-6 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
                 </div>
 
-                <h3 className="text-2xl font-bold text-[#2C1B16] mb-4 group-hover:text-[#A04040] transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-[#FAF5F0] mb-4 group-hover:text-[#D7BFA8] transition-colors duration-300">
                   {item.title}
                 </h3>
 
-                <p className="text-[#FAF5F0] leading-relaxed">{item.description}</p>
+                <p className="text-[#D7BFA8] leading-relaxed">{item.description}</p>
               </div>
-
-              {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/40 via-transparent to-transparent pointer-events-none"></div>
             </div>
           ))}
         </div>

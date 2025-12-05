@@ -4,8 +4,24 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Heart } from "lucide-react";
 
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+
 export default function DiningPage() {
   const [currentPage, setCurrentPage] = useState(0);
+  const [currentBg, setCurrentBg] = useState(0);
+
+  const backgroundImages = [
+    `${S3_BASE}/IMG_2209.webp`,
+    `${S3_BASE}/IMG_2204.webp`,
+  ];
+
+  // Auto-rotate background images
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBg((prev) => (prev + 1) % backgroundImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const menuPages = [
     {
@@ -57,14 +73,25 @@ export default function DiningPage() {
     <section
       id="dining"
       className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1920&q=80')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
     >
+      {/* Background Carousel */}
+      <div className="fixed inset-0 z-0">
+        {backgroundImages.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentBg ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              backgroundImage: `url('${img}')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundAttachment: "fixed",
+            }}
+          />
+        ))}
+      </div>
+
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
 
@@ -89,7 +116,7 @@ export default function DiningPage() {
           <div className="grid md:grid-cols-2 gap-0">
             <div className="relative h-64 md:h-auto overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80"
+                src={`${S3_BASE}/IMG_2236.webp`}
                 alt="Restaurant Interior"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
@@ -108,6 +135,30 @@ export default function DiningPage() {
           </div>
         </div>
 
+        {/* Bar Section */}
+        <div className="mb-12 bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group">
+          <div className="grid md:grid-cols-2 gap-0">
+            <div className="p-6 flex flex-col justify-center order-2 md:order-1">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-3">
+                Bar Lounge
+              </h2>
+              <p className="text-[#F8F3EF] mb-4">
+                Unwind with expertly crafted cocktails, premium spirits, and a curated wine selection in our sophisticated bar lounge.
+              </p>
+              <p className="text-[#D7BFA8] font-semibold">
+                Open daily 12PM – 11PM
+              </p>
+            </div>
+            <div className="relative h-64 md:h-auto overflow-hidden order-1 md:order-2">
+              <img
+                src={`${S3_BASE}/IMG_2229.webp`}
+                alt="Bar Lounge"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          </div>
+        </div>
+
         {/* Special Dining Experiences */}
         <div className="space-y-8 mb-16">
           <div className="bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group">
@@ -122,7 +173,7 @@ export default function DiningPage() {
               </div>
               <div className="relative h-64 md:h-auto overflow-hidden order-1 md:order-2">
                 <img
-                  src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80"
+                  src={`${S3_BASE}/Sunset.webp`}
                   alt="Sunset Dinner by Pool"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -134,7 +185,7 @@ export default function DiningPage() {
             <div className="bg-[#2C1B16]/40 p-6 rounded-2xl border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300">
               <div className="relative h-48 rounded-xl overflow-hidden mb-4">
                 <img
-                  src="https://images.unsplash.com/photo-1603133872878-684f208737e9?w=800&q=80"
+                  src={`${S3_BASE}/Cocktail.webp`}
                   alt="Cocktail mixing class"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
@@ -150,7 +201,7 @@ export default function DiningPage() {
             <div className="bg-[#2C1B16]/40 p-6 rounded-2xl border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300">
               <div className="relative h-48 rounded-xl overflow-hidden mb-4">
                 <img
-                  src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&q=80"
+                  src={`${S3_BASE}/Farm.webp`}
                   alt="Farm-to-table dinner"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
