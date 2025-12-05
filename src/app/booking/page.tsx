@@ -160,22 +160,67 @@ const BookingPage = () => {
     return null;
   };
 
-  const handleBooking = () => {
+  const handleBooking = async () => {
     if (guestInfo.name && guestInfo.email && guestInfo.phone) {
-      setShowConfirmation(true);
-      setTimeout(() => {
-        setShowConfirmation(false);
-        setStep(1);
-        setSelectedRoom(null);
-        setCheckIn("");
-        setCheckOut("");
-        setSelectedReservations([]);
-        setGuestInfo({ name: "", email: "", phone: "", specialRequests: "" });
-        setAdults(2);
-        setMinorCount(0);
-        setChildrenCount(0);
-        setInfantCount(0);
-      }, 5000);
+      // Prepare booking data
+      const bookingData = {
+        guestName: guestInfo.name,
+        guestEmail: guestInfo.email,
+        guestPhone: guestInfo.phone,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        nights: calculateNights(),
+        roomType: selectedRoom ? roomTypes.find(r => r.id === selectedRoom)?.name : 'N/A',
+        isKenyanResident: isKenyanResident,
+        occupancyType: occupancyType,
+        mealPlan: mealPlan,
+        adults: adults,
+        minors: minorCount,
+        children: childrenCount,
+        infants: infantCount,
+        additionalServices: selectedReservations.map(id => {
+          const details = getReservationDetails(id);
+          return {
+            category: getCategoryName(id),
+            name: details?.name || id,
+            description: details?.description || ''
+          };
+        }),
+        specialRequests: guestInfo.specialRequests,
+      };
+
+      try {
+        // Send email/SMS notification
+        const response = await fetch('/api/send-booking-confirmation', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(bookingData),
+        });
+
+        if (response.ok) {
+          setShowConfirmation(true);
+          setTimeout(() => {
+            setShowConfirmation(false);
+            setStep(1);
+            setSelectedRoom(null);
+            setCheckIn("");
+            setCheckOut("");
+            setSelectedReservations([]);
+            setGuestInfo({ name: "", email: "", phone: "", specialRequests: "" });
+            setAdults(2);
+            setMinorCount(0);
+            setChildrenCount(0);
+            setInfantCount(0);
+          }, 5000);
+        } else {
+          alert('Failed to send confirmation. Please contact us directly.');
+        }
+      } catch (error) {
+        console.error('Booking error:', error);
+        alert('An error occurred. Please try again or contact us directly.');
+      }
     }
   };
 
@@ -244,8 +289,11 @@ const BookingPage = () => {
               <p className="text-[#D7BFA8] mb-3">
                 Thank you, {guestInfo.name}! Your request has been received.
               </p>
+              <p className="text-[#F8F3EF] text-sm mb-2">
+                A confirmation email has been sent to <strong>{guestInfo.email}</strong>
+              </p>
               <p className="text-[#F8F3EF] text-sm">
-                We’ll contact you at <strong>{guestInfo.phone}</strong> to confirm details.
+                You'll also receive an SMS at <strong>{guestInfo.phone}</strong> with your booking details.
               </p>
             </div>
           </div>

@@ -4,8 +4,6 @@ import React, { useState, useEffect } from "react";
 import {
   MapPin,
   Phone,
-  Clock,
-  CalendarDays,
   Award,
   Users,
   Sparkles,
@@ -13,16 +11,14 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 
-// S3 hosted images
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 export default function About() {
   const images = [
-    `${S3_BASE}/IMG_2158.webp`,
-    `${S3_BASE}/IMG_2159.webp`,
+    `${S3_BASE}/IMG_2267.webp`,
+    `${S3_BASE}/IMG_2377.webp`,
     `${S3_BASE}/IMG_2160.webp`,
     `${S3_BASE}/IMG_2161.webp`,
-    `${S3_BASE}/IMG_0480.webp`,
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -30,21 +26,14 @@ export default function About() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 5000); // change slide every 5 seconds
+    }, 5000);
     return () => clearInterval(interval);
   }, [images.length]);
-
-  const features = [
-    { icon: <Award className="w-8 h-8" />, title: "4-Star Luxury", description: "Award-winning service" },
-    { icon: <Users className="w-8 h-8" />, title: "Expert Team", description: "Dedicated hospitality" },
-    { icon: <Sparkles className="w-8 h-8" />, title: "Premium Amenities", description: "World-class facilities" },
-    { icon: <Heart className="w-8 h-8" />, title: "Warm Hospitality", description: "Kenyan excellence" },
-  ];
 
   return (
     <section
       id="about"
-      className="relative w-full min-h-screen flex items-center justify-center overflow-hidden py-24 px-4"
+      className="relative w-full min-h-screen py-20 px-4"
     >
       {/* Background Slideshow */}
       <div className="absolute inset-0">
@@ -64,101 +53,92 @@ export default function About() {
       <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl text-[#F8F3EF]">
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
+          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
             <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
-              About Us
+              About Enchula Resort
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight text-[#FAF5F0]">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
             Where Luxury Meets{" "}
-            <span className="block bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
               Kenyan Serenity
             </span>
-          </h2>
+          </h1>
         </div>
 
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          {/* Story Box */}
-          <div className="lg:col-span-2 bg-[#2C1B16]/50 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-[#5C4033]/20 hover:scale-105 transition-transform duration-500">
-            <div className="flex items-center gap-3 mb-6">
-              <h3 className="text-3xl font-bold text-[#FAF5F0]">Our Story</h3>
-            </div>
-            <p className="text-lg leading-relaxed text-[#D7BFA8] mb-6">
-              Nestled in the breathtaking plains of{" "}
-              <strong className="text-[#A04040]">Kajiado County</strong>, Enchula
-              Resort blends the untamed beauty of Kenya with the refined elegance
-              of modern hospitality...
-            </p>
-
-            {/* Features */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="text-center bg-[#2E1A15]/40 rounded-2xl p-4 border border-[#5C4033]/20 hover:bg-[#2C1B16]/50 transition-all duration-300"
-                >
-                  <div className="text-[#A04040] flex justify-center mb-2">{feature.icon}</div>
-                  <h4 className="font-bold text-sm mb-1 text-[#FAF5F0]">{feature.title}</h4>
-                  <p className="text-xs text-[#A9745B]">{feature.description}</p>
-                </div>
-              ))}
+        {/* Main Content */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+          {/* Story Section */}
+          <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-8 border border-[#5C4033]/30">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-6">Our Story</h2>
+            <div className="space-y-4 text-[#D7BFA8] leading-relaxed">
+              <p>
+                Nestled in the breathtaking plains of <strong className="text-[#FAF5F0]">Kajiado County</strong>, Enchula Resort offers a unique blend of untamed Kenyan beauty and refined modern hospitality.
+              </p>
+              <p>
+                Our resort provides an escape from the ordinary, where guests can reconnect with nature while enjoying world-class amenities and warm Kenyan hospitality.
+              </p>
+              <p>
+                From elegant accommodations to exceptional dining experiences, every detail at Enchula Resort is designed to create unforgettable memories.
+              </p>
             </div>
           </div>
 
-          {/* Contact Box */}
-          <div className="bg-[#2E1A15]/50 backdrop-blur-md rounded-3xl p-8 shadow-2xl border border-[#5C4033]/30 hover:scale-105 transition-transform duration-500">
-            <div className="flex items-center gap-3 mb-6">
-              <h3 className="text-2xl font-bold text-[#FAF5F0]">Visit Us</h3>
-            </div>
-
+          {/* Contact Information */}
+          <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-8 border border-[#5C4033]/30">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-6">Visit Us</h2>
             <div className="space-y-6">
-              <div className="flex items-start gap-4 bg-[#2C1B16]/40 rounded-xl p-4 border border-[#5C4033]/20">
-                <MapPin className="text-[#5C4033]" size={24} />
+              <div className="flex items-start gap-4">
+                <MapPin className="text-[#800000] mt-1" size={24} />
                 <div>
                   <p className="font-semibold text-[#FAF5F0] mb-1">Location</p>
-                  <p className="text-[#D7BFA8]">Nairobi - Namanga Rd, Kajiado</p>
-                  <p className="text-sm text-[#A9745B] mt-1">Scenic plains & wildlife</p>
+                  <p className="text-[#D7BFA8]">Along Nairobi - Namanga Road</p>
+                  <p className="text-[#D7BFA8]">Kajiado, Kenya</p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 bg-[#2C1B16]/40 rounded-xl p-4 border border-[#5C4033]/20">
-                <Phone className="text-[#800000]" size={24} />
+              <div className="flex items-start gap-4">
+                <Phone className="text-[#800000] mt-1" size={24} />
                 <div>
-                  <p className="font-semibold text-[#FAF5F0] mb-1">For Reservations Call:</p>
-                  <p className="text-[#D7BFA8]">+254 727 000027</p>
-                  <p className="text-sm text-[#A9745B] mt-1">Available 24/7</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 bg-[#2C1B16]/40 rounded-xl p-4 border border-[#5C4033]/20">
-                <Clock className="text-[#A04040]" size={24} />
-                <div>
-                  <p className="font-semibold text-[#FAF5F0] mb-1">Check-In</p>
-                  <p className="text-[#D7BFA8]">12:00 PM</p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4 bg-[#2C1B16]/40 rounded-xl p-4 border border-[#5C4033]/20">
-                <CalendarDays className="text-[#800000]" size={24} />
-                <div>
-                  <p className="font-semibold text-[#FAF5F0] mb-1">Check-Out</p>
-                  <p className="text-[#D7BFA8]">10:30 AM</p>
+                  <p className="font-semibold text-[#FAF5F0] mb-1">Contact</p>
+                  <p className="text-[#D7BFA8]">+254 727 000 027</p>
+                  <p className="text-[#D7BFA8]">+254 734 000 027</p>
+                  <p className="text-[#D7BFA8] mt-2">info@enchularesort.co.ke</p>
                 </div>
               </div>
             </div>
-
-            <p className="text-sm text-[#A9745B] italic mt-6">
-              Flexible booking and personalized service to match your schedule perfectly.
-            </p>
           </div>
         </div>
 
-        {/* Highlights, Stats, CTA, and Slide Indicators */}
-        {/* Leave unchanged */}
+        {/* Features */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30 text-center hover:border-[#800000]/50 transition-all duration-300">
+            <Award className="text-[#800000] mx-auto mb-4" size={40} />
+            <h3 className="font-bold text-[#FAF5F0] mb-2">4-Star Luxury</h3>
+            <p className="text-sm text-[#D7BFA8]">Award-winning service</p>
+          </div>
+
+          <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30 text-center hover:border-[#800000]/50 transition-all duration-300">
+            <Users className="text-[#800000] mx-auto mb-4" size={40} />
+            <h3 className="font-bold text-[#FAF5F0] mb-2">Expert Team</h3>
+            <p className="text-sm text-[#D7BFA8]">Dedicated hospitality</p>
+          </div>
+
+          <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30 text-center hover:border-[#800000]/50 transition-all duration-300">
+            <Sparkles className="text-[#800000] mx-auto mb-4" size={40} />
+            <h3 className="font-bold text-[#FAF5F0] mb-2">Premium Amenities</h3>
+            <p className="text-sm text-[#D7BFA8]">World-class facilities</p>
+          </div>
+
+          <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30 text-center hover:border-[#800000]/50 transition-all duration-300">
+            <Heart className="text-[#800000] mx-auto mb-4" size={40} />
+            <h3 className="font-bold text-[#FAF5F0] mb-2">Warm Hospitality</h3>
+            <p className="text-sm text-[#D7BFA8]">Kenyan excellence</p>
+          </div>
+        </div>
       </div>
     </section>
   );

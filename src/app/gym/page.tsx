@@ -10,12 +10,18 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+
 const gymImages = [
-  "https://images.unsplash.com/photo-1571019613454-1cb2d8a0b5f5?w=1920&q=80", // weights
-  "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&q=80", // cardio
-  "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=1920&q=80", // yoga
-  "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1920&q=80", // pool gym
-  "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&q=80", // spa fitness
+  `${S3_BASE}/IMG_2195.webp`,
+  `${S3_BASE}/IMG_2174.webp`,
+  `${S3_BASE}/IMG_2173.webp`,
+  `${S3_BASE}/IMG_2171.webp`,
+  `${S3_BASE}/IMG_2161.webp`,
+  `${S3_BASE}/IMG_2160.webp`,
+  `${S3_BASE}/IMG_2159.webp`,
+  `${S3_BASE}/IMG_2182.webp`,
+  `${S3_BASE}/IMG_2158.webp`,
 ];
 
 const packages = [

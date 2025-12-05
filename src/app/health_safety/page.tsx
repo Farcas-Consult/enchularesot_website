@@ -1,69 +1,79 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Hand, UserCheck, Droplet, Shield, Sparkles, Wind, Thermometer, Stethoscope } from "lucide-react";
+
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+
+const BACKGROUND_IMAGES = [
+  `${S3_BASE}/IMG_2267.webp`,
+  `${S3_BASE}/IMG_2272.webp`,
+  `${S3_BASE}/IMG_2252.webp`,
+];
 
 const healthSafetyData = [
   {
     title: "Contactless Technology",
     description: "Seamless digital check-in/out and mobile room keys ensure zero-contact convenience throughout your entire stay.",
-    icon: <UserCheck size={48} className="text-[#800000]" />, // Rich Maroon
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
+    icon: <UserCheck size={48} className="text-[#800000]" />,
   },
   {
     title: "Medical-Grade Sanitization",
     description: "Hospital-level disinfection protocols using EPA-approved products ensure every surface meets the highest hygiene standards.",
-    icon: <Droplet size={48} className="text-[#A04040]" />, // Muted Maroon
-    image: "https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=800&q=80",
+    icon: <Droplet size={48} className="text-[#A04040]" />,
   },
   {
     title: "Advanced Air Purification",
     description: "HEPA filtration systems continuously circulate and purify air, removing 99.97% of airborne particles and allergens.",
-    icon: <Wind size={48} className="text-[#D7BFA8]" />, // Warm Beige
-    image: "https://images.unsplash.com/photo-1603912699214-92627f304eb6?w=800&q=80",
+    icon: <Wind size={48} className="text-[#D7BFA8]" />,
   },
   {
     title: "Certified Safety Protocols",
     description: "Our staff undergo rigorous training and follow WHO-endorsed health protocols to ensure your complete protection.",
-    icon: <Shield size={48} className="text-[#5C4033]" />, // Deep Brown
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
+    icon: <Shield size={48} className="text-[#5C4033]" />,
   },
   {
     title: "Wellness Monitoring",
     description: "24/7 health support with temperature screening and on-call medical professionals for your peace of mind.",
     icon: <Thermometer size={48} className="text-[#800000]" />,
-    image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80",
   },
   {
     title: "Hygiene Stations",
     description: "Premium hand sanitizer and hygiene stations strategically placed throughout the resort for instant access.",
     icon: <Hand size={48} className="text-[#A04040]" />,
-    image: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80",
   },
   {
     title: "On-Site Medical Care",
     description: "Fully equipped medical facility with licensed healthcare professionals available around the clock for any concerns.",
     icon: <Stethoscope size={48} className="text-[#5C4033]" />,
-    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&q=80",
   },
   {
     title: "Ultra-Clean Guarantee",
     description: "Every room receives a deep-clean certification before your arrival, with sealed door tags confirming sanitation.",
     icon: <Sparkles size={48} className="text-[#D7BFA8]" />,
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
   },
 ];
 
 export default function Health_Sanity() {
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="health-safety"
       className="relative py-24 px-4 overflow-hidden"
       style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&q=80')",
+        backgroundImage: `url('${BACKGROUND_IMAGES[currentBgIndex]}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
+        transition: "background-image 1s ease-in-out",
       }}
     >
       {/* Overlay */}
@@ -92,17 +102,8 @@ export default function Health_Sanity() {
           {healthSafetyData.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-[#A9745B]/20 backdrop-blur-md rounded-3xl overflow-hidden hover:scale-105 transition-all duration-500 border border-[#5C4033]/30 shadow-2xl"
+              className="group relative bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl overflow-hidden hover:border-[#800000]/50 transition-all duration-300 border border-[#5C4033]/30"
             >
-              {/* Image Background */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-500">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
               {/* Content */}
               <div className="relative z-10 p-6">
                 <div className="mb-5 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">

@@ -3,7 +3,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from "lucide-react";
 import Image from "next/image";
-const Luxury = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2172.webp";
+const Luxury = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2240.webp";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -97,7 +97,7 @@ const Contact: React.FC = () => {
       id="contact"
       className="relative py-24 px-4 overflow-hidden"
       style={{
-        backgroundImage: "url('https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1920&q=80')",
+        backgroundImage: "url('https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2260.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",

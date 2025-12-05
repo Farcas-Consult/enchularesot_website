@@ -3,6 +3,8 @@
 import React from "react";
 import Link from "next/link";
 
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+
 const KidsFamilyPage = () => {
   return (
     <section
@@ -10,7 +12,7 @@ const KidsFamilyPage = () => {
       className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
       style={{
         backgroundImage:
-          "url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1920&q=80')",
+          `url('${S3_BASE}/IMG_2380.webp')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -47,24 +49,21 @@ const KidsFamilyPage = () => {
               {[
                 {
                   title: "Supervised Kids' Play Area",
-                  desc: "Safe, shaded outdoor space for ages 4–12 with toys, games, and friendly staff.",
+                  desc: "Safe, shaded outdoor space for ages 4-12 with toys, games, and friendly staff.",
                   icon: "🎪",
-                  image: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=800&q=80",
-                  price: "KSh 500/child per day",
+                  image: `${S3_BASE}/IMG_2352.webp`,
                 },
                 {
                   title: "Maasai Craft Workshops",
                   desc: "Learn traditional beadwork and storytelling from local artisans.",
                   icon: "🎨",
-                  image: "https://images.unsplash.com/photo-1509233725247-49e657c54213?w=800&q=80",
-                  price: "KSh 800/session",
+                  image: `${S3_BASE}/IMG_2277.webp`,
                 },
                 {
                   title: "Stargazing Nights",
                   desc: "Cozy blankets, hot cocoa, and fun facts about the night sky.",
                   icon: "🌌",
-                  image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80",
-                  price: "KSh 600/family",
+                  image: `${S3_BASE}/IMG_2380.webp`,
                 },
               ].map((activity, i) => (
                 <div
@@ -77,9 +76,6 @@ const KidsFamilyPage = () => {
                       alt={activity.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
-                    <div className="absolute top-3 right-3 bg-[#800000] text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {activity.price}
-                    </div>
                   </div>
                   <div className="p-5">
                     <div className="flex items-start gap-3 mb-2">
@@ -87,74 +83,6 @@ const KidsFamilyPage = () => {
                       <h3 className="text-xl font-bold text-[#FAF5F0]">{activity.title}</h3>
                     </div>
                     <p className="text-[#F8F3EF]">{activity.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Family Comforts Section */}
-          <div>
-            <h2 className="text-3xl font-bold text-[#FAF5F0] mb-8 flex items-center gap-3">
-               Family Comforts
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                {
-                  title: "Connecting Rooms",
-                  desc: "Stay close without sacrificing privacy. Ideal for parents with older kids.",
-                  icon: "🔗",
-                  image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
-                  price: "KSh 12,000/night",
-                },
-                {
-                  title: "Baby Cots Available",
-                  desc: "Free cots for infants under 2 years. Let us know in advance.",
-                  icon: "🛏️",
-                  image: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800&q=80",
-                  price: "Free",
-                },
-                {
-                  title: "Children's Pool",
-                  desc: "Shallow, safe pool with splash features for little ones.",
-                  icon: "💦",
-                  image: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80",
-                  price: "Included with stay",
-                },
-                {
-                  title: "Kid-Friendly Menu",
-                  desc: "Simple, tasty options like pasta, grilled chicken, and fruit platters.",
-                  icon: "🍽️",
-                  image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800&q=80",
-                  price: "From KSh 400/meal",
-                },
-              ].map((feature, i) => (
-                <div
-                  key={i}
-                  className="bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group"
-                >
-                  <div className="grid md:grid-cols-5 gap-0">
-                    <div className="relative h-48 md:h-auto md:col-span-2 overflow-hidden">
-                      <img 
-                        src={feature.image} 
-                        alt={feature.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                    </div>
-                    <div className="p-5 md:col-span-3 flex flex-col justify-center">
-                      <div className="flex items-start gap-3 mb-2">
-                        <span className="text-2xl">{feature.icon}</span>
-                        <div className="flex-1">
-                          <div className="flex justify-between items-start mb-1">
-                            <h3 className="text-xl font-bold text-[#FAF5F0]">{feature.title}</h3>
-                            <span className="text-[#D7BFA8] font-semibold text-sm whitespace-nowrap ml-2">
-                              {feature.price}
-                            </span>
-                          </div>
-                          <p className="text-[#F8F3EF]">{feature.desc}</p>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
               ))}

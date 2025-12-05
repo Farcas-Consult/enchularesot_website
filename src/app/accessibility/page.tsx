@@ -4,20 +4,16 @@ import Link from "next/link";
 import React from "react";
 import { Heart } from "lucide-react";
 
-const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/assets";
-const Step1Img1 = `${S3_BASE}/IMG_2173.webp`;
-const Step1Img2 = `${S3_BASE}/IMG_2174.webp`;
-const Step2Img1 = `${S3_BASE}/IMG_2176.webp`;
-const Step2Img2 = `${S3_BASE}/IMG_2177.webp`;
-const Step3Img1 = `${S3_BASE}/IMG_2182.webp`;
-const Step3Img2 = `${S3_BASE}/IMG_2184.webp`;
-const Step4Img1 = `${S3_BASE}/IMG_2187.webp`;
-const Step4Img2 = `${S3_BASE}/IMG_2189.webp`;
-const Step5Img1 = `${S3_BASE}/IMG_2191.webp`;
-const Step5Img2 = `${S3_BASE}/IMG_2195.webp`;
-const Overview1 = `${S3_BASE}/IMG_2198.webp`;
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+const Step1Img1 = `${S3_BASE}/IMG_2256.webp`;
+const Step1Img2 = `${S3_BASE}/IMG_2275.webp`;
+const Step2Img1 = `${S3_BASE}/IMG_2429.webp`;
+const Step2Img2 = `${S3_BASE}/IMG_3472.webp`;
+const Step3Img1 = `${S3_BASE}/IMG_2318.webp`;
+const Step3Img2 = `${S3_BASE}/IMG_2432.webp`;
+const Overview1 = `${S3_BASE}/IMG_2340.webp`;
 const Overview2 = `${S3_BASE}/IMG_2204.webp`;
-const Overview3 = `${S3_BASE}/IMG_2209.webp`;
+const Overview3 = `${S3_BASE}/IMG_2227.webp`;
 const Overview4 = `${S3_BASE}/IMG_2212.webp`;
 const Background = `${S3_BASE}/IMG_2213.webp`;
 
@@ -45,22 +41,6 @@ const accessibilitySteps = [
     images: [Step3Img1, Step3Img2],
     features: ["Wide pathway (1.5m)", "Handrails both sides", "Gentle slopes, no stairs"],
     landmark: "Plarcards on walls",
-  },
-  {
-    step: 4,
-    title: "Accessible Rooms",
-    location: "Block A - Ground Floor",
-    images: [Step4Img1, Step4Img2],
-    features: ["36-inch wide doors", "Roll-in showers", "Grab bars & emergency cord"],
-    landmark: "Accessibility Plaque on door frame",
-  },
-  {
-    step: 5,
-    title: "Key Facilities",
-    location: "Throughout Resort",
-    images: [Step5Img1, Step5Img2],
-    features: ["Accessible restaurant", "Pool lift available", "Dedicated parking spots"],
-    landmark: "Universal access symbols",
   },
 ];
 

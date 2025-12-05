@@ -2,23 +2,42 @@
 import Link from "next/link";
 import React from "react";
 
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+
+const BACKGROUND_IMAGES = [
+  `${S3_BASE}/IMG_2395.webp`,
+  `${S3_BASE}/IMG_2393.webp`,
+  `${S3_BASE}/IMG_2387.webp`,
+  `${S3_BASE}/IMG_2383.webp`,
+];
+
 export default function EventsPage() {
+  const [currentBgIndex, setCurrentBgIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const events = [
     {
       title: "Weddings & Vow Renewals",
       images: [
-        "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
-        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80",
-        "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80",
+        `${S3_BASE}/Marriage1.webp`,
+        `${S3_BASE}/Marriage2.webp`,
+        `${S3_BASE}/Marriage3.webp`,
       ],
       description: "Outdoor ceremonies with savannah views"
     },
     {
       title: "Corporate Retreats & Conferences",
       images: [
-        "https://images.unsplash.com/photo-1431540015161-0bf868a2d407?w=800&q=80",
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
-        "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80",
+        "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2395.webp",
+        "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2393.webp",
+        "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2387.webp",
+        "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2383.webp",
       ],
       description: "Professional meeting spaces & team building",
       packages: [
@@ -62,9 +81,9 @@ export default function EventsPage() {
     {
       title: "Birthday & Family Reunions",
       images: [
-        "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80",
-        "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80",
-        "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&q=80",
+        `${S3_BASE}/Birthday1.webp`,
+        `${S3_BASE}/Birthday2.webp`,
+        `${S3_BASE}/Birthday3.webp`,
       ],
       description: "Custom celebrations & gatherings"
     }
@@ -76,10 +95,11 @@ export default function EventsPage() {
       className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
       style={{
         backgroundImage:
-          "url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1920&q=80')",
+          `url('${BACKGROUND_IMAGES[currentBgIndex]}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
+        transition: "background-image 1s ease-in-out",
       }}
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
@@ -191,10 +211,10 @@ export default function EventsPage() {
         {/* Hero Gallery Banner */}
         <div className="mb-12 grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=600&q=80",
-            "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=600&q=80",
-            "https://images.unsplash.com/photo-1414609245224-afa02bfb3fda?w=600&q=80",
-            "https://images.unsplash.com/photo-1510076857177-7470076d4098?w=600&q=80",
+            `${S3_BASE}/Marriage1.webp`,
+            `${S3_BASE}/Birthday1.webp`,
+            `${S3_BASE}/IMG_2395.webp`,
+            `${S3_BASE}/IMG_2387.webp`,
           ].map((img, idx) => (
             <div key={idx} className="relative h-40 rounded-xl overflow-hidden">
               <img
