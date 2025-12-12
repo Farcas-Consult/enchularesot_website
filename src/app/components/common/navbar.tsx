@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
 
+
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -15,150 +16,94 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // New navigation with actual pages
-  const navGroups = [
-    {
-      name: "Home",
-      href: "/", // Your homepage
-      dropdown: false,
-    },
-    {
-      name: "About",
-      dropdown: true,
-      items: [
-        { name: "About Us", href: "/about" },
-        { name: "Our Staff", href: "/staff" },
-        { name: "Health & Safety", href: "/health_safety" },
-        { name: "Sustainability", href: "/sustainability" },
-        { name: "Accessibility", href: "/accessibility" },
-      ],
-    },
-    {
-      name: "Stay",
-      dropdown: true,
-      items: [
-        { name: "Rooms", href: "/rooms" },
-        { name: "Amenities", href: "/amenities" },
-        { name: "Gallery", href: "/gallery" },
-      ],
-    },
-    {
-      name: "Experiences",
-      dropdown: true,
-      items: [
-        { name: "Dining", href: "/dinings" },
-        { name: "Kids & Family", href: "/kids_family" },
-        { name: "Wellness & Spa", href: "/wellness" },
-        { name: "Events & Weddings", href: "/events" },
-        { name: "Experience & Activities", href: "/experience_activities" },
-        { name: "Gym", href: "/gym" },
-        { name: "Games", href: "/games" },
-      ],
-    },
-    {
-      name: "Guest Info",
-      dropdown: true,
-      items: [
-        { name: "Reviews", href: "/guest_reviews" },
-        { name: "Blog", href: "/blog" },
-        { name: "Contact", href: "/contact" },
-      ],
-    },
-    {
-      name: "Book Now",
-      href: "/booking",
-      dropdown: false,
-    },
+  // Top row: secondary links
+  const topLinks = [
+    { name: "Offers & Events", href: "/events" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Videos", href: "/videos" },
+    { name: "Awards & Recognition", href: "/awards" },
+    { name: "Virtual Tour Experience", href: "/Virtual-tour" },
+  ];
+  // Bottom row: main navigation
+  const navLinks = [
+    { name: "Home", href: "/" },
+    { name: "Rooms & Cabins", href: "/rooms" },
+    { name: "Food & Drinks", href: "/dinings" },
+    { name: "Meetings & Events", href: "/events" },
+    { name: "Bush Massage & Spa", href: "/wellness" },
+    { name: "Fun Experiences", href: "/experience_activities" },
+    { name: "Gym", href: "/gym" },
+    { name: "Kids & Family", href: "/kids_family" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#2E1A15] shadow-lg py-4"
-          : "bg-[#2E1A15]/20 backdrop-blur-sm py-6"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-        
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-[#2E1A15] shadow" : "bg-[#2E1A15]/90"}`}>
+      {/* Top Row: Secondary Links */}
+      <div className="hidden md:flex justify-center items-center w-full py-2 text-sm font-semibold tracking-wide text-[#D7BFA8] bg-transparent">
+        {topLinks.map((link, idx) => (
+          <React.Fragment key={link.name}>
+            <Link href={link.href} className="hover:text-[#A9745B] transition-colors px-2">
+              {link.name}
+            </Link>
+            {idx < topLinks.length - 1 && <span className="mx-1">|</span>}
+          </React.Fragment>
+        ))}
+      </div>
+      {/* Bottom Row: Main Navigation */}
+      <div className="max-w-7xl mx-auto px-4 flex justify-between items-center py-2">
         {/* Logo */}
-        <Link href="/" className="flex items-center cursor-pointer">
+        <Link href="/" className="flex items-center cursor-pointer pr-6 min-w-[140px]">
           <Image 
             src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Enchula_Logo.webp"
             alt="Enchula Resort Logo"
-            width={50}
-            height={50}
-            className="rounded-full object-cover"
+            width={52}
+            height={52}
+            className="rounded-full object-cover border-2 border-[#A9745B] bg-white"
+            priority
           />
-          <span className="ml-3 text-xl md:text-2xl font-bold text-[#A9745B]">
-            ENCHULA
-          </span>
+          <span className="ml-3 text-xl font-bold text-[#A9745B] whitespace-nowrap">ENCHULA</span>
         </Link>
-
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6 lg:space-x-8">
-          {navGroups.map((group) => (
-            <div key={group.name} className="relative group">
-              {group.dropdown ? (
-                <>
-                  <button className="text-[#F8F3EF] hover:text-[#A9745B] transition-colors font-medium flex items-center gap-1">
-                    {group.name}
-                    <ChevronDown className="w-4 h-4" />
-                  </button>
-
-                  <div className="absolute left-0 mt-2 w-56 bg-[#2C1B16]/95 backdrop-blur-md rounded-xl shadow-2xl border border-[#5C4033]/30 overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                    {group.items?.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="block w-full px-5 py-3 text-[#F8F3EF] hover:bg-[#5C4033]/30 hover:text-[#D7BFA8] text-sm"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                <Link
-                  href={group.href!}
-                  className="text-[#F8F3EF] hover:text-[#A9745B] transition-colors font-medium"
-                >
-                  {group.name}
-                </Link>
-              )}
-            </div>
+        <nav className="hidden md:flex items-center flex-wrap gap-x-4 gap-y-2" style={{ marginLeft: '80px' }}>
+          {navLinks.map((link, idx) => (
+            <React.Fragment key={link.name}>
+              <Link
+                href={link.href}
+                className="text-[#F8F3EF] hover:text-[#A9745B] font-medium px-2 py-1 rounded transition-colors"
+              >
+                {link.name}
+              </Link>
+              {idx < navLinks.length - 1 && <span className="text-[#A9745B] mx-1">|</span>}
+            </React.Fragment>
           ))}
+          <Link href="/booking" className="ml-4 px-4 py-1 bg-[#A9745B] hover:bg-[#A04040] text-white font-semibold rounded transition-all whitespace-nowrap">BOOK NOW</Link>
         </nav>
-
         {/* Mobile menu button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-[#F8F3EF] hover:text-[#A9745B] transition-colors p-2"
+          className="md:hidden text-[#F8F3EF] hover:text-[#A9745B] p-2"
         >
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
-
-      {/* Mobile Menu */}
+      {/* Mobile Menu: All links in one column */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ${
           isMenuOpen ? "max-h-[800px] mt-2 pb-4" : "max-h-0"
         }`}
       >
         <nav className="bg-[#2E1A15] px-4 space-y-1">
-          {navGroups.map((group) =>
-            group.dropdown ? (
-              <MobileDropdown key={group.name} title={group.name} items={group.items!} />
-            ) : (
-              <Link
-                key={group.name}
-                href={group.href!}
-                className="block py-3 px-2 text-[#F8F3EF] hover:text-[#A9745B] font-medium"
-              >
-                {group.name}
-              </Link>
-            )
-          )}
+          {[...topLinks, ...navLinks].map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="block py-3 px-2 text-[#F8F3EF] hover:text-[#A9745B] font-medium"
+            >
+              {link.name}
+            </Link>
+          ))}
+          <Link href="/booking" className="block mt-2 px-4 py-1 bg-[#A9745B] hover:bg-[#A04040] text-white font-semibold rounded text-center">BOOK NOW</Link>
         </nav>
       </div>
     </header>

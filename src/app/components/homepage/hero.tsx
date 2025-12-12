@@ -24,8 +24,8 @@ const slides = [
   },
   {
     src: Exterior1,
-    title: "Award-Winning Luxury",
-    subtitle: "Five-star resort experience awaits",
+    title: "Relax in Style",
+    subtitle: "A unique resort experience awaits",
   },
   {
     src: Exterior2,
@@ -54,10 +54,11 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  const highlights = [
-    { icon: <Star className="w-5 h-5" />, text: "5-Star Luxury" },
-    { icon: <MapPin className="w-5 h-5" />, text: "Nairobi - Namanga Rd, Kajiado" },
-    { icon: <Award className="w-5 h-5" />, text: "Award-Winning" },
+  const highlights: { icon: React.ReactNode; text: string }[] = [
+    { icon: <Star className="w-5 h-5" />, text: "4-Star Luxury" },
+    { icon: <MapPin className="w-5 h-5" />, text: "Kajiado, Kenya" },
+    { icon: <Award className="w-5 h-5" />, text: "Award-Winning Service" },
+    { icon: <Sparkles className="w-5 h-5" />, text: "Premium Amenities" },
   ];
 
   return (

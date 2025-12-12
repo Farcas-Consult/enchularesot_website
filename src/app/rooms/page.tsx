@@ -152,185 +152,85 @@ export default function Rooms() {
   }, [totalBgImages]);
 
   return (
-    <section id="rooms" className="relative py-24 px-4 overflow-hidden">
-      {/* Background Carousel */}
-      <div className="absolute inset-0">
-        {backgroundImages.map((bg, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentBgIndex ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Image
-              src={bg}
-              alt={`Background view ${index + 1}`}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
-          </div>
-        ))}
-        {/* Overlay on top of all backgrounds */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95" />
+    <div className="bg-white min-h-screen pb-16">
+      {/* Hero Banner */}
+      <div className="relative w-full h-[420px] md:h-[520px] flex items-end justify-center overflow-hidden mb-12">
+        <Image
+          src={activeRoom.images[0]}
+          alt={activeRoom.name}
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="relative z-10 text-center pb-12 w-full">
+          <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg mb-2">{activeRoom.name}</h1>
+          <div className="inline-block px-5 py-2 bg-white/80 rounded-full text-brand font-semibold text-lg shadow">{activeRoom.category}</div>
+        </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
-              ROOMS
-            </span>
-          </div>
-
-          <h2 className="text-5xl md:text-6xl font-bold text-[#FAF5F0] mb-6 tracking-tight">
-            Discover Your
-            <span className="block bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
-              Perfect Sanctuary
-            </span>
-          </h2>
-
-          <p className="text-xl text-[#D7BFA8] max-w-3xl mx-auto leading-relaxed">
-            Each room is crafted to exceed your expectations and create unforgettable memories.
-          </p>
+      <div className="max-w-5xl mx-auto px-4">
+        {/* Gallery */}
+        <div className="flex flex-row gap-6 mb-10 overflow-x-auto pb-2 snap-x">
+          {activeRoom.images.map((img, idx) => (
+            <div key={idx} className="min-w-[340px] h-[220px] md:min-w-[480px] md:h-[320px] rounded-2xl overflow-hidden shadow-lg snap-center">
+              <Image src={img} alt={`${activeRoom.name} image ${idx+1}`} width={480} height={320} className="object-cover w-full h-full" />
+            </div>
+          ))}
         </div>
 
-        {/* Room Selection Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        {/* Details & Amenities */}
+        <div className="bg-white rounded-3xl shadow-xl p-8 mb-10 border border-neutral-200">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-6">
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <span className="inline-flex items-center gap-2 text-lg text-brand font-semibold"><Users className="w-5 h-5 text-[#A04040]" /> {activeRoom.guests}</span>
+              <span className="inline-flex items-center gap-2 text-lg text-brand font-semibold"><Bed className="w-5 h-5 text-[#5C4033]" /> {activeRoom.size}</span>
+            </div>
+            <div className="text-2xl font-bold text-[#A04040]">{activeRoom.price} <span className="text-base font-normal text-neutral-500">/ night</span></div>
+          </div>
+          <p className="text-neutral-800 text-lg leading-relaxed mb-8">{activeRoom.description}</p>
+          <h4 className="text-xl font-bold text-brand mb-4">Room Amenities</h4>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+            {activeRoom.amenities.map((amenity, idx) => (
+              <div key={idx} className="flex items-center gap-2 text-neutral-700 bg-neutral-100 rounded-lg px-3 py-2 border border-neutral-200">
+                <ChevronRight className="w-4 h-4 text-[#A04040]" />
+                <span className="text-sm">{amenity}</span>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-4 mt-6">
+            <Link href="/booking" passHref>
+              <button className="relative px-7 py-4 bg-gradient-to-r from-[#A04040] to-[#5C2E2E] text-white rounded-xl font-semibold shadow-2xl overflow-hidden group border border-transparent hover:border-[#800000] transition-all duration-300 flex items-center gap-2 text-lg">
+                Book Now
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
+              </button>
+            </Link>
+            <Link href="/Virtual-tour" passHref>
+              <button className="px-7 py-4 bg-neutral-100 hover:bg-neutral-200 text-brand rounded-xl font-semibold border border-neutral-300 transition-all duration-300 text-lg">
+                Virtual Tour
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        {/* Room Switcher */}
+        <div className="flex flex-wrap justify-center gap-4 mt-8">
           {rooms.map((room, index) => (
             <button
               key={room.id}
               onClick={() => handleRoomChange(index)}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 border text-lg ${
                 activeRoomIndex === index
-                  ? `bg-gradient-to-r ${room.color} text-[#FAF5F0] shadow-lg scale-105`
-                  : "bg-[#2C1B16]/40 text-[#D7BFA8] hover:bg-[#5C4033]/20 backdrop-blur-sm border border-[#5C4033]/30"
+                  ? `bg-gradient-to-r ${room.color} text-white shadow-lg scale-105 border-transparent`
+                  : "bg-white text-brand border-neutral-300 hover:bg-neutral-100"
               }`}
             >
               {room.name}
             </button>
           ))}
         </div>
-
-        {/* Room Image Carousel */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          <div className="relative group overflow-hidden rounded-3xl h-[500px] shadow-2xl">
-            <Image
-              src={activeRoom.images[currentRoomImageIndex]}
-              alt={`${activeRoom.name} - View ${currentRoomImageIndex + 1}`}
-              fill
-              className="object-cover transition-transform duration-700 group-hover:scale-110"
-              priority
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/80 via-transparent to-transparent" />
-
-            {/* Room Image Navigation */}
-            {totalRoomImages > 1 && (
-              <>
-                <button
-                  onClick={prevRoomImage}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/60 transition-opacity"
-                  aria-label="Previous room image"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={nextRoomImage}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-black/40 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/60 transition-opacity"
-                  aria-label="Next room image"
-                >
-                  <ChevronRightIcon className="w-5 h-5" />
-                </button>
-              </>
-            )}
-
-            {/* Room Image Indicators */}
-            {totalRoomImages > 1 && (
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                {activeRoom.images.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentRoomImageIndex(idx)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      idx === currentRoomImageIndex ? "bg-white w-4" : "bg-white/50"
-                    }`}
-                    aria-label={`Go to room image ${idx + 1}`}
-                  />
-                ))}
-              </div>
-            )}
-
-            {/* Price Badge */}
-            <div
-              className={`absolute top-6 right-6 px-6 py-3 bg-gradient-to-r ${activeRoom.color} rounded-full backdrop-blur-sm shadow-lg`}
-            >
-              <div className="text-[#FAF5F0] text-center">
-                <div className="text-2xl font-bold">{activeRoom.price}</div>
-                <div className="text-xs">per night</div>
-              </div>
-            </div>
-
-            {/* Category Badge */}
-            <div className="absolute top-6 left-6 px-4 py-2 bg-[#2C1B16]/70 backdrop-blur-md rounded-full border border-[#5C4033]/40 flex items-center gap-2">
-              <Star className="w-4 h-4 text-[#A04040]" />
-              <span className="text-[#D7BFA8] text-sm font-semibold">{activeRoom.category}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Room Info Card */}
-        <div className="bg-[#2C1B16]/40 backdrop-blur-md rounded-3xl border border-[#5C4033]/30 p-8">
-          <h3 className="text-3xl font-bold text-[#FAF5F0] mb-4">{activeRoom.name}</h3>
-
-          <div className="flex gap-6 mb-6">
-            <div className="flex items-center gap-2 text-[#D7BFA8]">
-              <Users className="w-5 h-5 text-[#A04040]" />
-              <span>{activeRoom.guests}</span>
-            </div>
-            <div className="flex items-center gap-2 text-[#D7BFA8]">
-              <Bed className="w-5 h-5 text-[#5C4033]" />
-              <span>{activeRoom.size}</span>
-            </div>
-          </div>
-
-          <p className="text-[#F8F3EF] text-lg leading-relaxed mb-8">{activeRoom.description}</p>
-
-          {/* Amenities */}
-          <div className="mb-8">
-            <h4 className="text-xl font-bold text-[#FAF5F0] mb-4">Room Amenities</h4>
-            <div className="grid grid-cols-2 gap-3">
-              {activeRoom.amenities.map((amenity, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center gap-2 text-[#D7BFA8] bg-[#2C1B16]/30 rounded-lg px-3 py-2 border border-[#5C4033]/20"
-                >
-                  <ChevronRight className="w-4 h-4 text-[#5C4033]" />
-                  <span className="text-sm">{amenity}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <Link href="/booking" passHref>
-              <button className="relative px-6 py-4 bg-gradient-to-r from-[#A04040] to-[#5C2E2E] text-white rounded-xl font-semibold shadow-2xl overflow-hidden group border border-transparent hover:border-[#800000] transition-all duration-300 flex items-center gap-2">
-                Book Now
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
-              </button>
-            </Link>
-
-            <Link href="/Virtual-tour" passHref>
-              <button className="px-6 py-4 bg-[#2C1B16]/40 hover:bg-[#5C4033]/20 text-[#FAF5F0] rounded-xl font-semibold backdrop-blur-sm border border-[#5C4033]/30 transition-all duration-300">
-                Virtual Tour
-              </button>
-            </Link>
-          </div>
-        </div>
       </div>
-    </section>
+    </div>
   );
 }

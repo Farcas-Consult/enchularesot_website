@@ -1,8 +1,10 @@
-"use client";
 
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 const roomTypes = [
   {
     id: 1,
@@ -11,8 +13,8 @@ const roomTypes = [
     size: "30 m²",
     beds: "1 Queen Bed",
     images: [
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80",
+      `${S3_BASE}/IMG_2346.webp`,
+      `${S3_BASE}/IMG_2336.webp`,
     ],
     amenities: ["Free Wi-Fi", "TV", "Air Conditioning", "Private Bathroom", "Mountain View"],
     available: true,
@@ -34,8 +36,8 @@ const roomTypes = [
     size: "26 m²",
     beds: "2 Single Beds",
     images: [
-      "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=800&q=80",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80",
+      `${S3_BASE}/IMG_2321.webp`,
+      `${S3_BASE}/IMG_2315.webp`,
     ],
     amenities: ["Free Wi-Fi", "TV", "Air Conditioning", "Private Bathroom", "Garden View"],
     available: true,
@@ -57,8 +59,8 @@ const roomTypes = [
     size: "35 m²",
     beds: "1 King/2 Twin Beds",
     images: [
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80",
+      `${S3_BASE}/IMG_2300.webp`,
+      `${S3_BASE}/IMG_2305.webp`,
     ],
     amenities: ["Free Wi-Fi", "Smart TV", "Air Conditioning", "Luxury Bathroom", "Mini Bar", "Premium View"],
     available: true,
@@ -227,16 +229,9 @@ const BookingPage = () => {
   return (
     <section
       id="booking"
-      className="relative py-12 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=1920&q=80')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
+      className="relative py-12 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden bg-cover bg-center bg-fixed booking-bg"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto h-full flex flex-col">
         {/* Header with Badge */}
@@ -247,7 +242,7 @@ const BookingPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            Reserve Your <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Experience</span>
+            Reserve Your <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Experience</span>
           </h1>
           <p className="text-lg text-[#D7BFA8]">
             Nairobi-Namanga Rd, Kajiado • Check-in: 12:00 PM • Check-out: 10:30 AM
@@ -293,7 +288,7 @@ const BookingPage = () => {
                 A confirmation email has been sent to <strong>{guestInfo.email}</strong>
               </p>
               <p className="text-[#F8F3EF] text-sm">
-                You'll also receive an SMS at <strong>{guestInfo.phone}</strong> with your booking details.
+                You&apos;ll also receive an SMS at <strong>{guestInfo.phone}</strong> with your booking details.
               </p>
             </div>
           </div>
@@ -479,8 +474,8 @@ const BookingPage = () => {
                     onClick={() => setSelectedRoom(room.id)}
                   >
                     <div className="flex flex-col md:flex-row gap-4">
-                      <div className="flex-shrink-0 w-full md:w-32 h-20 rounded-lg overflow-hidden">
-                        <img src={room.images[0]} alt={room.name} className="w-full h-full object-cover" />
+                      <div className="shrink-0 w-full md:w-32 h-20 rounded-lg overflow-hidden relative">
+                        <Image src={room.images[0]} alt={room.name} fill className="object-cover" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-lg font-bold text-[#FAF5F0]">{room.name}</h3>
@@ -518,7 +513,7 @@ const BookingPage = () => {
               <button
                 onClick={() => setStep(2)}
                 disabled={!selectedRoom || !checkIn || !checkOut}
-                className="px-6 py-2.5 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold rounded-full text-sm transition-all shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+                className="px-6 py-2.5 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold rounded-full text-sm transition-all shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 Continue to Reservations
               </button>
@@ -588,7 +583,7 @@ const BookingPage = () => {
               </button>
               <button
                 onClick={() => setStep(3)}
-                className="px-6 py-2.5 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold rounded-full text-sm shadow-md"
+                className="px-6 py-2.5 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold rounded-full text-sm shadow-md"
               >
                 Continue to Guest Details
               </button>
@@ -691,7 +686,7 @@ const BookingPage = () => {
               <button
                 onClick={handleBooking}
                 disabled={!guestInfo.name || !guestInfo.email || !guestInfo.phone}
-                className="px-6 py-2.5 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold rounded-full text-sm shadow-md disabled:opacity-60"
+                className="px-6 py-2.5 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold rounded-full text-sm shadow-md disabled:opacity-60"
               >
                 Confirm Reservation
               </button>

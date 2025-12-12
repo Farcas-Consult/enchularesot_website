@@ -77,8 +77,8 @@ const Contact: React.FC = () => {
     {
       icon: <MapPin className="w-10 h-10" />,
       title: "Visit Us",
-      primary: "Along the Nairobi Namanga Road",
-      secondary: "Kajiado, Kenya",
+      primary: "Kajiado, Kenya",
+      secondary: "",
       iconColor: "text-[#A04040]",
       hoverGradient: "from-[#A04040] to-[#5C4033]",
     },

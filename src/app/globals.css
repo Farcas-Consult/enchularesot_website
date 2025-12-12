@@ -103,11 +103,12 @@ body {
 
 .btn-primary {
     background-color: var(--brand-primary-brown);
-    color: var(--text-on-dark);
+    color: #fff !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
     padding: 0.65rem 1.25rem;
     border-radius: 9999px;
     font-weight: 600;
-    box-shadow: 0 6px 18px rgba(20, 12, 6, 0.12);
+    box-shadow: 0 6px 18px rgba(255, 255, 200, 0.12);
     transition: transform 160ms ease, background-color 160ms ease;
     border: none;
     cursor: pointer;
@@ -116,6 +117,7 @@ body {
 .btn-primary:hover {
     transform: translateY(-2px);
     background-color: var(--brand-secondary-maroon);
+    color: #fff !important;
 }
 
 .btn-outline {
@@ -137,7 +139,7 @@ body {
 
 .bg-brand {
     background: linear-gradient(90deg, var(--brand-primary-brown), var(--brand-secondary-maroon));
-    color: var(--text-on-dark);
+    color: var(--text-primary);
 }
 
 .section-light {
@@ -157,11 +159,11 @@ body {
 }
 
 .navbar-bg {
-    background: var(--brand-dark-neutral);
-    color: var(--text-on-dark);
+    background: var(--brand-beige);
+    color: var(--text-primary);
 }
 
 .footer-bg {
-    background: var(--brand-dark-neutral);
-    color: var(--text-on-dark);
+    background: var(--brand-beige);
+    color: var(--text-primary);
 }

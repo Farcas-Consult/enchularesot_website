@@ -52,10 +52,7 @@ const Footer = () => {
                 <Mail className="w-4 h-4 text-[#A9745B] mt-1" />
                 <span>info@enchularesort.co.ke</span>
               </div>
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-[#A9745B] mt-1" />
-                <span>Along the Nairobi Namanga Road</span>
-              </div>
+              {/* Removed Nairobi Namanga Road as requested */}
             </div>
           </div>
 
