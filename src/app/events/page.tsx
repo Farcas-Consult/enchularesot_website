@@ -1,5 +1,5 @@
 "use client";
-import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
@@ -92,17 +92,10 @@ export default function EventsPage() {
   return (
     <section
       id="events"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
-      style={{
-        backgroundImage:
-          `url('${BACKGROUND_IMAGES[currentBgIndex]}')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-        transition: "background-image 1s ease-in-out",
-      }}
+      className={`relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-cover bg-center bg-fixed events-bg`}
+      style={{ backgroundImage: `url('${BACKGROUND_IMAGES[currentBgIndex]}')` }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header with Badge */}
@@ -113,7 +106,7 @@ export default function EventsPage() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            Your <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Special Moments</span>, Our Serene Setting
+            Your <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Special Moments</span>, Our Serene Setting
           </h1>
           <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto">
             Social Events | Corporate Events - Event Planning, Event Decor, Catering
@@ -140,12 +133,13 @@ export default function EventsPage() {
                     key={imgIdx}
                     className="relative h-56 md:h-64 rounded-xl overflow-hidden group"
                   >
-                    <img
+                    <Image
                       src={img}
                       alt={`${event.title} ${imgIdx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-[#2E1A15]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ))}
               </div>
@@ -217,10 +211,11 @@ export default function EventsPage() {
             `${S3_BASE}/IMG_2387.webp`,
           ].map((img, idx) => (
             <div key={idx} className="relative h-40 rounded-xl overflow-hidden">
-              <img
+              <Image
                 src={img}
                 alt={`Event venue ${idx + 1}`}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-300"
               />
             </div>
           ))}
@@ -251,7 +246,7 @@ export default function EventsPage() {
               href="https://instagram.com/events.by.enchula" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               <span className="text-xl">📸</span>
               events.by.enchula

@@ -50,7 +50,7 @@ export default function About() {
       </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -62,8 +62,8 @@ export default function About() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            Where Luxury Meets{" "}
-            <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
+            Where Luxury Meets{' '}
+            <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
               Kenyan Serenity
             </span>
           </h1>
