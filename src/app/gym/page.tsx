@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { 
   Dumbbell, 
   HeartPulse, 
@@ -110,58 +111,89 @@ const services = [
 ];
 
 export default function GymPage() {
-  // Static background (no carousel) for consistency with other pages
-  const backgroundImage = gymImages[0];
+  const [current, setCurrent] = useState(0);
+  const total = gymImages.length;
+  const next = () => setCurrent((c) => (c + 1) % total);
+  const prev = () => setCurrent((c) => (c - 1 + total) % total);
 
   return (
-    <section
-      id="gym"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
-      style={{
-        backgroundImage: `url('${backgroundImage}')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Header with Badge */}
-        <div className="text-center mb-16">
+    <section id="gym" className="min-h-screen bg-white">
+      {/* Hero Carousel */}
+      <div className="relative h-[60vh] md:h-[70vh] w-full flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={gymImages[current]}
+            alt="Gym Hero"
+            fill
+            className="object-cover object-center transition-opacity duration-700"
+            priority
+            sizes="100vw"
+          />
+        </div>
+        {/* Removed color overlay for hero banner */}
+        <div className="relative z-20 w-full max-w-4xl mx-auto text-center px-4">
           <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
-              GYM
-            </span>
+            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">GYM</span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            Premium <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Gym Experience</span>
+            Premium <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Gym Experience</span>
           </h1>
           <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto">
             Train in a world-class facility surrounded by nature. All equipment sanitized daily.
           </p>
         </div>
+        {/* Carousel Controls */}
+        <button
+          onClick={prev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#2C1B16]/60 hover:bg-[#800000]/80 text-[#FAF5F0] rounded-full p-2 shadow-lg z-30"
+          aria-label="Previous image"
+        >
+          &#8592;
+        </button>
+        <button
+          onClick={next}
+          className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#2C1B16]/60 hover:bg-[#800000]/80 text-[#FAF5F0] rounded-full p-2 shadow-lg z-30"
+          aria-label="Next image"
+        >
+          &#8594;
+        </button>
+        {/* Carousel Indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+          {gymImages.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrent(idx)}
+              className={`w-3 h-3 rounded-full border-2 ${current === idx ? "bg-[#800000] border-[#800000]" : "bg-white/60 border-white/80"}`}
+              aria-label={`Go to image ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
 
+      {/* Main Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16">
         {/* Activities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {activities.map((activity, index) => (
             <div
               key={index}
-              className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group"
+              className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group shadow"
             >
-              <div className="h-48 overflow-hidden">
-                <img
+              <div className="h-48 overflow-hidden relative">
+                <Image
                   src={activity.image}
                   alt={activity.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
                 />
               </div>
               <div className="p-6">
                 <div className="w-12 h-12 rounded-xl bg-[#800000] flex items-center justify-center text-[#FAF5F0] mb-4">
                   {activity.icon}
                 </div>
-                <h3 className="text-xl font-bold text-[#FAF5F0] mb-2">{activity.title}</h3>
-                <p className="text-[#F8F3EF] text-sm">{activity.desc}</p>
+                <h3 className="text-xl font-bold text-[#2C1B16] mb-2">{activity.title}</h3>
+                <p className="text-[#5C4033] text-sm">{activity.desc}</p>
               </div>
             </div>
           ))}
@@ -169,8 +201,8 @@ export default function GymPage() {
 
         {/* Packages */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-[#FAF5F0] text-center mb-4">Membership Plans</h2>
-          <p className="text-[#D7BFA8] text-center mb-8">
+          <h2 className="text-3xl font-bold text-[#2C1B16] text-center mb-4">Membership Plans</h2>
+          <p className="text-[#5C4033] text-center mb-8">
             Flexible options for every fitness journey
           </p>
 
@@ -178,7 +210,7 @@ export default function GymPage() {
             {packages.map((pkg) => (
               <div
                 key={pkg.id}
-                className={`bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border-2 relative ${
+                className={`bg-white rounded-2xl p-6 border-2 relative ${
                   pkg.popular
                     ? "border-[#800000] shadow-lg scale-[1.02]"
                     : "border-[#5C4033]/30 hover:border-[#800000]/50"
@@ -189,16 +221,16 @@ export default function GymPage() {
                     MOST POPULAR
                   </div>
                 )}
-                <h3 className="text-lg font-bold text-[#FAF5F0] mb-3">{pkg.name}</h3>
+                <h3 className="text-lg font-bold text-[#2C1B16] mb-3">{pkg.name}</h3>
                 <div className="mb-4">
                   <div className="text-2xl font-bold text-[#800000]">{pkg.price}</div>
-                  <div className="text-[#D7BFA8] text-sm">{pkg.period}</div>
+                  <div className="text-[#5C4033] text-sm">{pkg.period}</div>
                 </div>
                 <ul className="space-y-2 mb-6">
                   {pkg.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm">
-                      <Star className="w-4 h-4 text-[#800000] mt-0.5 flex-shrink-0" fill="#800000" />
-                      <span className="text-[#F8F3EF]">{feature}</span>
+                      <Star className="w-4 h-4 text-[#800000] mt-0.5 shrink-0" fill="#800000" />
+                      <span className="text-[#5C4033]">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -215,8 +247,8 @@ export default function GymPage() {
 
         {/* Additional Services */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-[#FAF5F0] text-center mb-4">Additional Services</h2>
-          <p className="text-[#D7BFA8] text-center mb-8">
+          <h2 className="text-3xl font-bold text-[#2C1B16] text-center mb-4">Additional Services</h2>
+          <p className="text-[#5C4033] text-center mb-8">
             Enhance your fitness journey with expert support
           </p>
 
@@ -224,28 +256,28 @@ export default function GymPage() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-[#2C1B16]/60 backdrop-blur-md p-6 rounded-2xl border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300"
+                className="bg-white p-6 rounded-2xl border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 shadow"
               >
-                <h3 className="text-lg font-bold text-[#FAF5F0] mb-2">{service.name}</h3>
+                <h3 className="text-lg font-bold text-[#2C1B16] mb-2">{service.name}</h3>
                 <div className="text-xl font-bold text-[#800000] mb-2">{service.price}</div>
-                <p className="text-[#F8F3EF] text-sm">{service.desc}</p>
+                <p className="text-[#5C4033] text-sm">{service.desc}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* CTA */}
-        <div className="text-center bg-[#2C1B16]/40 backdrop-blur-md p-8 rounded-2xl border border-[#5C4033]/30">
+        <div className="text-center bg-linear-to-r from-[#2C1B16]/10 to-[#800000]/10 p-8 rounded-2xl border border-[#5C4033]/30 shadow">
           <span className="text-4xl mb-4 block">💪</span>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#2C1B16] mb-4">
             Ready to Transform?
           </h2>
-          <p className="text-[#D7BFA8] max-w-2xl mx-auto mb-6">
+          <p className="text-[#5C4033] max-w-2xl mx-auto mb-6">
             Join Enchula Fitness today and experience luxury wellness in the heart of Kenya’s wilderness.
           </p>
           <Link
             href="/booking"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center gap-3 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Book a Tour
           </Link>

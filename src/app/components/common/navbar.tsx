@@ -1,111 +1,101 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Phone, Mail, MessageCircle } from "lucide-react";
 
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Top row: secondary links
-  const topLinks = [
-    { name: "Offers & Events", href: "/events" },
-    { name: "Gallery", href: "/gallery" },
-    { name: "Videos", href: "/videos" },
-    { name: "Awards & Recognition", href: "/awards" },
-    { name: "Virtual Tour Experience", href: "/Virtual-tour" },
-  ];
-  // Bottom row: main navigation
-  const navLinks = [
+  // Main nav with dropdowns
+  const navLinksRow1 = [
     { name: "Home", href: "/" },
-    { name: "Rooms & Cabins", href: "/rooms" },
-    { name: "Food & Drinks", href: "/dinings" },
-    { name: "Meetings & Events", href: "/events" },
-    { name: "Bush Massage & Spa", href: "/wellness" },
-    { name: "Fun Experiences", href: "/experience_activities" },
+    { name: "About", href: "/about" },
+    { name: "Accessibility", href: "/accessibility" },
+    { name: "Amenities", href: "/amenities" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
+    { name: "Dining", href: "/dinings" },
+    { name: "Events", href: "/events" },
+  ];
+  const navLinksRow2 = [
+    { name: "Experience & Activities", href: "/experience_activities" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Games", href: "/games" },
+    { name: "Guest Reviews", href: "/guest_reviews" },
     { name: "Gym", href: "/gym" },
+    { name: "Health & Safety", href: "/health_safety" },
     { name: "Kids & Family", href: "/kids_family" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Rooms", href: "/rooms" },
+    { name: "Virtual Tour", href: "/Virtual-tour" },
+    { name: "Wellness", href: "/wellness" },
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-[#2E1A15] shadow" : "bg-[#2E1A15]/90"}`}>
-      {/* Top Row: Secondary Links */}
-      <div className="hidden md:flex justify-center items-center w-full py-2 text-sm font-semibold tracking-wide text-[#D7BFA8] bg-transparent">
-        {topLinks.map((link, idx) => (
-          <React.Fragment key={link.name}>
-            <Link href={link.href} className="hover:text-[#A9745B] transition-colors px-2">
-              {link.name}
-            </Link>
-            {idx < topLinks.length - 1 && <span className="mx-1">|</span>}
-          </React.Fragment>
-        ))}
-      </div>
-      {/* Bottom Row: Main Navigation */}
-      <div className="max-w-7xl mx-auto px-4 flex justify-between items-center py-2">
-        {/* Logo */}
-        <Link href="/" className="flex items-center cursor-pointer pr-6 min-w-[140px]">
+    <header className="fixed top-0 w-full z-50 bg-[#2E1A15] shadow">
+      {/* Top Row: Contact Icons, Centered Logo, Book Now */}
+      <div className="flex items-center justify-between px-4 py-2 border-b border-[#DCC7A1]/40 bg-[#2E1A15]">
+        {/* Left: Contact Icons */}
+        <div className="flex items-center gap-4 text-[#DCC7A1] text-lg">
+          <a href="tel:+254727000027" className="hover:text-white" title="Call"><Phone className="w-5 h-5" /></a>
+          <a href="mailto:info@enchularesort.co.ke" className="hover:text-white" title="Email"><Mail className="w-5 h-5" /></a>
+          <a href="https://wa.me/254727000027" target="_blank" rel="noopener noreferrer" className="hover:text-white" title="WhatsApp"><MessageCircle className="w-5 h-5" /></a>
+        </div>
+        {/* Center: Logo */}
+        <Link href="/" className="flex flex-col items-center">
           <Image 
             src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Enchula_Logo.webp"
             alt="Enchula Resort Logo"
-            width={52}
-            height={52}
-            className="rounded-full object-cover border-2 border-[#A9745B] bg-white"
+            width={60}
+            height={60}
+            className="object-contain"
             priority
           />
-          <span className="ml-3 text-xl font-bold text-[#A9745B] whitespace-nowrap">ENCHULA</span>
+          <span className="text-2xl font-bold text-white tracking-wider mt-1">Enchula</span>
         </Link>
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center flex-wrap gap-x-4 gap-y-2" style={{ marginLeft: '80px' }}>
-          {navLinks.map((link, idx) => (
-            <React.Fragment key={link.name}>
-              <Link
-                href={link.href}
-                className="text-[#F8F3EF] hover:text-[#A9745B] font-medium px-2 py-1 rounded transition-colors"
-              >
-                {link.name}
-              </Link>
-              {idx < navLinks.length - 1 && <span className="text-[#A9745B] mx-1">|</span>}
-            </React.Fragment>
-          ))}
-          <Link href="/booking" className="ml-4 px-4 py-1 bg-[#A9745B] hover:bg-[#A04040] text-white font-semibold rounded transition-all whitespace-nowrap">BOOK NOW</Link>
-        </nav>
-        {/* Mobile menu button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden text-[#F8F3EF] hover:text-[#A9745B] p-2"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Right: Book Now */}
+        <Link href="/booking" className="px-6 py-2 bg-white text-[#7A1F2E] font-bold rounded shadow hover:bg-[#DCC7A1] transition-all whitespace-nowrap">BOOK NOW</Link>
       </div>
-      {/* Mobile Menu: All links in one column */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
-          isMenuOpen ? "max-h-[800px] mt-2 pb-4" : "max-h-0"
-        }`}
-      >
-        <nav className="bg-[#2E1A15] px-4 space-y-1">
-          {[...topLinks, ...navLinks].map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="block py-3 px-2 text-[#F8F3EF] hover:text-[#A9745B] font-medium"
-            >
+      {/* Main Navigation Row */}
+      <nav className="hidden md:block bg-[#2E1A15] text-[#DCC7A1] font-semibold text-base border-b border-[#DCC7A1]/30">
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-2 py-2">
+          {navLinksRow1.map((link) => (
+            <Link key={link.name} href={link.href} className="hover:text-white px-2 py-1">
               {link.name}
             </Link>
           ))}
-          <Link href="/booking" className="block mt-2 px-4 py-1 bg-[#A9745B] hover:bg-[#A04040] text-white font-semibold rounded text-center">BOOK NOW</Link>
-        </nav>
+        </div>
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-2 pb-2">
+          {navLinksRow2.map((link) => (
+            <Link key={link.name} href={link.href} className="hover:text-white px-2 py-1">
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      </nav>
+      {/* Mobile Nav */}
+      <div className="md:hidden flex justify-end px-4 py-2 bg-[#2E1A15]">
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="text-[#DCC7A1] hover:text-white p-2"
+        >
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
+      {/* Mobile Dropdown */}
+      {isMenuOpen && (
+        <nav className="md:hidden bg-[#2E1A15] px-4 pb-4 space-y-2">
+          {[...navLinksRow1, ...navLinksRow2].map((link) => (
+            <Link key={link.name} href={link.href} className="block py-2 text-[#DCC7A1] hover:text-white">
+              {link.name}
+            </Link>
+          ))}
+          <Link href="/booking" className="block mt-2 px-4 py-2 bg-white text-[#7A1F2E] font-bold rounded text-center">BOOK NOW</Link>
+        </nav>
+      )}
     </header>
   );
 }

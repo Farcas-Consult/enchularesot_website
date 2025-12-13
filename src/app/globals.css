@@ -1,3 +1,19 @@
+/* Contact page map iframe border fix */
+
+.contact-map-iframe {
+    border: 0;
+}
+
+
+/* Contact page background image utility */
+
+.contact-bg-img {
+    background-image: url('https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2260.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
 @import "tailwindcss";
 
 /* Enchula Resort brand palette - CSS variables available globally */
@@ -32,7 +48,7 @@
 body {
     background: var(--background);
     color: var(--foreground);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', 'Arial', 'Helvetica', 'sans-serif';
     margin: 0;
     padding: 0;
     min-height: 100vh;
