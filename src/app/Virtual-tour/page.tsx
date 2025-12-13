@@ -158,19 +158,59 @@ export default function VirtualTourPage() {
     : "Experiences & Activities";
 
   return (
-    // ✅ Main wrapper: adds top padding to avoid navbar overlap
-    <div className="min-h-screen bg-[#1A0F0B] text-[#FAF5F0] overflow-hidden relative pt-24 pb-12">
-      {/* Background Image (full screen, but content won't be covered) */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out"
-        style={{ backgroundImage: `url(${currentSpot.image})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-[#2E1A15]/50 via-[#2C1B16]/70 to-[#221812]/90"></div>
+    <section id="virtual-tour" className="relative min-h-screen bg-white">
+      {/* Hero Banner Carousel */}
+      <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
+        {tourSpots.map((spot, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === current ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            style={{ backgroundImage: `url('${spot.image}')` }}
+          />
+        ))}
+        <div className="relative z-30 text-center w-full px-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
+            Virtual Tour
+          </h1>
+          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
+            Explore Enchula Resort and its experiences from anywhere. Navigate through our beautiful spaces and discover what awaits you.
+          </p>
+        </div>
+        {/* Carousel indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+          {tourSpots.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-3 h-3 rounded-full border border-white ${current === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              onClick={() => setCurrent(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+        {/* Carousel Controls */}
+        <button
+          onClick={prevSlide}
+          onMouseEnter={pauseAutoPlay}
+          onMouseLeave={resumeAutoPlay}
+          className="absolute left-4 top-1/2 z-20 transform -translate-y-1/2 bg-[#2C1B16]/60 hover:bg-[#5C4033]/60 text-[#FAF5F0] p-3 rounded-full backdrop-blur-sm border border-[#5C4033]/40 transition-all duration-300 hover:scale-110"
+          aria-label="Previous"
+        >
+          <ChevronLeft className="w-6 h-6" />
+        </button>
+        <button
+          onClick={nextSlide}
+          onMouseEnter={pauseAutoPlay}
+          onMouseLeave={resumeAutoPlay}
+          className="absolute right-4 top-1/2 z-20 transform -translate-y-1/2 bg-[#2C1B16]/60 hover:bg-[#5C4033]/60 text-[#FAF5F0] p-3 rounded-full backdrop-blur-sm border border-[#5C4033]/40 transition-all duration-300 hover:scale-110"
+          aria-label="Next"
+        >
+          <ChevronRight className="w-6 h-6" />
+        </button>
       </div>
 
-      {/* Content Container: safe from navbar */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-6">
-        {/* Navigation Buttons (top-right, below navbar) */}
+      {/* Main Content Section */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-6 py-12">
+        {/* Navigation Buttons */}
         <div className="flex justify-end gap-3 mb-8">
           <Link
             href="/rooms"
@@ -188,17 +228,16 @@ export default function VirtualTourPage() {
         </div>
 
         {/* Info Card */}
-        <div className="max-w-2xl bg-[#2C1B16]/50 backdrop-blur-lg border border-[#5C4033]/40 rounded-3xl p-6 md:p-8 shadow-2xl mb-12">
+        <div className="max-w-2xl bg-white border border-[#5C4033]/20 rounded-3xl p-6 md:p-8 shadow-2xl mb-12">
           <div className="mb-4">
             <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
               currentSpot.category === "resort"
-                ? "bg-[#800000]/20 text-[#D7BFA8] border border-[#800000]/30"
-                : "bg-[#2E8B57]/20 text-[#A9D9A6] border border-[#2E8B57]/30"
+                ? "bg-[#800000]/10 text-[#A04040] border border-[#800000]/10"
+                : "bg-[#2E8B57]/10 text-[#2E8B57] border border-[#2E8B57]/10"
             }`}>
               {categoryLabel}
             </span>
           </div>
-
           <div className="flex items-start gap-4">
             <div
               className="p-3 rounded-xl"
@@ -207,28 +246,25 @@ export default function VirtualTourPage() {
               <Icon className="w-8 h-8" style={{ color: currentSpot.color }} />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight">
+              <h1 className="text-3xl md:text-4xl font-bold mb-3 tracking-tight text-[#2E1A15]">
                 {currentSpot.title}
               </h1>
-              <p className="text-base md:text-lg text-[#D7BFA8] leading-relaxed">
+              <p className="text-base md:text-lg text-[#5C4033] leading-relaxed">
                 {currentSpot.description}
               </p>
             </div>
           </div>
-
           <div className="mt-6 flex flex-wrap gap-2">
             <span
-              className="px-3 py-1.5 bg-[#2C1B16]/60 border border-[#5C4033]/40 rounded-full text-xs md:text-sm font-medium"
-              style={{ color: currentSpot.color }}
+              className="px-3 py-1.5 bg-[#2C1B16]/10 border border-[#5C4033]/10 rounded-full text-xs md:text-sm font-medium text-[#A04040]"
             >
                {currentSpot.id.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())}
             </span>
-            <span className="px-3 py-1.5 bg-[#800000]/20 text-[#D7BFA8] rounded-full text-xs md:text-sm font-medium">
+            <span className="px-3 py-1.5 bg-[#800000]/10 text-[#A04040] rounded-full text-xs md:text-sm font-medium">
                Fully Accessible
             </span>
           </div>
         </div>
-
         {/* Navigation Dots */}
         <div className="flex justify-center gap-2">
           {tourSpots.map((_, idx) => (
@@ -240,43 +276,14 @@ export default function VirtualTourPage() {
               }}
               className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 idx === current
-                  ? "bg-[#D7BFA8] w-6"
-                  : "bg-[#5C4033]/50 hover:bg-[#D7BFA8]/60"
+                  ? "bg-[#A04040] w-6"
+                  : "bg-[#5C4033]/30 hover:bg-[#A04040]/60"
               }`}
               aria-label={`Go to ${tourSpots[idx].title}`}
             />
           ))}
         </div>
       </div>
-
-      {/* Carousel Controls (arrows) - positioned relative to viewport but won't cover navbar */}
-      <button
-        onClick={prevSlide}
-        onMouseEnter={pauseAutoPlay}
-        onMouseLeave={resumeAutoPlay}
-        className="absolute left-4 top-1/2 z-20 transform -translate-y-1/2 bg-[#2C1B16]/60 hover:bg-[#5C4033]/60 text-[#FAF5F0] p-3 rounded-full backdrop-blur-sm border border-[#5C4033]/40 transition-all duration-300 hover:scale-110"
-        aria-label="Previous"
-      >
-        <ChevronLeft className="w-6 h-6" />
-      </button>
-
-      <button
-        onClick={nextSlide}
-        onMouseEnter={pauseAutoPlay}
-        onMouseLeave={resumeAutoPlay}
-        className="absolute right-4 top-1/2 z-20 transform -translate-y-1/2 bg-[#2C1B16]/60 hover:bg-[#5C4033]/60 text-[#FAF5F0] p-3 rounded-full backdrop-blur-sm border border-[#5C4033]/40 transition-all duration-300 hover:scale-110"
-        aria-label="Next"
-      >
-        <ChevronRight className="w-6 h-6" />
-      </button>
-
-      {/* Auto-play indicator */}
-      {isAutoPlaying && (
-        <div className="absolute top-6 left-6 z-20 flex items-center gap-2">
-          <div className="w-2 h-2 bg-[#800000] rounded-full animate-pulse"></div>
-          <span className="text-sm text-[#D7BFA8]">Auto Tour • {categoryLabel}</span>
-        </div>
-      )}
-    </div>
+    </section>
   );
 }

@@ -54,50 +54,69 @@ export default function ExperiencesPage() {
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <section
-      id="experiences"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
-      style={{
-        backgroundImage:
-          `url('${BACKGROUND_IMAGES[currentBgIndex]}')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-        transition: "background-image 1s ease-in-out",
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Header with Badge */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
-              EXPERIENCES
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            Moments That Become <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Memories</span>
+  return (
+    <section id="experiences" className="relative min-h-screen bg-white">
+      {/* Hero Banner Carousel */}
+      <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
+        {BACKGROUND_IMAGES.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            style={{ backgroundImage: `url('${img}')` }}
+          />
+        ))}
+        <div className="relative z-30 text-center w-full px-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
+            Experiences & Activities
           </h1>
-          <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto">
-            Moments that become memories
+          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
+            Discover unique adventures, cultural moments, and relaxation at Enchula Resort.
           </p>
         </div>
+        {/* Carousel indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+          {BACKGROUND_IMAGES.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-3 h-3 rounded-full border border-white ${currentBgIndex === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              onClick={() => setCurrentBgIndex(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
 
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Experience Gallery */}
         <div className="space-y-12 mb-16">
           {experiences.map((exp, idx) => (
             <div
               key={idx}
-              className="bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group"
+              className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group"
             >
               {/* Title Bar */}
-              <div className="bg-[#2C1B16]/80 p-6 flex items-center justify-between border-b border-[#5C4033]/30">
+              <div className="bg-[#F8F3EF] p-6 flex items-center justify-between border-b border-[#5C4033]/10">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#FAF5F0]">{exp.title}</h2>
-                  <p className="text-[#D7BFA8] text-lg">{exp.when}</p>
+                  <h2 className="text-2xl md:text-3xl font-bold text-[#2E1A15]">{exp.title}</h2>
+                  <p className="text-[#A04040] text-lg">{exp.when}</p>
                 </div>
+              </div>
+
+              {/* Description */}
+              <div className="px-6 py-2 text-[#5C4033] text-base">
+                {exp.title === "Guided Nature Walks" && (
+                  <span>Explore the beauty of our natural surroundings with expert guides who share insights on local flora and fauna.</span>
+                )}
+                {exp.title === "Maasai Cultural Experience" && (
+                  <span>Immerse yourself in Maasai traditions, music, and dance for an authentic cultural encounter.</span>
+                )}
+                {exp.title === "Stargazing Nights" && (
+                  <span>Marvel at the night sky with telescopes and expert guidance, perfect for astronomy lovers and dreamers alike.</span>
+                )}
+                {exp.title === "Outdoor Dining" && (
+                  <span>Dine under the stars with our special outdoor setups, blending gourmet cuisine with nature’s ambiance.</span>
+                )}
               </div>
 
               {/* Image Grid */}
@@ -112,7 +131,6 @@ export default function ExperiencesPage() {
                       alt={`${exp.title} ${imgIdx + 1}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ))}
               </div>

@@ -34,22 +34,53 @@ const StaffPage = () => {
     },
   ];
 
+  const HERO_IMAGES = [
+    `${S3_BASE}/IMG_2422.webp`,
+    `${S3_BASE}/IMG_2419.webp`,
+    `${S3_BASE}/IMG_2417.webp`,
+  ];
+  const [currentHero, setCurrentHero] = React.useState(0);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHero((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section
-      id="staff"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
-      style={{
-        backgroundImage: `url('${S3_BASE}/IMG_2422.webp')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/95 via-[#2C1B16]/90 to-[#2E1A15]/95"></div>
+    <section id="staff" className="relative min-h-screen bg-white">
+      {/* Hero Banner Carousel */}
+      <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
+        {HERO_IMAGES.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentHero ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            style={{ backgroundImage: `url('${img}')` }}
+          />
+        ))}
+        <div className="relative z-30 text-center w-full px-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
+            Meet Our Culinary Team
+          </h1>
+          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
+            Passionate chefs and staff dedicated to delivering exceptional dining experiences at Enchula Resort.
+          </p>
+        </div>
+        {/* Carousel indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+          {HERO_IMAGES.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-3 h-3 rounded-full border border-white ${currentHero === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              onClick={() => setCurrentHero(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
@@ -67,28 +98,28 @@ const StaffPage = () => {
         </div>
 
         {/* Mission Statement */}
-        <div className="mb-16 bg-[#2C1B16]/60 backdrop-blur-sm rounded-2xl p-8 border border-[#5C4033]/30">
+        <div className="mb-16 bg-white rounded-2xl p-8 border border-[#5C4033]/20 shadow-lg">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="space-y-3">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800000]/20 border border-[#800000]/30 mx-auto">
-                <Heart className="w-6 h-6 text-[#D7BFA8]" />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800000]/10 border border-[#800000]/10 mx-auto">
+                <Heart className="w-6 h-6 text-[#A04040]" />
               </div>
-              <h3 className="text-xl font-semibold text-[#FAF5F0]">Culinary Passion</h3>
-              <p className="text-[#D7BFA8]">Each chef brings creativity and dedication to the kitchen</p>
+              <h3 className="text-xl font-semibold text-[#2E1A15]">Culinary Passion</h3>
+              <p className="text-[#5C4033]">Each chef brings creativity and dedication to the kitchen</p>
             </div>
             <div className="space-y-3">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800000]/20 border border-[#800000]/30 mx-auto">
-                <Award className="w-6 h-6 text-[#D7BFA8]" />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800000]/10 border border-[#800000]/10 mx-auto">
+                <Award className="w-6 h-6 text-[#A04040]" />
               </div>
-              <h3 className="text-xl font-semibold text-[#FAF5F0]">Quality Ingredients</h3>
-              <p className="text-[#D7BFA8]">Using fresh, locally-sourced produce for authentic flavors</p>
+              <h3 className="text-xl font-semibold text-[#2E1A15]">Quality Ingredients</h3>
+              <p className="text-[#5C4033]">Using fresh, locally-sourced produce for authentic flavors</p>
             </div>
             <div className="space-y-3">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800000]/20 border border-[#800000]/30 mx-auto">
-                <Star className="w-6 h-6 text-[#D7BFA8]" />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800000]/10 border border-[#800000]/10 mx-auto">
+                <Star className="w-6 h-6 text-[#A04040]" />
               </div>
-              <h3 className="text-xl font-semibold text-[#FAF5F0]">Memorable Experiences</h3>
-              <p className="text-[#D7BFA8]">Creating dishes that delight and satisfy every guest</p>
+              <h3 className="text-xl font-semibold text-[#2E1A15]">Memorable Experiences</h3>
+              <p className="text-[#5C4033]">Creating dishes that delight and satisfy every guest</p>
             </div>
           </div>
         </div>
@@ -98,7 +129,7 @@ const StaffPage = () => {
           {staffMembers.map((member, index) => (
             <div
               key={index}
-              className="bg-[#2C1B16]/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group"
+              className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg hover:border-[#A04040]/40 transition-all duration-300 group"
             >
               <div className="relative h-96 overflow-hidden">
                 <img
@@ -106,8 +137,7 @@ const StaffPage = () => {
                   alt={member.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/90 via-[#2E1A15]/40 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#A04040]/80 to-transparent">
                   <h3 className="text-2xl font-bold text-[#FAF5F0] mb-2">
                     {member.name}
                   </h3>
@@ -115,7 +145,7 @@ const StaffPage = () => {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-[#D7BFA8] leading-relaxed">
+                <p className="text-[#5C4033] leading-relaxed">
                   {member.description}
                 </p>
               </div>
@@ -124,11 +154,11 @@ const StaffPage = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center bg-[#2C1B16]/60 backdrop-blur-sm rounded-2xl p-12 border border-[#5C4033]/30">
-          <h2 className="text-3xl font-bold text-[#FAF5F0] mb-4">
+        <div className="text-center bg-white rounded-2xl p-12 border border-[#5C4033]/20 shadow-lg">
+          <h2 className="text-3xl font-bold text-[#2E1A15] mb-4">
             Experience Our Culinary Excellence
           </h2>
-          <p className="text-[#D7BFA8] mb-8 max-w-2xl mx-auto">
+          <p className="text-[#5C4033] mb-8 max-w-2xl mx-auto">
             Our catering team is ready to serve you exceptional meals throughout your stay. Explore our dining options and book your culinary experience today.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
@@ -140,7 +170,7 @@ const StaffPage = () => {
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-4 bg-[#5C4033]/20 backdrop-blur-sm text-[#D7BFA8] font-semibold rounded-full border border-[#800000]/30 hover:bg-[#5C4033]/40 hover:border-[#800000]/50 transition-all duration-300"
+              className="px-8 py-4 bg-[#5C4033]/10 text-[#A04040] font-semibold rounded-full border border-[#800000]/10 hover:bg-[#5C4033]/20 hover:border-[#A04040]/30 transition-all duration-300"
             >
               Contact Us
             </Link>

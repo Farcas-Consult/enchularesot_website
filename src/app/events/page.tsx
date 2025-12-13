@@ -13,7 +13,6 @@ const BACKGROUND_IMAGES = [
 
 export default function EventsPage() {
   const [currentBgIndex, setCurrentBgIndex] = React.useState(0);
-
   React.useEffect(() => {
     const interval = setInterval(() => {
       setCurrentBgIndex((prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length);
@@ -90,25 +89,50 @@ export default function EventsPage() {
   ];
 
   return (
-    <section
-      id="events"
-      className={`relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen bg-cover bg-center bg-fixed events-bg`}
-      style={{ backgroundImage: `url('${BACKGROUND_IMAGES[currentBgIndex]}')` }}
-    >
-      <div className="absolute inset-0 bg-linear-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
+    <section id="events" className="relative min-h-screen bg-white">
+      {/* Hero Banner Carousel */}
+      <div className="relative h-screen min-h-[500px] flex items-center justify-center overflow-hidden">
+        {BACKGROUND_IMAGES.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            style={{ backgroundImage: `url('${img}')` }}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/80 via-[#2C1B16]/80 to-[#2E1A15]/90 z-20" />
+        <div className="relative z-30 text-center w-full px-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
+            Events & Experiences
+          </h1>
+          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
+            Celebrate your special moments and create lasting memories in our serene setting.
+          </p>
+        </div>
+        {/* Carousel indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+          {BACKGROUND_IMAGES.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-3 h-3 rounded-full border border-white ${currentBgIndex === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              onClick={() => setCurrentBgIndex(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header with Badge */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
+          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/10 backdrop-blur-sm rounded-full border border-[#800000]/10">
+            <span className="text-[#A04040] font-semibold tracking-wide text-sm uppercase">
               EVENTS
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            Your <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Special Moments</span>, Our Serene Setting
-          </h1>
-          <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#2E1A15] mb-6 leading-tight">
+            Your <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Special Moments</span>, Our Serene Setting
+          </h2>
+          <p className="text-lg text-[#5C4033] max-w-3xl mx-auto">
             Social Events | Corporate Events - Event Planning, Event Decor, Catering
           </p>
         </div>
@@ -118,13 +142,13 @@ export default function EventsPage() {
           {events.map((event, idx) => (
             <div
               key={idx}
-              className="bg-[#2C1B16]/60 p-8 rounded-2xl border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 backdrop-blur-sm"
+              className="bg-white p-8 rounded-2xl border border-[#5C4033]/20 shadow-lg"
             >
               <div className="text-center mb-8">
-                <h2 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-2">
+                <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#2E1A15] mb-2">
                   {event.title}
-                </h2>
-                <p className="text-[#D7BFA8] text-lg">{event.description}</p>
+                </h3>
+                <p className="text-[#5C4033] text-lg">{event.description}</p>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
@@ -139,7 +163,6 @@ export default function EventsPage() {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-[#2E1A15]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </div>
                 ))}
               </div>
@@ -147,17 +170,17 @@ export default function EventsPage() {
               {/* Conference Packages */}
               {event.packages && (
                 <div className="space-y-6">
-                  <h3 className="text-xl font-bold text-[#FAF5F0] border-b border-[#800000]/30 pb-3 mb-4">Conference Packages</h3>
+                  <h4 className="text-xl font-bold text-[#A04040] border-b border-[#800000]/10 pb-3 mb-4">Conference Packages</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {event.packages.map((pkg, pkgIdx) => (
-                      <div key={pkgIdx} className="bg-[#2E1A15]/40 p-6 rounded-xl border border-[#5C4033]/40">
-                        <h4 className="text-lg font-bold text-[#FAF5F0] mb-2">{pkg.name}</h4>
+                      <div key={pkgIdx} className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
+                        <h5 className="text-lg font-bold text-[#2E1A15] mb-2">{pkg.name}</h5>
                         <p className="text-[#A04040] font-semibold text-xl mb-4">{pkg.price}</p>
-                        <p className="text-[#D7BFA8] text-sm font-semibold mb-2">The Package includes:</p>
+                        <p className="text-[#5C4033] text-sm font-semibold mb-2">The Package includes:</p>
                         <ul className="space-y-1.5">
                           {pkg.includes.map((item, i) => (
-                            <li key={i} className="text-[#F8F3EF] text-sm flex items-start">
-                              <span className="text-[#800000] mr-2">★</span>
+                            <li key={i} className="text-[#2E1A15] text-sm flex items-start">
+                              <span className="text-[#A04040] mr-2">★</span>
                               <span>{item}</span>
                             </li>
                           ))}
@@ -169,12 +192,12 @@ export default function EventsPage() {
                   {/* Accommodation Rates */}
                   {event.accommodation && (
                     <div className="mt-6">
-                      <h4 className="text-lg font-bold text-[#FAF5F0] mb-4">Accommodation Rates</h4>
+                      <h5 className="text-lg font-bold text-[#A04040] mb-4">Accommodation Rates</h5>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {event.accommodation.map((room, i) => (
-                          <div key={i} className="bg-[#2E1A15]/40 p-4 rounded-xl border border-[#5C4033]/40 text-center">
-                            <p className="text-[#D7BFA8] text-xs mb-2">{room.type}</p>
-                            <p className="text-[#FAF5F0] font-bold text-lg">{room.price}</p>
+                          <div key={i} className="bg-[#F8F3EF] p-4 rounded-xl border border-[#5C4033]/10 text-center">
+                            <p className="text-[#5C4033] text-xs mb-2">{room.type}</p>
+                            <p className="text-[#2E1A15] font-bold text-lg">{room.price}</p>
                           </div>
                         ))}
                       </div>
@@ -183,17 +206,17 @@ export default function EventsPage() {
 
                   {/* Extras */}
                   {event.extras && (
-                    <div className="mt-6 bg-[#800000]/10 p-4 rounded-xl border border-[#800000]/30">
-                      <h4 className="text-[#FAF5F0] font-bold mb-2">Extras</h4>
+                    <div className="mt-6 bg-[#A04040]/10 p-4 rounded-xl border border-[#A04040]/20">
+                      <h6 className="text-[#A04040] font-bold mb-2">Extras</h6>
                       {event.extras.map((extra, i) => (
-                        <p key={i} className="text-[#F8F3EF] text-sm">
+                        <p key={i} className="text-[#2E1A15] text-sm">
                           {extra.item}: <span className="text-[#A04040] font-semibold">{extra.price}</span>
                         </p>
                       ))}
                     </div>
                   )}
 
-                  <p className="text-[#D7BFA8] text-xs italic mt-4">
+                  <p className="text-[#5C4033] text-xs italic mt-4">
                     Rates are inclusive of government taxes and levies. Terms and Conditions apply.
                   </p>
                 </div>
@@ -222,31 +245,31 @@ export default function EventsPage() {
         </div>
 
         {/* CTA */}
-        <div className="text-center bg-[#2C1B16]/40 backdrop-blur-md p-8 rounded-2xl border border-[#5C4033]/30">
-          <p className="text-[#FAF5F0] text-lg mb-6 font-semibold">
+        <div className="text-center bg-white p-8 rounded-2xl border border-[#5C4033]/20 shadow-lg">
+          <p className="text-[#2E1A15] text-lg mb-6 font-semibold">
             Ready to plan your event?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <div className="flex items-center gap-2 text-[#D7BFA8]">
+            <div className="flex items-center gap-2 text-[#A04040]">
               <span className="text-2xl">📞</span>
-              <a href="tel:+254723008164" className="text-[#FAF5F0] font-semibold hover:text-[#A04040] transition-colors">
+              <a href="tel:+254723008164" className="text-[#2E1A15] font-semibold hover:text-[#A04040] transition-colors">
                 0723008164
               </a>
             </div>
-            <div className="flex items-center gap-2 text-[#D7BFA8]">
+            <div className="flex items-center gap-2 text-[#A04040]">
               <span className="text-2xl">✉️</span>
-              <a href="mailto:events@enchularesort.co.ke" className="text-[#FAF5F0] font-semibold hover:text-[#A04040] transition-colors">
+              <a href="mailto:events@enchularesort.co.ke" className="text-[#2E1A15] font-semibold hover:text-[#A04040] transition-colors">
                 events@enchularesort.co.ke
               </a>
             </div>
           </div>
           <div className="mt-6 flex justify-center items-center gap-3">
-            <span className="text-[#D7BFA8]">Follow us:</span>
+            <span className="text-[#A04040]">Follow us:</span>
             <a 
               href="https://instagram.com/events.by.enchula" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#A04040] to-[#D7BFA8] hover:from-[#800000] hover:to-[#6B4423] text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               <span className="text-xl">📸</span>
               events.by.enchula

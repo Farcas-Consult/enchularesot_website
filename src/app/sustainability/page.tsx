@@ -61,21 +61,38 @@ export default function Sustainability() {
   ];
 
   return (
-    <section
-      id="sustainability"
-      className="relative py-24 px-4 overflow-hidden"
-      style={{
-        backgroundImage: `url('${BACKGROUND_IMAGES[currentBgIndex]}')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-        transition: "background-image 1s ease-in-out",
-      }}
-    >
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#2E1A15]/95 via-[#2E1A15]/85 to-[#2E1A15]/95"></div>
+    <section id="sustainability" className="relative min-h-screen bg-white">
+      {/* Hero Banner Carousel */}
+      <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
+        {BACKGROUND_IMAGES.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            style={{ backgroundImage: `url('${img}')` }}
+          />
+        ))}
+        <div className="relative z-30 text-center w-full px-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
+            Sustainability
+          </h1>
+          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
+            Luxury meets responsibility. Discover our green initiatives and how your stay supports a better planet.
+          </p>
+        </div>
+        {/* Carousel indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+          {BACKGROUND_IMAGES.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-3 h-3 rounded-full border border-white ${currentBgIndex === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              onClick={() => setCurrentBgIndex(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-20">
           <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#A04040]/50">
@@ -100,19 +117,17 @@ export default function Sustainability() {
           {sustainabilityData.map((item, index) => (
             <div
               key={index}
-              className="group relative bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl overflow-hidden hover:border-[#800000]/50 transition-all duration-300 border border-[#5C4033]/30"
+              className="group relative bg-white rounded-2xl overflow-hidden hover:border-[#800000]/50 transition-all duration-300 border border-[#5C4033]/20 shadow-lg"
             >
               {/* Content */}
               <div className="relative z-10 p-8">
                 <div className="mb-6 transform group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
                 </div>
-
-                <h3 className="text-2xl font-bold text-[#FAF5F0] mb-4 group-hover:text-[#D7BFA8] transition-colors duration-300">
+                <h3 className="text-2xl font-bold text-[#2E1A15] mb-4 group-hover:text-[#A04040] transition-colors duration-300">
                   {item.title}
                 </h3>
-
-                <p className="text-[#D7BFA8] leading-relaxed">{item.description}</p>
+                <p className="text-[#5C4033] leading-relaxed">{item.description}</p>
               </div>
             </div>
           ))}
@@ -126,11 +141,11 @@ export default function Sustainability() {
           </div>
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-[#A04040] mb-2">60%</div>
-            <div className="text-[#D7BFA8] text-sm uppercase tracking-wide">Water Saved</div>
+            <div className="text-[#A04040] text-sm uppercase tracking-wide">Water Saved</div>
           </div>
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-[#A04040] mb-2">95%</div>
-            <div className="text-[#D7BFA8] text-sm uppercase tracking-wide">Waste Diverted</div>
+            <div className="text-[#A04040] text-sm uppercase tracking-wide">Waste Diverted</div>
           </div>
           <div className="text-center">
             <div className="text-4xl md:text-5xl font-bold text-[#5C4033] mb-2">10,000+</div>

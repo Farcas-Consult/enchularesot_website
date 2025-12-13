@@ -3,12 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function FoodDrinksPoster() {
   const posterData = {
     category: "Food & Drinks",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+    heroImages: [
+      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
+      "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80",
+    ],
     description: "Indulge in exquisite culinary experiences from morning till night.",
     detailImages: [
       "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=800&q=80",
@@ -18,6 +22,14 @@ export default function FoodDrinksPoster() {
   };
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentHero, setCurrentHero] = useState(0);
+  // Hero carousel auto-rotate
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHero((prev) => (prev + 1) % posterData.heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const nextImage = () => {
     setCurrentIndex((prev) =>
@@ -32,38 +44,49 @@ export default function FoodDrinksPoster() {
   };
 
   return (
-    <section className="min-h-screen bg-[#2E1A15] text-[#FAF5F0] flex flex-col items-center px-6 py-16 md:px-20">
-      <div className="w-full max-w-5xl">
+    <section className="relative min-h-screen bg-white flex flex-col items-center px-0 py-0">
+      {/* Hero Banner Carousel */}
+      <div className="relative h-screen min-h-[340px] w-full flex items-center justify-center overflow-hidden">
+        {posterData.heroImages.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentHero ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            style={{ backgroundImage: `url('${img}')` }}
+          />
+        ))}
+        <div className="relative z-30 text-center w-full px-4">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-center text-[#FAF5F0] mb-4 drop-shadow-lg">
+            {posterData.category}
+          </h1>
+          <p className="text-lg md:text-xl text-[#D7BFA8] mt-4 max-w-2xl mx-auto font-light drop-shadow">
+            {posterData.description}
+          </p>
+        </div>
+        {/* Carousel indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+          {posterData.heroImages.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-3 h-3 rounded-full border border-white ${currentHero === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              onClick={() => setCurrentHero(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="w-full max-w-5xl px-6 py-16 md:px-20">
         {/* Top Back Link */}
         <Link
           href="/"
-          className="flex items-center gap-2 text-[#D7BFA8] hover:text-[#FAF5F0] mb-10 transition text-lg font-medium"
+          className="flex items-center gap-2 text-[#A04040] hover:text-[#800000] mb-10 transition text-lg font-medium"
         >
           <ChevronLeft className="w-5 h-5" />
           Back to Amenities
         </Link>
 
-        {/* Poster Header */}
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-          <Image
-            src={posterData.image}
-            alt={posterData.category}
-            width={1200}
-            height={600}
-            className="object-cover w-full h-[60vh]"
-          />
-          <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center px-4">
-            <h1 className="text-5xl md:text-6xl font-extrabold text-center text-[#FAF5F0]">
-              {posterData.category}
-            </h1>
-            <p className="text-lg md:text-xl text-[#E8DCC8] mt-4 max-w-2xl text-center">
-              {posterData.description}
-            </p>
-          </div>
-        </div>
-
         {/* Booklet / Carousel */}
-        <div className="relative mt-12 w-full max-w-3xl h-[400px] md:h-[500px] flex items-center justify-center">
+        <div className="relative mt-12 w-full max-w-3xl h-[400px] md:h-[500px] flex items-center justify-center bg-white rounded-2xl shadow-lg">
           <button
             onClick={prevImage}
             aria-label="Previous image"
@@ -105,7 +128,7 @@ export default function FoodDrinksPoster() {
         <div className="mt-12 flex justify-center">
           <Link
             href="/"
-            className="px-6 py-3 bg-[#D7BFA8] text-[#2E1A15] font-semibold rounded-xl hover:bg-[#FAF5F0] transition"
+            className="px-6 py-3 bg-[#A04040] text-white font-semibold rounded-xl hover:bg-[#800000] transition"
           >
             Return to Amenities
           </Link>

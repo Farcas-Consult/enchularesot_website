@@ -2,49 +2,43 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const KidsFamilyPage = () => {
   return (
-    <section
-      id="kids-family"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
-      style={{
-        backgroundImage:
-          `url('${S3_BASE}/IMG_2380.webp')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      {/* Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
-              KIDS & FAMILY
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            A <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Kid-Friendly</span> Getaway
+    <section id="kids-family" className="relative min-h-screen bg-white">
+      {/* Hero Banner - no color overlay */}
+      {/* Hero Banner with overlay and styled text */}
+      <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
+        <Image
+          src={`${S3_BASE}/IMG_2380.webp`}
+          alt="Kids and Family Hero"
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        {/* Removed color overlay for hero banner */}
+        <div className="relative z-30 text-center w-full px-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
+            Kids & Family
           </h1>
-          <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
             At Enchula Resort, we welcome families with open arms. From supervised play areas to fun cultural activities, your children will have just as much fun as you do.
           </p>
         </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         {/* Main Features Grid */}
         <div className="space-y-12 mb-16">
           {/* Kids' Activities Section */}
           <div>
-            <h2 className="text-3xl font-bold text-[#FAF5F0] mb-8 flex items-center gap-3">
-               Kids&apos; Activities
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#2E1A15] mb-8 text-center">Kids' Activities</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 {
@@ -68,21 +62,23 @@ const KidsFamilyPage = () => {
               ].map((activity, i) => (
                 <div
                   key={i}
-                  className="bg-[#2C1B16]/60 rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group"
+                  className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group transition-all duration-300 hover:scale-[1.02]"
                 >
                   <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={activity.image} 
+                    <Image
+                      src={activity.image}
                       alt={activity.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 1024px) 100vw, 33vw"
                     />
                   </div>
                   <div className="p-5">
                     <div className="flex items-start gap-3 mb-2">
-                      <span className="text-2xl">{activity.icon}</span>
-                      <h3 className="text-xl font-bold text-[#FAF5F0]">{activity.title}</h3>
+                      <span className="text-2xl text-[#800000]">{activity.icon}</span>
+                      <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">{activity.title}</h3>
                     </div>
-                    <p className="text-[#F8F3EF]">{activity.desc}</p>
+                    <p className="text-[#5C4033] mb-3">{activity.desc}</p>
                   </div>
                 </div>
               ))}
@@ -91,23 +87,23 @@ const KidsFamilyPage = () => {
         </div>
 
         {/* Trust Section */}
-        <div className="bg-[#2C1B16]/40 backdrop-blur-md rounded-2xl p-8 border border-[#5C4033]/30 text-center mb-12">
-          <h3 className="text-2xl font-bold text-[#FAF5F0] mb-4">Why Families Love Us</h3>
-          <p className="text-[#D7BFA8] text-lg">
-            &aquot;We had a stress-free weekend — the kids were entertained all day, and we got some much-needed relaxation.&aquot;<br />
-            <em className="text-[#A9745B]">— The Otieno Family, Kisumu</em>
+        <div className="bg-white rounded-2xl p-8 border border-[#5C4033]/20 text-center mb-12 shadow-lg">
+          <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-4">Why Families Love Us</h3>
+          <p className="text-[#5C4033] text-lg">
+            “We had a stress-free weekend — the kids were entertained all day, and we got some much-needed relaxation.”<br />
+            <em className="text-[#A04040]">— The Otieno Family, Kisumu</em>
           </p>
         </div>
 
         {/* Call to Action */}
         <div className="text-center">
-          <p className="text-[#D7BFA8] mb-6 text-lg">
+          <p className="text-[#5C4033] mb-6 text-lg">
             Planning a family getaway? We&apos;ll make it unforgettable.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/booking"
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              className="inline-flex items-center gap-3 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
               Book Your Family Stay
               <svg
@@ -129,7 +125,7 @@ const KidsFamilyPage = () => {
               href="https://wa.me/254727000027"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 border-2 border-[#800000] text-[#FAF5F0] hover:bg-[#800000] font-semibold px-8 py-4 rounded-full transition-all duration-300"
+              className="inline-flex items-center gap-3 border-2 border-[#800000] text-[#800000] hover:bg-[#800000] hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300"
             >
               Chat on WhatsApp
               <svg

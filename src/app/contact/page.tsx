@@ -1,296 +1,132 @@
 "use client";
 
 import React, { useState, ChangeEvent, FormEvent } from "react";
-import { Mail, Phone, MapPin, Send, Clock, MessageCircle } from "lucide-react";
-import Image from "next/image";
-const Luxury = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2240.webp";
+import { Mail, Phone, MapPin, Send, MessageCircle } from "lucide-react";
+
 
 const Contact: React.FC = () => {
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    checkIn: '',
-    checkOut: '',
-    guests: '',
     message: '',
   });
-
-  const [errors, setErrors] = useState<{ [key: string]: string }>({});
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [success, setSuccess] = useState(false);
 
+  // Handle input changes
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors(prev => ({ ...prev, [name]: "" }));
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+    const { [e.target.name]: _removed, ...rest } = errors;
+    setErrors(rest);
   };
 
-  const validateForm = () => {
-    const newErrors: { [key: string]: string } = {};
-    if (!formData.name.trim()) newErrors.name = "Full name is required.";
-    if (!formData.email.trim()) newErrors.email = "Email address is required.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-      newErrors.email = "Please enter a valid email address.";
-    if (!formData.message.trim()) newErrors.message = "Message cannot be empty.";
+  // Validate form fields
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formData.name.trim()) newErrors.name = 'Name is required.';
+    if (!formData.email.trim()) newErrors.email = 'Email is required.';
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(formData.email)) newErrors.email = 'Invalid email address.';
+    if (!formData.message.trim()) newErrors.message = 'Message is required.';
     return newErrors;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  // Handle form submission
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const validationErrors = validateForm();
+    setSuccess(false);
+    const validationErrors = validate();
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
-      setSuccess(false);
       return;
     }
-    console.log("Form submitted:", formData);
-    setSuccess(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      checkIn: '',
-      checkOut: '',
-      guests: '',
-      message: '',
-    });
-    setTimeout(() => setSuccess(false), 3000);
+    // Simulate sending (replace with actual API call if needed)
+    setTimeout(() => {
+      setSuccess(true);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+      });
+      setErrors({});
+    }, 800);
   };
 
-  const contactInfo = [
-    {
-      icon: <Phone className="w-10 h-10" />,
-      title: "24/7 Reservations",
-      primary: "+254 (0) 727000027",
-      secondary: "+254 (0) 734000027",
-      iconColor: "text-[#5C4033]",
-      hoverGradient: "from-[#5C4033] to-[#800000]",
-    },
-    {
-      icon: <Mail className="w-10 h-10" />,
-      title: "Email Us",
-      primary: "info@enchularesort.co.ke",
-      secondary: "www.enchularesort.co.ke",
-      iconColor: "text-[#800000]",
-      hoverGradient: "from-[#800000] to-[#A04040]",
-    },
-    {
-      icon: <MapPin className="w-10 h-10" />,
-      title: "Visit Us",
-      primary: "Kajiado, Kenya",
-      secondary: "",
-      iconColor: "text-[#A04040]",
-      hoverGradient: "from-[#A04040] to-[#5C4033]",
-    },
-    {
-      icon: <Clock className="w-10 h-10" />,
-      title: "Operating Hours",
-      primary: "Check-in: 12:00 PM",
-      secondary: "Check-out: 10:30 AM",
-      iconColor: "text-[#5C4033]",
-      hoverGradient: "from-[#5C4033] to-[#800000]",
-    },
-  ];
+
 
   return (
-    <section
-      id="contact"
-      className="relative py-24 px-4 overflow-hidden"
-      style={{
-        backgroundImage: "url('https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2260.webp')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-    >
-      {/* Overlay with palette-consistent dark brown */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/70 via-[#2E1A15]/50 to-[#2C1B16]/80"></div>
+    <section id="contact" className="py-16 px-4 bg-[#F8F3EF]">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold text-[#7A1F2E] mb-2 text-center">Contact Us</h1>
+        <p className="text-center text-[#4E2E0E] mb-8">We&apos;d love to hear from you. Reach out for bookings, directions, or any questions!</p>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/40">
-            <span className="text-[#F8F3EF] font-semibold tracking-wide text-sm uppercase">Let’s Connect</span>
-          </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-[#F8F3EF] mb-6 tracking-tight">
-            Start Your
-            <span className="block bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
-              Journey With Us
-            </span>
-          </h2>
-          <p className="text-[#D7BFA8] text-xl max-w-3xl mx-auto leading-relaxed">
-            Your perfect escape is just a message away. Our dedicated team is ready to craft
-            your personalized luxury experience.
-          </p>
-        </div>
-
-        {/* Contact Info Cards — refined colors & gradient consistency */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {contactInfo.map((item, index) => (
-            <div
-              key={index}
-              className="group relative bg-[#D7BFA8]/5 backdrop-blur-sm rounded-2xl p-6 border border-[#5C4033]/20 hover:border-[#800000]/60 transition-all duration-500 hover:scale-105 overflow-hidden"
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${item.hoverGradient} opacity-0 group-hover:opacity-15 transition-opacity duration-500`}></div>
-              <div className="relative z-10">
-                <div className={`${item.iconColor} mb-4 transform group-hover:scale-110 transition-transform duration-500`}>
-                  {item.icon}
-                </div>
-                <h3 className="text-lg font-semibold text-[#F8F3EF] mb-2">{item.title}</h3>
-                <p className="text-[#FAF5F0] font-medium mb-1">{item.primary}</p>
-                <p className="text-[#A9745B] text-sm">{item.secondary}</p>
-              </div>
+        <div className="grid md:grid-cols-2 gap-10 mb-12">
+          {/* Contact Details */}
+          <div className="bg-white rounded-2xl border border-[#DCC7A1] shadow p-8 flex flex-col gap-6 justify-center">
+            <div>
+              <h2 className="text-xl font-semibold text-[#7A1F2E] mb-1 flex items-center gap-2"><Phone className="inline w-5 h-5 text-[#7A1F2E]" /> Reservations</h2>
+              <p className="text-[#4E2E0E]">+254 (0) 727000027<br />+254 (0) 734000027</p>
             </div>
-          ))}
-        </div>
-
-        {/* Form and Image */}
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Image Panel */}
-          <div className="space-y-6">
-            <div className="relative group overflow-hidden rounded-3xl shadow-lg">
-              <Image
-                src={Luxury}
-                alt="Enchula Resort Exterior"
-                width={600}
-                height={400}
-                className="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-700"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/70 to-transparent"></div>
-              <div className="absolute bottom-6 left-6">
-                <h3 className="text-2xl font-bold text-[#FAF5F0]">Luxury Awaits</h3>
-                <p className="text-[#D7BFA8]">World-Class Service</p>
-              </div>
+            <div>
+              <h2 className="text-xl font-semibold text-[#7A1F2E] mb-1 flex items-center gap-2"><Mail className="inline w-5 h-5 text-[#7A1F2E]" /> Email</h2>
+              <p className="text-[#4E2E0E]">info@enchularesort.co.ke</p>
+            </div>
+            <div>
+              <h2 className="text-xl font-semibold text-[#7A1F2E] mb-1 flex items-center gap-2"><MapPin className="inline w-5 h-5 text-[#7A1F2E]" /> Address</h2>
+              <p className="text-[#4E2E0E]">Kajiado, Kenya<br />P.O. Box 62575 00200, Nairobi</p>
             </div>
           </div>
 
-          {/* Contact Form — color-tuned */}
-          <form
-            onSubmit={handleSubmit}
-            className="bg-[#2E1A15]/40 backdrop-blur-md rounded-3xl border border-[#5C4033]/30 p-8 shadow-xl space-y-5"
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <MessageCircle className="w-8 h-8 text-[#D7BFA8]" />
-              <h3 className="text-2xl font-bold text-[#FAF5F0]">Send Us a Message</h3>
-            </div>
-
-            {/* Name */}
+          {/* Contact Form */}
+          <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-[#DCC7A1] shadow p-8 flex flex-col gap-5">
+            <h2 className="text-2xl font-bold text-[#4E2E0E] mb-2 flex items-center gap-2"><MessageCircle className="w-6 h-6 text-[#7A1F2E]" />Send Us a Message</h2>
             <div>
-              <label className="block text-sm font-semibold text-[#D7BFA8] mb-2">Full Name *</label>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-[#2C1B16]/50 border border-[#5C4033]/40 rounded-xl text-[#FAF5F0] placeholder-[#A9745B] focus:outline-none focus:border-[#5C4033] focus:ring-1 focus:ring-[#800000]"
-                placeholder="John Doe"
-              />
-              {errors.name && <p className="text-[#CC5555] text-sm mt-1 flex items-center gap-1"><span>⚠️</span>{errors.name}</p>}
+              <label className="block text-sm font-semibold text-[#4E2E0E] mb-1">Full Name *</label>
+              <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 bg-[#F8F3EF] border border-[#DCC7A1] rounded text-[#4E2E0E] placeholder-[#A9745B] focus:outline-none focus:border-[#7A1F2E]" placeholder="John Doe" />
+              {errors.name && <p className="text-[#CC5555] text-xs mt-1 flex items-center gap-1"><span>⚠️</span>{errors.name}</p>}
             </div>
-
-            {/* Email & Phone */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-semibold text-[#D7BFA8] mb-2">Email Address *</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#2C1B16]/50 border border-[#5C4033]/40 rounded-xl text-[#FAF5F0] placeholder-[#A9745B] focus:outline-none focus:border-[#5C4033] focus:ring-1 focus:ring-[#800000]"
-                  placeholder="john@email.com"
-                />
-                {errors.email && <p className="text-[#CC5555] text-sm mt-1 flex items-center gap-1"><span>⚠️</span>{errors.email}</p>}
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-[#D7BFA8] mb-2">Phone Number</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#2C1B16]/50 border border-[#5C4033]/40 rounded-xl text-[#FAF5F0] placeholder-[#A9745B] focus:outline-none focus:border-[#5C4033] focus:ring-1 focus:ring-[#800000]"
-                  placeholder="+254 712 345 678"
-                />
-              </div>
-            </div>
-
-            {/* Check-In/Out */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-semibold text-[#D7BFA8] mb-2">Check-In Date</label>
-                <input
-                  type="date"
-                  name="checkIn"
-                  value={formData.checkIn}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#2C1B16]/50 border border-[#5C4033]/40 rounded-xl text-[#FAF5F0] focus:outline-none focus:border-[#5C4033] focus:ring-1 focus:ring-[#800000]"
-                  placeholder="date in"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-[#D7BFA8] mb-2">Check-Out Date</label>
-                <input
-                  type="date"
-                  name="checkOut"
-                  value={formData.checkOut}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-[#2C1B16]/50 border border-[#5C4033]/40 rounded-xl text-[#FAF5F0] focus:outline-none focus:border-[#5C4033] focus:ring-1 focus:ring-[#800000]"
-                  placeholder="date out"
-                />
-              </div>
-            </div>
-
-            {/* Guests */}
             <div>
-              <label className="block text-sm font-semibold text-[#D7BFA8] mb-2">Number of Guests</label>
-              <select
-                name="guests"
-                value={formData.guests}
-                aria-label="select guests"
-                onChange={handleChange}
-                className="w-full px-4 py-3 bg-[#2C1B16]/50 border border-[#5C4033]/40 rounded-xl text-[#FAF5F0] focus:outline-none focus:border-[#5C4033] focus:ring-1 focus:ring-[#800000] appearance-none"
-              >
-                <option value="" className="text-[#A9745B]">Select guests</option>
-                <option value="1" className="bg-[#2E1A15] text-[#FAF5F0]">1 Guest</option>
-                <option value="2" className="bg-[#2E1A15] text-[#FAF5F0]">2 Guests</option>
-                <option value="3" className="bg-[#2E1A15] text-[#FAF5F0]">3 Guests</option>
-                <option value="4" className="bg-[#2E1A15] text-[#FAF5F0]">4 Guests</option>
-                <option value="5+" className="bg-[#2E1A15] text-[#FAF5F0]">5+ Guests</option>
-              </select>
+              <label className="block text-sm font-semibold text-[#4E2E0E] mb-1">Email Address *</label>
+              <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 bg-[#F8F3EF] border border-[#DCC7A1] rounded text-[#4E2E0E] placeholder-[#A9745B] focus:outline-none focus:border-[#7A1F2E]" placeholder="john@email.com" />
+              {errors.email && <p className="text-[#CC5555] text-xs mt-1 flex items-center gap-1"><span>⚠️</span>{errors.email}</p>}
             </div>
-
-            {/* Message */}
             <div>
-              <label className="block text-sm font-semibold text-[#D7BFA8] mb-2">Your Message *</label>
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={4}
-                className="w-full px-4 py-3 bg-[#2C1B16]/50 border border-[#5C4033]/40 rounded-xl text-[#FAF5F0] placeholder-[#A9745B] focus:outline-none focus:border-[#5C4033] focus:ring-1 focus:ring-[#800000] resize-none"
-                placeholder="Tell us about your dream getaway…"
-              />
-              {errors.message && <p className="text-[#CC5555] text-sm mt-1 flex items-center gap-1"><span>⚠️</span>{errors.message}</p>}
+              <label className="block text-sm font-semibold text-[#4E2E0E] mb-1">Phone Number</label>
+              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-2 bg-[#F8F3EF] border border-[#DCC7A1] rounded text-[#4E2E0E] placeholder-[#A9745B] focus:outline-none focus:border-[#7A1F2E]" placeholder="+254 712 345 678" />
             </div>
-
-            {/* Success Message */}
+            <div>
+              <label className="block text-sm font-semibold text-[#4E2E0E] mb-1">Your Message *</label>
+              <textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-2 bg-[#F8F3EF] border border-[#DCC7A1] rounded text-[#4E2E0E] placeholder-[#A9745B] focus:outline-none focus:border-[#7A1F2E] resize-none" placeholder="How can we help you?" />
+              {errors.message && <p className="text-[#CC5555] text-xs mt-1 flex items-center gap-1"><span>⚠️</span>{errors.message}</p>}
+            </div>
             {success && (
-              <div className="p-3 rounded-lg bg-[#5C4033]/20 border border-[#800000]/30 text-[#D7BFA8] text-center text-sm flex items-center justify-center gap-2">
+              <div className="p-2 rounded bg-[#F8F3EF] border border-[#7A1F2E]/30 text-[#7A1F2E] text-center text-xs flex items-center justify-center gap-2">
                 ✅ Message sent successfully! We’ll be in touch shortly.
               </div>
             )}
-
-            {/* Submit Button — primary brown → maroon emphasis */}
-            <button
-              type="submit"
-              className="w-full px-8 py-4 bg-gradient-to-r from-[#5C4033] to-[#800000] text-[#FAF5F0] rounded-xl hover:from-[#800000] hover:to-[#A04040] active:scale-95 transition-all duration-300 font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-[#800000]/30"
-            >
-              <Send className="w-5 h-5" />
-              Send Your Inquiry
+            <button type="submit" className="w-full px-6 py-3 bg-[#7A1F2E] text-white rounded font-semibold flex items-center justify-center gap-2 shadow hover:bg-[#4E2E0E] transition-all duration-200">
+              <Send className="w-5 h-5" /> Send Message
             </button>
           </form>
+        </div>
+
+        {/* Google Map Embed */}
+        <div className="mt-12 rounded-2xl overflow-hidden border border-[#DCC7A1] shadow">
+          <iframe
+            title="Enchula Resort Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.01962476013!2d36.7819502!3d-1.8497201!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f7e2e2e2e2e2e%3A0x2e2e2e2e2e2e2e2e!2sKajiado%2C%20Kenya!5e0!3m2!1sen!2ske!4v1700000000000!5m2!1sen!2ske"
+            width="100%"
+            height="350"
+            className="contact-map-iframe"
+            allowFullScreen={true}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </div>
     </section>
