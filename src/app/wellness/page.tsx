@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import Image from "next/image";
+import { Dumbbell, HeartPulse, Users, Clock, Star } from "lucide-react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
@@ -9,9 +11,106 @@ const BACKGROUND_IMAGES = [
   `${S3_BASE}/IMG_2187.webp`,
   `${S3_BASE}/IMG_2184.webp`,
 ];
+const gymImages = [
+  `${S3_BASE}/IMG_2195.webp`,
+  `${S3_BASE}/IMG_2174.webp`,
+  `${S3_BASE}/IMG_2173.webp`,
+  `${S3_BASE}/IMG_2171.webp`,
+  `${S3_BASE}/IMG_2161.webp`,
+  `${S3_BASE}/IMG_2160.webp`,
+  `${S3_BASE}/IMG_2159.webp`,
+  `${S3_BASE}/IMG_2182.webp`,
+  `${S3_BASE}/IMG_2158.webp`,
+];
+const packages = [
+  {
+    id: 1,
+    name: "Day Pass",
+    price: "KSh 1,000",
+    period: "Per Visit",
+    features: ["Full facility access", "Locker room", "Towel service"],
+    popular: false,
+  },
+  {
+    id: 2,
+    name: "Weekly Membership",
+    price: "KSh 2,500",
+    period: "7 Days",
+    features: ["Unlimited access", "Group classes", "Personal training (1 session)"],
+    popular: true,
+  },
+  {
+    id: 3,
+    name: "Monthly Membership",
+    price: "KSh 7,000",
+    period: "30 Days",
+    features: ["Unlimited access", "All group classes", "4 personal training sessions", "Nutrition plan"],
+    popular: false,
+  },
+  {
+    id: 4,
+    name: "Annual Membership",
+    price: "KSh 66,000",
+    period: "12 Months",
+    features: ["Unlimited access", "All classes", "12 personal sessions", "Nutrition + wellness plan", "Priority booking"],
+    popular: false,
+  },
+];
+const activities = [
+  {
+    icon: <Dumbbell className="w-8 h-8" />,
+    title: "Strength & Conditioning",
+    desc: "Olympic lifting, functional training, and power circuits.",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2d8a0b5f5?w=600&q=80",
+  },
+  {
+    icon: <HeartPulse className="w-8 h-8" />,
+    title: "Cardio & Endurance",
+    desc: "Treadmills, bikes, rowers, and HIIT zones with heart-rate monitoring.",
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80",
+  },
+  {
+    icon: <Users className="w-8 h-8" />,
+    title: "Group Classes",
+    desc: "Yoga, Zumba, Spin, Pilates, and Bootcamp (daily schedule).",
+    image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80",
+  },
+  {
+    icon: <Clock className="w-8 h-8" />,
+    title: "24/7 Access",
+    desc: "Train anytime with secure key-card entry and CCTV monitoring.",
+    image: "https://images.unsplash.com/photo-1603133872878-684f208737e9?w=600&q=80",
+  },
+];
+const services = [
+  {
+    name: "Personal Training",
+    price: "KSh 2,500/session",
+    desc: "Tailored 1-on-1 coaching with certified trainers.",
+  },
+  {
+    name: "Nutrition Consultation",
+    price: "KSh 5,000/plan",
+    desc: "Custom meal plans and dietary guidance.",
+  },
+  {
+    name: "Body Composition Analysis",
+    price: "KSh 1,500/test",
+    desc: "Advanced scan for fat/muscle/water tracking.",
+  },
+  {
+    name: "Recovery Therapy",
+    price: "KSh 2,500/session",
+    desc: "Massage, cryotherapy, and stretching sessions.",
+  },
+];
 
 export default function WellnessPage() {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const [currentGym, setCurrentGym] = useState(0);
+  const totalGym = gymImages.length;
+  const nextGym = () => setCurrentGym((c) => (c + 1) % totalGym);
+  const prevGym = () => setCurrentGym((c) => (c - 1 + totalGym) % totalGym);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -22,61 +121,209 @@ export default function WellnessPage() {
 
   return (
     <section id="wellness" className="relative min-h-screen bg-white">
-        {/* Hero Banner Carousel */}
-        <div className="relative h-screen min-h-[500px] flex items-center justify-center overflow-hidden">
-          {BACKGROUND_IMAGES.map((img, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentImageIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-              style={{ backgroundImage: `url('${img}')` }}
+      {/* Hero Banner Carousel */}
+      <div className="relative h-screen min-h-[500px] flex items-center justify-center overflow-hidden">
+        {BACKGROUND_IMAGES.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentImageIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            data-bg={img}
+            style={{ backgroundImage: `url('${img}')` }}
+          />
+        ))}
+        <div className="relative z-30 text-center w-full px-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
+            Wellness, Spa & Gym
+          </h1>
+          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
+            Rejuvenate, restore, and reconnect with yourself in peace and nature. Enjoy our world-class gym and fitness facilities.
+          </p>
+        </div>
+        {/* Carousel indicators */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
+          {BACKGROUND_IMAGES.map((_, idx) => (
+            <button
+              key={idx}
+              className={`w-3 h-3 rounded-full border border-white ${currentImageIndex === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              onClick={() => setCurrentImageIndex(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
-          <div className="relative z-30 text-center w-full px-4">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
-              Wellness & Spa
-            </h1>
-            <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
-              Rejuvenate, restore, and reconnect with yourself in peace and nature.
-            </p>
+        </div>
+      </div>
+
+      {/* GYM SECTION */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-16">
+        <div className="text-center mb-16">
+          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/10 backdrop-blur-sm rounded-full border border-[#800000]/10">
+            <span className="text-[#A04040] font-semibold tracking-wide text-sm uppercase">
+              GYM & FITNESS
+            </span>
           </div>
-          {/* Carousel indicators */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
-            {BACKGROUND_IMAGES.map((_, idx) => (
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#2E1A15] mb-6 leading-tight">
+            Premium Gym Experience
+          </h2>
+          <p className="text-lg text-[#5C4033] max-w-3xl mx-auto">
+            Train in a world-class facility surrounded by nature. All equipment sanitized daily.
+          </p>
+        </div>
+        {/* Gym Hero Carousel */}
+        <div className="relative h-[60vh] md:h-[70vh] w-full flex items-center justify-center overflow-hidden mb-12">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={gymImages[currentGym]}
+              alt="Gym Hero"
+              fill
+              className="object-cover object-center transition-opacity duration-700"
+              priority
+              sizes="100vw"
+            />
+          </div>
+          {/* Carousel Controls */}
+          <button
+            onClick={prevGym}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#2C1B16]/60 hover:bg-[#800000]/80 text-[#FAF5F0] rounded-full p-2 shadow-lg z-30"
+            aria-label="Previous image"
+          >
+            &#8592;
+          </button>
+          <button
+            onClick={nextGym}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#2C1B16]/60 hover:bg-[#800000]/80 text-[#FAF5F0] rounded-full p-2 shadow-lg z-30"
+            aria-label="Next image"
+          >
+            &#8594;
+          </button>
+          {/* Carousel Indicators */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+            {gymImages.map((_, idx) => (
               <button
                 key={idx}
-                className={`w-3 h-3 rounded-full border border-white ${currentImageIndex === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
-                onClick={() => setCurrentImageIndex(idx)}
-                aria-label={`Go to slide ${idx + 1}`}
+                onClick={() => setCurrentGym(idx)}
+                className={`w-3 h-3 rounded-full border-2 ${currentGym === idx ? "bg-[#800000] border-[#800000]" : "bg-white/60 border-white/80"}`}
+                aria-label={`Go to image ${idx + 1}`}
               />
             ))}
           </div>
         </div>
-
-        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/10 backdrop-blur-sm rounded-full border border-[#800000]/10">
-              <span className="text-[#A04040] font-semibold tracking-wide text-sm uppercase">
-                WELLNESS & SPA
-              </span>
+        {/* Activities Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {activities.map((activity, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group shadow"
+            >
+              <div className="h-48 overflow-hidden relative">
+                <Image
+                  src={activity.image}
+                  alt={activity.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 1024px) 100vw, 25vw"
+                />
+              </div>
+              <div className="p-6">
+                <div className="w-12 h-12 rounded-xl bg-[#800000] flex items-center justify-center text-[#FAF5F0] mb-4">
+                  {activity.icon}
+                </div>
+                <h3 className="text-xl font-bold text-[#2C1B16] mb-2">{activity.title}</h3>
+                <p className="text-[#5C4033] text-sm">{activity.desc}</p>
+              </div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#2E1A15] mb-6 leading-tight">
-              Rejuvenate & Restore
-            </h2>
-            <p className="text-lg text-[#5C4033] max-w-3xl mx-auto">
-              Reconnect with yourself in peace and nature.
-            </p>
-          </div>
-          {/* Removed duplicate paragraph to fix JSX structure */}
+          ))}
         </div>
+        {/* Packages */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-[#2C1B16] text-center mb-4">Membership Plans</h2>
+          <p className="text-[#5C4033] text-center mb-8">
+            Flexible options for every fitness journey
+          </p>
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            {packages.map((pkg) => (
+              <div
+                key={pkg.id}
+                className={`bg-white rounded-2xl p-6 border-2 relative ${
+                  pkg.popular
+                    ? "border-[#800000] shadow-lg scale-[1.02]"
+                    : "border-[#5C4033]/30 hover:border-[#800000]/50"
+                } transition-all duration-300`}
+              >
+                {pkg.popular && (
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#800000] text-[#FAF5F0] px-4 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">
+                    MOST POPULAR
+                  </div>
+                )}
+                <h3 className="text-lg font-bold text-[#2C1B16] mb-3">{pkg.name}</h3>
+                <div className="mb-4">
+                  <div className="text-2xl font-bold text-[#800000]">{pkg.price}</div>
+                  <div className="text-[#5C4033] text-sm">{pkg.period}</div>
+                </div>
+                <ul className="space-y-2 mb-6">
+                  {pkg.features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm">
+                      <Star className="w-4 h-4 text-[#800000] mt-0.5 shrink-0" fill="#800000" />
+                      <span className="text-[#5C4033]">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href="/booking"
+                  className="block w-full py-2.5 text-center bg-[#800000] hover:bg-[#A04040] text-[#FAF5F0] font-semibold rounded-lg transition-colors duration-300 text-sm"
+                >
+                  Choose Plan
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Additional Services */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-[#2C1B16] text-center mb-4">Additional Services</h2>
+          <p className="text-[#5C4033] text-center mb-8">
+            Enhance your fitness journey with expert support
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-white p-6 rounded-2xl border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 shadow"
+              >
+                <h3 className="text-lg font-bold text-[#2C1B16] mb-2">{service.name}</h3>
+                <div className="text-xl font-bold text-[#800000] mb-2">{service.price}</div>
+                <p className="text-[#5C4033] text-sm">{service.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* CTA */}
+        <div className="text-center bg-linear-to-r from-[#2C1B16]/10 to-[#800000]/10 p-8 rounded-2xl border border-[#5C4033]/30 shadow">
+          <span className="text-4xl mb-4 block">💪</span>
+          <h2 className="text-2xl md:text-3xl font-bold text-[#2C1B16] mb-4">
+            Ready to Transform?
+          </h2>
+          <p className="text-[#5C4033] max-w-2xl mx-auto mb-6">
+            Join Enchula Fitness today and experience luxury wellness in the heart of Kenya’s wilderness.
+          </p>
+          <Link
+            href="/booking"
+            className="inline-flex items-center gap-3 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+          >
+            Book a Tour
+          </Link>
+        </div>
+      </div>
 
         {/* Massage Treatments - Large Feature */}
         <div className="mb-12 bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group">
           <div className="grid md:grid-cols-2 gap-0">
             <div className="relative h-64 md:h-96 overflow-hidden">
-              <img 
+              <Image
                 src={`${S3_BASE}/Massage.webp`}
                 alt="Massage Treatment"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority={false}
               />
             </div>
             <div className="p-6 md:p-8 flex flex-col justify-center">
@@ -130,10 +377,13 @@ export default function WellnessPage() {
               </div>
             </div>
             <div className="relative h-64 md:h-96 overflow-hidden md:order-1">
-              <img 
+              <Image
                 src={`${S3_BASE}/Yoga.webp`}
                 alt="Yoga Session"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority={false}
               />
             </div>
           </div>
@@ -144,10 +394,13 @@ export default function WellnessPage() {
           {/* Sauna & Steam Room */}
           <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group">
             <div className="relative h-56 overflow-hidden">
-              <img 
+              <Image
                 src={`${S3_BASE}/Sauna.webp`}
                 alt="Sauna and Steam Room"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority={false}
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
@@ -178,10 +431,13 @@ export default function WellnessPage() {
           {/* Herbal Teas */}
           <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group">
             <div className="relative h-56 overflow-hidden">
-              <img 
+              <Image
                 src={`${S3_BASE}/Herbal.webp`}
                 alt="Herbal Teas and Infusions"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority={false}
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
@@ -233,10 +489,13 @@ export default function WellnessPage() {
             ].map((service, i) => (
               <div key={i} className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={service.image} 
+                  <Image
+                    src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority={false}
                   />
                 </div>
                 <div className="p-5">

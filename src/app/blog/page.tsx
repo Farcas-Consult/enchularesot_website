@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
-const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const blogPosts = [
   {
@@ -86,99 +85,63 @@ const blogPosts = [
   },
 ];
 
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+
+
 const BlogPage = () => {
-  const backgroundImages = [
-    `${S3_BASE}/IMG_2256.webp`,
-    `${S3_BASE}/IMG_2267.webp`,
-    `${S3_BASE}/IMG_2272.webp`,
-  ];
-
-  const [currentBg, setCurrentBg] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBg((prev) => (prev + 1) % backgroundImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section
-      id="blog"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 min-h-screen"
-      style={{
-        backgroundImage: `url(${backgroundImages[currentBg]})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-        transition: "background-image 1s ease-in-out",
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Header with Badge */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
+    <section id="blog" className="relative min-h-screen bg-white">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Blog Grid in white cards */}
+        <div className="mb-16">
+          <div className="text-center mb-10">
+            <span className="inline-block mb-4 px-6 py-3 bg-[#FAF5F0] rounded-full border border-[#A04040]/20 text-[#A04040] font-semibold tracking-wide text-sm uppercase">
               BLOG & TRAVEL TIPS
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            Discover Local Secrets & <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Plan Perfect Escapes</span>
-          </h1>
-          <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto">
-            Discover local secrets and plan your perfect escape
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map((post) => (
+              <Link
+                key={post.id}
+                href={`/blog/${post.id}`}
+                className="group block bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg transition-all duration-300 hover:scale-[1.02] p-6"
+              >
+                <div className="mb-4">
+                  <span className="text-4xl block mb-3">{post.emoji}</span>
+                  <span className="px-3 py-1 bg-[#D7BFA8]/30 text-[#5C4033] border border-[#D7BFA8]/40 text-xs font-semibold rounded-full">
+                    {post.category}
+                  </span>
+                </div>
+                <h2 className="text-xl font-bold text-[#2E1A15] mb-3 group-hover:text-[#A04040] transition-colors">
+                  {post.title}
+                </h2>
+                <div className="flex items-center gap-2 text-[#A9745B] text-sm mb-4">
+                  <span>{post.date}</span>
+                  <span>•</span>
+                  <span>{post.readTime}</span>
+                </div>
+                <div className="flex items-center gap-2 text-[#A04040] font-semibold text-sm">
+                  <span>Read Article</span>
+                  <svg className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-
-        {/* Blog Grid - Modern Cards with No Images */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {blogPosts.map((post) => (
-            <Link
-              key={post.id}
-              href={`/blog/${post.id}`}
-              className="group block bg-[#2C1B16]/60 backdrop-blur-sm rounded-2xl overflow-hidden border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 p-6 hover:bg-[#2C1B16]/80"
-            >
-              <div className="mb-4">
-                <span className="text-4xl block mb-3">{post.emoji}</span>
-                <span className="px-3 py-1 bg-[#800000]/20 text-[#D7BFA8] border border-[#800000]/30 text-xs font-semibold rounded-full">
-                  {post.category}
-                </span>
-              </div>
-
-              <h2 className="text-xl font-bold text-[#FAF5F0] mb-3 group-hover:text-[#D7BFA8] transition-colors">
-                {post.title}
-              </h2>
-
-              <div className="flex items-center gap-2 text-[#D7BFA8] text-sm mb-4">
-                <span>{post.date}</span>
-                <span>•</span>
-                <span>{post.readTime}</span>
-              </div>
-
-              <div className="flex items-center gap-2 text-[#800000] font-semibold text-sm">
-                <span>Read Article</span>
-                <svg className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Newsletter CTA */}
-        <div className="text-center bg-[#2C1B16]/40 backdrop-blur-md p-8 rounded-2xl border border-[#5C4033]/30">
+        {/* Newsletter CTA in white card */}
+        <div className="text-center bg-white p-8 rounded-2xl border border-[#5C4033]/20 shadow-lg">
           <span className="text-4xl mb-4 block">📬</span>
-          <h3 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-4">
+          <h3 className="text-2xl md:text-3xl font-bold text-[#2E1A15] mb-4">
             Get Travel Tips in Your Inbox
           </h3>
-          <p className="text-[#D7BFA8] mb-6">
+          <p className="text-[#5C4033] mb-6">
             Subscribe for exclusive stories and local insights
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#A04040] to-[#A9745B] hover:from-[#A9745B] hover:to-[#A04040] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Subscribe Now
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
