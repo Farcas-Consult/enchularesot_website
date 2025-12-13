@@ -54,12 +54,7 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  const highlights: { icon: React.ReactNode; text: string }[] = [
-    { icon: <Star className="w-5 h-5" />, text: "4-Star Luxury" },
-    { icon: <MapPin className="w-5 h-5" />, text: "Kajiado, Kenya" },
-    { icon: <Award className="w-5 h-5" />, text: "Award-Winning Service" },
-    { icon: <Sparkles className="w-5 h-5" />, text: "Premium Amenities" },
-  ];
+
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
@@ -108,17 +103,7 @@ export default function Hero() {
                   {slide.subtitle}
                 </p>
 
-                <div className="flex flex-wrap justify-center items-center gap-6 mb-12 animate-fadeInUp">
-                  {highlights.map((item, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-2 px-4 py-2 bg-[#F8F3EF]/10 backdrop-blur-md rounded-full border border-[#D7BFA8]/30"
-                    >
-                      <span className="text-[#A9745B]">{item.icon}</span>
-                      <span className="text-sm font-semibold">{item.text}</span>
-                    </div>
-                  ))}
-                </div>
+                {/* Highlights removed as requested */}
 
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-6 animate-fadeInUp">
                   <button className="group relative px-10 py-4 bg-gradient-to-r from-[#A04040] to-[#5C2E2E] text-white text-lg font-semibold rounded-full shadow-2xl transition-all duration-300 hover:scale-110">

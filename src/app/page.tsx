@@ -2,6 +2,7 @@
 import Hero from "./components/homepage/hero";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Hand, UserCheck, Droplet, Shield, Sparkles, Wind, Thermometer, Stethoscope } from "lucide-react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
@@ -47,9 +48,31 @@ const healthSafetyData = [
     icon: <Sparkles size={48} className="text-[#D7BFA8]" />,
   },
 ];
-const DoubleRoom1 = `${S3_BASE}/IMG_2346.webp`;
-const TwinRoom1 = `${S3_BASE}/IMG_2321.webp`;
-const SuperiorRoom1 = `${S3_BASE}/IMG_2300.webp`;
+
+// Room data from rooms page
+const rooms = [
+  {
+    id: 1,
+    name: "Standard Double Room",
+    price: "From Kshs. 10,000",
+    image: `${S3_BASE}/IMG_2346.webp`,
+    anchor: "standard-double-room",
+  },
+  {
+    id: 2,
+    name: "Twin Room",
+    price: "From Kshs. 10,000",
+    image: `${S3_BASE}/IMG_2321.webp`,
+    anchor: "twin-room",
+  },
+  {
+    id: 3,
+    name: "Superior Room",
+    price: "From Kshs. 12,000",
+    image: `${S3_BASE}/IMG_2300.webp`,
+    anchor: "superior-room",
+  },
+];
 
 export default function Home() {
   return (
@@ -64,9 +87,9 @@ export default function Home() {
             <span className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/10 backdrop-blur-sm rounded-full border border-[#800000]/10 text-[#A9745B] font-semibold tracking-wide text-sm uppercase">
               About Enchula Resort
             </span>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h2 className="text-4xl font-bold mb-6 text-brand">
               Where Luxury Meets{' '}
-              <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
                 Kenyan Serenity
               </span>
             </h2>
@@ -136,20 +159,26 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="w-full h-0.5 bg-linear-to-r from-[#D7BFA8]/0 via-[#D7BFA8]/60 to-[#D7BFA8]/0 my-8" />
 
       {/* Rooms Section */}
-      <section className="bg-white py-20 px-4 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-brand">Rooms & Suites</h2>
-        <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
-          Choose from a variety of bright, spacious rooms and suites designed for your comfort and relaxation.
-        </p>
-        <div className="flex flex-wrap justify-center gap-10">
-          <Image src={DoubleRoom1} alt="Standard Double Room" width={480} height={320} className="rounded-xl shadow-md" />
-          <Image src={TwinRoom1} alt="Twin Room" width={480} height={320} className="rounded-xl shadow-md" />
-          <Image src={SuperiorRoom1} alt="Superior Room" width={480} height={320} className="rounded-xl shadow-md" />
+      <section className="bg-white py-20 px-4">
+        <h2 className="text-4xl font-bold mb-2 text-brand text-center">Rooms & Suites</h2>
+        <p className="text-lg text-neutral-700 text-center mb-8 max-w-2xl mx-auto">Discover our selection of comfortable, stylish rooms designed for relaxation and a memorable stay.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-7xl mx-auto">
+          {rooms.map((room) => (
+            <div key={room.id} className="relative rounded-xl shadow-md overflow-hidden group h-[420px] md:h-[520px] w-full max-w-[520px] mx-auto">
+              <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end px-8 pb-8 pt-32 transition-opacity duration-300 group-hover:opacity-100">
+                <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">{room.name}</h3>
+                <div className="text-lg text-[#D7BFA8] font-semibold mb-4 drop-shadow">{room.price}</div>
+                <Link href={`/rooms#${room.anchor}`} className="btn-primary inline-block">Explore</Link>
+              </div>
+            </div>
+          ))}
         </div>
-        <a href="/rooms" className="btn-primary mt-8 inline-block">View All Rooms</a>
       </section>
+      <div className="w-full h-0.5 bg-linear-to-r from-[#A9745B]/0 via-[#A9745B]/60 to-[#A9745B]/0 my-8" />
 
       {/* Dining Section */}
       <section className="bg-white py-20 px-4 text-center">
@@ -157,25 +186,36 @@ export default function Home() {
         <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
           Savor delicious cuisine in our bright, inviting restaurants and bars, offering local and international flavors.
         </p>
-        <div className="flex flex-wrap justify-center gap-10">
+        <div className="flex flex-wrap justify-center gap-4">
           <Image src={`${S3_BASE}/IMG_2236.webp`} alt="Restaurant Interior" width={540} height={340} className="rounded-xl shadow-md" />
           <Image src={`${S3_BASE}/IMG_2229.webp`} alt="Bar Lounge" width={540} height={340} className="rounded-xl shadow-md" />
+          <Image src={`${S3_BASE}/IMG_2204.webp`} alt="Nightlife" width={540} height={340} className="rounded-xl shadow-md" />
+          <Image src={`${S3_BASE}/IMG_2209.webp`} alt="Pool Bar" width={540} height={340} className="rounded-xl shadow-md" />
         </div>
-        <a href="/dinings" className="btn-primary mt-8 inline-block">Explore Dining</a>
+        <a href="/dinings" className="btn-primary mt-8 inline-block">See More Dining Options</a>
       </section>
+      <div className="w-full h-0.5 bg-linear-to-r from-[#A04040]/0 via-[#A04040]/60 to-[#A04040]/0 my-8" />
 
       {/* Experiences Section */}
       <section className="bg-white py-20 px-4 text-center">
         <h2 className="text-4xl font-bold mb-6 text-brand">Experiences</h2>
         <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
-          Enjoy a range of activities: spa, wellness, family fun, events, and more—all in a bright, uplifting setting.
+          Enjoy a range of activities: spa, wellness, gym, games, and unique adventures—all in a bright, uplifting setting.
         </p>
-        <div className="flex flex-wrap justify-center gap-10">
-          <Image src={`${S3_BASE}/IMG_3391.webp`} alt="Spa" width={480} height={320} className="rounded-xl shadow-md" />
-          <Image src={`${S3_BASE}/IMG_2257.webp`} alt="Family" width={480} height={320} className="rounded-xl shadow-md" />
+        <div className="flex flex-wrap justify-center gap-3">
+          {/* 1 Gym Image from wellness page */}
+          <Image src={`${S3_BASE}/IMG_2174.webp`} alt="Modern Gym Facility" width={380} height={260} className="rounded-xl shadow-md object-cover" />
+          {/* 1 Spa/Wellness Image from wellness page */}
+          <Image src={`${S3_BASE}/Facial.webp`} alt="Facial Treatment" width={380} height={260} className="rounded-xl shadow-md object-cover" />
+          {/* 2 Images from games page (different from previous) */}
+          <Image src={`${S3_BASE}/IMG_3394.webp`} alt="Kids & Family Fun" width={380} height={260} className="rounded-xl shadow-md object-cover" />
+          <Image src={`${S3_BASE}/IMG_2450.webp`} alt="Maasai Craft Workshop" width={380} height={260} className="rounded-xl shadow-md object-cover" />
+          {/* 1 Unique Experience from experience_activities page */}
+          <Image src={`${S3_BASE}/Maasai2.webp`} alt="Maasai Cultural Experience" width={380} height={260} className="rounded-xl shadow-md object-cover" />
         </div>
         <a href="/experience_activities" className="btn-primary mt-8 inline-block">See All Experiences</a>
       </section>
+      <div className="w-full h-0.5 bg-linear-to-r from-[#5C4033]/0 via-[#5C4033]/60 to-[#5C4033]/0 my-8" />
 
       {/* Gallery Section */}
       <section className="bg-white py-20 px-4 text-center">
@@ -183,13 +223,17 @@ export default function Home() {
         <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
           Explore our gallery and see the beauty of Enchula Resort for yourself.
         </p>
-        <div className="flex flex-wrap justify-center gap-10">
-          <Image src={`${S3_BASE}/IMG_2272.webp`} alt="Gallery 1" width={350} height={220} className="rounded-xl shadow-md" />
-          <Image src={`${S3_BASE}/IMG_2275.webp`} alt="Gallery 2" width={350} height={220} className="rounded-xl shadow-md" />
-          <Image src={`${S3_BASE}/IMG_2383.webp`} alt="Gallery 3" width={350} height={220} className="rounded-xl shadow-md" />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 justify-center">
+          <Image src={`${S3_BASE}/IMG_2272.webp`} alt="Luxury Resort Exterior" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
+          <Image src={`${S3_BASE}/IMG_2315.webp`} alt="Elegant Retreat" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
+          <Image src={`${S3_BASE}/IMG_2342.webp`} alt="Modern Washroom" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
+          <Image src={`${S3_BASE}/IMG_3429.webp`} alt="Infinity Pool" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
+          <Image src={`${S3_BASE}/Breakfast.webp`} alt="Gourmet Cuisine" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
+          <Image src={`${S3_BASE}/IMG_2275.webp`} alt="Tranquil Haven" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
         </div>
         <a href="/gallery" className="btn-primary mt-8 inline-block">View Gallery</a>
       </section>
+      <div className="w-full h-0.5 bg-linear-to-r from-[#D7BFA8]/0 via-[#D7BFA8]/60 to-[#D7BFA8]/0 my-8" />
 
       {/* Health & Safety Section (merged) */}
       <section className="relative py-24 px-4 overflow-hidden bg-white">
@@ -198,10 +242,10 @@ export default function Home() {
             <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
               <span className="text-[#A04040] font-semibold tracking-wide text-sm uppercase">HEALTH & SAFETY</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#2E1A15] mb-6 tracking-tight">
-              Your Health & <span className="block bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Wellbeing Priority First</span>
+            <h2 className="text-4xl font-bold mb-6 text-brand">
+              Your Health & <span className="block bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Wellbeing Priority First</span>
             </h2>
-            <p className="text-[#5C4033] text-lg max-w-3xl mx-auto leading-relaxed">
+            <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
               Your wellness is our priority. Experience world-class hospitality backed by comprehensive health protocols and cutting-edge safety technology.
             </p>
           </div>
@@ -222,14 +266,14 @@ export default function Home() {
                     {item.description}
                   </p>
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
               </div>
             ))}
           </div>
           <div className="mt-16 text-center">
             <a 
               href="/booking" 
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#5C4033] via-[#800000] to-[#A04040] text-white font-semibold rounded-full hover:from-[#800000] hover:via-[#A04040] hover:to-[#5C4033] transition-all duration-300 shadow-lg hover:shadow-[#800000]/40 transform hover:scale-105"
+              className="btn-primary mt-8 inline-block"
             >
               <Shield size={20} />
               Book With Confidence
@@ -237,6 +281,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div className="w-full h-0.5 bg-linear-to-r from-[#A9745B]/0 via-[#A9745B]/60 to-[#A9745B]/0 my-8" />
 
       {/* Reviews Section (merged) */}
       <section className="bg-white py-20 px-4 text-center">
@@ -280,17 +325,8 @@ export default function Home() {
         </div>
         {/* Review Submission CTA */}
         <div className="text-center">
-          <a href="#contact" className="btn-primary mt-4 inline-block">Write Your Review</a>
+          <a href="#contact" className="btn-primary mt-8 inline-block">Write Your Review</a>
         </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="bg-white py-20 px-4 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-brand">Contact Us</h2>
-        <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
-          Ready to book or have questions? Reach out to our team—we’re here to help!
-        </p>
-        <a href="/contact" className="btn-primary inline-block">Contact & Location</a>
       </section>
     </div>
   );

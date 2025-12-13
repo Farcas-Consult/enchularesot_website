@@ -132,7 +132,28 @@ export default function Rooms() {
   const handleRoomChange = (index: number) => {
     setActiveRoomIndex(index);
     setCurrentRoomImageIndex(0);
+    // Update hash in URL for accessibility
+    const anchors = ["standard-double-room", "twin-room", "superior-room"];
+    if (typeof window !== "undefined") {
+      window.location.hash = `#${anchors[index]}`;
+    }
   };
+
+  // On mount or hash change, select the correct room
+  useEffect(() => {
+    const anchors = ["standard-double-room", "twin-room", "superior-room"];
+    function setRoomFromHash() {
+      const hash = window.location.hash.replace("#", "");
+      const idx = anchors.indexOf(hash);
+      if (idx !== -1) {
+        setActiveRoomIndex(idx);
+        setCurrentRoomImageIndex(0);
+      }
+    }
+    setRoomFromHash();
+    window.addEventListener("hashchange", setRoomFromHash);
+    return () => window.removeEventListener("hashchange", setRoomFromHash);
+  }, []);
 
   // Room image navigation
   const nextRoomImage = () => {
@@ -170,6 +191,10 @@ export default function Rooms() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4">
+        {/* Room Anchors for direct navigation */}
+        <div id="standard-double-room" />
+        <div id="twin-room" />
+        <div id="superior-room" />
         {/* Gallery */}
         <div className="flex flex-row gap-6 mb-10 overflow-x-auto pb-2 snap-x">
           {activeRoom.images.map((img, idx) => (
