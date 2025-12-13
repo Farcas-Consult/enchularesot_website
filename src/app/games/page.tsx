@@ -2,207 +2,212 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Gamepad2, Users, Trophy, Clock } from "lucide-react";
+import Image from "next/image";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const GamesPage = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-
+  // Slideshow images from the original Games page
   const gameImages = [
     `${S3_BASE}/IMG_3394.webp`,
     `${S3_BASE}/IMG_2450.webp`,
     `${S3_BASE}/IMG_2444.webp`,
   ];
-
-  const gameActivities = [
-    {
-      icon: <Gamepad2 className="w-8 h-8" />,
-      title: "Indoor Games",
-      description: "Pool tables, board games, card games, and more in our comfortable indoor game lounge.",
-      price: "Complimentary for guests",
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Outdoor Activities",
-      description: "Volleyball, badminton, lawn games, and team sports in our beautiful outdoor spaces.",
-      price: "Free access",
-    },
-    {
-      icon: <Trophy className="w-8 h-8" />,
-      title: "Tournament Events",
-      description: "Join our organized game tournaments and competitions throughout the week.",
-      price: "Check schedule at reception",
-    },
-    {
-      icon: <Clock className="w-8 h-8" />,
-      title: "Game Room Hours",
-      description: "Open daily from 8:00 AM to 10:00 PM for your entertainment and relaxation.",
-      price: "Daily access",
-    },
-  ];
+  const [currentImage, setCurrentImage] = useState(0);
 
   return (
-    <section className="relative min-h-screen py-20 px-4 sm:px-6 lg:px-8">
-      {/* Background Image Slideshow */}
-      <div className="absolute inset-0 z-0">
-        {gameImages.map((img, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentImage ? "opacity-100" : "opacity-0"
-            }`}
-            style={{
-              backgroundImage: `url('${img}')`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundAttachment: "fixed",
-            }}
-          />
-        ))}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/95 via-[#2C1B16]/90 to-[#2E1A15]/95"></div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase flex items-center gap-2 justify-center">
-              <Gamepad2 className="w-4 h-4" />
-              GAMES & RECREATION
-            </span>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            Fun & <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Entertainment</span>
+    <section id="kids-family" className="relative min-h-screen bg-white">
+      {/* Kids & Family Hero Banner */}
+      <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
+        <Image
+          src={`${S3_BASE}/IMG_2380.webp`}
+          alt="Kids and Family Hero"
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        <div className="relative z-30 text-center w-full px-4">
+          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#2E1A15] mb-4 drop-shadow-lg">
+            Kids & Family
           </h1>
-          <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto leading-relaxed">
-            Enjoy a variety of indoor and outdoor games at Enchula Resort. Whether you&apos;re looking for friendly competition or casual fun, we have something for everyone.
+          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
+            At Enchula Resort, we welcome families with open arms. From supervised play areas to fun cultural activities, your children will have just as much fun as you do.
           </p>
         </div>
+      </div>
 
-        {/* Image Navigation Dots */}
-        <div className="flex justify-center gap-2 mb-12">
-          {gameImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentImage(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentImage
-                  ? "bg-[#D7BFA8] w-8"
-                  : "bg-[#5C4033] hover:bg-[#A9745B]"
-              }`}
-              aria-label={`View image ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        {/* Game Activities Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {gameActivities.map((activity, index) => (
-            <div
-              key={index}
-              className="bg-[#2C1B16]/60 backdrop-blur-sm rounded-2xl p-8 border border-[#5C4033]/30 hover:border-[#800000]/50 transition-all duration-300 group"
-            >
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-16 h-16 rounded-xl bg-gradient-to-br from-[#A04040] to-[#5C4033] flex items-center justify-center text-[#FAF5F0] group-hover:scale-110 transition-transform duration-300">
-                  {activity.icon}
+      {/* Main Content */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* Main Features Grid */}
+        <div className="space-y-12 mb-16">
+          {/* Kids' Activities Section */}
+          <div>
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#2E1A15] mb-8 text-center">Kids&apos; Activities</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Supervised Kids' Play Area",
+                  desc: "Safe, shaded outdoor space for ages 4-12 with toys, games, and friendly staff.",
+                  icon: "🎪",
+                  image: `${S3_BASE}/IMG_2352.webp`,
+                },
+                {
+                  title: "Maasai Craft Workshops",
+                  desc: "Learn traditional beadwork and storytelling from local artisans.",
+                  icon: "🎨",
+                  image: `${S3_BASE}/IMG_2277.webp`,
+                },
+                {
+                  title: "Stargazing Nights",
+                  desc: "Cozy blankets, hot cocoa, and fun facts about the night sky.",
+                  icon: "🌌",
+                  image: `${S3_BASE}/IMG_2380.webp`,
+                },
+              ].map((activity, i) => (
+                <div
+                  key={i}
+                  className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={activity.image}
+                      alt={activity.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-start gap-3 mb-2">
+                      <span className="text-2xl text-[#800000]">{activity.icon}</span>
+                      <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">{activity.title}</h3>
+                    </div>
+                    <p className="text-[#5C4033] mb-3">{activity.desc}</p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold text-[#FAF5F0] mb-2">
-                    {activity.title}
-                  </h3>
-                  <p className="text-[#D7BFA8] mb-3 leading-relaxed">
-                    {activity.description}
+              ))}
+            </div>
+          </div>
+
+          {/* Games Section with images and descriptions */}
+          <div className="mt-16">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#2E1A15] mb-8 text-center">Games</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Pool Table Game (use first image) */}
+              <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg flex flex-col">
+                <div className="relative h-56 w-full">
+                  <Image
+                    src={gameImages[0]}
+                    alt="Pool Table Game"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="p-5 flex-1 flex flex-col">
+                  <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Pool Table</h3>
+                  <p className="text-[#5C4033] mb-3 flex-1">
+                    Enjoy a classic game of pool in our games lounge. Whether you’re a seasoned player or just looking for some fun, our pool table is perfect for friendly matches and tournaments.
                   </p>
-                  <p className="text-[#A9745B] font-semibold">
-                    {activity.price}
+                </div>
+              </div>
+              {/* Other games from slideshow */}
+              <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg flex flex-col">
+                <div className="relative h-56 w-full">
+                  <Image
+                    src={gameImages[1]}
+                    alt="Board Games & More"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="p-5 flex-1 flex flex-col">
+                  <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Board Games & More</h3>
+                  <p className="text-[#5C4033] mb-3 flex-1">
+                    Gather your friends and family for a variety of board games and group activities. There’s something for everyone to enjoy!
+                  </p>
+                </div>
+              </div>
+              <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg flex flex-col">
+                <div className="relative h-56 w-full">
+                  <Image
+                    src={gameImages[2]}
+                    alt="Outdoor Games"
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="p-5 flex-1 flex flex-col">
+                  <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Outdoor Games</h3>
+                  <p className="text-[#5C4033] mb-3 flex-1">
+                    Step outside and enjoy a range of outdoor games and activities, perfect for all ages and skill levels.
                   </p>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Available Games Section */}
-        <div className="bg-[#2C1B16]/60 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[#5C4033]/30 mb-16">
-          <h2 className="text-3xl font-bold text-[#FAF5F0] mb-8 text-center">
-            Available Games & Activities
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-[#D7BFA8] mb-3">Indoor Games</h3>
-              <ul className="text-[#D7BFA8] space-y-2">
-                <li>Pool/Billiards</li>
-                <li>Table Tennis</li>
-                <li>Board Games</li>
-                <li>Card Games</li>
-                <li>Darts</li>
-              </ul>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-[#D7BFA8] mb-3">Outdoor Activities</h3>
-              <ul className="text-[#D7BFA8] space-y-2">
-                <li>Volleyball</li>
-                <li>Badminton</li>
-                <li>Lawn Games</li>
-                <li>Football</li>
-                <li>Team Sports</li>
-              </ul>
-            </div>
-            <div className="text-center">
-              <h3 className="text-xl font-semibold text-[#D7BFA8] mb-3">Special Events</h3>
-              <ul className="text-[#D7BFA8] space-y-2">
-                <li>Weekly Tournaments</li>
-                <li>Family Game Nights</li>
-                <li>Team Building Games</li>
-                <li>Kids Competitions</li>
-                <li>Prize Events</li>
-              </ul>
-            </div>
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center bg-[#2C1B16]/60 backdrop-blur-sm rounded-2xl p-12 border border-[#5C4033]/30">
-          <h2 className="text-3xl font-bold text-[#FAF5F0] mb-4">
-            Ready for Some Fun?
-          </h2>
-          <p className="text-[#D7BFA8] mb-8 max-w-2xl mx-auto">
-            Book your stay at Enchula Resort and enjoy unlimited access to all our games and recreational facilities.
+        {/* Trust Section */}
+        <div className="bg-white rounded-2xl p-8 border border-[#5C4033]/20 text-center mb-12 shadow-lg">
+          <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-4">Why Families Love Us</h3>
+          <p className="text-[#5C4033] text-lg">
+            “We had a stress-free weekend — the kids were entertained all day, and we got some much-needed relaxation.”<br />
+            <em className="text-[#A04040]">— The Otieno Family, Kisumu</em>
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+        </div>
+
+        {/* Call to Action */}
+        <div className="text-center">
+          <p className="text-[#5C4033] mb-6 text-lg">
+            Planning a family getaway? We&apos;ll make it unforgettable.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/booking"
-              className="px-8 py-4 bg-gradient-to-r from-[#A04040] to-[#800000] text-white font-semibold rounded-full hover:from-[#800000] hover:to-[#A04040] transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center gap-3 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
             >
-              Book Your Stay
+              Book Your Family Stay
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
             </Link>
             <Link
-              href="/contact"
-              className="px-8 py-4 bg-[#5C4033]/20 backdrop-blur-sm text-[#D7BFA8] font-semibold rounded-full border border-[#800000]/30 hover:bg-[#5C4033]/40 hover:border-[#800000]/50 transition-all duration-300"
+              href="https://wa.me/254727000027"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 border-2 border-[#800000] text-[#800000] hover:bg-[#800000] hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300"
             >
-              Learn More
+              Chat on WhatsApp
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-green-400"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.297 1.26.47 1.69.62.712.256 1.36.199 1.87-.075.57-.297 1.92-1.823 2.12-2.12.2-.298.399-.198.696-.099.297.099 1.895.892 2.172 1.016.277.123.574.198.87.198.297 0 .372-.149.52-.447.149-.297.62-.744 1.165-1.24.546-.497.223-.174.421-.124.198.05.495.249.694.349.199.099.347.149.396.297.05.148.05.371-.025.62-.074.248-.272.94-.421 1.338-.149.399-.297.498-.57.696-.273.198-1.016.371-1.964.371-.94 0-2.559-.398-4.886-1.512z"/>
+              </svg>
             </Link>
           </div>
         </div>
       </div>
-
-      {/* Auto-advance slideshow */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            setInterval(() => {
-              const dots = document.querySelectorAll('[aria-label^="View image"]');
-              const current = Array.from(dots).findIndex(d => d.classList.contains('w-8'));
-              const next = (current + 1) % dots.length;
-              dots[next].click();
-            }, 5000);
-          `,
-        }}
-      />
     </section>
   );
-};
+}
 
 export default GamesPage;
+

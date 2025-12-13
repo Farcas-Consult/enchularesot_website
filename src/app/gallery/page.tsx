@@ -63,117 +63,38 @@ export default function Gallery() {
 
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [activeFilter, setActiveFilter] = useState<string>("All");
-  const [currentBgIndex, setCurrentBgIndex] = useState(0);
-
-  const categories = ["All", "Exterior", "Rooms", "Bathrooms", "Amenities", "Dining"];
-
-  const categoryIcons: { [key: string]: React.ReactNode } = {
-    All: <Camera className="w-5 h-5" />,
-    Exterior: <Hotel className="w-5 h-5 text-[#5C4033]" />,
-    Rooms: <Bed className="w-5 h-5 text-[#800000]" />,
-    Bathrooms: <Sparkles className="w-5 h-5 text-[#A04040]" />,
-    Amenities: <Waves className="w-5 h-5 text-[#5C4033]" />,
-    Dining: <UtensilsCrossed className="w-5 h-5 text-[#800000]" />,
-  };
-
-  const filteredImages = activeFilter === "All"
-    ? galleryImages
-    : galleryImages.filter((img) => img.category === activeFilter);
-
   const handlePrevious = () => {
     if (!selectedImage) return;
-    const currentIndex = filteredImages.findIndex(
+    const currentIndex = galleryImages.findIndex(
       (img) => img.src === selectedImage.src
     );
-    const prevIndex = currentIndex > 0 ? currentIndex - 1 : filteredImages.length - 1;
-    setSelectedImage(filteredImages[prevIndex]);
+    const prevIndex = currentIndex > 0 ? currentIndex - 1 : galleryImages.length - 1;
+    setSelectedImage(galleryImages[prevIndex]);
   };
 
   const handleNext = () => {
     if (!selectedImage) return;
-    const currentIndex = filteredImages.findIndex(
+    const currentIndex = galleryImages.findIndex(
       (img) => img.src === selectedImage.src
     );
-    const nextIndex = currentIndex < filteredImages.length - 1 ? currentIndex + 1 : 0;
-    setSelectedImage(filteredImages[nextIndex]);
+    const nextIndex = currentIndex < galleryImages.length - 1 ? currentIndex + 1 : 0;
+    setSelectedImage(galleryImages[nextIndex]);
   };
 
-  // Auto-rotate background every 8 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBgIndex((prev) => (prev + 1) % 3);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Background images array
-  const backgroundImages = [GalleryBg1, GalleryBg2, GalleryBg3];
-
   return (
-    <section id="gallery" className="relative py-24 px-4 overflow-hidden">
-      {/* 🎞️ Background Carousel */}
-      <div className="absolute inset-0">
-        {backgroundImages.map((bg, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentBgIndex ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Image
-              src={bg}
-              alt={`Gallery background ${index + 1}`}
-              fill
-              className="object-cover"
-              priority={index === 0}
-            />
-          </div>
-        ))}
-        {/* Overlay on top of background carousel */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto">
+    <section id="gallery" className="py-24 px-4 bg-white">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
-              Visual Journey
-            </span>
-          </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-[#FAF5F0] mb-6 tracking-tight">
-            Explore Our
-            <span className="block bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
-              Stunning Gallery
-            </span>
-          </h2>
-          <p className="text-xl text-[#D7BFA8] max-w-3xl mx-auto leading-relaxed">
-            Immerse yourself in the beauty of Enchula Resort through our curated collection
-            of breathtaking spaces and unforgettable moments.
+          <h2 className="text-4xl md:text-5xl font-bold text-[#2E1A15] mb-4">Gallery</h2>
+          <p className="text-lg text-[#5C4033] max-w-2xl mx-auto">
+            Immerse yourself in the beauty of Enchula Resort through our curated collection of breathtaking spaces and unforgettable moments.
           </p>
-        </div>
-
-        {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveFilter(category)}
-              className={`flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                activeFilter === category
-                  ? "bg-gradient-to-r from-[#5C4033] to-[#800000] text-[#FAF5F0] shadow-lg scale-105"
-                  : "bg-[#2C1B16]/40 text-[#D7BFA8] hover:bg-[#5C4033]/20 backdrop-blur-sm border border-[#5C4033]/30"
-              }`}
-            >
-              {categoryIcons[category]}
-              {category}
-            </button>
-          ))}
         </div>
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          {filteredImages.map((image, index) => (
+          {galleryImages.map((image, index) => (
             <div
               key={index}
               className="group relative cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 aspect-square"
@@ -184,21 +105,9 @@ export default function Gallery() {
                 alt={image.alt}
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-500"
-                priority={index < 6} // Prioritize first 6 images
+                priority={index < 6}
               />
-
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex items-center gap-2 text-[#FAF5F0] mb-2">
-                    {categoryIcons[image.category]}
-                    <span className="text-xs font-semibold uppercase text-[#D7BFA8]">
-                      {image.category}
-                    </span>
-                  </div>
-                  <p className="text-sm text-[#F8F3EF]">{image.alt}</p>
-                </div>
-              </div>
+              {/* Overlay removed for white background and simplicity */}
 
               {/* Zoom Icon */}
               <div className="absolute top-4 right-4 bg-[#5C4033]/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -211,19 +120,19 @@ export default function Gallery() {
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           {[
-            { label: "Gallery Images", value: "15+", color: "#5C4033" },
-            { label: "Categories", value: "6", color: "#800000" },
-            { label: "Photo Shoots", value: "100+", color: "#A04040" },
-            { label: "HD Quality", value: "4K", color: "#5C4033" },
+            { label: "Gallery Images", value: "15+" },
+            { label: "Categories", value: "6" },
+            { label: "Photo Shoots", value: "100+" },
+            { label: "HD Quality", value: "4K" },
           ].map((stat, idx) => (
             <div
               key={idx}
-              className="text-center bg-[#2C1B16]/30 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/20"
+              className="text-center bg-white rounded-2xl p-6 border border-neutral-200 shadow"
             >
-              <div className="text-4xl font-bold" style={{ color: stat.color }} mb-2>
+              <div className="text-4xl font-bold text-[#5C4033] mb-2">
                 {stat.value}
               </div>
-              <div className="text-[#D7BFA8] text-sm">{stat.label}</div>
+              <div className="text-[#A04040] text-sm font-semibold">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -271,7 +180,6 @@ export default function Gallery() {
             {/* Info Bar */}
             <div className="mt-6 bg-[#2C1B16]/50 backdrop-blur-md rounded-2xl px-6 py-4 border border-[#5C4033]/30">
               <div className="flex items-center gap-3 text-[#FAF5F0]">
-                {categoryIcons[selectedImage.category]}
                 <span className="font-semibold text-[#D7BFA8]">{selectedImage.category}</span>
                 <span className="text-[#A9745B]">•</span>
                 <span className="text-[#F8F3EF]">{selectedImage.alt}</span>
@@ -280,7 +188,7 @@ export default function Gallery() {
 
             {/* Indicator Dots */}
             <div className="mt-4 flex gap-2">
-              {filteredImages.map((img, idx) => (
+              {galleryImages.map((img, idx) => (
                 <button
                   key={idx}
                   aria-label={`View image ${idx + 1}`}

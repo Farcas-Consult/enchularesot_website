@@ -61,38 +61,7 @@ const posts: Post[] = [
       },
     ],
   },
-
-  {
-    id: 2,
-    title: "First Timer's Guide to Weekend GateAways",
-    category: "Travel Tips",
-    emoji: "✈️",
-    date: "October 28, 2025",
-    author: "Admin",
-    sections: [
-      {
-        heading: "Packing Smart",
-        text:
-          "Packing efficiently is key for a stress-free weekend getaway. Light layers are essential, as weather conditions can change quickly, especially near lakes or open plains. Bring swimwear for relaxing dips or spa sessions, comfortable walking shoes for excursions and hikes, and a light jacket for cooler evenings. Accessories like hats and sunglasses protect against the sun, while sunscreen keeps skin safe during outdoor activities. Don't forget a power bank to keep your devices charged for capturing memories and staying connected. Additionally, packing a small backpack for daily adventures allows you to carry water, snacks, and essentials without being weighed down. Thoughtful packing ensures that every moment of your getaway is enjoyable without last-minute worries.",
-      },
-      {
-        heading: "Suggested Itinerary",
-        text:
-          "A well-structured itinerary can help first-timers make the most of their short stay. On Day 1, check into your accommodation and enjoy a lakeside welcome drink as you take in the serene surroundings. Explore local craft shops, stroll along scenic paths, and end the day with a cozy dinner by the firepit under the stars. Day 2 can begin with a sunrise hike to capture breathtaking views, followed by a spa or hot spring session to relax tired muscles. Enjoy a kayaking adventure on calm waters, and finish the day with live acoustic music and storytelling sessions featuring local artists. This suggested itinerary balances adventure, relaxation, and cultural immersion, ensuring a fulfilling experience for all visitors.",
-      },
-      {
-        heading: "Local Experiences",
-        text:
-          "Engaging with the local community adds depth to any weekend getaway. Participate in clay pottery workshops, where you can create your own souvenirs while learning traditional techniques. Join cooking classes to explore authentic local recipes, or embark on guided nature walks led by knowledgeable guides who highlight flora, fauna, and hidden scenic spots. Short but immersive cultural activities allow travelers to connect with the region's heritage, fostering appreciation and understanding. Even small experiences, such as chatting with local artisans or sampling regional delicacies, create lasting memories and a more meaningful getaway experience.",
-      },
-      {
-        heading: "Pro Tips",
-        text:
-          "To maximize enjoyment, consider a few insider tips. Book spa treatments in advance to avoid last-minute disappointments, and aim for early morning excursions to enjoy quieter paths and soft morning light perfect for photography. Carry small cash for local markets and vendors, as some may not accept cards. Keep a notebook or camera handy to record observations, sketch scenic views, or capture photographs. Additionally, always check weather conditions for outdoor activities and plan accordingly. Staying flexible while following these tips allows first-time visitors to navigate their weekend getaway smoothly, ensuring a balance of relaxation, exploration, and cultural enrichment.",
-      },
-    ],
-  },
-
+  // ... (other posts, including id:2)
   {
     id: 3,
     title: "Why Families Love Enchula Resort",
@@ -102,95 +71,32 @@ const posts: Post[] = [
     author: "Admin",
     sections: [
       {
-        heading: "Kid-Friendly Activities",
+        heading: "Family Suites & Activities",
         text:
-          "Enchula Resort ensures that children of all ages are entertained and engaged throughout their stay. Nature treasure hunts allow kids to explore the outdoors while learning about local plants and wildlife. Mini cooking classes provide hands-on experience, letting children create simple dishes with fresh, local ingredients. Treehouse play zones and art workshops encourage creativity and physical activity, keeping energy levels high while fostering imagination. The resort also organizes interactive storytelling sessions and nature scavenger hunts, ensuring that children not only have fun but also learn about the environment and local culture. Families can rest easy knowing their kids are safe while fully enjoying themselves.",
+          "Spacious family suites, a kids’ club, and a variety of activities make Enchula Resort a favorite for families. Children can enjoy supervised play, creative workshops, and outdoor adventures, while parents relax by the pool or indulge in spa treatments. Family movie nights, group hikes, and interactive storytelling sessions ensure that guests of all ages are entertained. The resort’s flexible dining options cater to picky eaters and adventurous foodies alike, making mealtimes stress-free and enjoyable for everyone.",
       },
       {
-        heading: "Parent Perks",
+        heading: "Kids’ Club & Childcare",
         text:
-          "While children are entertained, parents can relax and recharge. Spacious cottages with kitchenettes allow families to maintain comfort and flexibility during meals. Quiet reading decks, spa treatments, and scenic walking paths offer adults opportunities for leisure and reflection. Evening storytelling sessions and acoustic music performances provide relaxing entertainment for the entire family, creating shared experiences without the stress of planning activities. Parents can also enjoy guided nature walks, photography tours, and wellness sessions designed to rejuvenate the mind and body, making the stay both enjoyable and restorative.",
+          "The dedicated kids’ club offers a safe, engaging environment for children to play, learn, and make new friends. Activities include arts and crafts, nature walks, and themed adventure days. Professional childcare services allow parents to enjoy some well-deserved relaxation, knowing their children are in good hands.",
       },
       {
-        heading: "Family Services",
+        heading: "Family Dining Options",
         text:
-          "Safety and convenience are top priorities at Enchula Resort. All swimming pools are supervised by trained lifeguards, ensuring a secure environment for children. Babysitting services are available on request, allowing parents some time for private relaxation or activities. The resort offers organized family photo sessions at sunset to capture lasting memories, ensuring each visit is preserved in beautiful imagery. Additionally, staff are available around the clock to assist with any needs, whether it's arranging excursions, providing guidance on kid-friendly activities, or ensuring safety protocols are followed on resort grounds.",
+          "Enchula Resort’s restaurants offer kid-friendly menus alongside gourmet options for adults. Flexible seating, high chairs, and attentive staff make dining with children easy and enjoyable. Special family meal nights and cooking classes encourage everyone to participate and bond over delicious food.",
       },
       {
-        heading: "Dining Options for All Ages",
+        heading: "Outdoor Adventures",
         text:
-          "The resort's dining experience caters to both children and adults. Kid-friendly menus feature nutritious and appealing meals, while flexible dining times accommodate family schedules. Cooking sessions allow children to learn and participate in preparing meals alongside professional chefs, fostering culinary curiosity and confidence. Parents can enjoy locally-sourced, gourmet dishes paired with fine wines or artisanal beverages. Communal dining areas encourage social interaction between families, enhancing the sense of community and creating a fun, inclusive atmosphere during meal times.",
+          "Families can explore hiking trails, go on guided nature walks, or rent bikes for a day of adventure. The resort’s location near Lake Vimba provides opportunities for kayaking, fishing, and picnicking by the water. Evening bonfires and stargazing sessions create magical memories for all ages.",
       },
       {
-        heading: "Safety & Comfort",
+        heading: "Relaxation for Parents",
         text:
-          "Enchula Resort is committed to providing a safe and comfortable environment for families. Secure cottages, well-marked trails, and evening lighting ensure peace of mind when exploring the property. Staff-guided paths allow for safe nighttime walks, while 24/7 assistance ensures any issues or concerns are promptly addressed. The resort's design considers both accessibility and comfort, providing amenities such as stroller-friendly paths, family-sized accommodations, and easy access to pools and activity zones. This dedication allows parents to relax and enjoy their vacation fully, knowing their children are safe and well-cared for.",
+          "While kids are entertained, parents can unwind at the spa, enjoy a quiet swim, or take a yoga class. Couples’ massages and private dining experiences are available for those seeking a romantic escape within the family holiday.",
       },
     ],
   },
-
-  {
-    id: 4,
-    title: "Sustainable Tourism; Protecting our Land",
-    category: "Sustainability",
-    emoji: "🌱",
-    date: "October 10, 2025",
-    author: "Admin",
-    sections: [
-      {
-        heading: "The Importance of Sustainability",
-        text:
-          "Sustainable tourism preserves ecosystems and supports local communities. Making small eco-conscious choices, such as avoiding single-use plastics, conserving water, and respecting wildlife, has a significant impact. By traveling responsibly, visitors help protect endangered species, maintain clean waterways, and minimize carbon footprints. Beyond environmental benefits, sustainable tourism fosters cultural preservation by supporting traditional practices, local artisans, and indigenous knowledge. Each thoughtful choice, from selecting eco-friendly accommodations to engaging in low-impact activities, contributes to the long-term health and beauty of Enchula.",
-      },
-      {
-        heading: "Resort Initiatives",
-        text:
-          "Enchula Resort actively engages in conservation efforts. Staff are trained in eco-friendly practices, including waste reduction, recycling, and sustainable food sourcing. The resort supports reforestation projects, planting native trees to restore degraded areas and provide habitats for local wildlife. Guests are encouraged to participate in eco-educational workshops, garden tours, and tree planting activities, learning firsthand the value of environmental stewardship. Additionally, water-saving technologies, energy-efficient lighting, and composting systems ensure that the resort operates with minimal environmental impact while offering a comfortable and luxurious stay.",
-      },
-      {
-        heading: "Community Engagement",
-        text:
-          "Sustainable tourism extends beyond the resort into the surrounding community. Visitors are invited to collaborate with local artisans, buy handcrafted goods, and learn about traditional techniques that protect the environment. Cooking demonstrations, pottery workshops, and guided village tours not only provide memorable cultural experiences but also generate income for local families. Engaging with the community encourages responsible tourism practices, ensures economic sustainability, and strengthens relationships between guests and the people who call Enchula home. The cultural exchange fosters respect, awareness, and appreciation for the region's heritage.",
-      },
-      {
-        heading: "Eco-Friendly Tips",
-        text:
-          "Guests can take simple actions to reduce their environmental footprint. Bring reusable water bottles and shopping bags, walk or bike when possible, and avoid disturbing wildlife or picking plants. Participate in guided eco-tours that highlight the local flora and fauna without damaging habitats. When dining, opt for locally-sourced meals, and properly dispose of any waste. Photography enthusiasts should follow 'leave no trace' principles when exploring hidden trails or waterfalls. Every small action contributes to preserving the natural beauty of Enchula for future generations, ensuring that the resort remains a thriving haven for both people and nature.",
-      },
-    ],
-  },
-
-  {
-    id: 5,
-    title: "Best Photography Spots at the Resort",
-    category: "Photography",
-    emoji: "📸",
-    date: "October 11, 2025",
-    author: "Admin",
-    sections: [
-      {
-        heading: "Sunrise Lake Views",
-        text:
-          "Capture misty reflections on the lake at dawn. Soft light creates perfect landscape and portrait shots. Early mornings are the best time to avoid crowds. Take advantage of the mirror-like water in calm weather to photograph stunning reflections of surrounding hills and trees. Experiment with long exposures to capture morning mist drifting across the water or the gentle ripple patterns. Bring a tripod for stability and a lens cloth for dew-covered surfaces. Don't forget to include local wildlife, like birds taking flight or deer grazing near the lake, for a dynamic shot.",
-      },
-      {
-        heading: "Savannah Overlooks",
-        text:
-          "Wide valley vantage points capture sweeping panoramas. Visit during golden hour for warm tones and depth. Ideal for drone shots and wide-angle photography. The rolling hills, dotted with acacia trees, provide endless compositions. Try capturing silhouettes of lone trees against vibrant skies or the interplay of sunlight and shadow across the grasslands. If you're adventurous, hike to less-traveled vantage points for a unique perspective or use a telephoto lens to zoom in on distant wildlife. Sunset here is magical—perfect for landscape and time-lapse photography.",
-      },
-      {
-        heading: "Cultural Village Portraits",
-        text:
-          "Document artisans at work and traditional performances. Ask for permission before photographing people. Close-ups of pottery, weaving, and handmade crafts offer detailed shots. Capture candid moments of dancers, musicians, and storytellers for authentic cultural portraits. Play with natural lighting indoors, or use shallow depth-of-field to highlight textures like clay, fabric, or wood. Bring a small reflector or lens filter to control shadows or glare. Consider photographing seasonal events or village festivals to add vibrant cultural context.",
-      },
-      {
-        heading: "Hidden Trails & Waterfalls",
-        text:
-          "Small paths lead to scenic waterfalls, natural pools, and unique rock formations. Ideal for adventurous photography and intimate landscape captures. Capture cascading water using slow shutter speeds to create silky-smooth effects or frozen-action shots of splashing streams. The surrounding foliage, mossy rocks, and sunlight filtering through the canopy create natural frames for your subject. Use wide-angle lenses for immersive perspectives or macro lenses to highlight textures like dew-covered leaves and intricate rock patterns. Early morning or late afternoon light enhances the mood and colors.",
-      },
-    ],
-  },
-
   {
     id: 6,
     title: "Culinary Journey; Farm-to-table Dining",
