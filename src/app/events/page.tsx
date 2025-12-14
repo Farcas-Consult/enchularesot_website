@@ -1,14 +1,23 @@
 "use client";
+
 import Image from "next/image";
 import React from "react";
+import Conference1 from "../../assets/Conference1.jpg";
+import Conference2 from "../../assets/Conference2.jpg";
+import Conference3 from "../../assets/Conference3.jpg";
+import Conference4 from "../../assets/Conference4.jpg";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const BACKGROUND_IMAGES = [
+  // Corporate Retreats & Conferences
+  Conference1,
+  // Weddings & Vow Renewals
+  `${S3_BASE}/Marriage1.webp`,
+  // Birthday & Family Reunions
+  `${S3_BASE}/Birthday1.webp`,
+  // Additional (keep one of the original hero images for variety)
   `${S3_BASE}/IMG_2395.webp`,
-  `${S3_BASE}/IMG_2393.webp`,
-  `${S3_BASE}/IMG_2387.webp`,
-  `${S3_BASE}/IMG_2383.webp`,
 ];
 
 export default function EventsPage() {
@@ -33,10 +42,10 @@ export default function EventsPage() {
     {
       title: "Corporate Retreats & Conferences",
       images: [
-        "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2395.webp",
-        "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2393.webp",
-        "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2387.webp",
-        "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/IMG_2383.webp",
+        Conference1,
+        Conference2,
+        Conference3,
+        Conference4,
       ],
       description: "Professional meeting spaces & team building",
       packages: [
@@ -92,22 +101,25 @@ export default function EventsPage() {
     <section id="events" className="relative min-h-screen bg-white">
       {/* Hero Banner Carousel */}
       <div className="relative h-screen min-h-[500px] flex items-center justify-center overflow-hidden">
-        {BACKGROUND_IMAGES.map((img, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-            style={{ backgroundImage: `url('${img}')` }}
-          />
-        ))}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#2E1A15]/80 via-[#2C1B16]/80 to-[#2E1A15]/90 z-20" />
-        <div className="relative z-30 text-center w-full px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
-            Events & Experiences
-          </h1>
-          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
-            Celebrate your special moments and create lasting memories in our serene setting.
-          </p>
-        </div>
+        {BACKGROUND_IMAGES.map((img, index) => {
+          const url = typeof img === "string" ? img : img.src;
+          return (
+            <div
+              key={index}
+              className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            >
+              <Image
+                src={url}
+                alt="Event hero image"
+                fill
+                style={{ objectFit: "cover" }}
+                quality={90}
+                priority={index === 0}
+                sizes="100vw"
+              />
+            </div>
+          );
+        })}
         {/* Carousel indicators */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
           {BACKGROUND_IMAGES.map((_, idx) => (

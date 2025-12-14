@@ -85,7 +85,7 @@ function AmenitiesPage() {
       title: "24/7 Reception",
       description:
         "Our friendly front desk team is available around the clock to assist with your needs, bookings, and inquiries.",
-      image: `${S3_BASE}/IMG_2437.webp`,
+      image: `${S3_BASE}/IMG_2256.webp`,
       icon: <Phone className="w-7 h-7" />,
     },
   ];
@@ -101,14 +101,6 @@ function AmenitiesPage() {
             style={{ backgroundImage: `url('${img}')` }}
           />
         ))}
-        <div className="relative z-30 text-center w-full px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
-            Amenities & Services
-          </h1>
-          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
-            Experience exceptional comfort and convenience with our comprehensive range of premium amenities and services, designed to make your stay unforgettable.
-          </p>
-        </div>
         {/* Carousel indicators */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
           {backgroundImages.map((_, idx) => (
