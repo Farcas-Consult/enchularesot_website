@@ -19,8 +19,8 @@ const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/ap
 function AmenitiesPage() {
   // Carousel images
   const backgroundImages = [
-    `${S3_BASE}/IMG_2437.webp`,
-    `${S3_BASE}/IMG_2229.webp`,
+    `${S3_BASE}/Bar1.jpg`,
+    `${S3_BASE}/Restaurant1.jpg`,
     `${S3_BASE}/IMG_2160.webp`,
   ];
   const [currentBg, setCurrentBg] = useState(0);
@@ -36,28 +36,28 @@ function AmenitiesPage() {
       title: "Housekeeping Services",
       description:
         "Daily housekeeping with fresh linens, towel service, and room maintenance to ensure your comfort throughout your stay.",
-      image: `${S3_BASE}/IMG_2437.webp`,
+      image: `${S3_BASE}/Housekeeping.png`,
       icon: <Sparkles className="w-7 h-7" />,
     },
     {
       title: "Laundry Services",
       description:
         "Professional laundry and dry cleaning services available. Same-day service for your convenience.",
-      image: `${S3_BASE}/IMG_2229.webp`,
+      image: `${S3_BASE}/Laundry.png`,
       icon: <Shirt className="w-7 h-7" />,
     },
     {
       title: "Restaurant",
       description:
         "Exquisite dining experience featuring local and international cuisine. Open for breakfast, lunch, and dinner.",
-      image: `${S3_BASE}/IMG_2229.webp`,
+      image: `${S3_BASE}/Restaurant1.jpg`,
       icon: <Utensils className="w-7 h-7" />,
     },
     {
       title: "Bar Lounge",
       description:
         "Relax and unwind at our elegant bar with a wide selection of premium beverages, cocktails, and light snacks.",
-      image: `${S3_BASE}/IMG_2229.webp`,
+      image: `${S3_BASE}/Bar2.jpg`,
       icon: <Coffee className="w-7 h-7" />,
     },
     {
@@ -71,21 +71,21 @@ function AmenitiesPage() {
       title: "Swimming Pool",
       description:
         "Stunning outdoor pool with comfortable loungers and poolside service. Perfect for relaxation and recreation.",
-      image: `${S3_BASE}/IMG_2160.webp`,
+      image: `${S3_BASE}/Swimmingpool1_result.png`,
       icon: <Waves className="w-7 h-7" />,
     },
     {
       title: "Events & Conferences",
       description:
         "Versatile event spaces for meetings, conferences, weddings, and special occasions. Full catering and AV equipment available.",
-      image: `${S3_BASE}/IMG_2437.webp`,
+      image: `${S3_BASE}/Conference2.jpg`,
       icon: <Calendar className="w-7 h-7" />,
     },
     {
       title: "24/7 Reception",
       description:
         "Our friendly front desk team is available around the clock to assist with your needs, bookings, and inquiries.",
-      image: `${S3_BASE}/IMG_2256.webp`,
+      image: `${S3_BASE}/Reception1.jpg`,
       icon: <Phone className="w-7 h-7" />,
     },
   ];
@@ -146,7 +146,7 @@ function AmenitiesPage() {
         <div className="mb-16 bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg grid grid-cols-1 md:grid-cols-2">
           <div className="relative h-80 w-full">
             <img
-              src={`${S3_BASE}/IMG_2437.webp`}
+              src={`${S3_BASE}/IMG_2419.webp`}
               alt="Reception Desk"
               className="w-full h-full object-cover"
             />

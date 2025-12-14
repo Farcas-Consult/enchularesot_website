@@ -9,8 +9,8 @@ const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/ap
 export default function DiningPage() {
   // Hero carousel images
   const backgroundImages = [
-    `${S3_BASE}/IMG_2209.webp`,
-    `${S3_BASE}/IMG_2204.webp`,
+    `${S3_BASE}/Dining1.jpg`,
+    `${S3_BASE}/Dining4.jpg`,
   ];
   const [currentBg, setCurrentBg] = useState(0);
   // Auto-rotate background images
@@ -92,6 +92,35 @@ export default function DiningPage() {
         </div>
       </div>
 
+      {/* Dining Gallery Section */}
+      <div className="w-full my-16">
+        <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#2E1A15] mb-8 text-center">Dining Gallery</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
+          {[
+            `${S3_BASE}/Dining1.jpg`,
+            `${S3_BASE}/Dining2.jpg`,
+            `${S3_BASE}/Dining3.jpg`,
+            `${S3_BASE}/Dining4.jpg`,
+            `${S3_BASE}/Dining5.jpg`,
+            `${S3_BASE}/Dining6.jpg`,
+            `${S3_BASE}/Restaurant1.jpg`,
+            `${S3_BASE}/Dining8.jpg`,
+          ].map((src, i) => (
+            <div key={i} className="aspect-[4/3] relative group">
+              <Image
+                src={src}
+                alt={`Dining ${i + 1}`}
+                fill
+                className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                sizes="(max-width: 768px) 50vw, 25vw"
+                priority={i === 0}
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
+            </div>
+          ))}
+        </div>
+      </div>
+
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Dining Experiences Section */}
         <div className="mb-16">
@@ -101,7 +130,7 @@ export default function DiningPage() {
             <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group transition-all duration-300 hover:scale-[1.02]">
               <div className="relative h-56 w-full">
                 <Image
-                  src={`${S3_BASE}/IMG_2236.webp`}
+                  src={`${S3_BASE}/Restaurant1.jpg`}
                   alt="Restaurant Interior"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -117,7 +146,7 @@ export default function DiningPage() {
             <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group transition-all duration-300 hover:scale-[1.02]">
               <div className="relative h-56 w-full">
                 <Image
-                  src={`${S3_BASE}/IMG_2229.webp`}
+                  src={`${S3_BASE}/Bar2.jpg`}
                   alt="Bar Lounge"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -157,7 +186,7 @@ export default function DiningPage() {
             <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group transition-all duration-300 hover:scale-[1.02]">
               <div className="relative h-56 w-full">
                 <Image
-                  src={`${S3_BASE}/IMG_2209.webp`}
+                  src={`${S3_BASE}/Bar1.jpg`}
                   alt="Pool Bar"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"

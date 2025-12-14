@@ -127,6 +127,16 @@ const Contact: React.FC = () => {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
+          <div className="flex justify-center mt-4 mb-2">
+            <a
+              href="https://www.google.com/maps/dir/?api=1&destination=Kajiado,+Kenya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 bg-[#7A1F2E] text-white rounded font-semibold shadow hover:bg-[#4E2E0E] transition-all duration-200"
+            >
+              Get Directions from Your Location
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -11,7 +11,7 @@ const GamesPage = () => {
   const gameImages = [
     `${S3_BASE}/IMG_3394.webp`,
     `${S3_BASE}/IMG_2450.webp`,
-    `${S3_BASE}/IMG_2444.webp`,
+    `${S3_BASE}/Ball.jpg`,
   ];
   const [currentImage, setCurrentImage] = useState(0);
 
@@ -27,14 +27,7 @@ const GamesPage = () => {
           priority
           sizes="100vw"
         />
-        <div className="relative z-30 text-center w-full px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#2E1A15] mb-4 drop-shadow-lg">
-            Kids & Family
-          </h1>
-          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
-            At Enchula Resort, we welcome families with open arms. From supervised play areas to fun cultural activities, your children will have just as much fun as you do.
-          </p>
-        </div>
+        {/* No text overlay on hero banner */}
       </div>
 
       {/* Main Content */}
@@ -53,14 +46,14 @@ const GamesPage = () => {
                   image: `${S3_BASE}/IMG_2352.webp`,
                 },
                 {
-                  title: "Maasai Craft Workshops",
-                  desc: "Learn traditional beadwork and storytelling from local artisans.",
+                  title: "Composite Playground Structure",
+                  desc: "A large, interconnected piece of playground equipment featuring multiple play elements like slides, tunnels, and climbing structures designed for various physical activities.",
                   icon: "🎨",
                   image: `${S3_BASE}/IMG_2277.webp`,
                 },
                 {
-                  title: "Stargazing Nights",
-                  desc: "Cozy blankets, hot cocoa, and fun facts about the night sky.",
+                  title: "Seesaw",
+                  desc: "A classic playground game consisting of a long board balanced in the middle, on which children sit at opposite ends and move up and down by pushing off the ground.",
                   icon: "🌌",
                   image: `${S3_BASE}/IMG_2380.webp`,
                 },
@@ -98,7 +91,7 @@ const GamesPage = () => {
               <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg flex flex-col">
                 <div className="relative h-56 w-full">
                   <Image
-                    src={gameImages[0]}
+                    src={gameImages[1]}
                     alt="Pool Table Game"
                     fill
                     className="object-cover object-center"
@@ -116,7 +109,7 @@ const GamesPage = () => {
               <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg flex flex-col">
                 <div className="relative h-56 w-full">
                   <Image
-                    src={gameImages[1]}
+                    src={gameImages[0]}
                     alt="Board Games & More"
                     fill
                     className="object-cover object-center"

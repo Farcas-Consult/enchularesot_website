@@ -55,21 +55,21 @@ const rooms = [
     id: 1,
     name: "Standard Double Room",
     price: "From Kshs. 10,000",
-    image: `${S3_BASE}/IMG_2346.webp`,
+    image: `${S3_BASE}/Room6.jpg`,
     anchor: "standard-double-room",
   },
   {
     id: 2,
     name: "Twin Room",
     price: "From Kshs. 10,000",
-    image: `${S3_BASE}/IMG_2321.webp`,
+    image: `${S3_BASE}/Room8.jpg`,
     anchor: "twin-room",
   },
   {
     id: 3,
     name: "Superior Room",
     price: "From Kshs. 12,000",
-    image: `${S3_BASE}/IMG_2300.webp`,
+    image: `${S3_BASE}/Room4.jpg`,
     anchor: "superior-room",
   },
 ];
@@ -187,10 +187,10 @@ export default function Home() {
           Savor delicious cuisine in our bright, inviting restaurants and bars, offering local and international flavors.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Image src={`${S3_BASE}/IMG_2236.webp`} alt="Restaurant Interior" width={540} height={340} className="rounded-xl shadow-md" />
-          <Image src={`${S3_BASE}/IMG_2229.webp`} alt="Bar Lounge" width={540} height={340} className="rounded-xl shadow-md" />
-          <Image src={`${S3_BASE}/IMG_2204.webp`} alt="Nightlife" width={540} height={340} className="rounded-xl shadow-md" />
-          <Image src={`${S3_BASE}/IMG_2209.webp`} alt="Pool Bar" width={540} height={340} className="rounded-xl shadow-md" />
+          <Image src={`${S3_BASE}/Dining2.jpg`} alt="Restaurant Interior" width={540} height={340} className="rounded-xl shadow-md" />
+          <Image src={`${S3_BASE}/Dining4.jpg`} alt="Bar Lounge" width={540} height={340} className="rounded-xl shadow-md" />
+          <Image src={`${S3_BASE}/Dining6.jpg`} alt="Nightlife" width={540} height={340} className="rounded-xl shadow-md" />
+          <Image src={`${S3_BASE}/Breakfast1.jpg`} alt="Pool Bar" width={540} height={340} className="rounded-xl shadow-md" />
         </div>
         <a href="/dinings" className="btn-primary mt-8 inline-block">See More Dining Options</a>
       </section>
@@ -204,14 +204,14 @@ export default function Home() {
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           {/* 1 Gym Image from wellness page */}
-          <Image src={`${S3_BASE}/IMG_2174.webp`} alt="Modern Gym Facility" width={380} height={260} className="rounded-xl shadow-md object-cover" />
+          <Image src={`${S3_BASE}/IMG_2174.webp`} alt="Modern Gym Facility" width={380} height={260} className="rounded-xl shadow-md object-contain" />
           {/* 1 Spa/Wellness Image from wellness page */}
-          <Image src={`${S3_BASE}/Facial.webp`} alt="Facial Treatment" width={380} height={260} className="rounded-xl shadow-md object-cover" />
+          <Image src={`${S3_BASE}/Facial.webp`} alt="Facial Treatment" width={380} height={260} className="rounded-xl shadow-md object-contain" />
           {/* 2 Images from games page (different from previous) */}
-          <Image src={`${S3_BASE}/IMG_3394.webp`} alt="Kids & Family Fun" width={380} height={260} className="rounded-xl shadow-md object-cover" />
-          <Image src={`${S3_BASE}/IMG_2450.webp`} alt="Maasai Craft Workshop" width={380} height={260} className="rounded-xl shadow-md object-cover" />
+          <Image src={`${S3_BASE}/IMG_3394.webp`} alt="Kids & Family Fun" width={380} height={260} className="rounded-xl shadow-md object-contain" />
+          <Image src={`${S3_BASE}/IMG_2450.webp`} alt="Maasai Craft Workshop" width={380} height={260} className="rounded-xl shadow-md object-contain" />
           {/* 1 Unique Experience from experience_activities page */}
-          <Image src={`${S3_BASE}/Maasai2.webp`} alt="Maasai Cultural Experience" width={380} height={260} className="rounded-xl shadow-md object-cover" />
+          <Image src={`${S3_BASE}/Maasai2.webp`} alt="Maasai Cultural Experience" width={380} height={260} className="rounded-xl shadow-md object-contain" />
         </div>
         <a href="/experience_activities" className="btn-primary mt-8 inline-block">See All Experiences</a>
       </section>
@@ -223,13 +223,13 @@ export default function Home() {
         <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
           Explore our gallery and see the beauty of Enchula Resort for yourself.
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 justify-center">
-          <Image src={`${S3_BASE}/IMG_2272.webp`} alt="Luxury Resort Exterior" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
-          <Image src={`${S3_BASE}/IMG_2315.webp`} alt="Elegant Retreat" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
-          <Image src={`${S3_BASE}/IMG_2342.webp`} alt="Modern Washroom" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
-          <Image src={`${S3_BASE}/IMG_3429.webp`} alt="Infinity Pool" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
-          <Image src={`${S3_BASE}/Breakfast.webp`} alt="Gourmet Cuisine" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
-          <Image src={`${S3_BASE}/IMG_2275.webp`} alt="Tranquil Haven" width={350} height={220} className="rounded-xl shadow-md object-cover w-full h-full" />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-0 justify-center">
+          <Image src={`${S3_BASE}/Room4.jpg`} alt="Luxury Resort Exterior" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
+          <Image src={`${S3_BASE}/IMG_2315.webp`} alt="Elegant Retreat" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
+          <Image src={`${S3_BASE}/Conference2.jpg`} alt="Modern Washroom" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
+          <Image src={`${S3_BASE}/IMG_3429.webp`} alt="Infinity Pool" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
+          <Image src={`${S3_BASE}/Breakfast1.jpg`} alt="Gourmet Cuisine" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
+          <Image src={`${S3_BASE}/Dining4.jpg`} alt="Tranquil Haven" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
         </div>
         <a href="/gallery" className="btn-primary mt-8 inline-block">View Gallery</a>
       </section>

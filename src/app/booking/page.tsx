@@ -13,8 +13,8 @@ const roomTypes = [
     size: "30 m²",
     beds: "1 Queen Bed",
     images: [
-      `${S3_BASE}/IMG_2346.webp`,
-      `${S3_BASE}/IMG_2336.webp`,
+     
+      `${S3_BASE}/Room8.jpg`,
     ],
     amenities: ["Free Wi-Fi", "TV", "Air Conditioning", "Private Bathroom", "Mountain View"],
     available: true,
@@ -36,8 +36,8 @@ const roomTypes = [
     size: "26 m²",
     beds: "2 Single Beds",
     images: [
-      `${S3_BASE}/IMG_2321.webp`,
-      `${S3_BASE}/IMG_2315.webp`,
+      
+      `${S3_BASE}/Room6.jpg`,
     ],
     amenities: ["Free Wi-Fi", "TV", "Air Conditioning", "Private Bathroom", "Garden View"],
     available: true,
@@ -59,8 +59,8 @@ const roomTypes = [
     size: "35 m²",
     beds: "1 King/2 Twin Beds",
     images: [
-      `${S3_BASE}/IMG_2300.webp`,
-      `${S3_BASE}/IMG_2305.webp`,
+      
+      `${S3_BASE}/Room4.jpg`,
     ],
     amenities: ["Free Wi-Fi", "Smart TV", "Air Conditioning", "Luxury Bathroom", "Mini Bar", "Premium View"],
     available: true,
@@ -229,22 +229,21 @@ const BookingPage = () => {
   return (
     <section
       id="booking"
-      className="relative py-12 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden bg-cover bg-center bg-fixed booking-bg"
+      className="relative py-12 px-4 sm:px-6 lg:px-8 min-h-screen overflow-hidden bg-white"
     >
-      <div className="absolute inset-0 bg-linear-to-br from-[#2E1A15]/90 via-[#2C1B16]/85 to-[#2E1A15]/95"></div>
 
       <div className="relative z-10 max-w-6xl mx-auto h-full flex flex-col">
         {/* Header with Badge */}
         <div className="text-center mb-8">
-          <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase">
+          <div className="inline-block mb-4 px-6 py-2 bg-[#D7BFA8]/80 backdrop-blur-sm rounded-full border border-[#800000]/30">
+            <span className="text-[#800000] font-extrabold tracking-wide text-sm uppercase drop-shadow-sm">
               BOOKING
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
-            Reserve Your <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Experience</span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#800000] mb-6 leading-tight drop-shadow-sm">
+            Reserve Your <span className="bg-linear-to-r from-[#800000] via-[#A04040] to-[#D7BFA8] bg-clip-text text-transparent font-extrabold">Experience</span>
           </h1>
-          <p className="text-lg text-[#D7BFA8]">
+          <p className="text-lg text-[#2E1A15] font-bold drop-shadow-sm">
             Nairobi-Namanga Rd, Kajiado • Check-in: 12:00 PM • Check-out: 10:30 AM
           </p>
         </div>
@@ -364,29 +363,29 @@ const BookingPage = () => {
             </div>
 
             {/* Residency Status & Meal Plan */}
-            <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30">
-              <h2 className="text-xl font-bold text-[#FAF5F0] mb-4">Pricing Options</h2>
+            <div className="bg-[#F8F3EF] rounded-2xl p-6 border border-[#D7BFA8]/60 shadow-md">
+              <h2 className="text-xl font-extrabold text-[#800000] mb-4">Pricing Options</h2>
               
               {/* Residency Status */}
               <div className="mb-4">
-                <label className="block text-[#D7BFA8] text-sm mb-2">Residency Status</label>
+                <label className="block text-[#800000] text-sm font-bold mb-2">Residency Status</label>
                 <div className="flex gap-3">
                   <button
                     onClick={() => setIsKenyanResident(true)}
-                    className={`flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                    className={`flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all ${
                       isKenyanResident
                         ? "bg-[#800000] text-white"
-                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Kenyan Resident
                   </button>
                   <button
                     onClick={() => setIsKenyanResident(false)}
-                    className={`flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                    className={`flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all ${
                       !isKenyanResident
                         ? "bg-[#800000] text-white"
-                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Non-Resident
@@ -396,24 +395,24 @@ const BookingPage = () => {
 
               {/* Occupancy Type */}
               <div className="mb-4">
-                <label className="block text-[#D7BFA8] text-sm mb-2">Occupancy</label>
+                <label className="block text-[#800000] text-sm font-bold mb-2">Occupancy</label>
                 <div className="flex gap-3">
                   <button
                     onClick={() => setOccupancyType('single')}
-                    className={`flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                    className={`flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all ${
                       occupancyType === 'single'
                         ? "bg-[#800000] text-white"
-                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Single Occupancy
                   </button>
                   <button
                     onClick={() => setOccupancyType('double')}
-                    className={`flex-1 px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                    className={`flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all ${
                       occupancyType === 'double'
                         ? "bg-[#800000] text-white"
-                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Double Occupancy
@@ -423,34 +422,34 @@ const BookingPage = () => {
 
               {/* Meal Plan */}
               <div>
-                <label className="block text-[#D7BFA8] text-sm mb-2">Meal Plan</label>
+                <label className="block text-[#800000] text-sm font-bold mb-2">Meal Plan</label>
                 <div className="grid grid-cols-3 gap-3">
                   <button
                     onClick={() => setMealPlan('bedBreakfast')}
-                    className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all ${
+                    className={`px-3 py-2 rounded-lg font-bold text-xs transition-all ${
                       mealPlan === 'bedBreakfast'
                         ? "bg-[#800000] text-white"
-                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Bed & Breakfast
                   </button>
                   <button
                     onClick={() => setMealPlan('halfBoard')}
-                    className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all ${
+                    className={`px-3 py-2 rounded-lg font-bold text-xs transition-all ${
                       mealPlan === 'halfBoard'
                         ? "bg-[#800000] text-white"
-                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Half Board
                   </button>
                   <button
                     onClick={() => setMealPlan('fullBoard')}
-                    className={`px-3 py-2 rounded-lg font-semibold text-xs transition-all ${
+                    className={`px-3 py-2 rounded-lg font-bold text-xs transition-all ${
                       mealPlan === 'fullBoard'
                         ? "bg-[#800000] text-white"
-                        : "bg-[#2C1B16]/80 text-[#D7BFA8] border border-[#5C4033]/50"
+                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Full Board
@@ -460,44 +459,44 @@ const BookingPage = () => {
             </div>
 
             {/* Room Selection */}
-            <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30">
-              <h2 className="text-xl font-bold text-[#FAF5F0] mb-4">Choose Your Room</h2>
+            <div className="bg-[#F8F3EF] rounded-2xl p-6 border border-[#D7BFA8]/60 shadow-md">
+              <h2 className="text-xl font-extrabold text-[#800000] mb-4">Choose Your Room</h2>
               <div className="space-y-4">
                 {roomTypes.map((room) => (
                   <div
                     key={room.id}
-                    className={`bg-[#2C1B16]/80 rounded-xl p-4 border cursor-pointer transition-all ${
+                    className={`bg-[#D7BFA8]/60 rounded-xl p-4 border cursor-pointer transition-all font-bold text-[#2E1A15] ${
                       selectedRoom === room.id
-                        ? "border-[#800000] shadow-md"
-                        : "border-[#5C4033]/30 hover:border-[#800000]/50"
+                        ? "border-[#800000] shadow-md bg-[#F8F3EF]"
+                        : "border-[#D7BFA8]/60 hover:border-[#800000]/50"
                     }`}
                     onClick={() => setSelectedRoom(room.id)}
                   >
                     <div className="flex flex-col md:flex-row gap-4">
                       <div className="shrink-0 w-full md:w-32 h-20 rounded-lg overflow-hidden relative">
-                        <Image src={room.images[0]} alt={room.name} fill className="object-cover" />
+                        <Image src={room.images[0]} alt={room.name} fill className="object-contain" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-lg font-bold text-[#FAF5F0]">{room.name}</h3>
-                        <div className="flex flex-wrap gap-2 text-[#D7BFA8] text-xs mt-1">
+                        <h3 className="text-lg font-extrabold text-[#800000]">{room.name}</h3>
+                        <div className="flex flex-wrap gap-2 text-[#800000] text-xs font-bold mt-1">
                           <span>👤 {room.capacity}</span>
                           <span>📐 {room.size}</span>
                           <span>🛏 {room.beds}</span>
                         </div>
                         <div className="flex flex-wrap gap-1 mt-2">
                           {room.amenities.map((amenity, idx) => (
-                            <span key={idx} className="px-1.5 py-0.5 bg-[#4A3426]/60 text-[#F8F3EF] text-[0.65rem] rounded">
+                            <span key={idx} className="px-1.5 py-0.5 bg-[#800000]/10 text-[#800000] text-[0.7rem] font-bold rounded">
                               {amenity}
                             </span>
                           ))}
                         </div>
                         {room.pricing && (
                           <div className="mt-3 pt-3 border-t border-[#5C4033]/30">
-                            <p className="text-[#A04040] font-bold text-lg">
+                            <p className="text-[#800000] font-extrabold text-lg">
                               Kshs. {room.pricing[isKenyanResident ? 'kenyans' : 'nonResidents'][occupancyType][mealPlan].toLocaleString()}
-                              <span className="text-[#D7BFA8] text-xs font-normal ml-2">per night</span>
+                              <span className="text-[#2E1A15] text-xs font-bold ml-2">per night</span>
                             </p>
-                            <p className="text-[#D7BFA8] text-xs mt-1">
+                            <p className="text-[#2E1A15] text-xs font-bold mt-1">
                               {isKenyanResident ? 'Kenyan Resident' : 'Non-Resident'} • {occupancyType === 'single' ? 'Single' : 'Double'} • {mealPlan === 'bedBreakfast' ? 'Bed & Breakfast' : mealPlan === 'halfBoard' ? 'Half Board' : 'Full Board'}
                             </p>
                           </div>
@@ -527,9 +526,9 @@ const BookingPage = () => {
             {Object.entries(reservationCategories).map(([key, items]) => (
               <div
                 key={key}
-                className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30"
+                className="bg-[#F8F3EF] rounded-2xl p-6 border border-[#D7BFA8]/60 shadow-md"
               >
-                <h2 className="text-xl font-bold text-[#FAF5F0] mb-3">
+                <h2 className="text-xl font-extrabold text-[#800000] mb-3">
                   {key === 'conference' ? 'Conference Packages' :
                    key === 'dining' ? 'Dining Packages' :
                    key === 'wellness' ? 'Wellness & Spa' :
@@ -537,7 +536,7 @@ const BookingPage = () => {
                    key === 'pool' ? 'Swimming Pool' :
                    'Games Centre'}
                 </h2>
-                <p className="text-[#D7BFA8] text-xs mb-3">
+                <p className="text-[#2E1A15] text-xs font-bold mb-3">
                   {key === 'conference'
                     ? "Professional conference facilities with complete amenities for your corporate events."
                     : key === 'wellness' || key === 'games'
@@ -552,15 +551,15 @@ const BookingPage = () => {
                   {items.map((item) => (
                     <div
                       key={item.id}
-                      className={`p-4 rounded-xl border cursor-pointer transition-all ${
+                      className={`p-4 rounded-xl border cursor-pointer transition-all font-bold text-[#2E1A15] ${
                         selectedReservations.includes(item.id)
-                          ? "bg-[#800000]/10 border-[#800000]"
-                          : "bg-[#2C1B16]/80 border-[#5C4033]/30 hover:border-[#800000]/50"
+                          ? "bg-[#D7BFA8] border-[#800000]"
+                          : "bg-[#F8F3EF] border-[#D7BFA8]/60 hover:border-[#800000]/50"
                       }`}
                       onClick={() => toggleReservation(item.id)}
                     >
-                      <h3 className="font-semibold text-[#FAF5F0] text-sm">{item.name}</h3>
-                      <p className="text-[#D7BFA8] text-xs mt-1">{item.description}</p>
+                      <h3 className="font-extrabold text-[#800000] text-sm">{item.name}</h3>
+                      <p className="text-[#2E1A15] text-xs font-bold mt-1">{item.description}</p>
                       <div className="mt-2 w-4 h-4 rounded border border-[#5C4033] flex items-center justify-center">
                         {selectedReservations.includes(item.id) && (
                           <svg className="w-3 h-3 text-[#800000]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -595,69 +594,69 @@ const BookingPage = () => {
         {step === 3 && !showConfirmation && (
           <div className="flex-1 overflow-y-auto space-y-6 pr-1">
             {/* Guest Info */}
-            <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30">
-              <h2 className="text-xl font-bold text-[#FAF5F0] mb-4">Guest Information</h2>
+            <div className="bg-[#F8F3EF] rounded-2xl p-6 border border-[#D7BFA8]/60 shadow-md">
+              <h2 className="text-xl font-extrabold text-[#800000] mb-4">Guest Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[#D7BFA8] text-xs mb-1">Full Name *</label>
+                  <label className="block text-[#800000] text-xs font-bold mb-1">Full Name *</label>
                   <input
                     type="text"
                     value={guestInfo.name}
                     onChange={(e) => setGuestInfo({...guestInfo, name: e.target.value})}
-                    className="w-full px-3 py-2 bg-[#2C1B16]/80 border border-[#5C4033]/50 rounded-lg text-[#FAF5F0] focus:border-[#800000] focus:outline-none text-sm"
+                    className="w-full px-3 py-2 bg-[#F8F3EF] border border-[#D7BFA8]/60 rounded-lg text-[#2E1A15] font-bold focus:border-[#800000] focus:outline-none text-sm"
                     placeholder="Full Name"
                   />
                 </div>
                 <div>
-                  <label className="block text-[#D7BFA8] text-xs mb-1">Email Address *</label>
+                  <label className="block text-[#800000] text-xs font-bold mb-1">Email Address *</label>
                   <input
                     type="email"
                     value={guestInfo.email}
                     onChange={(e) => setGuestInfo({...guestInfo, email: e.target.value})}
-                    className="w-full px-3 py-2 bg-[#2C1B16]/80 border border-[#5C4033]/50 rounded-lg text-[#FAF5F0] focus:border-[#800000] focus:outline-none text-sm"
+                    className="w-full px-3 py-2 bg-[#F8F3EF] border border-[#D7BFA8]/60 rounded-lg text-[#2E1A15] font-bold focus:border-[#800000] focus:outline-none text-sm"
                     placeholder="Name@example.com"
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-[#D7BFA8] text-xs mb-1">Phone Number *</label>
+                  <label className="block text-[#800000] text-xs font-bold mb-1">Phone Number *</label>
                   <input
                     type="tel"
                     value={guestInfo.phone}
                     onChange={(e) => setGuestInfo({...guestInfo, phone: e.target.value})}
-                    className="w-full px-3 py-2 bg-[#2C1B16]/80 border border-[#5C4033]/50 rounded-lg text-[#FAF5F0] focus:border-[#800000] focus:outline-none text-sm"
+                    className="w-full px-3 py-2 bg-[#F8F3EF] border border-[#D7BFA8]/60 rounded-lg text-[#2E1A15] font-bold focus:border-[#800000] focus:outline-none text-sm"
                     placeholder="0727000027"
                   />
                 </div>
               </div>
               <div className="mt-4">
-                <label className="block text-[#D7BFA8] text-xs mb-1">Special Requests (Optional)</label>
+                <label className="block text-[#800000] text-xs font-bold mb-1">Special Requests (Optional)</label>
                 <textarea
                   value={guestInfo.specialRequests}
                   onChange={(e) => setGuestInfo({...guestInfo, specialRequests: e.target.value})}
                   rows={2}
-                  className="w-full px-3 py-2 bg-[#2C1B16]/80 border border-[#5C4033]/50 rounded-lg text-[#FAF5F0] focus:border-[#800000] focus:outline-none text-sm resize-none"
+                  className="w-full px-3 py-2 bg-[#F8F3EF] border border-[#D7BFA8]/60 rounded-lg text-[#2E1A15] font-bold focus:border-[#800000] focus:outline-none text-sm resize-none"
                   placeholder="E.g., early check-in, ground floor room..."
                 />
               </div>
             </div>
 
             {/* Reservation Summary */}
-            <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#800000]/30">
-              <h2 className="text-xl font-bold text-[#FAF5F0] mb-4">Your Reservations</h2>
-              <div className="space-y-2 text-[#F8F3EF] text-sm">
+            <div className="bg-[#F8F3EF] rounded-2xl p-6 border border-[#D7BFA8]/60 shadow-md">
+              <h2 className="text-xl font-extrabold text-[#800000] mb-4">Your Reservations</h2>
+              <div className="space-y-2 text-[#2E1A15] text-sm font-bold">
                 {selectedRoom && (
                   <div className="py-1.5 border-b border-[#5C4033]/20">
-                    <span className="font-medium">Room:</span> {roomTypes.find(r => r.id === selectedRoom)?.name}
+                    <span className="font-extrabold text-[#800000]">Room:</span> {roomTypes.find(r => r.id === selectedRoom)?.name}
                   </div>
                 )}
                 {checkIn && checkOut && (
                   <div className="py-1.5 border-b border-[#5C4033]/20">
-                    <span className="font-medium">Dates:</span> {new Date(checkIn).toLocaleDateString()} – {new Date(checkOut).toLocaleDateString()} ({calculateNights()} night{calculateNights() !== 1 ? 's' : ''})
+                    <span className="font-extrabold text-[#800000]">Dates:</span> {new Date(checkIn).toLocaleDateString()} – {new Date(checkOut).toLocaleDateString()} ({calculateNights()} night{calculateNights() !== 1 ? 's' : ''})
                   </div>
                 )}
                 {(adults > 0 || minorCount > 0 || childrenCount > 0 || infantCount > 0) && (
                   <div className="py-1.5 border-b border-[#5C4033]/20">
-                    <span className="font-medium">Guests:</span> {adults} Adult{adults !== 1 ? 's' : ''}{minorCount > 0 ? `, ${minorCount} Minor${minorCount !== 1 ? 's' : ''}` : ''}{childrenCount > 0 ? `, ${childrenCount} Child${childrenCount !== 1 ? 'ren' : ''}` : ''}{infantCount > 0 ? `, ${infantCount} Infant${infantCount !== 1 ? 's' : ''}` : ''}
+                    <span className="font-extrabold text-[#800000]">Guests:</span> {adults} Adult{adults !== 1 ? 's' : ''}{minorCount > 0 ? `, ${minorCount} Minor${minorCount !== 1 ? 's' : ''}` : ''}{childrenCount > 0 ? `, ${childrenCount} Child${childrenCount !== 1 ? 'ren' : ''}` : ''}{infantCount > 0 ? `, ${infantCount} Infant${infantCount !== 1 ? 's' : ''}` : ''}
                   </div>
                 )}
                 {selectedReservations.length > 0 ? (
@@ -665,8 +664,8 @@ const BookingPage = () => {
                     const item = getReservationDetails(id);
                     const category = getCategoryName(id);
                     return (
-                      <div key={id} className="py-1.5 border-b border-[#5C4033]/20">
-                        <span className="font-medium">{category}:</span> {item?.name}
+                      <div key={id} className="py-1.5 border-b border-[#D7BFA8]/60">
+                        <span className="font-extrabold text-[#800000]">{category}:</span> {item?.name}
                       </div>
                     );
                   })
@@ -692,7 +691,7 @@ const BookingPage = () => {
               </button>
             </div>
 
-            <div className="text-center text-[#D7BFA8] text-xs mt-4">
+            <div className="text-center text-[#800000] text-xs mt-4">
               <p>By confirming, you agree to our <Link href="/terms" className="text-[#800000] underline">Terms & Conditions</Link></p>
               <p className="mt-1">Questions? Call us at <strong className="text-[#FAF5F0]">0727000027</strong></p>
             </div>

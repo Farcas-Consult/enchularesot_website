@@ -44,6 +44,36 @@ interface GalleryImage {
 
 export default function Gallery() {
   const galleryImages: GalleryImage[] = [
+                      { src: `${S3_BASE}/Surrounding1.jpg`, alt: "Surroundings 1", category: "Surroundings" },
+                    { src: `${S3_BASE}/Surroundings2.jpg`, alt: "Surroundings 2", category: "Surroundings" },
+                    { src: `${S3_BASE}/Surroundings3.jpg`, alt: "Surroundings 3", category: "Surroundings" },
+                    { src: `${S3_BASE}/Surroundings5.jpg`, alt: "Surroundings 5", category: "Surroundings" },
+                  { src: `${S3_BASE}/Pathway1.jpg`, alt: "Pathway 1", category: "Pathway" },
+                  { src: `${S3_BASE}/Reception1.jpg`, alt: "Reception 1", category: "Reception" },
+                { src: `${S3_BASE}/Conference1.jpg`, alt: "Conference 1", category: "Conference" },
+                { src: `${S3_BASE}/Conference2.jpg`, alt: "Conference 2", category: "Conference" },
+                { src: `${S3_BASE}/Conference3.jpg`, alt: "Conference 3", category: "Conference" },
+                { src: `${S3_BASE}/Conference4.jpg`, alt: "Conference 4", category: "Conference" },
+              { src: `${S3_BASE}/Breakfast1.jpg`, alt: "Breakfast 1", category: "Breakfast" },
+            { src: `${S3_BASE}/Bar1.jpg`, alt: "Bar 1", category: "Bar" },
+            { src: `${S3_BASE}/Bar2.jpg`, alt: "Bar 2", category: "Bar" },
+          { src: `${S3_BASE}/Room1.jpg`, alt: "Room 1", category: "Rooms" },
+          { src: `${S3_BASE}/Room2.jpg`, alt: "Room 2", category: "Rooms" },
+          { src: `${S3_BASE}/Room3.jpg`, alt: "Room 3", category: "Rooms" },
+          { src: `${S3_BASE}/Room4.jpg`, alt: "Room 4", category: "Rooms" },
+          { src: `${S3_BASE}/Room5.jpg`, alt: "Room 5", category: "Rooms" },
+          { src: `${S3_BASE}/Room6.jpg`, alt: "Room 6", category: "Rooms" },
+          { src: `${S3_BASE}/Room7.jpg`, alt: "Room 7", category: "Rooms" },
+          { src: `${S3_BASE}/Room8.jpg`, alt: "Room 8", category: "Rooms" },
+          { src: `${S3_BASE}/Room9.jpg`, alt: "Room 9", category: "Rooms" },
+          { src: `${S3_BASE}/Room10.jpg`, alt: "Room 10", category: "Rooms" },
+        { src: `${S3_BASE}/Dining1.jpg`, alt: "Dining 1", category: "Dining" },
+        { src: `${S3_BASE}/Dining2.jpg`, alt: "Dining 2", category: "Dining" },
+        { src: `${S3_BASE}/Dining3.jpg`, alt: "Dining 3", category: "Dining" },
+        { src: `${S3_BASE}/Dining4.jpg`, alt: "Dining 4", category: "Dining" },
+        { src: `${S3_BASE}/Dining5.jpg`, alt: "Dining 5", category: "Dining" },
+        { src: `${S3_BASE}/Dining6.jpg`, alt: "Dining 6", category: "Dining" },
+      // ...existing images...
     { src: Outside, alt: "Luxury Resort Exterior", category: "Exterior" },
     { src: Room1, alt: "Elegant Retreat", category: "Rooms" },
     { src: Birthroom1, alt: "Modern Washroom", category: "Bathrooms" },
@@ -93,26 +123,20 @@ export default function Gallery() {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 p-0 m-0">
           {galleryImages.map((image, index) => (
             <div
               key={index}
-              className="group relative cursor-pointer overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-105 aspect-square"
+              className="group relative cursor-pointer overflow-hidden aspect-square p-0 m-0"
               onClick={() => setSelectedImage(image)}
             >
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                 priority={index < 6}
               />
-              {/* Overlay removed for white background and simplicity */}
-
-              {/* Zoom Icon */}
-              <div className="absolute top-4 right-4 bg-[#5C4033]/20 backdrop-blur-sm rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Maximize2 className="w-5 h-5 text-[#A04040]" />
-              </div>
             </div>
           ))}
         </div>

@@ -59,7 +59,7 @@ const StaffPage = () => {
           />
         ))}
         <div className="relative z-30 text-center w-full px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
+          <h1 className="heading font-serif mb-4 drop-shadow-lg">
             Meet Our Culinary Team
           </h1>
           <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
@@ -89,7 +89,7 @@ const StaffPage = () => {
               OUR TEAM
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-[#FAF5F0] mb-6 leading-tight">
+          <h1 className="heading mb-6 leading-tight">
             Meet Our <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Culinary</span> Team
           </h1>
           <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto leading-relaxed">
@@ -155,7 +155,7 @@ const StaffPage = () => {
 
         {/* Call to Action */}
         <div className="text-center bg-white rounded-2xl p-12 border border-[#5C4033]/20 shadow-lg">
-          <h2 className="text-3xl font-bold text-[#2E1A15] mb-4">
+          <h2 className="heading mb-4">
             Experience Our Culinary Excellence
           </h2>
           <p className="text-[#5C4033] mb-8 max-w-2xl mx-auto">

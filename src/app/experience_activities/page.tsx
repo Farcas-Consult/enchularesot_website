@@ -4,18 +4,15 @@ import React from "react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
-const BACKGROUND_IMAGES = [
-  `${S3_BASE}/Nature1.webp`,
-  `${S3_BASE}/Maasai1.webp`,
-];
+const HERO_IMAGE = `${S3_BASE}/NatureWalk1.jpg`;
 
 const experiences = [
   {
     title: "Guided Nature Walks",
     when: "Daily 7:00 AM",
     images: [
-      `${S3_BASE}/Nature1.webp`,
-      `${S3_BASE}/Nature2.webp`,
+      `${S3_BASE}/NatureWalk2.jpg`,
+      `${S3_BASE}/NatureWalk1.jpg`,
     ],
   },
   {
@@ -30,8 +27,8 @@ const experiences = [
     title: "Stargazing Nights",
     when: "Clear nights",
     images: [
-      `${S3_BASE}/Stargazing.webp`,
-      `${S3_BASE}/Stargazing2.webp`,
+      `${S3_BASE}/Nights1.jpg`,
+      `${S3_BASE}/Nights2.jpg`,
     ],
   },
   {
@@ -45,46 +42,14 @@ const experiences = [
 ];
 
 export default function ExperiencesPage() {
-  const [currentBgIndex, setCurrentBgIndex] = React.useState(0);
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-
   return (
     <section id="experiences" className="relative min-h-screen bg-white">
-      {/* Hero Banner Carousel */}
+      {/* Hero Banner with single background image */}
       <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
-        {BACKGROUND_IMAGES.map((img, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-            style={{ backgroundImage: `url('${img}')` }}
-          />
-        ))}
-        <div className="relative z-30 text-center w-full px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
-            Experiences & Activities
-          </h1>
-          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
-            Discover unique adventures, cultural moments, and relaxation at Enchula Resort.
-          </p>
-        </div>
-        {/* Carousel indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
-          {BACKGROUND_IMAGES.map((_, idx) => (
-            <button
-              key={idx}
-              className={`w-3 h-3 rounded-full border border-white ${currentBgIndex === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
-              onClick={() => setCurrentBgIndex(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
-        </div>
+        <div
+          className="absolute inset-0 bg-cover bg-center z-10"
+          style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
+        />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -141,9 +106,9 @@ export default function ExperiencesPage() {
         {/* Full Width Banner */}
         <div className="mb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {[
-            `${S3_BASE}/Nature1.webp`,
+            `${S3_BASE}/NatureWalk1.jpg`,
             `${S3_BASE}/Maasai1.webp`,
-            `${S3_BASE}/Stargazing.webp`,
+            `${S3_BASE}/Nights2.jpg`,
             `${S3_BASE}/Outdoor1.webp`,
             `${S3_BASE}/Nature2.webp`,
             `${S3_BASE}/Outdoor2.webp`,
@@ -163,7 +128,7 @@ export default function ExperiencesPage() {
         <div className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="md:col-span-2 relative h-80 md:h-96 rounded-2xl overflow-hidden">
             <img
-              src={`${S3_BASE}/Maasai2.webp`}
+              src={`${S3_BASE}/NatureWalk2.jpg`}
               alt="Featured experience"
               className="w-full h-full object-cover"
             />
@@ -176,7 +141,7 @@ export default function ExperiencesPage() {
           <div className="space-y-4">
             <div className="relative h-40 rounded-2xl overflow-hidden">
               <img
-                src={`${S3_BASE}/Stargazing2.webp`}
+                src={`${S3_BASE}/Nights1.jpg`}
                 alt="Experience 1"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />

@@ -1,15 +1,14 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { Dumbbell, HeartPulse, Users, Clock, Star } from "lucide-react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const BACKGROUND_IMAGES = [
-  `${S3_BASE}/IMG_2189.webp`,
-  `${S3_BASE}/IMG_2187.webp`,
-  `${S3_BASE}/IMG_2184.webp`,
+  `${S3_BASE}/Sauna1.jpg`,
+  
 ];
 const gymImages = [
   `${S3_BASE}/IMG_2195.webp`,
@@ -61,25 +60,25 @@ const activities = [
     icon: <Dumbbell className="w-8 h-8" />,
     title: "Strength & Conditioning",
     desc: "Olympic lifting, functional training, and power circuits.",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2d8a0b5f5?w=600&q=80",
+    image: gymImages[5],
   },
   {
     icon: <HeartPulse className="w-8 h-8" />,
     title: "Cardio & Endurance",
     desc: "Treadmills, bikes, rowers, and HIIT zones with heart-rate monitoring.",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&q=80",
+    image: gymImages[1],
   },
   {
     icon: <Users className="w-8 h-8" />,
     title: "Group Classes",
     desc: "Yoga, Zumba, Spin, Pilates, and Bootcamp (daily schedule).",
-    image: "https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80",
+    image: gymImages[2],
   },
   {
     icon: <Clock className="w-8 h-8" />,
     title: "24/7 Access",
     desc: "Train anytime with secure key-card entry and CCTV monitoring.",
-    image: "https://images.unsplash.com/photo-1603133872878-684f208737e9?w=600&q=80",
+    image: gymImages[3],
   },
 ];
 const services = [
@@ -106,46 +105,58 @@ const services = [
 ];
 
 export default function WellnessPage() {
-  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
-  const [currentGym, setCurrentGym] = useState(0);
-  const totalGym = gymImages.length;
-  const nextGym = () => setCurrentGym((c) => (c + 1) % totalGym);
-  const prevGym = () => setCurrentGym((c) => (c - 1 + totalGym) % totalGym);
+  // Hero banner carousel images
+  const HERO_BANNER_IMAGES = [
+    gymImages[5],
+    BACKGROUND_IMAGES[0],
+    gymImages[1],
+  ];
 
-  React.useEffect(() => {
+  const [current, setCurrent] = useState(0);
+  useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length);
-    }, 5000);
+      setCurrent((prev) => (prev + 1) % HERO_BANNER_IMAGES.length);
+    }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [HERO_BANNER_IMAGES.length]);
+
+  const goTo = (idx: number) => setCurrent(idx);
+  const prev = () => setCurrent((prev) => (prev - 1 + HERO_BANNER_IMAGES.length) % HERO_BANNER_IMAGES.length);
+  const next = () => setCurrent((prev) => (prev + 1) % HERO_BANNER_IMAGES.length);
 
   return (
     <section id="wellness" className="relative min-h-screen bg-white">
       {/* Hero Banner Carousel */}
-      <div className="relative h-screen min-h-[500px] flex items-center justify-center overflow-hidden">
-        {BACKGROUND_IMAGES.map((img, index) => (
+      <div className="relative w-full h-screen min-h-[500px] overflow-hidden flex items-center justify-center">
+        {HERO_BANNER_IMAGES.map((img, idx) => (
           <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentImageIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-            data-bg={img}
-            style={{ backgroundImage: `url('${img}')` }}
-          />
+            key={idx}
+            className={`absolute inset-0 transition-opacity duration-700 ${idx === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+          >
+            <Image
+              src={img}
+              alt={`Wellness hero image ${idx + 1}`}
+              fill
+              className="object-cover w-full h-full"
+              sizes="100vw"
+              priority={idx === 0}
+            />
+          </div>
         ))}
-        <div className="relative z-30 text-center w-full px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
-            Wellness, Spa & Gym
-          </h1>
-          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
-            Rejuvenate, restore, and reconnect with yourself in peace and nature. Enjoy our world-class gym and fitness facilities.
-          </p>
-        </div>
-        {/* Carousel indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
-          {BACKGROUND_IMAGES.map((_, idx) => (
+        {/* Carousel Controls */}
+        <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#800000] rounded-full p-2 shadow-md z-20" aria-label="Previous">
+          &#8592;
+        </button>
+        <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#800000] rounded-full p-2 shadow-md z-20" aria-label="Next">
+          &#8594;
+        </button>
+        {/* Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          {HERO_BANNER_IMAGES.map((_, idx) => (
             <button
               key={idx}
-              className={`w-3 h-3 rounded-full border border-white ${currentImageIndex === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
-              onClick={() => setCurrentImageIndex(idx)}
+              onClick={() => goTo(idx)}
+              className={`w-3 h-3 rounded-full border-2 ${current === idx ? 'bg-[#800000] border-[#800000]' : 'bg-white border-[#800000]/50'} transition-all`}
               aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
@@ -167,44 +178,20 @@ export default function WellnessPage() {
             Train in a world-class facility surrounded by nature. All equipment sanitized daily.
           </p>
         </div>
-        {/* Gym Hero Carousel */}
-        <div className="relative h-[60vh] md:h-[70vh] w-full flex items-center justify-center overflow-hidden mb-12">
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={gymImages[currentGym]}
-              alt="Gym Hero"
-              fill
-              className="object-cover object-center transition-opacity duration-700"
-              priority
-              sizes="100vw"
-            />
-          </div>
-          {/* Carousel Controls */}
-          <button
-            onClick={prevGym}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#2C1B16]/60 hover:bg-[#800000]/80 text-[#FAF5F0] rounded-full p-2 shadow-lg z-30"
-            aria-label="Previous image"
-          >
-            &#8592;
-          </button>
-          <button
-            onClick={nextGym}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#2C1B16]/60 hover:bg-[#800000]/80 text-[#FAF5F0] rounded-full p-2 shadow-lg z-30"
-            aria-label="Next image"
-          >
-            &#8594;
-          </button>
-          {/* Carousel Indicators */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
-            {gymImages.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentGym(idx)}
-                className={`w-3 h-3 rounded-full border-2 ${currentGym === idx ? "bg-[#800000] border-[#800000]" : "bg-white/60 border-white/80"}`}
-                aria-label={`Go to image ${idx + 1}`}
+        {/* Gym Gallery Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-0 mb-12">
+          {gymImages.map((img, idx) => (
+            <div key={idx} className="relative w-full aspect-4/3 overflow-hidden group">
+              <Image
+                src={img}
+                alt={`Gym image ${idx + 1}`}
+                fill
+                className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                priority={idx === 0}
               />
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
         {/* Activities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">

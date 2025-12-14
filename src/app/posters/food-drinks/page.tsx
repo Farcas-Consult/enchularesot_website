@@ -55,7 +55,7 @@ export default function FoodDrinksPoster() {
           />
         ))}
         <div className="relative z-30 text-center w-full px-4">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-center text-[#FAF5F0] mb-4 drop-shadow-lg">
+          <h1 className="heading text-center mb-4 drop-shadow-lg">
             {posterData.category}
           </h1>
           <p className="text-lg md:text-xl text-[#D7BFA8] mt-4 max-w-2xl mx-auto font-light drop-shadow">

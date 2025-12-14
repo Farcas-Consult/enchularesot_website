@@ -8,8 +8,8 @@ const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/ap
 const Exterior1 = `${S3_BASE}/IMG_2422.webp`;
 const Environment1 = `${S3_BASE}/IMG_2257.webp`;
 const Entrance1 = `${S3_BASE}/IMG_2256.webp`;
-const Exterior2 = `${S3_BASE}/IMG_2248.webp`;
-const Swimmingpool1 = `${S3_BASE}/IMG_2267.webp`;
+const Exterior2 = `${S3_BASE}/Surrounding1.jpg`;
+const Conference = `${S3_BASE}/Conference4.jpg`;
 
 const slides = [
   {
@@ -33,7 +33,7 @@ const slides = [
     subtitle: "Relax, unwind, and enjoy world-class hospitality",
   },
   {
-    src: Swimmingpool1,
+    src: Conference,
     title: "Unforgettable Memories",
     subtitle: "Create moments that last a lifetime",
   },

@@ -8,12 +8,12 @@ const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/ap
 const BACKGROUND_IMAGES = [
   // Corporate Retreats & Conferences
   `${S3_BASE}/Conference1.jpg`,
-  // Weddings & Vow Renewals
-  `${S3_BASE}/Marriage1.jpg`,
-  // Birthday & Family Reunions
-  `${S3_BASE}/Birthday1.jpg`,
-  // Additional (keep one of the original hero images for variety)
-  `${S3_BASE}/IMG_2395.webp`,
+  
+  `${S3_BASE}/Conference2.jpg`,
+  
+  `${S3_BASE}/Conference2.jpg`,
+  
+  `${S3_BASE}/Conference3.jpg`,
 ];
 
 export default function EventsPage() {
@@ -106,7 +106,7 @@ export default function EventsPage() {
               src={img}
               alt="Event hero image"
               fill
-              style={{ objectFit: "cover" }}
+              className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
               quality={90}
               priority={index === 0}
               sizes="100vw"
@@ -156,17 +156,17 @@ export default function EventsPage() {
                 <p className="text-[#5C4033] text-lg">{event.description}</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 {event.images.map((img, imgIdx) => (
                   <div
                     key={imgIdx}
-                    className="relative h-56 md:h-64 rounded-xl overflow-hidden group"
+                    className="relative h-56 md:h-64 rounded-2xl overflow-hidden group"
                   >
                     <Image
                       src={img}
                       alt={`${event.title} ${imgIdx + 1}`}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
                     />
                   </div>
                 ))}
@@ -231,19 +231,19 @@ export default function EventsPage() {
         </div>
 
         {/* Hero Gallery Banner */}
-        <div className="mb-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="mb-12 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             `${S3_BASE}/Marriage1.webp`,
             `${S3_BASE}/Birthday1.webp`,
             `${S3_BASE}/IMG_2395.webp`,
             `${S3_BASE}/IMG_2387.webp`,
           ].map((img, idx) => (
-            <div key={idx} className="relative h-40 rounded-xl overflow-hidden">
+            <div key={idx} className="relative h-40 rounded-2xl overflow-hidden group">
               <Image
                 src={img}
                 alt={`Event venue ${idx + 1}`}
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-300"
+                className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
               />
             </div>
           ))}

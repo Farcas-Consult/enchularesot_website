@@ -21,20 +21,20 @@ import Link from "next/link";
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 // Background carousel images
-const BgRoom1 = `${S3_BASE}/IMG_2346.webp`;
-const BgRoom2 = `${S3_BASE}/IMG_2336.webp`;
-const BgRoom3 = `${S3_BASE}/IMG_2323.webp`;
+const BgRoom1 = `${S3_BASE}/Room3.jpg`;
+const BgRoom2 = `${S3_BASE}/Room4.jpg`;
+const BgRoom3 = `${S3_BASE}/Room8.jpg`;
 
 // Room images
-const DoubleRoom1 = `${S3_BASE}/IMG_2346.webp`;
-const DoubleRoom2 = `${S3_BASE}/IMG_2336.webp`;
-const DoubleRoom3 = `${S3_BASE}/IMG_2323.webp`;
-const TwinRoom1 = `${S3_BASE}/IMG_2321.webp`;
-const TwinRoom2 = `${S3_BASE}/IMG_2315.webp`;
-const TwinRoom3 = `${S3_BASE}/IMG_2310.webp`;
-const SuperiorRoom1 = `${S3_BASE}/IMG_2300.webp`;
-const SuperiorRoom2 = `${S3_BASE}/IMG_2305.webp`;
-const SuperiorRoom3 = `${S3_BASE}/IMG_2346.webp`;
+const DoubleRoom1 = `${S3_BASE}/Room3.jpg`;
+const DoubleRoom2 = `${S3_BASE}/Room2.jpg`;
+const DoubleRoom3 = `${S3_BASE}/Room1.jpg`;
+const TwinRoom1 = `${S3_BASE}/Room8.jpg`;
+const TwinRoom2 = `${S3_BASE}/Room10.jpg`;
+const TwinRoom3 = `${S3_BASE}/Room1.jpg`;
+const SuperiorRoom1 = `${S3_BASE}/Room4.jpg`;
+const SuperiorRoom2 = `${S3_BASE}/Room5.jpg`;
+const SuperiorRoom3 = `${S3_BASE}/Room9.jpg`;
 
 export default function Rooms() {
   const [activeRoomIndex, setActiveRoomIndex] = useState(0);
@@ -196,10 +196,10 @@ export default function Rooms() {
         <div id="twin-room" />
         <div id="superior-room" />
         {/* Gallery */}
-        <div className="flex flex-row gap-6 mb-10 overflow-x-auto pb-2 snap-x">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mb-10">
           {activeRoom.images.map((img, idx) => (
-            <div key={idx} className="min-w-[340px] h-[220px] md:min-w-[480px] md:h-[320px] rounded-2xl overflow-hidden shadow-lg snap-center">
-              <Image src={img} alt={`${activeRoom.name} image ${idx+1}`} width={480} height={320} className="object-cover w-full h-full" />
+            <div key={idx} className="w-full h-[340px] md:h-[480px] overflow-hidden p-0 m-0 group">
+              <Image src={img} alt={`${activeRoom.name} image ${idx+1}`} width={800} height={600} className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105" />
             </div>
           ))}
         </div>

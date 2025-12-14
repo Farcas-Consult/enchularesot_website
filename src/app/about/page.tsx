@@ -44,7 +44,7 @@ export default function About() {
               index === currentIndex ? "opacity-100" : "opacity-0"
             }`}
           >
-            <Image src={image} alt="Enchula Resort" fill className="object-cover" priority={index === 0} />
+            <Image src={image} alt="Enchula Resort" fill className="object-contain" priority={index === 0} />
           </div>
         ))}
       </div>

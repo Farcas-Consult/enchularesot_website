@@ -72,7 +72,7 @@ export default function Sustainability() {
           />
         ))}
         <div className="relative z-30 text-center w-full px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
+          <h1 className="heading font-serif mb-4 drop-shadow-lg">
             Sustainability
           </h1>
           <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
@@ -100,7 +100,7 @@ export default function Sustainability() {
               SUSTAINABILITY
             </span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-[#F8F3EF] mb-6 tracking-tight">
+          <h2 className="heading mb-6 tracking-tight">
             Luxury Meets
             <span className="block bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
               Our Commitments
