@@ -2,16 +2,12 @@
 
 import Image from "next/image";
 import React from "react";
-import Conference1 from "../../assets/Conference1.jpg";
-import Conference2 from "../../assets/Conference2.jpg";
-import Conference3 from "../../assets/Conference3.jpg";
-import Conference4 from "../../assets/Conference4.jpg";
+
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const BACKGROUND_IMAGES = [
   // Corporate Retreats & Conferences
-  Conference1,
   // Weddings & Vow Renewals
   `${S3_BASE}/Marriage1.webp`,
   // Birthday & Family Reunions
@@ -42,10 +38,9 @@ export default function EventsPage() {
     {
       title: "Corporate Retreats & Conferences",
       images: [
-        Conference1,
-        Conference2,
-        Conference3,
-        Conference4,
+        `${S3_BASE}/Confernce1.jpg`,
+         `${S3_BASE}/Confernce1.jpg`,
+         `${S3_BASE}/Confernce1.jpg`,
       ],
       description: "Professional meeting spaces & team building",
       packages: [
@@ -101,25 +96,22 @@ export default function EventsPage() {
     <section id="events" className="relative min-h-screen bg-white">
       {/* Hero Banner Carousel */}
       <div className="relative h-screen min-h-[500px] flex items-center justify-center overflow-hidden">
-        {BACKGROUND_IMAGES.map((img, index) => {
-          const url = typeof img === "string" ? img : img.src;
-          return (
-            <div
-              key={index}
-              className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-            >
-              <Image
-                src={url}
-                alt="Event hero image"
-                fill
-                style={{ objectFit: "cover" }}
-                quality={90}
-                priority={index === 0}
-                sizes="100vw"
-              />
-            </div>
-          );
-        })}
+        {BACKGROUND_IMAGES.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+          >
+            <Image
+              src={img}
+              alt="Event hero image"
+              fill
+              style={{ objectFit: "cover" }}
+              quality={90}
+              priority={index === 0}
+              sizes="100vw"
+            />
+          </div>
+        ))}
         {/* Carousel indicators */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
           {BACKGROUND_IMAGES.map((_, idx) => (
