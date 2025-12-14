@@ -74,14 +74,15 @@ const rooms = [
   },
 ];
 
+
 export default function Home() {
   return (
-    <div>
+    <div className="m-0 p-0">
       {/* Hero Section */}
       <Hero />
 
       {/* About Section - Customized from About Page, styled like Rooms section */}
-      <section className="bg-white py-20 px-4 text-center text-[#2E1A15]">
+      <section id="about" className="bg-white py-20 px-4 text-center text-[#2E1A15]">
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-12">
             <span className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/10 backdrop-blur-sm rounded-full border border-[#800000]/10 text-[#A9745B] font-semibold tracking-wide text-sm uppercase">

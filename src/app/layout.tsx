@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col">
         <Navbar />
         <div id="top" />
-        <main className="grow flex flex-col pt-20 w-full">{children}</main>
+        <main className="grow flex flex-col w-full">{children}</main>
         <Footer />
       </body>
     </html>

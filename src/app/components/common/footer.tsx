@@ -1,5 +1,7 @@
 "use client";
 
+
+import Link from "next/link";
 import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin } from "lucide-react";
 
 const Footer = () => {
@@ -23,16 +25,16 @@ const Footer = () => {
             <h4 className="text-[#A04040] font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3 text-sm">
               <li>
-                <a href="#home" className="hover:text-[#A9745B] transition-colors">Home</a>
+                <Link href="/" className="hover:text-[#A9745B] transition-colors">Home</Link>
               </li>
               <li>
-                <a href="#about" className="hover:text-[#A9745B] transition-colors">About</a>
+                <Link href="/#about" className="hover:text-[#A9745B] transition-colors">About</Link>
               </li>
               <li>
-                <a href="#rooms" className="hover:text-[#A9745B] transition-colors">Rooms</a>
+                <Link href="/rooms" className="hover:text-[#A9745B] transition-colors">Rooms</Link>
               </li>
               <li>
-                <a href="#dining" className="hover:text-[#A9745B] transition-colors">Dining</a>
+                <Link href="/dinings" className="hover:text-[#A9745B] transition-colors">Dining</Link>
               </li>
             </ul>
           </div>
@@ -61,10 +63,10 @@ const Footer = () => {
             <h4 className="text-[#A04040] font-semibold mb-6">Follow Us</h4>
             <div className="flex flex-col gap-3">
               <div className="flex gap-4">
-                <a href="#" className="hover:text-[#A9745B] transition-colors"><Facebook className="w-5 h-5" /></a>
-                <a href="#" className="hover:text-[#A9745B] transition-colors"><Instagram className="w-5 h-5" /></a>
-                <a href="#" className="hover:text-[#A9745B] transition-colors"><Twitter className="w-5 h-5" /></a>
-                <a href="#" className="hover:text-[#A9745B] transition-colors"><Linkedin className="w-5 h-5" /></a>
+                <a href="#" title="Facebook" className="hover:text-[#A9745B] transition-colors"><Facebook className="w-5 h-5" /></a>
+                <a href="#" title="Instagram" className="hover:text-[#A9745B] transition-colors"><Instagram className="w-5 h-5" /></a>
+                <a href="#" title="Twitter" className="hover:text-[#A9745B] transition-colors"><Twitter className="w-5 h-5" /></a>
+                <a href="#" title="LinkedIn" className="hover:text-[#A9745B] transition-colors"><Linkedin className="w-5 h-5" /></a>
               </div>
               <a href="https://www.enchularesort.co.ke" target="_blank" rel="noopener noreferrer" className="text-sm text-[#D7BFA8] hover:text-[#A04040] transition-colors">
                 www.enchularesort.co.ke
@@ -78,9 +80,9 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-[#D7BFA8]">
             <p>&copy; {new Date().getFullYear()} Enchula Resort. All rights reserved.</p>
             <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-[#A04040] transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-[#A04040] transition-colors">Terms & Conditions</a>
-              <a href="#" className="hover:text-[#A04040] transition-colors">Cookies</a>
+              <Link href="/privacy-policy" className="hover:text-[#A04040] transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-[#A04040] transition-colors">Terms & Conditions</Link>
+              <Link href="/cookies" className="hover:text-[#A04040] transition-colors">Cookies</Link>
             </div>
           </div>
         </div>
