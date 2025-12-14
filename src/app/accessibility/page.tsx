@@ -141,7 +141,7 @@ const AccessibilityPage = () => {
             >
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-0">
                 {/* Images */}
-                <div className="lg:col-span-2 grid grid-cols-2 gap-3 p-4 md:p-6 bg-[#F8F3EF] rounded-xl">
+                <div className="lg:col-span-2 grid grid-cols-2 gap-1.5 p-4 md:p-6 bg-[#F8F3EF] rounded-xl">
                   {item.images.map((img, idx) => (
                     <div
                       key={idx}
@@ -196,7 +196,7 @@ const AccessibilityPage = () => {
           <h3 className="text-2xl font-serif font-bold text-[#2E1A15] text-center mb-6">
             Accessibility in Every Corner
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
             {overviewGallery.map((img, idx) => (
               <div key={idx} className="relative h-40 rounded-xl overflow-hidden bg-[#F8F3EF]">
                 <Image

@@ -79,14 +79,6 @@ export default function DiningPage() {
             style={{ backgroundImage: `url('${img}')` }}
           />
         ))}
-        <div className="relative z-30 text-center w-full px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-[#FAF5F0] mb-4 drop-shadow-lg">
-            Dining & Nightlife
-          </h1>
-          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
-            Experience culinary delights and vibrant nightlife in an elegant, unforgettable setting.
-          </p>
-        </div>
         {/* Carousel indicators */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
           {backgroundImages.map((_, idx) => (
