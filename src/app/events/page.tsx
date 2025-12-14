@@ -3,15 +3,15 @@
 import Image from "next/image";
 import React from "react";
 
-
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const BACKGROUND_IMAGES = [
   // Corporate Retreats & Conferences
+  `${S3_BASE}/Conference1.jpg`,
   // Weddings & Vow Renewals
-  `${S3_BASE}/Marriage1.webp`,
+  `${S3_BASE}/Marriage1.jpg`,
   // Birthday & Family Reunions
-  `${S3_BASE}/Birthday1.webp`,
+  `${S3_BASE}/Birthday1.jpg`,
   // Additional (keep one of the original hero images for variety)
   `${S3_BASE}/IMG_2395.webp`,
 ];
@@ -38,9 +38,10 @@ export default function EventsPage() {
     {
       title: "Corporate Retreats & Conferences",
       images: [
-        `${S3_BASE}/Confernce1.jpg`,
-         `${S3_BASE}/Confernce1.jpg`,
-         `${S3_BASE}/Confernce1.jpg`,
+  `${S3_BASE}/Conference1.jpg`,
+  `${S3_BASE}/Conference2.jpg`,
+  `${S3_BASE}/Conference3.jpg`,
+  `${S3_BASE}/Conference4.jpg`,
       ],
       description: "Professional meeting spaces & team building",
       packages: [
