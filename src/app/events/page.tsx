@@ -2,20 +2,16 @@
 
 import Image from "next/image";
 import React from "react";
-import Conference1 from "../../assets/Conference1.jpg";
-import Conference2 from "../../assets/Conference2.jpg";
-import Conference3 from "../../assets/Conference3.jpg";
-import Conference4 from "../../assets/Conference4.jpg";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const BACKGROUND_IMAGES = [
   // Corporate Retreats & Conferences
-  Conference1,
+  `${S3_BASE}/Conference1.jpg`,
   // Weddings & Vow Renewals
-  `${S3_BASE}/Marriage1.webp`,
+  `${S3_BASE}/Marriage1.jpg`,
   // Birthday & Family Reunions
-  `${S3_BASE}/Birthday1.webp`,
+  `${S3_BASE}/Birthday1.jpg`,
   // Additional (keep one of the original hero images for variety)
   `${S3_BASE}/IMG_2395.webp`,
 ];
@@ -42,10 +38,10 @@ export default function EventsPage() {
     {
       title: "Corporate Retreats & Conferences",
       images: [
-        Conference1,
-        Conference2,
-        Conference3,
-        Conference4,
+        `${S3_BASE}/Conference1.jpg`,
+        `${S3_BASE}/Conference2.jpg`,
+        `${S3_BASE}/Conference3.jpg`,
+        `${S3_BASE}/Conference4.jpg`,
       ],
       description: "Professional meeting spaces & team building",
       packages: [
