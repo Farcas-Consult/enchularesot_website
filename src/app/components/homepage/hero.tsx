@@ -88,12 +88,7 @@ export default function Hero() {
 
             {isActive && (
               <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-[#F8F3EF] px-6">
-                <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#A9745B]/20 backdrop-blur-md rounded-full border border-[#A9745B]/30 mb-6 animate-fadeIn">
-                  <Sparkles className="w-5 h-5 text-[#A9745B]" />
-                  <span className="text-sm font-semibold tracking-wide">
-                    LUXURY RESORT EXPERIENCE
-                  </span>
-                </div>
+               
 
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight animate-fadeInUp">
                   {slide.title}

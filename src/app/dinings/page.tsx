@@ -92,34 +92,6 @@ export default function DiningPage() {
         </div>
       </div>
 
-      {/* Dining Gallery Section */}
-      <div className="w-full my-16">
-        <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#2E1A15] mb-8 text-center">Dining Gallery</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
-          {[
-            `${S3_BASE}/Dining1.jpg`,
-            `${S3_BASE}/Dining2.jpg`,
-            `${S3_BASE}/Dining3.jpg`,
-            `${S3_BASE}/Dining4.jpg`,
-            `${S3_BASE}/Dining5.jpg`,
-            `${S3_BASE}/Dining6.jpg`,
-            `${S3_BASE}/Restaurant1.jpg`,
-            `${S3_BASE}/Dining8.jpg`,
-          ].map((src, i) => (
-            <div key={i} className="aspect-[4/3] relative group">
-              <Image
-                src={src}
-                alt={`Dining ${i + 1}`}
-                fill
-                className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 768px) 50vw, 25vw"
-                priority={i === 0}
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300" />
-            </div>
-          ))}
-        </div>
-      </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Dining Experiences Section */}
@@ -201,45 +173,6 @@ export default function DiningPage() {
           </div>
         </div>
 
-        {/* Menu Section */}
-        <div className="mb-16 bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg p-8">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#2E1A15] mb-8 text-center">Our Menu</h2>
-          <div className="flex flex-col md:flex-row gap-8 justify-center">
-            {menuPages.map((page, idx) => (
-              <div key={idx} className="flex-1 min-w-[260px]">
-                <h3 className="text-xl font-serif font-bold text-[#A04040] mb-4 text-center">{page.title}</h3>
-                <ul className="space-y-4">
-                  {page.items.map((item, i) => (
-                    <li key={i} className="bg-[#F8F3EF] rounded-xl p-4 border border-[#5C4033]/10 text-[#2E1A15] shadow-sm">
-                      <div className="flex justify-between items-center mb-1">
-                        <span className="font-semibold text-[#2E1A15]">{item.name}</span>
-                        <span className="text-[#A04040] font-bold">{item.price}</span>
-                      </div>
-                      <p className="text-sm text-[#5C4033]">{item.description}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-
-
-        {/* Children's Menu Section */}
-        <div className="mb-16 bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg p-8">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#2E1A15] mb-8 text-center">Children&apos;s Menu</h2>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {childrenMenu.map((item, i) => (
-              <li key={i} className="bg-[#F8F3EF] rounded-xl p-4 border border-[#5C4033]/10 text-[#2E1A15] shadow-sm">
-                <div className="flex justify-between items-center mb-1">
-                  <span className="font-semibold text-[#2E1A15]">{item.name}</span>
-                  <span className="text-[#A04040] font-bold">{item.price}</span>
-                </div>
-                <p className="text-sm text-[#5C4033]">{item.description}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
 
         {/* WhatsApp Reservation Button */}
         <div className="text-center mt-12">

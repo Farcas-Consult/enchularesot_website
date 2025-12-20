@@ -83,56 +83,23 @@ export default function Home() {
 
       {/* About Section - Customized from About Page, styled like Rooms section */}
       <section id="about" className="bg-white py-20 px-4 text-center text-[#2E1A15]">
-        <div className="max-w-6xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12">
-            <span className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/10 backdrop-blur-sm rounded-full border border-[#800000]/10 text-[#A9745B] font-semibold tracking-wide text-sm uppercase">
-              About Enchula Resort
-            </span>
-            <h2 className="text-4xl font-bold mb-6 text-brand">
-              Where Luxury Meets{' '}
-              <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">
-                Kenyan Serenity
-              </span>
-            </h2>
+            <h2 className="text-4xl font-bold mb-4 text-brand">About Us</h2>
+            <p className="text-xl text-[#7c5a2d] font-semibold mb-6">The epitome of african hospitality.</p>
           </div>
-          <div className="grid lg:grid-cols-2 gap-10 items-center mb-12 text-left">
-            {/* Image from About page */}
-            <div className="flex justify-center lg:justify-end">
-              <Image src={`${S3_BASE}/IMG_2267.webp`} alt="About Enchula Resort" width={540} height={400} className="rounded-xl shadow-md border-4 border-[#A9745B]/10" />
-            </div>
-            {/* Story and Contact */}
-            <div className="lg:pl-8">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-brand">Our Story</h3>
-              <div className="space-y-4 text-neutral-800 leading-relaxed mb-6">
-                <p>
-                  Nestled in the breathtaking plains of <strong className="text-brand">Kajiado County</strong>, Enchula Resort offers a unique blend of untamed Kenyan beauty and refined modern hospitality.
-                </p>
-                <p>
-                  Our resort provides an escape from the ordinary, where guests can reconnect with nature while enjoying world-class amenities and warm Kenyan hospitality.
-                </p>
-                <p>
-                  From elegant accommodations to exceptional dining experiences, every detail at Enchula Resort is designed to create unforgettable memories.
-                </p>
-              </div>
-              <div className="bg-[#F8F3EF] rounded-xl p-6 border border-[#A9745B]/10 shadow flex flex-col gap-4">
-                <div className="flex items-start gap-3">
-                  <svg className="text-brand mt-1" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21C12 21 5 13.5 5 9.5C5 6.46243 7.46243 4 10.5 4C12.1566 4 13.6566 4.84285 14.5 6.11803C15.3434 4.84285 16.8434 4 18.5 4C21.5376 4 24 6.46243 24 9.5C24 13.5 17 21 17 21H12Z" /></svg>
-                  <div>
-                    <p className="font-semibold mb-1">Location</p>
-                    <p>Along Nairobi - Namanga Road</p>
-                    <p>Kajiado, Kenya</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="text-brand mt-1" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92V19a2 2 0 0 1-2.18 2A19.72 19.72 0 0 1 3 5.18 2 2 0 0 1 5 3h2.09a2 2 0 0 1 2 1.72c.13 1.13.37 2.23.72 3.28a2 2 0 0 1-.45 2.11L8.09 11.91a16 16 0 0 0 6 6l1.8-1.8a2 2 0 0 1 2.11-.45c1.05.35 2.15.59 3.28.72A2 2 0 0 1 22 16.92z" /></svg>
-                  <div>
-                    <p className="font-semibold mb-1">Contact</p>
-                    <p>+254 727 000 027</p>
-                    <p>+254 734 000 027</p>
-                    <p className="mt-2">info@enchularesort.co.ke</p>
-                  </div>
-                </div>
-              </div>
+          <div className="text-left">
+            
+            <div className="space-y-4 text-neutral-800 leading-relaxed mb-6">
+              <p>
+                Nestled in the breathtaking plains of <strong className="text-brand">Kajiado County</strong>, Enchula Resort offers a unique blend of untamed Kenyan beauty and refined modern hospitality.
+              </p>
+              <p>
+                Our resort provides an escape from the ordinary, where guests can reconnect with nature while enjoying world-class amenities and warm Kenyan hospitality.
+              </p>
+              <p>
+                From elegant accommodations to exceptional dining experiences, every detail at Enchula Resort is designed to create unforgettable memories.
+              </p>
             </div>
           </div>
           {/* Features */}
@@ -193,7 +160,7 @@ export default function Home() {
           <Image src={`${S3_BASE}/Dining6.jpg`} alt="Nightlife" width={540} height={340} className="rounded-xl shadow-md" />
           <Image src={`${S3_BASE}/Breakfast1.jpg`} alt="Pool Bar" width={540} height={340} className="rounded-xl shadow-md" />
         </div>
-        <a href="/dinings" className="btn-primary mt-8 inline-block">See More Dining Options</a>
+        <a href="/dinings" className="btn-primary mt-8 inline-block">Explore</a>
       </section>
       <div className="w-full h-0.5 bg-linear-to-r from-[#A04040]/0 via-[#A04040]/60 to-[#A04040]/0 my-8" />
 
@@ -214,75 +181,10 @@ export default function Home() {
           {/* 1 Unique Experience from experience_activities page */}
           <Image src={`${S3_BASE}/Maasai2.webp`} alt="Maasai Cultural Experience" width={380} height={260} className="rounded-xl shadow-md object-contain" />
         </div>
-        <a href="/experience_activities" className="btn-primary mt-8 inline-block">See All Experiences</a>
+        <a href="/experience_activities" className="btn-primary mt-8 inline-block">Explore</a>
       </section>
       <div className="w-full h-0.5 bg-linear-to-r from-[#5C4033]/0 via-[#5C4033]/60 to-[#5C4033]/0 my-8" />
 
-      {/* Gallery Section */}
-      <section className="bg-white py-20 px-4 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-brand">Gallery</h2>
-        <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
-          Explore our gallery and see the beauty of Enchula Resort for yourself.
-        </p>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-0 justify-center">
-          <Image src={`${S3_BASE}/Room4.jpg`} alt="Luxury Resort Exterior" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
-          <Image src={`${S3_BASE}/IMG_2315.webp`} alt="Elegant Retreat" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
-          <Image src={`${S3_BASE}/Conference2.jpg`} alt="Modern Washroom" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
-          <Image src={`${S3_BASE}/IMG_3429.webp`} alt="Infinity Pool" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
-          <Image src={`${S3_BASE}/Breakfast1.jpg`} alt="Gourmet Cuisine" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
-          <Image src={`${S3_BASE}/Dining4.jpg`} alt="Tranquil Haven" width={350} height={220} className="object-cover w-full h-full transition-transform duration-300 hover:scale-105" />
-        </div>
-        <a href="/gallery" className="btn-primary mt-8 inline-block">View Gallery</a>
-      </section>
-      <div className="w-full h-0.5 bg-linear-to-r from-[#D7BFA8]/0 via-[#D7BFA8]/60 to-[#D7BFA8]/0 my-8" />
-
-      {/* Health & Safety Section (merged) */}
-      <section className="relative py-24 px-4 overflow-hidden bg-white">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="text-center mb-20">
-            <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-              <span className="text-[#A04040] font-semibold tracking-wide text-sm uppercase">HEALTH & SAFETY</span>
-            </div>
-            <h2 className="text-4xl font-bold mb-6 text-brand">
-              Your Health & <span className="block bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Wellbeing Priority First</span>
-            </h2>
-            <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
-              Your wellness is our priority. Experience world-class hospitality backed by comprehensive health protocols and cutting-edge safety technology.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {healthSafetyData.map((item, index) => (
-              <div
-                key={index}
-                className="group relative bg-[#F8F3EF] rounded-2xl overflow-hidden hover:border-[#800000]/50 transition-all duration-300 border border-[#5C4033]/20"
-              >
-                <div className="relative z-10 p-6">
-                  <div className="mb-5 transform group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-[#2C1B16] mb-3 group-hover:text-[#800000] transition-colors duration-300">
-                    {item.title}
-                  </h3>
-                  <p className="text-[#5C4033] text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-                <div className="absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-16 text-center">
-            <a 
-              href="/booking" 
-              className="btn-primary mt-8 inline-block"
-            >
-              <Shield size={20} />
-              Book With Confidence
-            </a>
-          </div>
-        </div>
-      </section>
-      <div className="w-full h-0.5 bg-linear-to-r from-[#A9745B]/0 via-[#A9745B]/60 to-[#A9745B]/0 my-8" />
 
       {/* Reviews Section (merged) */}
       <section className="bg-white py-20 px-4 text-center">
