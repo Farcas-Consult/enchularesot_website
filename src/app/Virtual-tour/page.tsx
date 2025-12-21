@@ -246,7 +246,7 @@ export default function VirtualTourPage() {
       {/* Sticky Book Now Button */}
       <a
         href="/booking"
-        className="fixed bottom-6 right-6 z-50 bg-[#A04040] hover:bg-[#800000] text-white px-6 py-3 rounded-full shadow-2xl font-bold text-lg transition-all duration-300 border-2 border-white/30"
+        className="fixed bottom-6 right-6 z-50 bg-[#D2BB9E] hover:bg-[#741F31] text-[#741F31] hover:text-[#D2BB9E] px-6 py-3 rounded-full shadow-2xl font-bold text-lg transition-all duration-300 border-2 border-[#741F31]"
       >
         Book Now
       </a>

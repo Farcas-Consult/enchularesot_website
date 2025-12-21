@@ -42,133 +42,263 @@ const experiences = [
 ];
 
 export default function ExperiencesPage() {
+  // Hero images from Kids & Family and Games sections
+  const heroImages = [
+    `${S3_BASE}/IMG_2352.webp`, // Kids Play Area
+    `${S3_BASE}/IMG_2277.webp`, // Playground Structure
+    `${S3_BASE}/IMG_2380.webp`, // Seesaw
+    `${S3_BASE}/IMG_2450.webp`, // Pool Table
+    `${S3_BASE}/IMG_3394.webp`, // Board Games
+    `${S3_BASE}/Ball.jpg`,      // Outdoor Games
+  ];
+  const [heroIndex, setHeroIndex] = React.useState(0);
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % heroImages.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   return (
-    <section id="experiences" className="relative min-h-screen bg-white">
-      {/* Hero Banner with single background image */}
-      <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center z-10"
-          style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
-        />
+    <section id="experience-activities" className="relative min-h-screen bg-white">
+      {/* Hero Banner Carousel - Clean, smooth, no text or overlay */}
+      <div className="relative w-full h-[90vh] min-h-[400px] flex items-center justify-center overflow-hidden shadow-2xl mb-16">
+        {heroImages.map((img, idx) => (
+          <img
+            key={idx}
+            src={img}
+            alt={`Hero ${idx + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-[3000ms] ease-in-out ${idx === heroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            style={{ transitionProperty: 'opacity' }}
+          />
+        ))}
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Experience Gallery */}
-        <div className="space-y-12 mb-16">
-          {experiences.map((exp, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group"
-            >
-              {/* Title Bar */}
-              <div className="bg-[#F8F3EF] p-6 flex items-center justify-between border-b border-[#5C4033]/10">
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#2E1A15]">{exp.title}</h2>
-                  <p className="text-[#A04040] text-lg">{exp.when}</p>
+      {/* Kids & Family Activities Section */}
+      <section className="relative z-10 w-full py-20 bg-gradient-to-br from-[#F8F3EF] via-[#FDF6ED] to-[#F8F3EF]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Kids' Activities</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+            {[
+              {
+                title: "Supervised Kids' Play Area",
+                desc: "Safe, shaded outdoor space for ages 4-12 with toys, games, and friendly staff.",
+                icon: "🎪",
+                image: `${S3_BASE}/IMG_2352.webp`,
+              },
+              {
+                title: "Composite Playground Structure",
+                desc: "A large, interconnected piece of playground equipment featuring multiple play elements like slides, tunnels, and climbing structures designed for various physical activities.",
+                icon: "🎨",
+                image: `${S3_BASE}/IMG_2277.webp`,
+              },
+              {
+                title: "Seesaw",
+                desc: "A classic playground game consisting of a long board balanced in the middle, on which children sit at opposite ends and move up and down by pushing off the ground.",
+                icon: "🌌",
+                image: `${S3_BASE}/IMG_2380.webp`,
+              },
+            ].map((activity, i) => (
+              <div
+                key={i}
+                className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31] flex flex-col"
+              >
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={activity.image}
+                    alt={activity.title}
+                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div className="flex items-center gap-4 mb-3">
+                    <span className="text-3xl md:text-4xl text-[#741F31] drop-shadow">{activity.icon}</span>
+                    <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-1">{activity.title}</h3>
+                  </div>
+                  <p className="text-[#5C4033] mb-2 text-lg">{activity.desc}</p>
                 </div>
               </div>
+            ))}
+          </div>
+          {/* Trust Section */}
+          <div className="bg-[#D2BB9E]/60 p-10 border border-[#741F31]/20 text-center shadow-xl mx-auto max-w-2xl">
+            <h3 className="text-2xl font-serif font-bold text-[#741F31] mb-4">Why Families Love Us</h3>
+            <p className="text-[#2E1A15] text-lg">
+              “We had a stress-free weekend — the kids were entertained all day, and we got some much-needed relaxation.”<br />
+              <em className="text-[#A04040]">— The Otieno Family, Kisumu</em>
+            </p>
+          </div>
+        </div>
+      </section>
 
-              {/* Description */}
-              <div className="px-6 py-2 text-[#5C4033] text-base">
-                {exp.title === "Guided Nature Walks" && (
-                  <span>Explore the beauty of our natural surroundings with expert guides who share insights on local flora and fauna.</span>
-                )}
-                {exp.title === "Maasai Cultural Experience" && (
-                  <span>Immerse yourself in Maasai traditions, music, and dance for an authentic cultural encounter.</span>
-                )}
-                {exp.title === "Stargazing Nights" && (
-                  <span>Marvel at the night sky with telescopes and expert guidance, perfect for astronomy lovers and dreamers alike.</span>
-                )}
-                {exp.title === "Outdoor Dining" && (
-                  <span>Dine under the stars with our special outdoor setups, blending gourmet cuisine with nature’s ambiance.</span>
-                )}
+      {/* Games Section */}
+      <section className="relative z-10 w-full py-20 bg-gradient-to-br from-[#FDF6ED] via-[#F8F3EF] to-[#FDF6ED] border-t border-[#D2BB9E]/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Games</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+            {/* Pool Table Game (use first image) */}
+            <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl flex flex-col group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31]">
+              <div className="relative h-56 w-full">
+                <img
+                  src={`${S3_BASE}/IMG_2450.webp`}
+                  alt="Pool Table Game"
+                  className="object-cover object-center w-full h-full group-hover:scale-110 transition-transform duration-500"
+                />
               </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Pool Table</h3>
+                <p className="text-[#5C4033] mb-2 text-lg flex-1">
+                  Enjoy a classic game of pool in our games lounge. Whether you’re a seasoned player or just looking for some fun, our pool table is perfect for friendly matches and tournaments.
+                </p>
+              </div>
+            </div>
+            {/* Other games from slideshow */}
+            <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl flex flex-col group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31]">
+              <div className="relative h-56 w-full">
+                <img
+                  src={`${S3_BASE}/IMG_3394.webp`}
+                  alt="Board Games & More"
+                  className="object-cover object-center w-full h-full group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Board Games & More</h3>
+                <p className="text-[#5C4033] mb-2 text-lg flex-1">
+                  Gather your friends and family for a variety of board games and group activities. There’s something for everyone to enjoy!
+                </p>
+              </div>
+            </div>
+            <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl flex flex-col group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31]">
+              <div className="relative h-56 w-full">
+                <img
+                  src={`${S3_BASE}/Ball.jpg`}
+                  alt="Outdoor Games"
+                  className="object-cover object-center w-full h-full group-hover:scale-110 transition-transform duration-500"
+                />
+              </div>
+              <div className="p-6 flex-1 flex flex-col justify-between">
+                <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Outdoor Games</h3>
+                <p className="text-[#5C4033] mb-2 text-lg flex-1">
+                  Step outside and enjoy a range of outdoor games and activities, perfect for all ages and skill levels.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              {/* Image Grid */}
-              <div className="grid grid-cols-2 gap-3 p-4">
-                {exp.images.map((img, imgIdx) => (
-                  <div
-                    key={imgIdx}
-                    className="relative h-56 md:h-64 rounded-xl overflow-hidden"
-                  >
-                    <img
-                      src={img}
-                      alt={`${exp.title} ${imgIdx + 1}`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
+      {/* Experiences Section (modern layout) */}
+      <section id="experiences" className="relative z-10 w-full py-20 bg-gradient-to-br from-[#F8F3EF] via-[#FDF6ED] to-[#F8F3EF] border-t border-[#D2BB9E]/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Experiences</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 mb-20">
+            {experiences.map((exp, idx) => (
+              <div
+                key={idx}
+                className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31] flex flex-col"
+              >
+                <div className="bg-[#F8F3EF] p-6 flex items-center justify-between border-b border-[#D2BB9E]/30">
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-[#2E1A15]">{exp.title}</h3>
+                    <p className="text-[#A04040] text-lg">{exp.when}</p>
                   </div>
-                ))}
+                </div>
+                <div className="px-6 py-4 text-[#5C4033] text-base flex-1">
+                  {exp.title === "Guided Nature Walks" && (
+                    <span>Explore the beauty of our natural surroundings with expert guides who share insights on local flora and fauna.</span>
+                  )}
+                  {exp.title === "Maasai Cultural Experience" && (
+                    <span>Immerse yourself in Maasai traditions, music, and dance for an authentic cultural encounter.</span>
+                  )}
+                  {exp.title === "Stargazing Nights" && (
+                    <span>Marvel at the night sky with telescopes and expert guidance, perfect for astronomy lovers and dreamers alike.</span>
+                  )}
+                  {exp.title === "Outdoor Dining" && (
+                    <span>Dine under the stars with our special outdoor setups, blending gourmet cuisine with nature’s ambiance.</span>
+                  )}
+                </div>
+                <div className="grid grid-cols-2 gap-2 p-4">
+                  {exp.images.map((img, imgIdx) => (
+                    <div
+                      key={imgIdx}
+                      className="relative h-40 md:h-48 overflow-hidden"
+                    >
+                      <img
+                        src={img}
+                        alt={`${exp.title} ${imgIdx + 1}`}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Full Width Banner */}
+          <div className="mb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {[
+              `${S3_BASE}/NatureWalk1.jpg`,
+              `${S3_BASE}/Maasai1.webp`,
+              `${S3_BASE}/Nights2.jpg`,
+              `${S3_BASE}/Outdoor1.webp`,
+              `${S3_BASE}/Nature2.webp`,
+              `${S3_BASE}/Outdoor2.webp`,
+            ].map((img, idx) => (
+              <div key={idx} className="relative h-40 overflow-hidden">
+                <img
+                  src={img}
+                  alt={`Resort moment ${idx + 1}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#800000]/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            ))}
+          </div>
+          {/* Hero Collage */}
+          <div className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="md:col-span-2 relative h-80 md:h-96 overflow-hidden">
+              <img
+                src={`${S3_BASE}/NatureWalk2.jpg`}
+                alt="Featured experience"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/80 to-transparent"></div>
+              <div className="absolute bottom-6 left-6 text-left">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-1">Create Your Story</h3>
+                <p className="text-[#D7BFA8]">Every visit is unique</p>
               </div>
             </div>
-          ))}
-        </div>
-
-        {/* Full Width Banner */}
-        <div className="mb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {[
-            `${S3_BASE}/NatureWalk1.jpg`,
-            `${S3_BASE}/Maasai1.webp`,
-            `${S3_BASE}/Nights2.jpg`,
-            `${S3_BASE}/Outdoor1.webp`,
-            `${S3_BASE}/Nature2.webp`,
-            `${S3_BASE}/Outdoor2.webp`,
-          ].map((img, idx) => (
-            <div key={idx} className="relative h-40 rounded-xl overflow-hidden">
-              <img
-                src={img}
-                alt={`Resort moment ${idx + 1}`}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#800000]/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-          ))}
-        </div>
-
-        {/* Hero Collage */}
-        <div className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="md:col-span-2 relative h-80 md:h-96 rounded-2xl overflow-hidden">
-            <img
-              src={`${S3_BASE}/NatureWalk2.jpg`}
-              alt="Featured experience"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/80 to-transparent"></div>
-            <div className="absolute bottom-6 left-6 text-left">
-              <h3 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-1">Create Your Story</h3>
-              <p className="text-[#D7BFA8]">Every visit is unique</p>
+            <div className="space-y-4">
+              <div className="relative h-40 overflow-hidden">
+                <img
+                  src={`${S3_BASE}/Nights1.jpg`}
+                  alt="Experience 1"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="relative h-40 overflow-hidden">
+                <img
+                  src={`${S3_BASE}/Outdoor1.webp`}
+                  alt="Experience 2"
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
             </div>
           </div>
-          <div className="space-y-4">
-            <div className="relative h-40 rounded-2xl overflow-hidden">
-              <img
-                src={`${S3_BASE}/Nights1.jpg`}
-                alt="Experience 1"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="relative h-40 rounded-2xl overflow-hidden">
-              <img
-                src={`${S3_BASE}/Outdoor1.webp`}
-                alt="Experience 2"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
+          {/* CTA */}
+          <div className="text-center bg-[#2C1B16]/40 backdrop-blur-md p-8 border border-[#5C4033]/30">
+            <p className="text-[#FAF5F0] text-lg mb-6 font-semibold">
+              Ready to experience Enchula?
+            </p>
+            <Link
+              href="/booking"
+              className="inline-flex items-center gap-3 bg-[#D2BB9E] text-[#741F31] hover:bg-[#741F31] hover:text-[#D2BB9E] font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#741F31]"
+            >
+              Book Your Experience
+            </Link>
           </div>
         </div>
-
-        {/* CTA */}
-        <div className="text-center bg-[#2C1B16]/40 backdrop-blur-md p-8 rounded-2xl border border-[#5C4033]/30">
-          <p className="text-[#FAF5F0] text-lg mb-6 font-semibold">
-            Ready to experience Enchula?
-          </p>
-          <Link
-            href="/booking"
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-          >
-            Book Your Experience
-          </Link>
-        </div>
-      </div>
+      </section>
     </section>
   );
 }

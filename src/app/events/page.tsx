@@ -100,7 +100,7 @@ export default function EventsPage() {
         {BACKGROUND_IMAGES.map((img, index) => (
           <div
             key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-3000 ease-in-out ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
           >
             <Image
               src={img}
@@ -118,7 +118,7 @@ export default function EventsPage() {
           {BACKGROUND_IMAGES.map((_, idx) => (
             <button
               key={idx}
-              className={`w-3 h-3 rounded-full border border-white ${currentBgIndex === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              className={`w-3 h-3 rounded-full border border-white transition-all ${currentBgIndex === idx ? 'bg-(--color-primary)' : 'bg-(--color-gold)/40'} hover:bg-(--color-primary)`}
               onClick={() => setCurrentBgIndex(idx)}
               aria-label={`Go to slide ${idx + 1}`}
             />
@@ -135,7 +135,7 @@ export default function EventsPage() {
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#2E1A15] mb-6 leading-tight">
-            Your <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Special Moments</span>, Our Serene Setting
+            Your <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Special Moments</span>, Our Serene Setting
           </h2>
           <p className="text-lg text-[#5C4033] max-w-3xl mx-auto">
             Social Events | Corporate Events - Event Planning, Event Decor, Catering
@@ -257,27 +257,27 @@ export default function EventsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="flex items-center gap-2 text-[#A04040]">
               <span className="text-2xl">📞</span>
-              <a href="tel:+254723008164" className="text-[#2E1A15] font-semibold hover:text-[#A04040] transition-colors">
+              <a href="tel:+254723008164" className="font-semibold transition-colors px-4 py-2 rounded-full bg-(--color-gold) text-(--color-primary) hover:bg-(--color-primary) hover:text-(--color-gold) border border-(--color-primary)">
                 0723008164
               </a>
             </div>
             <div className="flex items-center gap-2 text-[#A04040]">
               <span className="text-2xl">✉️</span>
-              <a href="mailto:events@enchularesort.co.ke" className="text-[#2E1A15] font-semibold hover:text-[#A04040] transition-colors">
+              <a href="mailto:events@enchularesort.co.ke" className="font-semibold transition-colors px-4 py-2 rounded-full bg-(--color-gold) text-(--color-primary) hover:bg-(--color-primary) hover:text-(--color-gold) border border-(--color-primary)">
                 events@enchularesort.co.ke
               </a>
             </div>
           </div>
           <div className="mt-6 flex justify-center items-center gap-3">
             <span className="text-[#A04040]">Follow us:</span>
-            <a 
-              href="https://instagram.com/events.by.enchula" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-[#A04040] to-[#D7BFA8] hover:from-[#800000] hover:to-[#6B4423] text-white font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-            >
-              <span className="text-xl">📸</span>
-              events.by.enchula
+              <a 
+                href="https://instagram.com/events.by.enchula" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 bg-[#D2BB9E] text-[#741F31] hover:bg-[#741F31] hover:text-[#D2BB9E] border border-[#741F31]"
+              >
+                <span className="text-xl">📸</span>
+                events.by.enchula
             </a>
           </div>
         </div>

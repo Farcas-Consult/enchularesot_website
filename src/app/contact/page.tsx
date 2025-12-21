@@ -60,56 +60,56 @@ const Contact: React.FC = () => {
 
 
   return (
-    <section id="contact" className="py-16 px-4 bg-[#F8F3EF]">
+    <section id="contact" className="py-16 px-4 bg-[var(--brand-background)]">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#7A1F2E] mb-2 text-center">Contact Us</h1>
-        <p className="text-center text-[#4E2E0E] mb-8">We&apos;d love to hear from you. Reach out for bookings, directions, or any questions!</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-[var(--brand-primary)] mb-2 text-center">Contact Us</h1>
+        <p className="text-center text-[var(--brand-primary-brown)] mb-8">We&apos;d love to hear from you. Reach out for bookings, directions, or any questions!</p>
 
         <div className="grid md:grid-cols-2 gap-10 mb-12">
           {/* Contact Details */}
-          <div className="bg-white rounded-2xl border border-[#DCC7A1] shadow p-8 flex flex-col gap-6 justify-center">
+          <div className="bg-white rounded-2xl border border-[var(--brand-light-brown)] shadow p-8 flex flex-col gap-6 justify-center">
             <div>
-              <h2 className="text-xl font-semibold text-[#7A1F2E] mb-1 flex items-center gap-2"><Phone className="inline w-5 h-5 text-[#7A1F2E]" /> Reservations</h2>
-              <p className="text-[#4E2E0E]">+254 (0) 727000027<br />+254 (0) 734000027</p>
+              <h2 className="text-xl font-semibold text-[var(--brand-primary)] mb-1 flex items-center gap-2"><Phone className="inline w-5 h-5 text-[var(--brand-primary)]" /> Reservations</h2>
+              <p className="text-[var(--brand-primary-brown)]">+254 (0) 727000027<br />+254 (0) 734000027</p>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-[#7A1F2E] mb-1 flex items-center gap-2"><Mail className="inline w-5 h-5 text-[#7A1F2E]" /> Email</h2>
-              <p className="text-[#4E2E0E]">info@enchularesort.co.ke</p>
+              <h2 className="text-xl font-semibold text-[var(--brand-primary)] mb-1 flex items-center gap-2"><Mail className="inline w-5 h-5 text-[var(--brand-primary)]" /> Email</h2>
+              <p className="text-[var(--brand-primary-brown)]">info@enchularesort.co.ke</p>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-[#7A1F2E] mb-1 flex items-center gap-2"><MapPin className="inline w-5 h-5 text-[#7A1F2E]" /> Address</h2>
-              <p className="text-[#4E2E0E]">Kajiado, Kenya<br />P.O. Box 62575 00200, Nairobi</p>
+              <h2 className="text-xl font-semibold text-[var(--brand-primary)] mb-1 flex items-center gap-2"><MapPin className="inline w-5 h-5 text-[var(--brand-primary)]" /> Address</h2>
+              <p className="text-[var(--brand-primary-brown)]">Kajiado, Kenya<br />P.O. Box 62575 00200, Nairobi</p>
             </div>
           </div>
 
           {/* Contact Form */}
           <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-[#DCC7A1] shadow p-8 flex flex-col gap-5">
-            <h2 className="text-2xl font-bold text-[#4E2E0E] mb-2 flex items-center gap-2"><MessageCircle className="w-6 h-6 text-[#7A1F2E]" />Send Us a Message</h2>
+            <h2 className="text-2xl font-bold text-[var(--brand-primary-brown)] mb-2 flex items-center gap-2"><MessageCircle className="w-6 h-6 text-[var(--brand-primary)]" />Send Us a Message</h2>
             <div>
-              <label className="block text-sm font-semibold text-[#4E2E0E] mb-1">Full Name *</label>
-              <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 bg-[#F8F3EF] border border-[#DCC7A1] rounded text-[#4E2E0E] placeholder-[#A9745B] focus:outline-none focus:border-[#7A1F2E]" placeholder="John Doe" />
+              <label className="block text-sm font-semibold text-[var(--brand-primary-brown)] mb-1">Full Name *</label>
+              <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 bg-[var(--brand-background)] border border-[var(--brand-light-brown)] rounded text-[var(--brand-primary-brown)] placeholder-[var(--brand-secondary-maroon)] focus:outline-none focus:border-[var(--brand-primary)]" placeholder="John Doe" />
               {errors.name && <p className="text-[#CC5555] text-xs mt-1 flex items-center gap-1"><span>⚠️</span>{errors.name}</p>}
             </div>
             <div>
-              <label className="block text-sm font-semibold text-[#4E2E0E] mb-1">Email Address *</label>
-              <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 bg-[#F8F3EF] border border-[#DCC7A1] rounded text-[#4E2E0E] placeholder-[#A9745B] focus:outline-none focus:border-[#7A1F2E]" placeholder="john@email.com" />
+              <label className="block text-sm font-semibold text-[var(--brand-primary-brown)] mb-1">Email Address *</label>
+              <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 bg-[var(--brand-background)] border border-[var(--brand-light-brown)] rounded text-[var(--brand-primary-brown)] placeholder-[var(--brand-secondary-maroon)] focus:outline-none focus:border-[var(--brand-primary)]" placeholder="john@email.com" />
               {errors.email && <p className="text-[#CC5555] text-xs mt-1 flex items-center gap-1"><span>⚠️</span>{errors.email}</p>}
             </div>
             <div>
-              <label className="block text-sm font-semibold text-[#4E2E0E] mb-1">Phone Number</label>
-              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-2 bg-[#F8F3EF] border border-[#DCC7A1] rounded text-[#4E2E0E] placeholder-[#A9745B] focus:outline-none focus:border-[#7A1F2E]" placeholder="+254 712 345 678" />
+              <label className="block text-sm font-semibold text-[var(--brand-primary-brown)] mb-1">Phone Number</label>
+              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-2 bg-[var(--brand-background)] border border-[var(--brand-light-brown)] rounded text-[var(--brand-primary-brown)] placeholder-[var(--brand-secondary-maroon)] focus:outline-none focus:border-[var(--brand-primary)]" placeholder="+254 712 345 678" />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-[#4E2E0E] mb-1">Your Message *</label>
-              <textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-2 bg-[#F8F3EF] border border-[#DCC7A1] rounded text-[#4E2E0E] placeholder-[#A9745B] focus:outline-none focus:border-[#7A1F2E] resize-none" placeholder="How can we help you?" />
+              <label className="block text-sm font-semibold text-[var(--brand-primary-brown)] mb-1">Your Message *</label>
+              <textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-2 bg-[var(--brand-background)] border border-[var(--brand-light-brown)] rounded text-[var(--brand-primary-brown)] placeholder-[var(--brand-secondary-maroon)] focus:outline-none focus:border-[var(--brand-primary)] resize-none" placeholder="How can we help you?" />
               {errors.message && <p className="text-[#CC5555] text-xs mt-1 flex items-center gap-1"><span>⚠️</span>{errors.message}</p>}
             </div>
             {success && (
-              <div className="p-2 rounded bg-[#F8F3EF] border border-[#7A1F2E]/30 text-[#7A1F2E] text-center text-xs flex items-center justify-center gap-2">
+              <div className="p-2 rounded bg-[var(--brand-background)] border border-[var(--brand-primary)]/30 text-[var(--brand-primary)] text-center text-xs flex items-center justify-center gap-2">
                 ✅ Message sent successfully! We’ll be in touch shortly.
               </div>
             )}
-            <button type="submit" className="w-full px-6 py-3 bg-[#7A1F2E] text-white rounded font-semibold flex items-center justify-center gap-2 shadow hover:bg-[#4E2E0E] transition-all duration-200">
+            <button type="submit" className="w-full px-6 py-3 bg-[var(--brand-primary)] text-white rounded font-semibold flex items-center justify-center gap-2 shadow hover:bg-[var(--brand-primary-brown)] transition-all duration-200">
               <Send className="w-5 h-5" /> Send Message
             </button>
           </form>

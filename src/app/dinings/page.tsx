@@ -69,7 +69,7 @@ export default function DiningPage() {
 
 
   return (
-    <section id="dining" className="relative min-h-screen bg-white">
+    <section id="dining" className="relative min-h-screen bg-[var(--brand-background)]">
       {/* Hero Banner Carousel */}
       <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
         {backgroundImages.map((img, index) => (
@@ -84,7 +84,7 @@ export default function DiningPage() {
           {backgroundImages.map((_, idx) => (
             <button
               key={idx}
-              className={`w-3 h-3 rounded-full border border-white ${currentBg === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              className={`w-3 h-3 rounded-full border border-white ${currentBg === idx ? 'bg-[var(--brand-secondary-maroon)]' : 'bg-white/40'} transition-all`}
               onClick={() => setCurrentBg(idx)}
               aria-label={`Go to slide ${idx + 1}`}
             />
@@ -95,8 +95,8 @@ export default function DiningPage() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Dining Experiences Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#2E1A15] mb-8 text-center">Dining Experiences</h2>
+        <div className="mb-16 bg-white rounded-2xl shadow p-8">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[var(--brand-black)] mb-8 text-center">Dining Experiences</h2>
           <div className="grid md:grid-cols-2 gap-10">
             {/* Restaurant Card */}
             <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group transition-all duration-300 hover:scale-[1.02]">
@@ -109,9 +109,9 @@ export default function DiningPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Signature Restaurant</h3>
-                <p className="text-[#5C4033] mb-3">Savor international cuisine crafted with fresh local ingredients. Our restaurant offers a warm, elegant ambiance perfect for any meal.</p>
-                <p className="text-[#A04040] font-semibold">Open daily 7AM – 10PM</p>
+                <h3 className="text-2xl font-serif font-bold text-[var(--brand-black)] mb-2">Signature Restaurant</h3>
+                <p className="text-[var(--brand-gray)] mb-3">Savor international cuisine crafted with fresh local ingredients. Our restaurant offers a warm, elegant ambiance perfect for any meal.</p>
+                <p className="text-[var(--brand-secondary-maroon)] font-semibold">Open daily 7AM – 10PM</p>
               </div>
             </div>
             {/* Bar Card */}
@@ -125,9 +125,9 @@ export default function DiningPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Bar Lounge</h3>
-                <p className="text-[#5C4033] mb-3">Unwind with expertly crafted cocktails, premium spirits, and a curated wine selection in our sophisticated bar lounge.</p>
-                <p className="text-[#A04040] font-semibold">Open daily 12PM – 11PM</p>
+                <h3 className="text-2xl font-serif font-bold text-[var(--brand-black)] mb-2">Bar Lounge</h3>
+                <p className="text-[var(--brand-gray)] mb-3">Unwind with expertly crafted cocktails, premium spirits, and a curated wine selection in our sophisticated bar lounge.</p>
+                <p className="text-[var(--brand-secondary-maroon)] font-semibold">Open daily 12PM – 11PM</p>
               </div>
             </div>
           </div>
@@ -135,8 +135,8 @@ export default function DiningPage() {
 
 
         {/* Nightlife & Entertainment Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#2E1A15] mb-8 text-center">Nightlife & Entertainment</h2>
+        <div className="mb-16 bg-white rounded-2xl shadow p-8">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[var(--brand-black)] mb-8 text-center">Nightlife & Entertainment</h2>
           <div className="grid md:grid-cols-2 gap-10">
             {/* Nightlife Card */}
             <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group transition-all duration-300 hover:scale-[1.02]">
@@ -149,9 +149,9 @@ export default function DiningPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Evening Entertainment</h3>
-                <p className="text-[#5C4033] mb-3">Enjoy live music, themed nights, and a vibrant atmosphere. Our nightlife experience is perfect for unwinding and socializing after sunset.</p>
-                <p className="text-[#A04040] font-semibold">Events every weekend</p>
+                <h3 className="text-2xl font-serif font-bold text-[var(--brand-black)] mb-2">Evening Entertainment</h3>
+                <p className="text-[var(--brand-gray)] mb-3">Enjoy live music, themed nights, and a vibrant atmosphere. Our nightlife experience is perfect for unwinding and socializing after sunset.</p>
+                <p className="text-[var(--brand-secondary-maroon)] font-semibold">Events every weekend</p>
               </div>
             </div>
             {/* Pool Bar Card */}
@@ -165,9 +165,9 @@ export default function DiningPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Poolside Bar</h3>
-                <p className="text-[#5C4033] mb-3">Sip signature cocktails and enjoy light bites by the pool, with stunning views and a relaxed vibe.</p>
-                <p className="text-[#A04040] font-semibold">Open daily 10AM – 8PM</p>
+                <h3 className="text-2xl font-serif font-bold text-[var(--brand-black)] mb-2">Poolside Bar</h3>
+                <p className="text-[var(--brand-gray)] mb-3">Sip signature cocktails and enjoy light bites by the pool, with stunning views and a relaxed vibe.</p>
+                <p className="text-[var(--brand-secondary-maroon)] font-semibold">Open daily 10AM – 8PM</p>
               </div>
             </div>
           </div>
@@ -180,7 +180,7 @@ export default function DiningPage() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block text-lg px-8 py-4 rounded-full bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] text-[#2E1A15] font-bold shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300"
+            className="inline-block text-lg px-8 py-4 rounded-full font-bold shadow-lg transition-all duration-300 text-[#741F31] bg-[#D2BB9E] hover:bg-[#741F31] hover:text-[#D2BB9E] hover:scale-105 hover:shadow-xl border border-[#741F31]"
           >
             Reserve Your Table on WhatsApp
           </a>

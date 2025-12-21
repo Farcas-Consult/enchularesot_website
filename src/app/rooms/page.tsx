@@ -77,8 +77,8 @@ export default function Rooms() {
         "Flat-Screen TV",
         "Tea/Coffee Maker",
       ],
-      color: "from-[#5C4033] to-[#800000]",
-      hoverColor: "from-[#800000] to-[#A04040]",
+      color: "from-[#D2BB9E] to-[#741F31]",
+      hoverColor: "from-[#741F31] to-[#D2BB9E]",
     },
     {
       id: 2,
@@ -98,8 +98,8 @@ export default function Rooms() {
         "Desk Area",
         "Air Conditioning",
       ],
-      color: "from-[#5C4033] to-[#A04040]",
-      hoverColor: "from-[#A04040] to-[#5C4033]",
+      color: "from-[#D2BB9E] to-[#741F31]",
+      hoverColor: "from-[#741F31] to-[#D2BB9E]",
     },
     {
       id: 3,
@@ -119,8 +119,8 @@ export default function Rooms() {
         "Smart TV",
         "Luxury Bathroom",
       ],
-      color: "from-[#800000] to-[#A04040]",
-      hoverColor: "from-[#A04040] to-[#800000]",
+      color: "from-[#741F31] to-[#D2BB9E]",
+      hoverColor: "from-[#D2BB9E] to-[#741F31]",
     },
   ];
 
@@ -225,14 +225,14 @@ export default function Rooms() {
           </div>
           <div className="flex flex-wrap gap-4 mt-6">
             <Link href="/booking" passHref>
-              <button className="relative px-7 py-4 bg-gradient-to-r from-[#A04040] to-[#5C2E2E] text-white rounded-xl font-semibold shadow-2xl overflow-hidden group border border-transparent hover:border-[#800000] transition-all duration-300 flex items-center gap-2 text-lg">
+              <button className="relative px-7 py-4 bg-[#D2BB9E] text-[#741F31] rounded-xl font-semibold shadow-2xl overflow-hidden group border border-[#741F31] transition-all duration-300 flex items-center gap-2 text-lg hover:bg-[#741F31] hover:text-[#D2BB9E]">
                 Book Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
               </button>
             </Link>
             <Link href="/Virtual-tour" passHref>
-              <button className="px-7 py-4 bg-neutral-100 hover:bg-neutral-200 text-brand rounded-xl font-semibold border border-neutral-300 transition-all duration-300 text-lg">
+              <button className="px-7 py-4 bg-[#D2BB9E] text-[#741F31] rounded-xl font-semibold border border-[#741F31] transition-all duration-300 text-lg hover:bg-[#741F31] hover:text-[#D2BB9E]">
                 Virtual Tour
               </button>
             </Link>
@@ -247,8 +247,8 @@ export default function Rooms() {
               onClick={() => handleRoomChange(index)}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 border text-lg ${
                 activeRoomIndex === index
-                  ? `bg-gradient-to-r ${room.color} text-white shadow-lg scale-105 border-transparent`
-                  : "bg-white text-brand border-neutral-300 hover:bg-neutral-100"
+                  ? "bg-[#741F31] text-[#D2BB9E] border-[#741F31]"
+                  : "bg-[#D2BB9E] text-[#741F31] border-[#741F31] hover:bg-[#741F31] hover:text-[#D2BB9E]"
               }`}
             >
               {room.name}

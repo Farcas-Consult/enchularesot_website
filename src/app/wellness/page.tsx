@@ -125,13 +125,13 @@ export default function WellnessPage() {
   const next = () => setCurrent((prev) => (prev + 1) % HERO_BANNER_IMAGES.length);
 
   return (
-    <section id="wellness" className="relative min-h-screen bg-white">
+    <section id="wellness" className="relative min-h-screen bg-white text-[1.15rem] md:text-[1.25rem]">
       {/* Hero Banner Carousel */}
       <div className="relative w-full h-screen min-h-[500px] overflow-hidden flex items-center justify-center">
         {HERO_BANNER_IMAGES.map((img, idx) => (
           <div
             key={idx}
-            className={`absolute inset-0 transition-opacity duration-700 ${idx === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
+            className={`absolute inset-0 transition-opacity duration-3000 ease-in-out ${idx === current ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
           >
             <Image
               src={img}
@@ -163,6 +163,7 @@ export default function WellnessPage() {
         </div>
       </div>
 
+    
       {/* GYM SECTION */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 py-16">
         <div className="text-center mb-16">
@@ -255,7 +256,7 @@ export default function WellnessPage() {
                 </ul>
                 <Link
                   href="/booking"
-                  className="block w-full py-2.5 text-center bg-[#800000] hover:bg-[#A04040] text-[#FAF5F0] font-semibold rounded-lg transition-colors duration-300 text-sm"
+                  className="block w-full py-2.5 text-center bg-[#D2BB9E] hover:bg-[#741F31] text-[#741F31] hover:text-[#D2BB9E] font-semibold rounded-lg transition-colors duration-300 text-sm border border-[#741F31]"
                 >
                   Choose Plan
                 </Link>
@@ -293,13 +294,22 @@ export default function WellnessPage() {
           </p>
           <Link
             href="/booking"
-            className="inline-flex items-center gap-3 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center gap-3 bg-[#D2BB9E] hover:bg-[#741F31] text-[#741F31] hover:text-[#D2BB9E] font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#741F31]"
           >
             Book a Tour
           </Link>
         </div>
       </div>
-
+        {/* Wellness Section Heading */}
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-10">
+        <div className="text-center mb-16">
+          <div className="inline-block mb-6 px-6 py-3 bg-[#D2BB9E]/20 backdrop-blur-sm rounded-full border border-[#741F31]/20">
+            <span className="text-[#741F31] font-semibold tracking-wide text-lg uppercase">WELLNESS & SPA</span>
+          </div>
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-[#741F31] mb-6 leading-tight">Luxury Wellness Retreat</h1>
+          <p className="text-xl text-[#5C4033] max-w-3xl mx-auto">Relax, rejuvenate, and restore your mind and body in our tranquil wellness sanctuary.</p>
+        </div>
+      </div>
         {/* Massage Treatments - Large Feature */}
         <div className="mb-12 bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group">
           <div className="grid md:grid-cols-2 gap-0">
@@ -563,7 +573,7 @@ export default function WellnessPage() {
           </p>
           <Link
             href="/booking"
-            className="inline-flex items-center gap-3 bg-linear-to-r from-[#A04040] to-[#D7BFA8] hover:from-[#800000] hover:to-[#6B4423] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center gap-3 bg-[#D2BB9E] hover:bg-[#741F31] text-[#741F31] hover:text-[#D2BB9E] font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#741F31]"
           >
             Book Your Wellness Session
           </Link>

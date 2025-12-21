@@ -19,21 +19,30 @@
 /* Enchula Resort brand palette - CSS variables available globally */
 
 :root {
-    /* Primary */
-    --brand-primary-brown: #4E2E0E;
-    /* Secondary */
-    --brand-secondary-maroon: #7A1F2E;
-    /* Light / neutrals */
+    /* Brand Colors */
+    --brand-primary: #741F31;
+    /* Deep Burgundy / Maroon */
+    --brand-accent-gold: #D2BB6C;
+    /* Gold / Warm Mustard */
+    --brand-background: #F8F3EF;
+    /* White / Off-White */
+    --brand-black: #181818;
+    /* Black / Dark Gray */
+    --brand-gray: #232323;
+    /* Dark Gray for text */
+    /* For legacy compatibility (optional) */
+    --brand-primary-brown: var(--brand-primary);
+    --brand-secondary-maroon: #A04040;
     --brand-light-brown: #DCC7A1;
-    --brand-beige: #F8F3ED;
-    /* Dark neutrals */
-    --brand-dark-neutral: #221812;
-    --overlay-charcoal: rgba(34, 24, 18, 0.6);
+    --brand-beige: var(--brand-background);
+    --brand-dark-neutral: var(--brand-black);
+    /* Overlay */
+    --overlay-charcoal: rgba(24, 24, 24, 0.6);
     /* Text colors */
-    --text-primary: #3E2C20;
+    --text-primary: var(--brand-gray);
     --text-on-dark: #FFFFFF;
     /* Aliases */
-    --background: var(--brand-beige);
+    --background: var(--brand-background);
     --foreground: var(--text-primary);
 }
 

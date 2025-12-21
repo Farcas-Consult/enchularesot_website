@@ -6,7 +6,7 @@ import { MapPin, Phone, Mail, Facebook, Instagram, Twitter, Linkedin } from "luc
 
 const Footer = () => {
   return (
-    <footer className="bg-[#2E1A15] text-[#F8F3EF] py-16 px-6 md:px-12">
+    <footer className="bg-[#741F31] text-[#F8F3EF] py-16 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}

@@ -15,7 +15,7 @@ const healthSafetyData = [
   {
     title: "Medical-Grade Sanitization",
     description: "Hospital-level disinfection protocols using EPA-approved products ensure every surface meets the highest hygiene standards.",
-    icon: <Droplet size={48} className="text-[#A04040]" />,
+    icon: <Droplet size={48} className="text-[var(--brand-secondary-maroon)]" />,
   },
   {
     title: "Advanced Air Purification",
@@ -35,7 +35,7 @@ const healthSafetyData = [
   {
     title: "Hygiene Stations",
     description: "Premium hand sanitizer and hygiene stations strategically placed throughout the resort for instant access.",
-    icon: <Hand size={48} className="text-[#A04040]" />,
+    icon: <Hand size={48} className="text-[var(--brand-secondary-maroon)]" />,
   },
   {
     title: "On-Site Medical Care",
@@ -104,22 +104,22 @@ export default function Home() {
           </div>
           {/* Features */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
-            <div className="bg-[#F8F3EF] rounded-xl p-6 border border-[#A9745B]/10 text-center hover:shadow-md transition-all duration-300">
+            <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7" /><path d="M5.5 21h13a2.5 2.5 0 0 0 2.5-2.5V17a2.5 2.5 0 0 0-2.5-2.5h-13A2.5 2.5 0 0 0 3 17v1.5A2.5 2.5 0 0 0 5.5 21z" /></svg>
               <h4 className="font-bold mb-2 text-brand">4-Star Luxury</h4>
               <p className="text-sm text-neutral-800">Award-winning service</p>
             </div>
-            <div className="bg-[#F8F3EF] rounded-xl p-6 border border-[#A9745B]/10 text-center hover:shadow-md transition-all duration-300">
+            <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="7" r="4" /><path d="M5.5 21h13a2.5 2.5 0 0 0 2.5-2.5V17a2.5 2.5 0 0 0-2.5-2.5h-13A2.5 2.5 0 0 0 3 17v1.5A2.5 2.5 0 0 0 5.5 21z" /></svg>
               <h4 className="font-bold mb-2 text-brand">Expert Team</h4>
               <p className="text-sm text-neutral-800">Dedicated hospitality</p>
             </div>
-            <div className="bg-[#F8F3EF] rounded-xl p-6 border border-[#A9745B]/10 text-center hover:shadow-md transition-all duration-300">
+            <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20" /><path d="M2 12h20" /></svg>
               <h4 className="font-bold mb-2 text-brand">Premium Amenities</h4>
               <p className="text-sm text-neutral-800">World-class facilities</p>
             </div>
-            <div className="bg-[#F8F3EF] rounded-xl p-6 border border-[#A9745B]/10 text-center hover:shadow-md transition-all duration-300">
+            <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21C12 21 5 13.5 5 9.5C5 6.46243 7.46243 4 10.5 4C12.1566 4 13.6566 4.84285 14.5 6.11803C15.3434 4.84285 16.8434 4 18.5 4C21.5376 4 24 6.46243 24 9.5C24 13.5 17 21 17 21H12Z" /></svg>
               <h4 className="font-bold mb-2 text-brand">Warm Hospitality</h4>
               <p className="text-sm text-neutral-800">Kenyan excellence</p>
@@ -162,7 +162,7 @@ export default function Home() {
         </div>
         <a href="/dinings" className="btn-primary mt-8 inline-block">Explore</a>
       </section>
-      <div className="w-full h-0.5 bg-linear-to-r from-[#A04040]/0 via-[#A04040]/60 to-[#A04040]/0 my-8" />
+      <div className="w-full h-0.5 bg-linear-to-r from-[var(--brand-secondary-maroon)]/0 via-[var(--brand-secondary-maroon)]/60 to-[var(--brand-secondary-maroon)]/0 my-8" />
 
       {/* Experiences Section */}
       <section className="bg-white py-20 px-4 text-center">

@@ -36,7 +36,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 w-full z-50 bg-[#2E1A15] shadow transition-all duration-300 m-0 p-0">
+    <header className="sticky top-0 w-full z-50 bg-[#741F31] shadow transition-all duration-300 m-0 p-0">
       {/* Mobile: Top row with call, WhatsApp, and email icons, logo, and book button */}
       <div className="md:hidden flex flex-col w-full bg-transparent">
         <div className="flex justify-between items-center w-full px-4 pt-2 pb-1">
@@ -49,7 +49,7 @@ export default function Navbar() {
           </div>
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-[#DCC7A1] hover:text-white p-2 focus:outline-none"
+            className="text-[var(--brand-light-brown)] hover:text-white p-2 focus:outline-none"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -65,11 +65,11 @@ export default function Navbar() {
               className="object-contain"
               priority
             />
-            <span className="text-2xl font-bold text-[#DCC7A1] tracking-wider font-serif">ENCHULA</span>
+            <span className="text-2xl font-bold text-[var(--brand-light-brown)] tracking-wider font-serif">ENCHULA</span>
           </Link>
         </div>
         <div className="flex justify-center items-center w-full pb-2">
-          <Link href="/booking" className="px-5 py-2 bg-white text-[#7B4B2A] font-bold rounded shadow hover:bg-[#A9745B] hover:text-white transition-colors text-xs tracking-widest uppercase" style={{letterSpacing: '0.12em'}}>BOOK</Link>
+          <Link href="/booking" className="px-5 py-2 bg-white text-[#741F31] font-bold rounded shadow hover:bg-[#741F31] hover:text-white transition-colors text-xs tracking-widest uppercase" style={{letterSpacing: '0.12em'}}>BOOK</Link>
         </div>
       </div>
       {/* Desktop nav row remains unchanged below */}
@@ -85,7 +85,7 @@ export default function Navbar() {
               className="object-contain"
               priority
             />
-            <span className="text-2xl font-bold text-[#DCC7A1] tracking-wider font-serif">ENCHULA</span>
+            <span className="text-2xl font-bold text-[var(--brand-light-brown)] tracking-wider font-serif">ENCHULA</span>
           </Link>
           <div className="flex items-center gap-3 ml-4">
             <a href="tel:+254727000027" aria-label="Call" className="p-2"><Phone className="w-5 h-5 text-white" /></a>
@@ -101,7 +101,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-[#F8F3EF] font-normal tracking-normal hover:text-[#A9745B] transition-colors text-xs capitalize"
+              className="text-[var(--brand-background)] font-normal tracking-normal hover:text-[var(--brand-secondary-maroon)] transition-colors text-xs capitalize"
               style={{letterSpacing: '0.02em'}}>
               {link.name}
             </Link>
@@ -109,7 +109,7 @@ export default function Navbar() {
         </nav>
         {/* Book Now right */}
         <div className="flex items-center ml-4">
-          <Link href="/booking" className="px-5 py-2 bg-[#7B4B2A] text-white font-bold rounded shadow hover:bg-[#A9745B] transition-colors text-xs tracking-widest uppercase" style={{letterSpacing: '0.12em'}}>BOOK NOW</Link>
+          <Link href="/booking" className="px-5 py-2 bg-white text-[#741F31] font-bold rounded shadow hover:bg-[#741F31] hover:text-white transition-colors text-xs tracking-widest uppercase" style={{letterSpacing: '0.12em'}}>BOOK NOW</Link>
         </div>
       </div>
       {/* Mobile Slide-in Menu & Overlay */}
@@ -125,7 +125,7 @@ export default function Navbar() {
           <nav className="fixed top-0 right-0 h-full w-4/5 max-w-xs bg-[#18120E] z-50 shadow-lg px-6 py-8 flex flex-col space-y-4 animate-slide-in">
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="self-end mb-4 text-[#DCC7A1] hover:text-white p-2 focus:outline-none"
+              className="self-end mb-4 text-[var(--brand-light-brown)] hover:text-white p-2 focus:outline-none"
               aria-label="Close menu"
             >
               <X size={28} />
@@ -135,7 +135,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block py-2 text-[#F8F3EF] font-normal capitalize tracking-normal px-3 transition-all duration-200 border-b-2 border-transparent hover:border-[#A9745B] text-xs"
+                  className="block py-2 text-[var(--brand-background)] font-normal capitalize tracking-normal px-3 transition-all duration-200 border-b-2 border-transparent hover:border-[var(--brand-secondary-maroon)] text-xs"
                   style={{letterSpacing: '0.02em'}} 
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -145,7 +145,7 @@ export default function Navbar() {
             </div>
             <Link
               href="/booking"
-              className="block mt-3 px-6 py-2 bg-[#7B4B2A] text-white font-bold rounded shadow hover:bg-[#A9745B] transition-colors text-xs tracking-widest uppercase text-center"
+              className="block mt-3 px-6 py-2 bg-white text-[#741F31] font-bold rounded shadow hover:bg-[#741F31] hover:text-white transition-colors text-xs tracking-widest uppercase text-center"
               style={{ letterSpacing: '0.12em' }}
               onClick={() => setIsMenuOpen(false)}
             >
