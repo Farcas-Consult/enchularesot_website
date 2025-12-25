@@ -327,9 +327,9 @@ const BookingPage = () => {
                   <div className="grid grid-cols-2 gap-3">
                     {[
                       { label: "Adults (17+)", value: adults, setter: setAdults, max: 6 },
-                      { label: "Minors (12–17)", value: minorCount, setter: setMinorCount, max: 4 },
-                      { label: "Children (2–12)", value: childrenCount, setter: setChildrenCount, max: 4 },
-                      { label: "Infants (0–2)", value: infantCount, setter: setInfantCount, max: 4 },
+                     
+                      { label: "Children (4–16)", value: childrenCount, setter: setChildrenCount, max: 4 },
+                      { label: "Infants (0–3)", value: infantCount, setter: setInfantCount, max: 4 },
                     ].map((g, i) => (
                       <div key={i} className="flex items-center justify-between p-2 bg-[#2C1B16]/80 rounded-lg border border-[#5C4033]/50">
                         <span className="text-[#FAF5F0] text-xs">{g.label}</span>

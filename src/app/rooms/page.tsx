@@ -112,7 +112,7 @@ export default function Rooms() {
       description:
         "Experience enhanced luxury in our Superior Rooms with premium amenities, spacious layout, and elegant furnishings.",
       amenities: [
-        "King/Twin Beds",
+        "King Beds",
         "Premium Bedding",
         "Mini Bar",
         "Free WiFi",
