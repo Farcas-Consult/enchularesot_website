@@ -1,11 +1,12 @@
-"use-client";
+"use client";
 import Hero from "./components/homepage/hero";
-
 import Image from "next/image";
 import Link from "next/link";
 import { Hand, UserCheck, Droplet, Shield, Sparkles, Wind, Thermometer, Stethoscope } from "lucide-react";
 
+// 🔴 Fixed S3_BASE: removed trailing spaces
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+
 const healthSafetyData = [
   {
     title: "Contactless Technology",
@@ -49,7 +50,7 @@ const healthSafetyData = [
   },
 ];
 
-// Room data from rooms page
+// Room data
 const rooms = [
   {
     id: 1,
@@ -74,14 +75,13 @@ const rooms = [
   },
 ];
 
-
 export default function Home() {
   return (
     <div className="m-0 p-0">
       {/* Hero Section */}
       <Hero />
 
-      {/* About Section - Customized from About Page, styled like Rooms section */}
+      {/* About Section */}
       <section id="about" className="bg-white py-20 px-4 text-center text-[#2E1A15]">
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12">
@@ -89,7 +89,6 @@ export default function Home() {
             <p className="text-xl text-[#7c5a2d] font-semibold mb-6">The epitome of african hospitality.</p>
           </div>
           <div className="text-left">
-            
             <div className="space-y-4 text-neutral-800 leading-relaxed mb-6">
               <p>
                 Nestled in the breathtaking plains of <strong className="text-brand">Kajiado County</strong>, Enchula Resort offers a unique blend of untamed Kenyan beauty and refined modern hospitality.
@@ -132,21 +131,108 @@ export default function Home() {
       {/* Rooms Section */}
       <section className="bg-white py-20 px-4">
         <h2 className="text-4xl font-bold mb-2 text-brand text-center">Rooms & Suites</h2>
-        <p className="text-lg text-neutral-700 text-center mb-8 max-w-2xl mx-auto">Discover our selection of comfortable, stylish rooms designed for relaxation and a memorable stay.</p>
+        <p className="text-lg text-neutral-700 text-center mb-8 max-w-2xl mx-auto">
+          Discover our selection of comfortable, stylish rooms designed for relaxation and a memorable stay.
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-7xl mx-auto">
           {rooms.map((room) => (
-            <div key={room.id} className="relative rounded-xl shadow-md overflow-hidden group h-[420px] md:h-[520px] w-full max-w-[520px] mx-auto">
+            <div
+              key={room.id}
+              className="relative rounded-xl shadow-md overflow-hidden group h-[420px] md:h-[520px] w-full max-w-[520px] mx-auto"
+            >
               <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full" />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end px-8 pb-8 pt-32 transition-opacity duration-300 group-hover:opacity-100">
                 <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">{room.name}</h3>
                 <div className="text-lg text-[#D7BFA8] font-semibold mb-4 drop-shadow">{room.price}</div>
-                <Link href={`/rooms#${room.anchor}`} className="btn-primary inline-block">Explore</Link>
+                <Link href={`/rooms#${room.anchor}`} className="btn-primary inline-block">
+                  Explore
+                </Link>
               </div>
             </div>
           ))}
         </div>
       </section>
       <div className="w-full h-0.5 bg-linear-to-r from-[#A9745B]/0 via-[#A9745B]/60 to-[#A9745B]/0 my-8" />
+
+      {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+      {/* CONFERENCES AND EVENTS SECTION */}
+      {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
+      <section className="bg-white py-20 px-4 text-center">
+        <h2 className="text-4xl font-bold mb-6 text-brand">Conferences and Events</h2>
+        <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
+          From strategic corporate retreats to dynamic team-building sessions and elegant social gatherings — we provide the perfect setting for every occasion.
+        </p>
+
+        {/* Key Offerings */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
+          <div className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
+            <h3 className="font-bold text-xl text-[#A04040] mb-2">Retreats & Conferences</h3>
+            <p className="text-neutral-800 text-sm">
+              Professional meeting spaces with full A/V support, high-speed internet, and serene savannah views.
+            </p>
+          </div>
+          <div className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
+            <h3 className="font-bold text-xl text-[#A04040] mb-2">Corporate & Social Events</h3>
+            <p className="text-neutral-800 text-sm">
+              Weddings, birthdays, family reunions, and product launches — all tailored to your vision.
+            </p>
+          </div>
+          <div className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
+            <h3 className="font-bold text-xl text-[#A04040] mb-2">Team Building</h3>
+            <p className="text-neutral-800 text-sm">
+              Engaging outdoor activities on our expansive grounds to foster collaboration and morale.
+            </p>
+          </div>
+        </div>
+
+        {/* Conference Packages Preview */}
+        <div className="bg-[#F8F3EF] max-w-4xl mx-auto p-6 rounded-2xl border border-[#5C4033]/20 mb-8">
+          <h3 className="text-lg font-bold text-[#A04040] mb-3">Popular Packages</h3>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="text-left">
+              <p className="font-semibold text-[#2E1A15]">Full Day Conference/Team Building</p>
+              <p className="text-[#A04040] font-medium">Kshs. 4,000 per participant</p>
+            </div>
+            <div className="text-left">
+              <p className="font-semibold text-[#2E1A15]">Half Day Conference</p>
+              <p className="text-[#A04040] font-medium">Kshs. 3,500 per participant</p>
+            </div>
+          </div>
+          <p className="text-xs text-[#5C4033] mt-4 italic">
+            Includes conference room, meals, branded materials, projector, flip charts, and team-building grounds.
+          </p>
+        </div>
+
+        {/* Event Images */}
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <Image
+            src={`${S3_BASE}/Conference1.jpg`}
+            alt="Conference Room"
+            width={380}
+            height={240}
+            className="rounded-xl shadow-md object-cover"
+          />
+          <Image
+            src={`${S3_BASE}/Conference2.jpg`}
+            alt="Team Building Activity"
+            width={380}
+            height={240}
+            className="rounded-xl shadow-md object-cover"
+          />
+          <Image
+            src={`${S3_BASE}/Conference3.jpg`}
+            alt="Outdoor Corporate Event"
+            width={380}
+            height={240}
+            className="rounded-xl shadow-md object-cover"
+          />
+        </div>
+
+        <a href="/events" className="btn-primary mt-6 inline-block">
+          Explore Event Options
+        </a>
+      </section>
+      <div className="w-full h-0.5 bg-linear-to-r from-[var(--brand-secondary-maroon)]/0 via-[var(--brand-secondary-maroon)]/60 to-[var(--brand-secondary-maroon)]/0 my-8" />
 
       {/* Dining Section */}
       <section className="bg-white py-20 px-4 text-center">
@@ -155,42 +241,95 @@ export default function Home() {
           Savor delicious cuisine in our bright, inviting restaurants and bars, offering local and international flavors.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Image src={`${S3_BASE}/Dining2.jpg`} alt="Restaurant Interior" width={540} height={340} className="rounded-xl shadow-md" />
-          <Image src={`${S3_BASE}/Dining4.jpg`} alt="Bar Lounge" width={540} height={340} className="rounded-xl shadow-md" />
-          <Image src={`${S3_BASE}/Dining6.jpg`} alt="Nightlife" width={540} height={340} className="rounded-xl shadow-md" />
-          <Image src={`${S3_BASE}/Breakfast1.jpg`} alt="Pool Bar" width={540} height={340} className="rounded-xl shadow-md" />
+          <Image
+            src={`${S3_BASE}/Dining2.jpg`}
+            alt="Restaurant Interior"
+            width={540}
+            height={340}
+            className="rounded-xl shadow-md"
+          />
+          <Image
+            src={`${S3_BASE}/Dining4.jpg`}
+            alt="Bar Lounge"
+            width={540}
+            height={340}
+            className="rounded-xl shadow-md"
+          />
+          <Image
+            src={`${S3_BASE}/Dining6.jpg`}
+            alt="Nightlife"
+            width={540}
+            height={340}
+            className="rounded-xl shadow-md"
+          />
+          <Image
+            src={`${S3_BASE}/Breakfast1.jpg`}
+            alt="Pool Bar"
+            width={540}
+            height={340}
+            className="rounded-xl shadow-md"
+          />
         </div>
-        <a href="/dinings" className="btn-primary mt-8 inline-block">Explore</a>
+        <a href="/dinings" className="btn-primary mt-8 inline-block">
+          Explore
+        </a>
       </section>
       <div className="w-full h-0.5 bg-linear-to-r from-[var(--brand-secondary-maroon)]/0 via-[var(--brand-secondary-maroon)]/60 to-[var(--brand-secondary-maroon)]/0 my-8" />
 
-      {/* Experiences Section */}
+      {/* Fun Activities and Experiences */}
       <section className="bg-white py-20 px-4 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-brand">Experiences</h2>
+        <h2 className="text-4xl font-bold mb-6 text-brand">Fun Activities and Experiences</h2>
         <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
           Enjoy a range of activities: spa, wellness, gym, games, and unique adventures—all in a bright, uplifting setting.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          {/* 1 Gym Image from wellness page */}
-          <Image src={`${S3_BASE}/IMG_2174.webp`} alt="Modern Gym Facility" width={380} height={260} className="rounded-xl shadow-md object-contain" />
-          {/* 1 Spa/Wellness Image from wellness page */}
-          <Image src={`${S3_BASE}/Facial.webp`} alt="Facial Treatment" width={380} height={260} className="rounded-xl shadow-md object-contain" />
-          {/* 2 Images from games page (different from previous) */}
-          <Image src={`${S3_BASE}/IMG_3394.webp`} alt="Kids & Family Fun" width={380} height={260} className="rounded-xl shadow-md object-contain" />
-          <Image src={`${S3_BASE}/IMG_2450.webp`} alt="Maasai Craft Workshop" width={380} height={260} className="rounded-xl shadow-md object-contain" />
-          {/* 1 Unique Experience from experience_activities page */}
-          <Image src={`${S3_BASE}/Maasai2.webp`} alt="Maasai Cultural Experience" width={380} height={260} className="rounded-xl shadow-md object-contain" />
+          <Image
+            src={`${S3_BASE}/IMG_2174.webp`}
+            alt="Modern Gym Facility"
+            width={380}
+            height={260}
+            className="rounded-xl shadow-md object-contain"
+          />
+          <Image
+            src={`${S3_BASE}/Facial.webp`}
+            alt="Facial Treatment"
+            width={380}
+            height={260}
+            className="rounded-xl shadow-md object-contain"
+          />
+          <Image
+            src={`${S3_BASE}/IMG_3394.webp`}
+            alt="Kids & Family Fun"
+            width={380}
+            height={260}
+            className="rounded-xl shadow-md object-contain"
+          />
+          <Image
+            src={`${S3_BASE}/IMG_2450.webp`}
+            alt="Maasai Craft Workshop"
+            width={380}
+            height={260}
+            className="rounded-xl shadow-md object-contain"
+          />
+          <Image
+            src={`${S3_BASE}/Maasai2.webp`}
+            alt="Maasai Cultural Experience"
+            width={380}
+            height={260}
+            className="rounded-xl shadow-md object-contain"
+          />
         </div>
-        <a href="/experience_activities" className="btn-primary mt-8 inline-block">Explore</a>
+        <a href="/experience_activities" className="btn-primary mt-8 inline-block">
+          Explore
+        </a>
       </section>
       <div className="w-full h-0.5 bg-linear-to-r from-[#5C4033]/0 via-[#5C4033]/60 to-[#5C4033]/0 my-8" />
 
-
-      {/* Reviews Section (merged) */}
+      {/* Case Reviews */}
       <section className="bg-white py-20 px-4 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-brand">Guest Reviews</h2>
+        <h2 className="text-4xl font-bold mb-6 text-brand">Case Reviews</h2>
         <p className="max-w-2xl mx-auto text-lg mb-8 text-neutral-800">
-          Hear from our happy guests and see why Enchula Resort is a top choice for travelers.
+          Hear from our guests and see real-world experiences at Enchula Resort.
         </p>
         {/* Stats Bar */}
         <div className="flex flex-wrap justify-center gap-6 mb-10">
@@ -210,25 +349,35 @@ export default function Home() {
         {/* Reviews Grid */}
         <div className="flex flex-wrap justify-center gap-10 mb-10">
           <div className="card-bg max-w-xs p-6 shadow-md bg-white border border-neutral-200">
-            <p className="mb-4 text-neutral-800">“Perfect escape from the city! The staff were so warm and welcoming. My kids loved the play area, and we enjoyed a beautiful sunset dinner by the pool.”</p>
+            <p className="mb-4 text-neutral-800">
+              “Perfect escape from the city! The staff were so warm and welcoming. My kids loved the play area, and we enjoyed a beautiful sunset dinner by the pool.”
+            </p>
             <span className="font-semibold text-brand">— Wanjiru M. (Nairobi)</span>
           </div>
           <div className="card-bg max-w-xs p-6 shadow-md bg-white border border-neutral-200">
-            <p className="mb-4 text-neutral-800">“We booked Enchula for our mini-moon and it was magical. The room was cozy, clean, and had such a peaceful view of the savannah.”</p>
+            <p className="mb-4 text-neutral-800">
+              “We booked Enchula for our mini-moon and it was magical. The room was cozy, clean, and had such a peaceful view of the savannah.”
+            </p>
             <span className="font-semibold text-brand">— David & Sarah T. (Mombasa)</span>
           </div>
           <div className="card-bg max-w-xs p-6 shadow-md bg-white border border-neutral-200">
-            <p className="mb-4 text-neutral-800">“Visited during my East Africa tour. Enchula offered a peaceful, authentic experience. I appreciated the sustainability efforts — solar power, recycling, and support for local artisans.”</p>
+            <p className="mb-4 text-neutral-800">
+              “Visited during my East Africa tour. Enchula offered a peaceful, authentic experience. I appreciated the sustainability efforts — solar power, recycling, and support for local artisans.”
+            </p>
             <span className="font-semibold text-brand">— Lina B. (Germany)</span>
           </div>
           <div className="card-bg max-w-xs p-6 shadow-md bg-white border border-neutral-200">
-            <p className="mb-4 text-neutral-800">“Best family weekend in years! Kids enjoyed camel rides and the mini club. Rooms connected perfectly for us. Food was delicious — especially the local dishes.”</p>
+            <p className="mb-4 text-neutral-800">
+              “Best family weekend in years! Kids enjoyed camel rides and the mini club. Rooms connected perfectly for us. Food was delicious — especially the local dishes.”
+            </p>
             <span className="font-semibold text-brand">— The Otieno Family (Kisumu)</span>
           </div>
         </div>
         {/* Review Submission CTA */}
         <div className="text-center">
-          <a href="#contact" className="btn-primary mt-8 inline-block">Write Your Review</a>
+          <a href="#contact" className="btn-primary mt-8 inline-block">
+            Write Your Review
+          </a>
         </div>
       </section>
     </div>

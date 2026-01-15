@@ -257,8 +257,8 @@ export default function EventsPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="flex items-center gap-2 text-[#A04040]">
               <span className="text-2xl">📞</span>
-              <a href="tel:+254723008164" className="font-semibold transition-colors px-4 py-2 rounded-full bg-(--color-gold) text-(--color-primary) hover:bg-(--color-primary) hover:text-(--color-gold) border border-(--color-primary)">
-                0723008164
+              <a href="tel:+254723003164" className="font-semibold transition-colors px-4 py-2 rounded-full bg-(--color-gold) text-(--color-primary) hover:bg-(--color-primary) hover:text-(--color-gold) border border-(--color-primary)">
+                0723003164
               </a>
             </div>
             <div className="flex items-center gap-2 text-[#A04040]">
