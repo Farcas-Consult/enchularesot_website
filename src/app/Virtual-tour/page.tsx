@@ -197,8 +197,8 @@ export default function VirtualTourPage() {
 
       {/* Section Content */}
       <div className="w-full flex flex-col items-center justify-center py-8 bg-gradient-to-b from-[#f8f3ef] to-white">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-2 text-center">Explore Your Private Oasis</h1>
-        <p className="text-lg md:text-xl text-[#4A2400] max-w-2xl text-center mb-2">Step inside Enchula Resort and discover every corner before you arrive.</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-2 text-center font-serif" style={{ fontFamily: 'Lora, serif' }}>Explore Your Private Oasis</h1>
+        <p className="text-lg md:text-xl text-[#4A2400] max-w-2xl text-center mb-2" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Step inside Enchula Resort and discover every corner before you arrive.</p>
       </div>
 
       {sections.map((section) => (

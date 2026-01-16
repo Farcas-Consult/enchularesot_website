@@ -85,11 +85,11 @@ export default function Home() {
       <section id="about" className="bg-white py-20 px-4 text-center" style={{ color: '#4A2400' }}>
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4" style={{ color: '#8F5F2F' }}>About Us</h2>
-            <p className="text-xl font-semibold mb-6" style={{ color: '#B99A66' }}>The epitome of african hospitality.</p>
+            <h2 className="text-4xl font-bold mb-4 font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>About Us</h2>
+            <p className="text-xl font-semibold mb-6" style={{ color: '#B99A66', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>The epitome of african hospitality.</p>
           </div>
           <div className="text-left">
-            <div className="space-y-4 leading-relaxed mb-6" style={{ color: '#4A2400' }}>
+            <div className="space-y-4 leading-relaxed mb-6" style={{ color: '#4A2400', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
               <p>
                 Nestled in the breathtaking plains of <strong className="text-brand">Kajiado County</strong>, Enchula Resort offers a unique blend of untamed Kenyan beauty and refined modern hospitality.
               </p>
@@ -105,23 +105,23 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
             <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7" /><path d="M5.5 21h13a2.5 2.5 0 0 0 2.5-2.5V17a2.5 2.5 0 0 0-2.5-2.5h-13A2.5 2.5 0 0 0 3 17v1.5A2.5 2.5 0 0 0 5.5 21z" /></svg>
-              <h4 className="font-bold mb-2" style={{ color: '#8F5F2F' }}>4-Star Luxury</h4>
-              <p className="text-sm" style={{ color: '#4A2400' }}>Award-winning service</p>
+              <h4 className="font-bold mb-2 font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>4-Star Luxury</h4>
+              <p className="text-sm" style={{ color: '#4A2400', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Award-winning service</p>
             </div>
             <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="7" r="4" /><path d="M5.5 21h13a2.5 2.5 0 0 0 2.5-2.5V17a2.5 2.5 0 0 0-2.5-2.5h-13A2.5 2.5 0 0 0 3 17v1.5A2.5 2.5 0 0 0 5.5 21z" /></svg>
-              <h4 className="font-bold mb-2" style={{ color: '#8F5F2F' }}>Expert Team</h4>
-              <p className="text-sm" style={{ color: '#4A2400' }}>Dedicated hospitality</p>
+              <h4 className="font-bold mb-2 font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>Expert Team</h4>
+              <p className="text-sm" style={{ color: '#4A2400', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Dedicated hospitality</p>
             </div>
             <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20" /><path d="M2 12h20" /></svg>
-              <h4 className="font-bold mb-2" style={{ color: '#8F5F2F' }}>Premium Amenities</h4>
-              <p className="text-sm" style={{ color: '#4A2400' }}>World-class facilities</p>
+              <h4 className="font-bold mb-2 font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>Premium Amenities</h4>
+              <p className="text-sm" style={{ color: '#4A2400', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>World-class facilities</p>
             </div>
             <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21C12 21 5 13.5 5 9.5C5 6.46243 7.46243 4 10.5 4C12.1566 4 13.6566 4.84285 14.5 6.11803C15.3434 4.84285 16.8434 4 18.5 4C21.5376 4 24 6.46243 24 9.5C24 13.5 17 21 17 21H12Z" /></svg>
-              <h4 className="font-bold mb-2" style={{ color: '#8F5F2F' }}>Warm Hospitality</h4>
-              <p className="text-sm" style={{ color: '#4A2400' }}>Kenyan excellence</p>
+              <h4 className="font-bold mb-2 font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>Warm Hospitality</h4>
+              <p className="text-sm" style={{ color: '#4A2400', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Kenyan excellence</p>
             </div>
           </div>
         </div>
@@ -130,8 +130,8 @@ export default function Home() {
 
       {/* Rooms Section */}
       <section className="bg-white py-20 px-4">
-        <h2 className="text-4xl font-bold mb-2 text-center" style={{ color: '#8F5F2F' }}>Rooms & Suites</h2>
-        <p className="text-lg text-center mb-8 max-w-2xl mx-auto" style={{ color: '#B99A66' }}>
+        <h2 className="text-4xl font-bold mb-2 text-center font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>Rooms & Suites</h2>
+        <p className="text-lg text-center mb-8 max-w-2xl mx-auto" style={{ color: '#B99A66', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
           Discover our selection of comfortable, stylish rooms designed for relaxation and a memorable stay.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-7xl mx-auto">
@@ -142,8 +142,8 @@ export default function Home() {
             >
               <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full" />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end px-8 pb-8 pt-32 transition-opacity duration-300 group-hover:opacity-100">
-                <h3 className="text-2xl font-bold mb-2 drop-shadow-lg" style={{ color: '#8F5F2F' }}>{room.name}</h3>
-                <div className="text-lg font-semibold mb-4 drop-shadow" style={{ color: '#B99A66' }}>{room.price}</div>
+                <h3 className="text-2xl font-bold mb-2 drop-shadow-lg font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>{room.name}</h3>
+                <div className="text-lg font-semibold mb-4 drop-shadow" style={{ color: '#B99A66', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>{room.price}</div>
                 <Link href={`/rooms#${room.anchor}`} className="inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
                   Explore
                 </Link>

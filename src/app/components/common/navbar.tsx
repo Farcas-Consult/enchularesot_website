@@ -66,11 +66,11 @@ export default function Navbar() {
               className="object-contain"
               priority
             />
-            <span className="text-2xl font-bold text-[var(--brand-light-brown)] tracking-wider font-serif">ENCHULA</span>
+            <span className="text-2xl font-bold text-[var(--brand-light-brown)] tracking-wider font-lora">ENCHULA</span>
           </Link>
         </div>
-        <div className="flex justify-center items-center w-full pb-2">
-          <Link href="/booking" className="px-5 py-2 bg-white text-[#741F31] font-bold rounded shadow hover:bg-[#741F31] hover:text-white transition-colors text-xs tracking-widest uppercase" style={{letterSpacing: '0.12em'}}>BOOK</Link>
+        <div className="flex justify-center items-center w-full pb-2 font-nunito">
+          <Link href="/booking" className="px-5 py-2 bg-white text-[#741F31] font-bold rounded shadow hover:bg-[#741F31] hover:text-white transition-colors text-xs tracking-widest uppercase font-nunito" style={{letterSpacing: '0.12em'}}>BOOK</Link>
         </div>
       </div>
       {/* Desktop nav row remains unchanged below */}
@@ -86,7 +86,7 @@ export default function Navbar() {
               className="object-contain"
               priority
             />
-            <span className="text-2xl font-bold text-[var(--brand-light-brown)] tracking-wider font-serif">ENCHULA</span>
+            <span className="text-2xl font-bold text-[var(--brand-light-brown)] tracking-wider font-lora">ENCHULA</span>
           </Link>
           <div className="flex items-center gap-3 ml-4">
             <a href="tel:+254727000027" aria-label="Call" className="p-2"><Phone className="w-5 h-5 text-white" /></a>
@@ -97,20 +97,20 @@ export default function Navbar() {
           </div>
         </div>
         {/* Main links center */}
-        <nav className="flex flex-1 justify-center items-center gap-5">
+        <nav className="flex flex-1 justify-center items-center gap-5 font-nunito">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-white font-normal tracking-normal hover:text-[#D7BFA8] transition-colors text-xs capitalize"
+              className="text-white font-normal tracking-normal hover:text-[#D7BFA8] transition-colors text-xs capitalize font-nunito"
               style={{letterSpacing: '0.02em'}}>
               {link.name}
             </Link>
           ))}
         </nav>
         {/* Book Now right */}
-        <div className="flex items-center ml-4">
-          <Link href="/booking" className="px-5 py-2 bg-white text-[#741F31] font-bold rounded shadow hover:bg-[#741F31] hover:text-white transition-colors text-xs tracking-widest uppercase" style={{letterSpacing: '0.12em'}}>BOOK NOW</Link>
+        <div className="flex items-center ml-4 font-nunito">
+          <Link href="/booking" className="px-5 py-2 bg-white text-[#741F31] font-bold rounded shadow hover:bg-[#741F31] hover:text-white transition-colors text-xs tracking-widest uppercase font-nunito" style={{letterSpacing: '0.12em'}}>BOOK NOW</Link>
         </div>
       </div>
       {/* Mobile Slide-in Menu & Overlay */}

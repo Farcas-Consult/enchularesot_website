@@ -26,7 +26,7 @@ export default function EventsPage() {
   }, []);
 
   return (
-    <section id="events" className="relative min-h-screen bg-white">
+    <section id="events" className="relative min-h-screen bg-white font-nunito">
       {/* Hero Banner Carousel */}
       <div className="relative h-screen min-h-[500px] flex items-center justify-center overflow-hidden">
         {BACKGROUND_IMAGES.map((img, index) => (
@@ -66,18 +66,18 @@ export default function EventsPage() {
               EVENTS
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#8F5F2F] mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-6 leading-tight font-lora">
             Your <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Special Moments</span>, Our Serene Setting
           </h2>
-          <p className="text-lg text-[#4A2400] max-w-3xl mx-auto">
+          <p className="text-lg text-[#4A2400] max-w-3xl mx-auto font-nunito">
             Social Events | Corporate Events - Event Planning, Event Decor, Catering
           </p>
         </div>
 
         {/* Retreats and Conferences Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-[#8F5F2F] mb-4 text-center">Retreats and Conferences</h2>
-          <p className="text-lg text-[#4A2400] mb-8 text-center">Host your retreats and conferences in our professional, inspiring spaces.</p>
+          <h2 className="text-3xl font-bold text-[#8F5F2F] mb-4 text-center font-lora">Retreats and Conferences</h2>
+          <p className="text-lg text-[#4A2400] mb-8 text-center font-nunito">Host your retreats and conferences in our professional, inspiring spaces.</p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               `${S3_BASE}/Conference1.jpg`,
@@ -98,8 +98,8 @@ export default function EventsPage() {
         </div>
         {/* Corporate and Social Events Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-[#8F5F2F] mb-4 text-center">Corporate and Social Events</h2>
-          <p className="text-lg text-[#4A2400] mb-8 text-center">Celebrate weddings, parties, and corporate gatherings in style.</p>
+          <h2 className="text-3xl font-bold text-[#8F5F2F] mb-4 text-center font-lora">Corporate and Social Events</h2>
+          <p className="text-lg text-[#4A2400] mb-8 text-center font-nunito">Celebrate weddings, parties, and corporate gatherings in style.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               `${S3_BASE}/Marriage1.webp`,
@@ -122,8 +122,8 @@ export default function EventsPage() {
         </div>
         {/* Team Building Section */}
         <div>
-          <h2 className="text-3xl font-bold text-[#8F5F2F] mb-4 text-center">Team Building</h2>
-          <p className="text-lg text-[#4A2400] mb-8 text-center">Engage your team with fun and effective team building activities.</p>
+          <h2 className="text-3xl font-bold text-[#8F5F2F] mb-4 text-center font-lora">Team Building</h2>
+          <p className="text-lg text-[#4A2400] mb-8 text-center font-nunito">Engage your team with fun and effective team building activities.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               `${S3_BASE}/Conference2.jpg`,
@@ -148,7 +148,7 @@ export default function EventsPage() {
 
         {/* CTA */}
         <div className="text-center bg-white p-8 rounded-2xl border border-[#5C4033]/20 shadow-lg">
-          <p className="text-[#4A2400] text-lg mb-6 font-semibold">
+          <p className="text-[#4A2400] text-lg mb-6 font-semibold font-nunito">
             Ready to plan your event?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

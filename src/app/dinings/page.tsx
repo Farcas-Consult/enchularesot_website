@@ -28,16 +28,14 @@ export default function DiningPage() {
   const whatsappUrl = `https://wa.me/254727000027?text=${whatsappMessage}`;
 
   return (
-    <section id="dining" className="relative min-h-screen bg-[var(--brand-background)]">
+    <section id="dining" className="relative min-h-screen bg-(--brand-background) font-nunito">
       {/* Hero Banner Carousel */}
       <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
         {backgroundImages.map((img, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${
-              index === currentBg ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
-            style={{ backgroundImage: `url('${img}')` }}
+            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentBg ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            style={{ backgroundImage: `url(${img})` }}
           />
         ))}
         {/* Carousel indicators */}
@@ -45,9 +43,7 @@ export default function DiningPage() {
           {backgroundImages.map((_, idx) => (
             <button
               key={idx}
-              className={`w-3 h-3 rounded-full border border-white ${
-                currentBg === idx ? 'bg-[var(--brand-secondary-maroon)]' : 'bg-white/40'
-              } transition-all`}
+              className={`w-3 h-3 rounded-full border border-white ${currentBg === idx ? 'bg-(--brand-secondary-maroon)' : 'bg-white/40'} transition-all`}
               onClick={() => setCurrentBg(idx)}
               aria-label={`Go to slide ${idx + 1}`}
             />
@@ -58,7 +54,7 @@ export default function DiningPage() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Dining Experiences Section — ONLY REAL OFFERINGS */}
         <div className="mb-16 bg-white rounded-2xl shadow p-8">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#8F5F2F] mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#8F5F2F] mb-8 text-center font-lora">
             Dining Experiences
           </h2>
           <div className="grid md:grid-cols-2 gap-10">
@@ -73,13 +69,13 @@ export default function DiningPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-serif font-bold text-[#8F5F2F] mb-2">
+                <h3 className="text-2xl font-bold text-[#8F5F2F] mb-2 font-lora">
                   Signature Restaurant
                 </h3>
-                <p className="text-[#4A2400] mb-3">
+                <p className="text-[#4A2400] mb-3 font-nunito">
                   Savor international cuisine crafted with fresh local ingredients. Our restaurant offers a warm, elegant ambiance perfect for any meal.
                 </p>
-                <p className="text-[#B99A66] font-semibold">Open daily 7AM – 10PM</p>
+                <p className="text-[#B99A66] font-semibold font-nunito">Open daily 7AM – 10PM</p>
               </div>
             </div>
 
@@ -94,20 +90,20 @@ export default function DiningPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-serif font-bold text-[#8F5F2F] mb-2">
+                <h3 className="text-2xl font-bold text-[#8F5F2F] mb-2 font-lora">
                   Bar Lounge
                 </h3>
-                <p className="text-[#4A2400] mb-3">
+                <p className="text-[#4A2400] mb-3 font-nunito">
                   Unwind with expertly crafted cocktails, premium spirits, and a curated wine selection in our sophisticated bar lounge.
                 </p>
-                <p className="text-[#B99A66] font-semibold">Open daily 12PM – 11PM</p>
+                <p className="text-[#B99A66] font-semibold font-nunito">Open daily 12PM – 11PM</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* WhatsApp Reservation Button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 font-nunito">
           <a
             href={whatsappUrl}
             target="_blank"

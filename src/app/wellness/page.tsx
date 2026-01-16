@@ -25,7 +25,7 @@ export default function WellnessPage() {
 
       {/* Spa & Wellness Services */}
       <div className="mb-12">
-        <h3 className="text-3xl font-serif font-bold text-[#B99A66] mb-8 text-center">
+        <h3 className="text-3xl font-serif font-bold text-[#B99A66] mb-8 text-center" style={{ fontFamily: 'Lora, serif' }}>
           Spa & Wellness Services
         </h3>
         <div className="grid md:grid-cols-3 gap-6">
@@ -41,11 +41,11 @@ export default function WellnessPage() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <h4 className="text-xl font-serif font-bold text-[#B99A66]">Massage Therapy</h4>
+                <h4 className="text-xl font-serif font-bold text-[#B99A66]" style={{ fontFamily: 'Lora, serif' }}>Massage Therapy</h4>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#4A2400] mb-4 text-sm">
+              <p className="text-[#4A2400] mb-4 text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
                 Swedish, deep tissue, aromatherapy, and hot stone massages. Each session is tailored to your needs.
               </p>
             </div>
@@ -63,11 +63,11 @@ export default function WellnessPage() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <h4 className="text-xl font-serif font-bold text-[#B99A66]">Sauna & Steam Room</h4>
+                <h4 className="text-xl font-serif font-bold text-[#B99A66]" style={{ fontFamily: 'Lora, serif' }}>Sauna & Steam Room</h4>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#4A2400] mb-4 text-sm">
+              <p className="text-[#4A2400] mb-4 text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
                 Detoxify and relax in our sauna and steam rooms. Unwind after a long day or enhance your spa experience.
               </p>
             </div>
@@ -85,11 +85,11 @@ export default function WellnessPage() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <h4 className="text-xl font-serif font-bold text-[#B99A66]">Herbal Teas & Infusions</h4>
+                <h4 className="text-xl font-serif font-bold text-[#B99A66]" style={{ fontFamily: 'Lora, serif' }}>Herbal Teas & Infusions</h4>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#4A2400] mb-4 text-sm">
+              <p className="text-[#4A2400] mb-4 text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
                 Complimentary wellness teas available throughout the day. Locally sourced herbs and botanicals.
               </p>
             </div>
@@ -99,7 +99,7 @@ export default function WellnessPage() {
 
       {/* Additional Wellness Services */}
       <div className="mb-12">
-        <h3 className="text-3xl font-serif font-bold text-[#B99A66] mb-8 text-center">
+        <h3 className="text-3xl font-serif font-bold text-[#B99A66] mb-8 text-center" style={{ fontFamily: 'Lora, serif' }}>
           More Wellness Experiences
         </h3>
         <div className="grid md:grid-cols-3 gap-6">
@@ -114,8 +114,8 @@ export default function WellnessPage() {
               />
             </div>
             <div className="p-5">
-              <h5 className="text-lg font-serif font-bold text-[#B99A66] mb-2">Facial Treatments</h5>
-              <p className="text-[#4A2400] text-sm">Organic facials for radiant, healthy skin.</p>
+              <h5 className="text-lg font-serif font-bold text-[#B99A66] mb-2" style={{ fontFamily: 'Lora, serif' }}>Facial Treatments</h5>
+              <p className="text-[#4A2400] text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Organic facials for radiant, healthy skin.</p>
             </div>
           </div>
 
@@ -130,8 +130,8 @@ export default function WellnessPage() {
               />
             </div>
             <div className="p-5">
-              <h5 className="text-lg font-serif font-bold text-[#B99A66] mb-2">Body Scrubs</h5>
-              <p className="text-[#4A2400] text-sm">Exfoliating treatments for smooth, rejuvenated skin.</p>
+              <h5 className="text-lg font-serif font-bold text-[#B99A66] mb-2" style={{ fontFamily: 'Lora, serif' }}>Body Scrubs</h5>
+              <p className="text-[#4A2400] text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Exfoliating treatments for smooth, rejuvenated skin.</p>
             </div>
           </div>
 
@@ -146,8 +146,8 @@ export default function WellnessPage() {
               />
             </div>
             <div className="p-5">
-              <h5 className="text-lg font-serif font-bold text-[#B99A66] mb-2">Reflexology</h5>
-              <p className="text-[#4A2400] text-sm">Therapeutic foot massage for deep relaxation.</p>
+              <h5 className="text-lg font-serif font-bold text-[#B99A66] mb-2" style={{ fontFamily: 'Lora, serif' }}>Reflexology</h5>
+              <p className="text-[#4A2400] text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Therapeutic foot massage for deep relaxation.</p>
             </div>
           </div>
         </div>
@@ -155,13 +155,13 @@ export default function WellnessPage() {
 
       {/* Wellness Packages */}
       <div className="bg-white rounded-2xl p-8 border border-[#5C4033]/20 shadow-lg mb-12">
-        <h4 className="text-3xl font-serif font-bold text-[#2E1A15] mb-6 text-center">
+        <h4 className="text-3xl font-serif font-bold text-[#2E1A15] mb-6 text-center" style={{ fontFamily: 'Lora, serif' }}>
           Wellness Packages
         </h4>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
-            <h5 className="text-xl font-serif font-bold text-[#A04040] mb-4">Half-Day Retreat</h5>
-            <ul className="space-y-2 text-[#5C4033] text-sm">
+            <h5 className="text-xl font-serif font-bold text-[#A04040] mb-4" style={{ fontFamily: 'Lora, serif' }}>Half-Day Retreat</h5>
+            <ul className="space-y-2 text-[#5C4033] text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
               <li className="flex items-start gap-2">
                 <span className="text-[#A04040] mt-0.5">✓</span>
                 <span>60-minute massage of your choice</span>
@@ -182,8 +182,8 @@ export default function WellnessPage() {
           </div>
 
           <div className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
-            <h5 className="text-xl font-serif font-bold text-[#A04040] mb-4">Full-Day Escape</h5>
-            <ul className="space-y-2 text-[#5C4033] text-sm">
+            <h5 className="text-xl font-serif font-bold text-[#A04040] mb-4" style={{ fontFamily: 'Lora, serif' }}>Full-Day Escape</h5>
+            <ul className="space-y-2 text-[#5C4033] text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
               <li className="flex items-start gap-2">
                 <span className="text-[#A04040] mt-0.5">✓</span>
                 <span>90-minute aromatherapy massage</span>
@@ -211,16 +211,16 @@ export default function WellnessPage() {
 
       {/* Testimonial */}
       <div className="bg-white rounded-2xl p-8 border border-[#5C4033]/20 shadow-lg text-center mb-12">
-        <h6 className="text-2xl font-serif font-bold text-[#2E1A15] mb-4">What Our Guests Say</h6>
-        <p className="text-[#5C4033] text-lg italic">
+        <h6 className="text-2xl font-serif font-bold text-[#2E1A15] mb-4" style={{ fontFamily: 'Lora, serif' }}>What Our Guests Say</h6>
+        <p className="text-[#5C4033] text-lg italic" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
           “The massage was heavenly and the yoga sessions helped me truly unwind. I left feeling completely rejuvenated!”
         </p>
-        <p className="text-[#A04040] mt-3">— Sarah M., Nairobi</p>
+        <p className="text-[#A04040] mt-3" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>— Sarah M., Nairobi</p>
       </div>
 
       {/* Call to Action */}
       <div className="text-center mb-16">
-        <p className="text-[#2E1A15] mb-6 text-lg">
+        <p className="text-[#2E1A15] mb-6 text-lg" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
           Ready to relax and restore your inner peace?
         </p>
         <Link

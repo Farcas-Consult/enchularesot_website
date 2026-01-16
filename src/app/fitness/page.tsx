@@ -14,16 +14,11 @@ export default function FitnessPage() {
           style={{ transitionProperty: 'opacity' }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#741F31]/80 via-transparent to-transparent"></div>
-        <div className="relative z-20 p-8 md:p-16 flex flex-col items-center justify-center w-full">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-[#8F5F2F] mb-6 text-center drop-shadow-lg">Gym</h1>
-          <p className="text-lg md:text-2xl text-[#4A2400] text-center max-w-2xl drop-shadow-md">
-            State-of-the-art fitness center with modern equipment for cardio, strength, and flexibility training. Open daily for all guests.
-          </p>
-        </div>
+       
       </div>
       {/* Gym Features */}
       <div className="mb-12">
-        <h3 className="text-3xl font-serif font-bold text-[#B99A66] mb-8 text-center">Fitness Facilities</h3>
+        <h3 className="text-3xl font-serif font-bold text-[#B99A66] mb-8 text-center" style={{ fontFamily: 'Lora, serif' }}>Fitness Facilities</h3>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group">
             <div className="relative h-56 overflow-hidden">
@@ -37,11 +32,11 @@ export default function FitnessPage() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <h4 className="text-xl font-serif font-bold text-[#B99A66]">Equipment</h4>
+                <h4 className="text-xl font-serif font-bold text-[#B99A66]" style={{ fontFamily: 'Lora, serif' }}>Equipment</h4>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#4A2400] mb-4 text-sm">
+              <p className="text-[#4A2400] mb-4 text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
                 Treadmills, ellipticals, bikes, free weights, resistance machines, and more.
               </p>
             </div>
@@ -58,11 +53,11 @@ export default function FitnessPage() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <h4 className="text-xl font-serif font-bold text-[#B99A66]">Classes</h4>
+                <h4 className="text-xl font-serif font-bold text-[#B99A66]" style={{ fontFamily: 'Lora, serif' }}>Classes</h4>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#4A2400] mb-4 text-sm">
+              <p className="text-[#4A2400] mb-4 text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
                 Group fitness classes available: yoga, pilates, HIIT, and more. Check schedule at reception.
               </p>
             </div>
@@ -79,11 +74,11 @@ export default function FitnessPage() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <h4 className="text-xl font-serif font-bold text-[#B99A66]">Personal Training</h4>
+                <h4 className="text-xl font-serif font-bold text-[#B99A66]" style={{ fontFamily: 'Lora, serif' }}>Personal Training</h4>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#4A2400] mb-4 text-sm">
+              <p className="text-[#4A2400] mb-4 text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
                 Certified trainers available for personalized fitness plans and coaching.
               </p>
             </div>
@@ -92,7 +87,7 @@ export default function FitnessPage() {
       </div>
       {/* Call to Action */}
       <div className="text-center mb-16">
-        <p className="text-[#4A2400] mb-6 text-lg">
+        <p className="text-[#4A2400] mb-6 text-lg" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
           Ready to start your fitness journey?
         </p>
         <Link

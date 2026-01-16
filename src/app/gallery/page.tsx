@@ -116,8 +116,8 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-4">Gallery</h2>
-          <p className="text-lg text-[#4A2400] max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-4 font-serif" style={{ fontFamily: 'Lora, serif' }}>Gallery</h2>
+          <p className="text-lg text-[#4A2400] max-w-2xl mx-auto" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
             Immerse yourself in the beauty of Enchula Resort through our curated collection of breathtaking spaces and unforgettable moments.
           </p>
         </div>

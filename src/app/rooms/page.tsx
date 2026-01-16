@@ -213,13 +213,13 @@ export default function Rooms() {
             </div>
             <div className="text-2xl font-bold text-[#8F5F2F]">{activeRoom.price} <span className="text-base font-normal text-[#B99A66]">/ night</span></div>
           </div>
-          <p className="text-[#4A2400] text-lg leading-relaxed mb-8">{activeRoom.description}</p>
-          <h4 className="text-xl font-bold text-[#B99A66] mb-4">Room Amenities</h4>
+          <p className="text-[#4A2400] text-lg leading-relaxed mb-8" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>{activeRoom.description}</p>
+          <h4 className="text-xl font-bold text-[#B99A66] mb-4 font-serif" style={{ fontFamily: 'Lora, serif' }}>Room Amenities</h4>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
             {activeRoom.amenities.map((amenity, idx) => (
               <div key={idx} className="flex items-center gap-2 text-[#4A2400] bg-neutral-100 rounded-lg px-3 py-2 border border-neutral-200">
                 <ChevronRight className="w-4 h-4 text-[#A04040]" />
-                <span className="text-sm">{amenity}</span>
+                <span className="text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>{amenity}</span>
               </div>
             ))}
           </div>

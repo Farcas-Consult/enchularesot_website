@@ -90,11 +90,18 @@ export default function Hero() {
               <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
                
 
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight animate-fadeInUp" style={{ color: '#FFFFFF' }}>
+
+                <h1
+                  className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight animate-fadeInUp font-lora"
+                  style={{ color: '#FFFFFF' }}
+                >
                   {slide.title}
                 </h1>
 
-                <p className="text-lg md:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed animate-fadeInUp" style={{ color: '#FFFFFF' }}>
+                <p
+                  className="text-lg md:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed animate-fadeInUp font-nunito"
+                  style={{ color: '#FFFFFF' }}
+                >
                   {slide.subtitle}
                 </p>
 
