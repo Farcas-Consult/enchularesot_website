@@ -8,7 +8,7 @@ const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/ap
 const roomTypes = [
   {
     id: 1,
-    name: "Standard Double Room",
+    name: "Standard  Room",
     capacity: "2 Adults",
     size: "30 m²",
     beds: "1 Queen Bed",

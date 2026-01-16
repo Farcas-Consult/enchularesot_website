@@ -10,15 +10,16 @@ const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/ap
 
 export default function WellnessPage() {
   return (
-    <section className="min-h-screen w-full bg-white flex flex-col items-center justify-start px-4 py-12">
-      {/* Hero Section with Carousel */}
-      <div className="relative mb-12 w-full h-96 rounded-2xl overflow-hidden">
+    <div className="min-h-screen w-screen bg-white flex flex-col">
+      {/* Hero Section with Carousel - full width */}
+      <div className="relative w-screen h-96 mb-12 overflow-hidden">
         <CarouselHero images={[
           `${S3_BASE}/Wellness.webp`,
           `${S3_BASE}/Massage.webp`,
           `${S3_BASE}/Sauna.webp`,
         ]} />
       </div>
+      <section className="flex-1 w-full flex flex-col items-center justify-start px-4 py-12">
 
 
 
@@ -231,5 +232,6 @@ export default function WellnessPage() {
         </Link>
       </div>
     </section>
+    </div>
   );
 }

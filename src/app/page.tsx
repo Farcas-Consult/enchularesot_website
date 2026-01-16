@@ -142,7 +142,7 @@ export default function Home() {
             >
               <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full" />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end px-8 pb-8 pt-32 transition-opacity duration-300 group-hover:opacity-100">
-                <h3 className="text-2xl font-bold mb-2 drop-shadow-lg font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>{room.name}</h3>
+                <h3 className="text-2xl font-bold mb-2 drop-shadow-lg font-serif" style={{ color: '#FFFFFF', fontFamily: 'Lora, serif' }}>{room.name}</h3>
                 <div className="text-lg font-semibold mb-4 drop-shadow" style={{ color: '#B99A66', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>{room.price}</div>
                 <Link href={`/rooms#${room.anchor}`} className="inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
                   Explore
