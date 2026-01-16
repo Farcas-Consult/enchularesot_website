@@ -58,7 +58,7 @@ export default function DiningPage() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Dining Experiences Section — ONLY REAL OFFERINGS */}
         <div className="mb-16 bg-white rounded-2xl shadow p-8">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[var(--brand-black)] mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-[#8F5F2F] mb-8 text-center">
             Dining Experiences
           </h2>
           <div className="grid md:grid-cols-2 gap-10">
@@ -73,13 +73,13 @@ export default function DiningPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-serif font-bold text-[var(--brand-black)] mb-2">
+                <h3 className="text-2xl font-serif font-bold text-[#8F5F2F] mb-2">
                   Signature Restaurant
                 </h3>
-                <p className="text-[var(--brand-gray)] mb-3">
+                <p className="text-[#4A2400] mb-3">
                   Savor international cuisine crafted with fresh local ingredients. Our restaurant offers a warm, elegant ambiance perfect for any meal.
                 </p>
-                <p className="text-[var(--brand-secondary-maroon)] font-semibold">Open daily 7AM – 10PM</p>
+                <p className="text-[#B99A66] font-semibold">Open daily 7AM – 10PM</p>
               </div>
             </div>
 
@@ -94,13 +94,13 @@ export default function DiningPage() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-2xl font-serif font-bold text-[var(--brand-black)] mb-2">
+                <h3 className="text-2xl font-serif font-bold text-[#8F5F2F] mb-2">
                   Bar Lounge
                 </h3>
-                <p className="text-[var(--brand-gray)] mb-3">
+                <p className="text-[#4A2400] mb-3">
                   Unwind with expertly crafted cocktails, premium spirits, and a curated wine selection in our sophisticated bar lounge.
                 </p>
-                <p className="text-[var(--brand-secondary-maroon)] font-semibold">Open daily 12PM – 11PM</p>
+                <p className="text-[#B99A66] font-semibold">Open daily 12PM – 11PM</p>
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ export default function DiningPage() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block text-lg px-8 py-4 rounded-full font-bold shadow-lg transition-all duration-300 text-[#741F31] bg-[#D2BB9E] hover:bg-[#741F31] hover:text-[#D2BB9E] hover:scale-105 hover:shadow-xl border border-[#741F31]"
+            className="inline-block text-lg px-8 py-4 rounded-full font-bold shadow-lg transition-all duration-300 text-[#4A2400] bg-[#FFD3A3] hover:bg-[#8F5F2F] hover:text-white hover:scale-105 hover:shadow-xl border border-[#8F5F2F]"
           >
             Reserve Your Table on WhatsApp
           </a>

@@ -116,8 +116,8 @@ export default function Gallery() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#2E1A15] mb-4">Gallery</h2>
-          <p className="text-lg text-[#5C4033] max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-4">Gallery</h2>
+          <p className="text-lg text-[#4A2400] max-w-2xl mx-auto">
             Immerse yourself in the beauty of Enchula Resort through our curated collection of breathtaking spaces and unforgettable moments.
           </p>
         </div>
@@ -153,10 +153,10 @@ export default function Gallery() {
               key={idx}
               className="text-center bg-white rounded-2xl p-6 border border-neutral-200 shadow"
             >
-              <div className="text-4xl font-bold text-[#5C4033] mb-2">
+              <div className="text-4xl font-bold text-[#8F5F2F] mb-2">
                 {stat.value}
               </div>
-              <div className="text-[#A04040] text-sm font-semibold">{stat.label}</div>
+              <div className="text-[#B99A66] text-sm font-semibold">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -168,7 +168,7 @@ export default function Gallery() {
           {/* Close Button */}
           <button
             onClick={() => setSelectedImage(null)}
-            className="absolute top-6 right-6 text-[#FAF5F0] p-3 rounded-full bg-[#5C4033]/20 hover:bg-[#800000]/30 backdrop-blur-md transition-all duration-300 border border-[#A04040]/30"
+            className="absolute top-6 right-6 text-[#4A2400] p-3 rounded-full bg-[#FFD3A3] hover:bg-[#8F5F2F] hover:text-white backdrop-blur-md transition-all duration-300 border border-[#8F5F2F]"
             aria-label="Close"
           >
             <X size={28} />
@@ -177,14 +177,14 @@ export default function Gallery() {
           {/* Navigation */}
           <button
             onClick={handlePrevious}
-            className="absolute left-6 text-[#FAF5F0] p-3 rounded-full bg-[#5C4033]/20 hover:bg-[#800000]/30 backdrop-blur-md transition-all duration-300 border border-[#A04040]/30"
+            className="absolute left-6 text-[#4A2400] p-3 rounded-full bg-[#FFD3A3] hover:bg-[#8F5F2F] hover:text-white backdrop-blur-md transition-all duration-300 border border-[#8F5F2F]"
             aria-label="Previous"
           >
             <ChevronLeft size={28} />
           </button>
           <button
             onClick={handleNext}
-            className="absolute right-6 text-[#FAF5F0] p-3 rounded-full bg-[#5C4033]/20 hover:bg-[#800000]/30 backdrop-blur-md transition-all duration-300 border border-[#A04040]/30"
+            className="absolute right-6 text-[#4A2400] p-3 rounded-full bg-[#FFD3A3] hover:bg-[#8F5F2F] hover:text-white backdrop-blur-md transition-all duration-300 border border-[#8F5F2F]"
             aria-label="Next"
           >
             <ChevronRight size={28} />

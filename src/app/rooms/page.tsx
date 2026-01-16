@@ -185,7 +185,7 @@ export default function Rooms() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         <div className="relative z-10 text-center pb-12 w-full">
-          <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg mb-2">{activeRoom.name}</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] drop-shadow-lg mb-2">{activeRoom.name}</h1>
           <div className="inline-block px-5 py-2 bg-white/80 rounded-full text-brand font-semibold text-lg shadow">{activeRoom.category}</div>
         </div>
       </div>
@@ -211,13 +211,13 @@ export default function Rooms() {
               <span className="inline-flex items-center gap-2 text-lg text-brand font-semibold"><Users className="w-5 h-5 text-[#A04040]" /> {activeRoom.guests}</span>
               <span className="inline-flex items-center gap-2 text-lg text-brand font-semibold"><Bed className="w-5 h-5 text-[#5C4033]" /> {activeRoom.size}</span>
             </div>
-            <div className="text-2xl font-bold text-[#A04040]">{activeRoom.price} <span className="text-base font-normal text-neutral-500">/ night</span></div>
+            <div className="text-2xl font-bold text-[#8F5F2F]">{activeRoom.price} <span className="text-base font-normal text-[#B99A66]">/ night</span></div>
           </div>
-          <p className="text-neutral-800 text-lg leading-relaxed mb-8">{activeRoom.description}</p>
-          <h4 className="text-xl font-bold text-brand mb-4">Room Amenities</h4>
+          <p className="text-[#4A2400] text-lg leading-relaxed mb-8">{activeRoom.description}</p>
+          <h4 className="text-xl font-bold text-[#B99A66] mb-4">Room Amenities</h4>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
             {activeRoom.amenities.map((amenity, idx) => (
-              <div key={idx} className="flex items-center gap-2 text-neutral-700 bg-neutral-100 rounded-lg px-3 py-2 border border-neutral-200">
+              <div key={idx} className="flex items-center gap-2 text-[#4A2400] bg-neutral-100 rounded-lg px-3 py-2 border border-neutral-200">
                 <ChevronRight className="w-4 h-4 text-[#A04040]" />
                 <span className="text-sm">{amenity}</span>
               </div>
@@ -225,14 +225,14 @@ export default function Rooms() {
           </div>
           <div className="flex flex-wrap gap-4 mt-6">
             <Link href="/booking" passHref>
-              <button className="relative px-7 py-4 bg-[#D2BB9E] text-[#741F31] rounded-xl font-semibold shadow-2xl overflow-hidden group border border-[#741F31] transition-all duration-300 flex items-center gap-2 text-lg hover:bg-[#741F31] hover:text-[#D2BB9E]">
+              <button className="relative px-7 py-4 bg-[#FFD3A3] text-[#4A2400] rounded-xl font-semibold shadow-2xl overflow-hidden group border border-[#8F5F2F] transition-all duration-300 flex items-center gap-2 text-lg hover:bg-[#8F5F2F] hover:text-white">
                 Book Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
               </button>
             </Link>
             <Link href="/Virtual-tour" passHref>
-              <button className="px-7 py-4 bg-[#D2BB9E] text-[#741F31] rounded-xl font-semibold border border-[#741F31] transition-all duration-300 text-lg hover:bg-[#741F31] hover:text-[#D2BB9E]">
+              <button className="px-7 py-4 bg-[#FFD3A3] text-[#4A2400] rounded-xl font-semibold border border-[#8F5F2F] transition-all duration-300 text-lg hover:bg-[#8F5F2F] hover:text-white">
                 Virtual Tour
               </button>
             </Link>

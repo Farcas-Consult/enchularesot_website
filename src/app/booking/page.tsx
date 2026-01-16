@@ -235,15 +235,15 @@ const BookingPage = () => {
       <div className="relative z-10 max-w-6xl mx-auto h-full flex flex-col">
         {/* Header with Badge */}
         <div className="text-center mb-8">
-          <div className="inline-block mb-4 px-6 py-2 bg-[#D7BFA8]/80 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#800000] font-extrabold tracking-wide text-sm uppercase drop-shadow-sm">
+          <div className="inline-block mb-4 px-6 py-2 bg-[#B99A66]/80 backdrop-blur-sm rounded-full border border-[#8F5F2F]/30">
+            <span className="text-[#8F5F2F] font-extrabold tracking-wide text-sm uppercase drop-shadow-sm">
               BOOKING
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-[#800000] mb-6 leading-tight drop-shadow-sm">
-            Reserve Your <span className="bg-linear-to-r from-[#800000] via-[#A04040] to-[#D7BFA8] bg-clip-text text-transparent font-extrabold">Experience</span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#8F5F2F] mb-6 leading-tight drop-shadow-sm">
+            Reserve Your <span className="bg-linear-to-r from-[#8F5F2F] via-[#B99A66] to-[#FFD3A3] bg-clip-text text-transparent font-extrabold">Experience</span>
           </h1>
-          <p className="text-lg text-[#2E1A15] font-bold drop-shadow-sm">
+          <p className="text-lg text-[#4A2400] font-bold drop-shadow-sm">
             Nairobi-Namanga Rd, Kajiado • Check-in: 12:00 PM • Check-out: 10:30 AM
           </p>
         </div>
@@ -298,10 +298,10 @@ const BookingPage = () => {
           <div className="flex-1 overflow-y-auto space-y-6 pr-1">
             {/* Date & Guests */}
             <div className="bg-[#2C1B16]/60 backdrop-blur-md rounded-2xl p-6 border border-[#5C4033]/30">
-              <h2 className="text-xl font-bold text-[#FAF5F0] mb-4">Your Stay</h2>
+              <h2 className="text-xl font-bold text-[#B99A66] mb-4">Your Stay</h2>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
-                  <label className="block text-[#D7BFA8] text-xs mb-1">Check-in</label>
+                  <label className="block text-[#B99A66] text-xs mb-1">Check-in</label>
                   <input
                     type="date"
                     min={today}
@@ -312,7 +312,7 @@ const BookingPage = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-[#D7BFA8] text-xs mb-1">Check-out</label>
+                  <label className="block text-[#B99A66] text-xs mb-1">Check-out</label>
                   <input
                     type="date"
                     min={checkIn || today}
@@ -332,7 +332,7 @@ const BookingPage = () => {
                       { label: "Infants (0–3)", value: infantCount, setter: setInfantCount, max: 4 },
                     ].map((g, i) => (
                       <div key={i} className="flex items-center justify-between p-2 bg-[#2C1B16]/80 rounded-lg border border-[#5C4033]/50">
-                        <span className="text-[#FAF5F0] text-xs">{g.label}</span>
+                          <span className="text-[#B99A66] text-xs">{g.label}</span>
                         <div className="flex gap-1">
                           <button
                             onClick={() => g.value > 0 && g.setter(g.value - 1)}
@@ -355,7 +355,7 @@ const BookingPage = () => {
               </div>
               {checkIn && checkOut && (
                 <div className="mt-3 p-2 bg-[#2C1B16]/80 rounded-lg border border-[#800000]/30">
-                  <p className="text-[#FAF5F0] text-sm">
+                  <p className="text-[#B99A66] text-sm">
                     <strong>{calculateNights()} night{calculateNights() !== 1 ? 's' : ''}</strong>
                   </p>
                 </div>
@@ -364,11 +364,11 @@ const BookingPage = () => {
 
             {/* Residency Status & Meal Plan */}
             <div className="bg-[#F8F3EF] rounded-2xl p-6 border border-[#D7BFA8]/60 shadow-md">
-              <h2 className="text-xl font-extrabold text-[#800000] mb-4">Pricing Options</h2>
+              <h2 className="text-xl font-extrabold text-[#B99A66] mb-4">Pricing Options</h2>
               
               {/* Residency Status */}
               <div className="mb-4">
-                <label className="block text-[#800000] text-sm font-bold mb-2">Residency Status</label>
+                <label className="block text-[#B99A66] text-sm font-bold mb-2">Residency Status</label>
                 <div className="flex gap-3">
                   <button
                     onClick={() => setIsKenyanResident(true)}
@@ -395,7 +395,7 @@ const BookingPage = () => {
 
               {/* Occupancy Type */}
               <div className="mb-4">
-                <label className="block text-[#800000] text-sm font-bold mb-2">Occupancy</label>
+                <label className="block text-[#B99A66] text-sm font-bold mb-2">Occupancy</label>
                 <div className="flex gap-3">
                   <button
                     onClick={() => setOccupancyType('single')}
@@ -422,7 +422,7 @@ const BookingPage = () => {
 
               {/* Meal Plan */}
               <div>
-                <label className="block text-[#800000] text-sm font-bold mb-2">Meal Plan</label>
+                <label className="block text-[#B99A66] text-sm font-bold mb-2">Meal Plan</label>
                 <div className="grid grid-cols-3 gap-3">
                   <button
                     onClick={() => setMealPlan('bedBreakfast')}
@@ -460,7 +460,7 @@ const BookingPage = () => {
 
             {/* Room Selection */}
             <div className="bg-[#F8F3EF] rounded-2xl p-6 border border-[#D7BFA8]/60 shadow-md">
-              <h2 className="text-xl font-extrabold text-[#800000] mb-4">Choose Your Room</h2>
+              <h2 className="text-xl font-extrabold text-[#B99A66] mb-4">Choose Your Room</h2>
               <div className="space-y-4">
                 {roomTypes.map((room) => (
                   <div
@@ -477,26 +477,26 @@ const BookingPage = () => {
                         <Image src={room.images[0]} alt={room.name} fill className="object-contain" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-lg font-extrabold text-[#800000]">{room.name}</h3>
-                        <div className="flex flex-wrap gap-2 text-[#800000] text-xs font-bold mt-1">
+                        <h3 className="text-lg font-extrabold text-[#8F5F2F]">{room.name}</h3>
+                        <div className="flex flex-wrap gap-2 text-[#B99A66] text-xs font-bold mt-1">
                           <span>👤 {room.capacity}</span>
                           <span>📐 {room.size}</span>
                           <span>🛏 {room.beds}</span>
                         </div>
                         <div className="flex flex-wrap gap-1 mt-2">
                           {room.amenities.map((amenity, idx) => (
-                            <span key={idx} className="px-1.5 py-0.5 bg-[#800000]/10 text-[#800000] text-[0.7rem] font-bold rounded">
+                            <span key={idx} className="px-1.5 py-0.5 bg-[#B99A66]/10 text-[#B99A66] text-[0.7rem] font-bold rounded">
                               {amenity}
                             </span>
                           ))}
                         </div>
                         {room.pricing && (
                           <div className="mt-3 pt-3 border-t border-[#5C4033]/30">
-                            <p className="text-[#800000] font-extrabold text-lg">
+                            <p className="text-[#8F5F2F] font-extrabold text-lg">
                               Kshs. {room.pricing[isKenyanResident ? 'kenyans' : 'nonResidents'][occupancyType][mealPlan].toLocaleString()}
-                              <span className="text-[#2E1A15] text-xs font-bold ml-2">per night</span>
+                              <span className="text-[#4A2400] text-xs font-bold ml-2">per night</span>
                             </p>
-                            <p className="text-[#2E1A15] text-xs font-bold mt-1">
+                            <p className="text-[#4A2400] text-xs font-bold mt-1">
                               {isKenyanResident ? 'Kenyan Resident' : 'Non-Resident'} • {occupancyType === 'single' ? 'Single' : 'Double'} • {mealPlan === 'bedBreakfast' ? 'Bed & Breakfast' : mealPlan === 'halfBoard' ? 'Half Board' : 'Full Board'}
                             </p>
                           </div>
@@ -512,7 +512,7 @@ const BookingPage = () => {
               <button
                 onClick={() => setStep(2)}
                 disabled={!selectedRoom || !checkIn || !checkOut}
-                className="px-6 py-2.5 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold rounded-full text-sm transition-all shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+                className="px-6 py-2.5 bg-[#FFD3A3] text-[#4A2400] font-semibold rounded-full text-sm transition-all shadow-md hover:bg-[#B99A66] hover:text-white disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 Continue to Reservations
               </button>
@@ -528,7 +528,7 @@ const BookingPage = () => {
                 key={key}
                 className="bg-[#F8F3EF] rounded-2xl p-6 border border-[#D7BFA8]/60 shadow-md"
               >
-                <h2 className="text-xl font-extrabold text-[#800000] mb-3">
+                <h2 className="text-xl font-extrabold text-[#B99A66] mb-3">
                   {key === 'conference' ? 'Conference Packages' :
                    key === 'dining' ? 'Dining Packages' :
                    key === 'wellness' ? 'Wellness & Spa' :
@@ -536,7 +536,7 @@ const BookingPage = () => {
                    key === 'pool' ? 'Swimming Pool' :
                    'Games Centre'}
                 </h2>
-                <p className="text-[#2E1A15] text-xs font-bold mb-3">
+                <p className="text-[#4A2400] text-xs font-bold mb-3">
                   {key === 'conference'
                     ? "Professional conference facilities with complete amenities for your corporate events."
                     : key === 'wellness' || key === 'games'
@@ -551,18 +551,18 @@ const BookingPage = () => {
                   {items.map((item) => (
                     <div
                       key={item.id}
-                      className={`p-4 rounded-xl border cursor-pointer transition-all font-bold text-[#2E1A15] ${
+                      className={`p-4 rounded-xl border cursor-pointer transition-all font-bold text-[#4A2400] ${
                         selectedReservations.includes(item.id)
-                          ? "bg-[#D7BFA8] border-[#800000]"
-                          : "bg-[#F8F3EF] border-[#D7BFA8]/60 hover:border-[#800000]/50"
+                          ? "bg-[#FFD3A3] border-[#8F5F2F]"
+                          : "bg-[#F8F3EF] border-[#B99A66]/60 hover:border-[#8F5F2F]/50"
                       }`}
                       onClick={() => toggleReservation(item.id)}
                     >
-                      <h3 className="font-extrabold text-[#800000] text-sm">{item.name}</h3>
-                      <p className="text-[#2E1A15] text-xs font-bold mt-1">{item.description}</p>
+                      <h3 className="font-extrabold text-[#8F5F2F] text-sm">{item.name}</h3>
+                      <p className="text-[#4A2400] text-xs font-bold mt-1">{item.description}</p>
                       <div className="mt-2 w-4 h-4 rounded border border-[#5C4033] flex items-center justify-center">
                         {selectedReservations.includes(item.id) && (
-                          <svg className="w-3 h-3 text-[#800000]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-3 h-3 text-[#8F5F2F]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                           </svg>
                         )}
@@ -576,13 +576,13 @@ const BookingPage = () => {
             <div className="flex gap-3 justify-center mt-4">
               <button
                 onClick={() => setStep(1)}
-                className="px-5 py-2.5 bg-[#2C1B16]/80 hover:bg-[#3D2517] text-[#D7BFA8] font-semibold rounded-full text-sm border border-[#5C4033]/30"
+                className="px-5 py-2.5 bg-[#FFD3A3] text-[#4A2400] font-semibold rounded-full text-sm border border-[#B99A66]/30 hover:bg-[#B99A66] hover:text-white"
               >
                 ← Back
               </button>
               <button
                 onClick={() => setStep(3)}
-                className="px-6 py-2.5 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold rounded-full text-sm shadow-md"
+                className="px-6 py-2.5 bg-[#FFD3A3] text-[#4A2400] font-semibold rounded-full text-sm shadow-md hover:bg-[#B99A66] hover:text-white"
               >
                 Continue to Guest Details
               </button>
@@ -595,46 +595,46 @@ const BookingPage = () => {
           <div className="flex-1 overflow-y-auto space-y-6 pr-1">
             {/* Guest Info */}
             <div className="bg-[#F8F3EF] rounded-2xl p-6 border border-[#D7BFA8]/60 shadow-md">
-              <h2 className="text-xl font-extrabold text-[#800000] mb-4">Guest Information</h2>
+              <h2 className="text-xl font-extrabold text-[#B99A66] mb-4">Guest Information</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[#800000] text-xs font-bold mb-1">Full Name *</label>
+                  <label className="block text-[#B99A66] text-xs font-bold mb-1">Full Name *</label>
                   <input
                     type="text"
                     value={guestInfo.name}
                     onChange={(e) => setGuestInfo({...guestInfo, name: e.target.value})}
-                    className="w-full px-3 py-2 bg-[#F8F3EF] border border-[#D7BFA8]/60 rounded-lg text-[#2E1A15] font-bold focus:border-[#800000] focus:outline-none text-sm"
+                    className="w-full px-3 py-2 bg-[#FFD3A3]/40 border border-[#B99A66]/60 rounded-lg text-[#4A2400] font-bold focus:border-[#8F5F2F] focus:outline-none text-sm"
                     placeholder="Full Name"
                   />
                 </div>
                 <div>
-                  <label className="block text-[#800000] text-xs font-bold mb-1">Email Address *</label>
+                  <label className="block text-[#B99A66] text-xs font-bold mb-1">Email Address *</label>
                   <input
                     type="email"
                     value={guestInfo.email}
                     onChange={(e) => setGuestInfo({...guestInfo, email: e.target.value})}
-                    className="w-full px-3 py-2 bg-[#F8F3EF] border border-[#D7BFA8]/60 rounded-lg text-[#2E1A15] font-bold focus:border-[#800000] focus:outline-none text-sm"
+                    className="w-full px-3 py-2 bg-[#FFD3A3]/40 border border-[#B99A66]/60 rounded-lg text-[#4A2400] font-bold focus:border-[#8F5F2F] focus:outline-none text-sm"
                     placeholder="Name@example.com"
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-[#800000] text-xs font-bold mb-1">Phone Number *</label>
+                  <label className="block text-[#B99A66] text-xs font-bold mb-1">Phone Number *</label>
                   <input
                     type="tel"
                     value={guestInfo.phone}
                     onChange={(e) => setGuestInfo({...guestInfo, phone: e.target.value})}
-                    className="w-full px-3 py-2 bg-[#F8F3EF] border border-[#D7BFA8]/60 rounded-lg text-[#2E1A15] font-bold focus:border-[#800000] focus:outline-none text-sm"
+                    className="w-full px-3 py-2 bg-[#FFD3A3]/40 border border-[#B99A66]/60 rounded-lg text-[#4A2400] font-bold focus:border-[#8F5F2F] focus:outline-none text-sm"
                     placeholder="0727000027"
                   />
                 </div>
               </div>
               <div className="mt-4">
-                <label className="block text-[#800000] text-xs font-bold mb-1">Special Requests (Optional)</label>
+                <label className="block text-[#B99A66] text-xs font-bold mb-1">Special Requests (Optional)</label>
                 <textarea
                   value={guestInfo.specialRequests}
                   onChange={(e) => setGuestInfo({...guestInfo, specialRequests: e.target.value})}
                   rows={2}
-                  className="w-full px-3 py-2 bg-[#F8F3EF] border border-[#D7BFA8]/60 rounded-lg text-[#2E1A15] font-bold focus:border-[#800000] focus:outline-none text-sm resize-none"
+                  className="w-full px-3 py-2 bg-[#FFD3A3]/40 border border-[#B99A66]/60 rounded-lg text-[#4A2400] font-bold focus:border-[#8F5F2F] focus:outline-none text-sm resize-none"
                   placeholder="E.g., early check-in, ground floor room..."
                 />
               </div>
@@ -642,21 +642,21 @@ const BookingPage = () => {
 
             {/* Reservation Summary */}
             <div className="bg-[#F8F3EF] rounded-2xl p-6 border border-[#D7BFA8]/60 shadow-md">
-              <h2 className="text-xl font-extrabold text-[#800000] mb-4">Your Reservations</h2>
-              <div className="space-y-2 text-[#2E1A15] text-sm font-bold">
+              <h2 className="text-xl font-extrabold text-[#B99A66] mb-4">Your Reservations</h2>
+              <div className="space-y-2 text-[#4A2400] text-sm font-bold">
                 {selectedRoom && (
                   <div className="py-1.5 border-b border-[#5C4033]/20">
-                    <span className="font-extrabold text-[#800000]">Room:</span> {roomTypes.find(r => r.id === selectedRoom)?.name}
+                    <span className="font-extrabold text-[#8F5F2F]">Room:</span> {roomTypes.find(r => r.id === selectedRoom)?.name}
                   </div>
                 )}
                 {checkIn && checkOut && (
                   <div className="py-1.5 border-b border-[#5C4033]/20">
-                    <span className="font-extrabold text-[#800000]">Dates:</span> {new Date(checkIn).toLocaleDateString()} – {new Date(checkOut).toLocaleDateString()} ({calculateNights()} night{calculateNights() !== 1 ? 's' : ''})
+                    <span className="font-extrabold text-[#8F5F2F]">Dates:</span> {new Date(checkIn).toLocaleDateString()} – {new Date(checkOut).toLocaleDateString()} ({calculateNights()} night{calculateNights() !== 1 ? 's' : ''})
                   </div>
                 )}
                 {(adults > 0 || minorCount > 0 || childrenCount > 0 || infantCount > 0) && (
                   <div className="py-1.5 border-b border-[#5C4033]/20">
-                    <span className="font-extrabold text-[#800000]">Guests:</span> {adults} Adult{adults !== 1 ? 's' : ''}{minorCount > 0 ? `, ${minorCount} Minor${minorCount !== 1 ? 's' : ''}` : ''}{childrenCount > 0 ? `, ${childrenCount} Child${childrenCount !== 1 ? 'ren' : ''}` : ''}{infantCount > 0 ? `, ${infantCount} Infant${infantCount !== 1 ? 's' : ''}` : ''}
+                    <span className="font-extrabold text-[#8F5F2F]">Guests:</span> {adults} Adult{adults !== 1 ? 's' : ''}{minorCount > 0 ? `, ${minorCount} Minor${minorCount !== 1 ? 's' : ''}` : ''}{childrenCount > 0 ? `, ${childrenCount} Child${childrenCount !== 1 ? 'ren' : ''}` : ''}{infantCount > 0 ? `, ${infantCount} Infant${infantCount !== 1 ? 's' : ''}` : ''}
                   </div>
                 )}
                 {selectedReservations.length > 0 ? (
@@ -665,12 +665,12 @@ const BookingPage = () => {
                     const category = getCategoryName(id);
                     return (
                       <div key={id} className="py-1.5 border-b border-[#D7BFA8]/60">
-                        <span className="font-extrabold text-[#800000]">{category}:</span> {item?.name}
+                        <span className="font-extrabold text-[#8F5F2F]">{category}:</span> {item?.name}
                       </div>
                     );
                   })
                 ) : (
-                  <div className="py-1.5 italic text-[#A9745B]">No additional reservations selected</div>
+                  <div className="py-1.5 italic text-[#B99A66]">No additional reservations selected</div>
                 )}
               </div>
             </div>
@@ -678,22 +678,22 @@ const BookingPage = () => {
             <div className="flex gap-3 justify-center mt-4">
               <button
                 onClick={() => setStep(2)}
-                className="px-5 py-2.5 bg-[#2C1B16]/80 hover:bg-[#3D2517] text-[#D7BFA8] font-semibold rounded-full text-sm border border-[#5C4033]/30"
+                className="px-5 py-2.5 bg-[#FFD3A3] text-[#4A2400] font-semibold rounded-full text-sm border border-[#B99A66]/30 hover:bg-[#B99A66] hover:text-white"
               >
                 ← Back
               </button>
               <button
                 onClick={handleBooking}
                 disabled={!guestInfo.name || !guestInfo.email || !guestInfo.phone}
-                className="px-6 py-2.5 bg-linear-to-r from-[#800000] to-[#5C4033] hover:from-[#A04040] hover:to-[#6B4423] text-white font-semibold rounded-full text-sm shadow-md disabled:opacity-60"
+                className="px-6 py-2.5 bg-[#FFD3A3] text-[#4A2400] font-semibold rounded-full text-sm shadow-md hover:bg-[#B99A66] hover:text-white disabled:opacity-60"
               >
                 Confirm Reservation
               </button>
             </div>
 
-            <div className="text-center text-[#800000] text-xs mt-4">
+            <div className="text-center text-[#8F5F2F] text-xs mt-4">
               <p>By confirming, you agree to our <Link href="/terms" className="text-[#800000] underline">Terms & Conditions</Link></p>
-              <p className="mt-1">Questions? Call us at <strong className="text-[#FAF5F0]">0727000027</strong></p>
+              <p className="mt-1">Questions? Call us at <strong className="text-[#4A2400]">0727000027</strong></p>
             </div>
           </div>
         )}

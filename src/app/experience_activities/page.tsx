@@ -77,7 +77,7 @@ export default function ExperiencesPage() {
       {/* Hotel Activities and Experiences Section */}
       <section className="relative z-10 w-full py-20 bg-gradient-to-br from-[#F8F3EF] via-[#FDF6ED] to-[#F8F3EF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Hotel Activities & Experiences</h2>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#8F5F2F] mb-12 text-center tracking-tight drop-shadow">Hotel Activities & Experiences</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
             {[
               {
@@ -113,7 +113,7 @@ export default function ExperiencesPage() {
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div className="flex items-center gap-4 mb-3">
                     <span className="text-3xl md:text-4xl text-[#741F31] drop-shadow">{activity.icon}</span>
-                    <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-1">{activity.title}</h3>
+                    <h3 className="text-2xl font-serif font-bold text-[#8F5F2F] mb-1">{activity.title}</h3>
                   </div>
                   <p className="text-[#5C4033] mb-2 text-lg">{activity.desc}</p>
                 </div>
@@ -122,8 +122,8 @@ export default function ExperiencesPage() {
           </div>
           {/* Trust Section */}
           <div className="bg-[#D2BB9E]/60 p-10 border border-[#741F31]/20 text-center shadow-xl mx-auto max-w-2xl">
-            <h3 className="text-2xl font-serif font-bold text-[#741F31] mb-4">Why Families Love Us</h3>
-            <p className="text-[#2E1A15] text-lg">
+            <h3 className="text-2xl font-serif font-bold text-[#B99A66] mb-4">Why Families Love Us</h3>
+            <p className="text-[#4A2400] text-lg">
               “We had a stress-free weekend — the kids were entertained all day, and we got some much-needed relaxation.”<br />
               <em className="text-[#A04040]">— The Otieno Family, Kisumu</em>
             </p>
@@ -134,7 +134,7 @@ export default function ExperiencesPage() {
       {/* Pool, Swimming Pool and Games Section */}
       <section className="relative z-10 w-full py-20 bg-gradient-to-br from-[#FDF6ED] via-[#F8F3EF] to-[#FDF6ED] border-t border-[#D2BB9E]/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Pool, Swimming Pool & Games</h2>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#8F5F2F] mb-12 text-center tracking-tight drop-shadow">Pool, Swimming Pool & Games</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
             <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl flex flex-col group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31]">
               <div className="relative h-56 w-full">
@@ -145,7 +145,7 @@ export default function ExperiencesPage() {
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
-                <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Pool Table</h3>
+                <h3 className="text-2xl font-serif font-bold text-[#8F5F2F] mb-2">Pool Table</h3>
               </div>
             </div>
             <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl flex flex-col group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31]">
@@ -157,7 +157,7 @@ export default function ExperiencesPage() {
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
-                <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Board Games & More</h3>
+                <h3 className="text-2xl font-serif font-bold text-[#8F5F2F] mb-2">Board Games & More</h3>
               </div>
             </div>
             <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl flex flex-col group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31]">
@@ -169,7 +169,7 @@ export default function ExperiencesPage() {
                 />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
-                <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Outdoor Games</h3>
+                <h3 className="text-2xl font-serif font-bold text-[#8F5F2F] mb-2">Outdoor Games</h3>
               </div>
             </div>
           </div>
@@ -179,17 +179,17 @@ export default function ExperiencesPage() {
       {/* Activities Section */}
       <section id="experiences" className="relative z-10 w-full py-20 bg-gradient-to-br from-[#F8F3EF] via-[#FDF6ED] to-[#F8F3EF] border-t border-[#D2BB9E]/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Activities</h2>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#8F5F2F] mb-12 text-center tracking-tight drop-shadow">Activities</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 mb-20">
             {/* Fun activities and experience suggestions */}
             <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31] flex flex-col">
               <div className="bg-[#F8F3EF] p-6 flex items-center justify-between border-b border-[#D2BB9E]/30">
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#2E1A15]">Outdoor Picnic</h3>
-                  <p className="text-[#A04040] text-lg">Anytime</p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#8F5F2F]">Outdoor Picnic</h3>
+                  <p className="text-[#4A2400] text-lg">Anytime</p>
                 </div>
               </div>
-              <div className="px-6 py-4 text-[#5C4033] text-base flex-1">
+              <div className="px-6 py-4 text-[#4A2400] text-base flex-1">
                 Enjoy a relaxing outdoor picnic in our scenic grounds.
               </div>
               <div className="grid grid-cols-2 gap-2 p-4">
@@ -212,11 +212,11 @@ export default function ExperiencesPage() {
             <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31] flex flex-col">
               <div className="bg-[#F8F3EF] p-6 flex items-center justify-between border-b border-[#D2BB9E]/30">
                 <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-[#2E1A15]">Guided Nature</h3>
-                  <p className="text-[#A04040] text-lg">Daily 7:00 AM</p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#8F5F2F]">Guided Nature</h3>
+                  <p className="text-[#4A2400] text-lg">Daily 7:00 AM</p>
                 </div>
               </div>
-              <div className="px-6 py-4 text-[#5C4033] text-base flex-1">
+              <div className="px-6 py-4 text-[#4A2400] text-base flex-1">
                 Explore the beauty of our natural surroundings with expert guides who share insights on local flora and fauna.
               </div>
               <div className="grid grid-cols-2 gap-2 p-4">
@@ -267,7 +267,7 @@ export default function ExperiencesPage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2E1A15]/80 to-transparent"></div>
               <div className="absolute bottom-6 left-6 text-left">
-                <h3 className="text-2xl md:text-3xl font-bold text-[#FAF5F0] mb-1">Create Your Story</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-[#8F5F2F] mb-1">Create Your Story</h3>
                 <p className="text-[#D7BFA8]">Every visit is unique</p>
               </div>
             </div>
@@ -295,7 +295,7 @@ export default function ExperiencesPage() {
             </p>
             <Link
               href="/booking"
-              className="inline-flex items-center gap-3 bg-[#D2BB9E] text-[#741F31] hover:bg-[#741F31] hover:text-[#D2BB9E] font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#741F31]"
+              className="inline-flex items-center gap-3 bg-[#FFD3A3] hover:bg-[#8F5F2F] text-[#4A2400] hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#8F5F2F]"
             >
               Book Your Experience
             </Link>

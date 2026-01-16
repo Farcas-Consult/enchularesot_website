@@ -197,8 +197,8 @@ export default function VirtualTourPage() {
 
       {/* Section Content */}
       <div className="w-full flex flex-col items-center justify-center py-8 bg-gradient-to-b from-[#f8f3ef] to-white">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#2E1A15] mb-2 text-center">Explore Your Private Oasis</h1>
-        <p className="text-lg md:text-xl text-[#5C4033] max-w-2xl text-center mb-2">Step inside Enchula Resort and discover every corner before you arrive.</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-2 text-center">Explore Your Private Oasis</h1>
+        <p className="text-lg md:text-xl text-[#4A2400] max-w-2xl text-center mb-2">Step inside Enchula Resort and discover every corner before you arrive.</p>
       </div>
 
       {sections.map((section) => (
@@ -238,15 +238,15 @@ export default function VirtualTourPage() {
               </div>
             )}
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#A04040] mt-8 mb-4 text-center bg-white/80 px-4 py-2 rounded-xl shadow-lg">{section.label}</h2>
-          <p className="text-[#5C4033] mb-6 text-center bg-white/80 px-4 py-2 rounded-xl shadow">{section.info}</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#B99A66] mt-8 mb-4 text-center bg-white/80 px-4 py-2 rounded-xl shadow-lg">{section.label}</h2>
+          <p className="text-[#4A2400] mb-6 text-center bg-white/80 px-4 py-2 rounded-xl shadow">{section.info}</p>
         </div>
       ))}
 
       {/* Sticky Book Now Button */}
       <a
         href="/booking"
-        className="fixed bottom-6 right-6 z-50 bg-[#D2BB9E] hover:bg-[#741F31] text-[#741F31] hover:text-[#D2BB9E] px-6 py-3 rounded-full shadow-2xl font-bold text-lg transition-all duration-300 border-2 border-[#741F31]"
+        className="fixed bottom-6 right-6 z-50 bg-[#FFD3A3] hover:bg-[#8F5F2F] text-[#4A2400] hover:text-white px-6 py-3 rounded-full shadow-2xl font-bold text-lg transition-all duration-300 border-2 border-[#8F5F2F]"
       >
         Book Now
       </a>

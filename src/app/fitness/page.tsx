@@ -4,30 +4,26 @@ const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/ap
 
 export default function FitnessPage() {
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
+    <section className="max-w-7xl mx-auto px-4 py-12 bg-white">
       {/* Hero Section */}
-      <div className="relative mb-12">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={`${S3_BASE}/IMG_2174.webp`}
-            alt="Gym Hero"
-            fill
-            className="object-cover rounded-2xl"
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority={true}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#741F31]/80 via-transparent to-transparent rounded-2xl"></div>
-        </div>
-        <div className="relative z-10 p-8 md:p-16 flex flex-col items-center justify-center h-96">
-          <h1 className="text-5xl md:text-6xl font-serif font-bold text-white mb-6 text-center drop-shadow-lg">Gym</h1>
-          <p className="text-lg md:text-2xl text-white text-center max-w-2xl drop-shadow-md">
+      <div className="relative w-full h-[90vh] min-h-[400px] flex items-center justify-center overflow-hidden shadow-2xl mb-16">
+        <img
+          src={`${S3_BASE}/IMG_2174.webp`}
+          alt="Gym Hero"
+          className="absolute inset-0 w-full h-full object-cover object-center opacity-100 z-10 transition-opacity duration-[3000ms] ease-in-out"
+          style={{ transitionProperty: 'opacity' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#741F31]/80 via-transparent to-transparent"></div>
+        <div className="relative z-20 p-8 md:p-16 flex flex-col items-center justify-center w-full">
+          <h1 className="text-5xl md:text-6xl font-serif font-bold text-[#8F5F2F] mb-6 text-center drop-shadow-lg">Gym</h1>
+          <p className="text-lg md:text-2xl text-[#4A2400] text-center max-w-2xl drop-shadow-md">
             State-of-the-art fitness center with modern equipment for cardio, strength, and flexibility training. Open daily for all guests.
           </p>
         </div>
       </div>
       {/* Gym Features */}
       <div className="mb-12">
-        <h3 className="text-3xl font-serif font-bold text-[#2E1A15] mb-8 text-center">Fitness Facilities</h3>
+        <h3 className="text-3xl font-serif font-bold text-[#B99A66] mb-8 text-center">Fitness Facilities</h3>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg group">
             <div className="relative h-56 overflow-hidden">
@@ -41,11 +37,11 @@ export default function FitnessPage() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <h4 className="text-xl font-serif font-bold text-[white]">Equipment</h4>
+                <h4 className="text-xl font-serif font-bold text-[#B99A66]">Equipment</h4>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#5C4033] mb-4 text-sm">
+              <p className="text-[#4A2400] mb-4 text-sm">
                 Treadmills, ellipticals, bikes, free weights, resistance machines, and more.
               </p>
             </div>
@@ -62,11 +58,11 @@ export default function FitnessPage() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <h4 className="text-xl font-serif font-bold text-[white]">Classes</h4>
+                <h4 className="text-xl font-serif font-bold text-[#B99A66]">Classes</h4>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#5C4033] mb-4 text-sm">
+              <p className="text-[#4A2400] mb-4 text-sm">
                 Group fitness classes available: yoga, pilates, HIIT, and more. Check schedule at reception.
               </p>
             </div>
@@ -83,11 +79,11 @@ export default function FitnessPage() {
               />
               <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
               <div className="absolute bottom-4 left-4 right-4">
-                <h4 className="text-xl font-serif font-bold text-[white]">Personal Training</h4>
+                <h4 className="text-xl font-serif font-bold text-[#B99A66]">Personal Training</h4>
               </div>
             </div>
             <div className="p-6">
-              <p className="text-[#5C4033] mb-4 text-sm">
+              <p className="text-[#4A2400] mb-4 text-sm">
                 Certified trainers available for personalized fitness plans and coaching.
               </p>
             </div>
@@ -96,12 +92,12 @@ export default function FitnessPage() {
       </div>
       {/* Call to Action */}
       <div className="text-center mb-16">
-        <p className="text-[#2E1A15] mb-6 text-lg">
+        <p className="text-[#4A2400] mb-6 text-lg">
           Ready to start your fitness journey?
         </p>
         <Link
           href="/booking"
-          className="inline-flex items-center gap-3 bg-[#D2BB9E] hover:bg-[#741F31] text-[#741F31] hover:text-[#D2BB9E] font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#741F31]"
+          className="inline-flex items-center gap-3 bg-[#FFD3A3] hover:bg-[#8F5F2F] text-[#4A2400] hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#8F5F2F]"
         >
           Book Your Fitness Session
         </Link>

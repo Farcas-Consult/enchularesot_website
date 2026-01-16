@@ -25,8 +25,6 @@ export default function EventsPage() {
     return () => clearInterval(interval);
   }, []);
 
-  // ...existing code...
-
   return (
     <section id="events" className="relative min-h-screen bg-white">
       {/* Hero Banner Carousel */}
@@ -64,22 +62,22 @@ export default function EventsPage() {
         {/* Header with Badge */}
         <div className="text-center mb-16">
           <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/10 backdrop-blur-sm rounded-full border border-[#800000]/10">
-            <span className="text-[#A04040] font-semibold tracking-wide text-sm uppercase">
+            <span className="text-[#B99A66] font-semibold tracking-wide text-sm uppercase">
               EVENTS
             </span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#2E1A15] mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#8F5F2F] mb-6 leading-tight">
             Your <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Special Moments</span>, Our Serene Setting
           </h2>
-          <p className="text-lg text-[#5C4033] max-w-3xl mx-auto">
+          <p className="text-lg text-[#4A2400] max-w-3xl mx-auto">
             Social Events | Corporate Events - Event Planning, Event Decor, Catering
           </p>
         </div>
 
         {/* Retreats and Conferences Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-[#A04040] mb-4 text-center">Retreats and Conferences</h2>
-          <p className="text-lg text-[#5C4033] mb-8 text-center">Host your retreats and conferences in our professional, inspiring spaces.</p>
+          <h2 className="text-3xl font-bold text-[#8F5F2F] mb-4 text-center">Retreats and Conferences</h2>
+          <p className="text-lg text-[#4A2400] mb-8 text-center">Host your retreats and conferences in our professional, inspiring spaces.</p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               `${S3_BASE}/Conference1.jpg`,
@@ -100,8 +98,8 @@ export default function EventsPage() {
         </div>
         {/* Corporate and Social Events Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-[#A04040] mb-4 text-center">Corporate and Social Events</h2>
-          <p className="text-lg text-[#5C4033] mb-8 text-center">Celebrate weddings, parties, and corporate gatherings in style.</p>
+          <h2 className="text-3xl font-bold text-[#8F5F2F] mb-4 text-center">Corporate and Social Events</h2>
+          <p className="text-lg text-[#4A2400] mb-8 text-center">Celebrate weddings, parties, and corporate gatherings in style.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               `${S3_BASE}/Marriage1.webp`,
@@ -124,8 +122,8 @@ export default function EventsPage() {
         </div>
         {/* Team Building Section */}
         <div>
-          <h2 className="text-3xl font-bold text-[#A04040] mb-4 text-center">Team Building</h2>
-          <p className="text-lg text-[#5C4033] mb-8 text-center">Engage your team with fun and effective team building activities.</p>
+          <h2 className="text-3xl font-bold text-[#8F5F2F] mb-4 text-center">Team Building</h2>
+          <p className="text-lg text-[#4A2400] mb-8 text-center">Engage your team with fun and effective team building activities.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               `${S3_BASE}/Conference2.jpg`,
@@ -150,19 +148,19 @@ export default function EventsPage() {
 
         {/* CTA */}
         <div className="text-center bg-white p-8 rounded-2xl border border-[#5C4033]/20 shadow-lg">
-          <p className="text-[#2E1A15] text-lg mb-6 font-semibold">
+          <p className="text-[#4A2400] text-lg mb-6 font-semibold">
             Ready to plan your event?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="flex items-center gap-2 text-[#A04040]">
               <span className="text-2xl">📞</span>
-              <a href="tel:+254723003164" className="font-semibold transition-colors px-4 py-2 rounded-full bg-(--color-gold) text-(--color-primary) hover:bg-(--color-primary) hover:text-(--color-gold) border border-(--color-primary)">
+              <a href="tel:+254723003164" className="font-semibold transition-colors px-4 py-2 rounded-full bg-[#FFD3A3] text-[#4A2400] hover:bg-[#8F5F2F] hover:text-white border border-[#8F5F2F]">
                 0723003164
               </a>
             </div>
             <div className="flex items-center gap-2 text-[#A04040]">
               <span className="text-2xl">✉️</span>
-              <a href="mailto:events@enchularesort.co.ke" className="font-semibold transition-colors px-4 py-2 rounded-full bg-(--color-gold) text-(--color-primary) hover:bg-(--color-primary) hover:text-(--color-gold) border border-(--color-primary)">
+              <a href="mailto:events@enchularesort.co.ke" className="font-semibold transition-colors px-4 py-2 rounded-full bg-[#FFD3A3] text-[#4A2400] hover:bg-[#8F5F2F] hover:text-white border border-[#8F5F2F]">
                 events@enchularesort.co.ke
               </a>
             </div>
@@ -173,7 +171,7 @@ export default function EventsPage() {
                 href="https://instagram.com/events.by.enchula" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 bg-[#D2BB9E] text-[#741F31] hover:bg-[#741F31] hover:text-[#D2BB9E] border border-[#741F31]"
+                className="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 bg-[#FFD3A3] text-[#4A2400] hover:bg-[#8F5F2F] hover:text-white border border-[#8F5F2F]"
               >
                 <span className="text-xl">📸</span>
                 events.by.enchula
