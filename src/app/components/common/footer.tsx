@@ -44,14 +44,14 @@ const Footer = () => {
             <h4 className="text-[#A04040] font-semibold mb-6">Contact Info</h4>
             <div className="space-y-3 text-sm text-[#D7BFA8]">
               <div className="flex items-start gap-2">
-                <Phone className="w-4 h-4 text-[#A9745B] mt-1" />
+                <Phone className="w-6 h-6 text-white" />
                 <div className="flex flex-col">
                   <span>+254 (0) 727000027</span>
                   <span>+254 (0) 734000027</span>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <Mail className="w-4 h-4 text-[#A9745B] mt-1" />
+                <Mail className="w-6 h-6 text-white" />
                 <span>info@enchularesort.co.ke</span>
               </div>
               {/* Removed Nairobi Namanga Road as requested */}

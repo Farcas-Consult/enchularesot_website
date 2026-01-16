@@ -61,7 +61,7 @@ export default function Rooms() {
   const rooms: Room[] = [
     {
       id: 1,
-      name: "Standard Double Room",
+      name: "Standard  Room",
       category: "Comfort",
       price: "From Kshs. 10,000",
       images: [DoubleRoom1, DoubleRoom2, DoubleRoom3],

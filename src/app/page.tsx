@@ -54,7 +54,7 @@ const healthSafetyData = [
 const rooms = [
   {
     id: 1,
-    name: "Standard Double Room",
+    name: "Standard  Room",
     price: "From Kshs. 10,000",
     image: `${S3_BASE}/Room6.jpg`,
     anchor: "standard-double-room",
