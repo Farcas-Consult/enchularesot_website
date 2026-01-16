@@ -37,7 +37,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 w-full z-50 bg-[#741F31] shadow transition-all duration-300 m-0 p-0">
+    <header className="sticky top-0 w-full z-50 bg-[#5A2E00] shadow transition-all duration-300 m-0 p-0">
       {/* Mobile: Top row with call, WhatsApp, and email icons, logo, and book button */}
       <div className="md:hidden flex flex-col w-full bg-transparent">
         <div className="flex justify-between items-center w-full px-4 pt-2 pb-1">
@@ -74,7 +74,7 @@ export default function Navbar() {
         </div>
       </div>
       {/* Desktop nav row remains unchanged below */}
-      <div className="hidden md:flex items-center justify-between px-4 py-2 bg-transparent">
+      <div className="hidden md:flex items-center justify-between px-4 py-2 bg-[#5A2E00]">
         {/* Logo and contact icons */}
         <div className="flex items-center gap-2 min-w-[120px]">
           <Link href="/" className="flex items-center gap-2">
@@ -102,7 +102,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-[var(--brand-background)] font-normal tracking-normal hover:text-[var(--brand-secondary-maroon)] transition-colors text-xs capitalize"
+              className="text-white font-normal tracking-normal hover:text-[#D7BFA8] transition-colors text-xs capitalize"
               style={{letterSpacing: '0.02em'}}>
               {link.name}
             </Link>
@@ -136,7 +136,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="block py-2 text-[var(--brand-background)] font-normal capitalize tracking-normal px-3 transition-all duration-200 border-b-2 border-transparent hover:border-[var(--brand-secondary-maroon)] text-xs"
+                  className="block py-2 text-white font-normal capitalize tracking-normal px-3 transition-all duration-200 border-b-2 border-transparent hover:border-[#D7BFA8] text-xs"
                   style={{letterSpacing: '0.02em'}} 
                   onClick={() => setIsMenuOpen(false)}
                 >

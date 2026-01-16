@@ -87,23 +87,25 @@ export default function Hero() {
 
 
             {isActive && (
-              <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-[#F8F3EF] px-6">
+              <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
                
 
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight animate-fadeInUp">
+                <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight animate-fadeInUp" style={{ color: '#FFFFFF' }}>
                   {slide.title}
                 </h1>
 
-                <p className="text-lg md:text-2xl text-[#F8F3EF]/90 mb-10 max-w-3xl mx-auto leading-relaxed animate-fadeInUp">
+                <p className="text-lg md:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed animate-fadeInUp" style={{ color: '#FFFFFF' }}>
                   {slide.subtitle}
                 </p>
 
                 {/* Highlights removed as requested */}
 
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-6 animate-fadeInUp">
-                  <button className="group relative px-10 py-4 bg-gradient-to-r from-[#A04040] to-[#5C2E2E] text-white text-lg font-semibold rounded-full shadow-2xl transition-all duration-300 hover:scale-110">
-                    <a href="/booking">Book Your Stay</a>
-                  </button>
+                  <a href="/booking">
+                    <button className="group relative px-10 py-4 text-[#4A2400] text-lg font-semibold rounded-full shadow-2xl transition-all duration-300 hover:scale-110" style={{ backgroundColor: '#FFD3A3' }}>
+                      Book Your Stay
+                    </button>
+                  </a>
                 </div>
               </div>
             )}
