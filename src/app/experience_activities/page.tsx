@@ -74,10 +74,10 @@ export default function ExperiencesPage() {
         ))}
       </div>
 
-      {/* Kids & Family Activities Section */}
+      {/* Hotel Activities and Experiences Section */}
       <section className="relative z-10 w-full py-20 bg-gradient-to-br from-[#F8F3EF] via-[#FDF6ED] to-[#F8F3EF]">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Kids' Activities</h2>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Hotel Activities & Experiences</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
             {[
               {
@@ -87,14 +87,14 @@ export default function ExperiencesPage() {
                 image: `${S3_BASE}/IMG_2352.webp`,
               },
               {
-                title: "Composite Playground Structure",
-                desc: "A large, interconnected piece of playground equipment featuring multiple play elements like slides, tunnels, and climbing structures designed for various physical activities.",
+                title: "Playground Structure",
+                desc: "Slides, tunnels, and climbing structures for active fun.",
                 icon: "🎨",
                 image: `${S3_BASE}/IMG_2277.webp`,
               },
               {
                 title: "Seesaw",
-                desc: "A classic playground game consisting of a long board balanced in the middle, on which children sit at opposite ends and move up and down by pushing off the ground.",
+                desc: "A classic playground game for all ages.",
                 icon: "🌌",
                 image: `${S3_BASE}/IMG_2380.webp`,
               },
@@ -131,12 +131,11 @@ export default function ExperiencesPage() {
         </div>
       </section>
 
-      {/* Games Section */}
+      {/* Pool, Swimming Pool and Games Section */}
       <section className="relative z-10 w-full py-20 bg-gradient-to-br from-[#FDF6ED] via-[#F8F3EF] to-[#FDF6ED] border-t border-[#D2BB9E]/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Games</h2>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Pool, Swimming Pool & Games</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
-            {/* Pool Table Game (use first image) */}
             <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl flex flex-col group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31]">
               <div className="relative h-56 w-full">
                 <img
@@ -147,12 +146,8 @@ export default function ExperiencesPage() {
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Pool Table</h3>
-                <p className="text-[#5C4033] mb-2 text-lg flex-1">
-                  Enjoy a classic game of pool in our games lounge. Whether you’re a seasoned player or just looking for some fun, our pool table is perfect for friendly matches and tournaments.
-                </p>
               </div>
             </div>
-            {/* Other games from slideshow */}
             <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl flex flex-col group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31]">
               <div className="relative h-56 w-full">
                 <img
@@ -163,9 +158,6 @@ export default function ExperiencesPage() {
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Board Games & More</h3>
-                <p className="text-[#5C4033] mb-2 text-lg flex-1">
-                  Gather your friends and family for a variety of board games and group activities. There’s something for everyone to enjoy!
-                </p>
               </div>
             </div>
             <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl flex flex-col group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31]">
@@ -178,61 +170,72 @@ export default function ExperiencesPage() {
               </div>
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <h3 className="text-2xl font-serif font-bold text-[#2E1A15] mb-2">Outdoor Games</h3>
-                <p className="text-[#5C4033] mb-2 text-lg flex-1">
-                  Step outside and enjoy a range of outdoor games and activities, perfect for all ages and skill levels.
-                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Experiences Section (modern layout) */}
+      {/* Activities Section */}
       <section id="experiences" className="relative z-10 w-full py-20 bg-gradient-to-br from-[#F8F3EF] via-[#FDF6ED] to-[#F8F3EF] border-t border-[#D2BB9E]/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Experiences</h2>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#741F31] mb-12 text-center tracking-tight drop-shadow">Activities</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-12 mb-20">
-            {experiences.map((exp, idx) => (
-              <div
-                key={idx}
-                className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31] flex flex-col"
-              >
-                <div className="bg-[#F8F3EF] p-6 flex items-center justify-between border-b border-[#D2BB9E]/30">
-                  <div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-[#2E1A15]">{exp.title}</h3>
-                    <p className="text-[#A04040] text-lg">{exp.when}</p>
-                  </div>
-                </div>
-                <div className="px-6 py-4 text-[#5C4033] text-base flex-1">
-                  {exp.title === "Guided Nature Walks" && (
-                    <span>Explore the beauty of our natural surroundings with expert guides who share insights on local flora and fauna.</span>
-                  )}
-                  {exp.title === "Maasai Cultural Experience" && (
-                    <span>Immerse yourself in Maasai traditions, music, and dance for an authentic cultural encounter.</span>
-                  )}
-                  {exp.title === "Stargazing Nights" && (
-                    <span>Marvel at the night sky with telescopes and expert guidance, perfect for astronomy lovers and dreamers alike.</span>
-                  )}
-                  {exp.title === "Outdoor Dining" && (
-                    <span>Dine under the stars with our special outdoor setups, blending gourmet cuisine with nature’s ambiance.</span>
-                  )}
-                </div>
-                <div className="grid grid-cols-2 gap-2 p-4">
-                  {exp.images.map((img, imgIdx) => (
-                    <div
-                      key={imgIdx}
-                      className="relative h-40 md:h-48 overflow-hidden"
-                    >
-                      <img
-                        src={img}
-                        alt={`${exp.title} ${imgIdx + 1}`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
+            {/* Fun activities and experience suggestions */}
+            <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31] flex flex-col">
+              <div className="bg-[#F8F3EF] p-6 flex items-center justify-between border-b border-[#D2BB9E]/30">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#2E1A15]">Outdoor Picnic</h3>
+                  <p className="text-[#A04040] text-lg">Anytime</p>
                 </div>
               </div>
-            ))}
+              <div className="px-6 py-4 text-[#5C4033] text-base flex-1">
+                Enjoy a relaxing outdoor picnic in our scenic grounds.
+              </div>
+              <div className="grid grid-cols-2 gap-2 p-4">
+                <div className="relative h-40 md:h-48 overflow-hidden">
+                  <img
+                    src={`${S3_BASE}/Outdoor1.webp`}
+                    alt="Outdoor Picnic"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="relative h-40 md:h-48 overflow-hidden">
+                  <img
+                    src={`${S3_BASE}/Outdoor2.webp`}
+                    alt="Outdoor Picnic 2"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="bg-white overflow-hidden border border-[#D2BB9E] shadow-xl group transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-[#741F31] flex flex-col">
+              <div className="bg-[#F8F3EF] p-6 flex items-center justify-between border-b border-[#D2BB9E]/30">
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#2E1A15]">Guided Nature</h3>
+                  <p className="text-[#A04040] text-lg">Daily 7:00 AM</p>
+                </div>
+              </div>
+              <div className="px-6 py-4 text-[#5C4033] text-base flex-1">
+                Explore the beauty of our natural surroundings with expert guides who share insights on local flora and fauna.
+              </div>
+              <div className="grid grid-cols-2 gap-2 p-4">
+                <div className="relative h-40 md:h-48 overflow-hidden">
+                  <img
+                    src={`${S3_BASE}/NatureWalk1.jpg`}
+                    alt="Guided Nature Walk"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="relative h-40 md:h-48 overflow-hidden">
+                  <img
+                    src={`${S3_BASE}/NatureWalk2.jpg`}
+                    alt="Guided Nature Walk 2"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
           {/* Full Width Banner */}
           <div className="mb-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">

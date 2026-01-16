@@ -163,69 +163,52 @@ export default function Home() {
           From strategic corporate retreats to dynamic team-building sessions and elegant social gatherings — we provide the perfect setting for every occasion.
         </p>
 
-        {/* Key Offerings */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
-          <div className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
-            <h3 className="font-bold text-xl text-[#A04040] mb-2">Retreats & Conferences</h3>
-            <p className="text-neutral-800 text-sm">
-              Professional meeting spaces with full A/V support, high-speed internet, and serene savannah views.
-            </p>
-          </div>
-          <div className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
-            <h3 className="font-bold text-xl text-[#A04040] mb-2">Corporate & Social Events</h3>
-            <p className="text-neutral-800 text-sm">
-              Weddings, birthdays, family reunions, and product launches — all tailored to your vision.
-            </p>
-          </div>
-          <div className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
-            <h3 className="font-bold text-xl text-[#A04040] mb-2">Team Building</h3>
-            <p className="text-neutral-800 text-sm">
-              Engaging outdoor activities on our expansive grounds to foster collaboration and morale.
-            </p>
+        {/* Corporate Events Subsection */}
+        <div className="mb-12">
+          <h3 className="font-bold text-2xl text-[#A04040] mb-4">Corporate Events</h3>
+          <p className="text-neutral-800 text-base mb-6">Professional meeting spaces, conferences, and business gatherings with full amenities.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            {[
+              `${S3_BASE}/Conference1.jpg`,
+              `${S3_BASE}/Conference2.jpg`,
+              `${S3_BASE}/Conference3.jpg`,
+              `${S3_BASE}/Conference4.jpg`,
+            ].map((img, idx) => (
+              <Image
+                key={idx}
+                src={img}
+                alt={`Corporate event ${idx + 1}`}
+                width={380}
+                height={240}
+                className="rounded-xl shadow-md object-cover"
+              />
+            ))}
           </div>
         </div>
 
-        {/* Conference Packages Preview */}
-        <div className="bg-[#F8F3EF] max-w-4xl mx-auto p-6 rounded-2xl border border-[#5C4033]/20 mb-8">
-          <h3 className="text-lg font-bold text-[#A04040] mb-3">Popular Packages</h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <div className="text-left">
-              <p className="font-semibold text-[#2E1A15]">Full Day Conference/Team Building</p>
-              <p className="text-[#A04040] font-medium">Kshs. 4,000 per participant</p>
-            </div>
-            <div className="text-left">
-              <p className="font-semibold text-[#2E1A15]">Half Day Conference</p>
-              <p className="text-[#A04040] font-medium">Kshs. 3,500 per participant</p>
-            </div>
+        {/* Social Events Subsection */}
+        <div className="mb-12">
+          <h3 className="font-bold text-2xl text-[#A04040] mb-4">Social Events (Weddings & Parties)</h3>
+          <p className="text-neutral-800 text-base mb-6">Weddings, birthdays, family reunions, and parties — all tailored to your vision.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            {[
+              `${S3_BASE}/Marriage1.webp`,
+              `${S3_BASE}/Marriage2.webp`,
+              `${S3_BASE}/Marriage3.webp`,
+              `${S3_BASE}/Birthday1.webp`,
+              `${S3_BASE}/Birthday2.webp`,
+              `${S3_BASE}/Birthday3.webp`,
+            ].map((img, idx) => (
+              <Image
+                key={idx}
+                src={img}
+                alt={`Social event ${idx + 1}`}
+                width={380}
+                height={240}
+                className="rounded-xl shadow-md object-cover"
+              />
+            ))}
           </div>
-          <p className="text-xs text-[#5C4033] mt-4 italic">
-            Includes conference room, meals, branded materials, projector, flip charts, and team-building grounds.
-          </p>
-        </div>
-
-        {/* Event Images */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
-          <Image
-            src={`${S3_BASE}/Conference1.jpg`}
-            alt="Conference Room"
-            width={380}
-            height={240}
-            className="rounded-xl shadow-md object-cover"
-          />
-          <Image
-            src={`${S3_BASE}/Conference2.jpg`}
-            alt="Team Building Activity"
-            width={380}
-            height={240}
-            className="rounded-xl shadow-md object-cover"
-          />
-          <Image
-            src={`${S3_BASE}/Conference3.jpg`}
-            alt="Outdoor Corporate Event"
-            width={380}
-            height={240}
-            className="rounded-xl shadow-md object-cover"
-          />
         </div>
 
         <a href="/events" className="btn-primary mt-6 inline-block">

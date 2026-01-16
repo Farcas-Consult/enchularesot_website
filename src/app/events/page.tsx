@@ -25,73 +25,7 @@ export default function EventsPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const events = [
-    {
-      title: "Weddings & Vow Renewals",
-      images: [
-        `${S3_BASE}/Marriage1.webp`,
-        `${S3_BASE}/Marriage2.webp`,
-        `${S3_BASE}/Marriage3.webp`,
-      ],
-      description: "Outdoor ceremonies with savannah views"
-    },
-    {
-      title: "Corporate Retreats & Conferences",
-      images: [
-  `${S3_BASE}/Conference1.jpg`,
-  `${S3_BASE}/Conference2.jpg`,
-  `${S3_BASE}/Conference3.jpg`,
-  `${S3_BASE}/Conference4.jpg`,
-      ],
-      description: "Professional meeting spaces & team building",
-      packages: [
-        {
-          name: "Full Day Conference/Team Building",
-          price: "Kshs. 4,000 per participant",
-          includes: [
-            "Conference Room",
-            "10:00am and/or 4:00pm Tea/Coffee with snacks",
-            "Lunch with a soft drink",
-            "One/Two 500ml mineral water per day",
-            "Mints/sweets",
-            "Branded writing materials",
-            "Flip board, charts and markers",
-            "Complimentary high speed internet",
-            "LCD Projector",
-            "Grounds for Team Building"
-          ]
-        },
-        {
-          name: "Half Day Conference",
-          price: "Kshs. 3,500 per participant",
-          includes: [
-            "Conference facilities",
-            "Tea/Coffee break",
-            "Meeting essentials",
-            "High-speed internet access"
-          ]
-        }
-      ],
-      accommodation: [
-        { type: "Single - Half Board", price: "Kshs. 11,000" },
-        { type: "Single - Full Board", price: "Kshs. 13,000" },
-        { type: "Double/Twin - Half Board", price: "Kshs. 17,000" },
-        { type: "Double/Twin - Full Board", price: "Kshs. 19,000" }
-      ],
-      extras: [
-        { item: "PA System", price: "Kshs. 10,000 per day" }
-      ]
-    },
-    {
-      title: "Birthday & Family Reunions",
-      images: [
-        `${S3_BASE}/Birthday1.webp`,
-        `${S3_BASE}/Birthday2.webp`,
-        `${S3_BASE}/Birthday3.webp`,
-      ],
-      description: "Custom celebrations & gatherings"
-    }
-  ];
+  // ...existing code...
 
   return (
     <section id="events" className="relative min-h-screen bg-white">
@@ -142,112 +76,77 @@ export default function EventsPage() {
           </p>
         </div>
 
-        {/* Event Categories */}
-        <div className="space-y-12 mb-16">
-          {events.map((event, idx) => (
-            <div
-              key={idx}
-              className="bg-white p-8 rounded-2xl border border-[#5C4033]/20 shadow-lg"
-            >
-              <div className="text-center mb-8">
-                <h3 className="text-2xl md:text-3xl font-serif font-bold text-[#2E1A15] mb-2">
-                  {event.title}
-                </h3>
-                <p className="text-[#5C4033] text-lg">{event.description}</p>
+        {/* Retreats and Conferences Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-[#A04040] mb-4 text-center">Retreats and Conferences</h2>
+          <p className="text-lg text-[#5C4033] mb-8 text-center">Host your retreats and conferences in our professional, inspiring spaces.</p>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              `${S3_BASE}/Conference1.jpg`,
+              `${S3_BASE}/Conference2.jpg`,
+              `${S3_BASE}/Conference3.jpg`,
+              `${S3_BASE}/Conference4.jpg`,
+            ].map((img, idx) => (
+              <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
+                <Image
+                  src={img}
+                  alt={`Retreats and conferences ${idx + 1}`}
+                  fill
+                  className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                />
               </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                {event.images.map((img, imgIdx) => (
-                  <div
-                    key={imgIdx}
-                    className="relative h-56 md:h-64 rounded-2xl overflow-hidden group"
-                  >
-                    <Image
-                      src={img}
-                      alt={`${event.title} ${imgIdx + 1}`}
-                      fill
-                      className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
-                    />
-                  </div>
-                ))}
+            ))}
+          </div>
+        </div>
+        {/* Corporate and Social Events Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-[#A04040] mb-4 text-center">Corporate and Social Events</h2>
+          <p className="text-lg text-[#5C4033] mb-8 text-center">Celebrate weddings, parties, and corporate gatherings in style.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              `${S3_BASE}/Marriage1.webp`,
+              `${S3_BASE}/Marriage2.webp`,
+              `${S3_BASE}/Marriage3.webp`,
+              `${S3_BASE}/Birthday1.webp`,
+              `${S3_BASE}/Birthday2.webp`,
+              `${S3_BASE}/Birthday3.webp`,
+            ].map((img, idx) => (
+              <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
+                <Image
+                  src={img}
+                  alt={`Corporate and social event ${idx + 1}`}
+                  fill
+                  className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                />
               </div>
-
-              {/* Conference Packages */}
-              {event.packages && (
-                <div className="space-y-6">
-                  <h4 className="text-xl font-bold text-[#A04040] border-b border-[#800000]/10 pb-3 mb-4">Conference Packages</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {event.packages.map((pkg, pkgIdx) => (
-                      <div key={pkgIdx} className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
-                        <h5 className="text-lg font-bold text-[#2E1A15] mb-2">{pkg.name}</h5>
-                        <p className="text-[#A04040] font-semibold text-xl mb-4">{pkg.price}</p>
-                        <p className="text-[#5C4033] text-sm font-semibold mb-2">The Package includes:</p>
-                        <ul className="space-y-1.5">
-                          {pkg.includes.map((item, i) => (
-                            <li key={i} className="text-[#2E1A15] text-sm flex items-start">
-                              <span className="text-[#A04040] mr-2">★</span>
-                              <span>{item}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Accommodation Rates */}
-                  {event.accommodation && (
-                    <div className="mt-6">
-                      <h5 className="text-lg font-bold text-[#A04040] mb-4">Accommodation Rates</h5>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        {event.accommodation.map((room, i) => (
-                          <div key={i} className="bg-[#F8F3EF] p-4 rounded-xl border border-[#5C4033]/10 text-center">
-                            <p className="text-[#5C4033] text-xs mb-2">{room.type}</p>
-                            <p className="text-[#2E1A15] font-bold text-lg">{room.price}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Extras */}
-                  {event.extras && (
-                    <div className="mt-6 bg-[#A04040]/10 p-4 rounded-xl border border-[#A04040]/20">
-                      <h6 className="text-[#A04040] font-bold mb-2">Extras</h6>
-                      {event.extras.map((extra, i) => (
-                        <p key={i} className="text-[#2E1A15] text-sm">
-                          {extra.item}: <span className="text-[#A04040] font-semibold">{extra.price}</span>
-                        </p>
-                      ))}
-                    </div>
-                  )}
-
-                  <p className="text-[#5C4033] text-xs italic mt-4">
-                    Rates are inclusive of government taxes and levies. Terms and Conditions apply.
-                  </p>
-                </div>
-              )}
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+        {/* Team Building Section */}
+        <div>
+          <h2 className="text-3xl font-bold text-[#A04040] mb-4 text-center">Team Building</h2>
+          <p className="text-lg text-[#5C4033] mb-8 text-center">Engage your team with fun and effective team building activities.</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              `${S3_BASE}/Conference2.jpg`,
+              `${S3_BASE}/Conference3.jpg`,
+              `${S3_BASE}/Conference4.jpg`,
+              `${S3_BASE}/Birthday2.webp`,
+              `${S3_BASE}/Birthday3.webp`,
+            ].map((img, idx) => (
+              <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
+                <Image
+                  src={img}
+                  alt={`Team building ${idx + 1}`}
+                  fill
+                  className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Hero Gallery Banner */}
-        <div className="mb-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            `${S3_BASE}/Marriage1.webp`,
-            `${S3_BASE}/Birthday1.webp`,
-            `${S3_BASE}/IMG_2395.webp`,
-            `${S3_BASE}/IMG_2387.webp`,
-          ].map((img, idx) => (
-            <div key={idx} className="relative h-40 rounded-2xl overflow-hidden group">
-              <Image
-                src={img}
-                alt={`Event venue ${idx + 1}`}
-                fill
-                className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
-              />
-            </div>
-          ))}
-        </div>
+       
 
         {/* CTA */}
         <div className="text-center bg-white p-8 rounded-2xl border border-[#5C4033]/20 shadow-lg">
