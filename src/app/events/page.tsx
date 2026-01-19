@@ -5,57 +5,21 @@ import React from "react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
-const BACKGROUND_IMAGES = [
-  // Corporate Retreats & Conferences
-  `${S3_BASE}/Conference1.jpg`,
-  
-  `${S3_BASE}/Conference2.jpg`,
-  
-  `${S3_BASE}/Conference2.jpg`,
-  
-  `${S3_BASE}/Conference3.jpg`,
-];
 
 export default function EventsPage() {
-  const [currentBgIndex, setCurrentBgIndex] = React.useState(0);
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % BACKGROUND_IMAGES.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section id="events" className="relative min-h-screen bg-white font-nunito">
-      {/* Hero Banner Carousel */}
+      {/* Hero Banner Static Image */}
       <div className="relative h-screen min-h-[500px] flex items-center justify-center overflow-hidden">
-        {BACKGROUND_IMAGES.map((img, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-3000 ease-in-out ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-          >
-            <Image
-              src={img}
-              alt="Event hero image"
-              fill
-              className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
-              quality={90}
-              priority={index === 0}
-              sizes="100vw"
-            />
-          </div>
-        ))}
-        {/* Carousel indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
-          {BACKGROUND_IMAGES.map((_, idx) => (
-            <button
-              key={idx}
-              className={`w-3 h-3 rounded-full border border-white transition-all ${currentBgIndex === idx ? 'bg-(--color-primary)' : 'bg-(--color-gold)/40'} hover:bg-(--color-primary)`}
-              onClick={() => setCurrentBgIndex(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
-        </div>
+        <Image
+          src={`${S3_BASE}/Event1.jpeg`}
+          alt="Event hero image"
+          fill
+          className="object-cover rounded-2xl shadow-lg"
+          quality={90}
+          priority
+          sizes="100vw"
+        />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -80,10 +44,10 @@ export default function EventsPage() {
           <p className="text-lg text-[#4A2400] mb-8 text-center font-nunito">Host your retreats and conferences in our professional, inspiring spaces.</p>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
-              `${S3_BASE}/Conference1.jpg`,
-              `${S3_BASE}/Conference2.jpg`,
-              `${S3_BASE}/Conference3.jpg`,
-              `${S3_BASE}/Conference4.jpg`,
+              `${S3_BASE}/Event2.jpeg`,
+              `${S3_BASE}/Event3.jpeg`,
+              `${S3_BASE}/Event7.jpeg`,
+              `${S3_BASE}/Event8.jpeg`,
             ].map((img, idx) => (
               <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
                 <Image
@@ -102,12 +66,12 @@ export default function EventsPage() {
           <p className="text-lg text-[#4A2400] mb-8 text-center font-nunito">Celebrate weddings, parties, and corporate gatherings in style.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              `${S3_BASE}/Marriage1.webp`,
-              `${S3_BASE}/Marriage2.webp`,
-              `${S3_BASE}/Marriage3.webp`,
-              `${S3_BASE}/Birthday1.webp`,
-              `${S3_BASE}/Birthday2.webp`,
-              `${S3_BASE}/Birthday3.webp`,
+              `${S3_BASE}/Event18.jpeg`,
+              `${S3_BASE}/Event5.jpeg`,
+              `${S3_BASE}/Event6.jpeg`,
+              `${S3_BASE}/Event9.jpeg`,
+              `${S3_BASE}/Event10.jpeg`,
+              `${S3_BASE}/Event11.jpeg`,
             ].map((img, idx) => (
               <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
                 <Image
@@ -126,11 +90,11 @@ export default function EventsPage() {
           <p className="text-lg text-[#4A2400] mb-8 text-center font-nunito">Engage your team with fun and effective team building activities.</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              `${S3_BASE}/Conference2.jpg`,
-              `${S3_BASE}/Conference3.jpg`,
-              `${S3_BASE}/Conference4.jpg`,
-              `${S3_BASE}/Birthday2.webp`,
-              `${S3_BASE}/Birthday3.webp`,
+              `${S3_BASE}/Event12.jpeg`,
+              `${S3_BASE}/Event13.jpeg`,
+              `${S3_BASE}/Event15.jpeg`,
+              `${S3_BASE}/Events4.jpeg`,
+              `${S3_BASE}/Event5.jpeg`,
             ].map((img, idx) => (
               <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
                 <Image

@@ -169,10 +169,10 @@ export default function Home() {
           <p className="text-base mb-6" style={{ color: '#4A2400' }}>Professional meeting spaces, conferences, and business gatherings with full amenities.</p>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              `${S3_BASE}/Conference1.jpg`,
-              `${S3_BASE}/Conference2.jpg`,
-              `${S3_BASE}/Conference3.jpg`,
-              `${S3_BASE}/Conference4.jpg`,
+              `${S3_BASE}/Event1.jpeg`,
+              `${S3_BASE}/Event3.jpeg`,
+              `${S3_BASE}/Event2.jpeg`,
+              
             ].map((img, idx) => (
               <Image
                 key={idx}
@@ -192,12 +192,12 @@ export default function Home() {
           <p className="text-base mb-6" style={{ color: '#4A2400' }}>Weddings, birthdays, family reunions, and parties — all tailored to your vision.</p>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              `${S3_BASE}/Marriage1.webp`,
-              `${S3_BASE}/Marriage2.webp`,
-              `${S3_BASE}/Marriage3.webp`,
-              `${S3_BASE}/Birthday1.webp`,
-              `${S3_BASE}/Birthday2.webp`,
-              `${S3_BASE}/Birthday3.webp`,
+              `${S3_BASE}/Event18.jpeg`,
+              `${S3_BASE}/Event5.jpeg`,
+              `${S3_BASE}/Event6.jpeg`,
+              `${S3_BASE}/Event9.jpeg`,
+              `${S3_BASE}/Event10.jpeg`,
+              `${S3_BASE}/Event11.jpeg`,
             ].map((img, idx) => (
               <Image
                 key={idx}
