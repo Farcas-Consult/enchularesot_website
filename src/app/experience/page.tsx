@@ -13,16 +13,17 @@ export default function ExperiencesPage() {
   return (
     <section id="experience-activities" className="relative min-h-screen bg-white font-nunito">
       {/* Hero Banner - Single Image */}
-        <div className="w-full h-[90vh] min-h-[400px] mb-16">
-          <Image
-            src={`${S3_BASE}/Event18.jpeg`}
-            alt="Nature Walk Hero"
-            fill
-            className="object-cover object-center w-full h-full"
-            priority
-            sizes="100vw"
-          />
-        </div>
+        <div className="relative h-screen min-h-[500px] flex items-center justify-center overflow-hidden">
+               <Image
+                 src={`${S3_BASE}/Event18.jpeg`}
+                 alt="Social Events hero image"
+                 fill
+                 className="object-cover rounded-2xl shadow-lg"
+                 quality={90}
+                 priority
+                 sizes="100vw"
+               />
+             </div>
 
      
 

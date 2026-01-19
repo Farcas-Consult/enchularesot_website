@@ -28,9 +28,15 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "Rooms", href: "/rooms" },
     { name: "Dining", href: "/dinings" },
-    { name: "Events & Meetings", href: "/events" },
-    { name: "Wellness", href: "/wellness" },
-    { name: "Fitness", href: "/fitness" },
+    {
+      name: "Events",
+      href: "/events",
+      subLinks: [
+        { name: "Corporate Events", href: "/events/corporate-events" },
+        { name: "Social Events", href: "/events/social-events" },
+      ],
+    },
+    { name: "Wellness & Fitness", href: "/wellness-fitness" },
     { name: "Experiences", href: "/experience" },
     { name: "Gallery", href: "/gallery" },
     { name: "Virtual Tour", href: "/Virtual-tour" },
@@ -99,13 +105,39 @@ export default function Navbar() {
         {/* Main links center */}
         <nav className="flex flex-1 justify-center items-center gap-5 font-nunito">
           {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-white font-normal tracking-normal hover:text-[#D7BFA8] transition-colors text-xs capitalize font-nunito"
-              style={{letterSpacing: '0.02em'}}>
-              {link.name}
-            </Link>
+            link.subLinks ? (
+              <div key={link.name} className="relative group">
+                <button
+                  type="button"
+                  className="text-white font-normal tracking-normal hover:text-[#D7BFA8] transition-colors text-xs capitalize font-nunito flex items-center gap-1 focus:outline-none"
+                  style={{letterSpacing: '0.02em'}}
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  {link.name}
+                  <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div className="absolute left-1/2 -translate-x-1/2 mt-2 min-w-[180px] bg-[#5A2E00] rounded shadow-lg border border-[#D7BFA8]/20 opacity-0 group-hover:opacity-100 pointer-events-none group-hover:pointer-events-auto transition-opacity duration-200 z-50 group-focus-within:opacity-100 group-focus-within:pointer-events-auto">
+                  {link.subLinks.map((sub) => (
+                    <Link
+                      key={sub.name}
+                      href={sub.href}
+                      className="block px-4 py-2 text-white text-xs hover:text-[#D7BFA8] whitespace-nowrap"
+                      style={{letterSpacing: '0.02em'}}>
+                      {sub.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="text-white font-normal tracking-normal hover:text-[#D7BFA8] transition-colors text-xs capitalize font-nunito"
+                style={{letterSpacing: '0.02em'}}>
+                {link.name}
+              </Link>
+            )
           ))}
         </nav>
         {/* Book Now right */}
@@ -118,7 +150,7 @@ export default function Navbar() {
         <>
           {/* Overlay */}
           <div
-            className="fixed inset-0 bg-black bg-opacity-40 z-40 transition-opacity duration-300"
+            className="fixed inset-0 bg-[#D7BFA8] bg-opacity-40 z-40 transition-opacity duration-300"
             onClick={() => setIsMenuOpen(false)}
             aria-hidden="true"
           />
@@ -133,15 +165,41 @@ export default function Navbar() {
             </button>
             <div className="flex flex-col gap-1 mt-2">
               {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="block py-2 text-white font-normal capitalize tracking-normal px-3 transition-all duration-200 border-b-2 border-transparent hover:border-[#D7BFA8] text-xs"
-                  style={{letterSpacing: '0.02em'}} 
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
+                link.subLinks ? (
+                  <div key={link.name} className="flex flex-col">
+                    <Link
+                      href={link.href}
+                      className="block py-2 text-white font-normal capitalize tracking-normal px-3 transition-all duration-200 border-b-2 border-transparent hover:border-[#D7BFA8] text-xs"
+                      style={{letterSpacing: '0.02em'}} 
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.name}
+                    </Link>
+                    <div className="pl-4 flex flex-col">
+                      {link.subLinks.map((sub) => (
+                        <Link
+                          key={sub.name}
+                          href={sub.href}
+                          className="block py-2 text-white text-xs px-3 hover:text-[#D7BFA8]"
+                          style={{letterSpacing: '0.02em'}} 
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="block py-2 text-white font-normal capitalize tracking-normal px-3 transition-all duration-200 border-b-2 border-transparent hover:border-[#D7BFA8] text-xs"
+                    style={{letterSpacing: '0.02em'}} 
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
             </div>
             <Link
