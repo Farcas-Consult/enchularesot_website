@@ -193,9 +193,9 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4">
             {[
               `${S3_BASE}/Event18.jpeg`,
-              `${S3_BASE}/Event5.jpeg`,
-              `${S3_BASE}/Event6.jpeg`,
               `${S3_BASE}/Event9.jpeg`,
+              `${S3_BASE}/Party3.jpeg`,
+              `${S3_BASE}/Event5.jpeg`,
               `${S3_BASE}/Event10.jpeg`,
               `${S3_BASE}/Event11.jpeg`,
             ].map((img, idx) => (

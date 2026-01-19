@@ -67,7 +67,7 @@ export default function EventsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               `${S3_BASE}/Event18.jpeg`,
-              `${S3_BASE}/Event5.jpeg`,
+              `${S3_BASE}/Party2.jpeg`,
               `${S3_BASE}/Event6.jpeg`,
               `${S3_BASE}/Event9.jpeg`,
               `${S3_BASE}/Event10.jpeg`,
@@ -91,7 +91,7 @@ export default function EventsPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               `${S3_BASE}/Event12.jpeg`,
-              `${S3_BASE}/Event13.jpeg`,
+              `${S3_BASE}/Party1.jpeg`,
               `${S3_BASE}/Event15.jpeg`,
               `${S3_BASE}/Events4.jpeg`,
               `${S3_BASE}/Event5.jpeg`,
