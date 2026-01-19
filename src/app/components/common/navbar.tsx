@@ -31,7 +31,7 @@ export default function Navbar() {
     { name: "Events & Meetings", href: "/events" },
     { name: "Wellness", href: "/wellness" },
     { name: "Fitness", href: "/fitness" },
-    { name: "Experiences & Activities", href: "/experience_activities" },
+    { name: "Experiences", href: "/experience" },
     { name: "Gallery", href: "/gallery" },
     { name: "Virtual Tour", href: "/Virtual-tour" },
   ];
@@ -123,7 +123,7 @@ export default function Navbar() {
             aria-hidden="true"
           />
           {/* Slide-in Menu */}
-          <nav className="fixed top-0 right-0 h-full w-4/5 max-w-xs bg-[#18120E] z-50 shadow-lg px-6 py-8 flex flex-col space-y-4 animate-slide-in">
+          <nav className="fixed top-0 right-0 h-full w-4/5 max-w-xs bg-[#5A2E00] z-50 shadow-lg px-6 py-8 flex flex-col space-y-4 animate-slide-in">
             <button
               onClick={() => setIsMenuOpen(false)}
               className="self-end mb-4 text-[var(--brand-light-brown)] hover:text-white p-2 focus:outline-none"
