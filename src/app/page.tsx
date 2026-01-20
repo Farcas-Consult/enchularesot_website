@@ -171,9 +171,9 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-              `${S3_BASE}/Event1.jpeg`,
-              `${S3_BASE}/Event3.jpeg`,
-              `${S3_BASE}/Event2.jpeg`,
+              `${S3_BASE}/Conference4.jpg`,
+              `${S3_BASE}/Conference2.jpg`,
+              `${S3_BASE}/Conference3.jpg`,
             ].map((img, idx) => (
               <Image
                 key={idx}
@@ -196,11 +196,14 @@ export default function Home() {
           <div className="flex flex-wrap justify-center gap-4">
             {[
               `${S3_BASE}/Event18.jpeg`,
-              `${S3_BASE}/Event9.jpeg`,
+              `${S3_BASE}/Event1.jpeg`,
               `${S3_BASE}/Party3.jpeg`,
-              `${S3_BASE}/Event5.jpeg`,
-              `${S3_BASE}/Event10.jpeg`,
+              `${S3_BASE}/Event2.jpeg`,
+              `${S3_BASE}/Event13.jpeg`,
               `${S3_BASE}/Event11.jpeg`,
+              `${S3_BASE}/Event7.jpeg`,
+              `${S3_BASE}/Event5.jpeg`,
+              `${S3_BASE}/Event14.jpeg`,
             ].map((img, idx) => (
               <Image
                 key={idx}
@@ -222,11 +225,9 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             {[
-               `${S3_BASE}/Event12.jpeg`,
-              `${S3_BASE}/Party1.jpeg`,
-              `${S3_BASE}/Event15.jpeg`,
-              `${S3_BASE}/Events4.jpeg`,
-              `${S3_BASE}/Event5.jpeg`,
+               `${S3_BASE}/Team1.jpeg`,
+              `${S3_BASE}/Team2.jpeg`,
+             
             ].map((img, idx) => (
               <Image
                 key={idx}
@@ -240,9 +241,7 @@ export default function Home() {
           </div>
         </div>
 
-        <a href="/events" className="mt-6 inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
-          Explore Event Options
-        </a>
+      
       </section>
       <div className="w-full h-0.5 bg-linear-to-r from-[var(--brand-secondary-maroon)]/0 via-[var(--brand-secondary-maroon)]/60 to-[var(--brand-secondary-maroon)]/0 my-8" />
 
@@ -253,13 +252,7 @@ export default function Home() {
           Savor delicious cuisine in our bright, inviting restaurants and bars, offering local and international flavors.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
-          <Image
-            src={`${S3_BASE}/Dining2.jpg`}
-            alt="Restaurant Interior"
-            width={540}
-            height={340}
-            className="rounded-xl shadow-md"
-          />
+         
           <Image
             src={`${S3_BASE}/Dining4.jpg`}
             alt="Bar Lounge"
@@ -282,9 +275,10 @@ export default function Home() {
             className="rounded-xl shadow-md"
           />
         </div>
-        <a href="/dinings" className="mt-8 inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
+       <a href="/dinings" className="mt-8 inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
           Explore
         </a>
+      
       </section>
       <div className="w-full h-0.5 bg-linear-to-r from-[var(--brand-secondary-maroon)]/0 via-[var(--brand-secondary-maroon)]/60 to-[var(--brand-secondary-maroon)]/0 my-8" />
 
@@ -373,9 +367,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex justify-center mt-10">
-            <a href="/experience_activities" className="inline-block px-8 py-3 rounded-full font-bold text-[#4A2400] shadow-md" style={{ backgroundColor: '#FFD3A3' }}>
-              Explore All Experiences
-            </a>
+           
           </div>
         </div>
       </section>
@@ -383,22 +375,22 @@ export default function Home() {
 
       {/* Case Reviews */}
       <section className="bg-white py-20 px-4 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-center" style={{ color: '#8F5F2F' }}>Case Reviews</h2>
+        <h2 className="text-4xl font-bold mb-6 text-center" style={{ color: '#8F5F2F' }}>Guest Reviews</h2>
         <p className="max-w-2xl mx-auto text-lg mb-8 text-center" style={{ color: '#B99A66' }}>
           Hear from our guests and see real-world experiences at Enchula Resort.
         </p>
         {/* Stats Bar */}
         <div className="flex flex-wrap justify-center gap-6 mb-10">
           <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30">
-            <div className="text-3xl font-bold text-[#800000] mb-1">4.8/5</div>
+            <div className="text-3xl font-bold text-[#D7BFA8] mb-1">4.8/5</div>
             <div className="text-[#D7BFA8] text-sm">Average Rating</div>
           </div>
           <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30">
-            <div className="text-3xl font-bold text-[#800000] mb-1">200+</div>
+            <div className="text-3xl font-bold text-[#D7BFA8] mb-1">200+</div>
             <div className="text-[#D7BFA8] text-sm">Happy Guests</div>
           </div>
           <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30">
-            <div className="text-3xl font-bold text-[#800000] mb-1">98%</div>
+            <div className="text-3xl font-bold text-[#D7BFA8] mb-1">98%</div>
             <div className="text-[#D7BFA8] text-sm">Would Recommend</div>
           </div>
         </div>
