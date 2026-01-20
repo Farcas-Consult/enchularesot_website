@@ -9,7 +9,7 @@ const Exterior1 = `${S3_BASE}/IMG_2422.webp`;
 const Environment1 = `${S3_BASE}/IMG_2257.webp`;
 const Entrance1 = `${S3_BASE}/IMG_2256.webp`;
 const Exterior2 = `${S3_BASE}/Surrounding1.jpg`;
-const Conference = `${S3_BASE}/Conference4.jpg`;
+const Conference = `${S3_BASE}/Event1.jpeg`;
 
 const slides = [
   {
@@ -34,8 +34,8 @@ const slides = [
   },
   {
     src: Conference,
-    title: "Unforgettable Memories",
-    subtitle: "Create moments that last a lifetime",
+    title: "Your Events Partners",
+    subtitle: "Host unforgettable events with us",
   },
 ];
 
