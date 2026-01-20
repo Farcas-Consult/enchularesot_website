@@ -56,14 +56,14 @@ const rooms = [
     id: 1,
     name: "Standard  Room",
     price: "From Kshs. 10,000",
-    image: `${S3_BASE}/Room6.jpg`,
+    image: `${S3_BASE}/Room8.jpg`,
     anchor: "standard-double-room",
   },
   {
     id: 2,
     name: "Twin Room",
     price: "From Kshs. 10,000",
-    image: `${S3_BASE}/Room8.jpg`,
+    image: `${S3_BASE}/Room6.jpg`,
     anchor: "twin-room",
   },
   {
