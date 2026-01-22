@@ -80,6 +80,15 @@ export default function EventsPage() {
               `${S3_BASE}/Event18.jpeg`,
               `${S3_BASE}/Party2.jpeg`,
               `${S3_BASE}/Event6.jpeg`,
+              `${S3_BASE}/Events4.jpeg`,
+              `${S3_BASE}/Event7.jpeg`,
+              `${S3_BASE}/Party3.jpeg`,
+              `${S3_BASE}/Event8.jpeg`,
+              `${S3_BASE}/Event13.jpeg`,
+              `${S3_BASE}/Event11.jpeg`,
+              `${S3_BASE}/Event9.jpeg`,
+              `${S3_BASE}/Event5.jpeg`,
+              `${S3_BASE}/Event10.jpeg`,
             ].map((img, idx) => (
               <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
                 <Image

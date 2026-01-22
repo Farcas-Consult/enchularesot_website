@@ -12,7 +12,7 @@ export default function WellnessFitnessPage() {
                 src={`${S3_BASE}/IMG_2174.webp`}
                 alt="Gym Hero"
                 fill
-                className="absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-3000 ease-in-out opacity-100 z-10"
+                      className="absolute inset-0 w-full h-full object-cover object-center z-10"
                 sizes="100vw"
                 priority
               />
@@ -27,7 +27,7 @@ export default function WellnessFitnessPage() {
                       src={`${S3_BASE}/IMG_2173.webp`}
                       alt="Gym Equipment"
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       priority={false}
                     />
@@ -48,13 +48,13 @@ export default function WellnessFitnessPage() {
                       src={`${S3_BASE}/IMG_2160.webp`}
                       alt="Fitness Classes"
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       priority={false}
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
                     <div className="absolute bottom-4 left-4 right-4">
-                      <h4 className="text-xl font-serif font-bold text-[#B99A66]" style={{ fontFamily: 'Lora, serif' }}>Classes</h4>
+                      <h4 className="text-xl font-serif font-bold text-[#B99A66]" style={{ fontFamily: 'Lora, serif' }}>Aerobic</h4>
                     </div>
                   </div>
                   <div className="p-6">
@@ -69,7 +69,7 @@ export default function WellnessFitnessPage() {
                       src={`${S3_BASE}/IMG_2171.webp`}
                       alt="Personal Training"
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       priority={false}
                     />
@@ -92,10 +92,10 @@ export default function WellnessFitnessPage() {
                 Ready to start your fitness journey?
               </p>
               <Link
-                href="/booking"
+                href="/gym-subscriptions"
                 className="inline-flex items-center gap-3 bg-[#FFD3A3] hover:bg-[#8F5F2F] text-[#4A2400] hover:text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#8F5F2F]"
               >
-                Book Your Fitness Session
+                View Gym Membership Packages
               </Link>
             </div>
             {/* Spa & Wellness Services Section */}
@@ -111,7 +111,7 @@ export default function WellnessFitnessPage() {
                       src={`${S3_BASE}/Massage.webp`}
                       alt="Massage Therapy"
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
@@ -132,7 +132,7 @@ export default function WellnessFitnessPage() {
                       src={`${S3_BASE}/Sauna.webp`}
                       alt="Sauna & Steam Room"
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
@@ -153,7 +153,7 @@ export default function WellnessFitnessPage() {
                       src={`${S3_BASE}/Herbal.webp`}
                       alt="Herbal Teas and Infusions"
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-[#2C1B16] via-transparent to-transparent"></div>
@@ -181,7 +181,7 @@ export default function WellnessFitnessPage() {
                       src={`${S3_BASE}/Facial.webp`}
                       alt="Facial Treatments"
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
@@ -196,7 +196,7 @@ export default function WellnessFitnessPage() {
                       src={`${S3_BASE}/BodyScrubs.webp`}
                       alt="Body Scrubs"
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
@@ -211,7 +211,7 @@ export default function WellnessFitnessPage() {
                       src={`${S3_BASE}/Reflexology.webp`}
                       alt="Reflexology"
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-cover"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
@@ -222,67 +222,13 @@ export default function WellnessFitnessPage() {
                 </div>
               </div>
             </div>
-            {/* Wellness Packages */}
-            <div className="bg-white rounded-2xl p-8 border border-[#5C4033]/20 shadow-lg mb-12 w-full px-4 max-w-7xl mx-auto">
-              <h4 className="text-3xl font-serif font-bold text-[#2E1A15] mb-6 text-center" style={{ fontFamily: 'Lora, serif' }}>
-                Wellness Packages
-              </h4>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
-                  <h5 className="text-xl font-serif font-bold text-[#A04040] mb-4" style={{ fontFamily: 'Lora, serif' }}>Half-Day Retreat</h5>
-                  <ul className="space-y-2 text-[#5C4033] text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#A04040] mt-0.5">✓</span>
-                      <span>60-minute massage of your choice</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#A04040] mt-0.5">✓</span>
-                      <span>Facial treatment</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#A04040] mt-0.5">✓</span>
-                      <span>Sauna & steam access</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#A04040] mt-0.5">✓</span>
-                      <span>Healthy lunch included</span>
-                    </li>
-                  </ul>
-                </div>
-                <div className="bg-[#F8F3EF] p-6 rounded-xl border border-[#5C4033]/10">
-                  <h5 className="text-xl font-serif font-bold text-[#A04040] mb-4" style={{ fontFamily: 'Lora, serif' }}>Full-Day Escape</h5>
-                  <ul className="space-y-2 text-[#5C4033] text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#A04040] mt-0.5">✓</span>
-                      <span>90-minute aromatherapy massage</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#A04040] mt-0.5">✓</span>
-                      <span>Body scrub & facial</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#A04040] mt-0.5">✓</span>
-                      <span>Yoga & meditation session</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#A04040] mt-0.5">✓</span>
-                      <span>All-day spa access</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-[#A04040] mt-0.5">✓</span>
-                      <span>Lunch & wellness teas</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
             {/* Testimonial */}
             <div className="bg-white rounded-2xl p-8 border border-[#5C4033]/20 shadow-lg text-center mb-12 w-full px-4 max-w-7xl mx-auto">
               <h6 className="text-2xl font-serif font-bold text-[#2E1A15] mb-4" style={{ fontFamily: 'Lora, serif' }}>What Our Guests Say</h6>
               <p className="text-[#5C4033] text-lg italic" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
                 “The massage was heavenly and the yoga sessions helped me truly unwind. I left feeling completely rejuvenated!”
               </p>
-              <p className="text-[#A04040] mt-3" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>— Sarah M., Nairobi</p>
+              <p className="text-[#8F5F2F] mt-3" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>— Sarah M., Nairobi</p>
             </div>
             {/* Call to Action for Wellness */}
             <div className="text-center mb-16 w-full px-4 max-w-7xl mx-auto">
@@ -291,7 +237,7 @@ export default function WellnessFitnessPage() {
               </p>
               <Link
                 href="/booking"
-                className="inline-flex items-center gap-3 bg-[#D2BB9E] hover:bg-[#741F31] text-[#741F31] hover:text-[#D2BB9E] font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#741F31]"
+                className="inline-flex items-center gap-3 bg-[#D2BB9E] hover:bg-[#8F5F2F] text-[#4A2400] hover:text-[#D2BB9E] font-semibold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-[#8F5F2F]"
               >
                 Book Your Wellness Session
               </Link>
