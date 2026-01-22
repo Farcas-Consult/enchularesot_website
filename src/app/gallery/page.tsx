@@ -17,9 +17,6 @@ import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
-const GalleryBg1 = `${S3_BASE}/Marriage1.webp`;
-const GalleryBg2 = `${S3_BASE}/Birthday2.webp`;
-const GalleryBg3 = `${S3_BASE}/IMG_2383.webp`;
 const Outside = `${S3_BASE}/IMG_2272.webp`;
 const Inside = `${S3_BASE}/IMG_2275.webp`;
 const Exterior = `${S3_BASE}/IMG_3457.webp`;
@@ -48,13 +45,34 @@ export default function Gallery() {
                     { src: `${S3_BASE}/Surroundings2.jpg`, alt: "Surroundings 2", category: "Surroundings" },
                     { src: `${S3_BASE}/Surroundings3.jpg`, alt: "Surroundings 3", category: "Surroundings" },
                     { src: `${S3_BASE}/Surroundings5.jpg`, alt: "Surroundings 5", category: "Surroundings" },
-                  { src: `${S3_BASE}/Pathway1.jpg`, alt: "Pathway 1", category: "Pathway" },
+                  { src: `${S3_BASE}/Pathway1.jpg`, alt: "Pathway 1", category: "Surroundings" },
                   { src: `${S3_BASE}/Reception1.jpg`, alt: "Reception 1", category: "Reception" },
-                { src: `${S3_BASE}/Conference1.jpg`, alt: "Conference 1", category: "Conference" },
-                { src: `${S3_BASE}/Conference2.jpg`, alt: "Conference 2", category: "Conference" },
-                { src: `${S3_BASE}/Conference3.jpg`, alt: "Conference 3", category: "Conference" },
-                { src: `${S3_BASE}/Conference4.jpg`, alt: "Conference 4", category: "Conference" },
-              { src: `${S3_BASE}/Breakfast1.jpg`, alt: "Breakfast 1", category: "Breakfast" },
+                { src: `${S3_BASE}/Conference1.jpg`, alt: "Conference 1", category: "Conference & Events" },
+                { src: `${S3_BASE}/Conference2.jpg`, alt: "Conference 2", category: "Conference & Events" },
+                { src: `${S3_BASE}/Conference3.jpg`, alt: "Conference 3", category: "Conference & Events" },
+                { src: `${S3_BASE}/Conference4.jpg`, alt: "Conference 4", category: "Conference & Events" },
+                { src: `${S3_BASE}/Event2.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                { src: `${S3_BASE}/Event1.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                { src: `${S3_BASE}/Event3.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                 { src: `${S3_BASE}/Events4.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                  { src: `${S3_BASE}/Event5.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                   { src: `${S3_BASE}/Event6.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                    { src: `${S3_BASE}/Event18.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                     { src: `${S3_BASE}/Event15.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                      { src: `${S3_BASE}/Event8.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                       { src: `${S3_BASE}/Event9.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                   { src: `${S3_BASE}/Event7.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                    { src: `${S3_BASE}/Event11.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                     { src: `${S3_BASE}/Party3.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                      { src: `${S3_BASE}/Event13.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                       { src: `${S3_BASE}/Event17.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                        { src: `${S3_BASE}/Event16.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                         { src: `${S3_BASE}/Event10.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                          { src: `${S3_BASE}/Team2.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                           { src: `${S3_BASE}/Team1.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                            { src: `${S3_BASE}/Event12.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+                             { src: `${S3_BASE}/Party2.jpeg`, alt: "Conference 4", category: "Conference & Events" },
+            
             { src: `${S3_BASE}/Bar1.jpg`, alt: "Bar 1", category: "Bar" },
             { src: `${S3_BASE}/Bar2.jpg`, alt: "Bar 2", category: "Bar" },
           { src: `${S3_BASE}/Room1.jpg`, alt: "Room 1", category: "Rooms" },
@@ -73,6 +91,7 @@ export default function Gallery() {
         { src: `${S3_BASE}/Dining4.jpg`, alt: "Dining 4", category: "Dining" },
         { src: `${S3_BASE}/Dining5.jpg`, alt: "Dining 5", category: "Dining" },
         { src: `${S3_BASE}/Dining6.jpg`, alt: "Dining 6", category: "Dining" },
+        { src: `${S3_BASE}/Breakfast1.jpg`, alt: "Breakfast 1", category: "Dining" },
       // ...existing images...
     { src: Outside, alt: "Luxury Resort Exterior", category: "Exterior" },
     { src: Room1, alt: "Elegant Retreat", category: "Rooms" },
@@ -111,6 +130,9 @@ export default function Gallery() {
     setSelectedImage(galleryImages[nextIndex]);
   };
 
+  // Get unique categories
+  const categories = Array.from(new Set(galleryImages.map(img => img.category)));
+
   return (
     <section id="gallery" className="py-24 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -122,24 +144,29 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 p-0 m-0">
-          {galleryImages.map((image, index) => (
-            <div
-              key={index}
-              className="group relative cursor-pointer overflow-hidden aspect-square p-0 m-0"
-              onClick={() => setSelectedImage(image)}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                priority={index < 6}
-              />
+        {/* Grouped Gallery Grids */}
+        {categories.map((category) => (
+          <div key={category} className="mb-12">
+            <h3 className="text-2xl font-bold text-[#B99A66] mb-6 mt-10 capitalize">{category}</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 p-0 m-0">
+              {galleryImages.filter(img => img.category === category).map((image, index) => (
+                <div
+                  key={image.src}
+                  className="group relative cursor-pointer overflow-hidden aspect-square p-0 m-0"
+                  onClick={() => setSelectedImage(image)}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                    priority={index < 6}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
 
         {/* Stats Section */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">

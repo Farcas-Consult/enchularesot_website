@@ -195,12 +195,7 @@ export default function VirtualTourPage() {
         ))}
       </nav>
 
-      {/* Section Content */}
-      <div className="w-full flex flex-col items-center justify-center py-8 bg-gradient-to-b from-[#f8f3ef] to-white">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-2 text-center font-serif" style={{ fontFamily: 'Lora, serif' }}>Explore Your Private Oasis</h1>
-        <p className="text-lg md:text-xl text-[#4A2400] max-w-2xl text-center mb-2" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Step inside Enchula Resort and discover every corner before you arrive.</p>
-      </div>
-
+      {/* Section Content: Only Images and Gallery Dots */}
       {sections.map((section) => (
         <div key={section.id} id={section.id} className={`w-full min-h-[60vh] flex flex-col justify-center items-center ${activeSection === section.id ? '' : 'hidden'}`}>
           <div className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
@@ -238,8 +233,6 @@ export default function VirtualTourPage() {
               </div>
             )}
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#B99A66] mt-8 mb-4 text-center bg-white/80 px-4 py-2 rounded-xl shadow-lg">{section.label}</h2>
-          <p className="text-[#4A2400] mb-6 text-center bg-white/80 px-4 py-2 rounded-xl shadow">{section.info}</p>
         </div>
       ))}
 

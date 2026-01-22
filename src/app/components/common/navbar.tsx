@@ -68,7 +68,7 @@ export default function Navbar() {
           </div>
           {/* Book button on far right */}
           <div className="order-3">
-            <Link href="/booking" className="px-5 py-2 bg-white text-[#741F31] font-bold rounded shadow hover:bg-[#741F31] hover:text-white transition-colors text-xs tracking-widest uppercase font-nunito" style={{letterSpacing: '0.12em'}}>BOOK</Link>
+            <Link href="/booking" className="px-5 py-2 bg-white text-[#B99A66] font-bold rounded shadow hover:bg-[#B99A66] hover:text-white transition-colors text-xs tracking-widest uppercase font-nunito" style={{letterSpacing: '0.12em'}}>BOOK</Link>
           </div>
         </div>
         {/* Contact icons under logo row */}
