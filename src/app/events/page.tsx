@@ -25,13 +25,13 @@ export default function EventsPage() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header with Badge */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/10 backdrop-blur-sm rounded-full border border-[#800000]/10">
+          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/10 backdrop-blur-sm rounded-full border border-[#8F5F2F]]/10">
             <span className="text-[#B99A66] font-semibold tracking-wide text-sm uppercase">
               EVENTS
             </span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-6 leading-tight font-lora">
-            Your <span className="bg-linear-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Special Moments</span>, Our Serene Setting
+            Your <span className="">Special Moments</span>, Our Serene Setting
           </h2>
           <p className="text-lg text-[#4A2400] max-w-3xl mx-auto font-nunito">
             Social Events | Corporate Events - Event Planning, Event Decor, Catering
@@ -41,7 +41,7 @@ export default function EventsPage() {
         {/* Corporate Events Section */}
         <div className="mb-20">
           <div className="text-center mb-10">
-            <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/10 rounded-full border border-[#800000]/10">
+            <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/10 rounded-full border border-[#8F5F2F]/10">
               <span className="text-[#B99A66] font-semibold tracking-wide text-sm uppercase">CORPORATE EVENTS</span>
             </div>
             <h3 className="text-3xl md:text-4xl font-bold text-[#8F5F2F] mb-4 font-lora">Professional Retreats & Conferences</h3>

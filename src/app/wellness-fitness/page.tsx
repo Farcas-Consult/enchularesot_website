@@ -121,7 +121,7 @@ export default function WellnessFitnessPage() {
                   </div>
                   <div className="p-6">
                     <p className="text-[#4A2400] mb-4 text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
-                      Swedish, deep tissue, aromatherapy, and hot stone massages. Each session is tailored to your needs.
+                      Relaxing massages tailored for you.
                     </p>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ export default function WellnessFitnessPage() {
                   </div>
                   <div className="p-6">
                     <p className="text-[#4A2400] mb-4 text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
-                      Detoxify and relax in our sauna and steam rooms. Unwind after a long day or enhance your spa experience.
+                      Detox and unwind in our sauna.
                     </p>
                   </div>
                 </div>
@@ -163,7 +163,7 @@ export default function WellnessFitnessPage() {
                   </div>
                   <div className="p-6">
                     <p className="text-[#4A2400] mb-4 text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
-                      Complimentary wellness teas available throughout the day. Locally sourced herbs and botanicals.
+                      Enjoy complimentary wellness teas.
                     </p>
                   </div>
                 </div>

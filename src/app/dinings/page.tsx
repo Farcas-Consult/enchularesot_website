@@ -7,20 +7,7 @@ import Image from "next/image";
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 export default function DiningPage() {
-  // Hero carousel images
-  const backgroundImages = [
-    `${S3_BASE}/Dining1.jpg`,
-    `${S3_BASE}/Dining4.jpg`,
-  ];
-  const [currentBg, setCurrentBg] = useState(0);
-
-  // Auto-rotate background images
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentBg((prev) => (prev + 1) % backgroundImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [backgroundImages.length]);
+  // Only one hero image
 
   const whatsappMessage = encodeURIComponent(
     "Hello Enchula Resort, I'd like to reserve a table or inquire about dining options."
@@ -29,26 +16,15 @@ export default function DiningPage() {
 
   return (
     <section id="dining" className="relative min-h-screen bg-(--brand-background) font-nunito">
-      {/* Hero Banner Carousel */}
+      {/* Hero Banner Single Image */}
       <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
-        {backgroundImages.map((img, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentBg ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-            style={{ backgroundImage: `url(${img})` }}
-          />
-        ))}
-        {/* Carousel indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
-          {backgroundImages.map((_, idx) => (
-            <button
-              key={idx}
-              className={`w-3 h-3 rounded-full border border-white ${currentBg === idx ? 'bg-(--brand-secondary-maroon)' : 'bg-white/40'} transition-all`}
-              onClick={() => setCurrentBg(idx)}
-              aria-label={`Go to slide ${idx + 1}`}
-            />
-          ))}
-        </div>
+        <Image
+          src={`${S3_BASE}/Dining1.jpg`}
+          alt="Dining Hero"
+          fill
+          className="object-cover absolute inset-0 w-full h-full z-10"
+          priority
+        />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

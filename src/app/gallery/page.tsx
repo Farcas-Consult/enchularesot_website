@@ -41,12 +41,13 @@ interface GalleryImage {
 
 export default function Gallery() {
   const galleryImages: GalleryImage[] = [
-                      { src: `${S3_BASE}/Surrounding1.jpg`, alt: "Surroundings 1", category: "Surroundings" },
-                    { src: `${S3_BASE}/Surroundings2.jpg`, alt: "Surroundings 2", category: "Surroundings" },
-                    { src: `${S3_BASE}/Surroundings3.jpg`, alt: "Surroundings 3", category: "Surroundings" },
-                    { src: `${S3_BASE}/Surroundings5.jpg`, alt: "Surroundings 5", category: "Surroundings" },
-                  { src: `${S3_BASE}/Pathway1.jpg`, alt: "Pathway 1", category: "Surroundings" },
-                  { src: `${S3_BASE}/Reception1.jpg`, alt: "Reception 1", category: "Reception" },
+                      { src: `${S3_BASE}/Surrounding1.jpg`, alt: "Surroundings 1", category: "Interior" },
+                    { src: `${S3_BASE}/Surroundings2.jpg`, alt: "Surroundings 2", category: "Interior" },
+                    { src: `${S3_BASE}/Surroundings3.jpg`, alt: "Surroundings 3", category: "Interior" },
+                    { src: `${S3_BASE}/Surroundings5.jpg`, alt: "Surroundings 5", category: "Interior" },
+                  { src: `${S3_BASE}/Pathway1.jpg`, alt: "Pathway 1", category: "Interior" },
+                  { src: `${S3_BASE}/IMG_2256.webp`, alt: "Pathway 1", category: "Interior" },
+                  { src: `${S3_BASE}/Reception1.jpg`, alt: "Reception 1", category: "Interior" },
                 { src: `${S3_BASE}/Conference1.jpg`, alt: "Conference 1", category: "Conference & Events" },
                 { src: `${S3_BASE}/Conference2.jpg`, alt: "Conference 2", category: "Conference & Events" },
                 { src: `${S3_BASE}/Conference3.jpg`, alt: "Conference 3", category: "Conference & Events" },
@@ -93,21 +94,39 @@ export default function Gallery() {
         { src: `${S3_BASE}/Dining6.jpg`, alt: "Dining 6", category: "Dining" },
         { src: `${S3_BASE}/Breakfast1.jpg`, alt: "Breakfast 1", category: "Dining" },
       // ...existing images...
-    { src: Outside, alt: "Luxury Resort Exterior", category: "Exterior" },
+    { src: Outside, alt: "Luxury Resort Exterior", category: "Interior" },
     { src: Room1, alt: "Elegant Retreat", category: "Rooms" },
-    { src: Birthroom1, alt: "Modern Washroom", category: "Bathrooms" },
-    { src: Swimmingpool, alt: "Infinity Pool", category: "Amenities" },
+    { src: Birthroom1, alt: "Modern Washroom", category: "Rooms" },
+    { src: Swimmingpool, alt: "Infinity Pool", category: "Fun and Activities" },
     { src: Breakfast, alt: "Gourmet Cuisine", category: "Dining" },
-    { src: Inside, alt: "Tranquil Haven", category: "Exterior" },
+    { src: Inside, alt: "Tranquil Haven", category: "Interior" },
     { src: Room2, alt: "Bedroom Suite", category: "Rooms" },
-    { src: Birthroom2, alt: "Modern Bathroom", category: "Bathrooms" },
-    { src: Gym, alt: "Fitness Center", category: "Amenities" },
+    { src: Birthroom2, alt: "Modern Bathroom", category: "Rooms" },
+    { src: Gym, alt: "Fitness Center", category: "Wellness & Fitness" },
     { src: Table, alt: "Fine Dining", category: "Dining" },
-    { src: Exterior, alt: "Scenic Retreat", category: "Exterior" },
+    { src: Exterior, alt: "Scenic Retreat", category: "Interior" },
     { src: Room3, alt: "Presidential Suite", category: "Rooms" },
-    { src: Birthroom3, alt: "Luxury Bathroom", category: "Bathrooms" },
-    { src: Spa, alt: "Wellness Spa", category: "Amenities" },
+    { src: Birthroom3, alt: "Luxury Bathroom", category: "Interior" },
+    { src: Spa, alt: "Wellness Spa", category: "Wellness & Fitness" },
     { src: Food, alt: "Elegant Meals", category: "Dining" },
+    // Wellness & Fitness images
+    { src: `${S3_BASE}/IMG_2174.webp`, alt: "Gym Hero", category: "Wellness & Fitness" },
+    { src: `${S3_BASE}/IMG_2160.webp`, alt: "Fitness Classes", category: "Wellness & Fitness" },
+    { src: `${S3_BASE}/IMG_2171.webp`, alt: "Personal Training", category: "Wellness & Fitness" },
+    { src: `${S3_BASE}/Massage.webp`, alt: "Massage Therapy", category: "Wellness & Fitness" },
+    { src: `${S3_BASE}/Sauna.webp`, alt: "Sauna & Steam Room", category: "Wellness & Fitness" },
+    { src: `${S3_BASE}/Herbal.webp`, alt: "Herbal Teas and Infusions", category: "Wellness & Fitness" },
+    { src: `${S3_BASE}/Facial.webp`, alt: "Facial Treatments", category: "Wellness & Fitness" },
+    { src: `${S3_BASE}/BodyScrubs.webp`, alt: "Body Scrubs", category: "Wellness & Fitness" },
+    // Fun and Activities images
+    { src: `${S3_BASE}/Team2.jpeg`, alt: "Team Building 2", category: "Fun and Activities" },
+    { src: `${S3_BASE}/Team1.jpeg`, alt: "Team Building 1", category: "Fun and Activities" },
+    { src: `${S3_BASE}/Swimmingpool1_result.png`, alt: "Swimming Pool View 1", category: "Fun and Activities" },
+    { src: `${S3_BASE}/Swimmingpool2_result.png`, alt: "Swimming Pool View 2", category: "Fun and Activities" },
+    { src: `${S3_BASE}/IMG_3394.webp`, alt: "Games Area 1", category: "Fun and Activities" },
+    { src: `${S3_BASE}/IMG_2450.webp`, alt: "Games Area 2", category: "Fun and Activities" },
+    { src: `${S3_BASE}/IMG_2277.webp`, alt: "Kids Activities 1", category: "Fun and Activities" },
+    { src: `${S3_BASE}/IMG_2380.webp`, alt: "Kids Activities 2", category: "Fun and Activities" },
   ];
 
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
@@ -151,7 +170,7 @@ export default function Gallery() {
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 p-0 m-0">
               {galleryImages.filter(img => img.category === category).map((image, index) => (
                 <div
-                  key={image.src}
+                  key={image.src + '-' + index}
                   className="group relative cursor-pointer overflow-hidden aspect-square p-0 m-0"
                   onClick={() => setSelectedImage(image)}
                 >

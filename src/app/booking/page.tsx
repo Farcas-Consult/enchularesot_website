@@ -241,7 +241,7 @@ const BookingPage = () => {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-extrabold text-[#8F5F2F] mb-6 leading-tight drop-shadow-sm font-lora">
-            Reserve Your <span className="bg-linear-to-r from-[#8F5F2F] via-[#B99A66] to-[#FFD3A3] bg-clip-text text-transparent font-extrabold font-lora">Experience</span>
+            Reserve Your <span className="font-extrabold font-lora text-[#8F5F2F]">Experience</span>
           </h1>
           <p className="text-lg text-[#4A2400] font-bold drop-shadow-sm font-nunito">
             Nairobi-Namanga Rd, Kajiado • Check-in: 12:00 PM • Check-out: 10:30 AM

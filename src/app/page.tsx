@@ -134,22 +134,24 @@ export default function Home() {
         <p className="text-lg text-center mb-8 max-w-2xl mx-auto" style={{ color: '#B99A66', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
           Discover our selection of comfortable, stylish rooms designed for relaxation and a memorable stay.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-7xl mx-auto">
-          {rooms.map((room) => (
-            <div
-              key={room.id}
-              className="relative rounded-xl shadow-md overflow-hidden group h-[420px] md:h-[520px] w-full max-w-[520px] mx-auto"
-            >
-              <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full" />
-              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end px-8 pb-8 pt-32 transition-opacity duration-300 group-hover:opacity-100">
-                <h3 className="text-2xl font-bold mb-2 drop-shadow-lg font-serif" style={{ color: '#FFFFFF', fontFamily: 'Lora, serif' }}>{room.name}</h3>
-                <div className="text-lg font-semibold mb-4 drop-shadow" style={{ color: '#B99A66', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>{room.price}</div>
-                <Link href={`/rooms#${room.anchor}`} className="inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
-                  Explore
-                </Link>
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-7xl mx-auto">
+            {rooms.map((room) => (
+              <div
+                key={room.id}
+                className="relative rounded-xl shadow-md overflow-hidden group h-[420px] md:h-[520px] w-full max-w-[520px] mx-auto"
+              >
+                <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end px-8 pb-8 pt-32 transition-opacity duration-300 group-hover:opacity-100">
+                  <h3 className="text-2xl font-bold mb-2 drop-shadow-lg font-serif" style={{ color: '#FFFFFF', fontFamily: 'Lora, serif' }}>{room.name}</h3>
+                  <div className="text-lg font-semibold mb-4 drop-shadow" style={{ color: '#B99A66', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>{room.price}</div>
+                  <Link href={`/rooms#${room.anchor}`} className="inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
+                    Explore
+                  </Link>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
       <div className="w-full h-0.5 bg-linear-to-r from-[#A9745B]/0 via-[#A9745B]/60 to-[#A9745B]/0 my-8" />
@@ -169,21 +171,23 @@ export default function Home() {
           <p className="text-base mb-6" style={{ color: '#4A2400' }}>
             Host your next retreat or conference in our modern, fully equipped venues designed for productivity and inspiration.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              `${S3_BASE}/Conference4.jpg`,
-              `${S3_BASE}/Conference2.jpg`,
-              `${S3_BASE}/Conference3.jpg`,
-            ].map((img, idx) => (
-              <Image
-                key={idx}
-                src={img}
-                alt={`Retreat or conference ${idx + 1}`}
-                width={380}
-                height={240}
-                className="rounded-xl shadow-md object-cover"
-              />
-            ))}
+          <div className="container mx-auto">
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                `${S3_BASE}/Conference4.jpg`,
+                `${S3_BASE}/Conference2.jpg`,
+                `${S3_BASE}/Conference3.jpg`,
+              ].map((img, idx) => (
+                <Image
+                  key={idx}
+                  src={img}
+                  alt={`Retreat or conference ${idx + 1}`}
+                  width={380}
+                  height={240}
+                  className="rounded-xl shadow-md object-cover"
+                />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -193,27 +197,29 @@ export default function Home() {
           <p className="text-base mb-6" style={{ color: '#4A2400' }}>
             Celebrate milestones, host business meetings, or enjoy memorable social gatherings with our tailored event services.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              `${S3_BASE}/Event18.jpeg`,
-              `${S3_BASE}/Event1.jpeg`,
-              `${S3_BASE}/Party3.jpeg`,
-              `${S3_BASE}/Event2.jpeg`,
-              `${S3_BASE}/Event13.jpeg`,
-              `${S3_BASE}/Event11.jpeg`,
-              `${S3_BASE}/Event7.jpeg`,
-              `${S3_BASE}/Event5.jpeg`,
-              `${S3_BASE}/Event14.jpeg`,
-            ].map((img, idx) => (
-              <Image
-                key={idx}
-                src={img}
-                alt={`Corporate or social event ${idx + 1}`}
-                width={380}
-                height={240}
-                className="rounded-xl shadow-md object-cover"
-              />
-            ))}
+          <div className="container mx-auto">
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                `${S3_BASE}/Event18.jpeg`,
+                `${S3_BASE}/Event1.jpeg`,
+                `${S3_BASE}/Party3.jpeg`,
+                `${S3_BASE}/Event2.jpeg`,
+                `${S3_BASE}/Event13.jpeg`,
+                `${S3_BASE}/Event11.jpeg`,
+                `${S3_BASE}/Event7.jpeg`,
+                `${S3_BASE}/Event5.jpeg`,
+                `${S3_BASE}/Event14.jpeg`,
+              ].map((img, idx) => (
+                <Image
+                  key={idx}
+                  src={img}
+                  alt={`Corporate or social event ${idx + 1}`}
+                  width={380}
+                  height={240}
+                  className="rounded-xl shadow-md object-cover"
+                />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -223,21 +229,23 @@ export default function Home() {
           <p className="text-base mb-6" style={{ color: '#4A2400' }}>
             Strengthen bonds and boost morale with our engaging team-building activities, set in inspiring natural surroundings.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-               `${S3_BASE}/Team1.jpeg`,
-              `${S3_BASE}/Team2.jpeg`,
-             
-            ].map((img, idx) => (
-              <Image
-                key={idx}
-                src={img}
-                alt={`Team building activity ${idx + 1}`}
-                width={380}
-                height={240}
-                className="rounded-xl shadow-md object-cover"
-              />
-            ))}
+          <div className="container mx-auto">
+            <div className="flex flex-wrap justify-center gap-4">
+              {[
+                 `${S3_BASE}/Team1.jpeg`,
+                `${S3_BASE}/Team2.jpeg`,
+               
+              ].map((img, idx) => (
+                <Image
+                  key={idx}
+                  src={img}
+                  alt={`Team building activity ${idx + 1}`}
+                  width={380}
+                  height={240}
+                  className="rounded-xl shadow-md object-cover"
+                />
+              ))}
+            </div>
           </div>
         </div>
 
@@ -251,34 +259,34 @@ export default function Home() {
         <p className="max-w-2xl mx-auto text-lg mb-8 text-center" style={{ color: '#B99A66' }}>
           Savor delicious cuisine in our bright, inviting restaurants and bars, offering local and international flavors.
         </p>
-        <div className="flex flex-wrap justify-center gap-4">
-         
-          <Image
-            src={`${S3_BASE}/Dining4.jpg`}
-            alt="Bar Lounge"
-            width={540}
-            height={340}
-            className="rounded-xl shadow-md"
-          />
-          <Image
-            src={`${S3_BASE}/Dining6.jpg`}
-            alt="Nightlife"
-            width={540}
-            height={340}
-            className="rounded-xl shadow-md"
-          />
-          <Image
-            src={`${S3_BASE}/Breakfast1.jpg`}
-            alt="Pool Bar"
-            width={540}
-            height={340}
-            className="rounded-xl shadow-md"
-          />
+        <div className="container mx-auto">
+          <div className="flex flex-wrap justify-center gap-4">
+            <Image
+              src={`${S3_BASE}/Dining4.jpg`}
+              alt="Bar Lounge"
+              width={540}
+              height={340}
+              className="rounded-xl shadow-md"
+            />
+            <Image
+              src={`${S3_BASE}/Dining6.jpg`}
+              alt="Nightlife"
+              width={540}
+              height={340}
+              className="rounded-xl shadow-md"
+            />
+            <Image
+              src={`${S3_BASE}/Breakfast1.jpg`}
+              alt="Pool Bar"
+              width={540}
+              height={340}
+              className="rounded-xl shadow-md"
+            />
+          </div>
         </div>
-       <a href="/dinings" className="mt-8 inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
+        <a href="/dinings" className="mt-8 inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
           Explore
         </a>
-      
       </section>
       <div className="w-full h-0.5 bg-linear-to-r from-[var(--brand-secondary-maroon)]/0 via-[var(--brand-secondary-maroon)]/60 to-[var(--brand-secondary-maroon)]/0 my-8" />
 
@@ -289,85 +297,91 @@ export default function Home() {
           <p className="max-w-2xl mx-auto text-lg mb-12 text-center" style={{ color: '#B99A66' }}>
             Enjoy a range of fun activities for all ages, including swimming, games, and kids activities.
           </p>
-          <div className="flex flex-col gap-10">
-            {/* Swimming Pool */}
-            <div className="bg-[var(--brand-background)] rounded-2xl shadow-lg p-6 border border-[var(--brand-secondary-maroon)]/10 flex flex-col md:flex-row items-center hover:scale-105 transition-transform duration-300">
-              <div className="flex flex-row gap-3 mb-4 md:mb-0 md:mr-8">
-                <Image
-                  src={`${S3_BASE}/Swimmingpool1_result.png`}
-                  alt="Swimming Pool View 1"
-                  width={320}
-                  height={200}
-                  className="rounded-xl shadow-md object-cover"
-                />
-                <Image
-                  src={`${S3_BASE}/Swimmingpool2_result.png`}
-                  alt="Swimming Pool View 2"
-                  width={320}
-                  height={200}
-                  className="rounded-xl shadow-md object-cover"
-                />
+          <div className="container mx-auto">
+            <div className="flex flex-col gap-10">
+              {/* Swimming Pool */}
+              <div className="bg-[var(--brand-background)] rounded-2xl shadow-lg p-6 border border-[var(--brand-secondary-maroon)]/10 flex flex-col md:flex-row items-center hover:scale-105 transition-transform duration-300">
+                <div className="container mx-auto">
+                  <div className="flex flex-row gap-3 mb-4 md:mb-0 md:mr-8">
+                    <Image
+                      src={`${S3_BASE}/Swimmingpool1_result.png`}
+                      alt="Swimming Pool View 1"
+                      width={320}
+                      height={200}
+                      className="rounded-xl shadow-md object-cover"
+                    />
+                    <Image
+                      src={`${S3_BASE}/Swimmingpool2_result.png`}
+                      alt="Swimming Pool View 2"
+                      width={320}
+                      height={200}
+                      className="rounded-xl shadow-md object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col items-center md:items-start">
+                  <h3 className="font-bold text-xl mb-2 text-center md:text-left" style={{ color: '#8F5F2F' }}>Swimming Pool</h3>
+                  <p className="text-base text-center md:text-left" style={{ color: '#4A2400' }}>
+                    Take a refreshing dip or lounge by our sparkling pool, perfect for relaxation and family fun.
+                  </p>
+                </div>
               </div>
-              <div className="flex-1 flex flex-col items-center md:items-start">
-                <h3 className="font-bold text-xl mb-2 text-center md:text-left" style={{ color: '#8F5F2F' }}>Swimming Pool</h3>
-                <p className="text-base text-center md:text-left" style={{ color: '#4A2400' }}>
-                  Take a refreshing dip or lounge by our sparkling pool, perfect for relaxation and family fun.
-                </p>
+              {/* Games */}
+              <div className="bg-[var(--brand-background)] rounded-2xl shadow-lg p-6 border border-[var(--brand-secondary-maroon)]/10 flex flex-col md:flex-row items-center hover:scale-105 transition-transform duration-300">
+                <div className="container mx-auto">
+                  <div className="flex flex-row gap-3 mb-4 md:mb-0 md:mr-8">
+                    <Image
+                      src={`${S3_BASE}/IMG_3394.webp`}
+                      alt="Games Area 1"
+                      width={320}
+                      height={200}
+                      className="rounded-xl shadow-md object-cover"
+                    />
+                    <Image
+                      src={`${S3_BASE}/IMG_2450.webp`}
+                      alt="Games Area 2"
+                      width={320}
+                      height={200}
+                      className="rounded-xl shadow-md object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col items-center md:items-start">
+                  <h3 className="font-bold text-xl mb-2 text-center md:text-left" style={{ color: '#8F5F2F' }}>Games</h3>
+                  <p className="text-base text-center md:text-left" style={{ color: '#4A2400' }}>
+                    Enjoy a variety of indoor and outdoor games for all ages, from board games to sports and more.
+                  </p>
+                </div>
+              </div>
+              {/* Kids Activities */}
+              <div className="bg-[var(--brand-background)] rounded-2xl shadow-lg p-6 border border-[var(--brand-secondary-maroon)]/10 flex flex-col md:flex-row items-center hover:scale-105 transition-transform duration-300">
+                <div className="container mx-auto">
+                  <div className="flex flex-row gap-3 mb-4 md:mb-0 md:mr-8">
+                    <Image
+                      src={`${S3_BASE}/IMG_2277.webp`}
+                      alt="Kids Activities 1"
+                      width={320}
+                      height={200}
+                      className="rounded-xl shadow-md object-cover"
+                    />
+                    <Image
+                      src={`${S3_BASE}/IMG_2380.webp`}
+                      alt="Kids Activities 2"
+                      width={320}
+                      height={200}
+                      className="rounded-xl shadow-md object-cover"
+                    />
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col items-center md:items-start">
+                  <h3 className="font-bold text-xl mb-2 text-center md:text-left" style={{ color: '#8F5F2F' }}>Kids Activities</h3>
+                  <p className="text-base text-center md:text-left" style={{ color: '#4A2400' }}>
+                    Creative and supervised activities designed to keep children entertained and engaged throughout their stay.
+                  </p>
+                </div>
               </div>
             </div>
-            {/* Games */}
-            <div className="bg-[var(--brand-background)] rounded-2xl shadow-lg p-6 border border-[var(--brand-secondary-maroon)]/10 flex flex-col md:flex-row items-center hover:scale-105 transition-transform duration-300">
-              <div className="flex flex-row gap-3 mb-4 md:mb-0 md:mr-8">
-                <Image
-                  src={`${S3_BASE}/IMG_3394.webp`}
-                  alt="Games Area 1"
-                  width={320}
-                  height={200}
-                  className="rounded-xl shadow-md object-cover"
-                />
-                <Image
-                  src={`${S3_BASE}/IMG_2450.webp`}
-                  alt="Games Area 2"
-                  width={320}
-                  height={200}
-                  className="rounded-xl shadow-md object-cover"
-                />
-              </div>
-              <div className="flex-1 flex flex-col items-center md:items-start">
-                <h3 className="font-bold text-xl mb-2 text-center md:text-left" style={{ color: '#8F5F2F' }}>Games</h3>
-                <p className="text-base text-center md:text-left" style={{ color: '#4A2400' }}>
-                  Enjoy a variety of indoor and outdoor games for all ages, from board games to sports and more.
-                </p>
-              </div>
-            </div>
-            {/* Kids Activities */}
-            <div className="bg-[var(--brand-background)] rounded-2xl shadow-lg p-6 border border-[var(--brand-secondary-maroon)]/10 flex flex-col md:flex-row items-center hover:scale-105 transition-transform duration-300">
-              <div className="flex flex-row gap-3 mb-4 md:mb-0 md:mr-8">
-                <Image
-                  src={`${S3_BASE}/IMG_2277.webp`}
-                  alt="Kids Activities 1"
-                  width={320}
-                  height={200}
-                  className="rounded-xl shadow-md object-cover"
-                />
-                <Image
-                  src={`${S3_BASE}/IMG_2380.webp`}
-                  alt="Kids Activities 2"
-                  width={320}
-                  height={200}
-                  className="rounded-xl shadow-md object-cover"
-                />
-              </div>
-              <div className="flex-1 flex flex-col items-center md:items-start">
-                <h3 className="font-bold text-xl mb-2 text-center md:text-left" style={{ color: '#8F5F2F' }}>Kids Activities</h3>
-                <p className="text-base text-center md:text-left" style={{ color: '#4A2400' }}>
-                  Creative and supervised activities designed to keep children entertained and engaged throughout their stay.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center mt-10">
-           
+            <div className="flex justify-center mt-10"></div>
           </div>
         </div>
       </section>
