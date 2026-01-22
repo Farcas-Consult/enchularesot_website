@@ -256,7 +256,7 @@ const BookingPage = () => {
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition-colors ${
                     step >= s
-                      ? "bg-[#800000] text-white"
+                      ? "bg-[#5A2E00] text-white"
                       : "bg-[#2C1B16] text-[#D7BFA8] border border-[#5C4033]/50"
                   }`}
                 >
@@ -265,7 +265,7 @@ const BookingPage = () => {
                 {s < 3 && (
                   <div
                     className={`w-10 h-0.5 mx-2 ${
-                      step > s ? "bg-[#800000]" : "bg-[#5C4033]/50"
+                      step > s ? "bg-[#5A2E00]" : "bg-[#5C4033]/50"
                     }`}
                   />
                 )}
@@ -277,7 +277,7 @@ const BookingPage = () => {
         {/* Confirmation Modal */}
         {showConfirmation && (
           <div className="flex-1 flex items-center justify-center">
-            <div className="bg-[#2C1B16]/80 backdrop-blur-md rounded-2xl p-8 border border-[#800000]/50 text-center max-w-md w-full">
+            <div className="bg-[#2C1B16]/80 backdrop-blur-md rounded-2xl p-8 border border-[#5A2E00]/50 text-center max-w-md w-full">
               <span className="text-4xl mb-4 block">🎉</span>
               <h2 className="text-2xl font-bold text-[#FAF5F0] mb-3">Reservation Confirmed!</h2>
               <p className="text-[#D7BFA8] mb-3">
@@ -323,7 +323,7 @@ const BookingPage = () => {
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-[#D7BFA8] text-xs mb-2">Guests</label>
+                  <label className="block text-[#B99A66] text-xs mb-2">Guests</label>
                   <div className="grid grid-cols-2 gap-3">
                     {[
                       { label: "Adults (17+)", value: adults, setter: setAdults, max: 6 },
@@ -354,7 +354,7 @@ const BookingPage = () => {
                 </div>
               </div>
               {checkIn && checkOut && (
-                <div className="mt-3 p-2 bg-[#2C1B16]/80 rounded-lg border border-[#800000]/30">
+                <div className="mt-3 p-2 bg-[#2C1B16]/80 rounded-lg border border-[#5A2E00]/30">
                   <p className="text-[#B99A66] text-sm">
                     <strong>{calculateNights()} night{calculateNights() !== 1 ? 's' : ''}</strong>
                   </p>
@@ -374,8 +374,8 @@ const BookingPage = () => {
                     onClick={() => setIsKenyanResident(true)}
                     className={`flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all ${
                       isKenyanResident
-                        ? "bg-[#800000] text-white"
-                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
+                        ? "bg-[#5A2E00] text-white"
+                        : "bg-[#D7BFA8] text-[#5A2E00] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Kenyan Resident
@@ -384,8 +384,8 @@ const BookingPage = () => {
                     onClick={() => setIsKenyanResident(false)}
                     className={`flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all ${
                       !isKenyanResident
-                        ? "bg-[#800000] text-white"
-                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
+                        ? "bg-[#5A2E00] text-white"
+                        : "bg-[#D7BFA8] text-[#5A2E00] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Non-Resident
@@ -401,8 +401,8 @@ const BookingPage = () => {
                     onClick={() => setOccupancyType('single')}
                     className={`flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all ${
                       occupancyType === 'single'
-                        ? "bg-[#800000] text-white"
-                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
+                        ? "bg-[#5A2E00] text-white"
+                        : "bg-[#D7BFA8] text-[#5A2E00] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Single Occupancy
@@ -411,8 +411,8 @@ const BookingPage = () => {
                     onClick={() => setOccupancyType('double')}
                     className={`flex-1 px-4 py-2 rounded-lg font-bold text-sm transition-all ${
                       occupancyType === 'double'
-                        ? "bg-[#800000] text-white"
-                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
+                        ? "bg-[#5A2E00] text-white"
+                        : "bg-[#D7BFA8] text-[#5A2E00] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Double Occupancy
@@ -428,8 +428,8 @@ const BookingPage = () => {
                     onClick={() => setMealPlan('bedBreakfast')}
                     className={`px-3 py-2 rounded-lg font-bold text-xs transition-all ${
                       mealPlan === 'bedBreakfast'
-                        ? "bg-[#800000] text-white"
-                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
+                        ? "bg-[#5A2E00] text-white"
+                        : "bg-[#D7BFA8] text-[#5A2E00] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Bed & Breakfast
@@ -438,8 +438,8 @@ const BookingPage = () => {
                     onClick={() => setMealPlan('halfBoard')}
                     className={`px-3 py-2 rounded-lg font-bold text-xs transition-all ${
                       mealPlan === 'halfBoard'
-                        ? "bg-[#800000] text-white"
-                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
+                        ? "bg-[#5A2E00] text-white"
+                        : "bg-[#D7BFA8] text-[#5A2E00] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Half Board
@@ -448,8 +448,8 @@ const BookingPage = () => {
                     onClick={() => setMealPlan('fullBoard')}
                     className={`px-3 py-2 rounded-lg font-bold text-xs transition-all ${
                       mealPlan === 'fullBoard'
-                        ? "bg-[#800000] text-white"
-                        : "bg-[#D7BFA8] text-[#800000] border border-[#D7BFA8]/60"
+                        ? "bg-[#5A2E00] text-white"
+                        : "bg-[#D7BFA8] text-[#5A2E00] border border-[#D7BFA8]/60"
                     }`}
                   >
                     Full Board
@@ -467,8 +467,8 @@ const BookingPage = () => {
                     key={room.id}
                     className={`bg-[#D7BFA8]/60 rounded-xl p-4 border cursor-pointer transition-all font-bold text-[#2E1A15] ${
                       selectedRoom === room.id
-                        ? "border-[#800000] shadow-md bg-[#F8F3EF]"
-                        : "border-[#D7BFA8]/60 hover:border-[#800000]/50"
+                        ? "border-[#5A2E00] shadow-md bg-[#F8F3EF]"
+                        : "border-[#D7BFA8]/60 hover:border-[#5A2E00]/50"
                     }`}
                     onClick={() => setSelectedRoom(room.id)}
                   >

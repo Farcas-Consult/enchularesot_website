@@ -14,7 +14,7 @@ const tourSpots = [
     description: "Welcome to Enchula Resort - where luxury meets nature in the heart of Kajiado.",
     image: `${S3_BASE}/IMG_2256.webp`,
     icon: Home,
-    color: "#800000",
+    color: "#5A2E00",
     category: "resort"
   },
   {
@@ -41,7 +41,7 @@ const tourSpots = [
     description: "Exquisite dining with local and international cuisine in elegant settings.",
     image: `${S3_BASE}/IMG_2236.webp`,
     icon: Utensils,
-    color: "#A04040",
+    color: "#5A2E00",
     category: "resort"
   },
 
@@ -187,7 +187,7 @@ export default function VirtualTourPage() {
         {sections.map((section) => (
           <button
             key={section.id}
-            className={`px-4 py-2 rounded-full font-semibold transition-all duration-200 text-sm md:text-base ${activeSection === section.id ? 'bg-[#A04040] text-white' : 'bg-neutral-100 text-[#5C4033] hover:bg-[#A04040]/10'}`}
+            className={`px-4 py-2 rounded-full font-semibold transition-all duration-200 text-sm md:text-base ${activeSection === section.id ? 'bg-[#5A2E00] text-white' : 'bg-neutral-100 text-[#5C4033] hover:bg-[#5A2E00]/10'}`}
             onClick={() => { setActiveSection(section.id); setGalleryIndex(0); }}
           >
             {section.label}
@@ -201,7 +201,7 @@ export default function VirtualTourPage() {
           <div className="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
             {section.images.length > 1 && (
               <button
-                className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#A04040]/80 hover:bg-[#800000] text-white rounded-full p-2 z-10"
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#5A2E00]/80 hover:bg-[#800000] text-white rounded-full p-2 z-10"
                 onClick={() => setGalleryIndex((galleryIndex - 1 + section.images.length) % section.images.length)}
                 aria-label="Previous image"
               >&#8592;</button>
@@ -214,7 +214,7 @@ export default function VirtualTourPage() {
             />
             {section.images.length > 1 && (
               <button
-                className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#A04040]/80 hover:bg-[#800000] text-white rounded-full p-2 z-10"
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#5A2E00]/80 hover:bg-[#800000] text-white rounded-full p-2 z-10"
                 onClick={() => setGalleryIndex((galleryIndex + 1) % section.images.length)}
                 aria-label="Next image"
               >&#8594;</button>
@@ -225,7 +225,7 @@ export default function VirtualTourPage() {
                 {section.images.map((_, idx) => (
                   <button
                     key={idx}
-                    className={`w-2 h-2 rounded-full ${galleryIndex === idx ? 'bg-[#A04040]' : 'bg-[#D7BFA8]/50'}`}
+                    className={`w-2 h-2 rounded-full ${galleryIndex === idx ? 'bg-[#5A2E00]' : 'bg-[#D7BFA8]/50'}`}
                     onClick={() => setGalleryIndex(idx)}
                     aria-label={`Go to image ${idx + 1}`}
                   />
