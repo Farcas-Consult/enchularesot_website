@@ -1,21 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  Bed,
-  Users,
-  Wifi,
-  Coffee,
-  Tv,
-  Wind,
-  Sparkles,
-  ChevronRight,
-  Star,
-  ArrowRight,
-  ChevronLeft,
-  ChevronRight as ChevronRightIcon,
-} from "lucide-react";
+import { Bed, Users, ChevronRight, ArrowRight } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
+import styles from "./rooms.module.css";
 import Link from "next/link";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
@@ -28,20 +16,18 @@ const BgRoom3 = `${S3_BASE}/Room8.jpg`;
 // Room images
 const DoubleRoom1 = `${S3_BASE}/Room3.jpg`;
 const DoubleRoom2 = `${S3_BASE}/Room2.jpg`;
-const DoubleRoom3 = `${S3_BASE}/Room1.jpg`;
+const DoubleRoom3 = `${S3_BASE}/IMG_2342.webp`;
 const TwinRoom1 = `${S3_BASE}/Rooms.jpeg`;
 const TwinRoom2 = `${S3_BASE}/Room10.jpg`;
 const TwinRoom3 = `${S3_BASE}/Room1.jpg`;
 const SuperiorRoom1 = `${S3_BASE}/Room4.jpg`;
 const SuperiorRoom2 = `${S3_BASE}/Room5.jpg`;
-const SuperiorRoom3 = `${S3_BASE}/Room9.jpg`;
+const SuperiorRoom3 = `${S3_BASE}/IMG_3490.webp`;
 
 export default function Rooms() {
   const [activeRoomIndex, setActiveRoomIndex] = useState(0);
   const [currentRoomImageIndex, setCurrentRoomImageIndex] = useState(0);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
-
-  // Background carousel images
   const backgroundImages: string[] = [BgRoom1, BgRoom2, BgRoom3];
 
   interface Room {
@@ -77,8 +63,8 @@ export default function Rooms() {
         "Flat-Screen TV",
         "Tea/Coffee Maker",
       ],
-      color: "from-[#D2BB9E] to-[#741F31]",
-      hoverColor: "from-[#741F31] to-[#D2BB9E]",
+      color: "from-[#D2BB9E] to-[#B99A66]",
+      hoverColor: "from-[#B99A66] to-[#D2BB9E]",
     },
     {
       id: 2,
@@ -98,8 +84,8 @@ export default function Rooms() {
         "Desk Area",
         "Air Conditioning",
       ],
-      color: "from-[#D2BB9E] to-[#741F31]",
-      hoverColor: "from-[#741F31] to-[#D2BB9E]",
+      color: "from-[#D2BB9E] to-[#B99A66]",
+      hoverColor: "from-[#B99A66] to-[#D2BB9E]",
     },
     {
       id: 3,
@@ -119,8 +105,8 @@ export default function Rooms() {
         "Smart TV",
         "Luxury Bathroom",
       ],
-      color: "from-[#741F31] to-[#D2BB9E]",
-      hoverColor: "from-[#D2BB9E] to-[#741F31]",
+      color: "from-[#B99A66] to-[#D2BB9E]",
+      hoverColor: "from-[#D2BB9E] to-[#B99A66]",
     },
   ];
 
@@ -155,19 +141,12 @@ export default function Rooms() {
     return () => window.removeEventListener("hashchange", setRoomFromHash);
   }, []);
 
-  // Room image navigation
-  const nextRoomImage = () => {
-    setCurrentRoomImageIndex((prev) => (prev + 1) % totalRoomImages);
-  };
-
-  const prevRoomImage = () => {
-    setCurrentRoomImageIndex((prev) => (prev - 1 + totalRoomImages) % totalRoomImages);
-  };
+  // Removed unused navigation functions
 
   // Auto-rotate background every 8 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentBgIndex((prev) => (prev + 1) % totalBgImages);
+      setCurrentBgIndex((prev: number) => (prev + 1) % totalBgImages);
     }, 8000);
     return () => clearInterval(interval);
   }, [totalBgImages]);
@@ -183,7 +162,7 @@ export default function Rooms() {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
         <div className="relative z-10 text-center pb-12 w-full">
           <h1 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] drop-shadow-lg mb-2">{activeRoom.name}</h1>
           <div className="inline-block px-5 py-2 bg-white/80 rounded-full text-brand font-semibold text-lg shadow">{activeRoom.category}</div>
@@ -195,11 +174,18 @@ export default function Rooms() {
         <div id="standard-double-room" />
         <div id="twin-room" />
         <div id="superior-room" />
-        {/* Gallery */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0 mb-10">
+        {/* Gallery - Card Layout */}
+        <div className={styles.roomsList}>
           {activeRoom.images.map((img, idx) => (
-            <div key={idx} className="w-full h-[340px] md:h-[480px] overflow-hidden p-0 m-0 group">
-              <Image src={img} alt={`${activeRoom.name} image ${idx+1}`} width={800} height={600} className="object-contain w-full h-full transition-transform duration-300 group-hover:scale-105" />
+            <div key={idx} className={styles.card}>
+              <Image
+                src={img}
+                alt={`${activeRoom.name} image ${idx+1}`}
+                width={320}
+                height={160}
+                className={styles.roomImage}
+              />
+              <div className={styles.caption}>{activeRoom.name}</div>
             </div>
           ))}
         </div>
@@ -208,18 +194,18 @@ export default function Rooms() {
         <div className="bg-white rounded-3xl shadow-xl p-8 mb-10 border border-neutral-200">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-6">
             <div className="flex flex-col md:flex-row md:items-center gap-4">
-              <span className="inline-flex items-center gap-2 text-lg text-brand font-semibold"><Users className="w-5 h-5 text-[#A04040]" /> {activeRoom.guests}</span>
+              <span className="inline-flex items-center gap-2 text-lg text-brand font-semibold"><Users className="w-5 h-5 text-[#B99A66]" /> {activeRoom.guests}</span>
               <span className="inline-flex items-center gap-2 text-lg text-brand font-semibold"><Bed className="w-5 h-5 text-[#5C4033]" /> {activeRoom.size}</span>
             </div>
             <div className="text-2xl font-bold text-[#8F5F2F]">{activeRoom.price} <span className="text-base font-normal text-[#B99A66]">/ night</span></div>
           </div>
-          <p className="text-[#4A2400] text-lg leading-relaxed mb-8" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>{activeRoom.description}</p>
-          <h4 className="text-xl font-bold text-[#B99A66] mb-4 font-serif" style={{ fontFamily: 'Lora, serif' }}>Room Amenities</h4>
+          <p className={styles.roomDescription}>{activeRoom.description}</p>
+          <h4 className={styles.amenitiesTitle}>Room Amenities</h4>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
             {activeRoom.amenities.map((amenity, idx) => (
-              <div key={idx} className="flex items-center gap-2 text-[#4A2400] bg-neutral-100 rounded-lg px-3 py-2 border border-neutral-200">
-                <ChevronRight className="w-4 h-4 text-[#A04040]" />
-                <span className="text-sm" style={{ fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>{amenity}</span>
+              <div key={idx} className={styles.amenityItem}>
+                <ChevronRight className="w-4 h-4 text-[#B99A66]" />
+                <span className={styles.amenityText}>{amenity}</span>
               </div>
             ))}
           </div>
@@ -228,7 +214,7 @@ export default function Rooms() {
               <button className="relative px-7 py-4 bg-[#FFD3A3] text-[#4A2400] rounded-xl font-semibold shadow-2xl overflow-hidden group border border-[#8F5F2F] transition-all duration-300 flex items-center gap-2 text-lg hover:bg-[#8F5F2F] hover:text-white">
                 Book Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
+                <div className="absolute inset-0 bg-linear-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
               </button>
             </Link>
             <Link href="/Virtual-tour" passHref>
@@ -247,8 +233,8 @@ export default function Rooms() {
               onClick={() => handleRoomChange(index)}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 border text-lg ${
                 activeRoomIndex === index
-                  ? "bg-[#741F31] text-[#D2BB9E] border-[#741F31]"
-                  : "bg-[#D2BB9E] text-[#741F31] border-[#741F31] hover:bg-[#741F31] hover:text-[#D2BB9E]"
+                  ? "bg-[#4A2400] text-[#D2BB9E] border-[#4A2400]"
+                  : "bg-[#D2BB9E] text-[#4A2400] border-[#4A2400] hover:bg-[#4A2400] hover:text-[#D2BB9E]"
               }`}
             >
               {room.name}

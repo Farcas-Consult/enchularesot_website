@@ -38,7 +38,7 @@ h3,
 
 :root {
     /* Brand Colors */
-    --brand-primary: #741F31;
+    --brand-primary: #B99A66;
     /* Deep Burgundy / Maroon */
     --brand-accent-gold: #D2BB6C;
     /* Gold / Warm Mustard */
@@ -50,7 +50,7 @@ h3,
     /* Dark Gray for text */
     /* For legacy compatibility (optional) */
     --brand-primary-brown: var(--brand-primary);
-    --brand-secondary-maroon: #A04040;
+    --brand-secondary-maroon: #B99A66;
     --brand-light-brown: #DCC7A1;
     --brand-beige: var(--brand-background);
     --brand-dark-neutral: var(--brand-black);

@@ -11,7 +11,7 @@ const healthSafetyData = [
   {
     title: "Contactless Technology",
     description: "Seamless digital check-in/out and mobile room keys ensure zero-contact convenience throughout your entire stay.",
-    icon: <UserCheck size={48} className="text-[#800000]" />,
+    icon: <UserCheck size={48} className="text-[#4A2400]" />,
   },
   {
     title: "Medical-Grade Sanitization",
@@ -31,7 +31,7 @@ const healthSafetyData = [
   {
     title: "Wellness Monitoring",
     description: "24/7 health support with temperature screening and on-call medical professionals for your peace of mind.",
-    icon: <Thermometer size={48} className="text-[#800000]" />,
+    icon: <Thermometer size={48} className="text-[#4A2400]" />,
   },
   {
     title: "Hygiene Stations",
