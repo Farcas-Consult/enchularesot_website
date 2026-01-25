@@ -134,7 +134,7 @@ export default function Home() {
         <p className="text-lg sm:text-xl text-center mb-8 max-w-2xl mx-auto text-[#B99A66] font-nunito">
           Discover our selection of comfortable, stylish rooms designed for relaxation and a memorable stay.
         </p>
-        <div className="container mx-auto">
+        <div className="-mx-4 sm:mx-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {rooms.map((room) => (
               <div
@@ -172,7 +172,7 @@ export default function Home() {
           <p className="text-base sm:text-lg mb-6 text-[#4A2400] font-nunito">
             Host your next retreat or conference in our modern, fully equipped venues designed for productivity and inspiration.
           </p>
-          <div className="container mx-auto">
+          <div className="-mx-4 sm:mx-0">
             <div className="flex flex-wrap justify-center gap-6">
               {[
                 `${S3_BASE}/Conference4.jpg`,
@@ -259,7 +259,7 @@ export default function Home() {
         <p className="max-w-2xl mx-auto text-lg sm:text-xl mb-8 text-center text-[#B99A66] font-nunito">
           Savor delicious cuisine in our bright, inviting restaurants and bars, offering local and international flavors.
         </p>
-        <div className="container mx-auto">
+        <div className="-mx-4 sm:mx-0">
           <div className="flex flex-wrap justify-center gap-6">
             {[`${S3_BASE}/Dining4.jpg`, `${S3_BASE}/Dining6.jpg`, `${S3_BASE}/Breakfast1.jpg`].map((img, idx) => (
               <div key={idx} className="relative w-full h-48 sm:h-60 md:h-72 sm:max-w-md rounded-2xl overflow-hidden shadow-lg">
