@@ -139,7 +139,7 @@ export default function Home() {
             {rooms.map((room) => (
               <div
                 key={room.id}
-                className="relative rounded-2xl shadow-xl overflow-hidden group h-[420px] md:h-[520px] w-full max-w-[520px] mx-auto bg-white border border-[#EADBC8] hover:shadow-2xl transition-all duration-300"
+                className="relative rounded-2xl shadow-xl overflow-hidden group h-[420px] md:h-[520px] w-full sm:max-w-[520px] mx-auto bg-white border border-[#EADBC8] hover:shadow-2xl transition-all duration-300"
               >
                 <div className="relative w-full h-2/3 min-h-[220px]">
                   <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
@@ -179,7 +179,7 @@ export default function Home() {
                 `${S3_BASE}/Conference2.jpg`,
                 `${S3_BASE}/Conference3.jpg`,
               ].map((img, idx) => (
-                <div key={idx} className="relative w-full max-w-xs h-48 sm:h-60 md:h-64 rounded-2xl overflow-hidden shadow-lg">
+                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-2xl overflow-hidden shadow-lg">
                   <Image
                     src={img}
                     alt={`Retreat or conference ${idx + 1}`}
@@ -211,7 +211,7 @@ export default function Home() {
                 `${S3_BASE}/Event5.jpeg`,
                 `${S3_BASE}/Event14.jpeg`,
               ].map((img, idx) => (
-                <div key={idx} className="relative w-full max-w-xs h-48 sm:h-60 md:h-64 rounded-2xl overflow-hidden shadow-lg">
+                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-2xl overflow-hidden shadow-lg">
                   <Image
                     src={img}
                     alt={`Corporate or social event ${idx + 1}`}
@@ -236,7 +236,7 @@ export default function Home() {
                  `${S3_BASE}/Team1.jpeg`,
                 `${S3_BASE}/Team2.jpeg`,
               ].map((img, idx) => (
-                <div key={idx} className="relative w-full max-w-xs h-48 sm:h-60 md:h-64 rounded-2xl overflow-hidden shadow-lg">
+                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-2xl overflow-hidden shadow-lg">
                   <Image
                     src={img}
                     alt={`Team building activity ${idx + 1}`}
@@ -262,7 +262,7 @@ export default function Home() {
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center gap-6">
             {[`${S3_BASE}/Dining4.jpg`, `${S3_BASE}/Dining6.jpg`, `${S3_BASE}/Breakfast1.jpg`].map((img, idx) => (
-              <div key={idx} className="relative w-full max-w-md h-48 sm:h-60 md:h-72 rounded-2xl overflow-hidden shadow-lg">
+              <div key={idx} className="relative w-full h-48 sm:h-60 md:h-72 sm:max-w-md rounded-2xl overflow-hidden shadow-lg">
                 <Image
                   src={img}
                   alt={['Bar Lounge', 'Nightlife', 'Pool Bar'][idx]}
