@@ -16,7 +16,7 @@ const healthSafetyData = [
   {
     title: "Medical-Grade Sanitization",
     description: "Hospital-level disinfection protocols using EPA-approved products ensure every surface meets the highest hygiene standards.",
-    icon: <Droplet size={48} className="text-[var(--brand-secondary-maroon)]" />,
+    icon: <Droplet size={48} className="text-(--brand-secondary-maroon)" />,
   },
   {
     title: "Advanced Air Purification",
@@ -36,7 +36,7 @@ const healthSafetyData = [
   {
     title: "Hygiene Stations",
     description: "Premium hand sanitizer and hygiene stations strategically placed throughout the resort for instant access.",
-    icon: <Hand size={48} className="text-[var(--brand-secondary-maroon)]" />,
+    icon: <Hand size={48} className="text-(--brand-secondary-maroon)" />,
   },
   {
     title: "On-Site Medical Care",
@@ -82,14 +82,14 @@ export default function Home() {
       <Hero />
 
       {/* About Section */}
-      <section id="about" className="bg-white py-20 px-4 text-center" style={{ color: '#4A2400' }}>
-        <div className="max-w-4xl mx-auto relative z-10">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>About Us</h2>
-            <p className="text-xl font-semibold mb-6" style={{ color: '#B99A66', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>The epitome of african hospitality.</p>
+      <section id="about" className="bg-white py-20 px-4 text-center">
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="mb-12">
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-4 font-serif text-[#8F5F2F] tracking-tight">About Us</h2>
+            <p className="text-lg sm:text-xl font-semibold mb-6 text-[#B99A66] font-nunito">The epitome of african hospitality.</p>
           </div>
           <div className="text-left">
-            <div className="space-y-4 leading-relaxed mb-6" style={{ color: '#4A2400', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
+            <div className="space-y-4 leading-relaxed mb-6 text-[#4A2400] font-nunito text-base sm:text-lg">
               <p>
                 Nestled in the breathtaking plains of <strong className="text-brand">Kajiado County</strong>, Enchula Resort offers a unique blend of untamed Kenyan beauty and refined modern hospitality.
               </p>
@@ -102,26 +102,26 @@ export default function Home() {
             </div>
           </div>
           {/* Features */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
-            <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+            <div className="bg-(--brand-background) rounded-xl p-6 border border-(--brand-secondary-maroon)/10 text-center hover:shadow-lg transition-all duration-300 flex flex-col items-center">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7" /><path d="M5.5 21h13a2.5 2.5 0 0 0 2.5-2.5V17a2.5 2.5 0 0 0-2.5-2.5h-13A2.5 2.5 0 0 0 3 17v1.5A2.5 2.5 0 0 0 5.5 21z" /></svg>
-              <h4 className="font-bold mb-2 font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>4-Star Luxury</h4>
-              <p className="text-sm" style={{ color: '#4A2400', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Award-winning service</p>
+              <h4 className="font-bold mb-2 font-serif text-[#8F5F2F] text-lg">4-Star Luxury</h4>
+              <p className="text-sm text-[#4A2400] font-nunito">Award-winning service</p>
             </div>
-            <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
+            <div className="bg-(--brand-background) rounded-xl p-6 border border-(--brand-secondary-maroon)/10 text-center hover:shadow-lg transition-all duration-300 flex flex-col items-center">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="7" r="4" /><path d="M5.5 21h13a2.5 2.5 0 0 0 2.5-2.5V17a2.5 2.5 0 0 0-2.5-2.5h-13A2.5 2.5 0 0 0 3 17v1.5A2.5 2.5 0 0 0 5.5 21z" /></svg>
-              <h4 className="font-bold mb-2 font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>Expert Team</h4>
-              <p className="text-sm" style={{ color: '#4A2400', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Dedicated hospitality</p>
+              <h4 className="font-bold mb-2 font-serif text-[#8F5F2F] text-lg">Expert Team</h4>
+              <p className="text-sm text-[#4A2400] font-nunito">Dedicated hospitality</p>
             </div>
-            <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
+            <div className="bg-(--brand-background) rounded-xl p-6 border border-(--brand-secondary-maroon)/10 text-center hover:shadow-lg transition-all duration-300 flex flex-col items-center">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20" /><path d="M2 12h20" /></svg>
-              <h4 className="font-bold mb-2 font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>Premium Amenities</h4>
-              <p className="text-sm" style={{ color: '#4A2400', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>World-class facilities</p>
+              <h4 className="font-bold mb-2 font-serif text-[#8F5F2F] text-lg">Premium Amenities</h4>
+              <p className="text-sm text-[#4A2400] font-nunito">World-class facilities</p>
             </div>
-            <div className="bg-[var(--brand-background)] rounded-xl p-6 border border-[var(--brand-secondary-maroon)]/10 text-center hover:shadow-md transition-all duration-300">
+            <div className="bg-(--brand-background) rounded-xl p-6 border border-(--brand-secondary-maroon)/10 text-center hover:shadow-lg transition-all duration-300 flex flex-col items-center">
               <svg className="text-brand mx-auto mb-4" width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21C12 21 5 13.5 5 9.5C5 6.46243 7.46243 4 10.5 4C12.1566 4 13.6566 4.84285 14.5 6.11803C15.3434 4.84285 16.8434 4 18.5 4C21.5376 4 24 6.46243 24 9.5C24 13.5 17 21 17 21H12Z" /></svg>
-              <h4 className="font-bold mb-2 font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>Warm Hospitality</h4>
-              <p className="text-sm" style={{ color: '#4A2400', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>Kenyan excellence</p>
+              <h4 className="font-bold mb-2 font-serif text-[#8F5F2F] text-lg">Warm Hospitality</h4>
+              <p className="text-sm text-[#4A2400] font-nunito">Kenyan excellence</p>
             </div>
           </div>
         </div>
@@ -130,22 +130,24 @@ export default function Home() {
 
       {/* Rooms Section */}
       <section className="bg-white py-20 px-4">
-        <h2 className="text-4xl font-bold mb-2 text-center font-serif" style={{ color: '#8F5F2F', fontFamily: 'Lora, serif' }}>Rooms & Suites</h2>
-        <p className="text-lg text-center mb-8 max-w-2xl mx-auto" style={{ color: '#B99A66', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>
+        <h2 className="text-4xl sm:text-5xl font-extrabold mb-2 text-center font-serif text-[#8F5F2F] tracking-tight">Rooms & Suites</h2>
+        <p className="text-lg sm:text-xl text-center mb-8 max-w-2xl mx-auto text-[#B99A66] font-nunito">
           Discover our selection of comfortable, stylish rooms designed for relaxation and a memorable stay.
         </p>
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {rooms.map((room) => (
               <div
                 key={room.id}
-                className="relative rounded-xl shadow-md overflow-hidden group h-[420px] md:h-[520px] w-full max-w-[520px] mx-auto"
+                className="relative rounded-2xl shadow-xl overflow-hidden group h-[420px] md:h-[520px] w-full max-w-[520px] mx-auto bg-white border border-[#EADBC8] hover:shadow-2xl transition-all duration-300"
               >
-                <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full" />
+                <div className="relative w-full h-2/3 min-h-[220px]">
+                  <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
+                </div>
                 <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end px-8 pb-8 pt-32 transition-opacity duration-300 group-hover:opacity-100">
-                  <h3 className="text-2xl font-bold mb-2 drop-shadow-lg font-serif" style={{ color: '#FFFFFF', fontFamily: 'Lora, serif' }}>{room.name}</h3>
-                  <div className="text-lg font-semibold mb-4 drop-shadow" style={{ color: '#B99A66', fontFamily: 'Nunito, Open Sans, Arial, sans-serif' }}>{room.price}</div>
-                  <Link href={`/rooms#${room.anchor}`} className="inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
+                  <h3 className="text-2xl font-bold mb-2 drop-shadow-lg font-serif text-white">{room.name}</h3>
+                  <div className="text-lg font-semibold mb-4 drop-shadow text-[#B99A66] font-nunito">{room.price}</div>
+                  <Link href={`/rooms#${room.anchor}`} className="inline-block px-6 py-2 rounded-full font-bold text-[#4A2400] bg-[#FFD3A3] hover:bg-[#E6B87A] transition-colors">
                     Explore
                   </Link>
                 </div>
@@ -160,45 +162,44 @@ export default function Home() {
       {/* CONFERENCES AND EVENTS SECTION */}
       {/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
       <section className="bg-white py-20 px-4 text-center">
-        <h2 className="text-4xl font-bold mb-6" style={{ color: '#8F5F2F' }}>Conferences and Events</h2>
-        <p className="max-w-2xl mx-auto text-lg mb-8" style={{ color: '#B99A66' }}>
+        <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 text-center font-serif text-[#8F5F2F] tracking-tight">Conferences and Events</h2>
+        <p className="max-w-2xl mx-auto text-lg sm:text-xl mb-8 text-[#B99A66] font-nunito">
           From strategic retreats to dynamic team-building sessions and elegant social gatherings — we provide the perfect setting for every occasion.
         </p>
-
         {/* Retreats and Conferences Subsection */}
         <div className="mb-12">
-          <h3 className="font-bold text-2xl mb-4" style={{ color: '#8F5F2F' }}>Retreats and Conferences</h3>
-          <p className="text-base mb-6" style={{ color: '#4A2400' }}>
+          <h3 className="font-bold text-2xl sm:text-3xl mb-4 text-[#8F5F2F]">Retreats and Conferences</h3>
+          <p className="text-base sm:text-lg mb-6 text-[#4A2400] font-nunito">
             Host your next retreat or conference in our modern, fully equipped venues designed for productivity and inspiration.
           </p>
           <div className="container mx-auto">
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-6">
               {[
                 `${S3_BASE}/Conference4.jpg`,
                 `${S3_BASE}/Conference2.jpg`,
                 `${S3_BASE}/Conference3.jpg`,
               ].map((img, idx) => (
-                <Image
-                  key={idx}
-                  src={img}
-                  alt={`Retreat or conference ${idx + 1}`}
-                  width={380}
-                  height={240}
-                  className="rounded-xl shadow-md object-cover"
-                />
+                <div key={idx} className="relative w-full max-w-xs h-48 sm:h-60 md:h-64 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src={img}
+                    alt={`Retreat or conference ${idx + 1}`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    className="transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
               ))}
             </div>
           </div>
         </div>
-
         {/* Corporate and Social Events Subsection */}
         <div className="mb-12">
-          <h3 className="font-bold text-2xl mb-4" style={{ color: '#8F5F2F' }}>Corporate and Social Events</h3>
-          <p className="text-base mb-6" style={{ color: '#4A2400' }}>
+          <h3 className="font-bold text-2xl sm:text-3xl mb-4 text-[#8F5F2F]">Corporate and Social Events</h3>
+          <p className="text-base sm:text-lg mb-6 text-[#4A2400] font-nunito">
             Celebrate milestones, host business meetings, or enjoy memorable social gatherings with our tailored event services.
           </p>
           <div className="container mx-auto">
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-6">
               {[
                 `${S3_BASE}/Event18.jpeg`,
                 `${S3_BASE}/Event1.jpeg`,
@@ -210,88 +211,77 @@ export default function Home() {
                 `${S3_BASE}/Event5.jpeg`,
                 `${S3_BASE}/Event14.jpeg`,
               ].map((img, idx) => (
-                <Image
-                  key={idx}
-                  src={img}
-                  alt={`Corporate or social event ${idx + 1}`}
-                  width={380}
-                  height={240}
-                  className="rounded-xl shadow-md object-cover"
-                />
+                <div key={idx} className="relative w-full max-w-xs h-48 sm:h-60 md:h-64 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src={img}
+                    alt={`Corporate or social event ${idx + 1}`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    className="transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
               ))}
             </div>
           </div>
         </div>
-
         {/* Team Building Subsection */}
         <div className="mb-12">
-          <h3 className="font-bold text-2xl mb-4" style={{ color: '#8F5F2F' }}>Team Building</h3>
-          <p className="text-base mb-6" style={{ color: '#4A2400' }}>
+          <h3 className="font-bold text-2xl sm:text-3xl mb-4 text-[#8F5F2F]">Team Building</h3>
+          <p className="text-base sm:text-lg mb-6 text-[#4A2400] font-nunito">
             Strengthen bonds and boost morale with our engaging team-building activities, set in inspiring natural surroundings.
           </p>
           <div className="container mx-auto">
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-6">
               {[
                  `${S3_BASE}/Team1.jpeg`,
                 `${S3_BASE}/Team2.jpeg`,
-               
               ].map((img, idx) => (
-                <Image
-                  key={idx}
-                  src={img}
-                  alt={`Team building activity ${idx + 1}`}
-                  width={380}
-                  height={240}
-                  className="rounded-xl shadow-md object-cover"
-                />
+                <div key={idx} className="relative w-full max-w-xs h-48 sm:h-60 md:h-64 rounded-2xl overflow-hidden shadow-lg">
+                  <Image
+                    src={img}
+                    alt={`Team building activity ${idx + 1}`}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    className="transition-transform duration-500 hover:scale-105"
+                  />
+                </div>
               ))}
             </div>
           </div>
         </div>
-
-      
       </section>
-      <div className="w-full h-0.5 bg-linear-to-r from-[var(--brand-secondary-maroon)]/0 via-[var(--brand-secondary-maroon)]/60 to-[var(--brand-secondary-maroon)]/0 my-8" />
+
+      <div className="w-full h-0.5 bg-linear-to-r from-(--brand-secondary-maroon)/0 via-(--brand-secondary-maroon)/60 to-(--brand-secondary-maroon)/0 my-8" />
 
       {/* Dining Section */}
       <section className="bg-white py-20 px-4 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-center" style={{ color: '#8F5F2F' }}>Dining</h2>
-        <p className="max-w-2xl mx-auto text-lg mb-8 text-center" style={{ color: '#B99A66' }}>
+        <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 text-center font-serif text-[#8F5F2F] tracking-tight">Dining</h2>
+        <p className="max-w-2xl mx-auto text-lg sm:text-xl mb-8 text-center text-[#B99A66] font-nunito">
           Savor delicious cuisine in our bright, inviting restaurants and bars, offering local and international flavors.
         </p>
         <div className="container mx-auto">
-          <div className="flex flex-wrap justify-center gap-4">
-            <Image
-              src={`${S3_BASE}/Dining4.jpg`}
-              alt="Bar Lounge"
-              width={540}
-              height={340}
-              className="rounded-xl shadow-md"
-            />
-            <Image
-              src={`${S3_BASE}/Dining6.jpg`}
-              alt="Nightlife"
-              width={540}
-              height={340}
-              className="rounded-xl shadow-md"
-            />
-            <Image
-              src={`${S3_BASE}/Breakfast1.jpg`}
-              alt="Pool Bar"
-              width={540}
-              height={340}
-              className="rounded-xl shadow-md"
-            />
+          <div className="flex flex-wrap justify-center gap-6">
+            {[`${S3_BASE}/Dining4.jpg`, `${S3_BASE}/Dining6.jpg`, `${S3_BASE}/Breakfast1.jpg`].map((img, idx) => (
+              <div key={idx} className="relative w-full max-w-md h-48 sm:h-60 md:h-72 rounded-2xl overflow-hidden shadow-lg">
+                <Image
+                  src={img}
+                  alt={['Bar Lounge', 'Nightlife', 'Pool Bar'][idx]}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  className="transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+            ))}
           </div>
         </div>
-        <a href="/dinings" className="mt-8 inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
+        <a href="/dinings" className="mt-8 inline-block px-6 py-2 rounded-full font-bold text-[#4A2400] bg-[#FFD3A3] hover:bg-[#E6B87A] transition-colors">
           Explore
         </a>
       </section>
-      <div className="w-full h-0.5 bg-linear-to-r from-[var(--brand-secondary-maroon)]/0 via-[var(--brand-secondary-maroon)]/60 to-[var(--brand-secondary-maroon)]/0 my-8" />
+      <div className="w-full h-0.5 bg-linear-to-r from-(--brand-secondary-maroon)/0 via-(--brand-secondary-maroon)/60 to-(--brand-secondary-maroon)/0 my-8" />
 
       {/* Fun Activities and Experiences */}
-      <section className="relative bg-gradient-to-br from-[#FFF8F0] via-[#F7E6D0] to-[#F3E9DD] py-24 px-4">
+      <section className="relative bg-linear-to-br from-[#FFF8F0] via-[#F7E6D0] to-[#F3E9DD] py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-5xl font-extrabold mb-6 text-center font-serif text-[#8F5F2F] drop-shadow-lg tracking-tight">Fun Activities & Experiences</h2>
           <p className="max-w-2xl mx-auto text-lg mb-14 text-center text-[#B99A66] font-medium">Enjoy a range of fun activities for all ages, including swimming, games, and kids activities.</p>
@@ -348,55 +338,54 @@ export default function Home() {
 
       {/* Case Reviews */}
       <section className="bg-white py-20 px-4 text-center">
-        <h2 className="text-4xl font-bold mb-6 text-center" style={{ color: '#8F5F2F' }}>Guest Reviews</h2>
-        <p className="max-w-2xl mx-auto text-lg mb-8 text-center" style={{ color: '#B99A66' }}>
+        <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 text-center font-serif text-[#8F5F2F] tracking-tight">Guest Reviews</h2>
+        <p className="max-w-2xl mx-auto text-lg sm:text-xl mb-8 text-center text-[#B99A66] font-nunito">
           Hear from our guests and see real-world experiences at Enchula Resort.
         </p>
         {/* Stats Bar */}
         <div className="flex flex-wrap justify-center gap-6 mb-10">
-          <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30">
+          <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30 min-w-[120px]">
             <div className="text-3xl font-bold text-[#D7BFA8] mb-1">4.8/5</div>
             <div className="text-[#D7BFA8] text-sm">Average Rating</div>
           </div>
-          <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30">
+          <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30 min-w-[120px]">
             <div className="text-3xl font-bold text-[#D7BFA8] mb-1">200+</div>
             <div className="text-[#D7BFA8] text-sm">Happy Guests</div>
           </div>
-          <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30">
+          <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30 min-w-[120px]">
             <div className="text-3xl font-bold text-[#D7BFA8] mb-1">98%</div>
             <div className="text-[#D7BFA8] text-sm">Would Recommend</div>
           </div>
         </div>
         {/* Reviews Grid */}
-        <div className="flex flex-wrap justify-center gap-10 mb-10">
-          <div className="card-bg max-w-xs p-6 shadow-md bg-white border border-neutral-200">
-            <p className="mb-4" style={{ color: '#4A2400' }}>
-              “Perfect escape from the city! The staff were so warm and welcoming. My kids loved the play area, and we enjoyed a beautiful sunset dinner by the pool.”
-            </p>
-            <span className="font-semibold" style={{ color: '#8F5F2F' }}>— Wanjiru M. (Nairobi)</span>
-          </div>
-          <div className="card-bg max-w-xs p-6 shadow-md bg-white border border-neutral-200">
-            <p className="mb-4" style={{ color: '#4A2400' }}>
-              “We booked Enchula for our mini-moon and it was magical. The room was cozy, clean, and had such a peaceful view of the savannah.”
-            </p>
-            <span className="font-semibold" style={{ color: '#8F5F2F' }}>— David & Sarah T. (Mombasa)</span>
-          </div>
-          <div className="card-bg max-w-xs p-6 shadow-md bg-white border border-neutral-200">
-            <p className="mb-4" style={{ color: '#4A2400' }}>
-              “Visited during my East Africa tour. Enchula offered a peaceful, authentic experience. I appreciated the sustainability efforts — solar power, recycling, and support for local artisans.”
-            </p>
-            <span className="font-semibold" style={{ color: '#8F5F2F' }}>— Lina B. (Germany)</span>
-          </div>
-          <div className="card-bg max-w-xs p-6 shadow-md bg-white border border-neutral-200">
-            <p className="mb-4" style={{ color: '#4A2400' }}>
-              “Best family weekend in years! Kids enjoyed camel rides and the mini club. Rooms connected perfectly for us. Food was delicious — especially the local dishes.”
-            </p>
-            <span className="font-semibold" style={{ color: '#8F5F2F' }}>— The Otieno Family (Kisumu)</span>
-          </div>
+        <div className="flex flex-wrap justify-center gap-8 mb-10">
+          {[
+            {
+              text: "Perfect escape from the city! The staff were so warm and welcoming. My kids loved the play area, and we enjoyed a beautiful sunset dinner by the pool.",
+              author: "— Wanjiru M. (Nairobi)"
+            },
+            {
+              text: "We booked Enchula for our mini-moon and it was magical. The room was cozy, clean, and had such a peaceful view of the savannah.",
+              author: "— David & Sarah T. (Mombasa)"
+            },
+            {
+              text: "Visited during my East Africa tour. Enchula offered a peaceful, authentic experience. I appreciated the sustainability efforts — solar power, recycling, and support for local artisans.",
+              author: "— Lina B. (Germany)"
+            },
+            {
+              text: "Best family weekend in years! Kids enjoyed camel rides and the mini club. Rooms connected perfectly for us. Food was delicious — especially the local dishes.",
+              author: "— The Otieno Family (Kisumu)"
+            }
+          ].map((review, idx) => (
+            <div key={idx} className="card-bg max-w-xs w-full p-6 shadow-lg bg-white border border-neutral-200 rounded-2xl flex flex-col justify-between h-full">
+              <p className="mb-4 text-[#4A2400] font-nunito text-base sm:text-lg">{review.text}</p>
+              <span className="font-semibold text-[#8F5F2F] font-serif">{review.author}</span>
+            </div>
+          ))}
         </div>
         {/* Review Submission CTA */}
         <div className="text-center">
-          <a href="#contact" className="mt-8 inline-block px-6 py-2 rounded-full font-bold text-[#4A2400]" style={{ backgroundColor: '#FFD3A3' }}>
+          <a href="#contact" className="mt-8 inline-block px-6 py-2 rounded-full font-bold text-[#4A2400] bg-[#FFD3A3] hover:bg-[#E6B87A] transition-colors">
             Write Your Review
           </a>
         </div>
