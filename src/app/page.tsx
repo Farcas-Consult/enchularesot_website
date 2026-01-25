@@ -137,20 +137,12 @@ export default function Home() {
         <div className="-mx-4 sm:mx-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {rooms.map((room) => (
-              <div
-                key={room.id}
-                className="relative rounded-3xl shadow-2xl overflow-hidden group h-[420px] md:h-[520px] w-full sm:max-w-[520px] mx-auto bg-white border border-[#EADBC8] hover:shadow-3xl transition-all duration-300"
-              >
-                <div className="relative w-full h-2/3 min-h-[220px]">
-                  <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none rounded-3xl" />
-                </div>
-                <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end px-8 pb-8 pt-32 transition-opacity duration-300 group-hover:opacity-100">
-                  <h3 className="text-2xl font-bold mb-2 drop-shadow-lg font-serif text-white">{room.name}</h3>
-                  <div className="text-lg font-semibold mb-4 drop-shadow text-[#B99A66] font-nunito">{room.price}</div>
-                  <Link href={`/rooms#${room.anchor}`} className="inline-block px-6 py-2 rounded-full font-bold text-[#4A2400] bg-[#FFD3A3] hover:bg-[#E6B87A] transition-colors">
-                    Explore
-                  </Link>
+              <div key={room.id} className="relative h-56 rounded-2xl overflow-hidden group">
+                <Image src={room.image} alt={room.name} fill className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end p-4 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 className="text-lg font-bold mb-1 font-serif text-white drop-shadow-lg">{room.name}</h3>
+                  <div className="text-base font-semibold mb-2 text-[#FFD3A3] drop-shadow font-nunito">{room.price}</div>
+                  <Link href={`/rooms#${room.anchor}`} className="inline-block px-4 py-1 rounded-full font-bold text-[#4A2400] bg-[#FFD3A3] hover:bg-[#E6B87A] text-sm transition-colors mt-1 self-start">Explore</Link>
                 </div>
               </div>
             ))}
@@ -173,25 +165,17 @@ export default function Home() {
           <p className="text-base sm:text-lg mb-6 text-[#4A2400] font-nunito">
             Host your next retreat or conference in our modern, fully equipped venues designed for productivity and inspiration.
           </p>
-          <div className="-mx-4 sm:mx-0">
-            <div className="flex flex-wrap justify-center gap-6">
-              {[
-                `${S3_BASE}/Conference4.jpg`,
-                `${S3_BASE}/Conference2.jpg`,
-                `${S3_BASE}/Conference3.jpg`,
-              ].map((img, idx) => (
-                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-3xl overflow-hidden shadow-2xl">
-                  <Image
-                    src={img}
-                    alt={`Retreat or conference ${idx + 1}`}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    className="transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none rounded-3xl" />
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+            {[`${S3_BASE}/Conference4.jpg`, `${S3_BASE}/Conference2.jpg`, `${S3_BASE}/Conference3.jpg`].map((img, idx) => (
+              <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
+                <Image
+                  src={img}
+                  alt={`Retreat or conference ${idx + 1}`}
+                  fill
+                  className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                />
+              </div>
+            ))}
           </div>
         </div>
         {/* Corporate and Social Events Subsection */}
@@ -200,31 +184,27 @@ export default function Home() {
           <p className="text-base sm:text-lg mb-6 text-[#4A2400] font-nunito">
             Celebrate milestones, host business meetings, or enjoy memorable social gatherings with our tailored event services.
           </p>
-          <div className="container mx-auto">
-            <div className="flex flex-wrap justify-center gap-6">
-              {[
-                `${S3_BASE}/Event18.jpeg`,
-                `${S3_BASE}/Event1.jpeg`,
-                `${S3_BASE}/Party3.jpeg`,
-                `${S3_BASE}/Event2.jpeg`,
-                `${S3_BASE}/Event13.jpeg`,
-                `${S3_BASE}/Event11.jpeg`,
-                `${S3_BASE}/Event7.jpeg`,
-                `${S3_BASE}/Event5.jpeg`,
-                `${S3_BASE}/Event14.jpeg`,
-              ].map((img, idx) => (
-                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-3xl overflow-hidden shadow-2xl">
-                  <Image
-                    src={img}
-                    alt={`Corporate or social event ${idx + 1}`}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    className="transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none rounded-3xl" />
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+            {[
+              `${S3_BASE}/Event18.jpeg`,
+              `${S3_BASE}/Event1.jpeg`,
+              `${S3_BASE}/Party3.jpeg`,
+              `${S3_BASE}/Event2.jpeg`,
+              `${S3_BASE}/Event13.jpeg`,
+              `${S3_BASE}/Event11.jpeg`,
+              `${S3_BASE}/Event7.jpeg`,
+              `${S3_BASE}/Event5.jpeg`,
+              `${S3_BASE}/Event14.jpeg`,
+            ].map((img, idx) => (
+              <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
+                <Image
+                  src={img}
+                  alt={`Corporate or social event ${idx + 1}`}
+                  fill
+                  className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                />
+              </div>
+            ))}
           </div>
         </div>
         {/* Team Building Subsection */}
@@ -233,24 +213,20 @@ export default function Home() {
           <p className="text-base sm:text-lg mb-6 text-[#4A2400] font-nunito">
             Strengthen bonds and boost morale with our engaging team-building activities, set in inspiring natural surroundings.
           </p>
-          <div className="container mx-auto">
-            <div className="flex flex-wrap justify-center gap-6">
-              {[
-                 `${S3_BASE}/Team1.jpeg`,
-                `${S3_BASE}/Team2.jpeg`,
-              ].map((img, idx) => (
-                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-3xl overflow-hidden shadow-2xl">
-                  <Image
-                    src={img}
-                    alt={`Team building activity ${idx + 1}`}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    className="transition-transform duration-500 hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none rounded-3xl" />
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+            {[
+              `${S3_BASE}/Team1.jpeg`,
+              `${S3_BASE}/Team2.jpeg`,
+            ].map((img, idx) => (
+              <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
+                <Image
+                  src={img}
+                  alt={`Team building activity ${idx + 1}`}
+                  fill
+                  className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -264,17 +240,15 @@ export default function Home() {
           Savor delicious cuisine in our bright, inviting restaurants and bars, offering local and international flavors.
         </p>
         <div className="-mx-4 sm:mx-0">
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {[`${S3_BASE}/Dining4.jpg`, `${S3_BASE}/Dining6.jpg`, `${S3_BASE}/Breakfast1.jpg`].map((img, idx) => (
-              <div key={idx} className="relative w-full h-48 sm:h-60 md:h-72 sm:max-w-md rounded-3xl overflow-hidden shadow-2xl">
+              <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
                 <Image
                   src={img}
                   alt={['Bar Lounge', 'Nightlife', 'Pool Bar'][idx]}
                   fill
-                  style={{ objectFit: 'cover' }}
-                  className="transition-transform duration-500 hover:scale-105"
+                  className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none rounded-3xl" />
               </div>
             ))}
           </div>
