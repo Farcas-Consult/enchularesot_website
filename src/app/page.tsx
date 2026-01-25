@@ -291,97 +291,56 @@ export default function Home() {
       <div className="w-full h-0.5 bg-linear-to-r from-[var(--brand-secondary-maroon)]/0 via-[var(--brand-secondary-maroon)]/60 to-[var(--brand-secondary-maroon)]/0 my-8" />
 
       {/* Fun Activities and Experiences */}
-      <section className="bg-white py-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-center" style={{ color: '#8F5F2F' }}>Fun Activities and Experiences</h2>
-          <p className="max-w-2xl mx-auto text-lg mb-12 text-center" style={{ color: '#B99A66' }}>
-            Enjoy a range of fun activities for all ages, including swimming, games, and kids activities.
-          </p>
-          <div className="container mx-auto">
-            <div className="flex flex-col gap-10">
-              {/* Swimming Pool */}
-              <div className="bg-[var(--brand-background)] rounded-2xl shadow-lg p-6 border border-[var(--brand-secondary-maroon)]/10 flex flex-col md:flex-row items-center hover:scale-105 transition-transform duration-300">
-                <div className="container mx-auto">
-                  <div className="flex flex-row gap-3 mb-4 md:mb-0 md:mr-8">
-                    <Image
-                      src={`${S3_BASE}/Swimmingpool1_result.png`}
-                      alt="Swimming Pool View 1"
-                      width={320}
-                      height={200}
-                      className="rounded-xl shadow-md object-cover"
-                    />
-                    <Image
-                      src={`${S3_BASE}/Swimmingpool2_result.png`}
-                      alt="Swimming Pool View 2"
-                      width={320}
-                      height={200}
-                      className="rounded-xl shadow-md object-cover"
-                    />
-                  </div>
+      <section className="relative bg-gradient-to-br from-[#FFF8F0] via-[#F7E6D0] to-[#F3E9DD] py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-5xl font-extrabold mb-6 text-center font-serif text-[#8F5F2F] drop-shadow-lg tracking-tight">Fun Activities & Experiences</h2>
+          <p className="max-w-2xl mx-auto text-lg mb-14 text-center text-[#B99A66] font-medium">Enjoy a range of fun activities for all ages, including swimming, games, and kids activities.</p>
+          <div className="flex flex-col gap-12 md:gap-16">
+            {/* Swimming Pool */}
+            <div className="group bg-white/80 backdrop-blur rounded-3xl shadow-2xl flex flex-col md:flex-row items-stretch border border-[#EADBC8] hover:shadow-[0_8px_32px_rgba(139,94,33,0.12)] transition-all duration-300">
+              <div className="flex flex-row gap-0 md:gap-4 w-full md:w-2/5 min-h-[180px] sm:min-h-[220px]">
+                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
+                  <Image src={`${S3_BASE}/Swimmingpool1_result.png`} alt="Swimming Pool View 1" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-l-3xl md:rounded-l-3xl md:rounded-tr-none md:rounded-bl-3xl" />
                 </div>
-                <div className="flex-1 flex flex-col items-center md:items-start">
-                  <h3 className="font-bold text-xl mb-2 text-center md:text-left" style={{ color: '#8F5F2F' }}>Swimming Pool</h3>
-                  <p className="text-base text-center md:text-left" style={{ color: '#4A2400' }}>
-                    Take a refreshing dip or lounge by our sparkling pool, perfect for relaxation and family fun.
-                  </p>
+                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
+                  <Image src={`${S3_BASE}/Swimmingpool2_result.png`} alt="Swimming Pool View 2" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-r-3xl md:rounded-r-3xl md:rounded-tl-none md:rounded-br-3xl" />
                 </div>
               </div>
-              {/* Games */}
-              <div className="bg-[var(--brand-background)] rounded-2xl shadow-lg p-6 border border-[var(--brand-secondary-maroon)]/10 flex flex-col md:flex-row items-center hover:scale-105 transition-transform duration-300">
-                <div className="container mx-auto">
-                  <div className="flex flex-row gap-3 mb-4 md:mb-0 md:mr-8">
-                    <Image
-                      src={`${S3_BASE}/IMG_3394.webp`}
-                      alt="Games Area 1"
-                      width={320}
-                      height={200}
-                      className="rounded-xl shadow-md object-cover"
-                    />
-                    <Image
-                      src={`${S3_BASE}/IMG_2450.webp`}
-                      alt="Games Area 2"
-                      width={320}
-                      height={200}
-                      className="rounded-xl shadow-md object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="flex-1 flex flex-col items-center md:items-start">
-                  <h3 className="font-bold text-xl mb-2 text-center md:text-left" style={{ color: '#8F5F2F' }}>Games</h3>
-                  <p className="text-base text-center md:text-left" style={{ color: '#4A2400' }}>
-                    Enjoy a variety of indoor and outdoor games for all ages, from board games to sports and more.
-                  </p>
-                </div>
-              </div>
-              {/* Kids Activities */}
-              <div className="bg-[var(--brand-background)] rounded-2xl shadow-lg p-6 border border-[var(--brand-secondary-maroon)]/10 flex flex-col md:flex-row items-center hover:scale-105 transition-transform duration-300">
-                <div className="container mx-auto">
-                  <div className="flex flex-row gap-3 mb-4 md:mb-0 md:mr-8">
-                    <Image
-                      src={`${S3_BASE}/IMG_2277.webp`}
-                      alt="Kids Activities 1"
-                      width={320}
-                      height={200}
-                      className="rounded-xl shadow-md object-cover"
-                    />
-                    <Image
-                      src={`${S3_BASE}/IMG_2380.webp`}
-                      alt="Kids Activities 2"
-                      width={320}
-                      height={200}
-                      className="rounded-xl shadow-md object-cover"
-                    />
-                  </div>
-                </div>
-                <div className="flex-1 flex flex-col items-center md:items-start">
-                  <h3 className="font-bold text-xl mb-2 text-center md:text-left" style={{ color: '#8F5F2F' }}>Kids Activities</h3>
-                  <p className="text-base text-center md:text-left" style={{ color: '#4A2400' }}>
-                    Creative and supervised activities designed to keep children entertained and engaged throughout their stay.
-                  </p>
-                </div>
+              <div className="flex-1 flex flex-col justify-center px-4 py-6 sm:px-8 sm:py-8 md:py-0 md:pl-10 md:pr-6">
+                <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-[#8F5F2F]">Swimming Pool</h3>
+                <p className="text-sm sm:text-base md:text-lg text-[#4A2400]">Take a refreshing dip or lounge by our sparkling pool, perfect for relaxation and family fun.</p>
               </div>
             </div>
-            <div className="flex justify-center mt-10"></div>
+            {/* Games */}
+            <div className="group bg-white/80 backdrop-blur rounded-3xl shadow-2xl flex flex-col md:flex-row-reverse items-stretch border border-[#EADBC8] hover:shadow-[0_8px_32px_rgba(139,94,33,0.12)] transition-all duration-300">
+              <div className="flex flex-row gap-0 md:gap-4 w-full md:w-2/5 min-h-[180px] sm:min-h-[220px]">
+                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
+                  <Image src={`${S3_BASE}/IMG_3394.webp`} alt="Games Area 1" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-l-3xl md:rounded-l-3xl md:rounded-tr-none md:rounded-bl-3xl" />
+                </div>
+                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
+                  <Image src={`${S3_BASE}/IMG_2450.webp`} alt="Games Area 2" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-r-3xl md:rounded-r-3xl md:rounded-tl-none md:rounded-br-3xl" />
+                </div>
+              </div>
+              <div className="flex-1 flex flex-col justify-center px-4 py-6 sm:px-8 sm:py-8 md:py-0 md:pr-10 md:pl-6">
+                <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-[#8F5F2F]">Games</h3>
+                <p className="text-sm sm:text-base md:text-lg text-[#4A2400]">Enjoy a variety of indoor and outdoor games for all ages, from board games to sports and more.</p>
+              </div>
+            </div>
+            {/* Kids Activities */}
+            <div className="group bg-white/80 backdrop-blur rounded-3xl shadow-2xl flex flex-col md:flex-row items-stretch border border-[#EADBC8] hover:shadow-[0_8px_32px_rgba(139,94,33,0.12)] transition-all duration-300">
+              <div className="flex flex-row gap-0 md:gap-4 w-full md:w-2/5 min-h-[180px] sm:min-h-[220px]">
+                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
+                  <Image src={`${S3_BASE}/IMG_2277.webp`} alt="Kids Activities 1" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-l-3xl md:rounded-l-3xl md:rounded-tr-none md:rounded-bl-3xl" />
+                </div>
+                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
+                  <Image src={`${S3_BASE}/IMG_2380.webp`} alt="Kids Activities 2" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-r-3xl md:rounded-r-3xl md:rounded-tl-none md:rounded-br-3xl" />
+                </div>
+              </div>
+              <div className="flex-1 flex flex-col justify-center px-4 py-6 sm:px-8 sm:py-8 md:py-0 md:pl-10 md:pr-6">
+                <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-[#8F5F2F]">Kids Activities</h3>
+                <p className="text-sm sm:text-base md:text-lg text-[#4A2400]">Creative and supervised activities designed to keep children entertained and engaged throughout their stay.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
