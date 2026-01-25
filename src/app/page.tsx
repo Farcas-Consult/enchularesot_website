@@ -139,10 +139,11 @@ export default function Home() {
             {rooms.map((room) => (
               <div
                 key={room.id}
-                className="relative rounded-2xl shadow-xl overflow-hidden group h-[420px] md:h-[520px] w-full sm:max-w-[520px] mx-auto bg-white border border-[#EADBC8] hover:shadow-2xl transition-all duration-300"
+                className="relative rounded-3xl shadow-2xl overflow-hidden group h-[420px] md:h-[520px] w-full sm:max-w-[520px] mx-auto bg-white border border-[#EADBC8] hover:shadow-3xl transition-all duration-300"
               >
                 <div className="relative w-full h-2/3 min-h-[220px]">
                   <Image src={room.image} alt={room.name} fill className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none rounded-3xl" />
                 </div>
                 <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent flex flex-col justify-end px-8 pb-8 pt-32 transition-opacity duration-300 group-hover:opacity-100">
                   <h3 className="text-2xl font-bold mb-2 drop-shadow-lg font-serif text-white">{room.name}</h3>
@@ -179,7 +180,7 @@ export default function Home() {
                 `${S3_BASE}/Conference2.jpg`,
                 `${S3_BASE}/Conference3.jpg`,
               ].map((img, idx) => (
-                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-2xl overflow-hidden shadow-lg">
+                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-3xl overflow-hidden shadow-2xl">
                   <Image
                     src={img}
                     alt={`Retreat or conference ${idx + 1}`}
@@ -187,6 +188,7 @@ export default function Home() {
                     style={{ objectFit: 'cover' }}
                     className="transition-transform duration-500 hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none rounded-3xl" />
                 </div>
               ))}
             </div>
@@ -211,7 +213,7 @@ export default function Home() {
                 `${S3_BASE}/Event5.jpeg`,
                 `${S3_BASE}/Event14.jpeg`,
               ].map((img, idx) => (
-                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-2xl overflow-hidden shadow-lg">
+                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-3xl overflow-hidden shadow-2xl">
                   <Image
                     src={img}
                     alt={`Corporate or social event ${idx + 1}`}
@@ -219,6 +221,7 @@ export default function Home() {
                     style={{ objectFit: 'cover' }}
                     className="transition-transform duration-500 hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none rounded-3xl" />
                 </div>
               ))}
             </div>
@@ -236,7 +239,7 @@ export default function Home() {
                  `${S3_BASE}/Team1.jpeg`,
                 `${S3_BASE}/Team2.jpeg`,
               ].map((img, idx) => (
-                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-2xl overflow-hidden shadow-lg">
+                <div key={idx} className="relative w-full h-48 sm:h-60 md:h-64 sm:max-w-xs rounded-3xl overflow-hidden shadow-2xl">
                   <Image
                     src={img}
                     alt={`Team building activity ${idx + 1}`}
@@ -244,6 +247,7 @@ export default function Home() {
                     style={{ objectFit: 'cover' }}
                     className="transition-transform duration-500 hover:scale-105"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none rounded-3xl" />
                 </div>
               ))}
             </div>
@@ -262,7 +266,7 @@ export default function Home() {
         <div className="-mx-4 sm:mx-0">
           <div className="flex flex-wrap justify-center gap-6">
             {[`${S3_BASE}/Dining4.jpg`, `${S3_BASE}/Dining6.jpg`, `${S3_BASE}/Breakfast1.jpg`].map((img, idx) => (
-              <div key={idx} className="relative w-full h-48 sm:h-60 md:h-72 sm:max-w-md rounded-2xl overflow-hidden shadow-lg">
+              <div key={idx} className="relative w-full h-48 sm:h-60 md:h-72 sm:max-w-md rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src={img}
                   alt={['Bar Lounge', 'Nightlife', 'Pool Bar'][idx]}
@@ -270,6 +274,7 @@ export default function Home() {
                   style={{ objectFit: 'cover' }}
                   className="transition-transform duration-500 hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent pointer-events-none rounded-3xl" />
               </div>
             ))}
           </div>

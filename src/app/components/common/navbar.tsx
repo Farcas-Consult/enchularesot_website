@@ -56,7 +56,7 @@ export default function Navbar() {
           <div className="flex-1 flex justify-center order-2">
             <Link href="/" className="flex items-center gap-2 min-w-[120px]">
               <Image 
-                src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo4.png"
+                src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo6.png"
                 alt="Enchula Resort Logo"
                 width={56}
                 height={56}
@@ -87,7 +87,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2 min-w-[120px]">
           <Link href="/" className="flex items-center gap-2">
             <Image 
-              src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo4.png"
+              src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo6.png"
               alt="Enchula Resort Logo"
               width={56}
               height={56}
