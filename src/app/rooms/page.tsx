@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Bed, Users, ChevronRight, ArrowRight } from "lucide-react";
 import Image, { StaticImageData } from "next/image";
 import styles from "./rooms.module.css";
@@ -27,6 +27,7 @@ const SuperiorRoom3 = `${S3_BASE}/IMG_3490.webp`;
 export default function Rooms() {
   const [activeRoomIndex, setActiveRoomIndex] = useState(0);
   const [currentRoomImageIndex, setCurrentRoomImageIndex] = useState(0);
+  const autoSlideRef = useRef<NodeJS.Timeout | null>(null);
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   const backgroundImages: string[] = [BgRoom1, BgRoom2, BgRoom3];
 
@@ -125,6 +126,17 @@ export default function Rooms() {
     }
   };
 
+  // Auto-slide room images every 1 second
+  useEffect(() => {
+    if (autoSlideRef.current) clearInterval(autoSlideRef.current);
+    autoSlideRef.current = setInterval(() => {
+      setCurrentRoomImageIndex((prev) => (prev + 1) % totalRoomImages);
+    }, 1000);
+    return () => {
+      if (autoSlideRef.current) clearInterval(autoSlideRef.current);
+    };
+  }, [activeRoomIndex, totalRoomImages]);
+
   // On mount or hash change, select the correct room
   useEffect(() => {
     const anchors = ["standard-double-room", "twin-room", "superior-room"];
@@ -174,19 +186,35 @@ export default function Rooms() {
         <div id="standard-double-room" />
         <div id="twin-room" />
         <div id="superior-room" />
-        {/* Gallery - Card Layout */}
-        <div className={styles.roomsList}>
-          {activeRoom.images.map((img, idx) => (
-            <div key={idx} className={styles.card}>
-              <Image
-                src={img}
-                alt={`${activeRoom.name} image ${idx+1}`}
-                width={320}
-                height={160}
-                className={styles.roomImage}
-              />
+        {/* Room Image Carousel - Modern Style, No Arrows */}
+        <div className={styles.carouselWrapper}>
+          <div className={styles.carouselImageContainerModern}>
+            <Image
+              key={currentRoomImageIndex}
+              src={activeRoom.images[currentRoomImageIndex]}
+              alt={`${activeRoom.name} image ${currentRoomImageIndex + 1}`}
+              width={700}
+              height={400}
+              className={`${styles.roomImageModern} ${styles.fadePop}`}
+              priority
+            />
+            <div className={styles.carouselIndicatorsModern}>
+              {activeRoom.images.map((_, idx) => (
+                <span
+                  key={idx}
+                  className={
+                    idx === currentRoomImageIndex
+                      ? styles.carouselDotModernActive
+                      : styles.carouselDotModern
+                  }
+                  onClick={() => setCurrentRoomImageIndex(idx)}
+                  aria-label={`Go to image ${idx + 1}`}
+                  role="button"
+                  tabIndex={0}
+                />
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         {/* Details & Amenities */}
@@ -210,14 +238,14 @@ export default function Rooms() {
           </div>
           <div className="flex flex-wrap gap-4 mt-6">
             <Link href="/booking" passHref>
-              <button className="relative px-7 py-4 bg-[#FFD3A3] text-[#4A2400] rounded-xl font-semibold shadow-2xl overflow-hidden group border border-[#8F5F2F] transition-all duration-300 flex items-center gap-2 text-lg hover:bg-[#8F5F2F] hover:text-white">
+              <button className="relative px-7 py-4 bg-[#8F5F2F]] text-[#4A2400] rounded-xl font-semibold shadow-2xl overflow-hidden group border border-[#8F5F2F] transition-all duration-300 flex items-center gap-2 text-lg hover:bg-[#8F5F2F] hover:text-white">
                 Book Now
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 <div className="absolute inset-0 bg-linear-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl" />
               </button>
             </Link>
             <Link href="/Virtual-tour" passHref>
-              <button className="px-7 py-4 bg-[#FFD3A3] text-[#4A2400] rounded-xl font-semibold border border-[#8F5F2F] transition-all duration-300 text-lg hover:bg-[#8F5F2F] hover:text-white">
+              <button className="px-7 py-4 bg-[#8F5F2F] text-[#4A2400] rounded-xl font-semibold border border-[#8F5F2F] transition-all duration-300 text-lg hover:bg-[#8F5F2F] hover:text-white">
                 Virtual Tour
               </button>
             </Link>

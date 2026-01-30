@@ -1,6 +1,7 @@
 "use client";
 import Hero from "./components/homepage/hero";
 import Image from "next/image";
+import ActivityCarousel from "./components/homepage/ActivityCarousel";
 import Link from "next/link";
 import { Hand, UserCheck, Droplet, Shield, Sparkles, Wind, Thermometer, Stethoscope } from "lucide-react";
 
@@ -192,9 +193,7 @@ export default function Home() {
               `${S3_BASE}/Event2.jpeg`,
               `${S3_BASE}/Event13.jpeg`,
               `${S3_BASE}/Event11.jpeg`,
-              `${S3_BASE}/Event7.jpeg`,
-              `${S3_BASE}/Event5.jpeg`,
-              `${S3_BASE}/Event14.jpeg`,
+             
             ].map((img, idx) => (
               <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
                 <Image
@@ -267,13 +266,16 @@ export default function Home() {
           <div className="flex flex-col gap-12 md:gap-16">
             {/* Swimming Pool */}
             <div className="group bg-white/80 backdrop-blur rounded-3xl shadow-2xl flex flex-col md:flex-row items-stretch border border-[#EADBC8] hover:shadow-[0_8px_32px_rgba(139,94,33,0.12)] transition-all duration-300">
-              <div className="flex flex-row gap-0 md:gap-4 w-full md:w-2/5 min-h-[180px] sm:min-h-[220px]">
-                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
-                  <Image src={`${S3_BASE}/Swimmingpool1_result.png`} alt="Swimming Pool View 1" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-l-3xl md:rounded-l-3xl md:rounded-tr-none md:rounded-bl-3xl" />
-                </div>
-                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
-                  <Image src={`${S3_BASE}/Swimmingpool2_result.png`} alt="Swimming Pool View 2" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-r-3xl md:rounded-r-3xl md:rounded-tl-none md:rounded-br-3xl" />
-                </div>
+              <div className="flex flex-col items-center justify-center w-full md:w-2/5 min-h-[220px] py-4">
+                <ActivityCarousel
+                  images={[
+                    { src: `${S3_BASE}/Swimmingpool1_result.png`, alt: 'Swimming Pool View 1' },
+                    { src: `${S3_BASE}/Swimmingpool2_result.png`, alt: 'Swimming Pool View 2' },
+                  ]}
+                  interval={2000}
+                  width={420}
+                  height={240}
+                />
               </div>
               <div className="flex-1 flex flex-col justify-center px-4 py-6 sm:px-8 sm:py-8 md:py-0 md:pl-10 md:pr-6">
                 <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-[#8F5F2F]">Swimming Pool</h3>
@@ -282,13 +284,16 @@ export default function Home() {
             </div>
             {/* Games */}
             <div className="group bg-white/80 backdrop-blur rounded-3xl shadow-2xl flex flex-col md:flex-row-reverse items-stretch border border-[#EADBC8] hover:shadow-[0_8px_32px_rgba(139,94,33,0.12)] transition-all duration-300">
-              <div className="flex flex-row gap-0 md:gap-4 w-full md:w-2/5 min-h-[180px] sm:min-h-[220px]">
-                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
-                  <Image src={`${S3_BASE}/IMG_3394.webp`} alt="Games Area 1" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-l-3xl md:rounded-l-3xl md:rounded-tr-none md:rounded-bl-3xl" />
-                </div>
-                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
-                  <Image src={`${S3_BASE}/IMG_2450.webp`} alt="Games Area 2" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-r-3xl md:rounded-r-3xl md:rounded-tl-none md:rounded-br-3xl" />
-                </div>
+              <div className="flex flex-col items-center justify-center w-full md:w-2/5 min-h-[220px] py-4">
+                <ActivityCarousel
+                  images={[
+                    { src: `${S3_BASE}/IMG_3394.webp`, alt: 'Games Area 1' },
+                    { src: `${S3_BASE}/IMG_2450.webp`, alt: 'Games Area 2' },
+                  ]}
+                  interval={2000}
+                  width={420}
+                  height={240}
+                />
               </div>
               <div className="flex-1 flex flex-col justify-center px-4 py-6 sm:px-8 sm:py-8 md:py-0 md:pr-10 md:pl-6">
                 <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-[#8F5F2F]">Games</h3>
@@ -297,13 +302,16 @@ export default function Home() {
             </div>
             {/* Kids Activities */}
             <div className="group bg-white/80 backdrop-blur rounded-3xl shadow-2xl flex flex-col md:flex-row items-stretch border border-[#EADBC8] hover:shadow-[0_8px_32px_rgba(139,94,33,0.12)] transition-all duration-300">
-              <div className="flex flex-row gap-0 md:gap-4 w-full md:w-2/5 min-h-[180px] sm:min-h-[220px]">
-                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
-                  <Image src={`${S3_BASE}/IMG_2277.webp`} alt="Kids Activities 1" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-l-3xl md:rounded-l-3xl md:rounded-tr-none md:rounded-bl-3xl" />
-                </div>
-                <div className="relative w-1/2 h-40 sm:h-56 overflow-hidden">
-                  <Image src={`${S3_BASE}/IMG_2380.webp`} alt="Kids Activities 2" fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110 rounded-r-3xl md:rounded-r-3xl md:rounded-tl-none md:rounded-br-3xl" />
-                </div>
+              <div className="flex flex-col items-center justify-center w-full md:w-2/5 min-h-[220px] py-4">
+                <ActivityCarousel
+                  images={[
+                    { src: `${S3_BASE}/IMG_2277.webp`, alt: 'Kids Activities 1' },
+                    { src: `${S3_BASE}/IMG_2380.webp`, alt: 'Kids Activities 2' },
+                  ]}
+                  interval={2000}
+                  width={420}
+                  height={240}
+                />
               </div>
               <div className="flex-1 flex flex-col justify-center px-4 py-6 sm:px-8 sm:py-8 md:py-0 md:pl-10 md:pr-6">
                 <h3 className="font-serif text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-[#8F5F2F]">Kids Activities</h3>

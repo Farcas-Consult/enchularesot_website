@@ -6,9 +6,9 @@ import Image from "next/image";
 
 const S3_BASE =
   "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
-const Exterior1 = `${S3_BASE}/IMG_2422.webp`;
+const Exterior1 = `${S3_BASE}/Relax.jpeg`;
 const Environment1 = `${S3_BASE}/IMG_2257.webp`;
-const Entrance1 = `${S3_BASE}/IMG_2256.webp`;
+const Entrance1 = `${S3_BASE}/Welcome.jpeg`;
 const Exterior2 = `${S3_BASE}/Surrounding1.jpg`;
 const Conference = `${S3_BASE}/Event1.jpeg`;
 

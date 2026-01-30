@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 font-bold text-xl mb-4 text-white font-lora">
-              <MapPin className="w-6 h-6 text-[#A04040]" />
+              <MapPin className="w-6 h-6 text-[#FFFFFF]" />
               <span className="font-lora">ENCHULA</span>
             </div>
             <p className="text-white text-sm leading-relaxed font-nunito">
