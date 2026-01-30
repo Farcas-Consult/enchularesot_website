@@ -25,16 +25,11 @@ export default function EventsPage() {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header with Badge */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/10 backdrop-blur-sm rounded-full border border-[#8F5F2F]]/10">
-            <span className="text-[#B99A66] font-semibold tracking-wide text-sm uppercase">
-              EVENTS
-            </span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-6 leading-tight font-lora">
             Your <span className="">Special Moments</span>, Our Serene Setting
           </h2>
           <p className="text-lg text-[#4A2400] max-w-3xl mx-auto font-nunito">
-            Social Events | Corporate Events - Event Planning, Event Decor, Catering
+            Enchula plans and delivers social and corporate events in a highly organized and seamless manner—handling everything from event planning and décor to catering, with careful coordination, clear timelines, and attention to detail to ensure every event runs smoothly.
           </p>
         </div>
 

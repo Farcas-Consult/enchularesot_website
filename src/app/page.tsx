@@ -260,7 +260,7 @@ export default function Home() {
       <div className="w-full h-0.5 bg-linear-to-r from-(--brand-secondary-maroon)/0 via-(--brand-secondary-maroon)/60 to-(--brand-secondary-maroon)/0 my-8" />
 
       {/* Fun Activities and Experiences */}
-      <section className="relative bg-linear-to-br from-[#FFF8F0] via-[#F7E6D0] to-[#F3E9DD] py-24 px-4">
+      <section className="relative bg-white py-24 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-5xl font-extrabold mb-6 text-center font-serif text-[#8F5F2F] drop-shadow-lg tracking-tight">Fun Activities & Experiences</h2>
           <p className="max-w-2xl mx-auto text-lg mb-14 text-center text-[#B99A66] font-medium">Enjoy a range of fun activities for all ages, including swimming, games, and kids activities.</p>
@@ -323,15 +323,15 @@ export default function Home() {
         </p>
         {/* Stats Bar */}
         <div className="flex flex-wrap justify-center gap-6 mb-10">
-          <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30 min-w-[120px]">
+          <div className="bg-[#4A2400]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30 min-w-[120px]">
             <div className="text-3xl font-bold text-[#D7BFA8] mb-1">4.8/5</div>
             <div className="text-[#D7BFA8] text-sm">Average Rating</div>
           </div>
-          <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30 min-w-[120px]">
+          <div className="bg-[#4A2400]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30 min-w-[120px]">
             <div className="text-3xl font-bold text-[#D7BFA8] mb-1">200+</div>
             <div className="text-[#D7BFA8] text-sm">Happy Guests</div>
           </div>
-          <div className="bg-[#2C1B16]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30 min-w-[120px]">
+          <div className="bg-[#4A2400]/60 backdrop-blur-sm px-6 py-4 rounded-2xl border border-[#5C4033]/30 min-w-[120px]">
             <div className="text-3xl font-bold text-[#D7BFA8] mb-1">98%</div>
             <div className="text-[#D7BFA8] text-sm">Would Recommend</div>
           </div>

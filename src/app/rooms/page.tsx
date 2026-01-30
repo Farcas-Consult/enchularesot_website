@@ -185,7 +185,6 @@ export default function Rooms() {
                 height={160}
                 className={styles.roomImage}
               />
-              <div className={styles.caption}>{activeRoom.name}</div>
             </div>
           ))}
         </div>
