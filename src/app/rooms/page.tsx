@@ -131,7 +131,7 @@ export default function Rooms() {
     if (autoSlideRef.current) clearInterval(autoSlideRef.current);
     autoSlideRef.current = setInterval(() => {
       setCurrentRoomImageIndex((prev) => (prev + 1) % totalRoomImages);
-    }, 1000);
+    }, 7000);
     return () => {
       if (autoSlideRef.current) clearInterval(autoSlideRef.current);
     };
