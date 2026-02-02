@@ -160,25 +160,6 @@ export default function Home() {
         <p className="max-w-2xl mx-auto text-lg sm:text-xl mb-8 text-[#B99A66] font-nunito">
           From strategic retreats to dynamic team-building sessions and elegant social gatherings — we provide the perfect setting for every occasion.
         </p>
-        {/* Retreats and Conferences Subsection */}
-        <div className="mb-12">
-          <h3 className="font-bold text-2xl sm:text-3xl mb-4 text-[#8F5F2F]">Retreats and Conferences</h3>
-          <p className="text-base sm:text-lg mb-6 text-[#4A2400] font-nunito">
-            Host your next retreat or conference in our modern, fully equipped venues designed for productivity and inspiration.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-            {[`${S3_BASE}/Conference4.jpg`, `${S3_BASE}/Conference2.jpg`, `${S3_BASE}/Conference3.jpg`].map((img, idx) => (
-              <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
-                <Image
-                  src={img}
-                  alt={`Retreat or conference ${idx + 1}`}
-                  fill
-                  className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
         {/* Corporate and Social Events Subsection */}
         <div className="mb-12">
           <h3 className="font-bold text-2xl sm:text-3xl mb-4 text-[#8F5F2F]">Corporate and Social Events</h3>
@@ -272,8 +253,8 @@ export default function Home() {
                     { src: `${S3_BASE}/Swimmingpool1_result.png`, alt: 'Swimming Pool View 1' },
                     { src: `${S3_BASE}/Swimmingpool2_result.png`, alt: 'Swimming Pool View 2' },
                   ]}
-                  interval={2000}
-                  width={420}
+                  interval={4000}
+                  width={320}
                   height={240}
                 />
               </div>
@@ -290,8 +271,8 @@ export default function Home() {
                     { src: `${S3_BASE}/IMG_3394.webp`, alt: 'Games Area 1' },
                     { src: `${S3_BASE}/IMG_2450.webp`, alt: 'Games Area 2' },
                   ]}
-                  interval={2000}
-                  width={420}
+                  interval={4000}
+                  width={320}
                   height={240}
                 />
               </div>
@@ -308,8 +289,8 @@ export default function Home() {
                     { src: `${S3_BASE}/IMG_2277.webp`, alt: 'Kids Activities 1' },
                     { src: `${S3_BASE}/IMG_2380.webp`, alt: 'Kids Activities 2' },
                   ]}
-                  interval={2000}
-                  width={420}
+                  interval={4000}
+                  width={320}
                   height={240}
                 />
               </div>

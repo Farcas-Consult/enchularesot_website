@@ -58,13 +58,12 @@ export default function Navbar() {
               <Image 
                 src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo8.png"
                 alt="Enchula Resort Logo"
-                width={56}
-                height={56}
+                width={80}
+                height={80}
                 className="object-contain"
                 style={{ background: 'none', backgroundColor: 'transparent' }}
                 priority
               />
-              <span className="text-2xl font-bold text-[var(--brand-light-brown)] tracking-wider font-lora">ENCHULA</span>
             </Link>
           </div>
           {/* Book button on far right */}
@@ -89,13 +88,12 @@ export default function Navbar() {
             <Image 
               src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo8.png"
               alt="Enchula Resort Logo"
-              width={56}
-              height={56}
+              width={80}
+              height={80}
               className="object-contain"
               style={{ background: 'none', backgroundColor: 'transparent' }}
               priority
             />
-            <span className="text-2xl font-bold text-[var(--brand-light-brown)] tracking-wider font-lora">ENCHULA</span>
           </Link>
           <div className="flex items-center gap-3 ml-4">
             <a href="tel:+254727000027" aria-label="Call" className="p-2"><Phone className="w-5 h-5 text-white" /></a>

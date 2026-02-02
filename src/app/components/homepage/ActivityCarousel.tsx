@@ -10,7 +10,7 @@ interface ActivityCarouselProps {
   width?: number;
 }
 
-export default function ActivityCarousel({ images, interval = 2000, height = 320, width = 540 }: ActivityCarouselProps) {
+export default function ActivityCarousel({ images, interval = 4000, height = 240, width = 320 }: ActivityCarouselProps) {
   const [current, setCurrent] = useState(0);
   const timer = useRef<NodeJS.Timeout | null>(null);
 
@@ -36,28 +36,26 @@ export default function ActivityCarousel({ images, interval = 2000, height = 320
           alt={images[current].alt}
           width={width}
           height={height}
-          className="rounded-3xl object-cover shadow-xl pop-fade"
+          className="rounded-2xl object-cover shadow-lg smooth-fade"
           style={{ width: `${width}px`, height: `${height}px`, minWidth: `${width}px`, minHeight: `${height}px` }}
           priority
         />
       </div>
-      <div className="flex gap-2 mt-4">
+      <div className="flex gap-2 mt-3">
         {images.map((_, idx) => (
           <span
             key={idx}
-            className={`w-3 h-3 rounded-full border-2 ${idx === current ? 'bg-[#B99A66] border-[#8F5F2F]' : 'bg-[#e0c9a6] border-[#B99A66]'} transition-all`}
+            className={`w-2 h-2 rounded-full ${idx === current ? 'bg-[#B99A66]' : 'bg-[#e0c9a6]'} transition-all`}
           />
         ))}
       </div>
       <style jsx global>{`
-        .pop-fade {
-          animation: popFade 0.7s cubic-bezier(0.34,1.56,0.64,1) both;
+        .smooth-fade {
+          animation: smoothFade 1s ease-in-out both;
         }
-        @keyframes popFade {
-          0% { opacity: 0; transform: scale(0.92); }
-          60% { opacity: 1; transform: scale(1.04); }
-          80% { transform: scale(0.98); }
-          100% { opacity: 1; transform: scale(1); }
+        @keyframes smoothFade {
+          0% { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
         }
       `}</style>
     </div>
