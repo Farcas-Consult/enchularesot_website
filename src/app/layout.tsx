@@ -8,6 +8,11 @@ import React from "react";
 export const metadata: Metadata = {
   title: "Enchula Resort",
   description: "Experience luxury, comfort, and nature at Enchula Resort.",
+  icons: {
+    icon: "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Enchula+Logo.jpeg",
+    shortcut: "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Enchula+Logo.jpeg",
+    apple: "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Enchula+Logo.jpeg",
+  },
 };
 
 export default function RootLayout({
