@@ -57,21 +57,21 @@ const rooms = [
     id: 1,
     name: "Standard  Room",
     price: "From Kshs. 10,000",
-    image: `${S3_BASE}/Room8.jpg`,
+    image: `${S3_BASE}/Standard Room1.jpeg`,
     anchor: "standard-double-room",
   },
   {
     id: 2,
     name: "Twin Room",
     price: "From Kshs. 10,000",
-    image: `${S3_BASE}/Room6.jpg`,
+    image: `${S3_BASE}/Twin Room1.jpeg`,
     anchor: "twin-room",
   },
   {
     id: 3,
     name: "Superior Room",
     price: "From Kshs. 12,000",
-    image: `${S3_BASE}/Room4.jpg`,
+    image: `${S3_BASE}/Superior Room1.jpeg`,
     anchor: "superior-room",
   },
 ];
@@ -160,6 +160,29 @@ export default function Home() {
         <p className="max-w-2xl mx-auto text-lg sm:text-xl mb-8 text-[#B99A66] font-nunito">
           From strategic retreats to dynamic team-building sessions and elegant social gatherings — we provide the perfect setting for every occasion.
         </p>
+        {/* Retreats and Conferences Subsection */}
+        <div className="mb-12">
+          <h3 className="font-bold text-2xl sm:text-3xl mb-4 text-[#8F5F2F]">Retreats and Conferences</h3>
+          <p className="text-base sm:text-lg mb-6 text-[#4A2400] font-nunito">
+            Host focused retreats, seminars, and conferences in well-equipped spaces designed for productive gatherings.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+            {[
+              `${S3_BASE}/Conferences1.jpeg`,
+              `${S3_BASE}/Conferences2.jpeg`,
+              `${S3_BASE}/Conferences3.jpeg`,
+            ].map((img, idx) => (
+              <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
+                <Image
+                  src={img}
+                  alt={`Retreat or conference ${idx + 1}`}
+                  fill
+                  className="object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:shadow-2xl"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
         {/* Corporate and Social Events Subsection */}
         <div className="mb-12">
           <h3 className="font-bold text-2xl sm:text-3xl mb-4 text-[#8F5F2F]">Corporate and Social Events</h3>
@@ -168,11 +191,11 @@ export default function Home() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {[
-              `${S3_BASE}/Event18.jpeg`,
-              `${S3_BASE}/Event1.jpeg`,
-              `${S3_BASE}/Party3.jpeg`,
+              `${S3_BASE}/Events1.jpeg`,
               `${S3_BASE}/Event2.jpeg`,
-              `${S3_BASE}/Event13.jpeg`,
+              `${S3_BASE}/Events3.jpeg`,
+              `${S3_BASE}/Events4.jpeg`,
+              `${S3_BASE}/Events5.jpeg`,
               `${S3_BASE}/Event11.jpeg`,
              
             ].map((img, idx) => (
@@ -221,7 +244,7 @@ export default function Home() {
         </p>
         <div className="-mx-4 sm:mx-0">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-            {[`${S3_BASE}/Dining4.jpg`, `${S3_BASE}/Dining6.jpg`, `${S3_BASE}/Breakfast1.jpg`].map((img, idx) => (
+            {[`${S3_BASE}/Dining1.jpeg`, `${S3_BASE}/Dining2.jpeg`, `${S3_BASE}/Dining3.jpeg`].map((img, idx) => (
               <div key={idx} className="relative h-56 rounded-2xl overflow-hidden group">
                 <Image
                   src={img}
@@ -250,8 +273,7 @@ export default function Home() {
               <div className="flex flex-col items-center justify-center w-full md:w-2/5 min-h-[220px] py-4">
                 <ActivityCarousel
                   images={[
-                    { src: `${S3_BASE}/Swimmingpool1_result.png`, alt: 'Swimming Pool View 1' },
-                    { src: `${S3_BASE}/Swimmingpool2_result.png`, alt: 'Swimming Pool View 2' },
+                    { src: `${S3_BASE}/Swimmingpool.jpeg`, alt: 'Swimming Pool View 1' },
                   ]}
                   interval={4000}
                   width={320}
@@ -268,8 +290,9 @@ export default function Home() {
               <div className="flex flex-col items-center justify-center w-full md:w-2/5 min-h-[220px] py-4">
                 <ActivityCarousel
                   images={[
-                    { src: `${S3_BASE}/IMG_3394.webp`, alt: 'Games Area 1' },
-                    { src: `${S3_BASE}/IMG_2450.webp`, alt: 'Games Area 2' },
+                    { src: `${S3_BASE}/Games1.jpeg`, alt: 'Games Area 1' },
+                    { src: `${S3_BASE}/Games2.jpeg`, alt: 'Games Area 2' },
+                    { src: `${S3_BASE}/Games3.jpeg`, alt: 'Games Area 3' },
                   ]}
                   interval={4000}
                   width={320}
