@@ -9,7 +9,7 @@ const S3_BASE =
 const Exterior1 = `${S3_BASE}/Relax.jpeg`;
 const Environment1 = `${S3_BASE}/IMG_2257.webp`;
 const Entrance1 = `${S3_BASE}/Welcome.jpeg`;
-const Exterior2 = `${S3_BASE}/Surrounding1.jpg`;
+const Exterior2 = `${S3_BASE}/Swimmingpool.jpeg`;
 const Conference = `${S3_BASE}/Event1.jpeg`;
 
 const slides = [

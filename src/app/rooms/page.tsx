@@ -9,20 +9,22 @@ import Link from "next/link";
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 // Background carousel images
-const BgRoom1 = `${S3_BASE}/Room3.jpg`;
-const BgRoom2 = `${S3_BASE}/Room4.jpg`;
+const BgRoom1 = `${S3_BASE}/Standard Room1.jpeg`;
+const BgRoom2 = `${S3_BASE}/Twin Room4.jpeg`;
 const BgRoom3 = `${S3_BASE}/Room8.jpg`;
 
 // Room images
-const DoubleRoom1 = `${S3_BASE}/Room3.jpg`;
-const DoubleRoom2 = `${S3_BASE}/Room2.jpg`;
-const DoubleRoom3 = `${S3_BASE}/IMG_2342.webp`;
-const TwinRoom1 = `${S3_BASE}/Rooms.jpeg`;
-const TwinRoom2 = `${S3_BASE}/Room10.jpg`;
-const TwinRoom3 = `${S3_BASE}/Room1.jpg`;
-const SuperiorRoom1 = `${S3_BASE}/Room4.jpg`;
-const SuperiorRoom2 = `${S3_BASE}/Room5.jpg`;
-const SuperiorRoom3 = `${S3_BASE}/IMG_3490.webp`;
+const DoubleRoom1 = `${S3_BASE}/Standard Room2.jpeg`;
+const DoubleRoom2 = `${S3_BASE}/Standard Room3.jpeg`;
+const DoubleRoom3 = `${S3_BASE}/Standard Room4.jpeg`;
+const DoubleRoom4 = `${S3_BASE}/Standard Room5.jpeg`;
+const DoubleRoom5 = `${S3_BASE}/Standard Room6.jpeg`;
+const TwinRoom1 = `${S3_BASE}/Twin Room2.jpeg`;
+const TwinRoom2 = `${S3_BASE}/Twin Room3.jpeg`;
+const TwinRoom3 = `${S3_BASE}/Twin Room4.jpeg`;
+const SuperiorRoom1 = `${S3_BASE}/Superior Room1.jpeg`;
+const SuperiorRoom2 = `${S3_BASE}/Superior Room2.jpeg`;
+const SuperiorRoom3 = `${S3_BASE}/Superior Room3.jpeg`;
 
 export default function Rooms() {
   const [activeRoomIndex, setActiveRoomIndex] = useState(0);
@@ -51,7 +53,7 @@ export default function Rooms() {
       name: "Standard  Room",
       category: "Comfort",
       price: "From Kshs. 10,000",
-      images: [DoubleRoom1, DoubleRoom2, DoubleRoom3],
+      images: [DoubleRoom1, DoubleRoom2, DoubleRoom3, DoubleRoom4, DoubleRoom5],
       guests: "2 Guests",
       size: "30m²",
       description:
