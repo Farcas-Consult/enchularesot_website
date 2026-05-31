@@ -75,78 +75,114 @@ export default function Navbar() {
 
         /* ── Desktop ── */
         .nav-desktop {
-          display: flex;
+          position: relative;
+          display: grid;
+          grid-template-columns: minmax(160px, 220px) minmax(0, 1fr) minmax(160px, 220px);
+          grid-template-rows: auto auto;
           background: #4A2400;
-          padding: 0 2.5rem;
+          padding: 1rem 2.5rem .9rem;
           align-items: center;
-          justify-content: space-between;
-          gap: 1.5rem;
-          min-height: 80px;
+          gap: .65rem 1.5rem;
+          min-height: 148px;
+          border-bottom: 1px solid rgba(185,154,102,.18);
         }
-        .nav-contact-icons { display: flex; gap: .25rem; align-items: center; }
+        .nav-contact-icons {
+          display: flex; gap: .35rem; align-items: center;
+          grid-column: 1; grid-row: 1; justify-self: start;
+        }
         .nav-icon-btn {
-          width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
-          color: rgba(255,211,163,.6); border: none; background: transparent; cursor: pointer;
-          border-radius: 50%; transition: color .2s, background .2s; text-decoration: none;
+          width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
+          color: rgba(255,211,163,.7); border: 1px solid rgba(185,154,102,.22);
+          background: rgba(255,211,163,.04); cursor: pointer;
+          transition: color .2s, background .2s, border-color .2s, transform .2s; text-decoration: none;
         }
-        .nav-icon-btn:hover { color: #FFD3A3; background: rgba(255,211,163,.1); }
+        .nav-icon-btn:hover {
+          color: #FFD3A3; background: rgba(255,211,163,.1);
+          border-color: rgba(185,154,102,.55); transform: translateY(-1px);
+        }
 
         .nav-logo-wrap {
-          display: flex; flex-direction: column; align-items: center; gap: .2rem;
+          display: flex; flex-direction: column; align-items: center; gap: .25rem;
           text-decoration: none; flex-shrink: 0;
+          grid-column: 2; grid-row: 1; justify-self: center;
+        }
+        .nav-logo-img {
+          width: 132px; height: 88px; object-fit: contain;
+          filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
         }
         .nav-logo-text {
           font-family: 'Cormorant Garamond', Georgia, serif;
-          font-size: .6rem; letter-spacing: .25em; text-transform: uppercase;
-          color: rgba(185,154,102,.65); font-weight: 400;
+          font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
+          color: rgba(255,211,163,.72); font-weight: 400;
         }
 
         .nav-links-row {
           display: flex; align-items: center; gap: .25rem; list-style: none;
           flex-wrap: wrap; justify-content: center;
+          grid-column: 1 / -1; grid-row: 2;
+          border-top: 1px solid rgba(185,154,102,.14);
+          padding-top: .8rem;
         }
         .nav-link {
-          font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
-          font-weight: 500; color: rgba(255,211,163,.65); text-decoration: none;
-          padding: .5rem .75rem; position: relative; transition: color .2s;
+          font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
+          font-weight: 600; color: rgba(255,211,163,.68); text-decoration: none;
+          padding: .55rem .8rem; position: relative; transition: color .2s, background .2s;
           white-space: nowrap;
         }
         .nav-link::after {
-          content: ''; position: absolute; bottom: 0; left: .75rem; right: .75rem;
+          content: ''; position: absolute; bottom: .25rem; left: .8rem; right: .8rem;
           height: 1px; background: #B99A66;
           transform: scaleX(0); transition: transform .25s;
         }
-        .nav-link:hover { color: #FFD3A3; }
+        .nav-link:hover { color: #FFD3A3; background: rgba(255,211,163,.055); }
         .nav-link:hover::after { transform: scaleX(1); }
 
         .nav-book-btn {
-          padding: .65rem 1.8rem;
+          grid-column: 3; grid-row: 1; justify-self: end;
+          padding: .8rem 1.65rem;
           background: #B99A66; color: #4A2400;
           font-family: 'Jost', sans-serif;
           font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
           font-weight: 700; border: none; cursor: pointer; transition: all .25s;
           text-decoration: none; white-space: nowrap; flex-shrink: 0;
         }
-        .nav-book-btn:hover { background: #FFD3A3; }
+        .nav-book-btn:hover { background: #FFD3A3; transform: translateY(-1px); }
 
         /* ── Mobile ── */
         .nav-mobile {
           background: #4A2400;
           display: flex; flex-direction: column;
+          border-bottom: 1px solid rgba(185,154,102,.18);
         }
         .nav-mobile-topbar {
+          position: relative;
           display: flex; align-items: center; justify-content: space-between;
-          padding: .75rem 1.25rem;
+          min-height: 96px;
+          padding: .75rem 1rem;
           border-bottom: 1px solid rgba(185,154,102,.15);
         }
         .nav-hamburger {
           width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
           color: rgba(255,211,163,.8); border: none; background: transparent; cursor: pointer;
           border: 1px solid rgba(185,154,102,.25); border-radius: 2px; transition: all .2s;
+          position: relative; z-index: 2;
         }
         .nav-hamburger:hover { border-color: #B99A66; color: #FFD3A3; }
         .nav-mobile-contacts {
           display: flex; align-items: center; gap: .15rem;
+        }
+        .nav-mobile-logo {
+          position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+          display: flex; align-items: center; justify-content: center;
+        }
+        .nav-mobile-logo-img {
+          width: 102px; height: 76px; object-fit: contain;
+          filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
+        }
+        .nav-mobile-book {
+          grid-column: auto; grid-row: auto; justify-self: auto;
+          font-size: .62rem; padding: .62rem .95rem;
+          position: relative; z-index: 2;
         }
 
         /* Drawer */
@@ -226,26 +262,26 @@ export default function Navbar() {
             <a href="mailto:info@enchularesort.co.ke" className="nav-icon-btn" title="Email"><Mail size={15} /></a>
           </div>
 
-          {/* Center: logo + nav links */}
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: ".5rem", flex: 1 }}>
-            <Link href="/" className="nav-logo-wrap">
-              <Image
-                src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo8.png"
-                alt="Enchula Resort"
-                width={100} height={100}
-                style={{ objectFit: "contain" }}
-                priority
-              />
-              <span className="nav-logo-text">Resort &amp; Retreat</span>
-            </Link>
-            <ul className="nav-links-row">
-              {navLinks.map(l => (
-                <li key={l.name}>
-                  <Link href={l.href} className="nav-link">{l.name}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Center: logo */}
+          <Link href="/" className="nav-logo-wrap">
+            <Image
+              src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo8.png"
+              alt="Enchula Resort"
+              width={132}
+              height={88}
+              className="nav-logo-img"
+              priority
+            />
+            <span className="nav-logo-text">Resort &amp; Retreat</span>
+          </Link>
+
+          <ul className="nav-links-row">
+            {navLinks.map(l => (
+              <li key={l.name}>
+                <Link href={l.href} className="nav-link">{l.name}</Link>
+              </li>
+            ))}
+          </ul>
 
           {/* Right: book now */}
           <Link href="/booking" className="nav-book-btn">Book Now</Link>
@@ -262,18 +298,19 @@ export default function Navbar() {
             </button>
 
             {/* Logo centered */}
-            <Link href="/" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
+            <Link href="/" className="nav-mobile-logo">
               <Image
                 src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo8.png"
                 alt="Enchula Resort"
-                width={90} height={90}
-                style={{ objectFit: "contain" }}
+                width={102}
+                height={76}
+                className="nav-mobile-logo-img"
                 priority
               />
             </Link>
 
             {/* Book */}
-            <Link href="/booking" className="nav-book-btn" style={{ fontSize: ".65rem", padding: ".55rem 1.25rem" }}>Book</Link>
+            <Link href="/booking" className="nav-book-btn nav-mobile-book">Book</Link>
           </div>
 
           {/* Contact strip */}
