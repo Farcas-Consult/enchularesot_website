@@ -48,6 +48,7 @@ export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [prev, setPrev] = useState<number | null>(null);
   const [animating, setAnimating] = useState(false);
+  const [isPhone, setIsPhone] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const goTo = (idx: number) => {
@@ -67,9 +68,19 @@ export default function Hero() {
     };
   }, [current, animating]);
 
+  useEffect(() => {
+    const syncViewport = () => setIsPhone(window.innerWidth < 768);
+
+    syncViewport();
+    window.addEventListener("resize", syncViewport);
+    return () => window.removeEventListener("resize", syncViewport);
+  }, []);
+
   return (
     <section style={{
-      position: "relative", height: "100vh", minHeight: "640px",
+      position: "relative",
+      height: isPhone ? "50vh" : "100vh",
+      minHeight: isPhone ? "0" : "640px",
       overflow: "hidden", background: "#1a0d00",
     }}>
 
@@ -153,26 +164,28 @@ export default function Hero() {
         position: "absolute", inset: 0, zIndex: 4,
         display: "flex", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
-        textAlign: "center", padding: "0 1.5rem",
+        textAlign: "center", padding: isPhone ? "0 1rem" : "0 1.5rem",
       }}>
         {/* Eyebrow */}
         <div className="hero-text-in" style={{
           display: "flex", alignItems: "center", gap: "1rem",
-          marginBottom: "1.5rem",
+          marginBottom: isPhone ? ".65rem" : "1.5rem",
         }}>
-          <div style={{ width: "48px", height: "1px", background: "rgba(185,154,102,.7)" }} />
+          <div style={{ width: isPhone ? "24px" : "48px", height: "1px", background: "rgba(185,154,102,.7)" }} />
           <span style={{
             fontFamily: "'Jost', sans-serif",
-            fontSize: ".68rem", letterSpacing: ".28em", textTransform: "uppercase",
+            fontSize: isPhone ? ".55rem" : ".68rem",
+            letterSpacing: isPhone ? ".16em" : ".28em",
+            textTransform: "uppercase",
             color: "#B99A66", fontWeight: 500,
           }}>{slides[current].eyebrow}</span>
-          <div style={{ width: "48px", height: "1px", background: "rgba(185,154,102,.7)" }} />
+          <div style={{ width: isPhone ? "24px" : "48px", height: "1px", background: "rgba(185,154,102,.7)" }} />
         </div>
 
         {/* Title */}
         <h1 className="hero-text-in-delay1" style={{
           fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontSize: "clamp(3rem, 8.5vw, 7.5rem)",
+          fontSize: isPhone ? "clamp(1.8rem, 9vw, 2.6rem)" : "clamp(3rem, 8.5vw, 7.5rem)",
           fontWeight: 300, color: "#FFFFFF", lineHeight: 1.02,
           letterSpacing: "-.01em", marginBottom: ".2rem",
         }}>
@@ -180,9 +193,9 @@ export default function Hero() {
         </h1>
         <h1 className="hero-text-in-delay1" style={{
           fontFamily: "'Cormorant Garamond', Georgia, serif",
-          fontSize: "clamp(3rem, 8.5vw, 7.5rem)",
+          fontSize: isPhone ? "clamp(1.8rem, 9vw, 2.6rem)" : "clamp(3rem, 8.5vw, 7.5rem)",
           fontWeight: 300, fontStyle: "italic", color: "#FFD3A3",
-          lineHeight: 1.05, letterSpacing: "-.01em", marginBottom: "1.75rem",
+          lineHeight: 1.05, letterSpacing: "-.01em", marginBottom: isPhone ? ".75rem" : "1.75rem",
         }}>
           {slides[current].titleAccent}
         </h1>
@@ -190,21 +203,23 @@ export default function Hero() {
         {/* Subtitle */}
         <p className="hero-text-in-delay2" style={{
           fontFamily: "'Jost', sans-serif",
-          fontSize: "clamp(.9rem, 1.8vw, 1.15rem)",
+          fontSize: isPhone ? ".78rem" : "clamp(.9rem, 1.8vw, 1.15rem)",
           color: "rgba(250,246,240,.75)", fontWeight: 300,
           letterSpacing: ".04em", maxWidth: "52ch",
-          lineHeight: 1.7, marginBottom: "3rem",
+          lineHeight: isPhone ? 1.45 : 1.7, marginBottom: isPhone ? "1rem" : "3rem",
         }}>
           {slides[current].subtitle}
         </p>
 
         {/* CTAs */}
-        <div className="hero-text-in-delay3" style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap", justifyContent: "center" }}>
+        <div className="hero-text-in-delay3" style={{ display: "flex", gap: isPhone ? ".65rem" : "1.25rem", flexWrap: "wrap", justifyContent: "center" }}>
           <Link href="/booking" style={{
-            padding: ".95rem 2.8rem",
+            padding: isPhone ? ".65rem 1.25rem" : ".95rem 2.8rem",
             background: "#8F5F2F", color: "#FFD3A3",
             fontFamily: "'Jost', sans-serif",
-            fontSize: ".75rem", letterSpacing: ".14em", textTransform: "uppercase",
+            fontSize: isPhone ? ".62rem" : ".75rem",
+            letterSpacing: isPhone ? ".1em" : ".14em",
+            textTransform: "uppercase",
             fontWeight: 600, border: "none", textDecoration: "none",
             display: "inline-block", transition: "background .25s",
           }}
@@ -213,7 +228,7 @@ export default function Hero() {
           >
             Reserve Your Stay
           </Link>
-          <Link href="/#about" style={{
+          {!isPhone && <Link href="/#about" style={{
             padding: ".95rem 2.8rem", background: "transparent",
             color: "#FFD3A3", fontFamily: "'Jost', sans-serif",
             fontSize: ".75rem", letterSpacing: ".14em", textTransform: "uppercase",
@@ -224,12 +239,12 @@ export default function Hero() {
             onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,211,163,.45)"; e.currentTarget.style.background = "transparent"; }}
           >
             Explore Resort
-          </Link>
+          </Link>}
         </div>
       </div>
 
       {/* Slide counter + progress — bottom left */}
-      <div style={{
+      {!isPhone && <div style={{
         position: "absolute", bottom: "2.5rem", left: "3rem", zIndex: 5,
         display: "flex", alignItems: "center", gap: "1.25rem",
       }}>
@@ -248,10 +263,10 @@ export default function Hero() {
             background: "#B99A66",
           }} />
         </div>
-      </div>
+      </div>}
 
       {/* Dot nav — bottom center */}
-      <div style={{
+      {!isPhone && <div style={{
         position: "absolute", bottom: "2.5rem", left: "50%",
         transform: "translateX(-50%)", zIndex: 5,
         display: "flex", gap: ".65rem",
@@ -266,10 +281,10 @@ export default function Hero() {
             }}
           />
         ))}
-      </div>
+      </div>}
 
       {/* Scroll indicator — bottom right */}
-      <div style={{
+      {!isPhone && <div style={{
         position: "absolute", bottom: "2.5rem", right: "3rem", zIndex: 5,
         display: "flex", flexDirection: "column", alignItems: "center", gap: ".5rem",
       }}>
@@ -283,7 +298,7 @@ export default function Hero() {
           width: "1px", height: "48px",
           background: "linear-gradient(180deg, rgba(185,154,102,.7), transparent)",
         }} />
-      </div>
+      </div>}
 
     </section>
   );
