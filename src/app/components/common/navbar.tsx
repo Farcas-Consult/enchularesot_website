@@ -5,175 +5,322 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X, Phone, Mail } from "lucide-react";
 
+const navLinks = [
+  { name: "Home",             href: "/" },
+  { name: "Rooms",            href: "/rooms" },
+  { name: "Dining",           href: "/dinings" },
+  { name: "Events",           href: "/events" },
+  { name: "Wellness",         href: "/wellness-fitness" },
+  { name: "Experiences",      href: "/experience" },
+  { name: "Gallery",          href: "/gallery" },
+  { name: "Virtual Tour",     href: "/Virtual-tour" },
+];
+
+const PHONE_BREAKPOINT = 768;
+
+// WhatsApp SVG icon
+const WhatsAppIcon = ({ size = 18 }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+);
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isPhone, setIsPhone] = useState<boolean | null>(null);
 
-  // Prevent background scroll when mobile menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen && isPhone ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isPhone, menuOpen]);
+
+  useEffect(() => {
+    const syncViewport = () => {
+      const phone = window.innerWidth < PHONE_BREAKPOINT;
+      setIsPhone(phone);
+      if (!phone) setMenuOpen(false);
     };
-  }, [isMenuOpen]);
 
-
-  
-  // Row1: Main, longer; Row2: Secondary, shorter
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Rooms", href: "/rooms" },
-    { name: "Dining", href: "/dinings" },
-    {
-      name: "Events",
-      href: "/events"
-    },
-    { name: "Wellness & Fitness", href: "/wellness-fitness" },
-    { name: "Experiences", href: "/experience" },
-    { name: "Gallery", href: "/gallery" },
-    { name: "Virtual Tour", href: "/Virtual-tour" },
-  ];
+    syncViewport();
+    window.addEventListener("resize", syncViewport);
+    return () => window.removeEventListener("resize", syncViewport);
+  }, []);
 
   return (
-    <header className="sticky top-0 w-full z-50 bg-[#5A2E00] shadow transition-all duration-300 m-0 p-0">
-      {/* Mobile: Custom layout */}
-      <div className="md:hidden flex flex-col w-full bg-transparent">
-        {/* Top row: menu left, logo center, book right */}
-        <div className="flex items-center justify-between w-full px-4 pt-2 pb-1">
-          {/* Menu icon on far left */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-[var(--brand-light-brown)] hover:text-white p-2 focus:outline-none order-1"
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-          {/* Logo centered */}
-          <div className="flex-1 flex justify-center order-2">
-            <Link href="/" className="flex items-center gap-2 min-w-[120px]">
-              <Image 
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+        .nav-root {
+          position: sticky; top: 0; left: 0; right: 0; z-index: 100;
+          font-family: 'Jost', system-ui, sans-serif;
+          transition: background .4s, box-shadow .4s;
+        }
+        .nav-root.scrolled {
+          box-shadow: 0 4px 32px rgba(26,13,0,.35);
+        }
+
+        /* top accent bar */
+        .nav-accent-bar {
+          height: 2px;
+          background: linear-gradient(90deg, #4A2400, #B99A66 40%, #D2BB9E 60%, #B99A66 80%, #4A2400);
+        }
+
+        /* ── Desktop ── */
+        .nav-desktop {
+          display: flex;
+          background: #4A2400;
+          padding: 0 2.5rem;
+          align-items: center;
+          justify-content: space-between;
+          gap: 1.5rem;
+          min-height: 80px;
+        }
+        .nav-contact-icons { display: flex; gap: .25rem; align-items: center; }
+        .nav-icon-btn {
+          width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+          color: rgba(255,211,163,.6); border: none; background: transparent; cursor: pointer;
+          border-radius: 50%; transition: color .2s, background .2s; text-decoration: none;
+        }
+        .nav-icon-btn:hover { color: #FFD3A3; background: rgba(255,211,163,.1); }
+
+        .nav-logo-wrap {
+          display: flex; flex-direction: column; align-items: center; gap: .2rem;
+          text-decoration: none; flex-shrink: 0;
+        }
+        .nav-logo-text {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: .6rem; letter-spacing: .25em; text-transform: uppercase;
+          color: rgba(185,154,102,.65); font-weight: 400;
+        }
+
+        .nav-links-row {
+          display: flex; align-items: center; gap: .25rem; list-style: none;
+          flex-wrap: wrap; justify-content: center;
+        }
+        .nav-link {
+          font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+          font-weight: 500; color: rgba(255,211,163,.65); text-decoration: none;
+          padding: .5rem .75rem; position: relative; transition: color .2s;
+          white-space: nowrap;
+        }
+        .nav-link::after {
+          content: ''; position: absolute; bottom: 0; left: .75rem; right: .75rem;
+          height: 1px; background: #B99A66;
+          transform: scaleX(0); transition: transform .25s;
+        }
+        .nav-link:hover { color: #FFD3A3; }
+        .nav-link:hover::after { transform: scaleX(1); }
+
+        .nav-book-btn {
+          padding: .65rem 1.8rem;
+          background: #B99A66; color: #4A2400;
+          font-family: 'Jost', sans-serif;
+          font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+          font-weight: 700; border: none; cursor: pointer; transition: all .25s;
+          text-decoration: none; white-space: nowrap; flex-shrink: 0;
+        }
+        .nav-book-btn:hover { background: #FFD3A3; }
+
+        /* ── Mobile ── */
+        .nav-mobile {
+          background: #4A2400;
+          display: flex; flex-direction: column;
+        }
+        .nav-mobile-topbar {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: .75rem 1.25rem;
+          border-bottom: 1px solid rgba(185,154,102,.15);
+        }
+        .nav-hamburger {
+          width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+          color: rgba(255,211,163,.8); border: none; background: transparent; cursor: pointer;
+          border: 1px solid rgba(185,154,102,.25); border-radius: 2px; transition: all .2s;
+        }
+        .nav-hamburger:hover { border-color: #B99A66; color: #FFD3A3; }
+        .nav-mobile-contacts {
+          display: flex; align-items: center; gap: .15rem;
+        }
+
+        /* Drawer */
+        .nav-drawer-overlay {
+          position: fixed; inset: 0; background: rgba(26,13,0,.6);
+          z-index: 200; backdrop-filter: blur(3px);
+        }
+        .nav-drawer {
+          position: fixed; top: 0; right: 0; bottom: 0; width: min(85vw, 320px);
+          background: #3A1C00; z-index: 201;
+          display: flex; flex-direction: column;
+          animation: drawerSlideIn .32s cubic-bezier(0.16,1,0.3,1);
+        }
+        @keyframes drawerSlideIn {
+          from { transform: translateX(100%); }
+          to   { transform: translateX(0); }
+        }
+        .nav-drawer-header {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 1.5rem 1.5rem 1rem;
+          border-bottom: 1px solid rgba(185,154,102,.15);
+        }
+        .nav-drawer-brand {
+          font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400;
+          color: #FFD3A3; letter-spacing: .05em;
+        }
+        .nav-drawer-brand em { font-style: italic; color: #B99A66; }
+        .nav-close-btn {
+          width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+          color: rgba(255,211,163,.6); border: 1px solid rgba(185,154,102,.25);
+          background: transparent; cursor: pointer; border-radius: 2px; transition: all .2s;
+        }
+        .nav-close-btn:hover { color: #FFD3A3; border-color: #B99A66; }
+        .nav-drawer-links {
+          flex: 1; overflow-y: auto; padding: 1.25rem 0;
+        }
+        .nav-drawer-link {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: .9rem 1.5rem; font-size: .82rem; letter-spacing: .1em;
+          text-transform: uppercase; font-weight: 500; color: rgba(255,211,163,.65);
+          text-decoration: none; border-left: 2px solid transparent; transition: all .2s;
+        }
+        .nav-drawer-link:hover {
+          color: #FFD3A3; border-left-color: #B99A66;
+          background: rgba(185,154,102,.07);
+        }
+        .nav-drawer-link span { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .8rem; color: rgba(185,154,102,.4); }
+        .nav-drawer-footer {
+          padding: 1.5rem; border-top: 1px solid rgba(185,154,102,.15);
+          display: flex; flex-direction: column; gap: 1rem;
+        }
+        .nav-drawer-book {
+          display: block; text-align: center;
+          padding: 1rem; background: #B99A66; color: #4A2400;
+          font-family: 'Jost', sans-serif; font-size: .75rem;
+          letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
+          text-decoration: none; transition: background .25s;
+        }
+        .nav-drawer-book:hover { background: #FFD3A3; }
+        .nav-drawer-contacts {
+          display: flex; justify-content: center; gap: .5rem;
+        }
+      `}</style>
+
+      <header className={`nav-root ${scrolled ? "scrolled" : ""}`} style={{ background: "#4A2400" }}>
+        <div className="nav-accent-bar" />
+
+        {/* ── Desktop ── */}
+        {isPhone === false && (
+        <div className="nav-desktop">
+          {/* Left: contact icons */}
+          <div className="nav-contact-icons">
+            <a href="tel:+254727000027" className="nav-icon-btn" title="Call us"><Phone size={15} /></a>
+            <a href="https://wa.me/254727000027" target="_blank" rel="noopener noreferrer" className="nav-icon-btn" title="WhatsApp">
+              <WhatsAppIcon size={15} />
+            </a>
+            <a href="mailto:info@enchularesort.co.ke" className="nav-icon-btn" title="Email"><Mail size={15} /></a>
+          </div>
+
+          {/* Center: logo + nav links */}
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: ".5rem", flex: 1 }}>
+            <Link href="/" className="nav-logo-wrap">
+              <Image
                 src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo8.png"
-                alt="Enchula Resort Logo"
-                width={80}
-                height={80}
-                className="object-contain"
-                style={{ background: 'none', backgroundColor: 'transparent' }}
+                alt="Enchula Resort"
+                width={100} height={100}
+                style={{ objectFit: "contain" }}
+                priority
+              />
+              <span className="nav-logo-text">Resort &amp; Retreat</span>
+            </Link>
+            <ul className="nav-links-row">
+              {navLinks.map(l => (
+                <li key={l.name}>
+                  <Link href={l.href} className="nav-link">{l.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right: book now */}
+          <Link href="/booking" className="nav-book-btn">Book Now</Link>
+        </div>
+        )}
+
+        {/* ── Mobile ── */}
+        {isPhone === true && (
+        <div className="nav-mobile">
+          <div className="nav-mobile-topbar">
+            {/* Hamburger */}
+            <button className="nav-hamburger" onClick={() => setMenuOpen(true)} aria-label="Open menu">
+              <Menu size={20} />
+            </button>
+
+            {/* Logo centered */}
+            <Link href="/" style={{ position: "absolute", left: "50%", transform: "translateX(-50%)" }}>
+              <Image
+                src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo8.png"
+                alt="Enchula Resort"
+                width={90} height={90}
+                style={{ objectFit: "contain" }}
                 priority
               />
             </Link>
+
+            {/* Book */}
+            <Link href="/booking" className="nav-book-btn" style={{ fontSize: ".65rem", padding: ".55rem 1.25rem" }}>Book</Link>
           </div>
-          {/* Book button on far right */}
-          <div className="order-3">
-            <Link href="/booking" className="px-5 py-2 bg-white text-[#B99A66] font-bold rounded shadow hover:bg-[#B99A66] hover:text-white transition-colors text-xs tracking-widest uppercase font-nunito" style={{letterSpacing: '0.12em'}}>BOOK</Link>
-          </div>
-        </div>
-        {/* Contact icons under logo row */}
-        <div className="flex justify-center items-center w-full pb-2 gap-6">
-          <a href="tel:+254727000027" aria-label="Call" className="p-2"><Phone className="w-6 h-6 text-white" /></a>
-          <a href="https://wa.me/254727000027" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="p-2">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-white"><path strokeLinecap="round" strokeLinejoin="round" d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.12.55 4.13 1.6 5.93L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52ZM12 22c-1.85 0-3.63-.5-5.18-1.44l-.37-.22-3.67.96.98-3.58-.23-.37A9.94 9.94 0 0 1 2 12C2 6.48 6.48 2 12 2c2.4 0 4.63.84 6.4 2.36A9.94 9.94 0 0 1 22 12c0 5.52-4.48 10-10 10Zm4.29-7.71c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.44.1-.13.2-.5.65-.62.78-.12.13-.23.15-.43.05-.2-.1-.84-.31-1.6-.99-.59-.53-.99-1.18-1.11-1.38-.12-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.01-.35-.04-.1-.44-1.06-.6-1.45-.16-.39-.32-.34-.44-.35-.11-.01-.25-.01-.39-.01-.13 0-.34.05-.52.23-.18.18-.7.68-.7 1.66 0 .98.72 1.93.82 2.07.1.14 1.41 2.16 3.42 2.95.48.17.85.27 1.14.34.48.1.92.09 1.27.06.39-.04 1.18-.48 1.35-.94.17-.46.17-.85.12-.94-.05-.09-.18-.13-.38-.23Z" /></svg>
-          </a>
-          <a href="mailto:info@enchularesort.co.ke" aria-label="Email" className="p-2"><Mail className="w-6 h-6 text-white" /></a>
-        </div>
-      </div>
-      {/* Desktop nav row remains unchanged below */}
-      <div className="hidden md:flex items-center justify-between px-4 py-2 bg-[#5A2E00]">
-        {/* Logo and contact icons */}
-        <div className="flex items-center gap-2 min-w-[120px]">
-          <Link href="/" className="flex items-center gap-2">
-            <Image 
-              src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo8.png"
-              alt="Enchula Resort Logo"
-              width={80}
-              height={80}
-              className="object-contain"
-              style={{ background: 'none', backgroundColor: 'transparent' }}
-              priority
-            />
-          </Link>
-          <div className="flex items-center gap-3 ml-4">
-            <a href="tel:+254727000027" aria-label="Call" className="p-2"><Phone className="w-5 h-5 text-white" /></a>
-            <a href="https://wa.me/254727000027" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="p-2">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-white"><path strokeLinecap="round" strokeLinejoin="round" d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12c0 2.12.55 4.13 1.6 5.93L0 24l6.18-1.62A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.19-3.48-8.52ZM12 22c-1.85 0-3.63-.5-5.18-1.44l-.37-.22-3.67.96.98-3.58-.23-.37A9.94 9.94 0 0 1 2 12C2 6.48 6.48 2 12 2c2.4 0 4.63.84 6.4 2.36A9.94 9.94 0 0 1 22 12c0 5.52-4.48 10-10 10Zm4.29-7.71c-.2-.1-1.18-.58-1.36-.65-.18-.07-.31-.1-.44.1-.13.2-.5.65-.62.78-.12.13-.23.15-.43.05-.2-.1-.84-.31-1.6-.99-.59-.53-.99-1.18-1.11-1.38-.12-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.01-.35-.04-.1-.44-1.06-.6-1.45-.16-.39-.32-.34-.44-.35-.11-.01-.25-.01-.39-.01-.13 0-.34.05-.52.23-.18.18-.7.68-.7 1.66 0 .98.72 1.93.82 2.07.1.14 1.41 2.16 3.42 2.95.48.17.85.27 1.14.34.48.1.92.09 1.27.06.39-.04 1.18-.48 1.35-.94.17-.46.17-.85.12-.94-.05-.09-.18-.13-.38-.23Z" /></svg>
-            </a>
-            <a href="mailto:info@enchularesort.co.ke" aria-label="Email" className="p-2"><Mail className="w-5 h-5 text-white" /></a>
+
+          {/* Contact strip */}
+          <div style={{
+            display: "flex", justifyContent: "center", gap: ".5rem",
+            padding: ".5rem 0", borderBottom: "1px solid rgba(185,154,102,.12)",
+          }}>
+            <a href="tel:+254727000027" className="nav-icon-btn"><Phone size={14} /></a>
+            <a href="https://wa.me/254727000027" target="_blank" rel="noopener noreferrer" className="nav-icon-btn"><WhatsAppIcon size={14} /></a>
+            <a href="mailto:info@enchularesort.co.ke" className="nav-icon-btn"><Mail size={14} /></a>
           </div>
         </div>
-        {/* Main links center */}
-        <nav className="flex flex-1 justify-center items-center gap-5 font-nunito">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-white font-normal tracking-normal hover:text-[#D7BFA8] transition-colors text-xs capitalize font-nunito"
-              style={{letterSpacing: '0.02em'}}>
-              {link.name}
-            </Link>
-          ))}
-        </nav>
-        {/* Book Now right */}
-        <div className="flex items-center ml-4 font-nunito">
-          <Link href="/booking" className="px-5 py-2 bg-white text-[#B99A66] font-bold rounded shadow hover:bg-[#B99A66] hover:text-white transition-colors text-xs tracking-widest uppercase font-nunito" style={{letterSpacing: '0.12em'}}>BOOK NOW</Link>
-        </div>
-      </div>
-      {/* Mobile Slide-in Menu & Overlay */}
-      {isMenuOpen && (
+        )}
+      </header>
+
+      {/* Drawer */}
+      {menuOpen && isPhone && (
         <>
-          {/* Overlay */}
-          <div
-            className="fixed inset-0 bg-[#D7BFA8] bg-opacity-40 z-40 transition-opacity duration-300"
-            onClick={() => setIsMenuOpen(false)}
-            aria-hidden="true"
-          />
-          {/* Slide-in Menu */}
-          <nav className="fixed top-0 right-0 h-full w-4/5 max-w-xs bg-[#5A2E00] z-50 shadow-lg px-6 py-8 flex flex-col space-y-4 animate-slide-in">
-            <button
-              onClick={() => setIsMenuOpen(false)}
-              className="self-end mb-4 text-[var(--brand-light-brown)] hover:text-white p-2 focus:outline-none"
-              aria-label="Close menu"
-            >
-              <X size={28} />
-            </button>
-            <div className="flex flex-col gap-1 mt-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="block py-2 text-white font-normal capitalize tracking-normal px-3 transition-all duration-200 border-b-2 border-transparent hover:border-[#D7BFA8] text-xs"
-                  style={{letterSpacing: '0.02em'}} 
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
+          <div className="nav-drawer-overlay" onClick={() => setMenuOpen(false)} />
+          <nav className="nav-drawer">
+            <div className="nav-drawer-header">
+              <span className="nav-drawer-brand">Enchu<em>la</em></span>
+              <button className="nav-close-btn" onClick={() => setMenuOpen(false)} aria-label="Close menu">
+                <X size={18} />
+              </button>
+            </div>
+            <div className="nav-drawer-links">
+              {navLinks.map((l, i) => (
+                <Link key={l.name} href={l.href} className="nav-drawer-link" onClick={() => setMenuOpen(false)}>
+                  {l.name}
+                  <span>0{i + 1}</span>
                 </Link>
               ))}
             </div>
-            <Link
-              href="/booking"
-              className="block mt-3 px-6 py-2 bg-white text-[#B99A66] font-bold rounded shadow hover:bg-[#B99A66] hover:text-white transition-colors text-xs tracking-widest uppercase text-center"
-              style={{ letterSpacing: '0.12em' }}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              BOOK NOW
-            </Link>
+            <div className="nav-drawer-footer">
+              <Link href="/booking" className="nav-drawer-book" onClick={() => setMenuOpen(false)}>
+                Reserve Your Stay
+              </Link>
+              <div className="nav-drawer-contacts">
+                <a href="tel:+254727000027" className="nav-icon-btn"><Phone size={15} /></a>
+                <a href="https://wa.me/254727000027" target="_blank" rel="noopener noreferrer" className="nav-icon-btn"><WhatsAppIcon size={15} /></a>
+                <a href="mailto:info@enchularesort.co.ke" className="nav-icon-btn"><Mail size={15} /></a>
+              </div>
+            </div>
           </nav>
-          {/* Slide-in animation */}
-          <style jsx global>{`
-            @keyframes slide-in {
-              from { transform: translateX(100%); }
-              to { transform: translateX(0); }
-            }
-            .animate-slide-in {
-              animation: slide-in 0.3s cubic-bezier(0.4,0,0.2,1);
-            }
-          `}</style>
         </>
       )}
-    </header>
+    </>
   );
 }
-
-

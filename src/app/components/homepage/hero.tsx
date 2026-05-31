@@ -1,142 +1,290 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Star, MapPin, Sparkles, Award } from "lucide-react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-const S3_BASE =
-  "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
-const Exterior1 = `${S3_BASE}/Relax.jpeg`;
-const Environment1 = `${S3_BASE}/IMG_2257.webp`;
-const Entrance1 = `${S3_BASE}/Welcome.jpeg`;
-const Exterior2 = `${S3_BASE}/Swimmingpool.jpeg`;
-const Conference = `${S3_BASE}/Event1.jpeg`;
+const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const slides = [
   {
-    src: Entrance1,
-    title: "Welcome to Enchula Resort",
+    src: `${S3_BASE}/Welcome.jpeg`,
+    eyebrow: "Kajiado County · Kenya",
+    title: "Welcome to",
+    titleAccent: "Enchula Resort",
     subtitle: "Discover luxury living and authentic Kenyan hospitality",
   },
   {
-    src: Environment1,
-    title: "Experience Serenity",
-    subtitle: "Surrounded by breathtaking landscapes and elegance",
+    src: `${S3_BASE}/IMG_2257.webp`,
+    eyebrow: "Serenity & Nature",
+    title: "Experience",
+    titleAccent: "Pure Serenity",
+    subtitle: "Surrounded by breathtaking landscapes and timeless elegance",
   },
   {
-    src: Exterior1,
-    title: "Relax in Style",
-    subtitle: "A unique resort experience awaits",
+    src: `${S3_BASE}/Relax.jpeg`,
+    eyebrow: "Rest & Relaxation",
+    title: "Relax",
+    titleAccent: "In Style",
+    subtitle: "A unique resort experience crafted for your comfort",
   },
   {
-    src: Exterior2,
-    title: "Your Perfect Getaway",
+    src: `${S3_BASE}/Swimmingpool.jpeg`,
+    eyebrow: "Your Perfect Escape",
+    title: "Your Perfect",
+    titleAccent: "Getaway",
     subtitle: "Relax, unwind, and enjoy world-class hospitality",
   },
   {
-    src: Conference,
-    title: "Your Events Partners",
-    subtitle: "Host unforgettable events with us",
+    src: `${S3_BASE}/Event1.jpeg`,
+    eyebrow: "Conferences & Events",
+    title: "Unforgettable",
+    titleAccent: "Events",
+    subtitle: "Host extraordinary events in breathtaking surroundings",
   },
 ];
 
 export default function Hero() {
-  const [index, setIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [current, setCurrent] = useState(0);
+  const [prev, setPrev] = useState<number | null>(null);
+  const [animating, setAnimating] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const goTo = (idx: number) => {
+    if (animating || idx === current) return;
+    setPrev(current);
+    setAnimating(true);
+    setCurrent(idx);
+    setTimeout(() => { setPrev(null); setAnimating(false); }, 1000);
+  };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsTransitioning(true);
-      setTimeout(() => {
-        setIndex((prev) => (prev + 1) % slides.length);
-        setIsTransitioning(false);
-      }, 1000); // Match this with CSS transition duration
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
+    timerRef.current = setInterval(() => {
+      goTo((current + 1) % slides.length);
+    }, 6500);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [current, animating]);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
-      {slides.map((slide, idx) => {
-        const isActive = idx === index;
-        const isLeaving =
-          idx === (index - 1 + slides.length) % slides.length &&
-          isTransitioning;
+    <section style={{
+      position: "relative", height: "100vh", minHeight: "640px",
+      overflow: "hidden", background: "#1a0d00",
+    }}>
 
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
+
+        .hero-slide-enter { animation: heroSlideIn 1.1s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .hero-slide-exit  { animation: heroSlideOut 1.1s cubic-bezier(0.16,1,0.3,1) forwards; }
+        @keyframes heroSlideIn {
+          from { opacity: 0; transform: scale(1.06); }
+          to   { opacity: 1; transform: scale(1); }
+        }
+        @keyframes heroSlideOut {
+          from { opacity: 1; transform: scale(1); }
+          to   { opacity: 0; transform: scale(.97); }
+        }
+
+        .hero-text-in { animation: heroTextIn .85s cubic-bezier(0.16,1,0.3,1) both; }
+        .hero-text-in-delay1 { animation: heroTextIn .85s cubic-bezier(0.16,1,0.3,1) .1s both; }
+        .hero-text-in-delay2 { animation: heroTextIn .85s cubic-bezier(0.16,1,0.3,1) .22s both; }
+        .hero-text-in-delay3 { animation: heroTextIn .85s cubic-bezier(0.16,1,0.3,1) .36s both; }
+        @keyframes heroTextIn {
+          from { opacity: 0; transform: translateY(22px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-line-grow { animation: heroLineGrow 6.5s linear forwards; }
+        @keyframes heroLineGrow {
+          from { width: 0%; }
+          to   { width: 100%; }
+        }
+
+        .hero-scroll-pulse {
+          animation: scrollPulse 2.2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+          0%, 100% { opacity: .5; transform: translateY(0); }
+          50%       { opacity: 1; transform: translateY(5px); }
+        }
+
+        .hero-dot-btn {
+          transition: all .3s ease;
+          cursor: pointer;
+          border: none; background: none; padding: 0;
+        }
+      `}</style>
+
+      {/* Slides */}
+      {slides.map((slide, i) => {
+        const isActive = i === current;
+        const isLeaving = i === prev;
         return (
           <div
-            key={idx}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
-              isActive
-                ? "opacity-100 z-10"
-                : isLeaving
-                  ? "opacity-0 z-10"
-                  : "opacity-0 z-0"
-            }`}
+            key={i}
+            className={isActive ? "hero-slide-enter" : isLeaving ? "hero-slide-exit" : ""}
+            style={{
+              position: "absolute", inset: 0,
+              opacity: isActive || isLeaving ? undefined : 0,
+              zIndex: isActive ? 2 : isLeaving ? 1 : 0,
+            }}
           >
-            <Image
-              src={slide.src}
-              alt={slide.title}
-              fill
-              priority
-              className="object-cover"
-              quality={100}
-            />
-
-            <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/40" />
-
-            {isActive && (
-              <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
-                <h1
-                  className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4 leading-tight animate-fadeInUp font-lora"
-                  style={{ color: "#FFFFFF" }}
-                >
-                  {slide.title}
-                </h1>
-
-                <p
-                  className="text-lg md:text-2xl mb-10 max-w-3xl mx-auto leading-relaxed animate-fadeInUp font-nunito"
-                  style={{ color: "#FFFFFF" }}
-                >
-                  {slide.subtitle}
-                </p>
-
-                {/* Highlights removed as requested */}
-
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-6 animate-fadeInUp">
-                  <a href="/booking">
-                    <button
-                      className="group relative px-10 py-4 text-[#4A2400] text-lg font-semibold rounded-full shadow-2xl transition-all duration-300 hover:scale-110"
-                      style={{ backgroundColor: "#FFD3A3" }}
-                    >
-                      Book Your Stay
-                    </button>
-                  </a>
-                </div>
-              </div>
-            )}
+            <Image src={slide.src} alt={slide.title} fill priority={i === 0}
+              style={{ objectFit: "cover", objectPosition: "center" }} quality={90} />
           </div>
         );
       })}
 
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeInUp {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-        .animate-fadeIn {
-          animation: fadeInUp 1s ease-out forwards;
-        }
-      `}</style>
+      {/* Multi-layer overlay */}
+      <div style={{
+        position: "absolute", inset: 0, zIndex: 3,
+        background: "linear-gradient(180deg, rgba(26,13,0,.25) 0%, rgba(26,13,0,.08) 30%, rgba(26,13,0,.55) 75%, rgba(26,13,0,.82) 100%)",
+      }} />
+      {/* Side vignette */}
+      <div style={{
+        position: "absolute", inset: 0, zIndex: 3,
+        background: "linear-gradient(90deg, rgba(26,13,0,.35) 0%, transparent 30%, transparent 70%, rgba(26,13,0,.35) 100%)",
+      }} />
+
+      {/* Content */}
+      <div key={current} style={{
+        position: "absolute", inset: 0, zIndex: 4,
+        display: "flex", flexDirection: "column",
+        alignItems: "center", justifyContent: "center",
+        textAlign: "center", padding: "0 1.5rem",
+      }}>
+        {/* Eyebrow */}
+        <div className="hero-text-in" style={{
+          display: "flex", alignItems: "center", gap: "1rem",
+          marginBottom: "1.5rem",
+        }}>
+          <div style={{ width: "48px", height: "1px", background: "rgba(185,154,102,.7)" }} />
+          <span style={{
+            fontFamily: "'Jost', sans-serif",
+            fontSize: ".68rem", letterSpacing: ".28em", textTransform: "uppercase",
+            color: "#B99A66", fontWeight: 500,
+          }}>{slides[current].eyebrow}</span>
+          <div style={{ width: "48px", height: "1px", background: "rgba(185,154,102,.7)" }} />
+        </div>
+
+        {/* Title */}
+        <h1 className="hero-text-in-delay1" style={{
+          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontSize: "clamp(3rem, 8.5vw, 7.5rem)",
+          fontWeight: 300, color: "#FFFFFF", lineHeight: 1.02,
+          letterSpacing: "-.01em", marginBottom: ".2rem",
+        }}>
+          {slides[current].title}
+        </h1>
+        <h1 className="hero-text-in-delay1" style={{
+          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontSize: "clamp(3rem, 8.5vw, 7.5rem)",
+          fontWeight: 300, fontStyle: "italic", color: "#FFD3A3",
+          lineHeight: 1.05, letterSpacing: "-.01em", marginBottom: "1.75rem",
+        }}>
+          {slides[current].titleAccent}
+        </h1>
+
+        {/* Subtitle */}
+        <p className="hero-text-in-delay2" style={{
+          fontFamily: "'Jost', sans-serif",
+          fontSize: "clamp(.9rem, 1.8vw, 1.15rem)",
+          color: "rgba(250,246,240,.75)", fontWeight: 300,
+          letterSpacing: ".04em", maxWidth: "52ch",
+          lineHeight: 1.7, marginBottom: "3rem",
+        }}>
+          {slides[current].subtitle}
+        </p>
+
+        {/* CTAs */}
+        <div className="hero-text-in-delay3" style={{ display: "flex", gap: "1.25rem", flexWrap: "wrap", justifyContent: "center" }}>
+          <Link href="/booking" style={{
+            padding: ".95rem 2.8rem",
+            background: "#8F5F2F", color: "#FFD3A3",
+            fontFamily: "'Jost', sans-serif",
+            fontSize: ".75rem", letterSpacing: ".14em", textTransform: "uppercase",
+            fontWeight: 600, border: "none", textDecoration: "none",
+            display: "inline-block", transition: "background .25s",
+          }}
+            onMouseOver={e => e.currentTarget.style.background = "#4A2400"}
+            onMouseOut={e => e.currentTarget.style.background = "#8F5F2F"}
+          >
+            Reserve Your Stay
+          </Link>
+          <Link href="/#about" style={{
+            padding: ".95rem 2.8rem", background: "transparent",
+            color: "#FFD3A3", fontFamily: "'Jost', sans-serif",
+            fontSize: ".75rem", letterSpacing: ".14em", textTransform: "uppercase",
+            fontWeight: 600, border: "1px solid rgba(255,211,163,.45)",
+            textDecoration: "none", display: "inline-block", transition: "all .25s",
+          }}
+            onMouseOver={e => { e.currentTarget.style.borderColor = "#FFD3A3"; e.currentTarget.style.background = "rgba(255,211,163,.08)"; }}
+            onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,211,163,.45)"; e.currentTarget.style.background = "transparent"; }}
+          >
+            Explore Resort
+          </Link>
+        </div>
+      </div>
+
+      {/* Slide counter + progress — bottom left */}
+      <div style={{
+        position: "absolute", bottom: "2.5rem", left: "3rem", zIndex: 5,
+        display: "flex", alignItems: "center", gap: "1.25rem",
+      }}>
+        <span style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: "1rem", color: "#B99A66", fontStyle: "italic",
+        }}>
+          {String(current + 1).padStart(2, "0")}
+          <span style={{ opacity: .4, margin: "0 .4rem" }}>/</span>
+          <span style={{ opacity: .4 }}>{String(slides.length).padStart(2, "0")}</span>
+        </span>
+        {/* Progress bar */}
+        <div style={{ width: "80px", height: "1px", background: "rgba(255,211,163,.2)", position: "relative", overflow: "hidden" }}>
+          <div key={current} className="hero-line-grow" style={{
+            position: "absolute", top: 0, left: 0, height: "100%",
+            background: "#B99A66",
+          }} />
+        </div>
+      </div>
+
+      {/* Dot nav — bottom center */}
+      <div style={{
+        position: "absolute", bottom: "2.5rem", left: "50%",
+        transform: "translateX(-50%)", zIndex: 5,
+        display: "flex", gap: ".65rem",
+      }}>
+        {slides.map((_, i) => (
+          <button key={i} className="hero-dot-btn" onClick={() => goTo(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            style={{
+              width: i === current ? "36px" : "20px",
+              height: "2px",
+              background: i === current ? "#B99A66" : "rgba(255,211,163,.3)",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Scroll indicator — bottom right */}
+      <div style={{
+        position: "absolute", bottom: "2.5rem", right: "3rem", zIndex: 5,
+        display: "flex", flexDirection: "column", alignItems: "center", gap: ".5rem",
+      }}>
+        <span style={{
+          fontFamily: "'Jost', sans-serif",
+          fontSize: ".6rem", letterSpacing: ".2em", textTransform: "uppercase",
+          color: "rgba(255,211,163,.5)", writingMode: "vertical-rl",
+          marginBottom: ".5rem",
+        }}>Scroll</span>
+        <div className="hero-scroll-pulse" style={{
+          width: "1px", height: "48px",
+          background: "linear-gradient(180deg, rgba(185,154,102,.7), transparent)",
+        }} />
+      </div>
+
     </section>
   );
 }
