@@ -1,9 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-
-const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
 const individualRates = [
   ["Daily (Per Session)", "Ksh 1,000"],
@@ -30,21 +27,6 @@ const couplesRates = [
   ["Annually (1 Year)", "Ksh 150,000"],
 ];
 
-const highlights = [
-  {
-    value: "2026",
-    label: "Membership rates",
-  },
-  {
-    value: "3",
-    label: "Plan categories",
-  },
-  {
-    value: "10+",
-    label: "Corporate minimum pax",
-  },
-];
-
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
@@ -68,79 +50,6 @@ const styles = `
     background: var(--cream);
     color: var(--brown-dark);
     font-family: var(--font-sans);
-  }
-
-  .gs-hero {
-    position: relative;
-    height: 70vh;
-    min-height: 520px;
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-  }
-
-  .gs-hero-img {
-    object-fit: cover;
-    transform: scale(1.03);
-    filter: saturate(.88) sepia(.08) contrast(.94) brightness(.98);
-  }
-
-  .gs-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(74,36,0,.12) 0%, rgba(74,36,0,.76) 100%),
-      linear-gradient(90deg, rgba(74,36,0,.58) 0%, rgba(74,36,0,.08) 62%);
-  }
-
-  .gs-hero-content {
-    position: relative;
-    z-index: 2;
-    width: min(1120px, calc(100% - 3rem));
-    margin: 0 auto;
-    padding: 0 0 4.5rem;
-  }
-
-  .gs-eyebrow {
-    display: flex;
-    align-items: center;
-    gap: .75rem;
-    color: var(--gold);
-    font-size: .68rem;
-    font-weight: 600;
-    letter-spacing: .22em;
-    margin-bottom: .8rem;
-    text-transform: uppercase;
-  }
-
-  .gs-eyebrow::before {
-    content: '';
-    width: 24px;
-    height: 1px;
-    background: var(--gold);
-  }
-
-  .gs-title {
-    max-width: 860px;
-    color: var(--white);
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 6vw, 5.8rem);
-    font-weight: 300;
-    line-height: .98;
-    margin: 0;
-  }
-
-  .gs-title em {
-    color: var(--peach);
-    font-style: italic;
-  }
-
-  .gs-intro {
-    max-width: 650px;
-    color: rgba(255,255,255,.84);
-    font-size: 1.02rem;
-    line-height: 1.75;
-    margin: 1.35rem 0 2rem;
   }
 
   .gs-actions {
@@ -411,18 +320,8 @@ const styles = `
   }
 
   @media (max-width: 980px) {
-    .gs-hero {
-      height: 64vh;
-      min-height: 460px;
-    }
-
-    .gs-hero-content,
     .gs-section {
       width: min(100% - 2rem, 720px);
-    }
-
-    .gs-hero-content {
-      padding-bottom: 3rem;
     }
 
     .gs-section {
@@ -445,20 +344,6 @@ const styles = `
   }
 
   @media (max-width: 560px) {
-    .gs-hero {
-      height: 58vh;
-      min-height: 420px;
-    }
-
-    .gs-title {
-      font-size: clamp(2.45rem, 13vw, 3.5rem);
-    }
-
-    .gs-intro {
-      font-size: .94rem;
-      line-height: 1.65;
-    }
-
     .gs-actions {
       flex-direction: column;
       align-items: stretch;
@@ -519,80 +404,6 @@ export default function GymSubscriptionsPage() {
   return (
     <section id="gym-subscriptions" className="gs-root">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
-
-      <div className="gs-hero">
-        <Image
-          src={`${S3_BASE}/IMG_2174.webp`}
-          alt="Enchula Gym and Spa"
-          fill
-          className="gs-hero-img"
-          priority
-          sizes="100vw"
-        />
-        <div className="gs-hero-overlay" />
-        <div className="gs-hero-content">
-          <div className="gs-eyebrow">Gym and spa memberships</div>
-          <h1 className="gs-title">
-            Memberships for <em>movement and recovery</em>
-          </h1>
-          <p className="gs-intro">
-            Compare individual, couples, and corporate gym membership packages for 2026, then
-            contact reception to sign up or confirm the best plan for your routine.
-          </p>
-          <div className="gs-actions">
-            <a className="gs-btn" href="tel:+254727000027">
-              Call Reception
-            </a>
-            <a className="gs-btn gs-btn-secondary" href="#membership-rates">
-              View Rates
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div className="gs-section">
-        <div className="gs-section-heading">
-          <div>
-            <div className="gs-kicker">Enchula Gym and Spa</div>
-            <h2 className="gs-heading">
-              Flexible access for <em>daily, monthly and long-term training</em>
-            </h2>
-          </div>
-          <p className="gs-copy">
-            Choose short access for a single session, build consistency with monthly plans, or
-            simplify billing for couples and teams.
-          </p>
-        </div>
-
-        <div className="gs-overview">
-          <div className="gs-overview-media">
-            <Image
-              src={`${S3_BASE}/IMG_2173.webp`}
-              alt="Gym equipment at Enchula Resort"
-              fill
-              className="gs-img"
-              sizes="(max-width: 980px) 100vw, 50vw"
-            />
-          </div>
-          <div className="gs-overview-content">
-            <div className="gs-kicker">Membership guide</div>
-            <h2 className="gs-overview-title">Clear rates, simple choices, and room to grow.</h2>
-            <p className="gs-copy">
-              Whether you are training alone, joining as a couple, or arranging access for a team,
-              the packages are organized so guests can compare duration, value, and total cost at a
-              glance.
-            </p>
-            <div className="gs-stat-grid">
-              {highlights.map((item) => (
-                <div className="gs-stat" key={item.label}>
-                  <strong>{item.value}</strong>
-                  <span>{item.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div id="membership-rates" className="gs-section">
         <div className="gs-section-heading">

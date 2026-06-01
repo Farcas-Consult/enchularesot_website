@@ -12,6 +12,7 @@ const roomsData = [
     category: "Comfort",
     price: "From Kshs. 10,000",
     images: [
+      `${S3_BASE}/Standard Room1.jpeg`,
       `${S3_BASE}/Standard Room2.jpeg`,
       `${S3_BASE}/Standard Room3.jpeg`,
       `${S3_BASE}/Standard Room4.jpeg`,
@@ -30,6 +31,7 @@ const roomsData = [
     category: "Standard",
     price: "From Kshs. 10,000",
     images: [
+      `${S3_BASE}/Twin Room1.jpeg`,
       `${S3_BASE}/Twin Room2.jpeg`,
       `${S3_BASE}/Twin Room3.jpeg`,
       `${S3_BASE}/Twin Room4.jpeg`,

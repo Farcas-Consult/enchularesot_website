@@ -56,11 +56,9 @@ const experiences = [
 const gallery = [
   { src: `${S3_BASE}/IMG_2257.webp`, alt: "Resort experience at Enchula" },
   { src: `${S3_BASE}/Swimmingpool.jpeg`, alt: "Swimming pool at Enchula Resort" },
-  { src: `${S3_BASE}/Swimmingpool1_result.png`, alt: "Pool view at Enchula Resort" },
-  { src: `${S3_BASE}/Swimmingpool2_result.png`, alt: "Poolside lounge at Enchula Resort" },
   { src: `${S3_BASE}/Games1.jpeg`, alt: "Games and recreation at Enchula Resort" },
-  { src: `${S3_BASE}/IMG_3394.webp`, alt: "Games area at Enchula Resort" },
-  { src: `${S3_BASE}/IMG_2450.webp`, alt: "Recreation area at Enchula Resort" },
+  { src: `${S3_BASE}/Games2.jpeg`, alt: "Games area at Enchula Resort" },
+  { src: `${S3_BASE}/Games3.jpeg`, alt: "Recreation area at Enchula Resort" },
   { src: `${S3_BASE}/IMG_2277.webp`, alt: "Kids activities at Enchula Resort" },
   { src: `${S3_BASE}/IMG_2380.webp`, alt: "Children activities at Enchula Resort" },
   { src: `${S3_BASE}/NatureWalk2.jpg`, alt: "Guided nature walk at Enchula Resort" },

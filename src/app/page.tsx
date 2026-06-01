@@ -87,6 +87,15 @@ const GlobalStyles = () => (
     .event-tab-name { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 400; color: var(--brown); display: block; }
     .event-tab.active .event-tab-name { color: var(--brown-dark); font-weight: 600; }
     .event-tab-desc { font-size: .82rem; color: var(--brown-dark); opacity: .6; margin-top: .2rem; display: block; }
+    .events-full-link {
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-top: 1.5rem; padding: .75rem 1.4rem;
+      background: var(--brown-dark); color: var(--peach);
+      font-family: var(--font-sans); font-size: .72rem; letter-spacing: .13em;
+      text-transform: uppercase; font-weight: 700; text-decoration: none;
+      transition: background .25s var(--ease-out), transform .25s var(--ease-out), color .25s var(--ease-out);
+    }
+    .events-full-link:hover { background: var(--gold); color: var(--brown-dark); transform: translateY(-2px); }
 
     /* ── Dynamic event gallery ── */
     .event-gallery-1  { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -134,6 +143,15 @@ const GlobalStyles = () => (
     .dining-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; background: linear-gradient(0deg, rgba(74,36,0,.85) 0%, transparent 100%); }
     .dining-card-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
     .dining-card-name { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 400; color: var(--white); margin-top: .3rem; }
+    .dining-full-link {
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-top: 1.5rem; padding: .75rem 1.4rem;
+      background: var(--brown-dark); color: var(--peach);
+      font-family: var(--font-sans); font-size: .72rem; letter-spacing: .13em;
+      text-transform: uppercase; font-weight: 700; text-decoration: none;
+      transition: background .25s var(--ease-out), transform .25s var(--ease-out), color .25s var(--ease-out);
+    }
+    .dining-full-link:hover { background: var(--gold); color: var(--brown-dark); transform: translateY(-2px); }
 
     /* ── Activities ── */
     .activities-list { display: flex; flex-direction: column; gap: 1px; background: var(--sand); }
@@ -142,11 +160,22 @@ const GlobalStyles = () => (
     .activity-row:nth-child(even) > * { direction: ltr; }
     .activity-img { position: relative; aspect-ratio: 16/9; overflow: hidden; }
     .activity-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease-out); }
+    .activity-img-grid { display: grid; grid-template-columns: 1.2fr .8fr; grid-template-rows: 1fr 1fr; gap: 2px; background: var(--sand); }
+    .activity-img-grid img:first-child { grid-row: 1 / -1; }
     .activity-row:hover .activity-img img { transform: scale(1.04); }
     .activity-content { display: flex; flex-direction: column; justify-content: center; padding: 4rem 5rem; }
     .activity-num { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 300; color: rgba(185,154,102,.25); line-height: 1; margin-bottom: 1rem; }
     .activity-content h3 { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; color: var(--brown); margin-bottom: .75rem; }
     .activity-content p { font-size: .95rem; line-height: 1.75; color: var(--brown-dark); opacity: .8; }
+    .activities-full-link {
+      display: inline-flex; align-items: center; justify-content: center;
+      margin-top: 1.5rem; padding: .75rem 1.4rem;
+      background: var(--brown-dark); color: var(--peach);
+      font-family: var(--font-sans); font-size: .72rem; letter-spacing: .13em;
+      text-transform: uppercase; font-weight: 700; text-decoration: none;
+      transition: background .25s var(--ease-out), transform .25s var(--ease-out), color .25s var(--ease-out);
+    }
+    .activities-full-link:hover { background: var(--gold); color: var(--brown-dark); transform: translateY(-2px); }
 
     /* ── Reviews ── */
     .reviews-section { background: var(--cream); }
@@ -171,6 +200,8 @@ const GlobalStyles = () => (
       .about-grid, .events-layout { grid-template-columns: 1fr; }
       .rooms-grid, .dining-strip { grid-template-columns: 1fr; }
       .activity-row { grid-template-columns: 1fr; direction: ltr !important; }
+      .activity-img-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+      .activity-img-grid img:first-child { grid-column: 1 / -1; grid-row: auto; }
       .activity-content { padding: 2.5rem; }
       .reviews-grid { grid-template-columns: 1fr; }
       .section { padding: 4rem 1.25rem; }
@@ -341,6 +372,9 @@ function Events() {
             <p className="section-body">
               From strategic retreats to dynamic team-building sessions and elegant social gatherings — we provide the perfect setting for every occasion.
             </p>
+            <a href="/events" className="events-full-link">
+              View Full Events Page
+            </a>
             <div className="event-tabs">
               {eventsData.map((e, i) => (
                 <button
@@ -366,9 +400,9 @@ function Events() {
 // ─── Dining ──────────────────────────────────────────────────────────────────
 function Dining() {
   const items = [
-    { src: `${S3_BASE}/Dining1.jpeg`, label: "Restaurant", name: "Senteu Grill" },
-    { src: `${S3_BASE}/Dining2.jpeg`, label: "Lounge",     name: "The Savannah Bar" },
-    { src: `${S3_BASE}/Dining3.jpeg`, label: "Poolside",   name: "Sunset Pool Bar" },
+    { src: `${S3_BASE}/Dining1.jpeg`, alt: "Dining at Enchula Resort" },
+    { src: `${S3_BASE}/Dining2.jpeg`, alt: "Lounge dining at Enchula Resort" },
+    { src: `${S3_BASE}/Dining3.jpeg`, alt: "Poolside dining at Enchula Resort" },
   ];
   return (
     <section id="dining" className="section" style={{ background: "var(--white)", padding: "7rem 0" }}>
@@ -376,15 +410,14 @@ function Dining() {
         <p className="section-label fade-in">Culinary</p>
         <h2 className="section-title fade-in">Fine Dining &amp; <em>Experiences</em></h2>
         <p className="section-body fade-in">Savor exceptional cuisine celebrating Kenyan flavours alongside international classics.</p>
+        <a href="/dinings" className="dining-full-link fade-in">
+          View Dining Page
+        </a>
       </div>
       <div className="dining-strip fade-in">
         {items.map(d => (
-          <div key={d.name} className="dining-card">
-            <img src={d.src} alt={d.name} loading="lazy" />
-            <div className="dining-card-info">
-              <span className="dining-card-label">{d.label}</span>
-              <p className="dining-card-name">{d.name}</p>
-            </div>
+          <div key={d.src} className="dining-card">
+            <img src={d.src} alt={d.alt} loading="lazy" />
           </div>
         ))}
       </div>
@@ -395,20 +428,27 @@ function Dining() {
 // ─── Activities ──────────────────────────────────────────────────────────────
 function Activities() {
   const items = [
-    { num: "01", title: "Swimming Pool",    desc: "Take a refreshing dip or lounge by our sparkling pool, perfect for relaxation and family fun in the warm Kenyan sun.", src: `${S3_BASE}/Swimmingpool.jpeg` },
-    { num: "02", title: "Games & Recreation", desc: "Enjoy a variety of indoor and outdoor games for all ages — from board games and sports to evening tournaments.",       src: `${S3_BASE}/Games1.jpeg` },
-    { num: "03", title: "Kids Activities",  desc: "Creative and supervised activities designed to keep children entertained, engaged, and inspired throughout their stay.", src: `${S3_BASE}/IMG_2277.webp` },
+    { num: "01", title: "Swimming Pool",    desc: "Take a refreshing dip or lounge by our sparkling pool, perfect for relaxation and family fun in the warm Kenyan sun.", images: [`${S3_BASE}/Swimmingpool.jpeg`] },
+    { num: "02", title: "Games & Recreation", desc: "Enjoy a variety of indoor and outdoor games for all ages — from board games and sports to evening tournaments.",       images: [`${S3_BASE}/Games1.jpeg`, `${S3_BASE}/Games2.jpeg`, `${S3_BASE}/Games3.jpeg`] },
+    { num: "03", title: "Kids Activities",  desc: "Creative and supervised activities designed to keep children entertained, engaged, and inspired throughout their stay.", images: [`${S3_BASE}/IMG_2277.webp`] },
   ];
   return (
     <section id="activities" className="section" style={{ background: "var(--cream)", padding: "7rem 0" }}>
       <div className="section-inner" style={{ padding: "0 1.5rem", marginBottom: "4rem" }}>
         <p className="section-label fade-in">Leisure</p>
         <h2 className="section-title fade-in">Activities &amp; <em>Experiences</em></h2>
+        <a href="/experience" className="activities-full-link fade-in">
+          View Experiences Page
+        </a>
       </div>
       <div className="activities-list fade-in">
         {items.map(a => (
           <div key={a.num} className="activity-row">
-            <div className="activity-img"><img src={a.src} alt={a.title} loading="lazy" /></div>
+            <div className={`activity-img ${a.images.length > 1 ? "activity-img-grid" : ""}`}>
+              {a.images.map((src, index) => (
+                <img key={src} src={src} alt={`${a.title} ${index + 1}`} loading="lazy" />
+              ))}
+            </div>
             <div className="activity-content">
               <div className="activity-num">{a.num}</div>
               <h3>{a.title}</h3>

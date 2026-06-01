@@ -10,15 +10,19 @@ const eventSections = [
     kicker: "Focused gatherings",
     description:
       "Host strategy sessions, board retreats, workshops, and conferences in calm resort spaces designed for productive conversations and polished coordination.",
+    details: [
+      "This setup is ideal for teams that need a quiet, organized place to think, plan, train, and make decisions away from the normal office environment.",
+      "The Enchula team can support the flow of the day with meeting spaces, refreshments, meals, basic presentation needs, and coordinated breaks so guests stay focused and comfortable.",
+      "Retreats can also be paired with accommodation, dining, wellness, or outdoor moments for groups that want a fuller multi-day experience.",
+    ],
     meta: ["Conference planning", "Refreshments and meals", "Projector support", "Retreat settings"],
-    images: [
-      `${S3_BASE}/Conference1.jpg`,
-      `${S3_BASE}/Conference2.jpg`,
-      `${S3_BASE}/Conference3.jpg`,
-      `${S3_BASE}/Conference4.jpg`,
+    images: [ 
       `${S3_BASE}/Conferences1.jpeg`,
       `${S3_BASE}/Conferences2.jpeg`,
       `${S3_BASE}/Conferences3.jpeg`,
+      `${S3_BASE}/Conference1.jpg`,
+      `${S3_BASE}/Conference2.jpg`,
+      `${S3_BASE}/Conference3.jpg`,
     ],
   },
   {
@@ -26,6 +30,11 @@ const eventSections = [
     kicker: "Celebrations and occasions",
     description:
       "From company functions and product launches to weddings, parties, and private celebrations, the team handles details with warmth and clear organization.",
+    details: [
+      "These events are planned around the mood of the occasion, whether the goal is polished and professional, intimate and relaxed, or lively and celebratory.",
+      "Guests can expect help with venue setup, catering coordination, decor direction, timelines, and the practical details that make an event feel smooth from arrival to the final send-off.",
+      "The resort setting works well for birthdays, weddings, launches, end-of-year gatherings, private lunches, and social occasions that need both scenery and service.",
+    ],
     meta: ["Event planning", "Decor coordination", "Catering support", "Indoor and outdoor setups"],
     images: [
       `${S3_BASE}/Event2.jpeg`,
@@ -49,8 +58,13 @@ const eventSections = [
     kicker: "Shared energy",
     description:
       "Bring teams together for active, memorable resort experiences that balance connection, movement, meals, and time away from the usual office rhythm.",
+    details: [
+      "Team building days are shaped to help groups reconnect, communicate better, and enjoy shared activities in a relaxed resort environment.",
+      "Programs can include outdoor games, group challenges, meal breaks, informal reflection time, and flexible schedules depending on the size and energy of the team.",
+      "This option works especially well for companies, departments, schools, clubs, and groups that want a day that feels useful, social, and refreshing.",
+    ],
     meta: ["Group activities", "Outdoor space", "Team meals", "Custom schedules"],
-    images: [`${S3_BASE}/Team2.jpeg`, `${S3_BASE}/Team1.jpeg`, `${S3_BASE}/Event12.jpeg`],
+    images: [`${S3_BASE}/Team2.jpeg`, `${S3_BASE}/Team1.jpeg`],
   },
 ];
 
@@ -242,6 +256,7 @@ const styles = `
   .ep-event-block {
     display: grid;
     grid-template-columns: 1.08fr .92fr;
+    align-items: stretch;
     min-height: 560px;
     background: var(--white);
   }
@@ -261,6 +276,33 @@ const styles = `
     gap: .6rem;
     padding: .75rem;
     background: var(--white);
+    height: 100%;
+    min-height: 560px;
+  }
+
+  .ep-gallery-balanced {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(0, 1fr);
+  }
+
+  .ep-gallery-balanced .ep-photo:first-child,
+  .ep-gallery-balanced .ep-photo:nth-child(6),
+  .ep-gallery-balanced .ep-photo:nth-child(9),
+  .ep-gallery-balanced .ep-photo:nth-child(12) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .ep-gallery-compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(0, 1fr);
+  }
+
+  .ep-gallery-compact .ep-photo:first-child {
+    grid-column: 1 / -1;
+    grid-row: span 2;
   }
 
   .ep-photo {
@@ -332,6 +374,36 @@ const styles = `
     letter-spacing: .04em;
   }
 
+  .ep-detail-list {
+    counter-reset: event-detail;
+    display: grid;
+    gap: .7rem;
+    margin: 1.35rem 0 0;
+  }
+
+  .ep-detail-list p {
+    background: var(--cream);
+    border-left: none;
+    color: rgba(74,36,0,.74);
+    line-height: 1.75;
+    margin: 0;
+    min-height: 86px;
+    padding: .95rem 1rem .95rem 3rem;
+    position: relative;
+  }
+
+  .ep-detail-list p::before {
+    counter-increment: event-detail;
+    content: counter(event-detail, decimal-leading-zero);
+    color: rgba(143,95,47,.48);
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    left: 1rem;
+    line-height: 1;
+    position: absolute;
+    top: 1.1rem;
+  }
+
   .ep-contact {
     background: var(--brown-dark);
     color: var(--peach);
@@ -396,6 +468,16 @@ const styles = `
     .ep-gallery {
       grid-template-columns: repeat(3, minmax(0, 1fr));
       grid-auto-rows: 145px;
+      height: auto;
+      min-height: 460px;
+    }
+
+    .ep-gallery-balanced,
+    .ep-gallery-compact {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: none;
+      grid-auto-rows: 150px;
+      min-height: 460px;
     }
   }
 
@@ -429,12 +511,28 @@ const styles = `
       grid-auto-rows: 132px;
       gap: .5rem;
       padding: .5rem;
+      height: auto;
+    }
+
+    .ep-gallery-balanced,
+    .ep-gallery-compact {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: none;
+      grid-auto-rows: 132px;
+      min-height: auto;
     }
 
     .ep-photo:first-child,
     .ep-photo:nth-child(6),
     .ep-photo:nth-child(9),
     .ep-photo:nth-child(12) {
+      grid-column: span 2;
+    }
+
+    .ep-gallery-balanced .ep-photo:first-child,
+    .ep-gallery-balanced .ep-photo:nth-child(6),
+    .ep-gallery-balanced .ep-photo:nth-child(9),
+    .ep-gallery-balanced .ep-photo:nth-child(12) {
       grid-column: span 2;
     }
 
@@ -497,7 +595,16 @@ export default function EventsPage() {
         <div className="ep-event-list">
           {eventSections.map((section, sectionIndex) => (
             <article className="ep-event-block" key={section.name}>
-              <div className="ep-gallery" aria-label={`${section.name} photos`}>
+              <div
+                className={`ep-gallery ${
+                  section.images.length <= 3
+                    ? "ep-gallery-compact"
+                    : section.images.length <= 6
+                    ? "ep-gallery-balanced"
+                    : ""
+                }`}
+                aria-label={`${section.name} photos`}
+              >
                 {section.images.map((image, imageIndex) => (
                   <div className="ep-photo" key={image}>
                     <Image
@@ -516,6 +623,11 @@ export default function EventsPage() {
                 <div className="ep-kicker">{section.kicker}</div>
                 <h3 className="ep-card-title">{section.name}</h3>
                 <p className="ep-copy">{section.description}</p>
+                <div className="ep-detail-list">
+                  {section.details.map((detail) => (
+                    <p key={detail}>{detail}</p>
+                  ))}
+                </div>
                 <ul className="ep-meta">
                   {section.meta.map((item) => (
                     <li key={item}>{item}</li>
