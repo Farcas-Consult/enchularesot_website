@@ -68,7 +68,32 @@ const Footer = () => {
           .ft-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
           .ft-brand-row { flex-direction: column; gap: 1.5rem; }
         }
-        @media (max-width: 560px) { .ft-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 560px) {
+          .ft-inner { padding: 0 1rem; }
+          .ft-bg-letter { font-size: 15rem; right: -.75rem; bottom: 1rem; }
+          .ft-brand-row {
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 3rem 0 2rem;
+            margin-bottom: 2.5rem;
+          }
+          .ft-logo-mark { font-size: 2.45rem; }
+          .ft-logo-sub { letter-spacing: .18em; line-height: 1.5; }
+          .ft-tagline { max-width: none; }
+          .ft-social-row { width: 100%; justify-content: space-between; }
+          .ft-social-btn { width: 42px; height: 42px; }
+          .ft-grid { grid-template-columns: 1fr; gap: 2.25rem; padding-bottom: 2.5rem; margin-bottom: 2rem; }
+          .ft-col-label { margin-bottom: 1rem; }
+          .ft-contact-item { margin-bottom: 1rem; }
+          .ft-bottom {
+            align-items: flex-start;
+            flex-direction: column;
+            padding-bottom: 2.25rem;
+            padding-right: 3.25rem;
+          }
+          .ft-legal-links { gap: .85rem 1.25rem; }
+          .ft-top-btn { right: 0; top: auto; bottom: 2.25rem; }
+        }
         .ft-col-label {
           font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
           color: #B99A66; font-weight: 600; margin-bottom: 1.5rem;

@@ -157,8 +157,8 @@ export default function Navbar() {
         .nav-mobile-topbar {
           position: relative;
           display: flex; align-items: center; justify-content: space-between;
-          min-height: 96px;
-          padding: .75rem 1rem;
+          min-height: 88px;
+          padding: .65rem .85rem;
           border-bottom: 1px solid rgba(185,154,102,.15);
         }
         .nav-hamburger {
@@ -176,13 +176,18 @@ export default function Navbar() {
           display: flex; align-items: center; justify-content: center;
         }
         .nav-mobile-logo-img {
-          width: 102px; height: 76px; object-fit: contain;
+          width: 96px; height: 70px; object-fit: contain;
           filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
         }
         .nav-mobile-book {
           grid-column: auto; grid-row: auto; justify-self: auto;
-          font-size: .62rem; padding: .62rem .95rem;
+          font-size: .6rem; padding: .58rem .82rem;
           position: relative; z-index: 2;
+        }
+        .nav-mobile-contact-strip {
+          display: flex; justify-content: center; gap: .45rem;
+          padding: .42rem 0;
+          border-bottom: 1px solid rgba(185,154,102,.12);
         }
 
         /* Drawer */
@@ -245,6 +250,14 @@ export default function Navbar() {
         .nav-drawer-contacts {
           display: flex; justify-content: center; gap: .5rem;
         }
+
+        @media (max-width: 380px) {
+          .nav-mobile-topbar { min-height: 82px; padding-left: .65rem; padding-right: .65rem; }
+          .nav-hamburger { width: 38px; height: 38px; }
+          .nav-mobile-logo-img { width: 84px; height: 62px; }
+          .nav-mobile-book { padding: .55rem .68rem; letter-spacing: .1em; }
+          .nav-mobile-contact-strip { padding: .35rem 0; }
+        }
       `}</style>
 
       <header className={`nav-root ${scrolled ? "scrolled" : ""}`} style={{ background: "#4A2400" }}>
@@ -293,7 +306,7 @@ export default function Navbar() {
         <div className="nav-mobile">
           <div className="nav-mobile-topbar">
             {/* Hamburger */}
-            <button className="nav-hamburger" onClick={() => setMenuOpen(true)} aria-label="Open menu">
+            <button type="button" className="nav-hamburger" onClick={() => setMenuOpen(true)} aria-label="Open menu">
               <Menu size={20} />
             </button>
 
@@ -314,10 +327,7 @@ export default function Navbar() {
           </div>
 
           {/* Contact strip */}
-          <div style={{
-            display: "flex", justifyContent: "center", gap: ".5rem",
-            padding: ".5rem 0", borderBottom: "1px solid rgba(185,154,102,.12)",
-          }}>
+          <div className="nav-mobile-contact-strip">
             <a href="tel:+254727000027" className="nav-icon-btn"><Phone size={14} /></a>
             <a href="https://wa.me/254727000027" target="_blank" rel="noopener noreferrer" className="nav-icon-btn"><WhatsAppIcon size={14} /></a>
             <a href="mailto:info@enchularesort.co.ke" className="nav-icon-btn"><Mail size={14} /></a>
@@ -333,7 +343,7 @@ export default function Navbar() {
           <nav className="nav-drawer">
             <div className="nav-drawer-header">
               <span className="nav-drawer-brand">Enchu<em>la</em></span>
-              <button className="nav-close-btn" onClick={() => setMenuOpen(false)} aria-label="Close menu">
+              <button type="button" className="nav-close-btn" onClick={() => setMenuOpen(false)} aria-label="Close menu">
                 <X size={18} />
               </button>
             </div>

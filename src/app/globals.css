@@ -210,3 +210,363 @@ body {
     background: var(--brand-beige);
     color: var(--text-primary);
 }
+
+
+/* Site-wide phone polish
+   Keeps the updated pages compact, readable, and free of horizontal squeeze on small screens. */
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+img,
+video,
+iframe {
+    max-width: 100%;
+}
+
+@media (max-width: 640px) {
+    body {
+        text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    .section {
+        padding: 3.5rem 1rem !important;
+    }
+
+    .section-inner {
+        width: min(100%, calc(100% - 1rem)) !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .section-label,
+    .rp-hero-eyebrow,
+    .dp-eyebrow,
+    .ep-eyebrow,
+    .xp-eyebrow,
+    .gp-eyebrow,
+    .vt-eyebrow,
+    .wp-eyebrow,
+    .bp-eyebrow {
+        gap: .55rem !important;
+        letter-spacing: .16em !important;
+        line-height: 1.35 !important;
+    }
+
+    .section-label::before,
+    .rp-hero-eyebrow::before,
+    .dp-eyebrow::before,
+    .ep-eyebrow::before,
+    .xp-eyebrow::before,
+    .gp-eyebrow::before,
+    .vt-eyebrow::before,
+    .wp-eyebrow::before,
+    .bp-eyebrow::before {
+        width: 18px !important;
+        flex: 0 0 18px !important;
+    }
+
+    .section-title,
+    .rp-section-title,
+    .dp-heading,
+    .ep-heading,
+    .xp-heading,
+    .gp-heading,
+    .vt-heading,
+    .wp-heading,
+    .gs-heading,
+    .bp-title {
+        font-size: clamp(2rem, 11vw, 3rem) !important;
+        line-height: 1.06 !important;
+        margin-bottom: 1rem !important;
+    }
+
+    .section-body,
+    .dp-copy,
+    .ep-copy,
+    .xp-copy,
+    .gp-copy,
+    .vt-copy,
+    .wp-copy,
+    .gs-copy,
+    .bp-lead {
+        font-size: .96rem !important;
+        line-height: 1.7 !important;
+    }
+
+    .rp-hero,
+    .dp-hero,
+    .ep-hero,
+    .xp-hero,
+    .gp-hero,
+    .vt-hero,
+    .wp-hero {
+        height: auto !important;
+        min-height: 390px !important;
+        max-height: none !important;
+    }
+
+    .rp-hero-content,
+    .dp-hero-content,
+    .ep-hero-content,
+    .xp-hero-content,
+    .gp-hero-content,
+    .vt-hero-content,
+    .wp-hero-content {
+        width: calc(100% - 2rem) !important;
+        padding: 6rem 0 2rem !important;
+    }
+
+    .rp-hero-title,
+    .dp-title,
+    .ep-title,
+    .xp-title,
+    .gp-title,
+    .vt-title,
+    .wp-title {
+        font-size: clamp(2.2rem, 12vw, 3.3rem) !important;
+        line-height: 1.02 !important;
+    }
+
+    .dp-intro,
+    .ep-intro,
+    .xp-intro,
+    .gp-intro,
+    .vt-intro,
+    .wp-intro {
+        font-size: .92rem !important;
+        line-height: 1.55 !important;
+    }
+
+    .dp-actions,
+    .ep-actions,
+    .ep-contact-actions,
+    .xp-actions,
+    .vt-actions,
+    .wp-actions,
+    .gs-actions,
+    .bp-nav {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: .65rem !important;
+    }
+
+    .dp-btn,
+    .ep-btn,
+    .xp-btn,
+    .vt-btn,
+    .wp-btn,
+    .gs-btn,
+    .bp-btn,
+    .events-full-link,
+    .dining-full-link,
+    .activities-full-link {
+        width: 100% !important;
+        min-height: 44px !important;
+        text-align: center !important;
+    }
+
+    .dp-section,
+    .ep-section,
+    .xp-section,
+    .gp-section,
+    .vt-section,
+    .wp-section,
+    .gs-section,
+    .bp-shell {
+        width: calc(100% - 2rem) !important;
+        padding-top: 3.5rem !important;
+        padding-bottom: 3.5rem !important;
+    }
+
+    .dp-section-heading,
+    .ep-section-heading,
+    .xp-section-heading,
+    .gp-section-heading,
+    .vt-section-heading,
+    .wp-section-heading,
+    .gs-section-heading,
+    .bp-top {
+        gap: 1.2rem !important;
+        margin-bottom: 1.75rem !important;
+    }
+
+    .about-grid,
+    .events-layout,
+    .activity-row,
+    .reviews-header,
+    .bp-top,
+    .bp-layout,
+    .dp-section-heading,
+    .ep-section-heading,
+    .xp-section-heading,
+    .gp-section-heading,
+    .vt-section-heading,
+    .wp-section-heading,
+    .gs-section-heading {
+        grid-template-columns: 1fr !important;
+    }
+
+    .events-sidebar {
+        position: static !important;
+    }
+
+    .about-image-mosaic {
+        height: 360px !important;
+    }
+
+    .mosaic-img-main {
+        width: 86% !important;
+        height: 72% !important;
+    }
+
+    .mosaic-img-accent {
+        width: 58% !important;
+        height: 48% !important;
+    }
+
+    .mosaic-badge {
+        bottom: 1.5rem !important;
+        padding: .8rem 1rem !important;
+    }
+
+    .features-row,
+    .reviews-grid,
+    .stats-row,
+    .wp-info-grid,
+    .xp-info-grid,
+    .dp-info-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .stats-row {
+        display: grid !important;
+        gap: 1rem !important;
+        width: 100% !important;
+    }
+
+    .room-card {
+        height: 360px !important;
+    }
+
+    .room-card-overlay,
+    .activity-content,
+    .review-card {
+        padding: 1.5rem !important;
+    }
+
+    .activity-num {
+        font-size: 2.4rem !important;
+    }
+
+    .activity-img,
+    .activity-img-grid {
+        min-height: 250px !important;
+    }
+
+    .dp-gallery,
+    .ep-gallery,
+    .xp-gallery,
+    .gp-grid,
+    .wp-gallery {
+        gap: .45rem !important;
+        padding: .45rem !important;
+        min-height: 0 !important;
+    }
+
+    .dp-gallery,
+    .ep-gallery,
+    .xp-gallery,
+    .wp-gallery {
+        grid-auto-rows: 118px !important;
+    }
+
+    .gp-grid {
+        grid-auto-rows: 124px !important;
+    }
+
+    .dp-card-media,
+    .xp-card-media,
+    .xp-activity-media,
+    .wp-card-media {
+        height: 255px !important;
+        min-height: 255px !important;
+    }
+
+    .dp-card-body,
+    .dp-showcase-content,
+    .ep-detail,
+    .xp-feature-content,
+    .xp-activity-content,
+    .xp-card-body,
+    .wp-feature-content,
+    .wp-card-body,
+    .gs-plan-side,
+    .bp-panel,
+    .bp-confirmation {
+        padding: 1.35rem !important;
+    }
+
+    .ep-event-list,
+    .xp-activity-list,
+    .gs-plan-list {
+        gap: 1.75rem !important;
+    }
+
+    .ep-detail-list,
+    .xp-tags,
+    .wp-tags {
+        gap: .45rem !important;
+    }
+
+    .vt-map {
+        min-height: 330px !important;
+    }
+
+    .vt-image-stage {
+        min-height: 300px !important;
+    }
+
+    .bp-progress,
+    .bp-grid-2,
+    .bp-grid-3,
+    .bp-grid-4,
+    .bp-option-grid,
+    .bp-pill-grid,
+    .bp-room {
+        grid-template-columns: 1fr !important;
+    }
+
+    .gs-table-wrap,
+    .bp-panel-dark {
+        margin-left: -1rem !important;
+        margin-right: -1rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .gs-table {
+        min-width: 500px !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .rp-hero-title,
+    .dp-title,
+    .ep-title,
+    .xp-title,
+    .gp-title,
+    .vt-title,
+    .wp-title,
+    .bp-title {
+        font-size: clamp(2rem, 11vw, 2.75rem) !important;
+    }
+
+    .gp-filter-bar {
+        grid-template-columns: 1fr !important;
+    }
+}
