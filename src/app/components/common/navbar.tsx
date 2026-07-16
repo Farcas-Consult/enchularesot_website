@@ -278,7 +278,7 @@ export default function Navbar() {
           {/* Center: logo */}
           <Link href="/" className="nav-logo-wrap">
             <Image
-              src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo8.png"
+              src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo10.png"
               alt="Enchula Resort"
               width={132}
               height={88}
@@ -313,7 +313,7 @@ export default function Navbar() {
             {/* Logo centered */}
             <Link href="/" className="nav-mobile-logo">
               <Image
-                src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo8.png"
+                src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo10.png"
                 alt="Enchula Resort"
                 width={102}
                 height={76}

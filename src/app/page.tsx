@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Hero from "./components/homepage/hero";
+import Image from "next/image";
+import Conference from "@/assets/Conference1.jpeg"
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
@@ -217,8 +219,8 @@ function About() {
       <div className="section-inner">
         <div className="about-grid">
           <div className="about-image-mosaic fade-in">
-            <img src={`${S3_BASE}/Superior Room2.jpeg`} alt="Resort" className="mosaic-img-main" />
-            <img src={`${S3_BASE}/Dining1.jpeg`} alt="Dining" className="mosaic-img-accent" />
+            <img src={`${S3_BASE}/About2.jpeg`} alt="Resort" className="mosaic-img-main" />
+            <img src={`${S3_BASE}/Superior Room2.jpeg`} alt="Dining" className="mosaic-img-accent" />
             <div className="mosaic-badge">
               <span className="mosaic-badge-num">4★</span>
               <span className="mosaic-badge-txt">Luxury Resort</span>
@@ -231,7 +233,7 @@ function About() {
               Nestled in the breathtaking plains of <strong style={{ color: "var(--brown)" }}>Kajiado County</strong>, Enchula Resort offers a unique blend of untamed Kenyan beauty and refined modern hospitality.
             </p>
             <p className="section-body" style={{ marginTop: "1rem" }}>
-              Every detail is designed to create unforgettable memories — from elegant accommodations to exceptional dining and immersive natural experiences.
+             Every detail is designed to create unforgettable memories from elegant accommodations and exceptional dining to modern conference facilities for corporate meetings, seminars, workshops, and special events.Our dedicated team and premium amenities ensure every business event and celebration is seamless, productive, and memorable.
             </p>
             <div className="features-row">
               {[
