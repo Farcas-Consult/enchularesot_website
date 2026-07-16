@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Camera, ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
+import { Camera, ChevronLeft, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
@@ -345,54 +345,6 @@ const styles = `
     filter: saturate(.9) sepia(.08) contrast(.92) brightness(.88);
   }
 
-  .gp-tile-info {
-    position: absolute;
-    inset: auto 0 0;
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem;
-    background: linear-gradient(180deg, transparent 0%, rgba(74,36,0,.82) 100%);
-    color: var(--white);
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity .3s var(--ease-out), transform .3s var(--ease-out);
-  }
-
-  .gp-tile:hover .gp-tile-info {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .gp-tile-info span {
-    color: var(--peach);
-    font-size: .62rem;
-    font-weight: 600;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-  }
-
-  .gp-tile-info strong {
-    display: block;
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    font-weight: 300;
-    line-height: 1.1;
-    margin-top: .25rem;
-  }
-
-  .gp-view-icon {
-    align-items: center;
-    background: var(--peach);
-    color: var(--brown-dark);
-    display: flex;
-    flex: 0 0 auto;
-    height: 34px;
-    justify-content: center;
-    width: 34px;
-  }
-
   .gp-empty {
     background: var(--white);
     color: rgba(74,36,0,.7);
@@ -415,8 +367,7 @@ const styles = `
     width: min(1180px, 100%);
     max-height: 88vh;
     display: grid;
-    grid-template-rows: minmax(0, 1fr) auto;
-    gap: 1rem;
+    grid-template-rows: minmax(0, 1fr);
   }
 
   .gp-lightbox-image {
@@ -428,39 +379,6 @@ const styles = `
 
   .gp-lightbox-image img {
     object-fit: contain;
-  }
-
-  .gp-lightbox-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    color: var(--peach);
-    border-top: 1px solid rgba(255,211,163,.2);
-    padding-top: 1rem;
-  }
-
-  .gp-lightbox-info strong {
-    color: var(--white);
-    font-family: var(--font-serif);
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
-    font-weight: 300;
-    line-height: 1;
-  }
-
-  .gp-lightbox-info span {
-    color: rgba(255,211,163,.7);
-    font-size: .7rem;
-    font-weight: 600;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-  }
-
-  .gp-lightbox-count {
-    color: rgba(255,211,163,.62);
-    font-size: .75rem;
-    letter-spacing: .12em;
-    white-space: nowrap;
   }
 
   .gp-icon-btn {
@@ -578,24 +496,12 @@ const styles = `
       grid-column: span 2;
     }
 
-    .gp-tile-info {
-      opacity: 1;
-      transform: none;
-      padding: .8rem;
-    }
-
     .gp-lightbox {
       padding: 1rem;
     }
 
     .gp-lightbox-image {
       min-height: 62vh;
-    }
-
-    .gp-lightbox-info {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: .5rem;
     }
 
     .gp-close {
@@ -750,15 +656,6 @@ export default function Gallery() {
                   sizes="(max-width: 640px) 50vw, (max-width: 980px) 33vw, 20vw"
                   priority={index < 6}
                 />
-                <span className="gp-tile-info">
-                  <span>
-                    {image.category}
-                    <strong>{image.alt}</strong>
-                  </span>
-                  <span className="gp-view-icon" aria-hidden="true">
-                    <Maximize2 size={16} />
-                  </span>
-                </span>
               </button>
             ))}
           </div>
@@ -808,15 +705,6 @@ export default function Gallery() {
                 sizes="100vw"
                 priority
               />
-            </div>
-            <div className="gp-lightbox-info">
-              <div>
-                <span>{selectedImage.category}</span>
-                <strong>{selectedImage.alt}</strong>
-              </div>
-              <div className="gp-lightbox-count">
-                {selectedIndex + 1} / {filteredImages.length}
-              </div>
             </div>
           </div>
         </div>

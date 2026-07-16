@@ -7,7 +7,6 @@ const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/ap
 
 const experiences = [
   {
-    number: "01",
     name: "Swimming Pool",
     kicker: "Poolside leisure",
     image: `${S3_BASE}/Swimmingpool.jpeg`,
@@ -16,7 +15,6 @@ const experiences = [
     features: ["Daytime access", "Family friendly", "Poolside lounging"],
   },
   {
-    number: "02",
     name: "Games and Recreation",
     kicker: "Play and unwind",
     image: `${S3_BASE}/Games1.jpeg`,
@@ -25,7 +23,6 @@ const experiences = [
     features: ["Board games", "Group play", "Evening recreation"],
   },
   {
-    number: "03",
     name: "Kids Activities",
     kicker: "Young explorers",
     image: `${S3_BASE}/IMG_2277.webp`,
@@ -34,7 +31,6 @@ const experiences = [
     features: ["Creative play", "Supervised fun", "Family stays"],
   },
   {
-    number: "04",
     name: "Outdoor Picnics",
     kicker: "Open-air moments",
     image: `${S3_BASE}/Party3.jpeg`,
@@ -43,7 +39,6 @@ const experiences = [
     features: ["Scenic grounds", "Casual gatherings", "Anytime leisure"],
   },
   {
-    number: "05",
     name: "Guided Nature Walks",
     kicker: "Nature and calm",
     image: `${S3_BASE}/NatureWalk1.jpg`,
@@ -368,15 +363,6 @@ const styles = `
     padding: clamp(2rem, 5vw, 4.5rem);
   }
 
-  .xp-number {
-    color: rgba(143,95,47,.28);
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 7vw, 6rem);
-    font-weight: 300;
-    line-height: .8;
-    margin-bottom: 1.35rem;
-  }
-
   .xp-activity-title {
     color: var(--brown-dark);
     font-family: var(--font-serif);
@@ -419,20 +405,6 @@ const styles = `
     height: 330px;
     overflow: hidden;
     background: var(--sand);
-  }
-
-  .xp-card-label {
-    position: absolute;
-    left: 1.1rem;
-    bottom: 1.1rem;
-    z-index: 2;
-    background: var(--peach);
-    color: var(--brown-dark);
-    padding: .5rem .72rem;
-    font-size: .64rem;
-    font-weight: 600;
-    letter-spacing: .13em;
-    text-transform: uppercase;
   }
 
   .xp-card-body {
@@ -700,7 +672,6 @@ export default function ExperiencesPage() {
                 />
               </div>
               <div className="xp-activity-content">
-                <div className="xp-number">{experience.number}</div>
                 <div className="xp-kicker">{experience.kicker}</div>
                 <h3 className="xp-activity-title">{experience.name}</h3>
                 <p className="xp-copy">{experience.description}</p>
@@ -740,7 +711,6 @@ export default function ExperiencesPage() {
                   className="xp-img"
                   sizes="(max-width: 980px) 100vw, 33vw"
                 />
-                <div className="xp-card-label">{experience.kicker}</div>
               </div>
               <div className="xp-card-body">
                 <h3 className="xp-card-title">{experience.name}</h3>

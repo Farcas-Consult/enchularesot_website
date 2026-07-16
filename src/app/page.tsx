@@ -51,9 +51,20 @@ const GlobalStyles = () => (
     .about-image-mosaic { position: relative; height: 540px; }
     .mosaic-img-main { position: absolute; top: 0; left: 0; width: 72%; height: 80%; object-fit: cover; }
     .mosaic-img-accent { position: absolute; bottom: 0; right: 0; width: 50%; height: 52%; object-fit: cover; border: 6px solid var(--cream); }
-    .mosaic-badge { position: absolute; bottom: 3rem; left: 0; z-index: 2; background: var(--brown-dark); color: var(--peach); padding: 1rem 1.5rem; }
-    .mosaic-badge-num { font-family: var(--font-serif); font-size: 2.5rem; font-weight: 600; line-height: 1; display: block; color: var(--gold); }
-    .mosaic-badge-txt { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(255,211,163,.7); }
+    .mosaic-badge {
+      position: absolute; bottom: 3rem; left: 0; z-index: 2;
+      background: var(--brand-black); color: var(--brand-background);
+      padding: 1rem 1.5rem;
+      box-shadow: 0 16px 32px color-mix(in srgb, var(--brand-black) 22%, transparent);
+    }
+    .mosaic-badge-num {
+      font-family: var(--font-serif); font-size: 2.5rem; font-weight: 600;
+      line-height: 1; display: block; color: var(--brand-primary);
+    }
+    .mosaic-badge-txt {
+      font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+      color: color-mix(in srgb, var(--brand-background) 78%, transparent);
+    }
     .features-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
     .feature-card { padding: 1.5rem; border: 1px solid rgba(185,154,102,.2); background: white; transition: border-color .25s, transform .25s; }
     .feature-card:hover { border-color: var(--gold); transform: translateY(-3px); }
@@ -65,21 +76,6 @@ const GlobalStyles = () => (
     .room-card { position: relative; height: 520px; overflow: hidden; background: var(--cream); cursor: pointer; }
     .room-card-img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease-out), filter .5s; }
     .room-card:hover .room-card-img { transform: scale(1.06); filter: brightness(.85); }
-    .room-card-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, transparent 35%, rgba(74,36,0,.9) 100%);
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem;
-      transition: background .4s;
-    }
-    .room-card:hover .room-card-overlay { background: linear-gradient(180deg, transparent 15%, rgba(74,36,0,.95) 100%); }
-    .room-card-cat { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .5rem; }
-    .room-card-name { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: .75rem; }
-    .room-card-price { font-size: .8rem; color: var(--blush); margin-bottom: 1.25rem; opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s; }
-    .room-card:hover .room-card-price { opacity: 1; transform: translateY(0); }
-    .room-card-cta { display: inline-flex; align-items: center; gap: .5rem; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; text-decoration: none; opacity: 0; transform: translateY(8px); transition: opacity .35s .05s, transform .35s .05s; }
-    .room-card:hover .room-card-cta { opacity: 1; transform: translateY(0); }
-    .room-num { position: absolute; top: 1.5rem; right: 1.5rem; font-family: var(--font-serif); font-size: .8rem; color: rgba(255,255,255,.4); letter-spacing: .05em; }
-
     /* ── Events ── */
     .events-layout { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
     .events-sidebar { position: sticky; top: 8rem; }
@@ -138,22 +134,51 @@ const GlobalStyles = () => (
     .event-photo:hover img { transform: scale(1.04); }
 
     /* ── Dining ── */
-    .dining-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--sand); }
-    .dining-card { position: relative; aspect-ratio: 3/4; overflow: hidden; cursor: pointer; }
-    .dining-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease-out), filter .4s; }
-    .dining-card:hover img { transform: scale(1.07); filter: brightness(.75); }
-    .dining-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; background: linear-gradient(0deg, rgba(74,36,0,.85) 0%, transparent 100%); }
-    .dining-card-label { font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
-    .dining-card-name { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 400; color: var(--white); margin-top: .3rem; }
+    .dining-strip {
+      width: min(1180px, calc(100% - 3rem));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(.75rem, 1.4vw, 1.25rem);
+      background: transparent;
+    }
+    .dining-card {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      cursor: pointer;
+      border-radius: 8px;
+      background: var(--brand-light-brown);
+      box-shadow: 0 18px 36px color-mix(in srgb, var(--brand-black) 15%, transparent);
+      isolation: isolate;
+    }
+    .dining-card:nth-child(2) { transform: translateY(-1.25rem); aspect-ratio: 3 / 4; }
+    .dining-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 54%, color-mix(in srgb, var(--brand-black) 26%, transparent));
+      pointer-events: none;
+      z-index: 1;
+    }
+    .dining-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .6s var(--ease-out), filter .4s;
+    }
+    .dining-card:hover img { transform: scale(1.05); filter: saturate(.96) contrast(.98) brightness(.9); }
     .dining-full-link {
       display: inline-flex; align-items: center; justify-content: center;
       margin-top: 1.5rem; padding: .75rem 1.4rem;
-      background: var(--brown-dark); color: var(--peach);
+      background: var(--brand-black); color: var(--brand-background);
       font-family: var(--font-sans); font-size: .72rem; letter-spacing: .13em;
       text-transform: uppercase; font-weight: 700; text-decoration: none;
       transition: background .25s var(--ease-out), transform .25s var(--ease-out), color .25s var(--ease-out);
     }
-    .dining-full-link:hover { background: var(--gold); color: var(--brown-dark); transform: translateY(-2px); }
+    .dining-full-link:hover { background: var(--brand-primary); color: var(--brand-black); transform: translateY(-2px); }
 
     /* ── Activities ── */
     .activities-list { display: flex; flex-direction: column; gap: 1px; background: var(--sand); }
@@ -166,7 +191,6 @@ const GlobalStyles = () => (
     .activity-img-grid img:first-child { grid-row: 1 / -1; }
     .activity-row:hover .activity-img img { transform: scale(1.04); }
     .activity-content { display: flex; flex-direction: column; justify-content: center; padding: 4rem 5rem; }
-    .activity-num { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 300; color: rgba(185,154,102,.25); line-height: 1; margin-bottom: 1rem; }
     .activity-content h3 { font-family: var(--font-serif); font-size: 2rem; font-weight: 400; color: var(--brown); margin-bottom: .75rem; }
     .activity-content p { font-size: .95rem; line-height: 1.75; color: var(--brown-dark); opacity: .8; }
     .activities-full-link {
@@ -200,7 +224,11 @@ const GlobalStyles = () => (
 
     @media (max-width: 900px) {
       .about-grid, .events-layout { grid-template-columns: 1fr; }
-      .rooms-grid, .dining-strip { grid-template-columns: 1fr; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .dining-strip { width: min(900px, calc(100% - 2rem)); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .dining-card { aspect-ratio: 16 / 11; }
+      .dining-card:nth-child(2) { transform: none; aspect-ratio: 16 / 11; }
+      .dining-card:nth-child(3) { grid-column: 1 / -1; aspect-ratio: 21 / 9; }
       .activity-row { grid-template-columns: 1fr; direction: ltr !important; }
       .activity-img-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
       .activity-img-grid img:first-child { grid-column: 1 / -1; grid-row: auto; }
@@ -208,6 +236,13 @@ const GlobalStyles = () => (
       .reviews-grid { grid-template-columns: 1fr; }
       .section { padding: 4rem 1.25rem; }
       .event-gallery-6, .event-gallery-7, .event-gallery-8, .event-gallery-9, .event-gallery-10 { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .dining-strip { width: calc(100% - 2rem); grid-template-columns: 1fr; gap: .85rem; }
+      .dining-card,
+      .dining-card:nth-child(2),
+      .dining-card:nth-child(3) { grid-column: auto; aspect-ratio: 4 / 3; transform: none; }
     }
   `}</style>
 );
@@ -290,17 +325,22 @@ function RoomsPreview() {
         </div>
       </div>
       <div className="rooms-grid fade-in">
-        {roomsPreviewData.map((r, i) => (
-          <a key={r.id} href={`/rooms#${r.anchor}`} style={{ textDecoration: "none" }}>
+        {roomsPreviewData.map((r) => (
+          <a
+            key={r.id}
+            href={`/rooms#${r.anchor}`}
+            aria-label={`View ${r.name}`}
+            title={r.name}
+            className="room-image-link"
+          >
             <div className="room-card">
               <img src={r.image} alt={r.name} className="room-card-img" />
-              <div className="room-card-overlay">
-                <span className="room-card-cat">{r.category}</span>
-                <h3 className="room-card-name">{r.name}</h3>
-                <p className="room-card-price">{r.price} / night</p>
-                <span className="room-card-cta">Explore Room <span style={{ marginLeft: ".25rem" }}>→</span></span>
-              </div>
-              <span className="room-num">0{i + 1}</span>
+              <span className="room-image-overlay">
+                <span className="room-image-category">{r.category}</span>
+                <span className="room-image-type">{r.name}</span>
+                <span className="room-image-price">{r.price} / night</span>
+                <span className="room-image-cta">Explore Room <span style={{ marginLeft: ".25rem" }}>→</span></span>
+              </span>
             </div>
           </a>
         ))}
@@ -430,9 +470,9 @@ function Dining() {
 // ─── Activities ──────────────────────────────────────────────────────────────
 function Activities() {
   const items = [
-    { num: "01", title: "Swimming Pool",    desc: "Take a refreshing dip or lounge by our sparkling pool, perfect for relaxation and family fun in the warm Kenyan sun.", images: [`${S3_BASE}/Swimmingpool.jpeg`] },
-    { num: "02", title: "Games & Recreation", desc: "Enjoy a variety of indoor and outdoor games for all ages — from board games and sports to evening tournaments.",       images: [`${S3_BASE}/Games1.jpeg`, `${S3_BASE}/Games2.jpeg`, `${S3_BASE}/Games3.jpeg`] },
-    { num: "03", title: "Kids Activities",  desc: "Creative and supervised activities designed to keep children entertained, engaged, and inspired throughout their stay.", images: [`${S3_BASE}/IMG_2277.webp`] },
+    { title: "Swimming Pool",    desc: "Take a refreshing dip or lounge by our sparkling pool, perfect for relaxation and family fun in the warm Kenyan sun.", images: [`${S3_BASE}/Swimmingpool.jpeg`] },
+    { title: "Games & Recreation", desc: "Enjoy a variety of indoor and outdoor games for all ages — from board games and sports to evening tournaments.",       images: [`${S3_BASE}/Games1.jpeg`, `${S3_BASE}/Games2.jpeg`, `${S3_BASE}/Games3.jpeg`] },
+    { title: "Kids Activities",  desc: "Creative and supervised activities designed to keep children entertained, engaged, and inspired throughout their stay.", images: [`${S3_BASE}/IMG_2277.webp`] },
   ];
   return (
     <section id="activities" className="section" style={{ background: "var(--cream)", padding: "7rem 0" }}>
@@ -445,14 +485,13 @@ function Activities() {
       </div>
       <div className="activities-list fade-in">
         {items.map(a => (
-          <div key={a.num} className="activity-row">
+          <div key={a.title} className="activity-row">
             <div className={`activity-img ${a.images.length > 1 ? "activity-img-grid" : ""}`}>
               {a.images.map((src, index) => (
                 <img key={src} src={src} alt={`${a.title} ${index + 1}`} loading="lazy" />
               ))}
             </div>
             <div className="activity-content">
-              <div className="activity-num">{a.num}</div>
               <h3>{a.title}</h3>
               <p>{a.desc}</p>
             </div>

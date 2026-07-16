@@ -83,7 +83,7 @@ export default function Navbar() {
           padding: 1rem 2.5rem .9rem;
           align-items: center;
           gap: .65rem 1.5rem;
-          min-height: 166px;
+          min-height: 184px;
           border-bottom: 1px solid rgba(185,154,102,.18);
         }
         .nav-contact-icons {
@@ -107,7 +107,7 @@ export default function Navbar() {
           grid-column: 2; grid-row: 1; justify-self: center;
         }
         .nav-logo-img {
-          width: 172px; height: 114px; object-fit: contain;
+          width: 210px; height: 140px; object-fit: contain;
           filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
         }
         .nav-logo-text {
@@ -157,7 +157,7 @@ export default function Navbar() {
         .nav-mobile-topbar {
           position: relative;
           display: flex; align-items: center; justify-content: space-between;
-          min-height: 104px;
+          min-height: 116px;
           padding: .65rem .85rem;
           border-bottom: 1px solid rgba(185,154,102,.15);
         }
@@ -176,7 +176,7 @@ export default function Navbar() {
           display: flex; align-items: center; justify-content: center;
         }
         .nav-mobile-logo-img {
-          width: 122px; height: 90px; object-fit: contain;
+          width: 146px; height: 108px; object-fit: contain;
           filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
         }
         .nav-mobile-book {
@@ -234,7 +234,6 @@ export default function Navbar() {
           color: #FFD3A3; border-left-color: #B99A66;
           background: rgba(185,154,102,.07);
         }
-        .nav-drawer-link span { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .8rem; color: rgba(185,154,102,.4); }
         .nav-drawer-footer {
           padding: 1.5rem; border-top: 1px solid rgba(185,154,102,.15);
           display: flex; flex-direction: column; gap: 1rem;
@@ -252,9 +251,9 @@ export default function Navbar() {
         }
 
         @media (max-width: 380px) {
-          .nav-mobile-topbar { min-height: 94px; padding-left: .65rem; padding-right: .65rem; }
+          .nav-mobile-topbar { min-height: 104px; padding-left: .65rem; padding-right: .65rem; }
           .nav-hamburger { width: 38px; height: 38px; }
-          .nav-mobile-logo-img { width: 108px; height: 80px; }
+          .nav-mobile-logo-img { width: 124px; height: 92px; }
           .nav-mobile-book { padding: .55rem .68rem; letter-spacing: .1em; }
           .nav-mobile-contact-strip { padding: .35rem 0; }
         }
@@ -280,8 +279,8 @@ export default function Navbar() {
             <Image
               src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo10.png"
               alt="Enchula Resort"
-              width={172}
-              height={114}
+              width={210}
+              height={140}
               className="nav-logo-img"
               priority
             />
@@ -315,8 +314,8 @@ export default function Navbar() {
               <Image
                 src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo10.png"
                 alt="Enchula Resort"
-                width={122}
-                height={90}
+                width={146}
+                height={108}
                 className="nav-mobile-logo-img"
                 priority
               />
@@ -348,10 +347,9 @@ export default function Navbar() {
               </button>
             </div>
             <div className="nav-drawer-links">
-              {navLinks.map((l, i) => (
+              {navLinks.map((l) => (
                 <Link key={l.name} href={l.href} className="nav-drawer-link" onClick={() => setMenuOpen(false)}>
                   {l.name}
-                  <span>0{i + 1}</span>
                 </Link>
               ))}
             </div>

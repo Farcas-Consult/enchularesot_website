@@ -243,19 +243,11 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Slide counter + progress — bottom left */}
+      {/* Slide progress — bottom left */}
       {!isPhone && <div style={{
         position: "absolute", bottom: "2.5rem", left: "3rem", zIndex: 5,
-        display: "flex", alignItems: "center", gap: "1.25rem",
+        display: "flex", alignItems: "center",
       }}>
-        <span style={{
-          fontFamily: "'Cormorant Garamond', serif",
-          fontSize: "1rem", color: "#B99A66", fontStyle: "italic",
-        }}>
-          {String(current + 1).padStart(2, "0")}
-          <span style={{ opacity: .4, margin: "0 .4rem" }}>/</span>
-          <span style={{ opacity: .4 }}>{String(slides.length).padStart(2, "0")}</span>
-        </span>
         {/* Progress bar */}
         <div style={{ width: "80px", height: "1px", background: "rgba(255,211,163,.2)", position: "relative", overflow: "hidden" }}>
           <div key={current} className="hero-line-grow" style={{

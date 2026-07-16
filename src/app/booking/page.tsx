@@ -253,27 +253,9 @@ const styles = `
     text-align: left;
   }
 
-  .bp-step-number {
-    align-items: center;
-    background: var(--cream);
-    color: var(--brown);
-    display: flex;
-    flex: 0 0 auto;
-    font-family: var(--font-serif);
-    font-size: 1.15rem;
-    height: 38px;
-    justify-content: center;
-    width: 38px;
-  }
-
   .bp-step.bp-active {
     background: var(--brown-dark);
     color: var(--peach);
-  }
-
-  .bp-step.bp-active .bp-step-number {
-    background: var(--peach);
-    color: var(--brown-dark);
   }
 
   .bp-step strong {
@@ -933,7 +915,6 @@ const BookingPage = () => {
                 ["Guest", "Contact details"],
               ].map(([title, label], index) => (
                 <div className={`bp-step ${step >= index + 1 ? "bp-active" : ""}`} key={title}>
-                  <span className="bp-step-number">{index + 1}</span>
                   <span>
                     <strong>{title}</strong>
                     {label}

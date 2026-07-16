@@ -339,15 +339,6 @@ const styles = `
     padding: clamp(2rem, 5vw, 4rem);
   }
 
-  .ep-number {
-    color: rgba(143,95,47,.32);
-    font-family: var(--font-serif);
-    font-size: clamp(3rem, 7vw, 6.5rem);
-    font-weight: 300;
-    line-height: .8;
-    margin-bottom: 1.35rem;
-  }
-
   .ep-card-title {
     color: var(--brown-dark);
     font-family: var(--font-serif);
@@ -593,7 +584,7 @@ export default function EventsPage() {
         </div>
 
         <div className="ep-event-list">
-          {eventSections.map((section, sectionIndex) => (
+          {eventSections.map((section) => (
             <article className="ep-event-block" key={section.name}>
               <div
                 className={`ep-gallery ${
@@ -619,7 +610,6 @@ export default function EventsPage() {
               </div>
 
               <div className="ep-detail">
-                <div className="ep-number">{String(sectionIndex + 1).padStart(2, "0")}</div>
                 <div className="ep-kicker">{section.kicker}</div>
                 <h3 className="ep-card-title">{section.name}</h3>
                 <p className="ep-copy">{section.description}</p>

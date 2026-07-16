@@ -367,20 +367,6 @@ const styles = `
     background: var(--sand);
   }
 
-  .wp-card-label {
-    position: absolute;
-    left: 1.1rem;
-    bottom: 1.1rem;
-    z-index: 2;
-    background: var(--peach);
-    color: var(--brown-dark);
-    padding: .5rem .72rem;
-    font-size: .64rem;
-    font-weight: 600;
-    letter-spacing: .13em;
-    text-transform: uppercase;
-  }
-
   .wp-card-body {
     padding: 1.55rem;
   }
@@ -681,7 +667,6 @@ export default function WellnessFitnessPage() {
                   className="wp-img"
                   sizes="(max-width: 980px) 100vw, 33vw"
                 />
-                <div className="wp-card-label">{service.kicker}</div>
               </div>
               <div className="wp-card-body">
                 <h3 className="wp-card-title">{service.name}</h3>
@@ -722,7 +707,6 @@ export default function WellnessFitnessPage() {
                   className="wp-img"
                   sizes="(max-width: 1080px) 50vw, 20vw"
                 />
-                <div className="wp-card-label">{service.kicker}</div>
               </div>
               <div className="wp-card-body">
                 <h3 className="wp-card-title">{service.name}</h3>

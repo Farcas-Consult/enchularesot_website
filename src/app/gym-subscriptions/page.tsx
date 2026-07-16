@@ -225,14 +225,6 @@ const styles = `
     padding: 2rem;
   }
 
-  .gs-plan-number {
-    color: rgba(255,211,163,.32);
-    font-family: var(--font-serif);
-    font-size: 4.5rem;
-    font-weight: 300;
-    line-height: .85;
-  }
-
   .gs-plan-title {
     color: var(--white);
     font-family: var(--font-serif);
@@ -422,7 +414,6 @@ export default function GymSubscriptionsPage() {
         <div className="gs-plan-list">
           <article className="gs-plan">
             <div className="gs-plan-side">
-              <div className="gs-plan-number">01</div>
               <div>
                 <div className="gs-kicker">Individual</div>
                 <h3 className="gs-plan-title">Individual Membership</h3>
@@ -436,7 +427,6 @@ export default function GymSubscriptionsPage() {
 
           <article className="gs-plan">
             <div className="gs-plan-side">
-              <div className="gs-plan-number">02</div>
               <div>
                 <div className="gs-kicker">Corporate and groups</div>
                 <h3 className="gs-plan-title">Corporate Membership</h3>
@@ -453,7 +443,6 @@ export default function GymSubscriptionsPage() {
 
           <article className="gs-plan">
             <div className="gs-plan-side">
-              <div className="gs-plan-number">03</div>
               <div>
                 <div className="gs-kicker">Couples</div>
                 <h3 className="gs-plan-title">Couples Membership</h3>

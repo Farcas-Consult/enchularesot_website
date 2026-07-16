@@ -246,20 +246,6 @@ const styles = `
     transform: scale(1.035);
   }
 
-  .dp-card-label {
-    position: absolute;
-    left: 1.25rem;
-    bottom: 1.25rem;
-    z-index: 2;
-    background: var(--peach);
-    color: var(--brown-dark);
-    padding: .55rem .8rem;
-    font-size: .66rem;
-    font-weight: 600;
-    letter-spacing: .13em;
-    text-transform: uppercase;
-  }
-
   .dp-card-body {
     padding: 2rem;
   }
@@ -571,7 +557,6 @@ export default function DiningPage() {
                   className="dp-card-img"
                   sizes="(max-width: 900px) 100vw, 50vw"
                 />
-                <div className="dp-card-label">{experience.label}</div>
               </div>
               <div className="dp-card-body">
                 <h3 className="dp-card-title">{experience.name}</h3>

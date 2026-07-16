@@ -769,9 +769,9 @@ export default function VirtualTourPage() {
               </a>
             </div>
             <div className="vt-step-list">
-              {directionSteps.map((step, index) => (
+              {directionSteps.map((step) => (
                 <div className="vt-step" key={step.title}>
-                  <strong>{String(index + 1).padStart(2, "0")} · {step.title}</strong>
+                  <strong>{step.title}</strong>
                   <p>{step.text}</p>
                 </div>
               ))}

@@ -211,6 +211,58 @@ body {
     color: var(--text-primary);
 }
 
+@layer components {
+    .room-image-link {
+        @apply relative block no-underline;
+    }
+
+    .room-image-overlay {
+        @apply pointer-events-none absolute inset-0 z-10 flex flex-col justify-end p-8 transition-all duration-300;
+        background: linear-gradient(180deg, transparent 35%, color-mix(in srgb, var(--brand-black) 88%, transparent) 100%);
+    }
+
+    .room-image-category {
+        @apply mb-2 block text-xs font-bold uppercase;
+        color: var(--brand-primary);
+        letter-spacing: .2em;
+    }
+
+    .room-image-type {
+        @apply mb-3 block text-3xl font-normal leading-tight;
+        color: var(--text-on-dark);
+        font-family: 'Lora', Georgia, serif;
+    }
+
+    .room-image-price {
+        @apply mb-5 block text-sm transition-all duration-300;
+        color: color-mix(in srgb, var(--brand-background) 78%, var(--brand-primary));
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    .room-image-cta {
+        @apply inline-flex w-fit items-center text-xs font-bold uppercase transition-all duration-300;
+        color: var(--brand-primary);
+        letter-spacing: .14em;
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    .room-image-link:hover .room-image-overlay {
+        background: linear-gradient(180deg, transparent 15%, color-mix(in srgb, var(--brand-black) 94%, transparent) 100%);
+    }
+
+    .room-image-link:hover .room-image-price,
+    .room-image-link:hover .room-image-cta {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .room-image-link:hover .room-image-cta {
+        transform: translate(4px, 0);
+    }
+}
+
 
 /* Site-wide phone polish
    Keeps the updated pages compact, readable, and free of horizontal squeeze on small screens. */
@@ -226,6 +278,94 @@ iframe {
     max-width: 100%;
 }
 
+img,
+video {
+    display: block;
+}
+
+.dp-card-media,
+.xp-card-media,
+.wp-card-media,
+.xp-activity-media,
+.rp-gallery,
+.rp-other-card,
+.gp-tile,
+.activity-img,
+.event-photo,
+.dining-card {
+    overflow: hidden;
+}
+
+.dp-card-media img,
+.xp-card-media img,
+.wp-card-media img,
+.xp-activity-media img,
+.rp-gallery img,
+.rp-other-card img,
+.gp-tile img,
+.activity-img img,
+.event-photo img,
+.dining-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 1180px) {
+    .dp-section,
+    .ep-section,
+    .xp-section,
+    .gp-section,
+    .vt-section,
+    .wp-section,
+    .gs-section,
+    .bp-shell,
+    .section-inner {
+        width: min(100%, calc(100% - 2rem)) !important;
+    }
+
+    .dp-card-media,
+    .wp-card-media,
+    .xp-card-media {
+        height: clamp(280px, 36vw, 390px) !important;
+    }
+
+    .rp-other-card {
+        height: clamp(300px, 42vw, 400px) !important;
+    }
+}
+
+@media (min-width: 641px) and (max-width: 980px) {
+    .dp-section-heading,
+    .ep-section-heading,
+    .xp-section-heading,
+    .gp-section-heading,
+    .vt-section-heading,
+    .wp-section-heading,
+    .gs-section-heading,
+    .bp-top,
+    .bp-layout,
+    .rp-detail,
+    .dp-showcase,
+    .wp-feature,
+    .xp-feature,
+    .vt-directions {
+        grid-template-columns: 1fr !important;
+    }
+
+    .gp-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        grid-auto-rows: clamp(150px, 24vw, 210px) !important;
+    }
+
+    .dp-gallery,
+    .xp-gallery,
+    .wp-gallery,
+    .ep-gallery {
+        grid-auto-rows: clamp(140px, 22vw, 190px) !important;
+    }
+}
+
 @media (max-width: 640px) {
     body {
         text-size-adjust: 100%;
@@ -234,6 +374,23 @@ iframe {
 
     .section {
         padding: 3.5rem 1rem !important;
+    }
+
+    .room-image-overlay {
+        padding: 1.25rem !important;
+    }
+
+    .room-image-type {
+        font-size: clamp(1.65rem, 8vw, 2.25rem) !important;
+        margin-bottom: .5rem !important;
+    }
+
+    .room-image-category {
+        margin-bottom: .35rem !important;
+    }
+
+    .room-image-price {
+        margin-bottom: .8rem !important;
     }
 
     .section-inner {
@@ -453,14 +610,9 @@ iframe {
         height: 360px !important;
     }
 
-    .room-card-overlay,
     .activity-content,
     .review-card {
         padding: 1.5rem !important;
-    }
-
-    .activity-num {
-        font-size: 2.4rem !important;
     }
 
     .activity-img,
