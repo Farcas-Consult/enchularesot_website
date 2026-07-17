@@ -13,17 +13,15 @@ interface GalleryImage {
 }
 
 const galleryImages: GalleryImage[] = [
-  { src: `${S3_BASE}/Surrounding1.jpg`, alt: "Surroundings 1", category: "Interior" },
-  { src: `${S3_BASE}/Surroundings2.jpg`, alt: "Surroundings 2", category: "Interior" },
-  { src: `${S3_BASE}/Surroundings3.jpg`, alt: "Surroundings 3", category: "Interior" },
-  { src: `${S3_BASE}/Surroundings5.jpg`, alt: "Surroundings 5", category: "Interior" },
-  { src: `${S3_BASE}/Pathway1.jpg`, alt: "Pathway 1", category: "Interior" },
-  { src: `${S3_BASE}/IMG_2256.webp`, alt: "Resort pathway", category: "Interior" },
+  { src: `${S3_BASE}/Image31.jpeg`, alt: "Surroundings 5", category: "Interior" },
+  { src: `${S3_BASE}/Image32.jpeg`, alt: "Pathway 1", category: "Interior" },
+  { src: `${S3_BASE}/Image33.jpeg`, alt: "Resort pathway", category: "Interior" },
   { src: `${S3_BASE}/Reception1.jpg`, alt: "Reception 1", category: "Interior" },
-  { src: `${S3_BASE}/IMG_2272.webp`, alt: "Luxury Resort Exterior", category: "Interior" },
-  { src: `${S3_BASE}/IMG_2275.webp`, alt: "Tranquil Haven", category: "Interior" },
-  { src: `${S3_BASE}/IMG_3457.webp`, alt: "Scenic Retreat", category: "Interior" },
-  { src: `${S3_BASE}/IMG_2237.webp`, alt: "Luxury Bathroom", category: "Interior" },
+  { src: `${S3_BASE}/Image34.jpeg`, alt: "Luxury Resort Exterior", category: "Interior" },
+  { src: `${S3_BASE}/Image35.jpeg`, alt: "Tranquil Haven", category: "Interior" },
+  { src: `${S3_BASE}/Image36.jpeg`, alt: "Scenic Retreat", category: "Interior" },
+  { src: `${S3_BASE}/Image37.jpeg`, alt: "Luxury Bathroom", category: "Interior" },
+  { src: `${S3_BASE}/Image38.jpeg`, alt: "Luxury Bathroom", category: "Interior" },
 
   { src: `${S3_BASE}/Conferences1.jpeg`, alt: "Conference 1", category: "Conference & Events" },
   { src: `${S3_BASE}/Conferences2.jpeg`, alt: "Conference 2", category: "Conference & Events" },
@@ -91,10 +89,8 @@ const galleryImages: GalleryImage[] = [
   { src: `${S3_BASE}/Sauna.webp`, alt: "Sauna and Steam Room", category: "Wellness & Fitness" },
 
   { src: `${S3_BASE}/Swimmingpool.jpeg`, alt: "Infinity Pool", category: "Fun and Activities" },
-  { src: `${S3_BASE}/IMG_3429.webp`, alt: "Swimming Pool View 1", category: "Fun and Activities" },
-  { src: `${S3_BASE}/Swimmingpool2_result.png`, alt: "Swimming Pool View 2", category: "Fun and Activities" },
+  { src: `${S3_BASE}/Image39.jpeg`, alt: "Swimming Pool View 1", category: "Fun and Activities" },
   { src: `${S3_BASE}/Games1.jpeg`, alt: "Games Area 1", category: "Fun and Activities" },
-  { src: `${S3_BASE}/Games2.jpeg`, alt: "Games Area 2", category: "Fun and Activities" },
     { src: `${S3_BASE}/Games3.jpeg`, alt: "Games Area 2", category: "Fun and Activities" },
 
 ];
