@@ -81,6 +81,48 @@ body {
     min-height: 100vh;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+main,
+main > section {
+    width: 100%;
+}
+
+
+/* Site-wide full-width page rhythm
+   Keeps sections spanning the viewport while preserving comfortable edge padding. */
+
+.section-inner,
+.dp-section,
+.ep-section,
+.xp-section,
+.gp-section,
+.vt-section,
+.wp-section,
+.gs-section,
+.bp-shell,
+.dp-hero-content,
+.ep-hero-content,
+.xp-hero-content,
+.gp-hero-content,
+.vt-hero-content,
+.wp-hero-content,
+.rp-hero-content {
+    width: 100% !important;
+    max-width: none !important;
+    padding-left: clamp(1rem, 3vw, 3rem) !important;
+    padding-right: clamp(1rem, 3vw, 3rem) !important;
+}
+
+.section-inner {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
 
 /* Remove duplicate rule */
 
@@ -344,7 +386,7 @@ video {
     .gs-section,
     .bp-shell,
     .section-inner {
-        width: min(100%, calc(100% - 2rem)) !important;
+        width: 100% !important;
     }
 
     .dp-card-media,
@@ -417,9 +459,9 @@ video {
     }
 
     .section-inner {
-        width: min(100%, calc(100% - 1rem)) !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+        width: 100% !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
     }
 
     .section-label,
@@ -496,8 +538,8 @@ video {
     .gp-hero-content,
     .vt-hero-content,
     .wp-hero-content {
-        width: calc(100% - 2rem) !important;
-        padding: 6rem 0 2rem !important;
+        width: 100% !important;
+        padding: 6rem 1rem 2rem !important;
     }
 
     .rp-hero-title,
@@ -558,7 +600,7 @@ video {
     .wp-section,
     .gs-section,
     .bp-shell {
-        width: calc(100% - 2rem) !important;
+        width: 100% !important;
         padding-top: 3.5rem !important;
         padding-bottom: 3.5rem !important;
     }

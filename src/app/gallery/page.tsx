@@ -28,30 +28,20 @@ const galleryImages: GalleryImage[] = [
   { src: `${S3_BASE}/Conferences1.jpeg`, alt: "Conference 1", category: "Conference & Events" },
   { src: `${S3_BASE}/Conferences2.jpeg`, alt: "Conference 2", category: "Conference & Events" },
   { src: `${S3_BASE}/Conferences3.jpeg`, alt: "Conference 3", category: "Conference & Events" },
+    { src: `${S3_BASE}/Conferences.jpeg`, alt: "Conference 3", category: "Conference & Events" },
   { src: `${S3_BASE}/Event2.jpeg`, alt: "Corporate event", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event1.jpeg`, alt: "Event setup", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event3.jpeg`, alt: "Event gathering", category: "Conference & Events" },
-  { src: `${S3_BASE}/Events4.jpeg`, alt: "Outdoor event", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event5.jpeg`, alt: "Hosted event", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event6.jpeg`, alt: "Celebration setup", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event18.jpeg`, alt: "Resort celebration", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event15.jpeg`, alt: "Private event", category: "Conference & Events" },
+  { src: `${S3_BASE}/Image21.jpeg`, alt: "Event gathering", category: "Conference & Events" },
+  { src: `${S3_BASE}/Image23.jpeg`, alt: "Conference 3", category: "Conference & Events" },
+  { src: `${S3_BASE}/Events4.jpeg`, alt: "Conference 3", category: "Conference & Events" },
+  { src: `${S3_BASE}/Event16.jpeg`, alt: "Private event", category: "Conference & Events" },
   { src: `${S3_BASE}/Event8.jpeg`, alt: "Outdoor gathering", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event9.jpeg`, alt: "Social event", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event7.jpeg`, alt: "Resort occasion", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event11.jpeg`, alt: "Hosted moment", category: "Conference & Events" },
+  { src: `${S3_BASE}/Event12.jpeg`, alt: "Resort celebration", category: "Conference & Events" },
+  { src: `${S3_BASE}/Image25.jpeg`, alt: "Event space", category: "Conference & Events" },
+  { src: `${S3_BASE}/Image24.jpeg`, alt: "Event space", category: "Conference & Events" },
+  { src: `${S3_BASE}/Image26.jpeg`, alt: "Event space", category: "Conference & Events" },
   { src: `${S3_BASE}/Party3.jpeg`, alt: "Outdoor party", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event13.jpeg`, alt: "Guest event", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event17.jpeg`, alt: "Event decor", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event16.jpeg`, alt: "Event reception", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event10.jpeg`, alt: "Event space", category: "Conference & Events" },
+  { src: `${S3_BASE}/Event18.jpeg`, alt: "Resort celebration", category: "Conference & Events" },
   { src: `${S3_BASE}/Team2.jpeg`, alt: "Team building 2", category: "Conference & Events" },
-  { src: `${S3_BASE}/Team1.jpeg`, alt: "Team building 1", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event12.jpeg`, alt: "Team event", category: "Conference & Events" },
-  { src: `${S3_BASE}/Party2.jpeg`, alt: "Picnic event", category: "Conference & Events" },
-
-  { src: `${S3_BASE}/Bar1.jpg`, alt: "Bar 1", category: "Bar" },
-  { src: `${S3_BASE}/Bar2.jpg`, alt: "Bar 2", category: "Bar" },
 
   { src: `${S3_BASE}/Standard Room1.jpeg`, alt: "Room 1", category: "Rooms" },
   { src: `${S3_BASE}/Standard Room2.jpeg`, alt: "Room 2", category: "Rooms" },
@@ -78,28 +68,35 @@ const galleryImages: GalleryImage[] = [
   { src: `${S3_BASE}/Dining8.jpeg`, alt: "Gourmet Cuisine", category: "Dining" },
   { src: `${S3_BASE}/Dining9.jpeg`, alt: "Fine Dining", category: "Dining" },
   { src: `${S3_BASE}/Dining10.jpeg`, alt: "Elegant Meals", category: "Dining" },
+  { src: `${S3_BASE}/Image4.jpeg`, alt: "Elegant Meals", category: "Dining" },
+  { src: `${S3_BASE}/Image5.jpeg`, alt: "Elegant Meals", category: "Dining" },
+  { src: `${S3_BASE}/Image6.jpeg`, alt: "Elegant Meals", category: "Dining" },
+  { src: `${S3_BASE}/Image7.jpeg`, alt: "Elegant Meals", category: "Dining" },
+  { src: `${S3_BASE}/Image9.jpeg`, alt: "Elegant Meals", category: "Dining" },
 
-  { src: `${S3_BASE}/IMG_2173.webp`, alt: "Fitness Center", category: "Wellness & Fitness" },
-  { src: `${S3_BASE}/IMG_3391.webp`, alt: "Wellness Spa", category: "Wellness & Fitness" },
-  { src: `${S3_BASE}/IMG_2174.webp`, alt: "Gym Hero", category: "Wellness & Fitness" },
-  { src: `${S3_BASE}/IMG_2160.webp`, alt: "Fitness Classes", category: "Wellness & Fitness" },
-  { src: `${S3_BASE}/IMG_2171.webp`, alt: "Personal Training", category: "Wellness & Fitness" },
-  { src: `${S3_BASE}/Massage.webp`, alt: "Massage Therapy", category: "Wellness & Fitness" },
+   { src: `${S3_BASE}/Bar1.jpg`, alt: "Bar 1", category: "Bar" },
+  { src: `${S3_BASE}/Image8.jpeg`, alt: "Bar 2", category: "Bar" },
+
+  { src: `${S3_BASE}/Image10.jpeg`, alt: "Wellness Spa", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image11.jpeg`, alt: "Gym Hero", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image12.jpeg`, alt: "Fitness Classes", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image14.jpeg`, alt: "Personal Training", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image13.jpeg`, alt: "Massage Therapy", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image15.jpeg`, alt: "Massage Therapy", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image16.jpeg`, alt: "Massage Therapy", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image17.jpeg`, alt: "Massage Therapy", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image18.jpeg`, alt: "Massage Therapy", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image19.jpeg`, alt: "Massage Therapy", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image20.jpeg`, alt: "Massage Therapy", category: "Wellness & Fitness" },
   { src: `${S3_BASE}/Sauna.webp`, alt: "Sauna and Steam Room", category: "Wellness & Fitness" },
-  { src: `${S3_BASE}/Herbal.webp`, alt: "Herbal Teas and Infusions", category: "Wellness & Fitness" },
-  { src: `${S3_BASE}/Facial.webp`, alt: "Facial Treatments", category: "Wellness & Fitness" },
-  { src: `${S3_BASE}/BodyScrubs.webp`, alt: "Body Scrubs", category: "Wellness & Fitness" },
 
   { src: `${S3_BASE}/Swimmingpool.jpeg`, alt: "Infinity Pool", category: "Fun and Activities" },
-  { src: `${S3_BASE}/Team2.jpeg`, alt: "Team Building 2", category: "Fun and Activities" },
-  { src: `${S3_BASE}/Team1.jpeg`, alt: "Team Building 1", category: "Fun and Activities" },
   { src: `${S3_BASE}/IMG_3429.webp`, alt: "Swimming Pool View 1", category: "Fun and Activities" },
   { src: `${S3_BASE}/Swimmingpool2_result.png`, alt: "Swimming Pool View 2", category: "Fun and Activities" },
   { src: `${S3_BASE}/Games1.jpeg`, alt: "Games Area 1", category: "Fun and Activities" },
   { src: `${S3_BASE}/Games2.jpeg`, alt: "Games Area 2", category: "Fun and Activities" },
     { src: `${S3_BASE}/Games3.jpeg`, alt: "Games Area 2", category: "Fun and Activities" },
-  { src: `${S3_BASE}/IMG_2277.webp`, alt: "Kids Activities 1", category: "Fun and Activities" },
-  { src: `${S3_BASE}/IMG_2380.webp`, alt: "Kids Activities 2", category: "Fun and Activities" },
+
 ];
 
 const styles = `
@@ -201,7 +198,7 @@ const styles = `
   }
 
   .gp-section {
-    width: min(1160px, calc(100% - 3rem));
+    width: min(1252px, calc(100% - 3rem));
     margin: 0 auto;
     padding: 6rem 0;
   }
@@ -305,12 +302,21 @@ const styles = `
   }
 
   .gp-grid {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    grid-auto-rows: 168px;
-    gap: .65rem;
-    background: var(--white);
-    padding: .75rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(1rem, 1.8vw, 1.5rem);
+    padding-top: 2rem;
+  }
+
+  .gp-grid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 3px;
+    background: var(--brown-deep);
   }
 
   .gp-tile {
@@ -321,28 +327,18 @@ const styles = `
     overflow: hidden;
     padding: 0;
     text-align: left;
-  }
-
-  .gp-tile:nth-child(12n + 1),
-  .gp-tile:nth-child(12n + 8) {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-
-  .gp-tile:nth-child(12n + 5),
-  .gp-tile:nth-child(12n + 11) {
-    grid-column: span 2;
+    aspect-ratio: 7 / 8;
   }
 
   .gp-img {
     object-fit: cover;
-    filter: saturate(.88) sepia(.08) contrast(.94) brightness(.98);
+    filter: saturate(.94) sepia(.04) contrast(.96) brightness(.98);
     transition: transform .9s var(--ease-out), filter .45s var(--ease-out);
   }
 
   .gp-tile:hover .gp-img {
-    transform: scale(1.04);
-    filter: saturate(.9) sepia(.08) contrast(.92) brightness(.88);
+    transform: scale(1.025);
+    filter: saturate(.98) sepia(.02) contrast(.97) brightness(.94);
   }
 
   .gp-empty {
@@ -448,7 +444,6 @@ const styles = `
 
     .gp-grid {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-auto-rows: 158px;
     }
 
     .gp-summary {
@@ -484,16 +479,8 @@ const styles = `
 
     .gp-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: 132px;
-      gap: .5rem;
-      padding: .5rem;
-    }
-
-    .gp-tile:nth-child(12n + 1),
-    .gp-tile:nth-child(12n + 8),
-    .gp-tile:nth-child(12n + 5),
-    .gp-tile:nth-child(12n + 11) {
-      grid-column: span 2;
+      gap: .75rem;
+      padding-top: 1.5rem;
     }
 
     .gp-lightbox {
@@ -653,7 +640,7 @@ export default function Gallery() {
                   alt={image.alt}
                   fill
                   className="gp-img"
-                  sizes="(max-width: 640px) 50vw, (max-width: 980px) 33vw, 20vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 980px) 33vw, 25vw"
                   priority={index < 6}
                 />
               </button>

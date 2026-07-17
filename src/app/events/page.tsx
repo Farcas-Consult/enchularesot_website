@@ -1,6 +1,8 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
@@ -17,12 +19,12 @@ const eventSections = [
     ],
     meta: ["Conference planning", "Refreshments and meals", "Projector support", "Retreat settings"],
     images: [ 
+      `${S3_BASE}/Conferences.jpeg`,
       `${S3_BASE}/Conferences1.jpeg`,
       `${S3_BASE}/Conferences2.jpeg`,
       `${S3_BASE}/Conferences3.jpeg`,
-      `${S3_BASE}/Conference1.jpg`,
       `${S3_BASE}/Conference2.jpg`,
-      `${S3_BASE}/Conference3.jpg`,
+     
     ],
   },
   {
@@ -37,20 +39,12 @@ const eventSections = [
     ],
     meta: ["Event planning", "Decor coordination", "Catering support", "Indoor and outdoor setups"],
     images: [
-      `${S3_BASE}/Event2.jpeg`,
-      `${S3_BASE}/Event3.jpeg`,
-      `${S3_BASE}/Event18.jpeg`,
-      `${S3_BASE}/Party2.jpeg`,
-      `${S3_BASE}/Event6.jpeg`,
-      `${S3_BASE}/Events4.jpeg`,
-      `${S3_BASE}/Event7.jpeg`,
-      `${S3_BASE}/Party3.jpeg`,
-      `${S3_BASE}/Event8.jpeg`,
-      `${S3_BASE}/Event13.jpeg`,
-      `${S3_BASE}/Event11.jpeg`,
-      `${S3_BASE}/Event9.jpeg`,
-      `${S3_BASE}/Event5.jpeg`,
-      `${S3_BASE}/Event10.jpeg`,
+      `${S3_BASE}/Image21.jpeg`,
+       `${S3_BASE}/Image23.jpeg`,
+       `${S3_BASE}/Image26.jpeg`,
+       `${S3_BASE}/Image25.jpeg`,
+       `${S3_BASE}/Image27.jpeg`
+
     ],
   },
   {
@@ -64,7 +58,7 @@ const eventSections = [
       "This option works especially well for companies, departments, schools, clubs, and groups that want a day that feels useful, social, and refreshing.",
     ],
     meta: ["Group activities", "Outdoor space", "Team meals", "Custom schedules"],
-    images: [`${S3_BASE}/Team2.jpeg`, `${S3_BASE}/Team1.jpeg`],
+    images: [ `${S3_BASE}/Team1.jpeg`],
   },
 ];
 
@@ -91,12 +85,17 @@ const styles = `
     background: var(--cream);
     color: var(--brown-dark);
     font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  .ep-root * {
+    box-sizing: border-box;
   }
 
   .ep-hero {
     position: relative;
-    height: 70vh;
-    min-height: 520px;
+    height: clamp(560px, 74vh, 820px);
+    min-height: 560px;
     display: flex;
     align-items: flex-end;
     overflow: hidden;
@@ -112,8 +111,8 @@ const styles = `
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(74,36,0,.12) 0%, rgba(74,36,0,.76) 100%),
-      linear-gradient(90deg, rgba(74,36,0,.56) 0%, rgba(74,36,0,.08) 62%);
+      linear-gradient(180deg, rgba(74,36,0,.18) 0%, rgba(74,36,0,.18) 36%, rgba(74,36,0,.84) 100%),
+      linear-gradient(90deg, rgba(74,36,0,.62) 0%, rgba(74,36,0,.16) 58%, rgba(74,36,0,.28) 100%);
   }
 
   .ep-hero-content {
@@ -144,10 +143,10 @@ const styles = `
   }
 
   .ep-title {
-    max-width: 820px;
+    max-width: 860px;
     color: var(--white);
     font-family: var(--font-serif);
-    font-size: clamp(3rem, 6vw, 5.8rem);
+    font-size: clamp(3.3rem, 6.8vw, 6.6rem);
     font-weight: 300;
     line-height: .98;
     margin: 0;
@@ -185,12 +184,18 @@ const styles = `
     font-weight: 600;
     letter-spacing: .13em;
     text-transform: uppercase;
+    text-decoration: none;
     transition: transform .25s var(--ease-out), background .25s var(--ease-out), color .25s var(--ease-out);
   }
 
   .ep-btn:hover {
     transform: translateY(-2px);
     background: var(--gold);
+  }
+
+  .ep-btn:focus-visible {
+    outline: 2px solid var(--peach);
+    outline-offset: 3px;
   }
 
   .ep-btn-secondary {
@@ -207,15 +212,15 @@ const styles = `
   .ep-section {
     width: min(1160px, calc(100% - 3rem));
     margin: 0 auto;
-    padding: 6rem 0;
+    padding: clamp(5rem, 9vw, 8rem) 0;
   }
 
   .ep-section-heading {
     display: grid;
-    grid-template-columns: minmax(0, .95fr) minmax(280px, .7fr);
-    gap: 3rem;
+    grid-template-columns: minmax(0, .88fr) minmax(320px, .72fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
     align-items: end;
-    margin-bottom: 2.5rem;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
   }
 
   .ep-kicker {
@@ -230,7 +235,7 @@ const styles = `
   .ep-heading {
     color: var(--brown-dark);
     font-family: var(--font-serif);
-    font-size: clamp(2.4rem, 4.2vw, 4.4rem);
+    font-size: clamp(2.6rem, 5vw, 5rem);
     font-weight: 300;
     line-height: 1.02;
     margin: 0;
@@ -250,116 +255,122 @@ const styles = `
 
   .ep-event-list {
     display: grid;
-    gap: 2rem;
+    gap: clamp(4rem, 8vw, 7rem);
   }
 
   .ep-event-block {
     display: grid;
-    grid-template-columns: 1.08fr .92fr;
+    grid-template-columns: minmax(0, 3fr) minmax(260px, 1fr);
+    gap: 0;
     align-items: stretch;
-    min-height: 560px;
+    min-height: 520px;
     background: var(--white);
+    border: 1px solid rgba(143,95,47,.16);
   }
 
-  .ep-event-block:nth-child(even) .ep-gallery {
-    order: 2;
-  }
-
-  .ep-event-block:nth-child(even) .ep-detail {
-    order: 1;
-  }
-
-  .ep-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: 132px;
-    gap: .6rem;
-    padding: .75rem;
-    background: var(--white);
-    height: 100%;
-    min-height: 560px;
-  }
-
-  .ep-gallery-balanced {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(3, minmax(0, 1fr));
-    grid-auto-rows: minmax(0, 1fr);
-  }
-
-  .ep-gallery-balanced .ep-photo:first-child,
-  .ep-gallery-balanced .ep-photo:nth-child(6),
-  .ep-gallery-balanced .ep-photo:nth-child(9),
-  .ep-gallery-balanced .ep-photo:nth-child(12) {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .ep-gallery-compact {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(3, minmax(0, 1fr));
-    grid-auto-rows: minmax(0, 1fr);
-  }
-
-  .ep-gallery-compact .ep-photo:first-child {
-    grid-column: 1 / -1;
-    grid-row: span 2;
-  }
-
-  .ep-gallery-featured {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-rows: minmax(320px, 2fr) minmax(150px, 1fr);
-    grid-auto-rows: minmax(150px, 1fr);
-  }
-
-  .ep-gallery-featured .ep-photo:first-child {
-    grid-column: 1 / -1;
-    grid-row: auto;
-  }
-
-  .ep-gallery-featured .ep-photo:nth-child(6),
-  .ep-gallery-featured .ep-photo:nth-child(9),
-  .ep-gallery-featured .ep-photo:nth-child(12) {
-    grid-column: auto;
-  }
-
-  .ep-photo {
+  .ep-carousel {
     position: relative;
+    height: 100%;
+    min-height: 520px;
     overflow: hidden;
     background: var(--sand);
   }
 
-  .ep-photo:first-child {
-    grid-column: span 2;
-    grid-row: span 2;
+  .ep-carousel-track {
+    display: flex;
+    height: 100%;
+    min-height: inherit;
+    transition: transform .8s var(--ease-out);
   }
 
-  .ep-photo:nth-child(6),
-  .ep-photo:nth-child(9),
-  .ep-photo:nth-child(12) {
-    grid-column: span 2;
+  .ep-carousel-slide {
+    position: relative;
+    flex: 0 0 100%;
+    min-width: 100%;
+    min-height: inherit;
+    overflow: hidden;
   }
 
-  .ep-img {
+  .ep-carousel-img {
     object-fit: cover;
     filter: saturate(.88) sepia(.08) contrast(.94) brightness(.98);
     transition: transform 1s var(--ease-out);
   }
 
-  .ep-photo:hover .ep-img {
+  .ep-carousel:hover .ep-carousel-img,
+  .ep-carousel:focus-within .ep-carousel-img {
     transform: scale(1.035);
+  }
+
+  .ep-carousel-caption {
+    position: absolute;
+    left: clamp(1rem, 2vw, 1.5rem);
+    right: clamp(1rem, 2vw, 1.5rem);
+    bottom: clamp(1rem, 2vw, 1.5rem);
+    z-index: 2;
+    max-width: 640px;
+    background: rgba(74,36,0,.78);
+    color: var(--peach);
+    line-height: 1.65;
+    padding: 1rem 1.15rem;
+  }
+
+  .ep-carousel-caption p {
+    margin: 0;
+  }
+
+  .ep-carousel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(74,36,0,.42) 100%);
+    pointer-events: none;
+  }
+
+  .ep-carousel-controls {
+    position: absolute;
+    left: clamp(1rem, 2vw, 1.5rem);
+    top: clamp(1rem, 2vw, 1.5rem);
+    z-index: 3;
+    display: flex;
+    gap: .45rem;
+  }
+
+  .ep-carousel-dot {
+    width: 34px;
+    height: 3px;
+    border: 0;
+    background: rgba(255,211,163,.42);
+    cursor: pointer;
+    padding: 0;
+    transition: background .25s var(--ease-out), transform .25s var(--ease-out);
+  }
+
+  .ep-carousel-dot:hover,
+  .ep-carousel-dot:focus-visible,
+  .ep-carousel-dot-active {
+    background: var(--peach);
+    transform: translateY(-1px);
+  }
+
+  .ep-carousel-dot:focus-visible {
+    outline: 2px solid var(--peach);
+    outline-offset: 4px;
   }
 
   .ep-detail {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: clamp(2rem, 5vw, 4rem);
+    background: var(--white);
+    padding: clamp(1.75rem, 3vw, 2.5rem);
+    border-left: 1px solid rgba(143,95,47,.16);
   }
 
   .ep-card-title {
     color: var(--brown-dark);
     font-family: var(--font-serif);
-    font-size: clamp(2.25rem, 4vw, 4rem);
+    font-size: clamp(2rem, 3vw, 3.2rem);
     font-weight: 300;
     line-height: 1.02;
     margin: 0 0 1rem;
@@ -370,7 +381,7 @@ const styles = `
     flex-wrap: wrap;
     gap: .5rem;
     padding: 0;
-    margin: 1.5rem 0 0;
+    margin: 1.35rem 0 0;
     list-style: none;
   }
 
@@ -380,36 +391,12 @@ const styles = `
     padding: .5rem .75rem;
     font-size: .76rem;
     letter-spacing: .04em;
+    transition: transform .2s var(--ease-out), border-color .2s var(--ease-out);
   }
 
-  .ep-detail-list {
-    counter-reset: event-detail;
-    display: grid;
-    gap: .7rem;
-    margin: 1.35rem 0 0;
-  }
-
-  .ep-detail-list p {
-    background: var(--cream);
-    border-left: none;
-    color: rgba(74,36,0,.74);
-    line-height: 1.75;
-    margin: 0;
-    min-height: 86px;
-    padding: .95rem 1rem .95rem 3rem;
-    position: relative;
-  }
-
-  .ep-detail-list p::before {
-    counter-increment: event-detail;
-    content: counter(event-detail, decimal-leading-zero);
-    color: rgba(143,95,47,.48);
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    left: 1rem;
-    line-height: 1;
-    position: absolute;
-    top: 1.1rem;
+  .ep-meta li:hover {
+    border-color: rgba(143,95,47,.38);
+    transform: translateY(-1px);
   }
 
   .ep-contact {
@@ -418,6 +405,7 @@ const styles = `
     margin-top: 2rem;
     padding: 4rem clamp(1.5rem, 4vw, 4rem);
     text-align: center;
+    border-radius: 8px;
   }
 
   .ep-contact h2 {
@@ -460,7 +448,7 @@ const styles = `
     }
 
     .ep-section {
-      padding: 4rem 0;
+      padding: clamp(4rem, 8vw, 5rem) 0;
     }
 
     .ep-section-heading,
@@ -468,36 +456,13 @@ const styles = `
       grid-template-columns: 1fr;
     }
 
-    .ep-event-block:nth-child(even) .ep-gallery,
-    .ep-event-block:nth-child(even) .ep-detail {
-      order: initial;
+    .ep-carousel {
+      min-height: 440px;
     }
 
-    .ep-gallery {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-auto-rows: 145px;
-      height: auto;
-      min-height: 460px;
-    }
-
-    .ep-gallery-balanced,
-    .ep-gallery-compact {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: none;
-      grid-auto-rows: 150px;
-      min-height: 460px;
-    }
-
-    .ep-gallery-featured {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-template-rows: minmax(260px, 2fr) minmax(130px, 1fr);
-      grid-auto-rows: minmax(130px, 1fr);
-      min-height: 430px;
-    }
-
-    .ep-gallery-featured .ep-photo:first-child {
-      grid-column: 1 / -1;
-      grid-row: auto;
+    .ep-detail {
+      border-left: 0;
+      border-top: 1px solid rgba(143,95,47,.16);
     }
   }
 
@@ -526,55 +491,29 @@ const styles = `
       width: 100%;
     }
 
-    .ep-event-block .ep-detail {
-      order: 1;
-    }
-
-    .ep-event-block .ep-gallery {
-      order: 2;
-    }
-
-    .ep-gallery {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: 132px;
-      gap: .5rem;
-      padding: .5rem;
-      height: auto;
-    }
-
-    .ep-gallery-balanced,
-    .ep-gallery-compact {
-      grid-template-columns: 1fr;
-      grid-template-rows: none;
-      grid-auto-rows: 132px;
+    .ep-event-block {
       min-height: auto;
     }
 
-    .ep-gallery-featured {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-template-rows: minmax(220px, 2fr) minmax(96px, 1fr);
-      grid-auto-rows: minmax(96px, 1fr);
-      min-height: auto;
+    .ep-carousel {
+      min-height: 320px;
     }
 
-    .ep-gallery-featured .ep-photo:first-child {
-      grid-column: 1 / -1;
-      grid-row: auto;
+    .ep-carousel-caption {
+      left: .85rem;
+      right: .85rem;
+      bottom: .85rem;
+      font-size: .9rem;
+      padding: .8rem .9rem;
     }
 
-    .ep-photo:first-child,
-    .ep-photo:nth-child(6),
-    .ep-photo:nth-child(9),
-    .ep-photo:nth-child(12) {
-      grid-column: span 2;
+    .ep-carousel-controls {
+      left: .85rem;
+      top: .85rem;
     }
 
-    .ep-gallery-balanced .ep-photo:first-child,
-    .ep-gallery-featured .ep-photo:first-child,
-    .ep-gallery-balanced .ep-photo:nth-child(6),
-    .ep-gallery-balanced .ep-photo:nth-child(9),
-    .ep-gallery-balanced .ep-photo:nth-child(12) {
-      grid-column: auto;
+    .ep-carousel-dot {
+      width: 26px;
     }
 
     .ep-detail {
@@ -584,6 +523,45 @@ const styles = `
 `;
 
 export default function EventsPage() {
+  const shouldReduceMotion = useReducedMotion();
+  const [activeSlides, setActiveSlides] = useState(() => eventSections.map(() => 0));
+  const reveal = shouldReduceMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 28 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, amount: 0.18 },
+        transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] as const },
+      };
+  const imageReveal = shouldReduceMotion
+    ? {}
+    : {
+        initial: { opacity: 0, scale: 0.985 },
+        whileInView: { opacity: 1, scale: 1 },
+        viewport: { once: true, amount: 0.2 },
+        transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+      };
+
+  useEffect(() => {
+    if (shouldReduceMotion) return undefined;
+
+    const interval = window.setInterval(() => {
+      setActiveSlides((currentSlides) =>
+        currentSlides.map((currentSlide, sectionIndex) => {
+          const imageCount = eventSections[sectionIndex]?.images.length ?? 0;
+          return imageCount > 1 ? (currentSlide + 1) % imageCount : currentSlide;
+        })
+      );
+    }, 4500);
+
+    return () => window.clearInterval(interval);
+  }, [shouldReduceMotion]);
+
+  const getImageDescription = (section: (typeof eventSections)[number], imageIndex: number) => {
+    const descriptions = [section.description, ...section.details];
+    return descriptions[imageIndex % descriptions.length];
+  };
+
   return (
     <section id="events" className="ep-root">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
@@ -599,7 +577,7 @@ export default function EventsPage() {
           sizes="100vw"
         />
         <div className="ep-hero-overlay" />
-        <div className="ep-hero-content">
+        <motion.div className="ep-hero-content" {...reveal}>
           <div className="ep-eyebrow">Conferences and events</div>
           <h1 className="ep-title">
             Special moments in a <em>serene setting</em>
@@ -616,11 +594,11 @@ export default function EventsPage() {
               Explore Spaces
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <div id="event-sections" className="ep-section">
-        <div className="ep-section-heading">
+        <motion.div className="ep-section-heading" {...reveal}>
           <div>
             <div className="ep-kicker">Planning and hosting</div>
             <h2 className="ep-heading">
@@ -631,61 +609,70 @@ export default function EventsPage() {
             Whether the occasion is focused, festive, or active, the resort team helps shape the
             setting, flow, catering, and details so the day feels easy from arrival to close.
           </p>
-        </div>
+        </motion.div>
 
         <div className="ep-event-list">
-          {eventSections.map((section) => {
-            const isCorporateSocial = section.name === "Corporate and social events";
-            const galleryImages = isCorporateSocial ? section.images.slice(0, 4) : section.images;
-
-            return (
-            <article className="ep-event-block" key={section.name}>
-              <div
-                className={`ep-gallery ${
-                  isCorporateSocial
-                    ? "ep-gallery-featured"
-                    : section.images.length <= 3
-                    ? "ep-gallery-compact"
-                    : section.images.length <= 6
-                    ? "ep-gallery-balanced"
-                    : ""
-                }`}
-                aria-label={`${section.name} photos`}
-              >
-                {galleryImages.map((image, imageIndex) => (
-                  <div className="ep-photo" key={image}>
-                    <Image
-                      src={image}
-                      alt={`${section.name} at Enchula Resort ${imageIndex + 1}`}
-                      fill
-                      className="ep-img"
-                      sizes={imageIndex === 0 ? "(max-width: 980px) 66vw, 32vw" : "(max-width: 560px) 50vw, 16vw"}
-                    />
+          {eventSections.map((section, sectionIndex) => (
+            <motion.article className="ep-event-block" key={section.name} {...reveal}>
+              <motion.div className="ep-carousel" aria-label={`${section.name} photos`} {...imageReveal}>
+                {section.images.length > 1 && (
+                  <div className="ep-carousel-controls">
+                    {section.images.map((image, imageIndex) => (
+                      <button
+                        className={`ep-carousel-dot ${
+                          activeSlides[sectionIndex] === imageIndex ? "ep-carousel-dot-active" : ""
+                        }`}
+                        key={image}
+                        type="button"
+                        aria-label={`${section.name} ${imageIndex + 1}`}
+                        onClick={() =>
+                          setActiveSlides((currentSlides) =>
+                            currentSlides.map((currentSlide, currentSectionIndex) =>
+                              currentSectionIndex === sectionIndex ? imageIndex : currentSlide
+                            )
+                          )
+                        }
+                      />
+                    ))}
                   </div>
-                ))}
-              </div>
+                )}
 
-              <div className="ep-detail">
+                <div
+                  className="ep-carousel-track"
+                  style={{ transform: `translateX(-${activeSlides[sectionIndex] * 100}%)` }}
+                >
+                  {section.images.map((image, imageIndex) => (
+                    <div className="ep-carousel-slide" key={image}>
+                      <Image
+                        src={image}
+                        alt={`${section.name} at Enchula Resort ${imageIndex + 1}`}
+                        fill
+                        className="ep-carousel-img"
+                        sizes="(max-width: 980px) 100vw, 75vw"
+                      />
+                      <div className="ep-carousel-caption">
+                        <p>{getImageDescription(section, imageIndex)}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div className="ep-detail" {...reveal}>
                 <div className="ep-kicker">{section.kicker}</div>
                 <h3 className="ep-card-title">{section.name}</h3>
                 <p className="ep-copy">{section.description}</p>
-                <div className="ep-detail-list">
-                  {section.details.map((detail) => (
-                    <p key={detail}>{detail}</p>
-                  ))}
-                </div>
                 <ul className="ep-meta">
                   {section.meta.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-              </div>
-            </article>
-            );
-          })}
+              </motion.div>
+            </motion.article>
+          ))}
         </div>
 
-        <div className="ep-contact">
+        <motion.div className="ep-contact" {...reveal}>
           <h2>Ready to plan your event?</h2>
           <p>
             Share your preferred date, guest count, and event style with the Enchula team and they
@@ -707,7 +694,7 @@ export default function EventsPage() {
               events.by.enchula
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

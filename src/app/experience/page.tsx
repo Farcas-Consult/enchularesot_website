@@ -48,17 +48,6 @@ const experiences = [
   },
 ];
 
-const gallery = [
-  { src: `${S3_BASE}/IMG_2257.webp`, alt: "Resort experience at Enchula" },
-  { src: `${S3_BASE}/Swimmingpool.jpeg`, alt: "Swimming pool at Enchula Resort" },
-  { src: `${S3_BASE}/Games1.jpeg`, alt: "Games and recreation at Enchula Resort" },
-  { src: `${S3_BASE}/Games2.jpeg`, alt: "Games area at Enchula Resort" },
-  { src: `${S3_BASE}/Games3.jpeg`, alt: "Recreation area at Enchula Resort" },
-  { src: `${S3_BASE}/IMG_2277.webp`, alt: "Kids activities at Enchula Resort" },
-  { src: `${S3_BASE}/IMG_2380.webp`, alt: "Children activities at Enchula Resort" },
-  { src: `${S3_BASE}/NatureWalk2.jpg`, alt: "Guided nature walk at Enchula Resort" },
-];
-
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
@@ -241,36 +230,10 @@ const styles = `
   }
 
   .xp-feature {
-    display: grid;
-    grid-template-columns: 1.08fr .92fr;
     background: var(--white);
-  }
-
-  .xp-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: 142px;
-    gap: .65rem;
-    min-height: 610px;
-    padding: .75rem;
-    background: var(--white);
-  }
-
-  .xp-gallery-item {
-    position: relative;
-    overflow: hidden;
-    background: var(--sand);
-  }
-
-  .xp-gallery-item:first-child {
-    grid-column: span 2;
-    grid-row: span 2;
-  }
-
-  .xp-gallery-item:nth-child(6),
-  .xp-gallery-item:nth-child(9),
-  .xp-gallery-item:nth-child(10) {
-    grid-column: span 2;
+    border-top: 1px solid rgba(143,95,47,.18);
+    border-bottom: 1px solid rgba(143,95,47,.18);
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 4rem);
   }
 
   .xp-img {
@@ -279,17 +242,28 @@ const styles = `
     transition: transform 1s var(--ease-out);
   }
 
-  .xp-gallery-item:hover .xp-img,
   .xp-card:hover .xp-img,
   .xp-activity:hover .xp-img {
     transform: scale(1.035);
   }
 
+  .xp-card-contain .xp-card-media {
+    background: var(--cream);
+  }
+
+  .xp-img-contain {
+    object-fit: contain;
+    padding: clamp(.5rem, 1.5vw, 1rem);
+  }
+
+  .xp-card:hover .xp-img-contain {
+    transform: none;
+  }
+
   .xp-feature-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: clamp(2rem, 5vw, 4rem);
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
   }
 
   .xp-feature-title {
@@ -298,35 +272,14 @@ const styles = `
     font-size: clamp(2.3rem, 4vw, 4rem);
     font-weight: 300;
     line-height: 1.02;
-    margin: 0 0 1rem;
+    margin: 0 auto 1.2rem;
+    max-width: 760px;
   }
 
-  .xp-info-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: .8rem;
-    margin-top: 2rem;
-  }
-
-  .xp-info {
-    border-top: 1px solid rgba(143,95,47,.25);
-    padding-top: 1rem;
-  }
-
-  .xp-info strong {
-    display: block;
-    color: var(--brown);
-    font-size: .7rem;
-    letter-spacing: .16em;
-    margin-bottom: .35rem;
-    text-transform: uppercase;
-  }
-
-  .xp-info span {
-    color: var(--brown-dark);
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    line-height: 1.1;
+  .xp-feature-content .xp-copy {
+    font-size: clamp(1rem, 1.45vw, 1.12rem);
+    max-width: 720px;
+    margin: 0 auto;
   }
 
   .xp-activity-list {
@@ -391,30 +344,34 @@ const styles = `
 
   .xp-card-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .xp-card {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(280px, 3fr);
     background: var(--white);
     overflow: hidden;
   }
 
   .xp-card-media {
     position: relative;
-    height: 330px;
+    min-height: 430px;
     overflow: hidden;
     background: var(--sand);
   }
 
   .xp-card-body {
-    padding: 1.55rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(1.75rem, 3.2vw, 3rem);
   }
 
   .xp-card-title {
     color: var(--brown-dark);
     font-family: var(--font-serif);
-    font-size: 2.1rem;
+    font-size: clamp(2rem, 3.2vw, 3rem);
     font-weight: 300;
     line-height: 1.05;
     margin: 0 0 .75rem;
@@ -471,7 +428,6 @@ const styles = `
     }
 
     .xp-section-heading,
-    .xp-feature,
     .xp-activity {
       grid-template-columns: 1fr;
     }
@@ -481,14 +437,12 @@ const styles = `
       order: initial;
     }
 
-    .xp-gallery {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-auto-rows: 145px;
-      min-height: 560px;
+    .xp-card {
+      grid-template-columns: minmax(0, 7fr) minmax(260px, 3fr);
     }
 
-    .xp-card-grid {
-      grid-template-columns: 1fr;
+    .xp-card-media {
+      min-height: 360px;
     }
   }
 
@@ -516,27 +470,16 @@ const styles = `
       width: 100%;
     }
 
-    .xp-gallery {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: 130px;
-      gap: .5rem;
-      padding: .5rem;
-    }
-
-    .xp-gallery-item:first-child,
-    .xp-gallery-item:nth-child(6),
-    .xp-gallery-item:nth-child(9),
-    .xp-gallery-item:nth-child(10) {
-      grid-column: span 2;
-    }
-
-    .xp-feature-content,
     .xp-activity-content,
     .xp-card-body {
       padding: 1.5rem;
     }
 
-    .xp-info-grid {
+    .xp-feature {
+      padding: 1.5rem;
+    }
+
+    .xp-card {
       grid-template-columns: 1fr;
     }
 
@@ -602,20 +545,6 @@ export default function ExperiencesPage() {
         </div>
 
         <div className="xp-feature">
-          <div className="xp-gallery">
-            {gallery.map((item, index) => (
-              <div className="xp-gallery-item" key={item.src}>
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  className="xp-img"
-                  sizes={index === 0 ? "(max-width: 980px) 66vw, 32vw" : "(max-width: 560px) 50vw, 18vw"}
-                />
-              </div>
-            ))}
-          </div>
-
           <div className="xp-feature-content">
             <div className="xp-kicker">The setting</div>
             <h2 className="xp-feature-title">Relaxed resort energy, with room for every guest.</h2>
@@ -623,24 +552,6 @@ export default function ExperiencesPage() {
               Families, couples, teams, and day visitors can shape their time around easy movement,
               quiet corners, refreshing swims, and shared moments across the grounds.
             </p>
-            <div className="xp-info-grid">
-              <div className="xp-info">
-                <strong>Best for</strong>
-                <span>Families, groups and day visitors</span>
-              </div>
-              <div className="xp-info">
-                <strong>Style</strong>
-                <span>Poolside, outdoor and indoor leisure</span>
-              </div>
-              <div className="xp-info">
-                <strong>Pace</strong>
-                <span>Easy, playful and unhurried</span>
-              </div>
-              <div className="xp-info">
-                <strong>Booking</strong>
-                <span>Reserve through reception</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -701,28 +612,35 @@ export default function ExperiencesPage() {
         </div>
 
         <div className="xp-card-grid">
-          {secondary.map((experience) => (
-            <article className="xp-card" key={experience.name}>
-              <div className="xp-card-media">
-                <Image
-                  src={experience.image}
-                  alt={experience.name}
-                  fill
-                  className="xp-img"
-                  sizes="(max-width: 980px) 100vw, 33vw"
-                />
-              </div>
-              <div className="xp-card-body">
-                <h3 className="xp-card-title">{experience.name}</h3>
-                <p className="xp-card-text">{experience.description}</p>
-                <ul className="xp-tags">
-                  {experience.features.map((feature) => (
-                    <li key={feature}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
+          {secondary.map((experience) => {
+            const showFullImage = experience.name === "Outdoor Picnics";
+
+            return (
+              <article
+                className={`xp-card${showFullImage ? " xp-card-contain" : ""}`}
+                key={experience.name}
+              >
+                <div className="xp-card-media">
+                  <Image
+                    src={experience.image}
+                    alt={experience.name}
+                    fill
+                    className={`xp-img${showFullImage ? " xp-img-contain" : ""}`}
+                    sizes="(max-width: 560px) 100vw, (max-width: 980px) 70vw, 70vw"
+                  />
+                </div>
+                <div className="xp-card-body">
+                  <h3 className="xp-card-title">{experience.name}</h3>
+                  <p className="xp-card-text">{experience.description}</p>
+                  <ul className="xp-tags">
+                    {experience.features.map((feature) => (
+                      <li key={feature}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
         <div className="xp-cta">
