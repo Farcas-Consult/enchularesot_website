@@ -8,7 +8,7 @@ const experiences = [
   {
     name: "Signature Restaurant",
     label: "All-day dining",
-    image: `${S3_BASE}/Restaurant1.jpg`,
+    image: `${S3_BASE}/Image9.jpeg`,
     hours: "Open daily 7AM - 10PM",
     description:
       "A relaxed restaurant experience shaped around fresh local ingredients, familiar international classics, and warm service from breakfast through dinner.",
@@ -17,7 +17,7 @@ const experiences = [
   {
     name: "Bar Lounge",
     label: "Cocktails and sundowners",
-    image: `${S3_BASE}/Bar2.jpg`,
+    image: `${S3_BASE}/Image8.jpeg`,
     hours: "Open daily 12PM - 11PM",
     description:
       "An easygoing lounge for crafted cocktails, premium spirits, wines, and unhurried conversations after a day at the resort.",
@@ -36,6 +36,10 @@ const gallery = [
   { src: `${S3_BASE}/Dining8.jpeg`, alt: "Warm dining atmosphere at Enchula Resort" },
   { src: `${S3_BASE}/Dining9.jpeg`, alt: "Dining experience at Enchula Resort" },
   { src: `${S3_BASE}/Dining10.jpeg`, alt: "Resort dining arrangement at Enchula Resort" },
+  { src: `${S3_BASE}/Image4.jpeg`, alt: "Resort dining arrangement at Enchula Resort" },
+  { src: `${S3_BASE}/Image5.jpeg`, alt: "Resort dining arrangement at Enchula Resort" },
+  { src: `${S3_BASE}/Image6.jpeg`, alt: "Resort dining arrangement at Enchula Resort" },
+  { src: `${S3_BASE}/Image7.jpeg`, alt: "Resort dining arrangement at Enchula Resort" },
 ];
 
 const styles = `

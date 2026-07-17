@@ -339,7 +339,9 @@ function RoomsPreview() {
                 <span className="room-image-category">{r.category}</span>
                 <span className="room-image-type">{r.name}</span>
                 <span className="room-image-price">{r.price} / night</span>
-                <span className="room-image-cta">Explore Room <span style={{ marginLeft: ".25rem" }}>→</span></span>
+                <span className="room-image-cta">
+                  Explore Room <span className="room-image-cta-mark">→</span>
+                </span>
               </span>
             </div>
           </a>
@@ -440,7 +442,7 @@ function Dining() {
   const items = [
     { src: `${S3_BASE}/Dining1.jpeg`, alt: "Dining at Enchula Resort" },
     { src: `${S3_BASE}/Dining2.jpeg`, alt: "Lounge dining at Enchula Resort" },
-    { src: `${S3_BASE}/Dining3.jpeg`, alt: "Poolside dining at Enchula Resort" },
+    { src: `${S3_BASE}/Image1.jpeg`, alt: "Poolside dining at Enchula Resort" },
   ];
   return (
     <section id="dining" className="section" style={{ background: "var(--white)", padding: "7rem 0" }}>

@@ -77,13 +77,13 @@ export default function Navbar() {
         .nav-desktop {
           position: relative;
           display: grid;
-          grid-template-columns: minmax(160px, 220px) minmax(0, 1fr) minmax(160px, 220px);
+          grid-template-columns: minmax(170px, 235px) minmax(0, 1fr) minmax(170px, 235px);
           grid-template-rows: auto auto;
           background: #4A2400;
           padding: 1rem 2.5rem .9rem;
           align-items: center;
           gap: .65rem 1.5rem;
-          min-height: 184px;
+          min-height: 202px;
           border-bottom: 1px solid rgba(185,154,102,.18);
         }
         .nav-contact-icons {
@@ -107,7 +107,7 @@ export default function Navbar() {
           grid-column: 2; grid-row: 1; justify-self: center;
         }
         .nav-logo-img {
-          width: 210px; height: 140px; object-fit: contain;
+          width: 238px; height: 158px; object-fit: contain;
           filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
         }
         .nav-logo-text {
@@ -157,7 +157,7 @@ export default function Navbar() {
         .nav-mobile-topbar {
           position: relative;
           display: flex; align-items: center; justify-content: space-between;
-          min-height: 116px;
+          min-height: 126px;
           padding: .65rem .85rem;
           border-bottom: 1px solid rgba(185,154,102,.15);
         }
@@ -176,7 +176,7 @@ export default function Navbar() {
           display: flex; align-items: center; justify-content: center;
         }
         .nav-mobile-logo-img {
-          width: 146px; height: 108px; object-fit: contain;
+          width: 160px; height: 118px; object-fit: contain;
           filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
         }
         .nav-mobile-book {
@@ -251,9 +251,9 @@ export default function Navbar() {
         }
 
         @media (max-width: 380px) {
-          .nav-mobile-topbar { min-height: 104px; padding-left: .65rem; padding-right: .65rem; }
+          .nav-mobile-topbar { min-height: 112px; padding-left: .65rem; padding-right: .65rem; }
           .nav-hamburger { width: 38px; height: 38px; }
-          .nav-mobile-logo-img { width: 124px; height: 92px; }
+          .nav-mobile-logo-img { width: 136px; height: 100px; }
           .nav-mobile-book { padding: .55rem .68rem; letter-spacing: .1em; }
           .nav-mobile-contact-strip { padding: .35rem 0; }
         }
@@ -279,8 +279,8 @@ export default function Navbar() {
             <Image
               src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo10.png"
               alt="Enchula Resort"
-              width={210}
-              height={140}
+              width={238}
+              height={158}
               className="nav-logo-img"
               priority
             />
@@ -314,8 +314,8 @@ export default function Navbar() {
               <Image
                 src="https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app/Logo10.png"
                 alt="Enchula Resort"
-                width={146}
-                height={108}
+                width={160}
+                height={118}
                 className="nav-mobile-logo-img"
                 priority
               />

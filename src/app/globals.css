@@ -217,49 +217,72 @@ body {
     }
 
     .room-image-overlay {
-        @apply pointer-events-none absolute inset-0 z-10 flex flex-col justify-end p-8 transition-all duration-300;
-        background: linear-gradient(180deg, transparent 35%, color-mix(in srgb, var(--brand-black) 88%, transparent) 100%);
+        @apply pointer-events-none absolute inset-0 z-10 flex flex-col justify-end p-7 transition-all duration-300;
+        background:
+            linear-gradient(180deg, color-mix(in srgb, var(--brand-black) 12%, transparent) 0%, transparent 34%),
+            linear-gradient(180deg, transparent 36%, color-mix(in srgb, var(--brand-black) 92%, transparent) 100%);
     }
 
     .room-image-category {
-        @apply mb-2 block text-xs font-bold uppercase;
-        color: var(--brand-primary);
-        letter-spacing: .2em;
+        @apply mb-3 inline-flex w-fit items-center border px-3 py-1 font-bold uppercase;
+        background: color-mix(in srgb, var(--brand-black) 32%, transparent);
+        border-color: color-mix(in srgb, var(--brand-primary) 58%, transparent);
+        color: var(--brand-background);
+        font-size: .62rem;
+        letter-spacing: .18em;
     }
 
     .room-image-type {
-        @apply mb-3 block text-3xl font-normal leading-tight;
+        @apply mb-2 block font-normal leading-none;
         color: var(--text-on-dark);
         font-family: 'Lora', Georgia, serif;
+        font-size: clamp(1.9rem, 3vw, 2.65rem);
     }
 
     .room-image-price {
-        @apply mb-5 block text-sm transition-all duration-300;
-        color: color-mix(in srgb, var(--brand-background) 78%, var(--brand-primary));
-        opacity: 0;
-        transform: translateY(8px);
+        @apply mb-5 block text-sm font-medium transition-all duration-300;
+        color: color-mix(in srgb, var(--brand-background) 84%, var(--brand-primary));
+        opacity: .92;
+        transform: none;
     }
 
     .room-image-cta {
-        @apply inline-flex w-fit items-center text-xs font-bold uppercase transition-all duration-300;
-        color: var(--brand-primary);
-        letter-spacing: .14em;
-        opacity: 0;
-        transform: translateY(8px);
+        @apply inline-flex w-fit items-center justify-center border px-4 py-3 text-xs font-bold uppercase transition-all duration-300;
+        background: color-mix(in srgb, var(--brand-background) 92%, var(--brand-primary));
+        border-color: color-mix(in srgb, var(--text-on-dark) 45%, transparent);
+        color: var(--brand-black);
+        letter-spacing: .13em;
+        min-height: 42px;
+        opacity: 1;
+        transform: none;
+    }
+
+    .room-image-cta-mark {
+        @apply inline-flex items-center transition-transform duration-300;
+        margin-left: .45rem;
     }
 
     .room-image-link:hover .room-image-overlay {
-        background: linear-gradient(180deg, transparent 15%, color-mix(in srgb, var(--brand-black) 94%, transparent) 100%);
+        background:
+            linear-gradient(180deg, color-mix(in srgb, var(--brand-black) 18%, transparent) 0%, transparent 26%),
+            linear-gradient(180deg, transparent 20%, color-mix(in srgb, var(--brand-black) 96%, transparent) 100%);
     }
 
-    .room-image-link:hover .room-image-price,
-    .room-image-link:hover .room-image-cta {
+    .room-image-link:hover .room-image-price {
         opacity: 1;
-        transform: translateY(0);
     }
 
-    .room-image-link:hover .room-image-cta {
-        transform: translate(4px, 0);
+    .room-image-link:hover .room-image-cta,
+    .room-image-link:focus-visible .room-image-cta {
+        background: var(--brand-primary);
+        border-color: var(--brand-primary);
+        color: var(--brand-black);
+        transform: translateY(-2px);
+    }
+
+    .room-image-link:hover .room-image-cta-mark,
+    .room-image-link:focus-visible .room-image-cta-mark {
+        transform: translateX(4px);
     }
 }
 
