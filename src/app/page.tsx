@@ -357,7 +357,7 @@ const eventsData = [
     name: "Retreats & Conferences",
     desc: "Focused, productive gatherings",
     photos: [
-      { src: `${S3_BASE}/Conferences1.jpeg`, title: "Retreat Sessions" },
+      { src: `${S3_BASE}/Conferences.jpeg`, title: "Retreat Sessions" },
       { src: `${S3_BASE}/Conferences2.jpeg`, title: "Conference Spaces" },
       { src: `${S3_BASE}/Conferences3.jpeg`, title: "Focused Gatherings" },
     ],
@@ -367,18 +367,14 @@ const eventsData = [
     desc: "Tailored events & celebrations",
     photos: [
       { src: `${S3_BASE}/Events1.jpeg`,  title: "Corporate Events" },
-      { src: `${S3_BASE}/Event2.jpeg`,   title: "Social Gatherings" },
-      { src: `${S3_BASE}/Events3.jpeg`,  title: "Celebrations" },
-      { src: `${S3_BASE}/Events4.jpeg`,  title: "Outdoor Events" },
-      { src: `${S3_BASE}/Events5.jpeg`,  title: "Private Functions" },
-      { src: `${S3_BASE}/Event11.jpeg`,  title: "Hosted Moments" },
+      { src: `${S3_BASE}/Image.jpeg`,   title: "Social Gatherings" },
+      { src: `${S3_BASE}/Image2.jpeg`,  title: "Celebrations" },
     ],
   },
   {
     name: "Team Building",
     desc: "Inspiring nature-based activities",
     photos: [
-      { src: `${S3_BASE}/Team1.jpeg`, title: "Team Challenges" },
       { src: `${S3_BASE}/Team2.jpeg`, title: "Group Activities" },
     ],
   },

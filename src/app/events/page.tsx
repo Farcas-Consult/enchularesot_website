@@ -305,6 +305,23 @@ const styles = `
     grid-row: span 2;
   }
 
+  .ep-gallery-featured {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: minmax(320px, 2fr) minmax(150px, 1fr);
+    grid-auto-rows: minmax(150px, 1fr);
+  }
+
+  .ep-gallery-featured .ep-photo:first-child {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .ep-gallery-featured .ep-photo:nth-child(6),
+  .ep-gallery-featured .ep-photo:nth-child(9),
+  .ep-gallery-featured .ep-photo:nth-child(12) {
+    grid-column: auto;
+  }
+
   .ep-photo {
     position: relative;
     overflow: hidden;
@@ -470,6 +487,18 @@ const styles = `
       grid-auto-rows: 150px;
       min-height: 460px;
     }
+
+    .ep-gallery-featured {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: minmax(260px, 2fr) minmax(130px, 1fr);
+      grid-auto-rows: minmax(130px, 1fr);
+      min-height: 430px;
+    }
+
+    .ep-gallery-featured .ep-photo:first-child {
+      grid-column: 1 / -1;
+      grid-row: auto;
+    }
   }
 
   @media (max-width: 560px) {
@@ -497,6 +526,14 @@ const styles = `
       width: 100%;
     }
 
+    .ep-event-block .ep-detail {
+      order: 1;
+    }
+
+    .ep-event-block .ep-gallery {
+      order: 2;
+    }
+
     .ep-gallery {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       grid-auto-rows: 132px;
@@ -507,10 +544,22 @@ const styles = `
 
     .ep-gallery-balanced,
     .ep-gallery-compact {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
       grid-template-rows: none;
       grid-auto-rows: 132px;
       min-height: auto;
+    }
+
+    .ep-gallery-featured {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-rows: minmax(220px, 2fr) minmax(96px, 1fr);
+      grid-auto-rows: minmax(96px, 1fr);
+      min-height: auto;
+    }
+
+    .ep-gallery-featured .ep-photo:first-child {
+      grid-column: 1 / -1;
+      grid-row: auto;
     }
 
     .ep-photo:first-child,
@@ -521,10 +570,11 @@ const styles = `
     }
 
     .ep-gallery-balanced .ep-photo:first-child,
+    .ep-gallery-featured .ep-photo:first-child,
     .ep-gallery-balanced .ep-photo:nth-child(6),
     .ep-gallery-balanced .ep-photo:nth-child(9),
     .ep-gallery-balanced .ep-photo:nth-child(12) {
-      grid-column: span 2;
+      grid-column: auto;
     }
 
     .ep-detail {
@@ -584,11 +634,17 @@ export default function EventsPage() {
         </div>
 
         <div className="ep-event-list">
-          {eventSections.map((section) => (
+          {eventSections.map((section) => {
+            const isCorporateSocial = section.name === "Corporate and social events";
+            const galleryImages = isCorporateSocial ? section.images.slice(0, 4) : section.images;
+
+            return (
             <article className="ep-event-block" key={section.name}>
               <div
                 className={`ep-gallery ${
-                  section.images.length <= 3
+                  isCorporateSocial
+                    ? "ep-gallery-featured"
+                    : section.images.length <= 3
                     ? "ep-gallery-compact"
                     : section.images.length <= 6
                     ? "ep-gallery-balanced"
@@ -596,7 +652,7 @@ export default function EventsPage() {
                 }`}
                 aria-label={`${section.name} photos`}
               >
-                {section.images.map((image, imageIndex) => (
+                {galleryImages.map((image, imageIndex) => (
                   <div className="ep-photo" key={image}>
                     <Image
                       src={image}
@@ -625,7 +681,8 @@ export default function EventsPage() {
                 </ul>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
 
         <div className="ep-contact">

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+const ROOM_SLIDE_DURATION_MS = 3000;
 
 const roomsData = [
   {
@@ -204,7 +205,15 @@ const styles = `
 
   /* ── Gallery ── */
   .rp-gallery {
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
+    overflow: visible;
+  }
+
+  .rp-gallery-stage {
     position: relative;
+    min-height: 560px;
     overflow: hidden;
   }
 
@@ -218,38 +227,36 @@ const styles = `
   }
 
   .rp-gallery-thumbs {
-    position: absolute;
-    bottom: 1.75rem;
-    left: 1.75rem;
-    display: flex;
-    gap: .5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+    gap: .75rem;
+    padding: .85rem;
+    background: var(--white);
+    border-top: 1px solid rgba(185,154,102,.18);
+  }
+
+  .rp-thumb-card {
+    border: 2px solid transparent;
+    background: var(--cream);
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+    aspect-ratio: 4 / 3;
+    transition: border-color .25s, opacity .25s, transform .25s;
+    opacity: .68;
   }
 
   .rp-thumb {
-    width: 66px;
-    height: 46px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    cursor: pointer;
-    border: 2px solid transparent;
-    opacity: .55;
-    transition: border-color .25s, opacity .25s;
+    display: block;
   }
 
-  .rp-thumb.rp-thumb-active {
+  .rp-thumb-card.rp-thumb-active {
     border-color: var(--gold);
     opacity: 1;
-  }
-
-  .rp-gallery-counter {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    font-size: .7rem;
-    letter-spacing: .12em;
-    color: rgba(255,255,255,.65);
-    background: rgba(74,36,0,.45);
-    padding: .35rem .75rem;
-    backdrop-filter: blur(4px);
+    transform: translateY(-2px);
   }
 
   /* ── Detail content ── */
@@ -416,7 +423,7 @@ const styles = `
     left: 0;
     height: 2px;
     background: var(--gold);
-    transition: width 7s linear;
+    transition: width 3s linear;
   }
 
   /* ── Other rooms ── */
@@ -577,6 +584,7 @@ const styles = `
     .rp-content {
       padding: 2.5rem;
     }
+    .rp-gallery-stage,
     .rp-gallery-main {
       min-height: 320px;
     }
@@ -620,7 +628,7 @@ export default function RoomsPage() {
       setActiveImg((prev) => (prev + 1) % room.images.length);
       setProgress(0);
       setTimeout(() => setProgress(100), 50);
-    }, 7000);
+    }, ROOM_SLIDE_DURATION_MS);
     return () => {
       clearTimeout(tick);
       clearInterval(advance);
@@ -695,37 +703,40 @@ export default function RoomsPage() {
       <div className="rp-detail">
         {/* Gallery */}
         <div className="rp-gallery">
-          <img
-            key={`${activeRoom}-${activeImg}`}
-            src={room.images[activeImg]}
-            alt={`${room.name} - image ${activeImg + 1}`}
-            className="rp-gallery-main"
-          />
+          <div className="rp-gallery-stage">
+            <img
+              key={`${activeRoom}-${activeImg}`}
+              src={room.images[activeImg]}
+              alt={`${room.name} - image ${activeImg + 1}`}
+              className="rp-gallery-main"
+            />
 
-          {/* Progress bar */}
-          <div
-            className="rp-progress"
-            style={{ width: `${progress}%`, transition: progress === 0 ? "none" : "width 7s linear" }}
-          />
-
-          {/* Counter */}
-          <div className="rp-gallery-counter">
-            {String(activeImg + 1).padStart(2, "0")} / {String(room.images.length).padStart(2, "0")}
+            {/* Progress bar */}
+            <div
+              className="rp-progress"
+              style={{ width: `${progress}%`, transition: progress === 0 ? "none" : `width ${ROOM_SLIDE_DURATION_MS / 1000}s linear` }}
+            />
           </div>
 
-          {/* Thumbnails */}
+          {/* Selectable image cards */}
           <div className="rp-gallery-thumbs">
             {room.images.map((img, i) => (
-              <img
+              <button
                 key={i}
-                src={img}
-                alt={`${room.name} thumbnail ${i + 1}`}
-                className={`rp-thumb ${i === activeImg ? "rp-thumb-active" : ""}`}
+                type="button"
+                className={`rp-thumb-card ${i === activeImg ? "rp-thumb-active" : ""}`}
+                aria-label={`View ${room.name} image ${i + 1}`}
                 onClick={() => {
                   setActiveImg(i);
                   setProgress(0);
                 }}
-              />
+              >
+                <img
+                  src={img}
+                  alt={`${room.name} thumbnail ${i + 1}`}
+                  className="rp-thumb"
+                />
+              </button>
             ))}
           </div>
         </div>
