@@ -28,9 +28,11 @@ const tourSections = [
     images: [
       `${S3_BASE}/IMG_2256.webp`,
       `${S3_BASE}/Reception1.jpg`,
-      `${S3_BASE}/Surrounding1.jpg`,
-      `${S3_BASE}/Surroundings2.jpg`,
-      `${S3_BASE}/Surroundings3.jpg`,
+      `${S3_BASE}/Image31.jpeg`,
+      `${S3_BASE}/Image32.jpeg`,
+      `${S3_BASE}/Image33.jpeg`,
+      `${S3_BASE}/Image34.jpeg`,
+      `${S3_BASE}/Image35.jpeg`,
     ],
     info: "Start at the resort entrance, reception, and surrounding arrival areas before moving into the main guest spaces.",
     routeNote: "Use the main road approach, then follow resort signage to reception.",
@@ -55,9 +57,9 @@ const tourSections = [
     label: "Dining",
     icon: Utensils,
     images: [
-      `${S3_BASE}/IMG_2236.webp`,
+      `${S3_BASE}/Image4.jpeg`,
       `${S3_BASE}/Dining1.jpg`,
-      `${S3_BASE}/Dining2.jpg`,
+      `${S3_BASE}/Image5.jpeg`,
       `${S3_BASE}/Dining3.jpg`,
       `${S3_BASE}/Dining6.jpg`,
       `${S3_BASE}/Dining4.jpg`,
@@ -70,12 +72,12 @@ const tourSections = [
     label: "Events",
     icon: CalendarDays,
     images: [
-      `${S3_BASE}/Conference1.jpg`,
-      `${S3_BASE}/Conference2.jpg`,
-      `${S3_BASE}/Event1.jpeg`,
-      `${S3_BASE}/Event3.jpeg`,
-      `${S3_BASE}/Event18.jpeg`,
-      `${S3_BASE}/Event10.jpeg`,
+      `${S3_BASE}/Conferences.jpeg`,
+      `${S3_BASE}/Image27.jpeg`,
+      `${S3_BASE}/Image21.jpeg`,
+      `${S3_BASE}/Image23.jpeg`,
+      `${S3_BASE}/Image25.jpeg`,
+      `${S3_BASE}/Image26.jpeg`,
     ],
     info: "Orient yourself around the conference, retreat, and event spaces before your gathering.",
     routeNote: "Event guests can confirm setup location with reception on arrival.",
@@ -85,10 +87,12 @@ const tourSections = [
     label: "Wellness",
     icon: Dumbbell,
     images: [
-      `${S3_BASE}/IMG_2174.webp`,
-      `${S3_BASE}/IMG_2173.webp`,
-      `${S3_BASE}/Wellness.webp`,
-      `${S3_BASE}/IMG_3391.webp`,
+      `${S3_BASE}/Image10.jpeg`,
+      `${S3_BASE}/Image11.jpeg`,
+      `${S3_BASE}/Image12.jpeg`,
+      `${S3_BASE}/Image13.jpeg`,
+      `${S3_BASE}/Image14.jpeg`,
+      `${S3_BASE}/Image15.jpeg`,
     ],
     info: "Locate the gym and wellness spaces for training, spa care, and recovery.",
     routeNote: "Ask reception for current gym, spa, and wellness session access.",
@@ -98,10 +102,9 @@ const tourSections = [
     label: "Grounds",
     icon: TreePine,
     images: [
-      `${S3_BASE}/Surrounding1.jpg`,
-      `${S3_BASE}/Surroundings2.jpg`,
-      `${S3_BASE}/Surroundings3.jpg`,
-      `${S3_BASE}/Surroundings5.jpg`,
+      `${S3_BASE}/Swimmingpool.jpeg`,
+      `${S3_BASE}/Games1.jpeg`,
+      `${S3_BASE}/Image39.jpeg`,
     ],
     info: "Explore the resort surroundings, pathways, and outdoor leisure areas.",
     routeNote: "Outdoor areas are best explored slowly after checking in at reception.",
@@ -312,7 +315,7 @@ const styles = `
   }
 
   .vt-directions {
-    padding: clamp(2rem, 5vw, 4rem);
+    padding: clamp(1.5rem, 3.5vw, 2.75rem);
   }
 
   .vt-address {
@@ -366,7 +369,7 @@ const styles = `
   }
 
   .vt-map {
-    min-height: 580px;
+    min-height: 430px;
     background: var(--sand);
     position: relative;
   }
@@ -381,7 +384,7 @@ const styles = `
 
   .vt-tour-shell {
     display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
+    grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
     background: var(--white);
   }
 
@@ -437,14 +440,15 @@ const styles = `
 
   .vt-viewer {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
-    min-height: 620px;
+    grid-template-columns: minmax(0, 1.75fr) minmax(260px, .65fr);
+    min-height: 560px;
   }
 
   .vt-image-stage {
     position: relative;
     overflow: hidden;
     background: var(--sand);
+    min-width: 0;
   }
 
   .vt-image {
@@ -603,11 +607,11 @@ const styles = `
     }
 
     .vt-map {
-      min-height: 440px;
+      min-height: 340px;
     }
 
     .vt-image-stage {
-      min-height: 460px;
+      min-height: 390px;
     }
   }
 
@@ -644,7 +648,7 @@ const styles = `
     }
 
     .vt-image-stage {
-      min-height: 340px;
+      min-height: 280px;
     }
 
     .vt-gallery-controls {
@@ -834,7 +838,7 @@ export default function VirtualTourPage() {
                 alt={`${activeTour.label} at Enchula Resort`}
                 fill
                 className="vt-image"
-                sizes="(max-width: 980px) 100vw, 50vw"
+                sizes="(max-width: 980px) 100vw, 68vw"
                 priority
               />
               <div className="vt-gallery-controls">

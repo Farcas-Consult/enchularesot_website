@@ -11,6 +11,11 @@ body {
     font-family: 'Nunito', 'Open Sans', Arial, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+    --hero-parallax: 0px;
+}
+
 h1,
 h2,
 h3,
@@ -90,6 +95,325 @@ body {
 main,
 main > section {
     width: 100%;
+}
+
+/* Wellness-style hero treatment for the resort pages. */
+.rp-hero,
+.dp-hero,
+.ep-hero,
+.xp-hero,
+.gp-hero,
+.vt-hero,
+.sustainability-hero {
+    position: relative !important;
+    height: auto !important;
+    min-height: clamp(520px, 68vh, 760px) !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    overflow: hidden !important;
+    background: var(--brand-black) !important;
+}
+
+.rp-hero-img,
+.dp-hero-img,
+.ep-hero-img,
+.xp-hero-img,
+.gp-hero-img,
+.vt-hero-img,
+.wp-hero-img,
+.sustainability-hero-img {
+    animation: heroImageDrift 14s ease-in-out infinite alternate !important;
+    object-fit: cover !important;
+    filter: saturate(.92) contrast(.95) brightness(.92) !important;
+    transform: scale(1.02) !important;
+    transform-origin: center !important;
+    will-change: transform !important;
+}
+
+.hero-slide-enter img {
+    animation: heroImageDrift 14s ease-in-out infinite alternate !important;
+    transform-origin: center !important;
+    will-change: transform !important;
+}
+
+.hero-drift-bg {
+    animation: heroImageDrift 14s ease-in-out infinite alternate !important;
+    transform-origin: center !important;
+    will-change: transform !important;
+}
+
+@keyframes heroImageDrift {
+    from {
+        transform: scale(1.015) translate3d(0, calc(var(--hero-parallax, 0px) * -0.65), 0);
+    }
+    to {
+        transform: scale(1.045) translate3d(-.5%, calc(-.45% + (var(--hero-parallax, 0px) * -0.65)), 0);
+    }
+}
+
+.motion-text {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    transition:
+        opacity .75s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+        transform .75s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms),
+        letter-spacing .75s cubic-bezier(0.16, 1, 0.3, 1) var(--motion-delay, 0ms);
+    will-change: opacity, transform;
+}
+
+.motion-heading {
+    letter-spacing: .035em;
+}
+
+.motion-text.motion-in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.motion-heading.motion-in {
+    letter-spacing: 0;
+}
+
+main section:nth-of-type(odd) .motion-text {
+    transform: translate3d(0, 34px, 0);
+}
+
+main section:nth-of-type(odd) .motion-text.motion-in {
+    transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .motion-text,
+    .motion-heading,
+    .motion-text.motion-in,
+    .motion-heading.motion-in {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        letter-spacing: inherit !important;
+    }
+
+    .rp-hero-img,
+    .dp-hero-img,
+    .ep-hero-img,
+    .xp-hero-img,
+    .gp-hero-img,
+    .vt-hero-img,
+    .wp-hero-img,
+    .sustainability-hero-img,
+    .hero-slide-enter img,
+    .hero-drift-bg {
+        animation: none !important;
+    }
+}
+
+.rp-hero-overlay,
+.dp-hero-overlay,
+.ep-hero-overlay,
+.xp-hero-overlay,
+.gp-hero-overlay,
+.vt-hero-overlay,
+.sustainability-hero-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 20 !important;
+    background:
+        linear-gradient(180deg, color-mix(in srgb, var(--brand-black) 58%, transparent) 0%, transparent 32%, color-mix(in srgb, var(--brand-black) 72%, transparent) 100%),
+        linear-gradient(90deg, color-mix(in srgb, var(--brand-black) 48%, transparent) 0%, transparent 58%, color-mix(in srgb, var(--brand-black) 30%, transparent) 100%) !important;
+}
+
+.rp-hero-content,
+.dp-hero-content,
+.ep-hero-content,
+.xp-hero-content,
+.gp-hero-content,
+.vt-hero-content,
+.sustainability-hero-content {
+    position: relative !important;
+    z-index: 30 !important;
+    width: min(1160px, calc(100% - 3rem)) !important;
+    margin: 0 auto !important;
+    padding-top: clamp(4rem, 9vw, 7rem) !important;
+    padding-bottom: clamp(3.25rem, 7vw, 5.5rem) !important;
+    color: var(--text-on-dark) !important;
+    text-align: left !important;
+}
+
+.rp-hero-eyebrow,
+.dp-eyebrow,
+.ep-eyebrow,
+.xp-eyebrow,
+.gp-eyebrow,
+.vt-eyebrow,
+.sustainability-eyebrow {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: .85rem !important;
+    color: var(--text-on-dark) !important;
+    font-family: 'Nunito', system-ui, sans-serif !important;
+    font-size: .7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: .22em !important;
+    margin-bottom: 1.15rem !important;
+    text-transform: uppercase !important;
+}
+
+.rp-hero-eyebrow::before,
+.dp-eyebrow::before,
+.ep-eyebrow::before,
+.xp-eyebrow::before,
+.gp-eyebrow::before,
+.vt-eyebrow::before,
+.sustainability-eyebrow::before,
+.rp-hero-eyebrow::after,
+.dp-eyebrow::after,
+.ep-eyebrow::after,
+.xp-eyebrow::after,
+.gp-eyebrow::after,
+.vt-eyebrow::after,
+.sustainability-eyebrow::after {
+    content: '' !important;
+    display: block !important;
+    width: 34px !important;
+    height: 1px !important;
+    flex: 0 0 34px !important;
+    background: var(--brand-primary) !important;
+}
+
+.rp-hero-title,
+.dp-title,
+.ep-title,
+.xp-title,
+.gp-title,
+.vt-title,
+.sustainability-title {
+    max-width: 820px !important;
+    margin: 0 !important;
+    color: var(--text-on-dark) !important;
+    font-family: 'Lora', Georgia, serif !important;
+    font-size: clamp(3rem, 7vw, 6.5rem) !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    line-height: .96 !important;
+    overflow-wrap: break-word !important;
+    text-shadow: 0 16px 46px color-mix(in srgb, var(--brand-black) 42%, transparent) !important;
+}
+
+.rp-hero-title em,
+.dp-title em,
+.ep-title em,
+.xp-title em,
+.gp-title em,
+.vt-title em,
+.sustainability-title em {
+    color: color-mix(in srgb, var(--brand-primary) 78%, var(--text-on-dark)) !important;
+    font-style: italic !important;
+}
+
+.dp-intro,
+.ep-intro,
+.xp-intro,
+.gp-intro,
+.vt-intro,
+.sustainability-intro {
+    max-width: 650px !important;
+    margin: 1.5rem 0 2rem !important;
+    color: color-mix(in srgb, var(--text-on-dark) 84%, var(--brand-primary)) !important;
+    font-family: 'Nunito', system-ui, sans-serif !important;
+    font-size: clamp(1rem, 1.4vw, 1.15rem) !important;
+    line-height: 1.9 !important;
+}
+
+.dp-actions,
+.ep-actions,
+.xp-actions,
+.vt-actions {
+    justify-content: flex-start !important;
+}
+
+.dp-btn,
+.ep-btn,
+.xp-btn,
+.vt-btn {
+    min-height: 48px !important;
+    padding: .9rem 1.5rem !important;
+    border-color: var(--brand-primary) !important;
+    background: var(--brand-primary) !important;
+    color: var(--brand-black) !important;
+    font-family: 'Nunito', system-ui, sans-serif !important;
+    font-size: .72rem !important;
+    font-weight: 800 !important;
+    letter-spacing: .13em !important;
+}
+
+.dp-btn-secondary,
+.ep-btn-secondary,
+.xp-btn-secondary,
+.vt-btn-secondary {
+    border-color: color-mix(in srgb, var(--text-on-dark) 52%, transparent) !important;
+    background: transparent !important;
+    color: var(--text-on-dark) !important;
+}
+
+.dp-btn-secondary:hover,
+.ep-btn-secondary:hover,
+.xp-btn-secondary:hover,
+.vt-btn-secondary:hover {
+    background: var(--text-on-dark) !important;
+    color: var(--brand-black) !important;
+}
+
+@media (max-width: 760px) {
+    .rp-hero,
+    .dp-hero,
+    .ep-hero,
+    .xp-hero,
+    .gp-hero,
+    .vt-hero,
+    .sustainability-hero {
+        min-height: 62vh !important;
+    }
+
+    .rp-hero-content,
+    .dp-hero-content,
+    .ep-hero-content,
+    .xp-hero-content,
+    .gp-hero-content,
+    .vt-hero-content,
+    .sustainability-hero-content {
+        width: min(100% - 2rem, 620px) !important;
+        padding: 4rem 0 3.25rem !important;
+        text-align: center !important;
+    }
+
+    .rp-hero-eyebrow,
+    .dp-eyebrow,
+    .ep-eyebrow,
+    .xp-eyebrow,
+    .gp-eyebrow,
+    .vt-eyebrow,
+    .sustainability-eyebrow,
+    .dp-actions,
+    .ep-actions,
+    .xp-actions,
+    .vt-actions {
+        justify-content: center !important;
+    }
+
+    .dp-intro,
+    .ep-intro,
+    .xp-intro,
+    .gp-intro,
+    .vt-intro,
+    .sustainability-intro {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
 }
 
 
@@ -785,5 +1109,74 @@ video {
 
     .gp-filter-bar {
         grid-template-columns: 1fr !important;
+    }
+}
+
+/* Final hero overrides must come after the older full-width page rhythm rules. */
+.rp-hero-content,
+.dp-hero-content,
+.ep-hero-content,
+.xp-hero-content,
+.gp-hero-content,
+.vt-hero-content,
+.wp-hero-content,
+.sustainability-hero-content {
+    width: min(1160px, calc(100% - 3rem)) !important;
+    max-width: 1160px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+@media (max-width: 760px) {
+    .rp-hero,
+    .dp-hero,
+    .ep-hero,
+    .xp-hero,
+    .gp-hero,
+    .vt-hero,
+    .wp-hero,
+    .sustainability-hero {
+        min-height: 62vh !important;
+    }
+
+    .rp-hero-content,
+    .dp-hero-content,
+    .ep-hero-content,
+    .xp-hero-content,
+    .gp-hero-content,
+    .vt-hero-content,
+    .wp-hero-content,
+    .sustainability-hero-content {
+        width: min(100% - 2rem, 620px) !important;
+        max-width: 620px !important;
+        padding: 4rem 0 3.25rem !important;
+        text-align: center !important;
+    }
+
+    .rp-hero-eyebrow,
+    .dp-eyebrow,
+    .ep-eyebrow,
+    .xp-eyebrow,
+    .gp-eyebrow,
+    .vt-eyebrow,
+    .wp-eyebrow,
+    .sustainability-eyebrow,
+    .dp-actions,
+    .ep-actions,
+    .xp-actions,
+    .vt-actions,
+    .wp-actions {
+        justify-content: center !important;
+    }
+
+    .dp-intro,
+    .ep-intro,
+    .xp-intro,
+    .gp-intro,
+    .vt-intro,
+    .wp-intro,
+    .sustainability-intro {
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 }

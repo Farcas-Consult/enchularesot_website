@@ -56,7 +56,7 @@ export default function Hero() {
     setPrev(current);
     setAnimating(true);
     setCurrent(idx);
-    setTimeout(() => { setPrev(null); setAnimating(false); }, 1000);
+    setTimeout(() => { setPrev(null); setAnimating(false); }, 1900);
   };
 
   useEffect(() => {
@@ -87,23 +87,23 @@ export default function Hero() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
 
-        .hero-slide-enter { animation: heroSlideIn 1.1s cubic-bezier(0.16,1,0.3,1) forwards; }
-        .hero-slide-exit  { animation: heroSlideOut 1.1s cubic-bezier(0.16,1,0.3,1) forwards; }
+        .hero-slide-enter { animation: heroSlideIn 1.9s ease-in-out forwards; }
+        .hero-slide-exit  { animation: heroSlideOut 1.9s ease-in-out forwards; }
         @keyframes heroSlideIn {
-          from { opacity: 0; transform: scale(1.06); }
+          from { opacity: 0; transform: scale(1.018); }
           to   { opacity: 1; transform: scale(1); }
         }
         @keyframes heroSlideOut {
           from { opacity: 1; transform: scale(1); }
-          to   { opacity: 0; transform: scale(.97); }
+          to   { opacity: 0; transform: scale(1.012); }
         }
 
-        .hero-text-in { animation: heroTextIn .85s cubic-bezier(0.16,1,0.3,1) both; }
-        .hero-text-in-delay1 { animation: heroTextIn .85s cubic-bezier(0.16,1,0.3,1) .1s both; }
-        .hero-text-in-delay2 { animation: heroTextIn .85s cubic-bezier(0.16,1,0.3,1) .22s both; }
-        .hero-text-in-delay3 { animation: heroTextIn .85s cubic-bezier(0.16,1,0.3,1) .36s both; }
+        .hero-text-in { animation: heroTextIn 1.15s cubic-bezier(0.16,1,0.3,1) both; }
+        .hero-text-in-delay1 { animation: heroTextIn 1.15s cubic-bezier(0.16,1,0.3,1) .12s both; }
+        .hero-text-in-delay2 { animation: heroTextIn 1.15s cubic-bezier(0.16,1,0.3,1) .26s both; }
+        .hero-text-in-delay3 { animation: heroTextIn 1.15s cubic-bezier(0.16,1,0.3,1) .42s both; }
         @keyframes heroTextIn {
-          from { opacity: 0; transform: translateY(22px); }
+          from { opacity: 0; transform: translateY(14px); }
           to   { opacity: 1; transform: translateY(0); }
         }
 

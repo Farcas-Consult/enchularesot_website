@@ -63,20 +63,22 @@ export default function Sustainability() {
   return (
     <section id="sustainability" className="relative min-h-screen bg-white">
       {/* Hero Banner Carousel */}
-      <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
+      <div className="sustainability-hero">
         {BACKGROUND_IMAGES.map((img, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            className={`sustainability-hero-img absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentBgIndex ? "opacity-100 z-10" : "opacity-0 z-0"}`}
             style={{ backgroundImage: `url('${img}')` }}
           />
         ))}
-        <div className="relative z-30 text-center w-full px-4">
-          <h1 className="heading font-serif mb-4 drop-shadow-lg">
-            Sustainability
+        <div className="sustainability-hero-overlay" />
+        <div className="sustainability-hero-content">
+          <div className="sustainability-eyebrow">Sustainability</div>
+          <h1 className="sustainability-title">
+            Luxury meets <em>responsibility</em>
           </h1>
-          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
-            Luxury meets responsibility. Discover our green initiatives and how your stay supports a better planet.
+          <p className="sustainability-intro">
+            Discover our green initiatives and how your stay supports a better planet.
           </p>
         </div>
         {/* Carousel indicators */}

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/common/navbar";
 import Footer from "./components/common/footer";
+import TextMotionEffects from "./components/common/TextMotionEffects";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="antialiased min-h-screen flex flex-col">
+        <TextMotionEffects />
         <Navbar />
         <div id="top" />
         <main className="grow flex flex-col w-full">{children}</main>

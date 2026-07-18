@@ -54,7 +54,7 @@ const StaffPage = () => {
         {HERO_IMAGES.map((img, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentHero ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            className={`hero-drift-bg absolute inset-0 transition-opacity duration-1000 bg-cover bg-center ${index === currentHero ? "opacity-100 z-10" : "opacity-0 z-0"}`}
             style={{ backgroundImage: `url('${img}')` }}
           />
         ))}
