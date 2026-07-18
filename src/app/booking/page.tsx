@@ -22,11 +22,11 @@ const roomTypes = [
     pricing: {
       kenyans: {
         single: { bedBreakfast: 7000, halfBoard: 9000, fullBoard: 11000 },
-        double: { bedBreakfast: 10000, halfBoard: 12000, fullBoard: 14000 },
+        double: { bedBreakfast: 10000, halfBoard: 14000, fullBoard: 16000 },
       },
       nonResidents: {
         single: { bedBreakfast: 9000, halfBoard: 11000, fullBoard: 13000 },
-        double: { bedBreakfast: 12000, halfBoard: 14000, fullBoard: 16000 },
+        double: { bedBreakfast: 12000, halfBoard: 16000, fullBoard: 18000 },
       },
     },
   },
@@ -42,11 +42,11 @@ const roomTypes = [
     pricing: {
       kenyans: {
         single: { bedBreakfast: 7000, halfBoard: 9000, fullBoard: 11000 },
-        double: { bedBreakfast: 10000, halfBoard: 12000, fullBoard: 14000 },
+        double: { bedBreakfast: 10000, halfBoard: 14000, fullBoard: 16000 },
       },
       nonResidents: {
         single: { bedBreakfast: 9000, halfBoard: 11000, fullBoard: 13000 },
-        double: { bedBreakfast: 12000, halfBoard: 14000, fullBoard: 16000 },
+        double: { bedBreakfast: 12000, halfBoard: 16000, fullBoard: 18000 },
       },
     },
   },
@@ -62,11 +62,11 @@ const roomTypes = [
     pricing: {
       kenyans: {
         single: { bedBreakfast: 10000, halfBoard: 12000, fullBoard: 14000 },
-        double: { bedBreakfast: 12000, halfBoard: 14000, fullBoard: 16000 },
+        double: { bedBreakfast: 12000, halfBoard: 16000, fullBoard: 18000 },
       },
       nonResidents: {
         single: { bedBreakfast: 12000, halfBoard: 14000, fullBoard: 16000 },
-        double: { bedBreakfast: 14000, halfBoard: 16000, fullBoard: 18000 },
+        double: { bedBreakfast: 14000, halfBoard: 18000, fullBoard: 20000 },
       },
     },
   },
@@ -781,6 +781,9 @@ const BookingPage = () => {
     return Math.max(0, Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)));
   };
 
+  const nights = calculateNights();
+  const estimatedRoomTotal = currentRate && nights > 0 ? currentRate * nights : null;
+
   const toggleReservation = (id: string) => {
     setSelectedReservations((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
@@ -812,11 +815,16 @@ const BookingPage = () => {
         guestPhone: guestInfo.phone,
         checkIn,
         checkOut,
-        nights: calculateNights(),
+        nights,
         roomType: selectedRoomData?.name || "N/A",
         isKenyanResident,
+        residencyLabel: isKenyanResident ? "Resident" : "Non-resident",
         occupancyType,
+        occupancyLabel: occupancyType === "single" ? "Single occupancy" : "Double occupancy",
         mealPlan,
+        mealPlanLabel: mealPlanLabels[mealPlan],
+        nightlyRate: currentRate,
+        estimatedRoomTotal,
         adults,
         minors: minorCount,
         children: childrenCount,
@@ -857,7 +865,7 @@ const BookingPage = () => {
             setInfantCount(0);
           }, 5000);
         } else {
-          alert("Failed to send confirmation. Please contact us directly.");
+          alert("Failed to send reservation request. Please contact us directly at info@enchularesort.co.ke.");
         }
       } catch (error) {
         console.error("Booking error:", error);
@@ -881,7 +889,8 @@ const BookingPage = () => {
             </h1>
             <p className="bp-lead">
               Choose your dates, room, meal plan, and any extras in one calm booking flow. The
-              team will confirm your request by email and SMS.
+              team receives your request directly and will contact you to confirm availability,
+              final pricing, payment, and reservation details.
             </p>
           </div>
           <div className="bp-meta">
@@ -898,12 +907,12 @@ const BookingPage = () => {
 
         {showConfirmation ? (
           <div className="bp-confirmation">
-            <div className="bp-eyebrow" style={{ justifyContent: "center" }}>Confirmed</div>
+            <div className="bp-eyebrow" style={{ justifyContent: "center" }}>Request sent</div>
             <h2>Reservation request received.</h2>
-            <p>Thank you, {guestInfo.name}. Your booking request has been sent to the team.</p>
+            <p>Thank you, {guestInfo.name}. Your booking request has been sent to Enchula Resort.</p>
             <p>
-              A confirmation email has been sent to <strong>{guestInfo.email}</strong>, and an SMS
-              will be sent to <strong>{guestInfo.phone}</strong>.
+              The reservations team will contact you to confirm room availability, the final price,
+              payment arrangements, and the reservation.
             </p>
           </div>
         ) : (
@@ -1201,7 +1210,7 @@ const BookingPage = () => {
                         disabled={!guestInfo.name || !guestInfo.email || !guestInfo.phone}
                         className="bp-btn bp-btn-dark"
                       >
-                        Confirm Reservation
+                        Send Reservation Request
                       </button>
                     </div>
 
@@ -1223,7 +1232,7 @@ const BookingPage = () => {
                     <div className="bp-summary-item">
                       <span className="bp-summary-label">Stay length</span>
                       <span className="bp-summary-value">
-                        {calculateNights() ? `${calculateNights()} night${calculateNights() !== 1 ? "s" : ""}` : "Select dates"}
+                        {nights ? `${nights} night${nights !== 1 ? "s" : ""}` : "Select dates"}
                       </span>
                     </div>
                     <div className="bp-summary-item">
@@ -1233,6 +1242,10 @@ const BookingPage = () => {
                     <div className="bp-summary-item">
                       <span className="bp-summary-label">Rate</span>
                       <span className="bp-summary-value">{currentRate ? `Kshs. ${currentRate.toLocaleString()} per night` : "Pending room selection"}</span>
+                    </div>
+                    <div className="bp-summary-item">
+                      <span className="bp-summary-label">Estimated room total</span>
+                      <span className="bp-summary-value">{estimatedRoomTotal ? `Kshs. ${estimatedRoomTotal.toLocaleString()}` : "To be confirmed"}</span>
                     </div>
                     <div className="bp-summary-item">
                       <span className="bp-summary-label">Guests</span>

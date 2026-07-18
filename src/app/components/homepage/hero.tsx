@@ -79,8 +79,8 @@ export default function Hero() {
   return (
     <section style={{
       position: "relative",
-      height: isPhone ? "50vh" : "100vh",
-      minHeight: isPhone ? "0" : "640px",
+      height: "auto",
+      minHeight: isPhone ? "62vh" : "clamp(520px, 68vh, 760px)",
       overflow: "hidden", background: "#1a0d00",
     }}>
 
