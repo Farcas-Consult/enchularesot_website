@@ -6,13 +6,10 @@ import Link from "next/link";
 import {
   BedDouble,
   CalendarDays,
-  ChevronLeft,
-  ChevronRight,
   Dumbbell,
   MapPin,
   Navigation,
   Phone,
-  Route,
   Sparkles,
   TreePine,
   Utensils,
@@ -123,6 +120,29 @@ const directionSteps = [
   {
     title: "Check In at Reception",
     text: "On arrival, the reception team will guide you to rooms, dining, events, wellness, or activities.",
+  },
+];
+
+const introHighlights = [
+  {
+    label: "Arrival",
+    text: "Know where to check in and where the team will meet you.",
+    icon: MapPin,
+  },
+  {
+    label: "Stay",
+    text: "Preview room, dining, wellness, event, and leisure zones.",
+    icon: BedDouble,
+  },
+  {
+    label: "Gather",
+    text: "Find the spaces that support meetings, meals, and celebrations.",
+    icon: Utensils,
+  },
+  {
+    label: "Settle",
+    text: "Arrive with a clear route and an easy sense of the resort layout.",
+    icon: Sparkles,
   },
 ];
 
@@ -278,6 +298,79 @@ const styles = `
     margin-bottom: 2.5rem;
   }
 
+  .vt-intro-section {
+    width: min(1120px, calc(100% - 3rem));
+    margin: 0 auto;
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+  }
+
+  .vt-intro-title {
+    color: var(--brown-dark);
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 4.6vw, 4.8rem);
+    font-weight: 300;
+    line-height: 1.02;
+    margin: 0 auto 1.25rem;
+    max-width: 860px;
+  }
+
+  .vt-intro-title em {
+    color: var(--brown);
+    font-style: italic;
+  }
+
+  .vt-intro-lead {
+    color: rgba(74,36,0,.78);
+    font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+    line-height: 1.75;
+    margin: 0 auto 1rem;
+    max-width: 860px;
+  }
+
+  .vt-intro-copy {
+    color: rgba(74,36,0,.68);
+    line-height: 1.85;
+    margin: 0 auto;
+    max-width: 760px;
+  }
+
+  .vt-intro-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1px;
+    margin-top: clamp(2.25rem, 4vw, 3.25rem);
+    background: rgba(143,95,47,.22);
+  }
+
+  .vt-intro-card {
+    background: var(--cream);
+    min-height: 170px;
+    padding: 1.4rem 1.15rem;
+    text-align: left;
+  }
+
+  .vt-intro-card svg {
+    color: var(--brown);
+    margin-bottom: 1rem;
+  }
+
+  .vt-intro-card strong {
+    color: var(--brown-dark);
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.45rem;
+    font-weight: 300;
+    margin-bottom: .45rem;
+  }
+
+  .vt-intro-card span {
+    color: rgba(74,36,0,.68);
+    display: block;
+    font-size: .94rem;
+    line-height: 1.65;
+  }
+
   .vt-kicker {
     color: var(--brown);
     font-size: .7rem;
@@ -310,19 +403,21 @@ const styles = `
 
   .vt-direction-grid {
     display: grid;
-    grid-template-columns: .9fr 1.1fr;
+    grid-template-columns: minmax(0, .95fr) minmax(320px, .85fr);
     background: var(--white);
+    box-shadow: 0 18px 50px rgba(74,36,0,.08);
+    align-items: stretch;
   }
 
   .vt-directions {
-    padding: clamp(1.5rem, 3.5vw, 2.75rem);
+    padding: clamp(1.35rem, 3vw, 2.25rem);
   }
 
   .vt-address {
     border-top: 1px solid rgba(143,95,47,.25);
     border-bottom: 1px solid rgba(143,95,47,.25);
-    margin: 1.8rem 0;
-    padding: 1.25rem 0;
+    margin: 1.25rem 0;
+    padding: 1rem 0;
   }
 
   .vt-address strong {
@@ -337,39 +432,44 @@ const styles = `
   .vt-address span {
     color: var(--brown-dark);
     font-family: var(--font-serif);
-    font-size: 1.55rem;
+    font-size: clamp(1.2rem, 2vw, 1.45rem);
     line-height: 1.12;
   }
 
   .vt-step-list {
     display: grid;
-    gap: 1px;
-    background: var(--sand);
-    margin-top: 2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: .75rem;
+    margin-top: 1.25rem;
   }
 
   .vt-step {
-    background: var(--cream);
-    padding: 1.25rem;
+    background: color-mix(in srgb, var(--cream) 82%, var(--white));
+    border: 1px solid rgba(143,95,47,.16);
+    padding: 1rem;
   }
 
   .vt-step strong {
     color: var(--brown-dark);
     display: block;
-    font-family: var(--font-serif);
-    font-size: 1.35rem;
-    font-weight: 300;
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    line-height: 1.35;
     margin-bottom: .45rem;
+    text-transform: uppercase;
   }
 
   .vt-step p {
     color: rgba(74,36,0,.72);
-    line-height: 1.65;
+    font-size: .9rem;
+    line-height: 1.55;
     margin: 0;
   }
 
   .vt-map {
-    min-height: 430px;
+    min-height: 100%;
+    height: clamp(340px, 34vw, 420px);
     background: var(--sand);
     position: relative;
   }
@@ -382,10 +482,203 @@ const styles = `
     width: 100%;
   }
 
+  .vt-directions-section {
+    padding-top: clamp(2.5rem, 4vw, 3.75rem);
+  }
+
+  .vt-directions-section .vt-section-heading {
+    margin-bottom: 1.6rem;
+  }
+
   .vt-tour-shell {
     display: grid;
     grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
     background: var(--white);
+    box-shadow: 0 18px 50px rgba(74,36,0,.08);
+  }
+
+  .vt-orientation-section {
+    padding: clamp(2.5rem, 4vw, 3.75rem) 0;
+  }
+
+  .vt-orientation-showcase {
+    background: var(--white);
+    box-shadow: 0 18px 50px rgba(74,36,0,.08);
+    overflow: hidden;
+  }
+
+  .vt-orientation-frame {
+    position: relative;
+    min-height: clamp(360px, 44vw, 500px);
+    overflow: hidden;
+    background: var(--brown-dark);
+    color: var(--white);
+    isolation: isolate;
+  }
+
+  .vt-orientation-bg {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.045);
+    transition: opacity 2s ease-in-out, transform 8s ease-out;
+    filter: saturate(.9) contrast(.95) brightness(.9);
+    z-index: -3;
+  }
+
+  .vt-orientation-bg.vt-active {
+    opacity: 1;
+    transform: scale(1.015);
+  }
+
+  .vt-orientation-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(74,22,6,.18) 0%, rgba(74,22,6,.09) 42%, rgba(74,22,6,.02) 74%),
+      linear-gradient(180deg, rgba(0,0,0,.03) 0%, rgba(74,22,6,.16) 100%);
+    z-index: -2;
+    pointer-events: none;
+  }
+
+  .vt-orientation-content {
+    width: min(980px, calc(100% - 3rem));
+    min-height: inherit;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(3rem, 6vw, 5rem) 0;
+  }
+
+  .vt-orientation-kicker {
+    color: var(--gold);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    margin: 0 0 .85rem;
+    text-transform: uppercase;
+  }
+
+  .vt-orientation-title {
+    color: var(--gold);
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 3.8vw, 3.7rem);
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1;
+    margin: 0 0 1.2rem;
+    max-width: 720px;
+    text-transform: uppercase;
+    text-shadow: 0 8px 26px rgba(0,0,0,.38);
+  }
+
+  .vt-orientation-desc {
+    color: rgba(255,255,255,.88);
+    font-size: clamp(.92rem, 1.05vw, 1rem);
+    font-weight: 600;
+    line-height: 1.7;
+    margin: 0 0 1.35rem;
+    max-width: 560px;
+    text-shadow: 0 5px 18px rgba(0,0,0,.42);
+  }
+
+  .vt-orientation-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-height: 48px;
+    padding: .9rem 1.7rem;
+    background: var(--gold);
+    color: var(--brown-dark);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .13em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background .25s var(--ease-out), transform .25s var(--ease-out), color .25s var(--ease-out);
+  }
+
+  .vt-orientation-link:hover {
+    background: var(--peach);
+    transform: translateY(-2px);
+  }
+
+  .vt-orientation-card-row {
+    display: flex;
+    gap: .9rem;
+    overflow-x: auto;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+  }
+
+  .vt-orientation-card {
+    appearance: none;
+    border: 1px solid rgba(143,95,47,.16);
+    background: var(--cream);
+    color: var(--brown-dark);
+    cursor: pointer;
+    flex: 0 0 clamp(150px, 17vw, 190px);
+    padding: 0;
+    text-align: left;
+    scroll-snap-align: start;
+    transition: border-color .25s var(--ease-out), transform .25s var(--ease-out), background .25s var(--ease-out);
+  }
+
+  .vt-orientation-thumb {
+    position: relative;
+    aspect-ratio: 16 / 10;
+    border: 0;
+    display: block;
+    overflow: hidden;
+  }
+
+  .vt-orientation-thumb img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform .55s var(--ease-out);
+  }
+
+  .vt-orientation-card:hover .vt-orientation-thumb,
+  .vt-orientation-card.vt-active .vt-orientation-thumb {
+    transform: none;
+  }
+
+  .vt-orientation-card:hover img,
+  .vt-orientation-card.vt-active img {
+    transform: scale(1.045);
+  }
+
+  .vt-orientation-name {
+    color: var(--brown-dark);
+    display: block;
+    font-size: .88rem;
+    font-weight: 800;
+    line-height: 1.35;
+    padding: .85rem .9rem;
+    text-shadow: none;
+  }
+
+  .vt-orientation-card:hover,
+  .vt-orientation-card.vt-active {
+    border-color: var(--gold);
+    background: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .vt-orientation-note {
+    color: rgba(74,36,0,.68);
+    display: block;
+    font-size: .75rem;
+    line-height: 1.4;
+    margin-top: .3rem;
   }
 
   .vt-tabs {
@@ -575,6 +868,19 @@ const styles = `
     max-width: 640px;
   }
 
+  .vt-cta-icon {
+    display: block;
+    margin: 0 auto 1rem;
+  }
+
+  .vt-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .85rem;
+    justify-content: center;
+    align-items: center;
+  }
+
   @media (max-width: 980px) {
     .vt-hero {
       height: 64vh;
@@ -601,13 +907,30 @@ const styles = `
       grid-template-columns: 1fr;
     }
 
+    .vt-intro-section {
+      width: min(100% - 2rem, 720px);
+    }
+
+    .vt-intro-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .vt-orientation-content {
+      width: min(100% - 2rem, 720px);
+    }
+
+    .vt-orientation-card-row {
+      max-width: 100%;
+    }
+
     .vt-tabs {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .vt-map {
-      min-height: 340px;
+      min-height: 300px;
+      height: 320px;
     }
 
     .vt-image-stage {
@@ -635,8 +958,47 @@ const styles = `
       align-items: stretch;
     }
 
+    .vt-cta-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
     .vt-btn {
       width: 100%;
+    }
+
+    .vt-intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .vt-step-list {
+      grid-template-columns: 1fr;
+    }
+
+    .vt-map {
+      min-height: 260px;
+      height: 280px;
+    }
+
+    .vt-orientation-showcase {
+      min-height: auto;
+    }
+
+    .vt-orientation-content {
+      padding: 4rem 0;
+    }
+
+    .vt-orientation-card-row {
+      gap: 1rem;
+    }
+
+    .vt-orientation-card {
+      display: block;
+      flex-basis: 170px;
+    }
+
+    .vt-orientation-thumb {
+      margin-bottom: 0;
     }
 
     .vt-tabs {
@@ -673,21 +1035,27 @@ export default function VirtualTourPage() {
   );
 
   useEffect(() => {
-    if (activeTour.images.length <= 1) return;
+    const timer = window.setInterval(() => {
+      setGalleryIndex((currentImage) => {
+        if (currentImage + 1 < activeTour.images.length) {
+          return currentImage + 1;
+        }
 
-    const interval = setInterval(() => {
-      setGalleryIndex((prev) => (prev + 1) % activeTour.images.length);
-    }, 4500);
+        setActiveSection((currentSection) => {
+          const currentIndex = tourSections.findIndex((section) => section.id === currentSection);
+          const nextIndex = currentIndex >= 0 ? (currentIndex + 1) % tourSections.length : 0;
+          return tourSections[nextIndex].id;
+        });
+        return 0;
+      });
+    }, 3000);
 
-    return () => clearInterval(interval);
-  }, [activeTour]);
+    return () => window.clearInterval(timer);
+  }, [activeTour.images.length]);
 
-  const handlePrevious = () => {
-    setGalleryIndex((prev) => (prev > 0 ? prev - 1 : activeTour.images.length - 1));
-  };
-
-  const handleNext = () => {
-    setGalleryIndex((prev) => (prev + 1) % activeTour.images.length);
+  const handleOrientationSelect = (sectionId: string) => {
+    setActiveSection(sectionId);
+    setGalleryIndex(0);
   };
 
   return (
@@ -709,10 +1077,6 @@ export default function VirtualTourPage() {
           <h1 className="vt-title">
             Find your way to <em>Enchula Resort</em>
           </h1>
-          <p className="vt-intro">
-            Use this page to get directions, preview arrival points, and understand where the main
-            guest spaces sit before you arrive.
-          </p>
           <div className="vt-actions">
             <a
               className="vt-btn"
@@ -724,14 +1088,82 @@ export default function VirtualTourPage() {
               Open Directions
             </a>
             <a className="vt-btn vt-btn-secondary" href="#arrival-guide">
-              <Route size={16} />
               Arrival Guide
             </a>
           </div>
         </div>
       </div>
 
-      <div id="arrival-guide" className="vt-section">
+      <div id="tour-intro" className="vt-intro-section">
+        <h2 className="vt-intro-title">
+          Know the resort before <em>you arrive</em>
+        </h2>
+        <p className="vt-intro-lead">
+          Enchula Resort is easier to enjoy when guests already understand the arrival point,
+          reception flow, and main hospitality spaces.
+        </p>
+        <p className="vt-intro-copy">
+          Use this guide to orient yourself around the resort, preview the spaces you may visit,
+          and then open practical directions when it is time to travel.
+        </p>
+
+        <div className="vt-intro-grid" aria-label="Virtual tour overview">
+          {introHighlights.map(({ icon: Icon, ...item }) => (
+            <div className="vt-intro-card" key={item.label}>
+              <Icon size={28} aria-hidden="true" />
+              <strong>{item.label}</strong>
+              <span>{item.text}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div id="resort-orientation" className="vt-section vt-orientation-section">
+        <div className="vt-orientation-showcase" aria-label="Resort orientation">
+          <div className="vt-orientation-frame">
+            {tourSections.map((section, sectionIndex) =>
+              section.images.map((image, imageIndex) => (
+                <img
+                  key={`${section.id}-${image}`}
+                  src={image}
+                  alt={`${section.label} at Enchula Resort`}
+                  className={`vt-orientation-bg ${
+                    section.id === activeSection && imageIndex === galleryIndex ? "vt-active" : ""
+                  }`}
+                  loading={sectionIndex === 0 && imageIndex === 0 ? "eager" : "lazy"}
+                />
+              ))
+            )}
+
+            <div className="vt-orientation-content">
+              <p className="vt-orientation-kicker">Resort orientation</p>
+              <h2 className="vt-orientation-title">{activeTour.label}</h2>
+              <p className="vt-orientation-desc">{activeTour.info}</p>
+              <a href="#arrival-guide" className="vt-orientation-link">
+                Plan Your Arrival
+              </a>
+            </div>
+          </div>
+
+          <div className="vt-orientation-card-row" aria-label="Resort orientation areas">
+            {tourSections.map((section) => (
+              <button
+                type="button"
+                key={section.id}
+                className={`vt-orientation-card ${section.id === activeSection ? "vt-active" : ""}`}
+                onClick={() => handleOrientationSelect(section.id)}
+              >
+                <span className="vt-orientation-thumb">
+                  <img src={section.images[0]} alt={`${section.label} preview`} loading="lazy" />
+                </span>
+                <span className="vt-orientation-name">{section.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div id="arrival-guide" className="vt-section vt-directions-section">
         <div className="vt-section-heading">
           <div>
             <div className="vt-kicker">Getting here</div>
@@ -740,8 +1172,8 @@ export default function VirtualTourPage() {
             </h2>
           </div>
           <p className="vt-copy">
-            The route tools below help guests open navigation quickly, confirm the address, and
-            know where to check in once they reach the resort.
+            Open maps, confirm the resort address, and check in at reception for guidance around
+            the property.
           </p>
         </div>
 
@@ -750,8 +1182,7 @@ export default function VirtualTourPage() {
             <div className="vt-kicker">Destination</div>
             <h3 className="vt-panel-title">Enchula Resort, Kajiado</h3>
             <p className="vt-copy">
-              Plan your arrival through the main road approach, then check in at reception for
-              guidance to rooms, dining, events, wellness, or activities.
+              Use the main road approach, then follow resort signage to reception.
             </p>
             <div className="vt-address">
               <strong>Address</strong>
@@ -795,95 +1226,14 @@ export default function VirtualTourPage() {
       </div>
 
       <div className="vt-section">
-        <div className="vt-section-heading">
-          <div>
-            <div className="vt-kicker">Resort orientation</div>
-            <h2 className="vt-heading">
-              Preview where to go <em>after arrival</em>
-            </h2>
-          </div>
-          <p className="vt-copy">
-            Move through the main resort zones before you arrive. Each view gives guests a quick
-            sense of what to look for and where reception can guide them next.
-          </p>
-        </div>
-
-        <div className="vt-tour-shell">
-          <div className="vt-tabs" aria-label="Virtual tour areas">
-            {tourSections.map((section) => {
-              const Icon = section.icon;
-              return (
-                <button
-                  type="button"
-                  key={section.id}
-                  className={`vt-tab ${activeSection === section.id ? "vt-active" : ""}`}
-                  onClick={() => {
-                    setActiveSection(section.id);
-                    setGalleryIndex(0);
-                  }}
-                >
-                  <span className="vt-tab-icon">
-                    <Icon size={18} />
-                  </span>
-                  <span>{section.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="vt-viewer">
-            <div className="vt-image-stage">
-              <Image
-                src={activeTour.images[galleryIndex]}
-                alt={`${activeTour.label} at Enchula Resort`}
-                fill
-                className="vt-image"
-                sizes="(max-width: 980px) 100vw, 68vw"
-                priority
-              />
-              <div className="vt-gallery-controls">
-                <div className="vt-arrow-row">
-                  <button type="button" className="vt-icon-btn" onClick={handlePrevious} aria-label="Previous image">
-                    <ChevronLeft size={22} />
-                  </button>
-                  <button type="button" className="vt-icon-btn" onClick={handleNext} aria-label="Next image">
-                    <ChevronRight size={22} />
-                  </button>
-                </div>
-                <div className="vt-dots">
-                  {activeTour.images.map((image, index) => (
-                    <button
-                      type="button"
-                      key={image}
-                      className={`vt-dot ${galleryIndex === index ? "vt-active" : ""}`}
-                      onClick={() => setGalleryIndex(index)}
-                      aria-label={`View ${activeTour.label} image ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="vt-info-panel">
-              <div className="vt-kicker">{activeTour.label}</div>
-              <h3 className="vt-panel-title">{activeTour.label} directions</h3>
-              <p className="vt-copy">{activeTour.info}</p>
-              <div className="vt-note">
-                <strong>Arrival note</strong>
-                <span>{activeTour.routeNote}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="vt-cta">
-          <Sparkles size={22} style={{ margin: "0 auto 1rem" }} />
+          <Sparkles className="vt-cta-icon" size={22} />
           <h2>Arrive with the route already clear.</h2>
           <p>
             Open directions before you travel, then check in at reception for help finding your
             room, event space, dining area, or activity.
           </p>
-          <div className="vt-actions" style={{ justifyContent: "center" }}>
+          <div className="vt-cta-actions">
             <a
               className="vt-btn"
               href="https://www.google.com/maps/dir/?api=1&destination=Enchula+Resort,+Nairobi-Namanga+Rd,+Kajiado,+Kenya"

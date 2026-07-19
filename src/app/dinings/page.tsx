@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import { Coffee, GlassWater, Utensils, Users } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
@@ -40,6 +42,13 @@ const gallery = [
   { src: `${S3_BASE}/Image5.jpeg`, alt: "Resort dining arrangement at Enchula Resort" },
   { src: `${S3_BASE}/Image6.jpeg`, alt: "Resort dining arrangement at Enchula Resort" },
   { src: `${S3_BASE}/Image7.jpeg`, alt: "Resort dining arrangement at Enchula Resort" },
+];
+
+const diningJourney = [
+  { label: "Breakfast", detail: "Slow mornings and fresh starts", Icon: Coffee },
+  { label: "Dining", detail: "Local freshness and global classics", Icon: Utensils },
+  { label: "Lounge", detail: "Cocktails, wines and sundowners", Icon: GlassWater },
+  { label: "Gather", detail: "Family meals and easy conversations", Icon: Users },
 ];
 
 const styles = `
@@ -182,6 +191,149 @@ const styles = `
     width: min(1160px, calc(100% - 3rem));
     margin: 0 auto;
     padding: 6rem 0;
+  }
+
+  .dp-editorial-section {
+    width: min(1120px, calc(100% - 3rem));
+    padding: clamp(2.75rem, 5vw, 4rem) 0 clamp(3.75rem, 7vw, 5.5rem);
+    text-align: center;
+  }
+
+  .dp-editorial-title {
+    color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
+    font-family: var(--font-sans);
+    font-size: clamp(1.9rem, 3.2vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.08;
+    margin: 0 0 1.55rem;
+    text-transform: uppercase;
+  }
+
+  .dp-editorial-lead {
+    max-width: 960px;
+    margin: 0 auto 1.15rem;
+    color: rgba(74,36,0,.78);
+    font-size: clamp(1.05rem, 1.65vw, 1.3rem);
+    line-height: 1.48;
+  }
+
+  .dp-editorial-copy {
+    max-width: 980px;
+    margin: 0 auto .95rem;
+    color: rgba(74,36,0,.74);
+    font-size: clamp(.86rem, 1vw, .96rem);
+    line-height: 1.7;
+  }
+
+  .dp-editorial-copy strong {
+    color: var(--brown-dark);
+  }
+
+  .dp-journey-heading {
+    margin: clamp(2.2rem, 4vw, 3rem) auto 1.55rem;
+    text-align: center;
+  }
+
+  .dp-journey-heading h3 {
+    color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
+    font-family: var(--font-sans);
+    font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.1;
+    margin: 0 0 .75rem;
+    text-transform: uppercase;
+  }
+
+  .dp-journey-heading p {
+    color: rgba(74,36,0,.72);
+    font-size: .92rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .dp-journey {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: min(880px, 100%);
+    margin: 0 auto;
+  }
+
+  .dp-journey-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: .75rem;
+    padding: .45rem 1.45rem;
+    border-right: 1px solid rgba(143,95,47,.24);
+    text-align: left;
+  }
+
+  .dp-journey-item:last-child {
+    border-right: 0;
+  }
+
+  .dp-journey-icon {
+    width: 30px;
+    height: 30px;
+    color: var(--brown);
+    stroke-width: 2.35;
+  }
+
+  .dp-journey-item strong {
+    display: block;
+    color: var(--brown-dark);
+    font-size: .82rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+    margin-bottom: .2rem;
+  }
+
+  .dp-journey-item span {
+    color: rgba(74,36,0,.74);
+    font-size: .84rem;
+    line-height: 1.35;
+  }
+
+  .dp-editorial-carousel {
+    margin: clamp(2.3rem, 4vw, 3.2rem) auto 0;
+    max-width: 1120px;
+    overflow: hidden;
+  }
+
+  .dp-editorial-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .dp-editorial-card {
+    aspect-ratio: 16 / 9;
+    background: var(--sand);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .dp-editorial-layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.025);
+    transition: opacity 2s ease-in-out, transform 7s ease-out, filter 1.4s ease-in-out;
+  }
+
+  .dp-editorial-layer.active {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+
+  .dp-editorial-layer img {
+    object-fit: cover;
+  }
+
+  .dp-editorial-card:hover .dp-editorial-layer.active {
+    filter: saturate(.96) contrast(.98) brightness(.94);
+    transform: scale(1.025);
   }
 
   .dp-section-heading {
@@ -426,6 +578,27 @@ const styles = `
       padding: 4rem 0;
     }
 
+    .dp-editorial-section {
+      width: min(100% - 2rem, 680px);
+    }
+
+    .dp-editorial-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dp-editorial-card:nth-child(3) {
+      display: none;
+    }
+
+    .dp-journey {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      row-gap: 1rem;
+    }
+
+    .dp-journey-item:nth-child(2) {
+      border-right: 0;
+    }
+
     .dp-section-heading,
     .dp-experience-grid,
     .dp-showcase {
@@ -467,6 +640,39 @@ const styles = `
       width: 100%;
     }
 
+    .dp-editorial-section {
+      width: min(100% - 2rem, 620px);
+      padding: 3rem 0 3.75rem;
+    }
+
+    .dp-editorial-strip,
+    .dp-journey {
+      grid-template-columns: 1fr;
+    }
+
+    .dp-editorial-card {
+      aspect-ratio: 4 / 3;
+    }
+
+    .dp-editorial-card:nth-child(2),
+    .dp-editorial-card:nth-child(3) {
+      display: none;
+    }
+
+    .dp-journey-item,
+    .dp-journey-item:nth-child(2) {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      border-right: 0;
+      border-bottom: 1px solid rgba(143,95,47,.24);
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    .dp-journey-item:last-child {
+      border-bottom: 0;
+    }
+
     .dp-card-body,
     .dp-showcase-content {
       padding: 1.5rem;
@@ -497,10 +703,20 @@ const styles = `
 `;
 
 export default function DiningPage() {
+  const [activeDiningImage, setActiveDiningImage] = useState(0);
+  const diningCarouselSlots = [0, 1, 2];
   const whatsappMessage = encodeURIComponent(
     "Hello Enchula Resort, I'd like to reserve a table or inquire about dining options."
   );
   const whatsappUrl = `https://wa.me/254727000027?text=${whatsappMessage}`;
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveDiningImage((current) => (current + 1) % gallery.length);
+    }, 3000);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <section id="dining" className="dp-root">
@@ -521,17 +737,71 @@ export default function DiningPage() {
           <h1 className="dp-title">
             Fine dining &amp; <em>easy evenings</em>
           </h1>
-          <p className="dp-intro">
-            Settle into warm hospitality, fresh flavors, and relaxed spaces made for breakfast,
-            lunch, dinner, cocktails, and long conversations.
-          </p>
           <div className="dp-actions">
             <a className="dp-btn" href={whatsappUrl} target="_blank" rel="noopener noreferrer">
               Reserve a Table
             </a>
-            <a className="dp-btn dp-btn-secondary" href="#dining-experiences">
+            <a className="dp-btn dp-btn-secondary" href="#dining-experience">
               Explore Dining
             </a>
+          </div>
+        </div>
+      </div>
+
+      <div id="dining-experience" className="dp-section dp-editorial-section">
+
+        <h2 className="dp-editorial-title">Dining &amp; Bars</h2>
+        <p className="dp-editorial-lead">
+          Every meal is shaped around comfort, conversation, and the gentle pace of the resort.
+        </p>
+        <p className="dp-editorial-copy">
+          Come in for a quiet breakfast, linger over dinner, or meet friends for drinks as the
+          evening settles in. The experience brings together familiar warmth, fresh ingredients,
+          relaxed service, and dining spaces made for both everyday meals and special moments.
+        </p>
+        <p className="dp-editorial-copy">
+          <strong>A modern resort table with a familiar welcome, from local freshness to global
+          classics and unhurried lounge evenings.</strong>
+        </p>
+
+        <div className="dp-journey-heading">
+          <h3>Our Dining Journey</h3>
+          <p>A natural rhythm of breakfast, dining, lounge moments, and gathering</p>
+        </div>
+
+        <div className="dp-journey" aria-label="Dining experience overview">
+          {diningJourney.map(({ Icon, ...item }) => (
+            <div className="dp-journey-item" key={item.label}>
+              <Icon className="dp-journey-icon" aria-hidden="true" />
+              <div>
+                <strong>{item.label}</strong>
+                <span>{item.detail}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="dp-editorial-carousel" aria-label="Dining photos">
+          <div className="dp-editorial-strip">
+            {diningCarouselSlots.map((slot) => (
+              <div className="dp-editorial-card" key={slot}>
+                {gallery.map((item, index) => (
+                  <div
+                    className={`dp-editorial-layer ${
+                      index === (activeDiningImage + slot) % gallery.length ? "active" : ""
+                    }`}
+                    key={`${slot}-${item.src}`}
+                  >
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw"
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -578,50 +848,6 @@ export default function DiningPage() {
       </div>
 
       <div className="dp-section">
-        <div className="dp-showcase">
-          <div className="dp-gallery">
-            {gallery.map((item, index) => (
-              <div className="dp-gallery-item" key={item.src}>
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  className="dp-gallery-img"
-                  sizes={index === 0 ? "(max-width: 900px) 66vw, 32vw" : "(max-width: 560px) 50vw, 18vw"}
-                />
-              </div>
-            ))}
-          </div>
-
-          <div className="dp-showcase-content">
-            <div className="dp-kicker">The experience</div>
-            <h2 className="dp-showcase-title">A modern resort table with a familiar welcome.</h2>
-            <p className="dp-copy">
-              Every meal is shaped around comfort, conversation, and the gentle pace of the
-              resort. Come in for a quiet breakfast, linger over dinner, or meet friends for
-              drinks as the evening settles in.
-            </p>
-            <div className="dp-info-grid" aria-label="Dining highlights">
-              <div className="dp-info">
-                <strong>Best for</strong>
-                <span>Breakfasts, dinners and drinks</span>
-              </div>
-              <div className="dp-info">
-                <strong>Setting</strong>
-                <span>Indoor and outdoor comfort</span>
-              </div>
-              <div className="dp-info">
-                <strong>Food style</strong>
-                <span>Local freshness, global classics</span>
-              </div>
-              <div className="dp-info">
-                <strong>Bookings</strong>
-                <span>Table requests by WhatsApp</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div className="dp-reserve">
           <h2>Reserve a table before you arrive.</h2>
           <p>

@@ -193,6 +193,46 @@ const styles = `
     margin: 1.35rem 0 2rem;
   }
 
+  .gp-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .85rem;
+    margin-top: 2rem;
+  }
+
+  .gp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: .9rem 1.5rem;
+    border: 1px solid var(--gold);
+    background: var(--gold);
+    color: var(--brown-dark);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .13em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: transform .25s var(--ease-out), background .25s var(--ease-out), color .25s var(--ease-out);
+  }
+
+  .gp-btn:hover {
+    transform: translateY(-2px);
+    background: var(--peach);
+  }
+
+  .gp-btn-secondary {
+    border-color: rgba(255,255,255,.52);
+    background: transparent;
+    color: var(--white);
+  }
+
+  .gp-btn-secondary:hover {
+    background: var(--white);
+    color: var(--brown-dark);
+  }
+
   .gp-section {
     width: min(1252px, calc(100% - 3rem));
     margin: 0 auto;
@@ -462,6 +502,15 @@ const styles = `
       line-height: 1.65;
     }
 
+    .gp-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .gp-btn {
+      width: 100%;
+    }
+
     .gp-filter-bar {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -569,14 +618,18 @@ export default function Gallery() {
           <h1 className="gp-title">
             Moments from <em>across Enchula</em>
           </h1>
-          <p className="gp-intro">
-            Explore the rooms, dining spaces, wellness areas, events, activities, and quiet resort
-            corners that shape the Enchula experience.
-          </p>
+          <div className="gp-actions">
+            <a className="gp-btn" href="#gallery-collection">
+              Browse Gallery
+            </a>
+            <a className="gp-btn gp-btn-secondary" href="/booking">
+              Book Now
+            </a>
+          </div>
         </div>
       </div>
 
-      <div className="gp-section">
+      <div id="gallery-collection" className="gp-section">
         <div className="gp-section-heading">
           <div>
             <div className="gp-kicker">Curated views</div>

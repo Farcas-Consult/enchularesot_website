@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { BriefcaseBusiness, PartyPopper, UsersRound } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
@@ -60,6 +61,12 @@ const eventSections = [
     meta: ["Group activities", "Outdoor space", "Team meals", "Custom schedules"],
     images: [ `${S3_BASE}/Team1.jpeg`],
   },
+];
+
+const eventJourney = [
+  { label: "Meet", detail: "Conferences, retreats and workshops", Icon: BriefcaseBusiness },
+  { label: "Celebrate", detail: "Corporate and social occasions", Icon: PartyPopper },
+  { label: "Connect", detail: "Team building and shared energy", Icon: UsersRound },
 ];
 
 const styles = `
@@ -210,13 +217,116 @@ const styles = `
   }
 
   .ep-section {
-    width: min(1160px, calc(100% - 3rem));
+    width: min(1275px, calc(100% - 4.5rem));
     margin: 0 auto;
-    padding: clamp(5rem, 9vw, 8rem) 0;
+    padding: clamp(1.75rem, 3vw, 2.75rem) 0 clamp(3rem, 6vw, 5rem);
+  }
+
+  .ep-editorial-section {
+    width: min(1120px, calc(100% - 3rem));
+    margin: 0 auto;
+    padding: clamp(2.75rem, 5vw, 4rem) 0 clamp(3.75rem, 7vw, 5.5rem);
+    text-align: center;
+  }
+
+  .ep-editorial-title {
+    color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
+    font-family: var(--font-sans);
+    font-size: clamp(1.9rem, 3.2vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.08;
+    margin: 0 0 1.55rem;
+    text-transform: uppercase;
+  }
+
+  .ep-editorial-lead {
+    max-width: 960px;
+    margin: 0 auto 1.15rem;
+    color: rgba(74,36,0,.78);
+    font-size: clamp(1.05rem, 1.65vw, 1.3rem);
+    line-height: 1.48;
+  }
+
+  .ep-editorial-copy {
+    max-width: 980px;
+    margin: 0 auto .95rem;
+    color: rgba(74,36,0,.74);
+    font-size: clamp(.86rem, 1vw, .96rem);
+    line-height: 1.7;
+  }
+
+  .ep-editorial-copy strong {
+    color: var(--brown-dark);
+  }
+
+  .ep-journey-heading {
+    margin: clamp(2.2rem, 4vw, 3rem) auto 1.55rem;
+    text-align: center;
+  }
+
+  .ep-journey-heading h3 {
+    color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
+    font-family: var(--font-sans);
+    font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.1;
+    margin: 0 0 .75rem;
+    text-transform: uppercase;
+  }
+
+  .ep-journey-heading p {
+    color: rgba(74,36,0,.72);
+    font-size: .92rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .ep-journey {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: min(760px, 100%);
+    margin: 0 auto;
+  }
+
+  .ep-journey-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: .75rem;
+    padding: .45rem 1.35rem;
+    border-right: 1px solid rgba(143,95,47,.24);
+    text-align: left;
+  }
+
+  .ep-journey-item:last-child {
+    border-right: 0;
+  }
+
+  .ep-journey-icon {
+    width: 30px;
+    height: 30px;
+    color: var(--brown);
+    stroke-width: 2.35;
+  }
+
+  .ep-journey-item strong {
+    display: block;
+    color: var(--brown-dark);
+    font-size: .82rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+    margin-bottom: .2rem;
+  }
+
+  .ep-journey-item span {
+    color: rgba(74,36,0,.74);
+    font-size: .84rem;
+    line-height: 1.35;
   }
 
   .ep-section-heading {
-    display: grid;
+    display: none;
     grid-template-columns: minmax(0, .88fr) minmax(320px, .72fr);
     gap: clamp(2rem, 5vw, 4.5rem);
     align-items: end;
@@ -248,30 +358,30 @@ const styles = `
 
   .ep-copy {
     color: rgba(74,36,0,.72);
-    font-size: 1rem;
-    line-height: 1.85;
+    font-size: clamp(.96rem, 1.2vw, 1.08rem);
+    line-height: 1.72;
     margin: 0;
   }
 
   .ep-event-list {
     display: grid;
-    gap: clamp(4rem, 8vw, 7rem);
+    gap: clamp(3rem, 6vw, 4.5rem);
   }
 
   .ep-event-block {
     display: grid;
-    grid-template-columns: minmax(0, 3fr) minmax(260px, 1fr);
-    gap: 0;
-    align-items: stretch;
-    min-height: 520px;
-    background: var(--white);
-    border: 1px solid rgba(143,95,47,.16);
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+    gap: clamp(2.25rem, 4vw, 3.75rem);
+    align-items: center;
+    min-height: clamp(360px, 46vh, 430px);
+    background: transparent;
+    border: 0;
   }
 
   .ep-carousel {
     position: relative;
     height: 100%;
-    min-height: 520px;
+    min-height: clamp(360px, 46vh, 430px);
     overflow: hidden;
     background: var(--sand);
   }
@@ -303,16 +413,7 @@ const styles = `
   }
 
   .ep-carousel-caption {
-    position: absolute;
-    left: clamp(1rem, 2vw, 1.5rem);
-    right: clamp(1rem, 2vw, 1.5rem);
-    bottom: clamp(1rem, 2vw, 1.5rem);
-    z-index: 2;
-    max-width: 640px;
-    background: rgba(74,36,0,.78);
-    color: var(--peach);
-    line-height: 1.65;
-    padding: 1rem 1.15rem;
+    display: none;
   }
 
   .ep-carousel-caption p {
@@ -323,17 +424,19 @@ const styles = `
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, transparent 55%, rgba(74,36,0,.42) 100%);
+    background: linear-gradient(180deg, transparent 68%, rgba(74,36,0,.08) 100%);
     pointer-events: none;
   }
 
   .ep-carousel-controls {
     position: absolute;
     left: clamp(1rem, 2vw, 1.5rem);
-    top: clamp(1rem, 2vw, 1.5rem);
+    top: auto;
+    bottom: clamp(.9rem, 1.7vw, 1.25rem);
     z-index: 3;
     display: flex;
     gap: .45rem;
+    opacity: .55;
   }
 
   .ep-carousel-dot {
@@ -362,18 +465,20 @@ const styles = `
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: var(--white);
-    padding: clamp(1.75rem, 3vw, 2.5rem);
-    border-left: 1px solid rgba(143,95,47,.16);
+    background: transparent;
+    padding: clamp(.75rem, 2vw, 1.5rem) 0;
+    border-left: 0;
   }
 
   .ep-card-title {
     color: var(--brown-dark);
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 3vw, 3.2rem);
-    font-weight: 300;
-    line-height: 1.02;
+    font-family: var(--font-sans);
+    font-size: clamp(1.65rem, 2.2vw, 2.15rem);
+    font-weight: 500;
+    line-height: 1.28;
+    letter-spacing: .04em;
     margin: 0 0 1rem;
+    text-transform: uppercase;
   }
 
   .ep-meta {
@@ -381,7 +486,7 @@ const styles = `
     flex-wrap: wrap;
     gap: .5rem;
     padding: 0;
-    margin: 1.35rem 0 0;
+    margin: 1.2rem 0 0;
     list-style: none;
   }
 
@@ -402,10 +507,10 @@ const styles = `
   .ep-contact {
     background: var(--brown-dark);
     color: var(--peach);
-    margin-top: 2rem;
-    padding: 4rem clamp(1.5rem, 4vw, 4rem);
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding: clamp(2.4rem, 4vw, 3.5rem) clamp(1.5rem, 4vw, 4rem);
     text-align: center;
-    border-radius: 8px;
+    border-radius: 0;
   }
 
   .ep-contact h2 {
@@ -448,7 +553,11 @@ const styles = `
     }
 
     .ep-section {
-      padding: clamp(4rem, 8vw, 5rem) 0;
+      padding: clamp(2.25rem, 6vw, 3.5rem) 0;
+    }
+
+    .ep-editorial-section {
+      width: min(100% - 2rem, 720px);
     }
 
     .ep-section-heading,
@@ -457,12 +566,12 @@ const styles = `
     }
 
     .ep-carousel {
-      min-height: 440px;
+      min-height: 360px;
     }
 
     .ep-detail {
       border-left: 0;
-      border-top: 1px solid rgba(143,95,47,.16);
+      border-top: 0;
     }
   }
 
@@ -491,12 +600,34 @@ const styles = `
       width: 100%;
     }
 
+    .ep-editorial-section {
+      width: min(100% - 2rem, 620px);
+      padding: 3rem 0 3.75rem;
+    }
+
+    .ep-journey {
+      grid-template-columns: 1fr;
+    }
+
+    .ep-journey-item {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      border-right: 0;
+      border-bottom: 1px solid rgba(143,95,47,.24);
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    .ep-journey-item:last-child {
+      border-bottom: 0;
+    }
+
     .ep-event-block {
       min-height: auto;
     }
 
     .ep-carousel {
-      min-height: 320px;
+      min-height: 280px;
     }
 
     .ep-carousel-caption {
@@ -582,10 +713,6 @@ export default function EventsPage() {
           <h1 className="ep-title">
             Special moments in a <em>serene setting</em>
           </h1>
-          <p className="ep-intro">
-            Enchula plans and hosts social, corporate, retreat, and team events with thoughtful
-            coordination, warm hospitality, and flexible resort spaces.
-          </p>
           <div className="ep-actions">
             <a className="ep-btn" href="tel:+254723003164">
               Call Events Team
@@ -595,6 +722,39 @@ export default function EventsPage() {
             </a>
           </div>
         </motion.div>
+      </div>
+
+      <div id="events-intro" className="ep-editorial-section">
+        <h2 className="ep-editorial-title">Meetings, Conferences &amp; Events</h2>
+        <p className="ep-editorial-lead">
+          Enchula hosts focused retreats, polished conferences, warm celebrations, and active team
+          days with thoughtful planning and resort hospitality.
+        </p>
+        <p className="ep-editorial-copy">
+          Whether the occasion is focused, festive, or active, the resort team helps shape the
+          setting, flow, catering, and details so the day feels easy from arrival to close.
+        </p>
+        <p className="ep-editorial-copy">
+          <strong>Events at Enchula are built around flexible spaces, clear coordination,
+          welcoming service, and a setting that gives every gathering room to breathe.</strong>
+        </p>
+
+        <div className="ep-journey-heading">
+          <h3>Our Events Journey</h3>
+          <p>A natural rhythm of meeting, celebrating, and connecting</p>
+        </div>
+
+        <div className="ep-journey" aria-label="Events overview">
+          {eventJourney.map(({ Icon, ...item }) => (
+            <div className="ep-journey-item" key={item.label}>
+              <Icon className="ep-journey-icon" aria-hidden="true" />
+              <div>
+                <strong>{item.label}</strong>
+                <span>{item.detail}</span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div id="event-sections" className="ep-section">

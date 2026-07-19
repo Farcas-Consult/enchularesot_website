@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { CalendarCheck, Dumbbell, HeartPulse, Leaf } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
@@ -58,10 +60,10 @@ const gallery = [
 ];
 
 const journeyItems = [
-  { label: "Fitness", detail: "Cardio, weights and coaching" },
-  { label: "Wellness", detail: "Massage, sauna and spa care" },
-  { label: "Best for", detail: "Training, recovery and relaxation" },
-  { label: "Access", detail: "Day use and membership options" },
+  { label: "Fitness", detail: "Cardio, weights and coaching", Icon: Dumbbell },
+  { label: "Recovery", detail: "Massage, sauna and spa care", Icon: HeartPulse },
+  { label: "Reset", detail: "Training, recovery and relaxation", Icon: Leaf },
+  { label: "Access", detail: "Day use and membership options", Icon: CalendarCheck },
 ];
 
 const styles = `
@@ -133,6 +135,7 @@ const styles = `
 
   .wp-hero-content .wp-title em {
     color: color-mix(in srgb, var(--brand-primary) 78%, var(--text-on-dark));
+    font-style: italic;
   }
 
   .wp-hero-content .wp-intro {
@@ -267,6 +270,67 @@ const styles = `
     border-top: 1px solid var(--wp-line);
   }
 
+  .wp-wellness-intro-section {
+    width: min(1120px, calc(100% - 3rem));
+    padding: clamp(2.75rem, 5vw, 4rem) 0 clamp(3.75rem, 7vw, 5.5rem);
+    border-top: 0;
+    text-align: center;
+  }
+
+  .wp-editorial-title {
+    color: color-mix(in srgb, var(--brand-black) 84%, var(--brand-gray));
+    font-family: var(--wp-sans);
+    font-size: clamp(1.9rem, 3.2vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.08;
+    margin: 0 0 1.55rem;
+    text-transform: uppercase;
+  }
+
+  .wp-editorial-lead {
+    max-width: 960px;
+    margin: 0 auto 1.15rem;
+    color: color-mix(in srgb, var(--brand-black) 74%, var(--brand-gray));
+    font-size: clamp(1.05rem, 1.65vw, 1.3rem);
+    line-height: 1.48;
+  }
+
+  .wp-editorial-copy {
+    max-width: 980px;
+    margin: 0 auto .95rem;
+    color: color-mix(in srgb, var(--brand-black) 76%, var(--brand-background));
+    font-size: clamp(.86rem, 1vw, .96rem);
+    line-height: 1.7;
+  }
+
+  .wp-editorial-copy strong {
+    color: var(--brand-black);
+  }
+
+  .wp-journey-heading {
+    margin: clamp(2.2rem, 4vw, 3rem) auto 1.55rem;
+    text-align: center;
+  }
+
+  .wp-journey-heading h3 {
+    color: color-mix(in srgb, var(--brand-black) 84%, var(--brand-gray));
+    font-family: var(--wp-sans);
+    font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.1;
+    margin: 0 0 .75rem;
+    text-transform: uppercase;
+  }
+
+  .wp-journey-heading p {
+    color: color-mix(in srgb, var(--brand-black) 72%, var(--brand-background));
+    font-size: .92rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
   .wp-section-heading {
     max-width: 900px;
     margin: 0 auto clamp(2.75rem, 5vw, 4rem);
@@ -338,10 +402,26 @@ const styles = `
     border-bottom: 1px solid var(--wp-line);
   }
 
+  .wp-wellness-intro-section .wp-journey {
+    width: min(880px, 100%);
+    margin: 0 auto;
+    border-top: 0;
+    border-bottom: 0;
+  }
+
   .wp-journey-item {
     min-height: 138px;
     padding: 1.45rem 1.2rem 1.45rem 1.85rem;
     border-right: 1px solid var(--wp-line);
+  }
+
+  .wp-wellness-intro-section .wp-journey-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: .75rem;
+    min-height: auto;
+    padding: .45rem 1.45rem;
+    text-align: left;
   }
 
   .wp-journey-item:last-child {
@@ -359,6 +439,17 @@ const styles = `
     box-shadow: 0 0 0 8px color-mix(in srgb, var(--brand-primary) 16%, transparent);
   }
 
+  .wp-wellness-intro-section .wp-journey-item::before {
+    display: none;
+  }
+
+  .wp-journey-icon {
+    width: 30px;
+    height: 30px;
+    color: var(--brand-primary);
+    stroke-width: 2.4;
+  }
+
   .wp-journey-item strong {
     display: block;
     color: var(--brand-black);
@@ -374,6 +465,60 @@ const styles = `
     font-family: var(--wp-serif);
     font-size: clamp(1.2rem, 1.65vw, 1.45rem);
     line-height: 1.16;
+  }
+
+  .wp-wellness-intro-section .wp-journey-item strong {
+    margin-bottom: .2rem;
+    letter-spacing: .02em;
+    text-transform: none;
+  }
+
+  .wp-wellness-intro-section .wp-journey-item span {
+    color: color-mix(in srgb, var(--brand-black) 74%, var(--brand-background));
+    font-family: var(--wp-sans);
+    font-size: .86rem;
+    line-height: 1.35;
+  }
+
+  .wp-wellness-carousel {
+    margin: clamp(2.3rem, 4vw, 3.2rem) auto 0;
+    max-width: 1120px;
+    overflow: hidden;
+  }
+
+  .wp-wellness-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .wp-wellness-carousel-card {
+    aspect-ratio: 16 / 9;
+    background: var(--wp-soft);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .wp-wellness-carousel-layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transform: scale(1.025);
+    transition: opacity 2s ease-in-out, transform 7s ease-out, filter 1.4s ease-in-out;
+  }
+
+  .wp-wellness-carousel-layer.active {
+    opacity: 1;
+    transform: scale(1.01);
+  }
+
+  .wp-wellness-carousel-layer img {
+    object-fit: cover;
+  }
+
+  .wp-wellness-carousel-card:hover .wp-wellness-carousel-layer.active {
+    filter: saturate(.96) contrast(.98) brightness(.94);
+    transform: scale(1.025);
   }
 
   .wp-gallery {
@@ -428,6 +573,89 @@ const styles = `
   .wp-wellness-grid {
     display: grid;
     gap: clamp(1rem, 2vw, 1.35rem);
+  }
+
+  .wp-split-section {
+    width: min(1275px, calc(100% - 4.5rem));
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .wp-split-section .wp-section-heading {
+    max-width: 920px;
+    margin-bottom: clamp(2.4rem, 4vw, 3.25rem);
+  }
+
+  .wp-split-list {
+    display: grid;
+    gap: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .wp-split-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+    gap: clamp(2.25rem, 4vw, 3.75rem);
+    align-items: center;
+    min-height: clamp(360px, 46vh, 430px);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+    transition: none;
+  }
+
+  .wp-split-row:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .wp-split-media {
+    position: relative;
+    height: 100%;
+    min-height: clamp(360px, 46vh, 430px);
+    aspect-ratio: auto;
+    overflow: hidden;
+    background: var(--brand-light-brown);
+  }
+
+  .wp-split-row:hover .wp-img {
+    transform: scale(1.035);
+    filter: saturate(1) contrast(1) brightness(1);
+  }
+
+  .wp-split-detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(.75rem, 2vw, 1.5rem) 0;
+  }
+
+  .wp-split-detail .wp-card-title {
+    color: var(--brand-black);
+    font-family: var(--wp-sans);
+    font-size: clamp(1.65rem, 2.2vw, 2.15rem);
+    font-weight: 600;
+    letter-spacing: .04em;
+    line-height: 1.28;
+    margin: 0 0 1rem;
+    text-transform: uppercase;
+  }
+
+  .wp-split-detail .wp-card-text {
+    color: color-mix(in srgb, var(--brand-black) 72%, var(--brand-background));
+    font-size: clamp(.96rem, 1.2vw, 1.08rem);
+    line-height: 1.72;
+  }
+
+  .wp-split-row:nth-child(even) {
+    grid-template-columns: minmax(360px, .92fr) minmax(0, 1.08fr);
+  }
+
+  .wp-split-row:nth-child(even) .wp-split-media {
+    order: 2;
+  }
+
+  .wp-split-row:nth-child(even) .wp-split-detail {
+    order: 1;
   }
 
   .wp-card-grid {
@@ -581,6 +809,14 @@ const styles = `
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .wp-wellness-strip {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .wp-wellness-carousel-card:nth-child(3) {
+      display: none;
+    }
+
     .wp-journey-item:nth-child(2) {
       border-right: 0;
     }
@@ -598,6 +834,15 @@ const styles = `
     .wp-hero-content,
     .wp-section {
       width: min(100% - 2rem, 620px);
+    }
+
+    .wp-split-section {
+      width: min(100% - 2rem, 720px);
+    }
+
+    .wp-wellness-intro-section {
+      width: min(100% - 2rem, 620px);
+      padding: 3rem 0 3.75rem;
     }
 
     .wp-hero-content {
@@ -649,12 +894,55 @@ const styles = `
       grid-template-columns: 1fr;
     }
 
+    .wp-split-row {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .wp-split-row:nth-child(even) {
+      grid-template-columns: 1fr;
+    }
+
+    .wp-split-row:nth-child(even) .wp-split-media,
+    .wp-split-row:nth-child(even) .wp-split-detail {
+      order: initial;
+    }
+
+    .wp-split-media {
+      min-height: 280px;
+    }
+
+    .wp-split-detail {
+      padding: 0;
+    }
+
+    .wp-wellness-strip {
+      grid-template-columns: 1fr;
+    }
+
+    .wp-wellness-carousel-card {
+      aspect-ratio: 4 / 3;
+    }
+
+    .wp-wellness-carousel-card:nth-child(2),
+    .wp-wellness-carousel-card:nth-child(3) {
+      display: none;
+    }
+
     .wp-journey-item,
     .wp-journey-item:nth-child(2) {
       min-height: auto;
       border-right: 0;
       border-bottom: 1px solid var(--wp-line);
       padding: 1.35rem 0;
+      text-align: center;
+    }
+
+    .wp-wellness-intro-section .wp-journey-item,
+    .wp-wellness-intro-section .wp-journey-item:nth-child(2) {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      padding: 1rem 0;
       text-align: center;
     }
 
@@ -695,6 +983,17 @@ const styles = `
 `;
 
 export default function WellnessFitnessPage() {
+  const [activeWellnessImage, setActiveWellnessImage] = useState(0);
+  const wellnessCarouselSlots = [0, 1, 2];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveWellnessImage((current) => (current + 1) % gallery.length);
+    }, 3000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <section id="wellness-fitness" className="wp-root">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
@@ -714,10 +1013,6 @@ export default function WellnessFitnessPage() {
           <h1 className="wp-title">
             Move, restore, and <em>feel renewed</em>
           </h1>
-          <p className="wp-intro">
-            Train with intention, slow down with restorative spa rituals, and enjoy a wellness
-            experience shaped around balance, recovery, and resort calm.
-          </p>
           <div className="wp-actions">
             <Link className="wp-btn" href="/gym-subscriptions">
               View Gym Packages
@@ -729,61 +1024,66 @@ export default function WellnessFitnessPage() {
         </div>
       </div>
 
-      <div id="wellness-spaces" className="wp-section">
-        <div className="wp-section-heading">
-          <div>
-            <div className="wp-kicker">Gym, spa and recovery</div>
-            <h2 className="wp-heading">
-              A modern wellness rhythm for <em>active resort days</em>
-            </h2>
-          </div>
-          <p className="wp-copy">
-            From focused workouts to quiet recovery rituals, Enchula brings fitness and wellness
-            into one warm, easy-to-use resort experience.
-          </p>
+      <div id="wellness-spaces" className="wp-section wp-wellness-intro-section">
+
+        <h2 className="wp-editorial-title">Wellness &amp; Fitness</h2>
+        <p className="wp-editorial-lead">
+          Enchula brings fitness and wellness into one warm, easy-to-use resort experience,
+          shaped around movement, recovery, and unhurried reset.
+        </p>
+        <p className="wp-editorial-copy">
+          Start the morning with focused training, ease into a sauna session, or book a soothing
+          treatment after a long day. The spaces are practical for residents and resort guests who
+          want to stay active while still making time to slow down.
+        </p>
+        <p className="wp-editorial-copy">
+          <strong>Wellness at Enchula is experienced through steady training, calming recovery,
+          and thoughtful care in a relaxed resort setting.</strong>
+        </p>
+
+        <div className="wp-journey-heading">
+          <h3>Our Wellness Journey</h3>
+          <p>A natural rhythm of fitness, recovery, reset, and access</p>
         </div>
 
-        <div className="wp-feature">
-          <div className="wp-feature-content">
-            <div className="wp-kicker">The experience</div>
-            <h2 className="wp-feature-title">Built for movement, recovery, and unhurried reset.</h2>
-            <p className="wp-copy">
-              Start the morning with training, ease into a sauna session, or book a soothing
-              treatment after a long day. The spaces are simple, warm, and practical for both
-              residents and resort guests.
-            </p>
-          </div>
-
-          <div className="wp-journey" aria-label="Wellness experience overview">
-            {journeyItems.map((item) => (
-              <div className="wp-journey-item" key={item.label}>
+        <div className="wp-journey" aria-label="Wellness experience overview">
+          {journeyItems.map(({ Icon, ...item }) => (
+            <div className="wp-journey-item" key={item.label}>
+              <Icon className="wp-journey-icon" aria-hidden="true" />
+              <div>
                 <strong>{item.label}</strong>
                 <span>{item.detail}</span>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
 
-          <div className="wp-gallery">
-            {gallery.map((item, index) => (
-              <div className="wp-gallery-item" key={item.src}>
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  className="wp-img"
-                  sizes={
-                    index < 2
-                      ? "(max-width: 760px) 100vw, 48vw"
-                      : "(max-width: 760px) 50vw, 25vw"
-                  }
-                />
+        <div className="wp-wellness-carousel" aria-label="Wellness and fitness photos">
+          <div className="wp-wellness-strip">
+            {wellnessCarouselSlots.map((slot) => (
+              <div className="wp-wellness-carousel-card" key={slot}>
+                {gallery.map((item, index) => (
+                  <div
+                    className={`wp-wellness-carousel-layer ${
+                      index === (activeWellnessImage + slot) % gallery.length ? "active" : ""
+                    }`}
+                    key={`${slot}-${item.src}`}
+                  >
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw"
+                    />
+                  </div>
+                ))}
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="wp-section">
+      <div className="wp-section wp-split-section">
         <div className="wp-section-heading">
           <div>
             <div className="wp-kicker">Fitness facilities</div>
@@ -797,10 +1097,10 @@ export default function WellnessFitnessPage() {
           </p>
         </div>
 
-        <div className="wp-card-grid">
+        <div className="wp-split-list">
           {fitnessServices.map((service) => (
-            <article className="wp-card" key={service.name}>
-              <div className="wp-card-media">
+            <article className="wp-split-row" key={service.name}>
+              <div className="wp-split-media">
                 <Image
                   src={service.image}
                   alt={service.name}
@@ -809,7 +1109,7 @@ export default function WellnessFitnessPage() {
                   sizes="(max-width: 760px) 100vw, (max-width: 1080px) 50vw, 33vw"
                 />
               </div>
-              <div className="wp-card-body">
+              <div className="wp-split-detail">
                 <span className="wp-card-kicker">{service.kicker}</span>
                 <h3 className="wp-card-title">{service.name}</h3>
                 <p className="wp-card-text">{service.description}</p>
@@ -824,7 +1124,7 @@ export default function WellnessFitnessPage() {
         </div>
       </div>
 
-      <div className="wp-section">
+      <div className="wp-section wp-split-section">
         <div className="wp-section-heading">
           <div>
             <div className="wp-kicker">Spa and wellness services</div>
@@ -838,10 +1138,10 @@ export default function WellnessFitnessPage() {
           </p>
         </div>
 
-        <div className="wp-wellness-grid">
+        <div className="wp-split-list">
           {wellnessServices.map((service) => (
-            <article className="wp-card" key={service.name}>
-              <div className="wp-card-media">
+            <article className="wp-split-row" key={service.name}>
+              <div className="wp-split-media">
                 <Image
                   src={service.image}
                   alt={service.name}
@@ -850,18 +1150,13 @@ export default function WellnessFitnessPage() {
                   sizes="(max-width: 760px) 100vw, 50vw"
                 />
               </div>
-              <div className="wp-card-body">
+              <div className="wp-split-detail">
                 <span className="wp-card-kicker">{service.kicker}</span>
                 <h3 className="wp-card-title">{service.name}</h3>
                 <p className="wp-card-text">{service.description}</p>
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="wp-quote">
-          <p>&quot;The massage was heavenly and the yoga sessions helped me truly unwind.&quot;</p>
-          <span>Guest reflection</span>
         </div>
 
         <div className="wp-cta">

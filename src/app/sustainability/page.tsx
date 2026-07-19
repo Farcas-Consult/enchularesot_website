@@ -77,9 +77,20 @@ export default function Sustainability() {
           <h1 className="sustainability-title">
             Luxury meets <em>responsibility</em>
           </h1>
-          <p className="sustainability-intro">
-            Discover our green initiatives and how your stay supports a better planet.
-          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="#sustainability-content"
+              className="inline-flex min-h-12 items-center justify-center border border-[#D2BB9E] bg-[#D2BB9E] px-6 py-3 text-xs font-extrabold uppercase tracking-[.13em] text-[#1B1B1B] no-underline transition hover:-translate-y-0.5 hover:bg-[#FFD3A3]"
+            >
+              Explore Commitments
+            </a>
+            <a
+              href="/booking"
+              className="inline-flex min-h-12 items-center justify-center border border-white/50 bg-transparent px-6 py-3 text-xs font-extrabold uppercase tracking-[.13em] text-white no-underline transition hover:-translate-y-0.5 hover:bg-white hover:text-[#1B1B1B]"
+            >
+              Book Now
+            </a>
+          </div>
         </div>
         {/* Carousel indicators */}
         <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-40">
@@ -94,7 +105,7 @@ export default function Sustainability() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
+      <div id="sustainability-content" className="relative z-10 max-w-7xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-20">
           <div className="inline-block mb-4 px-6 py-2 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#A04040]/50">

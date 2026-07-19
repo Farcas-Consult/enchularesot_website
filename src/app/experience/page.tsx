@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Baby, Footprints, Gamepad2, Utensils, Waves } from "lucide-react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
@@ -46,6 +47,14 @@ const experiences = [
       "Explore the resort surroundings with guides who help guests notice the local landscape, plants, and quiet natural details.",
     features: ["Morning walks", "Local flora", "Guided pace"],
   },
+];
+
+const experienceJourney = [
+  { label: "Swim", detail: "Poolside leisure and family time", Icon: Waves },
+  { label: "Play", detail: "Games and easy recreation", Icon: Gamepad2 },
+  { label: "Kids", detail: "Creative supervised activities", Icon: Baby },
+  { label: "Picnic", detail: "Open-air meals and gatherings", Icon: Utensils },
+  { label: "Walk", detail: "Guided nature and calm", Icon: Footprints },
 ];
 
 const styles = `
@@ -236,6 +245,108 @@ const styles = `
     padding: clamp(2.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 4rem);
   }
 
+  .xp-editorial-section {
+    width: min(1120px, calc(100% - 3rem));
+    padding: clamp(2.75rem, 5vw, 4rem) 0 clamp(3.75rem, 7vw, 5.5rem);
+    text-align: center;
+  }
+
+  .xp-editorial-title {
+    color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
+    font-family: var(--font-sans);
+    font-size: clamp(1.9rem, 3.2vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.08;
+    margin: 0 0 1.55rem;
+    text-transform: uppercase;
+  }
+
+  .xp-editorial-lead {
+    max-width: 960px;
+    margin: 0 auto 1.15rem;
+    color: rgba(74,36,0,.78);
+    font-size: clamp(1.05rem, 1.65vw, 1.3rem);
+    line-height: 1.48;
+  }
+
+  .xp-editorial-copy {
+    max-width: 980px;
+    margin: 0 auto .95rem;
+    color: rgba(74,36,0,.74);
+    font-size: clamp(.86rem, 1vw, .96rem);
+    line-height: 1.7;
+  }
+
+  .xp-editorial-copy strong {
+    color: var(--brown-dark);
+  }
+
+  .xp-journey-heading {
+    margin: clamp(2.2rem, 4vw, 3rem) auto 1.55rem;
+    text-align: center;
+  }
+
+  .xp-journey-heading h3 {
+    color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
+    font-family: var(--font-sans);
+    font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.1;
+    margin: 0 0 .75rem;
+    text-transform: uppercase;
+  }
+
+  .xp-journey-heading p {
+    color: rgba(74,36,0,.72);
+    font-size: .92rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .xp-journey {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    width: min(980px, 100%);
+    margin: 0 auto;
+  }
+
+  .xp-journey-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: .75rem;
+    padding: .45rem 1.15rem;
+    border-right: 1px solid rgba(143,95,47,.24);
+    text-align: left;
+  }
+
+  .xp-journey-item:last-child {
+    border-right: 0;
+  }
+
+  .xp-journey-icon {
+    width: 30px;
+    height: 30px;
+    color: var(--brown);
+    stroke-width: 2.35;
+  }
+
+  .xp-journey-item strong {
+    display: block;
+    color: var(--brown-dark);
+    font-size: .82rem;
+    font-weight: 800;
+    letter-spacing: .02em;
+    margin-bottom: .2rem;
+  }
+
+  .xp-journey-item span {
+    color: rgba(74,36,0,.74);
+    font-size: .84rem;
+    line-height: 1.35;
+  }
+
   .xp-img {
     object-fit: cover;
     filter: saturate(.88) sepia(.08) contrast(.94) brightness(.98);
@@ -284,14 +395,17 @@ const styles = `
 
   .xp-activity-list {
     display: grid;
-    gap: 1px;
-    background: var(--sand);
+    gap: clamp(3rem, 6vw, 4.5rem);
+    background: transparent;
   }
 
   .xp-activity {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: var(--white);
+    grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+    gap: clamp(2.25rem, 4vw, 3.75rem);
+    align-items: center;
+    min-height: clamp(360px, 46vh, 430px);
+    background: transparent;
   }
 
   .xp-activity:nth-child(even) .xp-activity-media {
@@ -304,7 +418,8 @@ const styles = `
 
   .xp-activity-media {
     position: relative;
-    min-height: 430px;
+    height: 100%;
+    min-height: clamp(360px, 46vh, 430px);
     overflow: hidden;
     background: var(--sand);
   }
@@ -313,16 +428,18 @@ const styles = `
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: clamp(2rem, 5vw, 4.5rem);
+    padding: clamp(.75rem, 2vw, 1.5rem) 0;
   }
 
   .xp-activity-title {
     color: var(--brown-dark);
-    font-family: var(--font-serif);
-    font-size: clamp(2.2rem, 4vw, 3.8rem);
-    font-weight: 300;
-    line-height: 1.02;
+    font-family: var(--font-sans);
+    font-size: clamp(1.65rem, 2.2vw, 2.15rem);
+    font-weight: 600;
+    letter-spacing: .04em;
+    line-height: 1.28;
     margin: 0 0 1rem;
+    text-transform: uppercase;
   }
 
   .xp-tags {
@@ -408,6 +525,13 @@ const styles = `
     max-width: 640px;
   }
 
+  .xp-cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .85rem;
+  }
+
   @media (max-width: 980px) {
     .xp-hero {
       height: 64vh;
@@ -427,9 +551,22 @@ const styles = `
       padding: 4rem 0;
     }
 
+    .xp-editorial-section {
+      width: min(100% - 2rem, 720px);
+    }
+
     .xp-section-heading,
     .xp-activity {
       grid-template-columns: 1fr;
+    }
+
+    .xp-journey {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      row-gap: 1rem;
+    }
+
+    .xp-journey-item:nth-child(3) {
+      border-right: 0;
     }
 
     .xp-activity:nth-child(even) .xp-activity-media,
@@ -466,13 +603,45 @@ const styles = `
       align-items: stretch;
     }
 
+    .xp-cta-actions {
+      align-items: center;
+      flex-direction: row;
+    }
+
     .xp-btn {
       width: 100%;
     }
 
+    .xp-cta-actions .xp-btn {
+      width: min(100%, 260px);
+    }
+
+    .xp-editorial-section {
+      width: min(100% - 2rem, 620px);
+      padding: 3rem 0 3.75rem;
+    }
+
+    .xp-journey {
+      grid-template-columns: 1fr;
+    }
+
+    .xp-journey-item,
+    .xp-journey-item:nth-child(3) {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      border-right: 0;
+      border-bottom: 1px solid rgba(143,95,47,.24);
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    .xp-journey-item:last-child {
+      border-bottom: 0;
+    }
+
     .xp-activity-content,
     .xp-card-body {
-      padding: 1.5rem;
+      padding: 0;
     }
 
     .xp-feature {
@@ -485,16 +654,13 @@ const styles = `
 
     .xp-activity-media,
     .xp-card-media {
-      min-height: 285px;
-      height: 285px;
+      min-height: 280px;
+      height: 280px;
     }
   }
 `;
 
 export default function ExperiencesPage() {
-  const featured = experiences.slice(0, 3);
-  const secondary = experiences.slice(3);
-
   return (
     <section id="experience-activities" className="xp-root">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
@@ -515,10 +681,6 @@ export default function ExperiencesPage() {
           <h1 className="xp-title">
             Resort days made for <em>play and pause</em>
           </h1>
-          <p className="xp-intro">
-            Move between poolside leisure, games, kids activities, picnics, and nature walks, all
-            shaped around the warm, unhurried rhythm of Enchula Resort.
-          </p>
           <div className="xp-actions">
             <Link className="xp-btn" href="/booking">
               Reserve an Experience
@@ -530,48 +692,56 @@ export default function ExperiencesPage() {
         </div>
       </div>
 
-      <div id="experiences" className="xp-section">
-        <div className="xp-section-heading">
-          <div>
-            <div className="xp-kicker">Leisure at Enchula</div>
-            <h2 className="xp-heading">
-              Simple pleasures, <em>beautifully hosted</em>
-            </h2>
-          </div>
-          <p className="xp-copy">
-            The experience page now brings together the resort activities guests naturally look for:
-            pool time, family-friendly play, recreation, picnics, and guided time outdoors.
-          </p>
+      <div id="experiences" className="xp-section xp-editorial-section">
+        <h2 className="xp-editorial-title">Experiences &amp; Activities</h2>
+        <p className="xp-editorial-lead">
+          Enchula brings together pool time, recreation, kids activities, picnics, and guided
+          nature walks in a relaxed resort rhythm.
+        </p>
+        <p className="xp-editorial-copy">
+          Families, couples, teams, and day visitors can shape their time around easy movement,
+          quiet corners, refreshing swims, games, and shared moments across the grounds.
+        </p>
+        <p className="xp-editorial-copy">
+          <strong>Every activity is designed to make the day feel active, social, restorative,
+          or family-focused without losing the calm of the resort setting.</strong>
+        </p>
+
+        <div className="xp-journey-heading">
+          <h3>Our Experience Journey</h3>
+          <p>A natural rhythm of swimming, play, family time, fresh air, and discovery</p>
         </div>
 
-        <div className="xp-feature">
-          <div className="xp-feature-content">
-            <div className="xp-kicker">The setting</div>
-            <h2 className="xp-feature-title">Relaxed resort energy, with room for every guest.</h2>
-            <p className="xp-copy">
-              Families, couples, teams, and day visitors can shape their time around easy movement,
-              quiet corners, refreshing swims, and shared moments across the grounds.
-            </p>
-          </div>
+        <div className="xp-journey" aria-label="Experience overview">
+          {experienceJourney.map(({ Icon, ...item }) => (
+            <div className="xp-journey-item" key={item.label}>
+              <Icon className="xp-journey-icon" aria-hidden="true" />
+              <div>
+                <strong>{item.label}</strong>
+                <span>{item.detail}</span>
+              </div>
+            </div>
+          ))}
         </div>
+
       </div>
 
       <div className="xp-section">
         <div className="xp-section-heading">
           <div>
-            <div className="xp-kicker">Featured activities</div>
+            <div className="xp-kicker">Activities at Enchula</div>
             <h2 className="xp-heading">
               Choose your resort <em>rhythm</em>
             </h2>
           </div>
           <p className="xp-copy">
-            These core activities give guests an easy way to plan a stay that feels active,
-            restorative, social, or family-focused.
+            Pick the experiences that match your day, from poolside leisure and family play to
+            picnics, recreation, and guided time outdoors.
           </p>
         </div>
 
         <div className="xp-activity-list">
-          {featured.map((experience) => (
+          {experiences.map((experience) => (
             <article className="xp-activity" key={experience.name}>
               <div className="xp-activity-media">
                 <Image
@@ -595,53 +765,6 @@ export default function ExperiencesPage() {
             </article>
           ))}
         </div>
-      </div>
-
-      <div className="xp-section">
-        <div className="xp-section-heading">
-          <div>
-            <div className="xp-kicker">More to enjoy</div>
-            <h2 className="xp-heading">
-              Fresh air, games, and <em>shared moments</em>
-            </h2>
-          </div>
-          <p className="xp-copy">
-            Add a picnic or guided walk to your stay for a slower, more grounded experience of the
-            resort grounds.
-          </p>
-        </div>
-
-        <div className="xp-card-grid">
-          {secondary.map((experience) => {
-            const showFullImage = experience.name === "Outdoor Picnics";
-
-            return (
-              <article
-                className={`xp-card${showFullImage ? " xp-card-contain" : ""}`}
-                key={experience.name}
-              >
-                <div className="xp-card-media">
-                  <Image
-                    src={experience.image}
-                    alt={experience.name}
-                    fill
-                    className={`xp-img${showFullImage ? " xp-img-contain" : ""}`}
-                    sizes="(max-width: 560px) 100vw, (max-width: 980px) 70vw, 70vw"
-                  />
-                </div>
-                <div className="xp-card-body">
-                  <h3 className="xp-card-title">{experience.name}</h3>
-                  <p className="xp-card-text">{experience.description}</p>
-                  <ul className="xp-tags">
-                    {experience.features.map((feature) => (
-                      <li key={feature}>{feature}</li>
-                    ))}
-                  </ul>
-                </div>
-              </article>
-            );
-          })}
-        </div>
 
         <div className="xp-cta">
           <h2>Plan the kind of day you want to remember.</h2>
@@ -649,7 +772,7 @@ export default function ExperiencesPage() {
             Reserve activities with the team, ask about availability, or combine experiences with
             dining, wellness, and accommodation for a fuller resort stay.
           </p>
-          <div className="xp-actions" style={{ justifyContent: "center" }}>
+          <div className="xp-cta-actions">
             <Link className="xp-btn" href="/booking">
               Book an Experience
             </Link>
