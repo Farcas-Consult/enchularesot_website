@@ -809,15 +809,10 @@ export default function DiningPage() {
       <div id="dining-experiences" className="dp-section">
         <div className="dp-section-heading">
           <div>
-            <div className="dp-kicker">Restaurant and lounge</div>
-            <h2 className="dp-heading">
-              Warm spaces for every <em>kind of gathering</em>
-            </h2>
+            <div className="dp-kicker">Dining experiences</div>
+            
           </div>
-          <p className="dp-copy">
-            From slow breakfasts to late-evening drinks, each dining space keeps the resort
-            atmosphere polished, comfortable, and rooted in local warmth.
-          </p>
+         
         </div>
 
         <div className="dp-experience-grid">

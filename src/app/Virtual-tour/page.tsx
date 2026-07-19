@@ -1167,14 +1167,9 @@ export default function VirtualTourPage() {
         <div className="vt-section-heading">
           <div>
             <div className="vt-kicker">Getting here</div>
-            <h2 className="vt-heading">
-              Clear directions, <em>then a calm arrival</em>
-            </h2>
+            
           </div>
-          <p className="vt-copy">
-            Open maps, confirm the resort address, and check in at reception for guidance around
-            the property.
-          </p>
+         
         </div>
 
         <div className="vt-direction-grid">

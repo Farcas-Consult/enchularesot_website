@@ -86,7 +86,8 @@ const galleryImages: GalleryImage[] = [
   { src: `${S3_BASE}/Image18.jpeg`, alt: "Massage Therapy", category: "Wellness & Fitness" },
   { src: `${S3_BASE}/Image19.jpeg`, alt: "Massage Therapy", category: "Wellness & Fitness" },
   { src: `${S3_BASE}/Image20.jpeg`, alt: "Massage Therapy", category: "Wellness & Fitness" },
-  { src: `${S3_BASE}/Sauna.webp`, alt: "Sauna and Steam Room", category: "Wellness & Fitness" },
+  { src: `${S3_BASE}/Image31.jpg`, alt: "Sauna and Steam Room", category: "Wellness & Fitness" },
+    { src: `${S3_BASE}/Image32.jpg`, alt: "Sauna and Steam Room", category: "Wellness & Fitness" },
 
   { src: `${S3_BASE}/Swimmingpool.jpeg`, alt: "Infinity Pool", category: "Fun and Activities" },
   { src: `${S3_BASE}/Image39.jpeg`, alt: "Swimming Pool View 1", category: "Fun and Activities" },
@@ -239,6 +240,43 @@ const styles = `
     padding: 6rem 0;
   }
 
+  .gp-intro-section {
+    width: min(1040px, calc(100% - 3rem));
+    margin: 0 auto;
+    padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.25rem, 4vw, 3.25rem);
+    text-align: center;
+  }
+
+  .gp-intro-title {
+    color: var(--brown-dark);
+    font-family: var(--font-serif);
+    font-size: clamp(2.45rem, 4.6vw, 4.7rem);
+    font-weight: 300;
+    line-height: 1.02;
+    margin: 0 auto 1.1rem;
+    max-width: 820px;
+  }
+
+  .gp-intro-title em {
+    color: var(--brown);
+    font-style: italic;
+  }
+
+  .gp-intro-lead {
+    color: rgba(74,36,0,.78);
+    font-size: clamp(1.05rem, 1.7vw, 1.3rem);
+    line-height: 1.75;
+    margin: 0 auto 1rem;
+    max-width: 860px;
+  }
+
+  .gp-intro-copy {
+    color: rgba(74,36,0,.68);
+    line-height: 1.85;
+    margin: 0 auto;
+    max-width: 760px;
+  }
+
   .gp-section-heading {
     display: grid;
     grid-template-columns: minmax(0, .95fr) minmax(280px, .7fr);
@@ -304,37 +342,6 @@ const styles = `
     background: var(--brown-dark);
     border-color: var(--brown-dark);
     color: var(--peach);
-  }
-
-  .gp-summary {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-    background: var(--sand);
-    margin-bottom: 2rem;
-  }
-
-  .gp-stat {
-    background: var(--white);
-    padding: 1.4rem;
-  }
-
-  .gp-stat strong {
-    display: block;
-    color: var(--brown);
-    font-family: var(--font-serif);
-    font-size: 2.4rem;
-    font-weight: 300;
-    line-height: 1;
-    margin-bottom: .45rem;
-  }
-
-  .gp-stat span {
-    color: rgba(74,36,0,.66);
-    font-size: .72rem;
-    font-weight: 600;
-    letter-spacing: .13em;
-    text-transform: uppercase;
   }
 
   .gp-grid {
@@ -482,8 +489,8 @@ const styles = `
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .gp-summary {
-      grid-template-columns: 1fr;
+    .gp-intro-section {
+      width: min(100% - 2rem, 720px);
     }
   }
 
@@ -629,33 +636,15 @@ export default function Gallery() {
         </div>
       </div>
 
+      
+
       <div id="gallery-collection" className="gp-section">
         <div className="gp-section-heading">
           <div>
             <div className="gp-kicker">Curated views</div>
-            <h2 className="gp-heading">
-              Browse the resort by <em>space and story</em>
-            </h2>
+           
           </div>
-          <p className="gp-copy">
-            Use the filters to move through the gallery, then open any image for a larger view.
-            Every crop stays rectangular and warm, matching the updated pages across the site.
-          </p>
-        </div>
-
-        <div className="gp-summary">
-          <div className="gp-stat">
-            <strong>{galleryImages.length}</strong>
-            <span>Gallery images</span>
-          </div>
-          <div className="gp-stat">
-            <strong>{categories.length - 1}</strong>
-            <span>Categories</span>
-          </div>
-          <div className="gp-stat">
-            <strong>{filteredImages.length}</strong>
-            <span>{activeFilter === "All" ? "Currently visible" : activeFilter}</span>
-          </div>
+         
         </div>
 
         <div className="gp-filter-bar" aria-label="Gallery categories">

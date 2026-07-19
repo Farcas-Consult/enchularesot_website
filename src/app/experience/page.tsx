@@ -34,7 +34,7 @@ const experiences = [
   {
     name: "Outdoor Picnics",
     kicker: "Open-air moments",
-    image: `${S3_BASE}/Party3.jpeg`,
+    image: `${S3_BASE}/Image41.jpeg`,
     description:
       "Settle into scenic grounds for relaxed picnics, casual celebrations, and slow afternoons with resort service close by.",
     features: ["Scenic grounds", "Casual gatherings", "Anytime leisure"],
@@ -42,7 +42,7 @@ const experiences = [
   {
     name: "Guided Nature Walks",
     kicker: "Nature and calm",
-    image: `${S3_BASE}/NatureWalk1.jpg`,
+    image: `${S3_BASE}/Image33.jpg`,
     description:
       "Explore the resort surroundings with guides who help guests notice the local landscape, plants, and quiet natural details.",
     features: ["Morning walks", "Local flora", "Guided pace"],
@@ -408,14 +408,6 @@ const styles = `
     background: transparent;
   }
 
-  .xp-activity:nth-child(even) .xp-activity-media {
-    order: 2;
-  }
-
-  .xp-activity:nth-child(even) .xp-activity-content {
-    order: 1;
-  }
-
   .xp-activity-media {
     position: relative;
     height: 100%;
@@ -730,14 +722,9 @@ export default function ExperiencesPage() {
         <div className="xp-section-heading">
           <div>
             <div className="xp-kicker">Activities at Enchula</div>
-            <h2 className="xp-heading">
-              Choose your resort <em>rhythm</em>
-            </h2>
+           
           </div>
-          <p className="xp-copy">
-            Pick the experiences that match your day, from poolside leisure and family play to
-            picnics, recreation, and guided time outdoors.
-          </p>
+         
         </div>
 
         <div className="xp-activity-list">

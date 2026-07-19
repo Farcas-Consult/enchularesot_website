@@ -38,13 +38,13 @@ const wellnessServices = [
   {
     name: "Massage Therapy",
     kicker: "Restore",
-    image: `${S3_BASE}/Massage.webp`,
+    image: `${S3_BASE}/Image32.jpg`,
     description: "Relaxing massage treatments tailored to help you unwind, recover, and reset.",
   },
   {
     name: "Sauna and Steam Room",
     kicker: "Detox",
-    image: `${S3_BASE}/Sauna.webp`,
+    image: `${S3_BASE}/Image31.jpg`,
     description: "Slow down and release tension in warm wellness spaces made for deep relaxation.",
   },
 ];
@@ -53,7 +53,7 @@ const gallery = [
   { src: `${S3_BASE}/Image10.jpeg`, alt: "Gym at Enchula Resort" },
   { src: `${S3_BASE}/Image11.jpeg`, alt: "Fitness equipment at Enchula Resort" },
   { src: `${S3_BASE}/Image15.jpeg`, alt: "Massage therapy at Enchula Resort" },
-  { src: `${S3_BASE}/Sauna.webp`, alt: "Sauna and steam room at Enchula Resort" },
+  { src: `${S3_BASE}/Image31.jpg`, alt: "Sauna and steam room at Enchula Resort" },
   { src: `${S3_BASE}/Image17.jpeg`, alt: "Spa treatment space at Enchula Resort" },
   { src: `${S3_BASE}/Image19.jpeg`, alt: "Spa treatment space at Enchula Resort" },
   { src: `${S3_BASE}/Image18.jpeg`, alt: "Spa treatment space at Enchula Resort" },
@@ -67,9 +67,11 @@ const journeyItems = [
 ];
 
 const styles = `
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
+
   :root {
-    --wp-serif: 'Lora', Georgia, serif;
-    --wp-sans: 'Nunito', system-ui, sans-serif;
+    --wp-serif: 'Cormorant Garamond', Georgia, serif;
+    --wp-sans: 'Jost', system-ui, sans-serif;
     --wp-line: color-mix(in srgb, var(--brand-primary) 24%, transparent);
     --wp-muted: color-mix(in srgb, var(--brand-gray) 70%, var(--brand-background));
     --wp-soft: color-mix(in srgb, var(--brand-background) 88%, var(--text-on-dark));
@@ -77,6 +79,14 @@ const styles = `
   }
 
   .wp-root {
+    --brand-primary: #B99A66;
+    --brand-black: #4A2400;
+    --brand-gray: #5C4033;
+    --brand-background: #FAF6F0;
+    --brand-light-brown: #D2BB9E;
+    --text-on-dark: #FFFFFF;
+    --wp-blush: #D7BFA8;
+    --wp-peach: #FFD3A3;
     min-height: 100vh;
     background: var(--brand-background);
     color: var(--brand-black);
@@ -101,14 +111,6 @@ const styles = `
     object-fit: cover;
     filter: saturate(.92) contrast(.95) brightness(.92);
     transform: scale(1.02);
-  }
-
-  .wp-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, color-mix(in srgb, var(--brand-black) 58%, transparent) 0%, transparent 32%, color-mix(in srgb, var(--brand-black) 72%, transparent) 100%),
-      linear-gradient(90deg, color-mix(in srgb, var(--brand-black) 48%, transparent) 0%, transparent 58%, color-mix(in srgb, var(--brand-black) 30%, transparent) 100%);
   }
 
   .wp-hero-content {
@@ -251,7 +253,7 @@ const styles = `
 
   .wp-btn:hover {
     transform: translateY(-2px);
-    background: color-mix(in srgb, var(--brand-primary) 76%, var(--brand-background));
+    background: var(--wp-peach);
   }
 
   .wp-btn-secondary {
@@ -646,18 +648,6 @@ const styles = `
     line-height: 1.72;
   }
 
-  .wp-split-row:nth-child(even) {
-    grid-template-columns: minmax(360px, .92fr) minmax(0, 1.08fr);
-  }
-
-  .wp-split-row:nth-child(even) .wp-split-media {
-    order: 2;
-  }
-
-  .wp-split-row:nth-child(even) .wp-split-detail {
-    order: 1;
-  }
-
   .wp-card-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -779,7 +769,7 @@ const styles = `
   .wp-cta p {
     max-width: 650px;
     margin: 0 auto 1.75rem;
-    color: color-mix(in srgb, var(--text-on-dark) 72%, var(--brand-primary));
+    color: color-mix(in srgb, var(--wp-peach) 78%, var(--text-on-dark));
     line-height: 1.75;
   }
 
@@ -1007,7 +997,6 @@ export default function WellnessFitnessPage() {
           sizes="100vw"
           priority
         />
-        <div className="wp-hero-overlay" />
         <div className="wp-hero-content">
           <div className="wp-eyebrow">Wellness and fitness</div>
           <h1 className="wp-title">
@@ -1084,19 +1073,13 @@ export default function WellnessFitnessPage() {
       </div>
 
       <div className="wp-section wp-split-section">
-        <div className="wp-section-heading">
+      <div className="wp-section-heading">
           <div>
             <div className="wp-kicker">Fitness facilities</div>
-            <h2 className="wp-heading">
-              Train with structure, <em>space and support</em>
-            </h2>
+            
           </div>
-          <p className="wp-copy">
-            The gym combines practical equipment, class options, and guided training support for
-            guests who want to stay active while at the resort.
-          </p>
+          
         </div>
-
         <div className="wp-split-list">
           {fitnessServices.map((service) => (
             <article className="wp-split-row" key={service.name}>
@@ -1128,14 +1111,9 @@ export default function WellnessFitnessPage() {
         <div className="wp-section-heading">
           <div>
             <div className="wp-kicker">Spa and wellness services</div>
-            <h2 className="wp-heading">
-              Gentle rituals for <em>rest and renewal</em>
-            </h2>
+            
           </div>
-          <p className="wp-copy">
-            Choose restorative spa treatments and calming wellness details that help the body slow
-            down and the day feel lighter.
-          </p>
+          
         </div>
 
         <div className="wp-split-list">
