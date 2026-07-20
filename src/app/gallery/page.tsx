@@ -605,7 +605,7 @@ export default function Gallery() {
 
       <div className="gp-hero">
         <Image
-          src={`${S3_BASE}/IMG_2256.webp`}
+          src={`${S3_BASE}/Games3.jpeg`}
           alt="Enchula Resort gallery"
           fill
           className="gp-hero-img"
