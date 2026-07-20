@@ -71,7 +71,9 @@ const galleryImages: GalleryImage[] = [
   { src: `${S3_BASE}/Image7.jpeg`, alt: "Elegant Meals", category: "Dining" },
   { src: `${S3_BASE}/Image9.jpeg`, alt: "Elegant Meals", category: "Dining" },
 
-   { src: `${S3_BASE}/Bar1.jpg`, alt: "Bar 1", category: "Bar" },
+  { src: `${S3_BASE}/Bar1.jpg`, alt: "Bar 1", category: "Bar" },
+  { src: `${S3_BASE}/Bar1.jpeg`, alt: "Bar 1", category: "Bar" },
+  { src: `${S3_BASE}/Bar2.jpeg`, alt: "Bar 1", category: "Bar" },
   { src: `${S3_BASE}/Image8.jpeg`, alt: "Bar 2", category: "Bar" },
 
   { src: `${S3_BASE}/Image10.jpeg`, alt: "Wellness Spa", category: "Wellness & Fitness" },
@@ -133,14 +135,6 @@ const styles = `
     object-fit: cover;
     transform: scale(1.03);
     filter: saturate(.88) sepia(.08) contrast(.94) brightness(.98);
-  }
-
-  .gp-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(74,36,0,.12) 0%, rgba(74,36,0,.76) 100%),
-      linear-gradient(90deg, rgba(74,36,0,.58) 0%, rgba(74,36,0,.08) 62%);
   }
 
   .gp-hero-content {
@@ -618,7 +612,6 @@ export default function Gallery() {
           priority
           sizes="100vw"
         />
-        <div className="gp-hero-overlay" />
         <div className="gp-hero-content">
           <div className="gp-eyebrow">Resort gallery</div>
           <h1 className="gp-title">

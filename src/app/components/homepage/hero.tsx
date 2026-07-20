@@ -107,25 +107,6 @@ export default function Hero() {
           to   { opacity: 1; transform: translateY(0); }
         }
 
-        .hero-line-grow { animation: heroLineGrow 6.5s linear forwards; }
-        @keyframes heroLineGrow {
-          from { width: 0%; }
-          to   { width: 100%; }
-        }
-
-        .hero-scroll-pulse {
-          animation: scrollPulse 2.2s ease-in-out infinite;
-        }
-        @keyframes scrollPulse {
-          0%, 100% { opacity: .5; transform: translateY(0); }
-          50%       { opacity: 1; transform: translateY(5px); }
-        }
-
-        .hero-dot-btn {
-          transition: all .3s ease;
-          cursor: pointer;
-          border: none; background: none; padding: 0;
-        }
       `}</style>
 
       {/* Slides */}
@@ -242,55 +223,6 @@ export default function Hero() {
           </Link>}
         </div>
       </div>
-
-      {/* Slide progress — bottom left */}
-      {!isPhone && <div style={{
-        position: "absolute", bottom: "2.5rem", left: "3rem", zIndex: 5,
-        display: "flex", alignItems: "center",
-      }}>
-        {/* Progress bar */}
-        <div style={{ width: "80px", height: "1px", background: "color-mix(in srgb, var(--brand-peach) 20%, transparent)", position: "relative", overflow: "hidden" }}>
-          <div key={current} className="hero-line-grow" style={{
-            position: "absolute", top: 0, left: 0, height: "100%",
-            background: "var(--brand-primary)",
-          }} />
-        </div>
-      </div>}
-
-      {/* Dot nav — bottom center */}
-      {!isPhone && <div style={{
-        position: "absolute", bottom: "2.5rem", left: "50%",
-        transform: "translateX(-50%)", zIndex: 5,
-        display: "flex", gap: ".65rem",
-      }}>
-        {slides.map((_, i) => (
-          <button key={i} className="hero-dot-btn" onClick={() => goTo(i)}
-            aria-label={`Go to slide ${i + 1}`}
-            style={{
-              width: i === current ? "36px" : "20px",
-              height: "2px",
-              background: i === current ? "var(--brand-primary)" : "color-mix(in srgb, var(--brand-peach) 30%, transparent)",
-            }}
-          />
-        ))}
-      </div>}
-
-      {/* Scroll indicator — bottom right */}
-      {!isPhone && <div style={{
-        position: "absolute", bottom: "2.5rem", right: "3rem", zIndex: 5,
-        display: "flex", flexDirection: "column", alignItems: "center", gap: ".5rem",
-      }}>
-        <span style={{
-          fontFamily: "'Jost', sans-serif",
-          fontSize: ".6rem", letterSpacing: ".2em", textTransform: "uppercase",
-          color: "color-mix(in srgb, var(--brand-peach) 50%, transparent)", writingMode: "vertical-rl",
-          marginBottom: ".5rem",
-        }}>Scroll</span>
-        <div className="hero-scroll-pulse" style={{
-          width: "1px", height: "48px",
-          background: "linear-gradient(180deg, color-mix(in srgb, var(--brand-primary) 70%, transparent), transparent)",
-        }} />
-      </div>}
 
     </section>
   );

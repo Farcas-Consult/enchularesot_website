@@ -104,20 +104,24 @@ const GlobalStyles = () => (
       max-width: 1180px;
     }
     .room-card {
-      background: transparent;
-      color: var(--brown-dark);
-      display: flex;
-      flex-direction: column;
-      height: auto;
+      color: var(--white);
       min-width: 0;
-      overflow: visible;
-      text-align: center;
     }
     .room-card-media {
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 4 / 5;
       background: var(--sand);
-      margin-bottom: 1.2rem;
       overflow: hidden;
+      position: relative;
+    }
+    .room-card-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--brand-black) 10%, transparent) 0%, transparent 34%),
+        linear-gradient(180deg, transparent 28%, color-mix(in srgb, var(--brand-black) 88%, transparent) 100%);
+      pointer-events: none;
+      z-index: 1;
     }
     .room-card-img {
       width: 100%;
@@ -129,27 +133,33 @@ const GlobalStyles = () => (
       transform: scale(1.04);
       filter: saturate(.96) contrast(.98) brightness(.94);
     }
+    .room-card-overlay {
+      position: absolute;
+      inset: auto 0 0;
+      z-index: 2;
+      padding: clamp(1.15rem, 2vw, 1.65rem);
+      text-align: left;
+    }
     .room-card-title {
-      color: color-mix(in srgb, var(--brand-black) 78%, var(--brown));
+      color: var(--brand-background);
       font-family: var(--font-sans);
       font-size: clamp(1.2rem, 1.8vw, 1.65rem);
       font-weight: 800;
       letter-spacing: .02em;
       line-height: 1.15;
-      margin: 0 auto .85rem;
-      max-width: 16ch;
+      margin: 0 0 .75rem;
+      max-width: 18ch;
       text-transform: uppercase;
     }
     .room-card-meta {
       align-items: center;
-      color: rgba(74, 36, 0, .78);
+      color: color-mix(in srgb, var(--brand-background) 84%, transparent);
       display: flex;
       flex-wrap: wrap;
-      font-size: .95rem;
+      font-size: .9rem;
       gap: .75rem;
-      justify-content: center;
       line-height: 1.3;
-      margin: 0 0 1.15rem;
+      margin: 0 0 .95rem;
     }
     .room-meta-item {
       align-items: center;
@@ -158,94 +168,93 @@ const GlobalStyles = () => (
       white-space: nowrap;
     }
     .room-meta-item + .room-meta-item {
-      border-left: 1px solid rgba(143, 95, 47, .28);
+      border-left: 1px solid color-mix(in srgb, var(--brand-peach) 28%, transparent);
       padding-left: .75rem;
     }
     .room-meta-icon {
-      color: #8a1f18;
+      color: var(--brand-peach);
       flex: 0 0 auto;
     }
     .room-card-price {
-      color: var(--brown);
+      color: var(--brand-peach);
       font-size: .78rem;
       font-weight: 700;
       letter-spacing: .12em;
-      margin: 0 0 1.25rem;
+      margin: 0 0 1rem;
       text-transform: uppercase;
     }
     .room-card-actions {
       display: flex;
-      gap: .9rem;
-      justify-content: center;
-      margin-top: auto;
+      flex-wrap: wrap;
+      gap: .65rem;
     }
     .room-card-action {
       align-items: center;
-      background: var(--brown);
-      color: var(--white);
+      background: var(--brand-primary);
+      color: var(--brand-black);
       display: inline-flex;
-      font-size: .72rem;
+      font-size: .68rem;
       font-weight: 800;
       justify-content: center;
       letter-spacing: .09em;
-      min-height: 46px;
-      min-width: 138px;
-      padding: .85rem 1.25rem;
+      min-height: 40px;
+      padding: .7rem 1rem;
       text-decoration: none;
       text-transform: uppercase;
       transition: background .25s var(--ease-out), color .25s var(--ease-out), transform .25s var(--ease-out);
     }
     .room-card-action:hover {
-      background: var(--brown-dark);
-      color: var(--peach);
+      background: var(--brand-peach);
+      color: var(--brand-black);
       transform: translateY(-2px);
     }
     /* ── Events ── */
     .events-showcase {
-      position: relative;
-      min-height: clamp(560px, 68vw, 760px);
+      background: var(--brand-background);
+      color: var(--brand-black);
+      padding: clamp(4.5rem, 8vw, 7rem) 1.5rem;
+    }
+    .events-showcase-inner {
+      width: min(1180px, calc(100% - 3rem));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(320px, .86fr) minmax(0, 1.14fr);
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+    .events-image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-auto-rows: auto;
+      align-items: stretch;
+      gap: .85rem;
+    }
+    .events-image-tile {
+      aspect-ratio: 4 / 3;
+      background: var(--sand);
+      margin: 0;
       overflow: hidden;
-      background: var(--brown-dark);
-      color: var(--white);
-      isolation: isolate;
+      position: relative;
     }
-    .events-showcase-bg {
-      position: absolute;
-      inset: 0;
+    .events-image-tile img {
+      display: block;
       height: 100%;
-      width: 100%;
       object-fit: cover;
-      opacity: 0;
-      transform: scale(1.045);
-      transition: opacity 2.2s ease-in-out, transform 8s ease-out;
-      filter: saturate(.9) contrast(.95) brightness(.9);
-      z-index: -3;
+      transition: transform .55s var(--ease-out), filter .3s var(--ease-out);
+      width: 100%;
     }
-    .events-showcase-bg.active {
-      opacity: 1;
-      transform: scale(1.015);
-    }
-    .events-showcase::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(74, 22, 6, .1) 0%, rgba(74, 22, 6, .08) 34%, rgba(74, 22, 6, .02) 72%),
-        linear-gradient(180deg, color-mix(in srgb, var(--brand-black) 2%, transparent) 0%, color-mix(in srgb, var(--brand-warm-brown) 10%, transparent) 100%);
-      z-index: -2;
-      pointer-events: none;
+    .events-image-tile.active img,
+    .events-image-tile:hover img {
+      filter: saturate(.96) contrast(.98) brightness(.94);
+      transform: scale(1.04);
     }
     .events-showcase-content {
-      width: min(1180px, calc(100% - 3rem));
-      min-height: inherit;
-      margin: 0 auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: clamp(4.5rem, 8vw, 7rem) 0;
     }
     .events-showcase-kicker {
-      color: var(--gold);
+      color: var(--brand-primary);
       font-size: .68rem;
       font-weight: 700;
       letter-spacing: .22em;
@@ -253,7 +262,7 @@ const GlobalStyles = () => (
       text-transform: uppercase;
     }
     .events-showcase-title {
-      color: var(--gold);
+      color: color-mix(in srgb, var(--brand-black) 76%, var(--brand-warm-brown));
       font-family: var(--font-serif);
       font-size: clamp(2.25rem, 4.5vw, 4.4rem);
       font-weight: 600;
@@ -262,16 +271,16 @@ const GlobalStyles = () => (
       margin: 0 0 1.2rem;
       max-width: 720px;
       text-transform: uppercase;
-      text-shadow: 0 8px 26px color-mix(in srgb, var(--brand-black) 38%, transparent);
+      text-shadow: none;
     }
     .events-showcase-desc {
-      color: rgba(255, 255, 255, .88);
+      color: color-mix(in srgb, var(--brand-gray) 86%, var(--brand-black));
       font-size: clamp(.92rem, 1.05vw, 1rem);
       font-weight: 600;
       line-height: 1.7;
       margin: 0 0 1.7rem;
       max-width: 600px;
-      text-shadow: 0 5px 18px color-mix(in srgb, var(--brand-black) 42%, transparent);
+      text-shadow: none;
     }
     .events-full-link {
       display: inline-flex;
@@ -296,59 +305,35 @@ const GlobalStyles = () => (
       transform: translateY(-2px);
     }
     .events-card-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(130px, 1fr));
-      gap: clamp(1rem, 2vw, 1.75rem);
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
       margin-top: clamp(1.5rem, 3vw, 2.25rem);
-      max-width: 620px;
+      max-width: 100%;
     }
     .event-card {
       appearance: none;
-      border: 0;
-      background: transparent;
-      color: var(--white);
+      border: 1px solid color-mix(in srgb, var(--brand-primary) 26%, transparent);
+      background: color-mix(in srgb, var(--brand-white) 68%, transparent);
+      color: var(--brand-black);
       cursor: pointer;
-      padding: 0;
-      text-align: left;
+      padding: .78rem 1rem;
+      text-align: center;
+      transition: background .25s var(--ease-out), border-color .25s var(--ease-out), transform .25s var(--ease-out);
     }
-    .event-card-thumb {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      border: 2px solid rgba(255, 255, 255, .18);
-      display: block;
-      margin-bottom: .75rem;
-      overflow: hidden;
-      transition: border-color .25s var(--ease-out), transform .25s var(--ease-out);
-    }
-    .event-card-thumb img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      transition: transform .55s var(--ease-out);
-    }
-    .event-card:hover .event-card-thumb,
-    .event-card.active .event-card-thumb {
-      border-color: var(--gold);
+    .event-card:hover,
+    .event-card.active {
+      background: var(--brand-primary);
+      border-color: var(--brand-primary);
       transform: translateY(-2px);
     }
-    .event-card:hover img,
-    .event-card.active img {
-      transform: scale(1.045);
-    }
     .event-card-name {
-      color: var(--white);
+      color: var(--brand-black);
       display: block;
       font-size: .88rem;
       font-weight: 800;
       line-height: 1.35;
-      text-shadow: 0 2px 12px color-mix(in srgb, var(--brand-black) 45%, transparent);
-    }
-    .event-card-desc {
-      color: rgba(255, 255, 255, .72);
-      display: block;
-      font-size: .75rem;
-      line-height: 1.4;
-      margin-top: .3rem;
+      text-shadow: none;
     }
 
     /* ── Dining ── */
@@ -391,21 +376,10 @@ const GlobalStyles = () => (
       gap: clamp(1.25rem, 2.2vw, 1.75rem);
     }
     .dining-card {
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 4 / 5;
       background: var(--sand);
       overflow: hidden;
       position: relative;
-    }
-    .dining-card-layer {
-      position: absolute;
-      inset: 0;
-      opacity: 0;
-      transform: scale(1.025);
-      transition: opacity 2s ease-in-out, transform 7s ease-out, filter 1.4s ease-in-out;
-    }
-    .dining-card-layer.active {
-      opacity: 1;
-      transform: scale(1.01);
     }
     .dining-card img {
       display: block;
@@ -413,10 +387,11 @@ const GlobalStyles = () => (
       object-fit: cover;
       object-position: center;
       width: 100%;
+      transition: transform .55s var(--ease-out), filter .3s var(--ease-out);
     }
-    .dining-card:hover .dining-card-layer.active {
+    .dining-card:hover img {
       filter: saturate(.96) contrast(.98) brightness(.94);
-      transform: scale(1.025);
+      transform: scale(1.04);
     }
     .dining-actions {
       display: flex;
@@ -449,59 +424,85 @@ const GlobalStyles = () => (
 
     /* ── Activities ── */
     .activities-showcase {
-      position: relative;
-      min-height: clamp(560px, 68vw, 760px);
-      overflow: hidden;
-      background: var(--brown-dark);
-      color: var(--white);
-      isolation: isolate;
+      background: var(--brand-background);
+      color: var(--brand-black);
+      padding: clamp(4.5rem, 8vw, 7rem) 1.5rem;
     }
-    .activities-showcase-bg {
+    .activities-showcase-header {
+      width: min(1180px, calc(100% - 3rem));
+      margin: 0 auto;
+      max-width: 1180px;
+    }
+    .activities-showcase-list {
+      width: min(1180px, calc(100% - 3rem));
+      margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+      display: grid;
+      gap: clamp(2rem, 5vw, 4rem);
+    }
+    .activities-showcase-block {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+    .activities-media-frame {
+      aspect-ratio: 4 / 3;
+      background: var(--sand);
+      overflow: hidden;
+      position: relative;
+    }
+    .activities-media-img {
       position: absolute;
       inset: 0;
       height: 100%;
       width: 100%;
       object-fit: cover;
       opacity: 0;
-      transform: scale(1.045);
-      transition: opacity 2.2s ease-in-out, transform 8s ease-out;
-      filter: saturate(.92) contrast(.95) brightness(.92);
-      z-index: -3;
+      transform: scale(1.035);
+      transition: opacity 1s ease-in-out, transform 6s ease-out;
     }
-    .activities-showcase-bg.active {
+    .activities-media-img.active {
       opacity: 1;
-      transform: scale(1.015);
+      transform: scale(1.01);
     }
-    .activities-showcase::before {
-      content: "";
+    .activities-media-dots {
       position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(74, 22, 6, .1) 0%, rgba(74, 22, 6, .08) 34%, rgba(74, 22, 6, .02) 72%),
-        linear-gradient(180deg, color-mix(in srgb, var(--brand-black) 2%, transparent) 0%, color-mix(in srgb, var(--brand-warm-brown) 10%, transparent) 100%);
-      z-index: -2;
-      pointer-events: none;
+      bottom: 1rem;
+      left: 1rem;
+      z-index: 2;
+      display: flex;
+      gap: .45rem;
+    }
+    .activities-media-dot {
+      appearance: none;
+      width: 9px;
+      height: 9px;
+      border: 1px solid color-mix(in srgb, var(--brand-white) 75%, transparent);
+      background: color-mix(in srgb, var(--brand-white) 35%, transparent);
+      border-radius: 999px;
+      cursor: pointer;
+      padding: 0;
+    }
+    .activities-media-dot.active {
+      background: var(--brand-peach);
+      border-color: var(--brand-peach);
     }
     .activities-showcase-content {
-      width: min(1180px, calc(100% - 3rem));
-      min-height: inherit;
-      margin: 0 auto;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: clamp(4.5rem, 8vw, 7rem) 0;
     }
     .activities-showcase-kicker {
-      color: var(--gold);
+      color: var(--brand-primary);
       font-size: .68rem;
       font-weight: 700;
       letter-spacing: .22em;
       margin: 0 0 .85rem;
       text-transform: uppercase;
-      text-shadow: 0 5px 18px color-mix(in srgb, var(--brand-black) 35%, transparent);
+      text-shadow: none;
     }
     .activities-showcase-title {
-      color: var(--gold);
+      color: color-mix(in srgb, var(--brand-black) 76%, var(--brand-warm-brown));
       font-family: var(--font-serif);
       font-size: clamp(2.25rem, 4.5vw, 4.4rem);
       font-weight: 600;
@@ -510,16 +511,16 @@ const GlobalStyles = () => (
       margin: 0 0 1.2rem;
       max-width: 720px;
       text-transform: uppercase;
-      text-shadow: 0 8px 26px color-mix(in srgb, var(--brand-black) 38%, transparent);
+      text-shadow: none;
     }
     .activities-showcase-desc {
-      color: rgba(255, 255, 255, .88);
+      color: color-mix(in srgb, var(--brand-gray) 86%, var(--brand-black));
       font-size: clamp(.92rem, 1.05vw, 1rem);
       font-weight: 600;
       line-height: 1.7;
       margin: 0 0 1.7rem;
       max-width: 600px;
-      text-shadow: 0 5px 18px color-mix(in srgb, var(--brand-black) 42%, transparent);
+      text-shadow: none;
     }
     .activities-full-link {
       display: inline-flex;
@@ -544,59 +545,35 @@ const GlobalStyles = () => (
       transform: translateY(-2px);
     }
     .activities-card-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(130px, 1fr));
-      gap: clamp(1rem, 2vw, 1.75rem);
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem;
       margin-top: clamp(1.5rem, 3vw, 2.25rem);
-      max-width: 620px;
+      max-width: 100%;
     }
     .activity-card {
       appearance: none;
-      border: 0;
-      background: transparent;
-      color: var(--white);
+      border: 1px solid color-mix(in srgb, var(--brand-primary) 26%, transparent);
+      background: color-mix(in srgb, var(--brand-white) 68%, transparent);
+      color: var(--brand-black);
       cursor: pointer;
-      padding: 0;
-      text-align: left;
+      padding: .78rem 1rem;
+      text-align: center;
+      transition: background .25s var(--ease-out), border-color .25s var(--ease-out), transform .25s var(--ease-out);
     }
-    .activity-card-thumb {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      border: 2px solid rgba(255, 255, 255, .18);
-      display: block;
-      margin-bottom: .75rem;
-      overflow: hidden;
-      transition: border-color .25s var(--ease-out), transform .25s var(--ease-out);
-    }
-    .activity-card-thumb img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      transition: transform .55s var(--ease-out);
-    }
-    .activity-card:hover .activity-card-thumb,
-    .activity-card.active .activity-card-thumb {
-      border-color: var(--gold);
+    .activity-card:hover,
+    .activity-card.active {
+      background: var(--brand-primary);
+      border-color: var(--brand-primary);
       transform: translateY(-2px);
     }
-    .activity-card:hover img,
-    .activity-card.active img {
-      transform: scale(1.045);
-    }
     .activity-card-name {
-      color: var(--white);
+      color: var(--brand-black);
       display: block;
       font-size: .88rem;
       font-weight: 800;
       line-height: 1.35;
-      text-shadow: 0 2px 12px color-mix(in srgb, var(--brand-black) 45%, transparent);
-    }
-    .activity-card-desc {
-      color: rgba(255, 255, 255, .72);
-      display: block;
-      font-size: .75rem;
-      line-height: 1.4;
-      margin-top: .3rem;
+      text-shadow: none;
     }
 
     /* ── Reviews ── */
@@ -625,31 +602,28 @@ const GlobalStyles = () => (
       .dining-card:nth-child(3) { display: none; }
       .reviews-grid { grid-template-columns: 1fr; }
       .section { padding: 4rem 1.25rem; }
-      .events-showcase-content { width: min(100% - 2rem, 720px); }
+      .events-showcase-inner { grid-template-columns: 1fr; width: min(100% - 2rem, 720px); }
       .events-card-row { max-width: 100%; }
-      .activities-showcase-content { width: min(100% - 2rem, 720px); }
-      .activities-card-row { max-width: 100%; }
+      .activities-showcase-block { grid-template-columns: 1fr; }
+      .activities-showcase-header,
+      .activities-showcase-list { width: min(100% - 2rem, 720px); }
     }
 
     @media (max-width: 640px) {
       .dining-preview { padding: 4rem 0; }
       .dining-strip { grid-template-columns: 1fr; gap: .85rem; }
-      .dining-card { aspect-ratio: 4 / 3; }
+      .dining-card { aspect-ratio: 4 / 5; }
       .dining-card:nth-child(2),
       .dining-card:nth-child(3) { display: none; }
       .room-card { height: auto !important; }
       .room-card-actions { flex-direction: column; gap: .65rem; }
       .room-card-action { width: 100%; }
-      .events-showcase { min-height: auto; }
-      .events-showcase-content { padding: 4rem 0; }
-      .events-card-row { grid-template-columns: 1fr; gap: 1rem; }
-      .event-card { display: grid; grid-template-columns: 116px minmax(0, 1fr); gap: .9rem; align-items: center; }
-      .event-card-thumb { margin-bottom: 0; }
-      .activities-showcase { min-height: auto; }
-      .activities-showcase-content { padding: 4rem 0; }
-      .activities-card-row { grid-template-columns: 1fr; gap: 1rem; }
-      .activity-card { display: grid; grid-template-columns: 116px minmax(0, 1fr); gap: .9rem; align-items: center; }
-      .activity-card-thumb { margin-bottom: 0; }
+      .events-showcase { padding: 4rem 1rem; }
+      .events-image-grid { grid-template-columns: 1fr; }
+      .events-card-row { gap: .65rem; }
+      .event-card { flex: 1 1 100%; }
+      .activities-showcase { padding: 4rem 1rem; }
+      .activities-media-frame { aspect-ratio: 4 / 3; }
     }
   `}</style>
 );
@@ -744,26 +718,28 @@ function RoomsPreview() {
           <article className="room-card" key={r.id}>
             <div className="room-card-media">
               <img src={r.image} alt={r.name} className="room-card-img" />
-            </div>
-            <h3 className="room-card-title">{r.name}</h3>
-            <div className="room-card-meta">
-              <span className="room-meta-item">
-                <Users className="room-meta-icon" size={20} strokeWidth={2.2} />
-                {r.guests}
-              </span>
-              <span className="room-meta-item">
-                <Maximize2 className="room-meta-icon" size={18} strokeWidth={2.2} />
-                {r.size}
-              </span>
-            </div>
-            <p className="room-card-price">{r.price}</p>
-            <div className="room-card-actions">
-              <a className="room-card-action" href={`/rooms#${r.anchor}`}>
-                View More
-              </a>
-              <a className="room-card-action" href="/booking">
-                Book Now
-              </a>
+              <div className="room-card-overlay">
+                <h3 className="room-card-title">{r.name}</h3>
+                <div className="room-card-meta">
+                  <span className="room-meta-item">
+                    <Users className="room-meta-icon" size={20} strokeWidth={2.2} />
+                    {r.guests}
+                  </span>
+                  <span className="room-meta-item">
+                    <Maximize2 className="room-meta-icon" size={18} strokeWidth={2.2} />
+                    {r.size}
+                  </span>
+                </div>
+                <p className="room-card-price">{r.price}</p>
+                <div className="room-card-actions">
+                  <a className="room-card-action" href={`/rooms#${r.anchor}`}>
+                    View More
+                  </a>
+                  <a className="room-card-action" href="/booking">
+                    Book Now
+                  </a>
+                </div>
+              </div>
             </div>
           </article>
         ))}
@@ -780,9 +756,11 @@ const eventsData = [
     detail:
       "Host strategy sessions, board retreats, workshops, and conferences in calm resort spaces designed for productive conversations and polished coordination.",
     photos: [
-      { src: `${S3_BASE}/Conferences.jpeg`, title: "Retreat Sessions" },
-      { src: `${S3_BASE}/Conferences2.jpeg`, title: "Conference Spaces" },
-      { src: `${S3_BASE}/Conferences3.jpeg`, title: "Focused Gatherings" },
+      { src: `${S3_BASE}/Retreat1.jpeg`, title: "Retreat Sessions" },
+      { src: `${S3_BASE}/Retreat2.jpeg`, title: "Conference Spaces" },
+      { src: `${S3_BASE}/Retreat3.jpeg`, title: "Focused Gatherings" },
+       { src: `${S3_BASE}/Retreat4.jpeg`, title: "Focused Gatherings" },
+       { src: `${S3_BASE}/Retreat5.jpeg`, title: "Focused Gatherings" },
     ],
   },
   {
@@ -791,9 +769,12 @@ const eventsData = [
     detail:
       "From company functions and product launches to weddings, parties, and private celebrations, the team handles details with warmth and clear organization.",
     photos: [
-      { src: `${S3_BASE}/Events1.jpeg`,  title: "Corporate Events" },
-      { src: `${S3_BASE}/Image.jpeg`,   title: "Social Gatherings" },
-      { src: `${S3_BASE}/Image2.jpeg`,  title: "Celebrations" },
+      { src: `${S3_BASE}/Social1.jpeg`,  title: "Corporate Events" },
+      { src: `${S3_BASE}/Social2.jpeg`,   title: "Social Gatherings" },
+      { src: `${S3_BASE}/Social3.jpeg`,  title: "Celebrations" },
+      { src: `${S3_BASE}/Social4.jpeg`,  title: "Celebrations" },
+      { src: `${S3_BASE}/Social5.jpeg`,  title: "Celebrations" },
+      { src: `${S3_BASE}/Social6.jpeg`,  title: "Celebrations" },
     ],
   },
   {
@@ -834,44 +815,37 @@ function Events() {
 
   return (
     <section id="events" className="events-showcase fade-in" aria-label="Conferences and events">
-      {eventsData.map((event, eventIndex) =>
-        event.photos.map((photo, photoIndex) => (
-          <img
-            key={`${event.name}-${photo.src}`}
-            src={photo.src}
-            alt={photo.title}
-            className={`events-showcase-bg ${
-              eventIndex === active && photoIndex === activePhoto ? "active" : ""
-            }`}
-            loading={eventIndex === 0 && photoIndex === 0 ? "eager" : "lazy"}
-          />
-        ))
-      )}
+      <div className="events-showcase-inner">
+        <div className="events-showcase-content">
+          <p className="events-showcase-kicker">Gatherings at Enchula Resort</p>
+          <h2 className="events-showcase-title">Conferences &amp; Events</h2>
+          <p className="events-showcase-desc">{activeEvent.detail}</p>
+          <a href="/events" className="events-full-link">
+            Discover More
+          </a>
 
-      <div className="events-showcase-content">
-        <p className="events-showcase-kicker">Gatherings at Enchula Resort</p>
-        <h2 className="events-showcase-title">Conferences &amp; Events</h2>
-        <p className="events-showcase-desc">{activeEvent.detail}</p>
-        <a href="/events" className="events-full-link">
-          Discover More
-        </a>
-
-        <div className="events-card-row" aria-label="Event subsections">
-          {eventsData.map((event, index) => (
-            <button
-              type="button"
-              key={event.name}
-              className={`event-card ${index === active ? "active" : ""}`}
-              onClick={() => handleEventSelect(index)}
-            >
-              <span className="event-card-thumb">
-                <img src={event.photos[0].src} alt={event.photos[0].title} loading="lazy" />
-              </span>
-              <span>
+          <div className="events-card-row" aria-label="Event subsections">
+            {eventsData.map((event, index) => (
+              <button
+                type="button"
+                key={event.name}
+                className={`event-card ${index === active ? "active" : ""}`}
+                onClick={() => handleEventSelect(index)}
+              >
                 <span className="event-card-name">{event.name}</span>
-                <span className="event-card-desc">{event.desc}</span>
-              </span>
-            </button>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="events-image-grid" aria-label={`${activeEvent.name} photos`}>
+          {activeEvent.photos.slice(0, 6).map((photo, photoIndex) => (
+            <figure
+              className={`events-image-tile ${photoIndex === activePhoto ? "active" : ""}`}
+              key={photo.src}
+            >
+              <img src={photo.src} alt={photo.title} loading={photoIndex === 0 ? "eager" : "lazy"} />
+            </figure>
           ))}
         </div>
       </div>
@@ -884,25 +858,8 @@ function Dining() {
   const items = [
     { src: `${S3_BASE}/Dining1.jpeg`, alt: "Dining at Enchula Resort" },
     { src: `${S3_BASE}/Dining2.jpeg`, alt: "Lounge dining at Enchula Resort" },
-    { src: `${S3_BASE}/Dining6.jpeg`, alt: "Dining space at Enchula Resort" },
-    { src: `${S3_BASE}/Dining7.jpeg`, alt: "Breakfast at Enchula Resort" },
-    { src: `${S3_BASE}/Dining5.jpeg`, alt: "Restaurant table setting at Enchula Resort" },
-    { src: `${S3_BASE}/Image7.jpeg`, alt: "Resort dining detail at Enchula Resort" },
-    { src: `${S3_BASE}/Image8.jpeg`, alt: "Bar lounge at Enchula Resort" },
-    { src: `${S3_BASE}/Image9.jpeg`, alt: "Signature restaurant at Enchula Resort" },
-    { src: `${S3_BASE}/Dining3.jpeg`, alt: "Dining table detail at Enchula Resort" },
+    { src: `${S3_BASE}/Image4.jpeg`, alt: "Dining space at Enchula Resort" },
   ];
-  const [activeDiningImage, setActiveDiningImage] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveDiningImage((current) => (current + 1) % items.length);
-    }, 3000);
-
-    return () => window.clearInterval(timer);
-  }, [items.length]);
-
-  const diningSlots = [0, 1, 2];
 
   return (
     <section id="dining" className="dining-preview">
@@ -913,18 +870,9 @@ function Dining() {
 
       <div className="dining-carousel fade-in">
         <div className="dining-strip">
-          {diningSlots.map((slot) => (
-            <div key={slot} className="dining-card">
-              {items.map((d, index) => (
-                <div
-                  key={`${slot}-${d.src}`}
-                  className={`dining-card-layer ${
-                    index === (activeDiningImage + slot) % items.length ? "active" : ""
-                  }`}
-                >
-                  <img src={d.src} alt={d.alt} loading="lazy" />
-                </div>
-              ))}
+          {items.map((d) => (
+            <div key={d.src} className="dining-card">
+              <img src={d.src} alt={d.alt} loading="lazy" />
             </div>
           ))}
         </div>
@@ -996,31 +944,30 @@ function ActivitiesShowcase() {
       desc: "Young explorers",
       detail:
         "Creative and supervised activities designed to keep children entertained, engaged, and inspired throughout their stay.",
-      images: [`${S3_BASE}/IMG_2277.webp`],
+      images: [`${S3_BASE}/Kids.jpeg`],
     },
   ];
-  const [activeActivity, setActiveActivity] = useState(0);
-  const [activeActivityImage, setActiveActivityImage] = useState(0);
-  const activeItem = items[activeActivity];
+  const [activeActivityImages, setActiveActivityImages] = useState(() => items.map(() => 0));
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setActiveActivityImage((currentImage) => {
-        if (currentImage + 1 < activeItem.images.length) {
-          return currentImage + 1;
-        }
-
-        setActiveActivity((currentActivity) => (currentActivity + 1) % items.length);
-        return 0;
-      });
+      setActiveActivityImages((currentImages) =>
+        currentImages.map((currentImage, itemIndex) => {
+          const imageCount = items[itemIndex].images.length;
+          return imageCount > 1 ? (currentImage + 1) % imageCount : 0;
+        })
+      );
     }, 3000);
 
     return () => window.clearInterval(timer);
-  }, [activeActivity, activeItem.images.length, items.length]);
+  }, [items]);
 
-  const handleActivitySelect = (index: number) => {
-    setActiveActivity(index);
-    setActiveActivityImage(0);
+  const handleActivityImageSelect = (itemIndex: number, imageIndex: number) => {
+    setActiveActivityImages((currentImages) =>
+      currentImages.map((currentImage, currentIndex) =>
+        currentIndex === itemIndex ? imageIndex : currentImage
+      )
+    );
   };
 
   return (
@@ -1029,46 +976,58 @@ function ActivitiesShowcase() {
       className="activities-showcase fade-in"
       aria-label="Activities and experiences"
     >
-      {items.map((item, itemIndex) =>
-        item.images.map((image, imageIndex) => (
-          <img
-            key={`${item.title}-${image}`}
-            src={image}
-            alt={`${item.title} at Enchula Resort ${imageIndex + 1}`}
-            className={`activities-showcase-bg ${
-              itemIndex === activeActivity && imageIndex === activeActivityImage ? "active" : ""
-            }`}
-            loading={itemIndex === 0 && imageIndex === 0 ? "eager" : "lazy"}
-          />
-        ))
-      )}
-
-      <div className="activities-showcase-content">
-        <p className="activities-showcase-kicker">Leisure at Enchula Resort</p>
-        <h2 className="activities-showcase-title">Activities &amp; Experiences</h2>
-        <p className="activities-showcase-desc">{activeItem.detail}</p>
-        <a href="/experience" className="activities-full-link">
-          Discover More
-        </a>
-
-        <div className="activities-card-row" aria-label="Activity subsections">
-          {items.map((item, index) => (
-            <button
-              type="button"
-              key={item.title}
-              className={`activity-card ${index === activeActivity ? "active" : ""}`}
-              onClick={() => handleActivitySelect(index)}
-            >
-              <span className="activity-card-thumb">
-                <img src={item.images[0]} alt={`${item.title} at Enchula Resort`} loading="lazy" />
-              </span>
-              <span>
-                <span className="activity-card-name">{item.title}</span>
-                <span className="activity-card-desc">{item.desc}</span>
-              </span>
-            </button>
-          ))}
+      <div className="activities-showcase-header">
+        <div className="activities-showcase-content">
+          <p className="activities-showcase-kicker">Leisure at Enchula Resort</p>
+          <h2 className="activities-showcase-title">Activities &amp; Experiences</h2>
+          <p className="activities-showcase-desc">
+            Pool time, games, and family-friendly moments across the resort grounds.
+          </p>
+          <a href="/experience" className="activities-full-link">
+            Discover More
+          </a>
         </div>
+      </div>
+
+      <div className="activities-showcase-list">
+        {items.map((item, itemIndex) => (
+          <article className="activities-showcase-block" key={item.title}>
+            <div className="activities-media-frame">
+              {item.images.map((image, imageIndex) => (
+                <img
+                  key={image}
+                  src={image}
+                  alt={`${item.title} at Enchula Resort ${imageIndex + 1}`}
+                  className={`activities-media-img ${
+                    imageIndex === activeActivityImages[itemIndex] ? "active" : ""
+                  }`}
+                  loading={itemIndex === 0 && imageIndex === 0 ? "eager" : "lazy"}
+                />
+              ))}
+              {item.images.length > 1 && (
+                <div className="activities-media-dots" aria-label={`${item.title} photos`}>
+                  {item.images.map((image, imageIndex) => (
+                    <button
+                      aria-label={`${item.title} photo ${imageIndex + 1}`}
+                      className={`activities-media-dot ${
+                        imageIndex === activeActivityImages[itemIndex] ? "active" : ""
+                      }`}
+                      key={image}
+                      type="button"
+                      onClick={() => handleActivityImageSelect(itemIndex, imageIndex)}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="activities-showcase-content">
+              <p className="activities-showcase-kicker">{item.desc}</p>
+              <h3 className="activities-showcase-title">{item.title}</h3>
+              <p className="activities-showcase-desc">{item.detail}</p>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

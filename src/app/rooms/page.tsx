@@ -110,12 +110,6 @@ const styles = `
     transform: scale(1);
   }
 
-  .rp-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(74,36,0,.18) 0%, rgba(74,36,0,.72) 100%);
-  }
-
   .rp-hero-content {
     position: relative;
     z-index: 2;
@@ -677,7 +671,6 @@ export default function RoomsPage() {
             style={{ opacity: i === activeRoom ? 1 : 0 }}
           />
         ))}
-        <div className="rp-hero-overlay" />
         <div className="rp-hero-content">
           <p className="rp-hero-eyebrow">{room.category} · Enchula Resort</p>
           <h1 className="rp-hero-title">

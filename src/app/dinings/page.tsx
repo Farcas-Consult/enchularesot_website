@@ -10,7 +10,7 @@ const experiences = [
   {
     name: "Signature Restaurant",
     label: "All-day dining",
-    image: `${S3_BASE}/Image9.jpeg`,
+    images: [`${S3_BASE}/Image4.jpeg`],
     hours: "Open daily 7AM - 10PM",
     description:
       "A relaxed restaurant experience shaped around fresh local ingredients, familiar international classics, and warm service from breakfast through dinner.",
@@ -19,7 +19,7 @@ const experiences = [
   {
     name: "Bar Lounge",
     label: "Cocktails and sundowners",
-    image: `${S3_BASE}/Image8.jpeg`,
+    images: [`${S3_BASE}/Image8.jpeg`, `${S3_BASE}/Bar1.jpeg` , `${S3_BASE}/Bar2.jpeg` , `${S3_BASE}/Bar1.jpg`],
     hours: "Open daily 12PM - 11PM",
     description:
       "An easygoing lounge for crafted cocktails, premium spirits, wines, and unhurried conversations after a day at the resort.",
@@ -89,14 +89,6 @@ const styles = `
     object-fit: cover;
     transform: scale(1.03);
     filter: saturate(.88) sepia(.08) contrast(.94) brightness(.98);
-  }
-
-  .dp-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(74,36,0,.12) 0%, rgba(74,36,0,.76) 100%),
-      linear-gradient(90deg, rgba(74,36,0,.54) 0%, rgba(74,36,0,.08) 60%);
   }
 
   .dp-hero-content {
@@ -376,26 +368,33 @@ const styles = `
 
   .dp-experience-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
   }
 
   .dp-card {
     background: var(--white);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr);
+    align-items: stretch;
     overflow: hidden;
   }
 
   .dp-card-media {
     position: relative;
-    height: 420px;
+    min-height: 420px;
     overflow: hidden;
     background: var(--sand);
   }
 
   .dp-card-img {
+    opacity: 0;
     object-fit: cover;
     filter: saturate(.88) sepia(.08) contrast(.94) brightness(.98);
-    transition: transform 1s var(--ease-out);
+    transition: opacity .9s ease-in-out, transform 1s var(--ease-out);
+  }
+
+  .dp-card-img.dp-active {
+    opacity: 1;
   }
 
   .dp-card:hover .dp-card-img {
@@ -403,7 +402,35 @@ const styles = `
   }
 
   .dp-card-body {
-    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2rem, 4vw, 3rem);
+  }
+
+  .dp-card-dots {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    display: flex;
+    gap: .45rem;
+  }
+
+  .dp-card-dot {
+    appearance: none;
+    width: 9px;
+    height: 9px;
+    border: 1px solid color-mix(in srgb, var(--brand-white) 72%, transparent);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--brand-white) 34%, transparent);
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .dp-card-dot.dp-active {
+    background: var(--brand-peach);
+    border-color: var(--brand-peach);
   }
 
   .dp-card-title {
@@ -704,6 +731,9 @@ const styles = `
 
 export default function DiningPage() {
   const [activeDiningImage, setActiveDiningImage] = useState(0);
+  const [activeExperienceImages, setActiveExperienceImages] = useState(() =>
+    experiences.map(() => 0)
+  );
   const diningCarouselSlots = [0, 1, 2];
   const whatsappMessage = encodeURIComponent(
     "Hello Enchula Resort, I'd like to reserve a table or inquire about dining options."
@@ -718,6 +748,27 @@ export default function DiningPage() {
     return () => window.clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveExperienceImages((currentImages) =>
+        currentImages.map((currentImage, index) => {
+          const imageCount = experiences[index].images.length;
+          return imageCount > 1 ? (currentImage + 1) % imageCount : 0;
+        })
+      );
+    }, 3000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const handleExperienceImageSelect = (experienceIndex: number, imageIndex: number) => {
+    setActiveExperienceImages((currentImages) =>
+      currentImages.map((currentImage, currentIndex) =>
+        currentIndex === experienceIndex ? imageIndex : currentImage
+      )
+    );
+  };
+
   return (
     <section id="dining" className="dp-root">
       <style dangerouslySetInnerHTML={{ __html: styles }} />
@@ -731,7 +782,6 @@ export default function DiningPage() {
           priority
           sizes="100vw"
         />
-        <div className="dp-hero-overlay" />
         <div className="dp-hero-content">
           <div className="dp-eyebrow">Dining at Enchula Resort</div>
           <h1 className="dp-title">
@@ -802,16 +852,37 @@ export default function DiningPage() {
         </div>
 
         <div className="dp-experience-grid">
-          {experiences.map((experience) => (
+          {experiences.map((experience, experienceIndex) => (
             <article className="dp-card" key={experience.name}>
               <div className="dp-card-media">
-                <Image
-                  src={experience.image}
-                  alt={experience.name}
-                  fill
-                  className="dp-card-img"
-                  sizes="(max-width: 900px) 100vw, 50vw"
-                />
+                {experience.images.map((image, imageIndex) => (
+                  <Image
+                    src={image}
+                    alt={`${experience.name} at Enchula Resort ${imageIndex + 1}`}
+                    fill
+                    className={`dp-card-img ${
+                      imageIndex === activeExperienceImages[experienceIndex] ? "dp-active" : ""
+                    }`}
+                    key={image}
+                    sizes="(max-width: 900px) 100vw, 50vw"
+                  />
+                ))}
+
+                {experience.images.length > 1 && (
+                  <div className="dp-card-dots" aria-label={`${experience.name} photos`}>
+                    {experience.images.map((image, imageIndex) => (
+                      <button
+                        aria-label={`${experience.name} photo ${imageIndex + 1}`}
+                        className={`dp-card-dot ${
+                          imageIndex === activeExperienceImages[experienceIndex] ? "dp-active" : ""
+                        }`}
+                        key={image}
+                        type="button"
+                        onClick={() => handleExperienceImageSelect(experienceIndex, imageIndex)}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
               <div className="dp-card-body">
                 <h3 className="dp-card-title">{experience.name}</h3>

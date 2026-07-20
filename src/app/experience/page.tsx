@@ -26,7 +26,7 @@ const experiences = [
   {
     name: "Kids Activities",
     kicker: "Young explorers",
-    image: `${S3_BASE}/IMG_2277.webp`,
+    image: `${S3_BASE}/Kids.jpeg`,
     description:
       "Creative, supervised activities keep children engaged, entertained, and inspired throughout the stay.",
     features: ["Creative play", "Supervised fun", "Family stays"],
@@ -34,7 +34,7 @@ const experiences = [
   {
     name: "Outdoor Picnics",
     kicker: "Open-air moments",
-    image: `${S3_BASE}/Image41.jpeg`,
+    image: `${S3_BASE}/Outdoor1.jpeg`,
     description:
       "Settle into scenic grounds for relaxed picnics, casual celebrations, and slow afternoons with resort service close by.",
     features: ["Scenic grounds", "Casual gatherings", "Anytime leisure"],
@@ -42,7 +42,7 @@ const experiences = [
   {
     name: "Guided Nature Walks",
     kicker: "Nature and calm",
-    image: `${S3_BASE}/Image33.jpg`,
+    image: `${S3_BASE}/Nature.jpeg`,
     description:
       "Explore the resort surroundings with guides who help guests notice the local landscape, plants, and quiet natural details.",
     features: ["Morning walks", "Local flora", "Guided pace"],
@@ -95,14 +95,6 @@ const styles = `
     object-fit: cover;
     transform: scale(1.03);
     filter: saturate(.88) sepia(.08) contrast(.94) brightness(.98);
-  }
-
-  .xp-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(74,36,0,.12) 0%, rgba(74,36,0,.76) 100%),
-      linear-gradient(90deg, rgba(74,36,0,.56) 0%, rgba(74,36,0,.08) 62%);
   }
 
   .xp-hero-content {
@@ -667,7 +659,6 @@ export default function ExperiencesPage() {
           priority
           sizes="100vw"
         />
-        <div className="xp-hero-overlay" />
         <div className="xp-hero-content">
           <div className="xp-eyebrow">Activities and experiences</div>
           <h1 className="xp-title">

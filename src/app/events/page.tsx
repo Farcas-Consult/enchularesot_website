@@ -114,14 +114,6 @@ const styles = `
     filter: saturate(.88) sepia(.08) contrast(.94) brightness(.98);
   }
 
-  .ep-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(74,36,0,.18) 0%, rgba(74,36,0,.18) 36%, rgba(74,36,0,.84) 100%),
-      linear-gradient(90deg, rgba(74,36,0,.62) 0%, rgba(74,36,0,.16) 58%, rgba(74,36,0,.28) 100%);
-  }
-
   .ep-hero-content {
     position: relative;
     z-index: 2;
@@ -707,7 +699,6 @@ export default function EventsPage() {
           priority
           sizes="100vw"
         />
-        <div className="ep-hero-overlay" />
         <motion.div className="ep-hero-content" {...reveal}>
           <div className="ep-eyebrow">Conferences and events</div>
           <h1 className="ep-title">

@@ -5,9 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
+const LOGO_SRC = `${S3_BASE}/Logo10.png`;
+const RESERVATIONS_EMAIL = "info@enchularesort.co.ke";
 
 type OccupancyType = "single" | "double";
 type MealPlan = "bedBreakfast" | "halfBoard" | "fullBoard";
+
+type PreparedEmail = {
+  mailtoHref: string;
+  gmailHref: string;
+  subject: string;
+  requestNumber: string;
+};
 
 const roomTypes = [
   {
@@ -673,6 +682,98 @@ const styles = `
     margin: .55rem 0;
   }
 
+  .bp-confirmation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    justify-content: center;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .bp-confirmation-actions .bp-btn {
+    width: auto;
+  }
+
+  .bp-confirmation-actions .bp-btn-dark {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--brown-dark);
+  }
+
+  .bp-request-doc {
+    background: var(--white);
+    color: var(--brown-dark);
+    margin-top: 2rem;
+    padding: clamp(1.3rem, 3vw, 2rem);
+    text-align: left;
+  }
+
+  .bp-request-header {
+    align-items: center;
+    border-bottom: 1px solid color-mix(in srgb, var(--brand-light-brown) 45%, transparent);
+    display: flex;
+    gap: 1.25rem;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
+
+  .bp-request-logo {
+    height: auto;
+    width: 150px;
+  }
+
+  .bp-request-meta {
+    color: rgba(74,36,0,.68);
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-align: right;
+    text-transform: uppercase;
+  }
+
+  .bp-request-doc h3 {
+    color: var(--brown-dark);
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 3vw, 2.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin: 1.4rem 0 1rem;
+  }
+
+  .bp-request-grid {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    background: color-mix(in srgb, var(--brand-light-brown) 38%, transparent);
+  }
+
+  .bp-request-item {
+    background: var(--white);
+    padding: .95rem;
+  }
+
+  .bp-request-item span {
+    color: var(--brown);
+    display: block;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .13em;
+    margin-bottom: .3rem;
+    text-transform: uppercase;
+  }
+
+  .bp-request-item strong,
+  .bp-request-item p {
+    color: var(--brown-dark);
+    font-size: .96rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .bp-request-wide {
+    grid-column: 1 / -1;
+  }
+
   .bp-terms {
     color: rgba(74,36,0,.68);
     font-size: .83rem;
@@ -720,6 +821,24 @@ const styles = `
       grid-template-columns: 1fr;
     }
 
+    .bp-confirmation {
+      padding: 2rem 1rem;
+    }
+
+    .bp-request-header,
+    .bp-confirmation-actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .bp-request-meta {
+      text-align: left;
+    }
+
+    .bp-request-grid {
+      grid-template-columns: 1fr;
+    }
+
     .bp-step {
       min-height: 60px;
     }
@@ -756,7 +875,6 @@ const BookingPage = () => {
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
   const [adults, setAdults] = useState(2);
-  const [minorCount, setMinorCount] = useState(0);
   const [childrenCount, setChildrenCount] = useState(0);
   const [infantCount, setInfantCount] = useState(0);
   const [selectedReservations, setSelectedReservations] = useState<string[]>([]);
@@ -767,6 +885,7 @@ const BookingPage = () => {
     specialRequests: "",
   });
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [preparedEmail, setPreparedEmail] = useState<PreparedEmail | null>(null);
   const today = new Date().toISOString().split("T")[0];
 
   const selectedRoomData = selectedRoom ? roomTypes.find((room) => room.id === selectedRoom) : null;
@@ -807,74 +926,101 @@ const BookingPage = () => {
     return null;
   };
 
-  const handleBooking = async () => {
-    if (guestInfo.name && guestInfo.email && guestInfo.phone) {
-      const bookingData = {
-        guestName: guestInfo.name,
-        guestEmail: guestInfo.email,
-        guestPhone: guestInfo.phone,
-        checkIn,
-        checkOut,
-        nights,
-        roomType: selectedRoomData?.name || "N/A",
-        isKenyanResident,
-        residencyLabel: isKenyanResident ? "Resident" : "Non-resident",
-        occupancyType,
-        occupancyLabel: occupancyType === "single" ? "Single occupancy" : "Double occupancy",
-        mealPlan,
-        mealPlanLabel: mealPlanLabels[mealPlan],
-        nightlyRate: currentRate,
-        estimatedRoomTotal,
-        adults,
-        minors: minorCount,
-        children: childrenCount,
-        infants: infantCount,
-        additionalServices: selectedReservations.map((id) => {
-          const details = getReservationDetails(id);
-          return {
-            category: getCategoryName(id),
-            name: details?.name || id,
-            description: details?.description || "",
-          };
-        }),
-        specialRequests: guestInfo.specialRequests,
-      };
+  const selectedServiceDetails = selectedReservations.map((id) => {
+    const details = getReservationDetails(id);
+    return {
+      category: getCategoryName(id),
+      name: details?.name || id,
+      description: details?.description || "",
+    };
+  });
 
-      try {
-        const response = await fetch("/api/send-booking-confirmation", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(bookingData),
-        });
+  const formatDate = (date: string) =>
+    date ? new Date(`${date}T00:00:00`).toLocaleDateString("en-KE") : "Not selected";
 
-        if (response.ok) {
-          setShowConfirmation(true);
-          setTimeout(() => {
-            setShowConfirmation(false);
-            setStep(1);
-            setSelectedRoom(null);
-            setCheckIn("");
-            setCheckOut("");
-            setSelectedReservations([]);
-            setGuestInfo({ name: "", email: "", phone: "", specialRequests: "" });
-            setAdults(2);
-            setMinorCount(0);
-            setChildrenCount(0);
-            setInfantCount(0);
-          }, 5000);
-        } else {
-          alert("Failed to send reservation request. Please contact us directly at info@enchularesort.co.ke.");
-        }
-      } catch (error) {
-        console.error("Booking error:", error);
-        alert("An error occurred. Please try again or contact us directly.");
-      }
-    }
+  const buildReservationEmail = (requestNumber: string, submittedAt: string) => {
+    const serviceLines = selectedServiceDetails.length
+      ? selectedServiceDetails
+          .map(
+            (service, index) =>
+              `${index + 1}. ${service.name} (${service.category}) - ${service.description}`
+          )
+          .join("\n")
+      : "No additional reservations selected.";
+
+    const subject = `Reservation Request ${requestNumber} - ${guestInfo.name}`;
+    const body = [
+      "ENCHULA RESORT RESERVATION REQUEST",
+      "===================================",
+      "",
+      `Request Number: ${requestNumber}`,
+      `Submitted: ${submittedAt}`,
+      "",
+      "GUEST INFORMATION",
+      "-----------------",
+      `Full Name: ${guestInfo.name}`,
+      `Email: ${guestInfo.email}`,
+      `Phone: ${guestInfo.phone}`,
+      "",
+      "STAY DETAILS",
+      "------------",
+      `Check-in: ${formatDate(checkIn)}`,
+      `Check-out: ${formatDate(checkOut)}`,
+      `Nights: ${nights || "To be confirmed"}`,
+      `Room Type: ${selectedRoomData?.name || "Not selected"}`,
+      `Residency: ${isKenyanResident ? "Resident" : "Non-resident"}`,
+      `Occupancy: ${occupancyType === "single" ? "Single occupancy" : "Double occupancy"}`,
+      `Meal Plan: ${mealPlanLabels[mealPlan]}`,
+      `Nightly Rate: ${currentRate ? `Kshs. ${currentRate.toLocaleString()}` : "To be confirmed"}`,
+      `Estimated Room Total: ${estimatedRoomTotal ? `Kshs. ${estimatedRoomTotal.toLocaleString()}` : "To be confirmed"}`,
+      "",
+      "GUESTS",
+      "------",
+      `Adults: ${adults}`,
+      `Children: ${childrenCount}`,
+      `Infants: ${infantCount}`,
+      "",
+      "ADDITIONAL RESERVATIONS",
+      "-----------------------",
+      serviceLines,
+      "",
+      "SPECIAL REQUESTS",
+      "----------------",
+      guestInfo.specialRequests || "No special requests added.",
+      "",
+      "Please confirm availability, final pricing, payment details, and the reservation.",
+    ].join("\n");
+
+    return { subject, body };
   };
 
-  const guestsText = `${adults} adult${adults !== 1 ? "s" : ""}${minorCount ? `, ${minorCount} minor${minorCount !== 1 ? "s" : ""}` : ""}${childrenCount ? `, ${childrenCount} child${childrenCount !== 1 ? "ren" : ""}` : ""}${infantCount ? `, ${infantCount} infant${infantCount !== 1 ? "s" : ""}` : ""}`;
+  const buildEmailLinks = () => {
+    const requestNumber =
+      preparedEmail?.requestNumber ||
+      `ENCH-${new Date().toISOString().slice(0, 10).replace(/-/g, "")}-${guestInfo.phone.replace(/\D/g, "").slice(-4) || "REQ"}`;
+    const submittedAt = new Date().toLocaleString("en-KE", { timeZone: "Africa/Nairobi" });
+    const { subject, body } = buildReservationEmail(requestNumber, submittedAt);
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(body);
+
+    return {
+      mailtoHref: `mailto:${RESERVATIONS_EMAIL}?subject=${encodedSubject}&body=${encodedBody}`,
+      gmailHref: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(RESERVATIONS_EMAIL)}&su=${encodedSubject}&body=${encodedBody}`,
+      subject,
+      requestNumber,
+    };
+  };
+
+  const emailLinks = buildEmailLinks();
+
+  const handleBooking = () => {
+    if (!guestInfo.name || !guestInfo.email || !guestInfo.phone) return;
+
+    setPreparedEmail(emailLinks);
+    setShowConfirmation(true);
+  };
+
+  const guestsText = `${adults} adult${adults !== 1 ? "s" : ""}${childrenCount ? `, ${childrenCount} child${childrenCount !== 1 ? "ren" : ""}` : ""}${infantCount ? `, ${infantCount} infant${infantCount !== 1 ? "s" : ""}` : ""}`;
 
   return (
     <section id="booking" className="bp-root">
@@ -889,8 +1035,8 @@ const BookingPage = () => {
             </h1>
             <p className="bp-lead">
               Choose your dates, room, meal plan, and any extras in one calm booking flow. The
-              team receives your request directly and will contact you to confirm availability,
-              final pricing, payment, and reservation details.
+              form prepares a clean email request for you to send to the reservations team, who
+              will confirm availability, final pricing, payment, and reservation details.
             </p>
           </div>
           <div className="bp-meta">
@@ -907,13 +1053,92 @@ const BookingPage = () => {
 
         {showConfirmation ? (
           <div className="bp-confirmation">
-            <div className="bp-eyebrow" style={{ justifyContent: "center" }}>Request sent</div>
-            <h2>Reservation request received.</h2>
-            <p>Thank you, {guestInfo.name}. Your booking request has been sent to Enchula Resort.</p>
+            <div className="bp-eyebrow" style={{ justifyContent: "center" }}>Email ready</div>
+            <h2>Send your reservation request.</h2>
+            <p>Thank you, {guestInfo.name}. Your email app should open with the booking details already filled in.</p>
             <p>
-              The reservations team will contact you to confirm room availability, the final price,
-              payment arrangements, and the reservation.
+              Review the message, then send it to Enchula Resort so the reservations team can
+              confirm availability and payment details.
             </p>
+            <div className="bp-confirmation-actions">
+              {preparedEmail && (
+                <>
+                  <a className="bp-btn bp-btn-dark" href={preparedEmail.mailtoHref}>
+                    Open Email App
+                  </a>
+                  <a className="bp-btn" href={preparedEmail.gmailHref} target="_blank" rel="noopener noreferrer">
+                    Open Gmail
+                  </a>
+                </>
+              )}
+              <button
+                type="button"
+                className="bp-btn"
+                onClick={() => {
+                  setShowConfirmation(false);
+                  setStep(3);
+                }}
+              >
+                Edit Details
+              </button>
+            </div>
+
+            <div className="bp-request-doc" aria-label="Reservation request preview">
+              <div className="bp-request-header">
+                <Image src={LOGO_SRC} alt="Enchula Resort" width={180} height={120} className="bp-request-logo" />
+                <div className="bp-request-meta">
+                  <div>Reservation Request</div>
+                  <div>{preparedEmail?.requestNumber || "Ready to send"}</div>
+                </div>
+              </div>
+              <h3>{preparedEmail?.subject || "Reservation Request"}</h3>
+              <div className="bp-request-grid">
+                <div className="bp-request-item">
+                  <span>Guest</span>
+                  <strong>{guestInfo.name}</strong>
+                </div>
+                <div className="bp-request-item">
+                  <span>Contact</span>
+                  <p>{guestInfo.email}<br />{guestInfo.phone}</p>
+                </div>
+                <div className="bp-request-item">
+                  <span>Dates</span>
+                  <p>{formatDate(checkIn)} - {formatDate(checkOut)}<br />{nights || "To be confirmed"} night{nights !== 1 ? "s" : ""}</p>
+                </div>
+                <div className="bp-request-item">
+                  <span>Room</span>
+                  <strong>{selectedRoomData?.name || "Not selected"}</strong>
+                </div>
+                <div className="bp-request-item">
+                  <span>Guests</span>
+                  <p>{guestsText}</p>
+                </div>
+                <div className="bp-request-item">
+                  <span>Estimated Total</span>
+                  <strong>{estimatedRoomTotal ? `Kshs. ${estimatedRoomTotal.toLocaleString()}` : "To be confirmed"}</strong>
+                </div>
+                <div className="bp-request-item bp-request-wide">
+                  <span>Pricing</span>
+                  <p>
+                    {isKenyanResident ? "Resident" : "Non-resident"} / {occupancyType === "single" ? "Single occupancy" : "Double occupancy"} / {mealPlanLabels[mealPlan]}
+                    <br />
+                    {currentRate ? `Kshs. ${currentRate.toLocaleString()} per night` : "Rate to be confirmed"}
+                  </p>
+                </div>
+                <div className="bp-request-item bp-request-wide">
+                  <span>Additional Reservations</span>
+                  <p>
+                    {selectedServiceDetails.length
+                      ? selectedServiceDetails.map((service) => `${service.name} - ${service.description}`).join("; ")
+                      : "No additional reservations selected."}
+                  </p>
+                </div>
+                <div className="bp-request-item bp-request-wide">
+                  <span>Special Requests</span>
+                  <p>{guestInfo.specialRequests || "No special requests added."}</p>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           <>
@@ -963,7 +1188,6 @@ const BookingPage = () => {
                         </div>
                         {[
                           { label: "Adults (17+)", value: adults, setter: setAdults, max: 6 },
-                          { label: "Minors", value: minorCount, setter: setMinorCount, max: 4 },
                           { label: "Children (4-16)", value: childrenCount, setter: setChildrenCount, max: 4 },
                           { label: "Infants (0-3)", value: infantCount, setter: setInfantCount, max: 4 },
                         ].map((guest) => (
@@ -1204,19 +1428,31 @@ const BookingPage = () => {
                       <button type="button" onClick={() => setStep(2)} className="bp-btn">
                         Back
                       </button>
-                      <button
-                        type="button"
-                        onClick={handleBooking}
-                        disabled={!guestInfo.name || !guestInfo.email || !guestInfo.phone}
-                        className="bp-btn bp-btn-dark"
-                      >
-                        Send Reservation Request
-                      </button>
+                      {guestInfo.name && guestInfo.email && guestInfo.phone ? (
+                        <>
+                          <a className="bp-btn bp-btn-dark" href={emailLinks.mailtoHref} onClick={handleBooking}>
+                            Open Email App
+                          </a>
+                          <a
+                            className="bp-btn"
+                            href={emailLinks.gmailHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={handleBooking}
+                          >
+                            Open Gmail
+                          </a>
+                        </>
+                      ) : (
+                        <button type="button" disabled className="bp-btn bp-btn-dark">
+                          Open Email to Send Request
+                        </button>
+                      )}
                     </div>
 
                     <div className="bp-terms">
                       <p>
-                        By confirming, you agree to our <Link href="/terms">Terms & Conditions</Link>.
+                        By sending the email, you agree to our <Link href="/terms">Terms & Conditions</Link>.
                       </p>
                       <p>Questions? Call us at <strong>0727000027</strong>.</p>
                     </div>

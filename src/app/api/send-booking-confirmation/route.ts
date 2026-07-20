@@ -37,7 +37,6 @@ type BookingRequest = {
   nightlyRate?: number | null;
   estimatedRoomTotal?: number | null;
   adults?: number;
-  minors?: number;
   children?: number;
   infants?: number;
   additionalServices?: AdditionalService[];
@@ -75,6 +74,18 @@ const formatServices = (services: AdditionalService[] = []) => {
         .join("")}
     </ul>
   `;
+};
+
+const readResendError = async (response: Response) => {
+  const fallback = `Resend rejected the email request with status ${response.status}.`;
+
+  try {
+    const payload = await response.json();
+    return typeof payload?.message === "string" ? payload.message : fallback;
+  } catch {
+    const text = await response.text().catch(() => "");
+    return text || fallback;
+  }
 };
 
 type SmtpSocket = net.Socket | tls.TLSSocket;
@@ -273,7 +284,6 @@ const buildReservationEmailContent = (bookingData: BookingRequest, requestNumber
         <p><span class="label">Email:</span> ${escapeHtml(bookingData.guestEmail || "Not provided")}</p>
         <p><span class="label">Phone:</span> ${escapeHtml(bookingData.guestPhone || "Not provided")}</p>
         <p><span class="label">Adults:</span> ${escapeHtml(bookingData.adults ?? 0)}</p>
-        <p><span class="label">Minors (12-17):</span> ${escapeHtml(bookingData.minors ?? 0)}</p>
         <p><span class="label">Children (2-12):</span> ${escapeHtml(bookingData.children ?? 0)}</p>
         <p><span class="label">Infants (0-2):</span> ${escapeHtml(bookingData.infants ?? 0)}</p>
       </div>
@@ -337,11 +347,17 @@ export async function POST(request: NextRequest) {
     });
 
     if (!resendResponse.ok) {
-      const errorText = await resendResponse.text();
-      console.error("Resend reservation email failed:", errorText);
+      const errorMessage = await readResendError(resendResponse);
+      console.error("Resend reservation email failed:", {
+        status: resendResponse.status,
+        error: errorMessage,
+        from: fromEmail,
+        to: RESERVATIONS_EMAIL,
+        requestNumber,
+      });
 
       return NextResponse.json(
-        { success: false, error: "Failed to send reservation request" },
+        { success: false, error: "Failed to send reservation request", details: errorMessage },
         { status: 502 }
       );
     }
@@ -390,7 +406,6 @@ export async function POST(request: NextRequest) {
       <div class="section">
         <h3>Guest Information</h3>
         <p><span class="label">Adults:</span> ${bookingData.adults}</p>
-        ${bookingData.minors > 0 ? `<p><span class="label">Minors (12-17):</span> ${bookingData.minors}</p>` : ''}
         ${bookingData.children > 0 ? `<p><span class="label">Children (2-12):</span> ${bookingData.children}</p>` : ''}
         ${bookingData.infants > 0 ? `<p><span class="label">Infants (0-2):</span> ${bookingData.infants}</p>` : ''}
       </div>
