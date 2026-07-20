@@ -12,8 +12,8 @@ const Footer = () => {
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap');
 
         .ft-root {
-          background: linear-gradient(170deg, #2E1400 0%, #3D1A00 40%, #4A2400 100%);
-          color: white;
+          background: linear-gradient(170deg, color-mix(in srgb, var(--brand-black) 78%, var(--brand-gray)) 0%, color-mix(in srgb, var(--brand-black) 88%, var(--brand-gray)) 40%, var(--brand-black) 100%);
+          color: var(--text-on-dark);
           font-family: 'Jost', system-ui, sans-serif;
           position: relative;
           overflow: hidden;
@@ -22,46 +22,46 @@ const Footer = () => {
           position: absolute; bottom: -2rem; right: 2rem;
           font-family: 'Cormorant Garamond', serif;
           font-size: 28rem; font-weight: 300; line-height: 1;
-          color: rgba(185,154,102,.035); pointer-events: none; user-select: none;
+          color: color-mix(in srgb, var(--brand-primary) 3.5%, transparent); pointer-events: none; user-select: none;
           letter-spacing: -.04em;
         }
         .ft-top-border {
           height: 1px;
-          background: linear-gradient(90deg, transparent 0%, rgba(185,154,102,.55) 30%, rgba(210,187,158,.8) 50%, rgba(185,154,102,.55) 70%, transparent 100%);
+          background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--brand-primary) 55%, transparent) 30%, color-mix(in srgb, var(--brand-light-brown) 80%, transparent) 50%, color-mix(in srgb, var(--brand-primary) 55%, transparent) 70%, transparent 100%);
         }
         .ft-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
         .ft-brand-row {
           display: flex; flex-wrap: wrap;
           align-items: center; justify-content: space-between;
           gap: 2rem; padding: 4rem 0 3rem;
-          border-bottom: 1px solid rgba(185,154,102,.12);
+          border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 12%, transparent);
           margin-bottom: 4rem;
         }
         .ft-logo-mark {
           font-family: 'Cormorant Garamond', serif;
-          font-size: 3rem; font-weight: 300; color: #FFD3A3;
+          font-size: 3rem; font-weight: 300; color: var(--brand-peach);
           letter-spacing: .02em; line-height: 1;
         }
-        .ft-logo-mark em { font-style: italic; color: #B99A66; }
+        .ft-logo-mark em { font-style: italic; color: var(--brand-primary); }
         .ft-logo-sub {
           font-size: .6rem; letter-spacing: .28em; text-transform: uppercase;
-          color: rgba(185,154,102,.5); margin-top: .35rem; display: block;
+          color: color-mix(in srgb, var(--brand-primary) 50%, transparent); margin-top: .35rem; display: block;
         }
-        .ft-tagline { font-size: .88rem; line-height: 1.8; color: rgba(215,191,168,.6); max-width: 34ch; }
+        .ft-tagline { font-size: .88rem; line-height: 1.8; color: color-mix(in srgb, var(--brand-blush) 60%, transparent); max-width: 34ch; }
         .ft-social-row { display: flex; gap: .6rem; align-items: center; }
         .ft-social-btn {
           width: 38px; height: 38px;
           display: flex; align-items: center; justify-content: center;
-          border: 1px solid rgba(185,154,102,.22);
-          color: rgba(215,191,168,.55); background: transparent;
+          border: 1px solid color-mix(in srgb, var(--brand-primary) 22%, transparent);
+          color: color-mix(in srgb, var(--brand-blush) 55%, transparent); background: transparent;
           cursor: pointer; text-decoration: none; transition: all .25s;
         }
-        .ft-social-btn:hover { border-color: #B99A66; color: #FFD3A3; background: rgba(185,154,102,.1); }
+        .ft-social-btn:hover { border-color: var(--brand-primary); color: var(--brand-peach); background: color-mix(in srgb, var(--brand-primary) 10%, transparent); }
         .ft-grid {
           display: grid;
           grid-template-columns: 1.8fr 1fr 1fr 1.4fr;
           gap: 3.5rem; padding-bottom: 4rem;
-          border-bottom: 1px solid rgba(185,154,102,.1);
+          border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 10%, transparent);
           margin-bottom: 2.5rem;
         }
         @media (max-width: 900px) {
@@ -96,44 +96,44 @@ const Footer = () => {
         }
         .ft-col-label {
           font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
-          color: #B99A66; font-weight: 600; margin-bottom: 1.5rem;
+          color: var(--brand-primary); font-weight: 600; margin-bottom: 1.5rem;
           display: flex; align-items: center; gap: .6rem;
         }
-        .ft-col-label::before { content: ''; display: block; width: 16px; height: 1px; background: #B99A66; }
-        .ft-about-text { font-size: .88rem; line-height: 1.85; color: rgba(215,191,168,.6); }
+        .ft-col-label::before { content: ''; display: block; width: 16px; height: 1px; background: var(--brand-primary); }
+        .ft-about-text { font-size: .88rem; line-height: 1.85; color: color-mix(in srgb, var(--brand-blush) 60%, transparent); }
         .ft-links { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
         .ft-link {
-          font-size: .85rem; color: rgba(215,191,168,.6); text-decoration: none;
+          font-size: .85rem; color: color-mix(in srgb, var(--brand-blush) 60%, transparent); text-decoration: none;
           display: inline-flex; align-items: center; gap: .5rem; transition: color .2s;
         }
-        .ft-link::before { content: ''; display: block; width: 0; height: 1px; background: #B99A66; transition: width .25s; flex-shrink: 0; }
-        .ft-link:hover { color: #FFD3A3; }
+        .ft-link::before { content: ''; display: block; width: 0; height: 1px; background: var(--brand-primary); transition: width .25s; flex-shrink: 0; }
+        .ft-link:hover { color: var(--brand-peach); }
         .ft-link:hover::before { width: 10px; }
         .ft-contact-item { display: flex; gap: .9rem; align-items: flex-start; margin-bottom: 1.25rem; }
         .ft-contact-icon-wrap {
           width: 32px; height: 32px; flex-shrink: 0;
           display: flex; align-items: center; justify-content: center;
-          border: 1px solid rgba(185,154,102,.2); color: #B99A66;
+          border: 1px solid color-mix(in srgb, var(--brand-primary) 20%, transparent); color: var(--brand-primary);
         }
-        .ft-contact-text { font-size: .85rem; color: rgba(215,191,168,.65); line-height: 1.65; text-decoration: none; transition: color .2s; }
-        .ft-contact-text:hover { color: #FFD3A3; }
+        .ft-contact-text { font-size: .85rem; color: color-mix(in srgb, var(--brand-blush) 65%, transparent); line-height: 1.65; text-decoration: none; transition: color .2s; }
+        .ft-contact-text:hover { color: var(--brand-peach); }
         .ft-bottom {
           display: flex; flex-wrap: wrap;
           justify-content: space-between; align-items: center;
           gap: 1rem; padding-bottom: 3rem;
         }
-        .ft-copyright { font-size: .75rem; color: rgba(215,191,168,.35); letter-spacing: .04em; }
+        .ft-copyright { font-size: .75rem; color: color-mix(in srgb, var(--brand-blush) 35%, transparent); letter-spacing: .04em; }
         .ft-legal-links { display: flex; gap: 2rem; flex-wrap: wrap; }
-        .ft-legal-link { font-size: .72rem; color: rgba(215,191,168,.35); text-decoration: none; letter-spacing: .04em; transition: color .2s; }
-        .ft-legal-link:hover { color: rgba(215,191,168,.8); }
+        .ft-legal-link { font-size: .72rem; color: color-mix(in srgb, var(--brand-blush) 35%, transparent); text-decoration: none; letter-spacing: .04em; transition: color .2s; }
+        .ft-legal-link:hover { color: color-mix(in srgb, var(--brand-blush) 80%, transparent); }
         .ft-top-btn {
           position: absolute; top: -20px; right: 0;
           width: 40px; height: 40px;
           display: flex; align-items: center; justify-content: center;
-          background: #B99A66; color: #4A2400;
+          background: var(--brand-primary); color: var(--brand-black);
           border: none; cursor: pointer; z-index: 2; transition: all .25s;
         }
-        .ft-top-btn:hover { background: #FFD3A3; transform: translateY(-2px); }
+        .ft-top-btn:hover { background: var(--brand-peach); transform: translateY(-2px); }
       `}</style>
 
       <footer className="ft-root">

@@ -13,33 +13,32 @@ interface GalleryImage {
 }
 
 const galleryImages: GalleryImage[] = [
-  { src: `${S3_BASE}/Image31.jpeg`, alt: "Surroundings 5", category: "Interior" },
-  { src: `${S3_BASE}/Image32.jpeg`, alt: "Pathway 1", category: "Interior" },
-  { src: `${S3_BASE}/Image33.jpeg`, alt: "Resort pathway", category: "Interior" },
-  { src: `${S3_BASE}/Reception1.jpg`, alt: "Reception 1", category: "Interior" },
-  { src: `${S3_BASE}/Image34.jpeg`, alt: "Luxury Resort Exterior", category: "Interior" },
-  { src: `${S3_BASE}/Image35.jpeg`, alt: "Tranquil Haven", category: "Interior" },
-  { src: `${S3_BASE}/Image36.jpeg`, alt: "Scenic Retreat", category: "Interior" },
-  { src: `${S3_BASE}/Image37.jpeg`, alt: "Luxury Bathroom", category: "Interior" },
-  { src: `${S3_BASE}/Image38.jpeg`, alt: "Luxury Bathroom", category: "Interior" },
+  { src: `${S3_BASE}/Image31.jpeg`, alt: "Surroundings 5", category: "Exterior" },
+  { src: `${S3_BASE}/Image32.jpeg`, alt: "Pathway 1", category: "Exterior" },
+  { src: `${S3_BASE}/Image33.jpeg`, alt: "Resort pathway", category: "Exterior" },
+  { src: `${S3_BASE}/Image34.jpeg`, alt: "Luxury Resort Exterior", category: "Exterior" },
+  { src: `${S3_BASE}/Image35.jpeg`, alt: "Tranquil Haven", category: "Exterior" },
+  { src: `${S3_BASE}/Image36.jpeg`, alt: "Scenic Retreat", category: "Exterior" },
+  { src: `${S3_BASE}/Image37.jpeg`, alt: "Luxury Bathroom", category: "Exterior" },
+  { src: `${S3_BASE}/Image38.jpeg`, alt: "Luxury Bathroom", category: "Exterior" },
 
-  { src: `${S3_BASE}/Conferences1.jpeg`, alt: "Conference 1", category: "Conference & Events" },
-  { src: `${S3_BASE}/Conferences2.jpeg`, alt: "Conference 2", category: "Conference & Events" },
-  { src: `${S3_BASE}/Conferences3.jpeg`, alt: "Conference 3", category: "Conference & Events" },
-    { src: `${S3_BASE}/Conferences.jpeg`, alt: "Conference 3", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event2.jpeg`, alt: "Corporate event", category: "Conference & Events" },
-  { src: `${S3_BASE}/Image21.jpeg`, alt: "Event gathering", category: "Conference & Events" },
-  { src: `${S3_BASE}/Image23.jpeg`, alt: "Conference 3", category: "Conference & Events" },
-  { src: `${S3_BASE}/Events4.jpeg`, alt: "Conference 3", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event16.jpeg`, alt: "Private event", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event8.jpeg`, alt: "Outdoor gathering", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event12.jpeg`, alt: "Resort celebration", category: "Conference & Events" },
-  { src: `${S3_BASE}/Image25.jpeg`, alt: "Event space", category: "Conference & Events" },
-  { src: `${S3_BASE}/Image24.jpeg`, alt: "Event space", category: "Conference & Events" },
-  { src: `${S3_BASE}/Image26.jpeg`, alt: "Event space", category: "Conference & Events" },
-  { src: `${S3_BASE}/Party3.jpeg`, alt: "Outdoor party", category: "Conference & Events" },
-  { src: `${S3_BASE}/Event18.jpeg`, alt: "Resort celebration", category: "Conference & Events" },
-  { src: `${S3_BASE}/Team2.jpeg`, alt: "Team building 2", category: "Conference & Events" },
+  { src: `${S3_BASE}/Conferences1.jpeg`, alt: "Conference 1", category: "Conferences" },
+  { src: `${S3_BASE}/Conferences2.jpeg`, alt: "Conference 2", category: "Conferences" },
+  { src: `${S3_BASE}/Conferences3.jpeg`, alt: "Conference 3", category: "Conferences" },
+  { src: `${S3_BASE}/Conferences.jpeg`, alt: "Conference 3", category: "Conferences" },
+  { src: `${S3_BASE}/Image23.jpeg`, alt: "Conference 3", category: "Events" },
+  { src: `${S3_BASE}/Event2.jpeg`, alt: "Corporate event", category: "Events" },
+  { src: `${S3_BASE}/Image21.jpeg`, alt: "Event gathering", category: "Events" },
+  { src: `${S3_BASE}/Event16.jpeg`, alt: "Private event", category: "Events" },
+  { src: `${S3_BASE}/Event8.jpeg`, alt: "Outdoor gathering", category: "Events" },
+  { src: `${S3_BASE}/Event12.jpeg`, alt: "Resort celebration", category: "Events" },
+    { src: `${S3_BASE}/Events4.jpeg`, alt: "Conference 3", category: "Events" },
+  { src: `${S3_BASE}/Image25.jpeg`, alt: "Event space", category: "Events" },
+  { src: `${S3_BASE}/Image24.jpeg`, alt: "Event space", category: "Events" },
+  { src: `${S3_BASE}/Image26.jpeg`, alt: "Event space", category: "Events" },
+  { src: `${S3_BASE}/Party3.jpeg`, alt: "Outdoor party", category: "Events" },
+  { src: `${S3_BASE}/Event18.jpeg`, alt: "Resort celebration", category: "Events" },
+  
 
   { src: `${S3_BASE}/Standard Room1.jpeg`, alt: "Room 1", category: "Rooms" },
   { src: `${S3_BASE}/Standard Room2.jpeg`, alt: "Room 2", category: "Rooms" },
@@ -100,15 +99,15 @@ const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
   :root {
-    --brown:      #8F5F2F;
-    --brown-dark: #4A2400;
-    --brown-deep: #5C4033;
-    --gold:       #B99A66;
-    --sand:       #D2BB9E;
-    --blush:      #D7BFA8;
-    --peach:      #FFD3A3;
-    --cream:      #FAF6F0;
-    --white:      #FFFFFF;
+    --brown:      var(--brand-warm-brown);
+    --brown-dark: var(--brand-black);
+    --brown-deep: var(--brand-gray);
+    --gold:       var(--brand-primary);
+    --sand:       var(--brand-light-brown);
+    --blush:      var(--brand-blush);
+    --peach:      var(--brand-peach);
+    --cream:      var(--brand-background);
+    --white:      var(--brand-white);
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans:  'Jost', system-ui, sans-serif;
     --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
@@ -412,7 +411,7 @@ const styles = `
   .gp-lightbox-image {
     position: relative;
     min-height: min(72vh, 760px);
-    background: rgba(255,211,163,.08);
+    background: color-mix(in srgb, var(--brand-peach) 8%, transparent);
     overflow: hidden;
   }
 
@@ -428,7 +427,7 @@ const styles = `
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(255,211,163,.45);
+    border: 1px solid color-mix(in srgb, var(--brand-peach) 45%, transparent);
     background: var(--peach);
     color: var(--brown-dark);
     cursor: pointer;

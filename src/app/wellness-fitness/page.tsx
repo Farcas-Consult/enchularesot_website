@@ -79,14 +79,8 @@ const styles = `
   }
 
   .wp-root {
-    --brand-primary: #B99A66;
-    --brand-black: #4A2400;
-    --brand-gray: #5C4033;
-    --brand-background: #FAF6F0;
-    --brand-light-brown: #D2BB9E;
-    --text-on-dark: #FFFFFF;
-    --wp-blush: #D7BFA8;
-    --wp-peach: #FFD3A3;
+    --wp-blush: var(--brand-blush);
+    --wp-peach: var(--brand-peach);
     min-height: 100vh;
     background: var(--brand-background);
     color: var(--brand-black);
@@ -1014,21 +1008,6 @@ export default function WellnessFitnessPage() {
       </div>
 
       <div id="wellness-spaces" className="wp-section wp-wellness-intro-section">
-
-        <h2 className="wp-editorial-title">Wellness &amp; Fitness</h2>
-        <p className="wp-editorial-lead">
-          Enchula brings fitness and wellness into one warm, easy-to-use resort experience,
-          shaped around movement, recovery, and unhurried reset.
-        </p>
-        <p className="wp-editorial-copy">
-          Start the morning with focused training, ease into a sauna session, or book a soothing
-          treatment after a long day. The spaces are practical for residents and resort guests who
-          want to stay active while still making time to slow down.
-        </p>
-        <p className="wp-editorial-copy">
-          <strong>Wellness at Enchula is experienced through steady training, calming recovery,
-          and thoughtful care in a relaxed resort setting.</strong>
-        </p>
 
         <div className="wp-journey-heading">
           <h3>Our Wellness Journey</h3>

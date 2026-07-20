@@ -64,13 +64,13 @@ export default function Navbar() {
           transition: background .4s, box-shadow .4s;
         }
         .nav-root.scrolled {
-          box-shadow: 0 4px 32px rgba(26,13,0,.35);
+          box-shadow: 0 4px 32px color-mix(in srgb, var(--brand-black) 35%, transparent);
         }
 
         /* top accent bar */
         .nav-accent-bar {
           height: 2px;
-          background: linear-gradient(90deg, #4A2400, #B99A66 40%, #D2BB9E 60%, #B99A66 80%, #4A2400);
+          background: linear-gradient(90deg, var(--brand-black), var(--brand-primary) 40%, var(--brand-light-brown) 60%, var(--brand-primary) 80%, var(--brand-black));
         }
 
         /* ── Desktop ── */
@@ -79,12 +79,12 @@ export default function Navbar() {
           display: grid;
           grid-template-columns: minmax(170px, 235px) minmax(0, 1fr) minmax(170px, 235px);
           grid-template-rows: auto auto;
-          background: #4A2400;
+          background: var(--brand-black);
           padding: 1rem 2.5rem .9rem;
           align-items: center;
           gap: .65rem 1.5rem;
           min-height: 202px;
-          border-bottom: 1px solid rgba(185,154,102,.18);
+          border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 18%, transparent);
         }
         .nav-contact-icons {
           display: flex; gap: .35rem; align-items: center;
@@ -92,82 +92,83 @@ export default function Navbar() {
         }
         .nav-icon-btn {
           width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;
-          color: rgba(255,211,163,.7); border: 1px solid rgba(185,154,102,.22);
-          background: rgba(255,211,163,.04); cursor: pointer;
+          color: color-mix(in srgb, var(--brand-peach) 70%, transparent); border: 1px solid color-mix(in srgb, var(--brand-primary) 22%, transparent);
+          background: color-mix(in srgb, var(--brand-peach) 4%, transparent); cursor: pointer;
           transition: color .2s, background .2s, border-color .2s, transform .2s; text-decoration: none;
         }
         .nav-icon-btn:hover {
-          color: #FFD3A3; background: rgba(255,211,163,.1);
-          border-color: rgba(185,154,102,.55); transform: translateY(-1px);
+          color: var(--brand-peach); background: color-mix(in srgb, var(--brand-peach) 10%, transparent);
+          border-color: color-mix(in srgb, var(--brand-primary) 55%, transparent); transform: translateY(-1px);
         }
 
         .nav-logo-wrap {
-          display: flex; flex-direction: column; align-items: center; gap: .25rem;
+          display: flex; flex-direction: column; align-items: center; gap: 0;
           text-decoration: none; flex-shrink: 0;
           grid-column: 2; grid-row: 1; justify-self: center;
         }
         .nav-logo-img {
           width: 238px; height: 158px; object-fit: contain;
-          filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
+          filter: drop-shadow(0 6px 16px color-mix(in srgb, var(--brand-black) 18%, transparent));
         }
         .nav-logo-text {
           font-family: 'Cormorant Garamond', Georgia, serif;
           font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
-          color: rgba(255,211,163,.72); font-weight: 400;
+          color: color-mix(in srgb, var(--brand-peach) 72%, transparent); font-weight: 400;
+          margin-top: -2.4rem;
         }
 
         .nav-links-row {
-          display: flex; align-items: center; gap: .25rem; list-style: none;
+          display: flex; align-items: center; gap: .35rem clamp(.45rem, 1vw, .95rem); list-style: none;
           flex-wrap: wrap; justify-content: center;
           grid-column: 1 / -1; grid-row: 2;
-          border-top: 1px solid rgba(185,154,102,.14);
+          border-top: 1px solid color-mix(in srgb, var(--brand-primary) 14%, transparent);
           padding-top: .8rem;
         }
         .nav-link {
           font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
-          font-weight: 600; color: rgba(255,211,163,.68); text-decoration: none;
-          padding: .55rem .8rem; position: relative; transition: color .2s, background .2s;
+          font-weight: 600; color: color-mix(in srgb, var(--brand-peach) 68%, transparent); text-decoration: none;
+          padding: .55rem clamp(.78rem, 1vw, 1.05rem); position: relative; transition: color .2s, background .2s;
           white-space: nowrap;
         }
         .nav-link::after {
           content: ''; position: absolute; bottom: .25rem; left: .8rem; right: .8rem;
-          height: 1px; background: #B99A66;
+          height: 1px; background: var(--brand-primary);
           transform: scaleX(0); transition: transform .25s;
         }
-        .nav-link:hover { color: #FFD3A3; background: rgba(255,211,163,.055); }
+        .nav-link:hover { color: var(--brand-peach); background: color-mix(in srgb, var(--brand-peach) 5.5%, transparent); }
         .nav-link:hover::after { transform: scaleX(1); }
 
         .nav-book-btn {
           grid-column: 3; grid-row: 1; justify-self: end;
           padding: .8rem 1.65rem;
-          background: #B99A66; color: #4A2400;
+          background: var(--brand-primary); color: var(--brand-black);
           font-family: 'Jost', sans-serif;
           font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
           font-weight: 700; border: none; cursor: pointer; transition: all .25s;
           text-decoration: none; white-space: nowrap; flex-shrink: 0;
         }
-        .nav-book-btn:hover { background: #FFD3A3; transform: translateY(-1px); }
+        .nav-book-btn:hover { background: var(--brand-peach); transform: translateY(-1px); }
 
         /* ── Mobile ── */
         .nav-mobile {
-          background: #4A2400;
+          background: var(--brand-black);
           display: flex; flex-direction: column;
-          border-bottom: 1px solid rgba(185,154,102,.18);
+          border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 18%, transparent);
         }
         .nav-mobile-topbar {
           position: relative;
           display: flex; align-items: center; justify-content: space-between;
           min-height: 126px;
           padding: .65rem .85rem;
-          border-bottom: 1px solid rgba(185,154,102,.15);
+          border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 15%, transparent);
         }
         .nav-hamburger {
           width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-          color: rgba(255,211,163,.8); border: none; background: transparent; cursor: pointer;
-          border: 1px solid rgba(185,154,102,.25); border-radius: 2px; transition: all .2s;
+          color: color-mix(in srgb, var(--brand-peach) 80%, transparent); border: none; background: transparent; cursor: pointer;
+          border: 1px solid color-mix(in srgb, var(--brand-primary) 25%, transparent); border-radius: 2px; transition: all .2s;
           position: relative; z-index: 2;
         }
-        .nav-hamburger:hover { border-color: #B99A66; color: #FFD3A3; }
+        .nav-hamburger:hover { border-color: var(--brand-primary); color: var(--brand-peach); }
         .nav-mobile-contacts {
           display: flex; align-items: center; gap: .15rem;
         }
@@ -177,7 +178,7 @@ export default function Navbar() {
         }
         .nav-mobile-logo-img {
           width: 160px; height: 118px; object-fit: contain;
-          filter: drop-shadow(0 6px 16px rgba(0,0,0,.18));
+          filter: drop-shadow(0 6px 16px color-mix(in srgb, var(--brand-black) 18%, transparent));
         }
         .nav-mobile-book {
           grid-column: auto; grid-row: auto; justify-self: auto;
@@ -187,17 +188,17 @@ export default function Navbar() {
         .nav-mobile-contact-strip {
           display: flex; justify-content: center; gap: .45rem;
           padding: .42rem 0;
-          border-bottom: 1px solid rgba(185,154,102,.12);
+          border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 12%, transparent);
         }
 
         /* Drawer */
         .nav-drawer-overlay {
-          position: fixed; inset: 0; background: rgba(26,13,0,.6);
+          position: fixed; inset: 0; background: color-mix(in srgb, var(--brand-black) 60%, transparent);
           z-index: 200; backdrop-filter: blur(3px);
         }
         .nav-drawer {
           position: fixed; top: 0; right: 0; bottom: 0; width: min(85vw, 320px);
-          background: #3A1C00; z-index: 201;
+          background: color-mix(in srgb, var(--brand-black) 86%, var(--brand-gray)); z-index: 201;
           display: flex; flex-direction: column;
           animation: drawerSlideIn .32s cubic-bezier(0.16,1,0.3,1);
         }
@@ -208,44 +209,44 @@ export default function Navbar() {
         .nav-drawer-header {
           display: flex; align-items: center; justify-content: space-between;
           padding: 1.5rem 1.5rem 1rem;
-          border-bottom: 1px solid rgba(185,154,102,.15);
+          border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 15%, transparent);
         }
         .nav-drawer-brand {
           font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400;
-          color: #FFD3A3; letter-spacing: .05em;
+          color: var(--brand-peach); letter-spacing: .05em;
         }
-        .nav-drawer-brand em { font-style: italic; color: #B99A66; }
+        .nav-drawer-brand em { font-style: italic; color: var(--brand-primary); }
         .nav-close-btn {
           width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
-          color: rgba(255,211,163,.6); border: 1px solid rgba(185,154,102,.25);
+          color: color-mix(in srgb, var(--brand-peach) 60%, transparent); border: 1px solid color-mix(in srgb, var(--brand-primary) 25%, transparent);
           background: transparent; cursor: pointer; border-radius: 2px; transition: all .2s;
         }
-        .nav-close-btn:hover { color: #FFD3A3; border-color: #B99A66; }
+        .nav-close-btn:hover { color: var(--brand-peach); border-color: var(--brand-primary); }
         .nav-drawer-links {
           flex: 1; overflow-y: auto; padding: 1.25rem 0;
         }
         .nav-drawer-link {
           display: flex; align-items: center; justify-content: space-between;
           padding: .9rem 1.5rem; font-size: .82rem; letter-spacing: .1em;
-          text-transform: uppercase; font-weight: 500; color: rgba(255,211,163,.65);
+          text-transform: uppercase; font-weight: 500; color: color-mix(in srgb, var(--brand-peach) 65%, transparent);
           text-decoration: none; border-left: 2px solid transparent; transition: all .2s;
         }
         .nav-drawer-link:hover {
-          color: #FFD3A3; border-left-color: #B99A66;
-          background: rgba(185,154,102,.07);
+          color: var(--brand-peach); border-left-color: var(--brand-primary);
+          background: color-mix(in srgb, var(--brand-primary) 7%, transparent);
         }
         .nav-drawer-footer {
-          padding: 1.5rem; border-top: 1px solid rgba(185,154,102,.15);
+          padding: 1.5rem; border-top: 1px solid color-mix(in srgb, var(--brand-primary) 15%, transparent);
           display: flex; flex-direction: column; gap: 1rem;
         }
         .nav-drawer-book {
           display: block; text-align: center;
-          padding: 1rem; background: #B99A66; color: #4A2400;
+          padding: 1rem; background: var(--brand-primary); color: var(--brand-black);
           font-family: 'Jost', sans-serif; font-size: .75rem;
           letter-spacing: .14em; text-transform: uppercase; font-weight: 700;
           text-decoration: none; transition: background .25s;
         }
-        .nav-drawer-book:hover { background: #FFD3A3; }
+        .nav-drawer-book:hover { background: var(--brand-peach); }
         .nav-drawer-contacts {
           display: flex; justify-content: center; gap: .5rem;
         }
@@ -259,7 +260,7 @@ export default function Navbar() {
         }
       `}</style>
 
-      <header className={`nav-root ${scrolled ? "scrolled" : ""}`} style={{ background: "#4A2400" }}>
+      <header className={`nav-root ${scrolled ? "scrolled" : ""}`} style={{ background: "var(--brand-black)" }}>
         <div className="nav-accent-bar" />
 
         {/* ── Desktop ── */}

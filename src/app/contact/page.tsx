@@ -64,46 +64,46 @@ const Contact: React.FC = () => {
   return (
     <section id="contact" className="py-16 px-4 bg-(--brand-background) font-nunito">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#8F5F2F] mb-2 text-center font-lora">Contact Us</h1>
-        <p className="text-center text-[#4A2400] mb-8 font-nunito">We&apos;d love to hear from you. Reach out for bookings, directions, or any questions!</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-(--brand-warm-brown) mb-2 text-center font-lora">Contact Us</h1>
+        <p className="text-center text-(--brand-black) mb-8 font-nunito">We&apos;d love to hear from you. Reach out for bookings, directions, or any questions!</p>
 
         <div className="grid md:grid-cols-2 gap-10 mb-12">
           {/* Contact Details */}
-          <div className="bg-white rounded-2xl border border-(--brand-light-brown) shadow p-8 flex flex-col gap-6 justify-center">
+          <div className="bg-(--brand-white) rounded-2xl border border-(--brand-light-brown) shadow p-8 flex flex-col gap-6 justify-center">
             <div>
-              <h2 className="text-xl font-semibold text-[#B99A66] mb-1 flex items-center gap-2 font-lora"><Phone className="inline w-5 h-5 text-[#B99A66]" /> Reservations</h2>
-              <p className="text-[#4A2400] font-nunito">+254 (0) 727000027<br />+254 (0) 734000027</p>
+              <h2 className="text-xl font-semibold text-(--brand-primary) mb-1 flex items-center gap-2 font-lora"><Phone className="inline w-5 h-5 text-(--brand-primary)" /> Reservations</h2>
+              <p className="text-(--brand-black) font-nunito">+254 (0) 727000027<br />+254 (0) 734000027</p>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-[#B99A66] mb-1 flex items-center gap-2 font-lora"><Mail className="inline w-5 h-5 text-[#B99A66]" /> Email</h2>
-              <p className="text-[#4A2400] font-nunito">info@enchularesort.co.ke</p>
+              <h2 className="text-xl font-semibold text-(--brand-primary) mb-1 flex items-center gap-2 font-lora"><Mail className="inline w-5 h-5 text-(--brand-primary)" /> Email</h2>
+              <p className="text-(--brand-black) font-nunito">info@enchularesort.co.ke</p>
             </div>
             <div>
-              <h2 className="text-xl font-semibold text-[#B99A66] mb-1 flex items-center gap-2 font-lora"><MapPin className="inline w-5 h-5 text-[#B99A66]" /> Address</h2>
-              <p className="text-[#4A2400] font-nunito">Kajiado, Kenya<br />P.O. Box 62575 00200, Nairobi</p>
+              <h2 className="text-xl font-semibold text-(--brand-primary) mb-1 flex items-center gap-2 font-lora"><MapPin className="inline w-5 h-5 text-(--brand-primary)" /> Address</h2>
+              <p className="text-(--brand-black) font-nunito">Kajiado, Kenya<br />P.O. Box 62575 00200, Nairobi</p>
             </div>
           </div>
 
           {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-[#DCC7A1] shadow p-8 flex flex-col gap-5">
-            <h2 className="text-2xl font-bold text-[#B99A66] mb-2 flex items-center gap-2 font-lora"><MessageCircle className="w-6 h-6 text-[#B99A66]" />Send Us a Message</h2>
+          <form onSubmit={handleSubmit} className="bg-(--brand-white) rounded-2xl border border-(--brand-light-brown) shadow p-8 flex flex-col gap-5">
+            <h2 className="text-2xl font-bold text-(--brand-primary) mb-2 flex items-center gap-2 font-lora"><MessageCircle className="w-6 h-6 text-(--brand-primary)" />Send Us a Message</h2>
             <div>
-              <label className="block text-sm font-semibold text-[#4A2400] mb-1 font-nunito">Full Name *</label>
-              <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 bg-(--brand-background) border border-(--brand-light-brown) rounded text-[#4A2400] placeholder-[#B99A66] focus:outline-none focus:border-[#8F5F2F]" placeholder="John Doe" />
+              <label className="block text-sm font-semibold text-(--brand-black) mb-1 font-nunito">Full Name *</label>
+              <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 bg-(--brand-background) border border-(--brand-light-brown) rounded text-(--brand-black) placeholder-(--brand-primary) focus:outline-none focus:border-(--brand-warm-brown)" placeholder="John Doe" />
               {errors.name && <p className="text-[#CC5555] text-xs mt-1 flex items-center gap-1 font-nunito"><span>⚠️</span>{errors.name}</p>}
             </div>
             <div>
-              <label className="block text-sm font-semibold text-[#4A2400] mb-1 font-nunito">Email Address *</label>
-              <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 bg-(--brand-background) border border-(--brand-light-brown) rounded text-[#4A2400] placeholder-[#B99A66] focus:outline-none focus:border-[#8F5F2F]" placeholder="john@email.com" />
+              <label className="block text-sm font-semibold text-(--brand-black) mb-1 font-nunito">Email Address *</label>
+              <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 bg-(--brand-background) border border-(--brand-light-brown) rounded text-(--brand-black) placeholder-(--brand-primary) focus:outline-none focus:border-(--brand-warm-brown)" placeholder="john@email.com" />
               {errors.email && <p className="text-[#CC5555] text-xs mt-1 flex items-center gap-1 font-nunito"><span>⚠️</span>{errors.email}</p>}
             </div>
             <div>
-              <label className="block text-sm font-semibold text-[#4A2400] mb-1 font-nunito">Phone Number</label>
-              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-2 bg-(--brand-background) border border-(--brand-light-brown) rounded text-[#4A2400] placeholder-[#B99A66] focus:outline-none focus:border-[#8F5F2F]" placeholder="+254 712 345 678" />
+              <label className="block text-sm font-semibold text-(--brand-black) mb-1 font-nunito">Phone Number</label>
+              <input type="tel" name="phone" value={formData.phone} onChange={handleChange} className="w-full px-4 py-2 bg-(--brand-background) border border-(--brand-light-brown) rounded text-(--brand-black) placeholder-(--brand-primary) focus:outline-none focus:border-(--brand-warm-brown)" placeholder="+254 712 345 678" />
             </div>
             <div>
-              <label className="block text-sm font-semibold text-[#4A2400] mb-1 font-nunito">Your Message *</label>
-              <textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-2 bg-(--brand-background) border border-(--brand-light-brown) rounded text-[#4A2400] placeholder-[#B99A66] focus:outline-none focus:border-[#8F5F2F] resize-none" placeholder="How can we help you?" />
+              <label className="block text-sm font-semibold text-(--brand-black) mb-1 font-nunito">Your Message *</label>
+              <textarea name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-2 bg-(--brand-background) border border-(--brand-light-brown) rounded text-(--brand-black) placeholder-(--brand-primary) focus:outline-none focus:border-(--brand-warm-brown) resize-none" placeholder="How can we help you?" />
               {errors.message && <p className="text-[#CC5555] text-xs mt-1 flex items-center gap-1 font-nunito"><span>⚠️</span>{errors.message}</p>}
             </div>
             {success && (
@@ -111,11 +111,11 @@ const Contact: React.FC = () => {
                 ✅ Message sent successfully! We’ll be in touch shortly.
               </div>
             )}
-            <button type="submit" className="w-full px-6 py-3 bg-(--brand-primary) text-white rounded font-semibold flex items-center justify-center gap-2 shadow hover:bg-(--brand-primary-brown) transition-all duration-200 font-nunito">
+            <button type="submit" className="w-full px-6 py-3 bg-(--brand-primary) text-(--text-on-dark) rounded font-semibold flex items-center justify-center gap-2 shadow hover:bg-(--brand-primary-brown) transition-all duration-200 font-nunito">
               <Send className="w-5 h-5" /> Send Message
             </button>
           </form>
-              className="w-full bg-[#FFD3A3] text-[#4A2400] font-bold py-2 px-4 rounded hover:bg-[#B99A66] hover:text-white transition-colors duration-200"
+              className="w-full bg-(--brand-peach) text-(--brand-black) font-bold py-2 px-4 rounded hover:bg-(--brand-primary) hover:text-(--text-on-dark) transition-colors duration-200"
 
         {/* Google Map Embed */}
               Get Directions
@@ -135,7 +135,7 @@ const Contact: React.FC = () => {
               href="https://www.google.com/maps/dir/?api=1&destination=Kajiado,+Kenya"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-[#7A1F2E] text-white rounded font-semibold shadow hover:bg-[#4E2E0E] transition-all duration-200"
+              className="inline-block px-6 py-3 bg-(--brand-warm-brown) text-(--text-on-dark) rounded font-semibold shadow hover:bg-(--brand-black) transition-all duration-200"
             >
               Get Directions from Your Location
             </a>

@@ -55,15 +55,15 @@ const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
   :root {
-    --brown:      #8F5F2F;
-    --brown-dark: #4A2400;
-    --brown-deep: #5C4033;
-    --gold:       #B99A66;
-    --sand:       #D2BB9E;
-    --blush:      #D7BFA8;
-    --peach:      #FFD3A3;
-    --cream:      #FAF6F0;
-    --white:      #FFFFFF;
+    --brown:      var(--brand-warm-brown);
+    --brown-dark: var(--brand-black);
+    --brown-deep: var(--brand-gray);
+    --gold:       var(--brand-primary);
+    --sand:       var(--brand-light-brown);
+    --blush:      var(--brand-blush);
+    --peach:      var(--brand-peach);
+    --cream:      var(--brand-background);
+    --white:      var(--brand-white);
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans:  'Jost', system-ui, sans-serif;
     --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
@@ -161,7 +161,7 @@ const styles = `
     justify-content: center;
     min-height: 46px;
     padding: .85rem 1.35rem;
-    border: 1px solid rgba(255,211,163,.55);
+    border: 1px solid color-mix(in srgb, var(--brand-peach) 55%, transparent);
     color: var(--brown-dark);
     background: var(--peach);
     font-size: .72rem;
@@ -553,7 +553,7 @@ const styles = `
   }
 
   .dp-reserve p {
-    color: rgba(255,211,163,.78);
+    color: color-mix(in srgb, var(--brand-peach) 78%, transparent);
     line-height: 1.75;
     margin: 0 auto 1.75rem;
     max-width: 620px;
@@ -749,20 +749,6 @@ export default function DiningPage() {
       </div>
 
       <div id="dining-experience" className="dp-section dp-editorial-section">
-
-        <h2 className="dp-editorial-title">Dining &amp; Bars</h2>
-        <p className="dp-editorial-lead">
-          Every meal is shaped around comfort, conversation, and the gentle pace of the resort.
-        </p>
-        <p className="dp-editorial-copy">
-          Come in for a quiet breakfast, linger over dinner, or meet friends for drinks as the
-          evening settles in. The experience brings together familiar warmth, fresh ingredients,
-          relaxed service, and dining spaces made for both everyday meals and special moments.
-        </p>
-        <p className="dp-editorial-copy">
-          <strong>A modern resort table with a familiar welcome, from local freshness to global
-          classics and unhurried lounge evenings.</strong>
-        </p>
 
         <div className="dp-journey-heading">
           <h3>Our Dining Journey</h3>

@@ -61,15 +61,15 @@ const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
   :root {
-    --brown:      #8F5F2F;
-    --brown-dark: #4A2400;
-    --brown-deep: #5C4033;
-    --gold:       #B99A66;
-    --sand:       #D2BB9E;
-    --blush:      #D7BFA8;
-    --peach:      #FFD3A3;
-    --cream:      #FAF6F0;
-    --white:      #FFFFFF;
+    --brown:      var(--brand-warm-brown);
+    --brown-dark: var(--brand-black);
+    --brown-deep: var(--brand-gray);
+    --gold:       var(--brand-primary);
+    --sand:       var(--brand-light-brown);
+    --blush:      var(--brand-blush);
+    --peach:      var(--brand-peach);
+    --cream:      var(--brand-background);
+    --white:      var(--brand-white);
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans:  'Jost', system-ui, sans-serif;
     --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
@@ -167,7 +167,7 @@ const styles = `
     justify-content: center;
     min-height: 46px;
     padding: .85rem 1.35rem;
-    border: 1px solid rgba(255,211,163,.55);
+    border: 1px solid color-mix(in srgb, var(--brand-peach) 55%, transparent);
     color: var(--brown-dark);
     background: var(--peach);
     font-size: .72rem;
@@ -511,7 +511,7 @@ const styles = `
   }
 
   .xp-cta p {
-    color: rgba(255,211,163,.78);
+    color: color-mix(in srgb, var(--brand-peach) 78%, transparent);
     line-height: 1.75;
     margin: 0 auto 1.75rem;
     max-width: 640px;
@@ -685,20 +685,6 @@ export default function ExperiencesPage() {
       </div>
 
       <div id="experiences" className="xp-section xp-editorial-section">
-        <h2 className="xp-editorial-title">Experiences &amp; Activities</h2>
-        <p className="xp-editorial-lead">
-          Enchula brings together pool time, recreation, kids activities, picnics, and guided
-          nature walks in a relaxed resort rhythm.
-        </p>
-        <p className="xp-editorial-copy">
-          Families, couples, teams, and day visitors can shape their time around easy movement,
-          quiet corners, refreshing swims, games, and shared moments across the grounds.
-        </p>
-        <p className="xp-editorial-copy">
-          <strong>Every activity is designed to make the day feel active, social, restorative,
-          or family-focused without losing the calm of the resort setting.</strong>
-        </p>
-
         <div className="xp-journey-heading">
           <h3>Our Experience Journey</h3>
           <p>A natural rhythm of swimming, play, family time, fresh air, and discovery</p>

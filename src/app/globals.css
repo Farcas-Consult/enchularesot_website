@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600;700;800&display=swap');
 
 /* Contact page map iframe border fix */
 
@@ -8,7 +8,7 @@
 
 html,
 body {
-    font-family: 'Jost', system-ui, sans-serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
 html {
@@ -23,11 +23,11 @@ h4,
 h5,
 h6,
 .font-lora {
-    font-family: 'Jost', system-ui, sans-serif !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
 }
 
 .font-nunito {
-    font-family: 'Jost', system-ui, sans-serif !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
 }
 
 
@@ -45,45 +45,40 @@ h6,
 /* Enchula Resort brand palette - CSS variables available globally */
 
 :root {
-    /* Brand Colors */
+    /* Wellness palette */
     --brand-primary: #B99A66;
-    /* Deep Burgundy / Maroon */
-    --brand-accent-gold: #D2BB6C;
-    /* Gold / Warm Mustard */
-    --brand-background: #F8F3EF;
-    /* White / Off-White */
-    --brand-black: #181818;
-    /* Black / Dark Gray */
-    --brand-gray: #232323;
-    /* Dark Gray for text */
-    /* For legacy compatibility (optional) */
+    --brand-warm-brown: #8F5F2F;
+    --brand-black: #4A2400;
+    --brand-gray: #5C4033;
+    --brand-background: #FAF6F0;
+    --brand-light-brown: #D2BB9E;
+    --brand-blush: #D7BFA8;
+    --brand-peach: #FFD3A3;
+    --brand-white: #FFFFFF;
+    --brand-accent-gold: var(--brand-light-brown);
     --brand-primary-brown: var(--brand-primary);
-    --brand-secondary-maroon: #B99A66;
-    --brand-light-brown: #DCC7A1;
+    --brand-secondary-maroon: var(--brand-primary);
     --brand-beige: var(--brand-background);
     --brand-dark-neutral: var(--brand-black);
-    /* Overlay */
-    --overlay-charcoal: rgba(24, 24, 24, 0.6);
-    /* Text colors */
+    --overlay-charcoal: color-mix(in srgb, var(--brand-black) 60%, transparent);
     --text-primary: var(--brand-gray);
-    --text-on-dark: #FFFFFF;
-    /* Aliases */
+    --text-on-dark: var(--brand-white);
     --background: var(--brand-background);
     --foreground: var(--text-primary);
 }
 
 @media (prefers-color-scheme: dark) {
      :root {
-        --background: #0a0a0a;
-        --foreground: #f5f5f5;
-        --overlay-charcoal: rgba(0, 0, 0, 0.6);
+        --background: var(--brand-background);
+        --foreground: var(--text-primary);
+        --overlay-charcoal: color-mix(in srgb, var(--brand-black) 60%, transparent);
     }
 }
 
 body {
     background: var(--background);
     color: var(--foreground);
-    font-family: 'Jost', system-ui, sans-serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -91,7 +86,7 @@ body {
 
 body,
 body * {
-    font-family: 'Jost', system-ui, sans-serif !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
 }
 
 *,
@@ -111,8 +106,7 @@ main > section {
 .ep-hero,
 .xp-hero,
 .gp-hero,
-.vt-hero,
-.sustainability-hero {
+.vt-hero {
     position: relative !important;
     height: auto !important;
     min-height: clamp(520px, 68vh, 760px) !important;
@@ -128,8 +122,7 @@ main > section {
 .xp-hero-img,
 .gp-hero-img,
 .vt-hero-img,
-.wp-hero-img,
-.sustainability-hero-img {
+.wp-hero-img {
     animation: heroImageDrift 14s ease-in-out infinite alternate !important;
     object-fit: cover !important;
     filter: saturate(.92) contrast(.95) brightness(.92) !important;
@@ -212,7 +205,6 @@ main section:nth-of-type(odd) .motion-text.motion-in {
     .gp-hero-img,
     .vt-hero-img,
     .wp-hero-img,
-    .sustainability-hero-img,
     .hero-slide-enter img,
     .hero-drift-bg {
         animation: none !important;
@@ -224,8 +216,7 @@ main section:nth-of-type(odd) .motion-text.motion-in {
 .ep-hero-overlay,
 .xp-hero-overlay,
 .gp-hero-overlay,
-.vt-hero-overlay,
-.sustainability-hero-overlay {
+.vt-hero-overlay {
     position: absolute !important;
     inset: 0 !important;
     z-index: 20 !important;
@@ -239,8 +230,7 @@ main section:nth-of-type(odd) .motion-text.motion-in {
 .ep-hero-content,
 .xp-hero-content,
 .gp-hero-content,
-.vt-hero-content,
-.sustainability-hero-content {
+.vt-hero-content {
     position: relative !important;
     z-index: 30 !important;
     width: min(1160px, calc(100% - 3rem)) !important;
@@ -256,14 +246,13 @@ main section:nth-of-type(odd) .motion-text.motion-in {
 .ep-eyebrow,
 .xp-eyebrow,
 .gp-eyebrow,
-.vt-eyebrow,
-.sustainability-eyebrow {
+.vt-eyebrow {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
     gap: .85rem !important;
     color: var(--text-on-dark) !important;
-    font-family: 'Jost', system-ui, sans-serif !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
     font-size: .7rem !important;
     font-weight: 700 !important;
     letter-spacing: .22em !important;
@@ -277,14 +266,12 @@ main section:nth-of-type(odd) .motion-text.motion-in {
 .xp-eyebrow::before,
 .gp-eyebrow::before,
 .vt-eyebrow::before,
-.sustainability-eyebrow::before,
 .rp-hero-eyebrow::after,
 .dp-eyebrow::after,
 .ep-eyebrow::after,
 .xp-eyebrow::after,
 .gp-eyebrow::after,
-.vt-eyebrow::after,
-.sustainability-eyebrow::after {
+.vt-eyebrow::after {
     content: '' !important;
     display: block !important;
     width: 34px !important;
@@ -298,12 +285,11 @@ main section:nth-of-type(odd) .motion-text.motion-in {
 .ep-title,
 .xp-title,
 .gp-title,
-.vt-title,
-.sustainability-title {
+.vt-title {
     max-width: 820px !important;
     margin: 0 !important;
     color: var(--text-on-dark) !important;
-    font-family: 'Jost', system-ui, sans-serif !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
     font-size: clamp(3rem, 7vw, 6.5rem) !important;
     font-weight: 400 !important;
     letter-spacing: 0 !important;
@@ -317,8 +303,7 @@ main section:nth-of-type(odd) .motion-text.motion-in {
 .ep-title em,
 .xp-title em,
 .gp-title em,
-.vt-title em,
-.sustainability-title em {
+.vt-title em {
     color: color-mix(in srgb, var(--brand-primary) 78%, var(--text-on-dark)) !important;
     font-style: italic !important;
 }
@@ -327,12 +312,11 @@ main section:nth-of-type(odd) .motion-text.motion-in {
 .ep-intro,
 .xp-intro,
 .gp-intro,
-.vt-intro,
-.sustainability-intro {
+.vt-intro {
     max-width: 650px !important;
     margin: 1.5rem 0 2rem !important;
     color: color-mix(in srgb, var(--text-on-dark) 84%, var(--brand-primary)) !important;
-    font-family: 'Jost', system-ui, sans-serif !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
     font-size: clamp(1rem, 1.4vw, 1.15rem) !important;
     line-height: 1.9 !important;
 }
@@ -353,7 +337,7 @@ main section:nth-of-type(odd) .motion-text.motion-in {
     border-color: var(--brand-primary) !important;
     background: var(--brand-primary) !important;
     color: var(--brand-black) !important;
-    font-family: 'Jost', system-ui, sans-serif !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
     font-size: .72rem !important;
     font-weight: 800 !important;
     letter-spacing: .13em !important;
@@ -382,8 +366,7 @@ main section:nth-of-type(odd) .motion-text.motion-in {
     .ep-hero,
     .xp-hero,
     .gp-hero,
-    .vt-hero,
-    .sustainability-hero {
+    .vt-hero {
         min-height: 62vh !important;
     }
 
@@ -392,8 +375,7 @@ main section:nth-of-type(odd) .motion-text.motion-in {
     .ep-hero-content,
     .xp-hero-content,
     .gp-hero-content,
-    .vt-hero-content,
-    .sustainability-hero-content {
+    .vt-hero-content {
         width: min(100% - 2rem, 620px) !important;
         padding: 4rem 0 3.25rem !important;
         text-align: center !important;
@@ -405,7 +387,6 @@ main section:nth-of-type(odd) .motion-text.motion-in {
     .xp-eyebrow,
     .gp-eyebrow,
     .vt-eyebrow,
-    .sustainability-eyebrow,
     .dp-actions,
     .ep-actions,
     .xp-actions,
@@ -417,8 +398,7 @@ main section:nth-of-type(odd) .motion-text.motion-in {
     .ep-intro,
     .xp-intro,
     .gp-intro,
-    .vt-intro,
-    .sustainability-intro {
+    .vt-intro {
         margin-left: auto !important;
         margin-right: auto !important;
     }
@@ -520,12 +500,12 @@ main section:nth-of-type(odd) .motion-text.motion-in {
 
 .btn-primary {
     background-color: var(--brand-primary-brown);
-    color: #fff !important;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+    color: var(--text-on-dark) !important;
+    text-shadow: 0 1px 4px color-mix(in srgb, var(--brand-black) 18%, transparent);
     padding: 0.65rem 1.25rem;
     border-radius: 9999px;
     font-weight: 600;
-    box-shadow: 0 6px 18px rgba(255, 255, 200, 0.12);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--brand-peach) 12%, transparent);
     transition: transform 160ms ease, background-color 160ms ease;
     border: none;
     cursor: pointer;
@@ -534,7 +514,7 @@ main section:nth-of-type(odd) .motion-text.motion-in {
 .btn-primary:hover {
     transform: translateY(-2px);
     background-color: var(--brand-secondary-maroon);
-    color: #fff !important;
+    color: var(--text-on-dark) !important;
 }
 
 .btn-outline {
@@ -609,7 +589,7 @@ main section:nth-of-type(odd) .motion-text.motion-in {
     .room-image-type {
         @apply mb-2 block font-normal leading-none;
         color: var(--text-on-dark);
-        font-family: 'Jost', system-ui, sans-serif;
+        font-family: 'Cormorant Garamond', Georgia, serif;
         font-size: clamp(1.9rem, 3vw, 2.65rem);
     }
 
@@ -1127,8 +1107,7 @@ video {
 .xp-hero-content,
 .gp-hero-content,
 .vt-hero-content,
-.wp-hero-content,
-.sustainability-hero-content {
+.wp-hero-content {
     width: min(1160px, calc(100% - 3rem)) !important;
     max-width: 1160px !important;
     padding-left: 0 !important;
@@ -1142,8 +1121,7 @@ video {
     .xp-hero,
     .gp-hero,
     .vt-hero,
-    .wp-hero,
-    .sustainability-hero {
+    .wp-hero {
         min-height: 62vh !important;
     }
 
@@ -1153,8 +1131,7 @@ video {
     .xp-hero-content,
     .gp-hero-content,
     .vt-hero-content,
-    .wp-hero-content,
-    .sustainability-hero-content {
+    .wp-hero-content {
         width: min(100% - 2rem, 620px) !important;
         max-width: 620px !important;
         padding: 4rem 0 3.25rem !important;
@@ -1168,7 +1145,6 @@ video {
     .gp-eyebrow,
     .vt-eyebrow,
     .wp-eyebrow,
-    .sustainability-eyebrow,
     .dp-actions,
     .ep-actions,
     .xp-actions,
@@ -1182,8 +1158,7 @@ video {
     .xp-intro,
     .gp-intro,
     .vt-intro,
-    .wp-intro,
-    .sustainability-intro {
+    .wp-intro {
         margin-left: auto !important;
         margin-right: auto !important;
     }

@@ -6,6 +6,16 @@ export const runtime = "nodejs";
 
 const RESERVATIONS_EMAIL = "info@enchularesort.co.ke";
 const DEFAULT_FROM_EMAIL = "Enchula Resort <bookings@enchularesort.co.ke>";
+const EMAIL_COLORS = {
+  primary: "#B99A66",
+  warmBrown: "#8F5F2F",
+  black: "#4A2400",
+  gray: "#5C4033",
+  background: "#FAF6F0",
+  lightBrown: "#D2BB9E",
+  peach: "#FFD3A3",
+  white: "#FFFFFF",
+};
 
 type AdditionalService = {
   category?: string;
@@ -214,14 +224,14 @@ const buildReservationEmailContent = (bookingData: BookingRequest, requestNumber
 <head>
   <meta charSet="utf-8" />
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #34251c; background: #f5efe7; margin: 0; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: ${EMAIL_COLORS.gray}; background: ${EMAIL_COLORS.background}; margin: 0; }
     .container { max-width: 680px; margin: 0 auto; padding: 24px; }
-    .header { background: #4a2400; color: white; padding: 24px; text-align: center; }
-    .content { background: white; padding: 28px; }
-    .section { border-top: 1px solid #e4d4c3; padding-top: 18px; margin-top: 18px; }
-    .label { font-weight: bold; color: #800000; }
-    .next-steps { background: #fff6e8; border: 1px solid #e7cda4; padding: 16px 20px; }
-    .footer { text-align: center; padding: 18px; color: #6f6259; font-size: 12px; }
+    .header { background: ${EMAIL_COLORS.black}; color: ${EMAIL_COLORS.white}; padding: 24px; text-align: center; }
+    .content { background: ${EMAIL_COLORS.white}; padding: 28px; }
+    .section { border-top: 1px solid ${EMAIL_COLORS.lightBrown}; padding-top: 18px; margin-top: 18px; }
+    .label { font-weight: bold; color: ${EMAIL_COLORS.warmBrown}; }
+    .next-steps { background: ${EMAIL_COLORS.peach}; border: 1px solid ${EMAIL_COLORS.lightBrown}; padding: 16px 20px; }
+    .footer { text-align: center; padding: 18px; color: ${EMAIL_COLORS.gray}; font-size: 12px; }
   </style>
 </head>
 <body>
@@ -348,13 +358,13 @@ export async function POST(request: NextRequest) {
 <html>
 <head>
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; background: #f9f9f9; }
-    .header { background: #800000; color: white; padding: 20px; text-align: center; }
-    .content { background: white; padding: 30px; margin-top: 20px; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: ${EMAIL_COLORS.gray}; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; background: ${EMAIL_COLORS.background}; }
+    .header { background: ${EMAIL_COLORS.black}; color: ${EMAIL_COLORS.white}; padding: 20px; text-align: center; }
+    .content { background: ${EMAIL_COLORS.white}; padding: 30px; margin-top: 20px; }
     .section { margin-bottom: 20px; }
-    .label { font-weight: bold; color: #800000; }
-    .footer { text-align: center; padding: 20px; color: #666; font-size: 12px; }
+    .label { font-weight: bold; color: ${EMAIL_COLORS.warmBrown}; }
+    .footer { text-align: center; padding: 20px; color: ${EMAIL_COLORS.gray}; font-size: 12px; }
   </style>
 </head>
 <body>

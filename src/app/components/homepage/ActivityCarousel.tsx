@@ -45,7 +45,7 @@ export default function ActivityCarousel({ images, interval = 4000, height = 240
         {images.map((_, idx) => (
           <span
             key={idx}
-            className={`w-2 h-2 rounded-full ${idx === current ? 'bg-[#B99A66]' : 'bg-[#e0c9a6]'} transition-all`}
+            className={`w-2 h-2 rounded-full ${idx === current ? 'bg-(--brand-primary)' : 'bg-(--brand-light-brown)'} transition-all`}
           />
         ))}
       </div>

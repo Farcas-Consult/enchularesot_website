@@ -151,12 +151,12 @@ export default function Hero() {
       {/* Multi-layer overlay */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 3,
-        background: "linear-gradient(180deg, rgba(26,13,0,.25) 0%, rgba(26,13,0,.08) 30%, rgba(26,13,0,.55) 75%, rgba(26,13,0,.82) 100%)",
+        background: "linear-gradient(180deg, color-mix(in srgb, var(--brand-black) 25%, transparent) 0%, color-mix(in srgb, var(--brand-black) 8%, transparent) 30%, color-mix(in srgb, var(--brand-black) 55%, transparent) 75%, color-mix(in srgb, var(--brand-black) 82%, transparent) 100%)",
       }} />
       {/* Side vignette */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 3,
-        background: "linear-gradient(90deg, rgba(26,13,0,.35) 0%, transparent 30%, transparent 70%, rgba(26,13,0,.35) 100%)",
+        background: "linear-gradient(90deg, color-mix(in srgb, var(--brand-black) 35%, transparent) 0%, transparent 30%, transparent 70%, color-mix(in srgb, var(--brand-black) 35%, transparent) 100%)",
       }} />
 
       {/* Content */}
@@ -171,22 +171,22 @@ export default function Hero() {
           display: "flex", alignItems: "center", gap: "1rem",
           marginBottom: isPhone ? ".65rem" : "1.5rem",
         }}>
-          <div style={{ width: isPhone ? "24px" : "48px", height: "1px", background: "rgba(185,154,102,.7)" }} />
+          <div style={{ width: isPhone ? "24px" : "48px", height: "1px", background: "color-mix(in srgb, var(--brand-primary) 70%, transparent)" }} />
           <span style={{
             fontFamily: "'Jost', sans-serif",
             fontSize: isPhone ? ".55rem" : ".68rem",
             letterSpacing: isPhone ? ".16em" : ".28em",
             textTransform: "uppercase",
-            color: "#B99A66", fontWeight: 500,
+            color: "var(--brand-primary)", fontWeight: 500,
           }}>{slides[current].eyebrow}</span>
-          <div style={{ width: isPhone ? "24px" : "48px", height: "1px", background: "rgba(185,154,102,.7)" }} />
+          <div style={{ width: isPhone ? "24px" : "48px", height: "1px", background: "color-mix(in srgb, var(--brand-primary) 70%, transparent)" }} />
         </div>
 
         {/* Title */}
         <h1 className="hero-text-in-delay1" style={{
           fontFamily: "'Cormorant Garamond', Georgia, serif",
           fontSize: isPhone ? "clamp(1.8rem, 9vw, 2.6rem)" : "clamp(3rem, 8.5vw, 7.5rem)",
-          fontWeight: 300, color: "#FFFFFF", lineHeight: 1.02,
+          fontWeight: 300, color: "var(--brand-white)", lineHeight: 1.02,
           letterSpacing: "-.01em", marginBottom: ".2rem",
         }}>
           {slides[current].title}
@@ -194,7 +194,7 @@ export default function Hero() {
         <h1 className="hero-text-in-delay1" style={{
           fontFamily: "'Cormorant Garamond', Georgia, serif",
           fontSize: isPhone ? "clamp(1.8rem, 9vw, 2.6rem)" : "clamp(3rem, 8.5vw, 7.5rem)",
-          fontWeight: 300, fontStyle: "italic", color: "#FFD3A3",
+          fontWeight: 300, fontStyle: "italic", color: "var(--brand-peach)",
           lineHeight: 1.05, letterSpacing: "-.01em", marginBottom: isPhone ? ".75rem" : "1.75rem",
         }}>
           {slides[current].titleAccent}
@@ -204,7 +204,7 @@ export default function Hero() {
         <p className="hero-text-in-delay2" style={{
           fontFamily: "'Jost', sans-serif",
           fontSize: isPhone ? ".78rem" : "clamp(.9rem, 1.8vw, 1.15rem)",
-          color: "rgba(250,246,240,.75)", fontWeight: 300,
+          color: "color-mix(in srgb, var(--brand-background) 75%, transparent)", fontWeight: 300,
           letterSpacing: ".04em", maxWidth: "52ch",
           lineHeight: isPhone ? 1.45 : 1.7, marginBottom: isPhone ? "1rem" : "3rem",
         }}>
@@ -215,7 +215,7 @@ export default function Hero() {
         <div className="hero-text-in-delay3" style={{ display: "flex", gap: isPhone ? ".65rem" : "1.25rem", flexWrap: "wrap", justifyContent: "center" }}>
           <Link href="/booking" style={{
             padding: isPhone ? ".65rem 1.25rem" : ".95rem 2.8rem",
-            background: "#8F5F2F", color: "#FFD3A3",
+            background: "var(--brand-warm-brown)", color: "var(--brand-peach)",
             fontFamily: "'Jost', sans-serif",
             fontSize: isPhone ? ".62rem" : ".75rem",
             letterSpacing: isPhone ? ".1em" : ".14em",
@@ -223,20 +223,20 @@ export default function Hero() {
             fontWeight: 600, border: "none", textDecoration: "none",
             display: "inline-block", transition: "background .25s",
           }}
-            onMouseOver={e => e.currentTarget.style.background = "#4A2400"}
-            onMouseOut={e => e.currentTarget.style.background = "#8F5F2F"}
+            onMouseOver={e => e.currentTarget.style.background = "var(--brand-black)"}
+            onMouseOut={e => e.currentTarget.style.background = "var(--brand-warm-brown)"}
           >
             Reserve Your Stay
           </Link>
           {!isPhone && <Link href="/#about" style={{
             padding: ".95rem 2.8rem", background: "transparent",
-            color: "#FFD3A3", fontFamily: "'Jost', sans-serif",
+            color: "var(--brand-peach)", fontFamily: "'Jost', sans-serif",
             fontSize: ".75rem", letterSpacing: ".14em", textTransform: "uppercase",
-            fontWeight: 600, border: "1px solid rgba(255,211,163,.45)",
+            fontWeight: 600, border: "1px solid color-mix(in srgb, var(--brand-peach) 45%, transparent)",
             textDecoration: "none", display: "inline-block", transition: "all .25s",
           }}
-            onMouseOver={e => { e.currentTarget.style.borderColor = "#FFD3A3"; e.currentTarget.style.background = "rgba(255,211,163,.08)"; }}
-            onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(255,211,163,.45)"; e.currentTarget.style.background = "transparent"; }}
+            onMouseOver={e => { e.currentTarget.style.borderColor = "var(--brand-peach)"; e.currentTarget.style.background = "color-mix(in srgb, var(--brand-peach) 8%, transparent)"; }}
+            onMouseOut={e => { e.currentTarget.style.borderColor = "color-mix(in srgb, var(--brand-peach) 45%, transparent)"; e.currentTarget.style.background = "transparent"; }}
           >
             Explore Resort
           </Link>}
@@ -249,10 +249,10 @@ export default function Hero() {
         display: "flex", alignItems: "center",
       }}>
         {/* Progress bar */}
-        <div style={{ width: "80px", height: "1px", background: "rgba(255,211,163,.2)", position: "relative", overflow: "hidden" }}>
+        <div style={{ width: "80px", height: "1px", background: "color-mix(in srgb, var(--brand-peach) 20%, transparent)", position: "relative", overflow: "hidden" }}>
           <div key={current} className="hero-line-grow" style={{
             position: "absolute", top: 0, left: 0, height: "100%",
-            background: "#B99A66",
+            background: "var(--brand-primary)",
           }} />
         </div>
       </div>}
@@ -269,7 +269,7 @@ export default function Hero() {
             style={{
               width: i === current ? "36px" : "20px",
               height: "2px",
-              background: i === current ? "#B99A66" : "rgba(255,211,163,.3)",
+              background: i === current ? "var(--brand-primary)" : "color-mix(in srgb, var(--brand-peach) 30%, transparent)",
             }}
           />
         ))}
@@ -283,12 +283,12 @@ export default function Hero() {
         <span style={{
           fontFamily: "'Jost', sans-serif",
           fontSize: ".6rem", letterSpacing: ".2em", textTransform: "uppercase",
-          color: "rgba(255,211,163,.5)", writingMode: "vertical-rl",
+          color: "color-mix(in srgb, var(--brand-peach) 50%, transparent)", writingMode: "vertical-rl",
           marginBottom: ".5rem",
         }}>Scroll</span>
         <div className="hero-scroll-pulse" style={{
           width: "1px", height: "48px",
-          background: "linear-gradient(180deg, rgba(185,154,102,.7), transparent)",
+          background: "linear-gradient(180deg, color-mix(in srgb, var(--brand-primary) 70%, transparent), transparent)",
         }} />
       </div>}
 

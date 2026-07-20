@@ -65,15 +65,15 @@ const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
   :root {
-    --brown:      #8F5F2F;
-    --brown-dark: #4A2400;
-    --brown-deep: #5C4033;
-    --gold:       #B99A66;
-    --sand:       #D2BB9E;
-    --blush:      #D7BFA8;
-    --peach:      #FFD3A3;
-    --cream:      #FAF6F0;
-    --white:      #FFFFFF;
+    --brown:      var(--brand-warm-brown);
+    --brown-dark: var(--brand-black);
+    --brown-deep: var(--brand-gray);
+    --gold:       var(--brand-primary);
+    --sand:       var(--brand-light-brown);
+    --blush:      var(--brand-blush);
+    --peach:      var(--brand-peach);
+    --cream:      var(--brand-background);
+    --white:      var(--brand-white);
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans:  'Jost', system-ui, sans-serif;
     --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
@@ -174,9 +174,9 @@ const styles = `
     font-weight: 600;
     cursor: pointer;
     border: none;
-    border-right: 1px solid rgba(255,211,163,.2);
+    border-right: 1px solid color-mix(in srgb, var(--brand-peach) 20%, transparent);
     background: rgba(255,255,255,.12);
-    color: rgba(255,211,163,.65);
+    color: color-mix(in srgb, var(--brand-peach) 65%, transparent);
     backdrop-filter: blur(6px);
     transition: all .25s;
   }
@@ -232,7 +232,7 @@ const styles = `
     gap: .75rem;
     padding: .85rem;
     background: var(--white);
-    border-top: 1px solid rgba(185,154,102,.18);
+    border-top: 1px solid color-mix(in srgb, var(--brand-primary) 18%, transparent);
   }
 
   .rp-thumb-card {
@@ -306,8 +306,8 @@ const styles = `
     gap: 2.5rem;
     padding: 1.5rem 0;
     margin: 1.25rem 0;
-    border-top: 1px solid rgba(185,154,102,.2);
-    border-bottom: 1px solid rgba(185,154,102,.2);
+    border-top: 1px solid color-mix(in srgb, var(--brand-primary) 20%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--brand-primary) 20%, transparent);
   }
 
   .rp-meta-item {

@@ -44,7 +44,7 @@ export default function FoodDrinksPoster() {
   };
 
   return (
-    <section className="relative min-h-screen bg-white flex flex-col items-center px-0 py-0">
+    <section className="relative min-h-screen bg-(--brand-white) flex flex-col items-center px-0 py-0">
       {/* Hero Banner Carousel */}
       <div className="relative h-screen min-h-[340px] w-full flex items-center justify-center overflow-hidden">
         {posterData.heroImages.map((img, index) => (
@@ -58,7 +58,7 @@ export default function FoodDrinksPoster() {
           <h1 className="heading text-center mb-4 drop-shadow-lg">
             {posterData.category}
           </h1>
-          <p className="text-lg md:text-xl text-[#D7BFA8] mt-4 max-w-2xl mx-auto font-light drop-shadow">
+          <p className="text-lg md:text-xl text-(--brand-blush) mt-4 max-w-2xl mx-auto font-light drop-shadow">
             {posterData.description}
           </p>
         </div>
@@ -67,7 +67,7 @@ export default function FoodDrinksPoster() {
           {posterData.heroImages.map((_, idx) => (
             <button
               key={idx}
-              className={`w-3 h-3 rounded-full border border-white ${currentHero === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              className={`w-3 h-3 rounded-full border border-(--brand-white) ${currentHero === idx ? 'bg-(--brand-warm-brown)' : 'bg-(--brand-white)/40'} transition-all`}
               onClick={() => setCurrentHero(idx)}
               aria-label={`Go to slide ${idx + 1}`}
             />
@@ -79,20 +79,20 @@ export default function FoodDrinksPoster() {
         {/* Top Back Link */}
         <Link
           href="/"
-          className="flex items-center gap-2 text-[#A04040] hover:text-[#800000] mb-10 transition text-lg font-medium"
+          className="flex items-center gap-2 text-(--brand-warm-brown) hover:text-(--brand-black) mb-10 transition text-lg font-medium"
         >
           <ChevronLeft className="w-5 h-5" />
           Back to Amenities
         </Link>
 
         {/* Booklet / Carousel */}
-        <div className="relative mt-12 w-full max-w-3xl h-[400px] md:h-[500px] flex items-center justify-center bg-white rounded-2xl shadow-lg">
+        <div className="relative mt-12 w-full max-w-3xl h-[400px] md:h-[500px] flex items-center justify-center bg-(--brand-white) rounded-2xl shadow-lg">
           <button
             onClick={prevImage}
             aria-label="Previous image"
-            className="absolute left-0 z-10 p-4 bg-black/50 rounded-full hover:bg-black/70 transition"
+            className="absolute left-0 z-10 p-4 bg-(--brand-black)/50 rounded-full hover:bg-(--brand-black)/70 transition"
           >
-            <ChevronLeft className="w-6 h-6 text-white" />
+            <ChevronLeft className="w-6 h-6 text-(--text-on-dark)" />
           </button>
 
           <Image
@@ -106,9 +106,9 @@ export default function FoodDrinksPoster() {
           <button
             onClick={nextImage}
             aria-label="Next image"
-            className="absolute right-0 z-10 p-4 bg-black/50 rounded-full hover:bg-black/70 transition"
+            className="absolute right-0 z-10 p-4 bg-(--brand-black)/50 rounded-full hover:bg-(--brand-black)/70 transition"
           >
-            <ChevronRight className="w-6 h-6 text-white" />
+            <ChevronRight className="w-6 h-6 text-(--text-on-dark)" />
           </button>
 
           {/* Page indicators */}
@@ -117,7 +117,7 @@ export default function FoodDrinksPoster() {
               <span
                 key={idx}
                 className={`w-3 h-3 rounded-full ${
-                  idx === currentIndex ? "bg-[#FAF5F0]" : "bg-[#D7BFA8]/50"
+                  idx === currentIndex ? "bg-(--brand-background)" : "bg-(--brand-blush)/50"
                 }`}
               />
             ))}
@@ -128,7 +128,7 @@ export default function FoodDrinksPoster() {
         <div className="mt-12 flex justify-center">
           <Link
             href="/"
-            className="px-6 py-3 bg-[#A04040] text-white font-semibold rounded-xl hover:bg-[#800000] transition"
+            className="px-6 py-3 bg-(--brand-warm-brown) text-(--text-on-dark) font-semibold rounded-xl hover:bg-(--brand-black) transition"
           >
             Return to Amenities
           </Link>

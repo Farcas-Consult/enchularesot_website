@@ -150,15 +150,15 @@ const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
   :root {
-    --brown:      #8F5F2F;
-    --brown-dark: #4A2400;
-    --brown-deep: #5C4033;
-    --gold:       #B99A66;
-    --sand:       #D2BB9E;
-    --blush:      #D7BFA8;
-    --peach:      #FFD3A3;
-    --cream:      #FAF6F0;
-    --white:      #FFFFFF;
+    --brown:      var(--brand-warm-brown);
+    --brown-dark: var(--brand-black);
+    --brown-deep: var(--brand-gray);
+    --gold:       var(--brand-primary);
+    --sand:       var(--brand-light-brown);
+    --blush:      var(--brand-blush);
+    --peach:      var(--brand-peach);
+    --cream:      var(--brand-background);
+    --white:      var(--brand-white);
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans:  'Jost', system-ui, sans-serif;
     --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
@@ -257,7 +257,7 @@ const styles = `
     gap: .55rem;
     min-height: 46px;
     padding: .85rem 1.35rem;
-    border: 1px solid rgba(255,211,163,.55);
+    border: 1px solid color-mix(in srgb, var(--brand-peach) 55%, transparent);
     color: var(--brown-dark);
     background: var(--peach);
     font-size: .72rem;
@@ -305,57 +305,50 @@ const styles = `
     text-align: center;
   }
 
-  .vt-intro-title {
+  .vt-journey-heading {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .vt-journey-heading h3 {
     color: var(--brown-dark);
-    font-family: var(--font-serif);
-    font-size: clamp(2.4rem, 4.6vw, 4.8rem);
-    font-weight: 300;
-    line-height: 1.02;
-    margin: 0 auto 1.25rem;
-    max-width: 860px;
+    font-family: var(--font-sans);
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: .08em;
+    margin: 0;
+    text-transform: uppercase;
   }
 
-  .vt-intro-title em {
-    color: var(--brown);
-    font-style: italic;
+  .vt-journey-heading p {
+    color: var(--brown-deep);
+    font-size: .95rem;
+    letter-spacing: .08em;
+    margin: .7rem 0 0;
+    text-transform: uppercase;
   }
 
-  .vt-intro-lead {
-    color: rgba(74,36,0,.78);
-    font-size: clamp(1.05rem, 1.7vw, 1.3rem);
-    line-height: 1.75;
-    margin: 0 auto 1rem;
-    max-width: 860px;
-  }
-
-  .vt-intro-copy {
-    color: rgba(74,36,0,.68);
-    line-height: 1.85;
-    margin: 0 auto;
-    max-width: 760px;
-  }
-
-  .vt-intro-grid {
+  .vt-journey {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1px;
-    margin-top: clamp(2.25rem, 4vw, 3.25rem);
+    margin-top: 0;
     background: rgba(143,95,47,.22);
   }
 
-  .vt-intro-card {
+  .vt-journey-item {
     background: var(--cream);
     min-height: 170px;
     padding: 1.4rem 1.15rem;
     text-align: left;
   }
 
-  .vt-intro-card svg {
+  .vt-journey-icon {
     color: var(--brown);
     margin-bottom: 1rem;
   }
 
-  .vt-intro-card strong {
+  .vt-journey-item strong {
     color: var(--brown-dark);
     display: block;
     font-family: var(--font-serif);
@@ -364,7 +357,7 @@ const styles = `
     margin-bottom: .45rem;
   }
 
-  .vt-intro-card span {
+  .vt-journey-item span {
     color: rgba(74,36,0,.68);
     display: block;
     font-size: .94rem;
@@ -720,7 +713,7 @@ const styles = `
 
   .vt-active .vt-tab-icon,
   .vt-tab:hover .vt-tab-icon {
-    border-color: rgba(255,211,163,.35);
+    border-color: color-mix(in srgb, var(--brand-peach) 35%, transparent);
   }
 
   .vt-tab span {
@@ -772,7 +765,7 @@ const styles = `
   .vt-icon-btn {
     align-items: center;
     background: var(--peach);
-    border: 1px solid rgba(255,211,163,.55);
+    border: 1px solid color-mix(in srgb, var(--brand-peach) 55%, transparent);
     color: var(--brown-dark);
     cursor: pointer;
     display: flex;
@@ -795,7 +788,7 @@ const styles = `
   }
 
   .vt-dot {
-    background: rgba(255,211,163,.42);
+    background: color-mix(in srgb, var(--brand-peach) 42%, transparent);
     border: 0;
     cursor: pointer;
     height: 8px;
@@ -862,7 +855,7 @@ const styles = `
   }
 
   .vt-cta p {
-    color: rgba(255,211,163,.78);
+    color: color-mix(in srgb, var(--brand-peach) 78%, transparent);
     line-height: 1.75;
     margin: 0 auto 1.75rem;
     max-width: 640px;
@@ -911,7 +904,7 @@ const styles = `
       width: min(100% - 2rem, 720px);
     }
 
-    .vt-intro-grid {
+    .vt-journey {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -967,7 +960,7 @@ const styles = `
       width: 100%;
     }
 
-    .vt-intro-grid {
+    .vt-journey {
       grid-template-columns: 1fr;
     }
 
@@ -1095,22 +1088,15 @@ export default function VirtualTourPage() {
       </div>
 
       <div id="tour-intro" className="vt-intro-section">
-        <h2 className="vt-intro-title">
-          Know the resort before <em>you arrive</em>
-        </h2>
-        <p className="vt-intro-lead">
-          Enchula Resort is easier to enjoy when guests already understand the arrival point,
-          reception flow, and main hospitality spaces.
-        </p>
-        <p className="vt-intro-copy">
-          Use this guide to orient yourself around the resort, preview the spaces you may visit,
-          and then open practical directions when it is time to travel.
-        </p>
+        <div className="vt-journey-heading">
+          <h3>Our Virtual Tour Journey</h3>
+          <p>A natural rhythm of arrival, stay, gathering, and settling in</p>
+        </div>
 
-        <div className="vt-intro-grid" aria-label="Virtual tour overview">
+        <div className="vt-journey" aria-label="Virtual tour overview">
           {introHighlights.map(({ icon: Icon, ...item }) => (
-            <div className="vt-intro-card" key={item.label}>
-              <Icon size={28} aria-hidden="true" />
+            <div className="vt-journey-item" key={item.label}>
+              <Icon className="vt-journey-icon" size={28} aria-hidden="true" />
               <strong>{item.label}</strong>
               <span>{item.text}</span>
             </div>

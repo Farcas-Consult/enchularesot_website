@@ -48,7 +48,7 @@ const StaffPage = () => {
   }, []);
 
   return (
-    <section id="staff" className="relative min-h-screen bg-white">
+    <section id="staff" className="relative min-h-screen bg-(--brand-white)">
       {/* Hero Banner Carousel */}
       <div className="relative h-screen min-h-[340px] flex items-center justify-center overflow-hidden">
         {HERO_IMAGES.map((img, index) => (
@@ -62,7 +62,7 @@ const StaffPage = () => {
           <h1 className="heading font-serif mb-4 drop-shadow-lg">
             Meet Our Culinary Team
           </h1>
-          <p className="text-lg md:text-2xl text-[#D7BFA8] max-w-2xl mx-auto font-light drop-shadow">
+          <p className="text-lg md:text-2xl text-(--brand-blush) max-w-2xl mx-auto font-light drop-shadow">
             Passionate chefs and staff dedicated to delivering exceptional dining experiences at Enchula Resort.
           </p>
         </div>
@@ -71,7 +71,7 @@ const StaffPage = () => {
           {HERO_IMAGES.map((_, idx) => (
             <button
               key={idx}
-              className={`w-3 h-3 rounded-full border border-white ${currentHero === idx ? 'bg-[#A04040]' : 'bg-white/40'} transition-all`}
+              className={`w-3 h-3 rounded-full border border-(--brand-white) ${currentHero === idx ? 'bg-(--brand-warm-brown)' : 'bg-(--brand-white)/40'} transition-all`}
               onClick={() => setCurrentHero(idx)}
               aria-label={`Go to slide ${idx + 1}`}
             />
@@ -83,43 +83,43 @@ const StaffPage = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-block mb-6 px-6 py-3 bg-[#5C4033]/20 backdrop-blur-sm rounded-full border border-[#800000]/30">
-            <span className="text-[#D7BFA8] font-semibold tracking-wide text-sm uppercase flex items-center gap-2 justify-center">
+          <div className="inline-block mb-6 px-6 py-3 bg-(--brand-gray)/20 backdrop-blur-sm rounded-full border border-(--brand-black)/30">
+            <span className="text-(--brand-blush) font-semibold tracking-wide text-sm uppercase flex items-center gap-2 justify-center">
               <Users className="w-4 h-4" />
               OUR TEAM
             </span>
           </div>
           <h1 className="heading mb-6 leading-tight">
-            Meet Our <span className="bg-gradient-to-r from-[#A04040] via-[#A9745B] to-[#D7BFA8] bg-clip-text text-transparent">Culinary</span> Team
+            Meet Our <span className="bg-gradient-to-r from-(--brand-warm-brown) via-(--brand-primary) to-(--brand-blush) bg-clip-text text-transparent">Culinary</span> Team
           </h1>
-          <p className="text-lg text-[#D7BFA8] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-(--brand-blush) max-w-3xl mx-auto leading-relaxed">
             Our talented catering team brings passion and expertise to every dish. From traditional flavors to contemporary cuisine, they create memorable dining experiences for our guests.
           </p>
         </div>
 
         {/* Mission Statement */}
-        <div className="mb-16 bg-white rounded-2xl p-8 border border-[#5C4033]/20 shadow-lg">
+        <div className="mb-16 bg-(--brand-white) rounded-2xl p-8 border border-(--brand-gray)/20 shadow-lg">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="space-y-3">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800000]/10 border border-[#800000]/10 mx-auto">
-                <Heart className="w-6 h-6 text-[#A04040]" />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-(--brand-black)/10 border border-(--brand-black)/10 mx-auto">
+                <Heart className="w-6 h-6 text-(--brand-warm-brown)" />
               </div>
-              <h3 className="text-xl font-semibold text-[#2E1A15]">Culinary Passion</h3>
-              <p className="text-[#5C4033]">Each chef brings creativity and dedication to the kitchen</p>
+              <h3 className="text-xl font-semibold text-(--brand-black)">Culinary Passion</h3>
+              <p className="text-(--brand-gray)">Each chef brings creativity and dedication to the kitchen</p>
             </div>
             <div className="space-y-3">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800000]/10 border border-[#800000]/10 mx-auto">
-                <Award className="w-6 h-6 text-[#A04040]" />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-(--brand-black)/10 border border-(--brand-black)/10 mx-auto">
+                <Award className="w-6 h-6 text-(--brand-warm-brown)" />
               </div>
-              <h3 className="text-xl font-semibold text-[#2E1A15]">Quality Ingredients</h3>
-              <p className="text-[#5C4033]">Using fresh, locally-sourced produce for authentic flavors</p>
+              <h3 className="text-xl font-semibold text-(--brand-black)">Quality Ingredients</h3>
+              <p className="text-(--brand-gray)">Using fresh, locally-sourced produce for authentic flavors</p>
             </div>
             <div className="space-y-3">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#800000]/10 border border-[#800000]/10 mx-auto">
-                <Star className="w-6 h-6 text-[#A04040]" />
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-(--brand-black)/10 border border-(--brand-black)/10 mx-auto">
+                <Star className="w-6 h-6 text-(--brand-warm-brown)" />
               </div>
-              <h3 className="text-xl font-semibold text-[#2E1A15]">Memorable Experiences</h3>
-              <p className="text-[#5C4033]">Creating dishes that delight and satisfy every guest</p>
+              <h3 className="text-xl font-semibold text-(--brand-black)">Memorable Experiences</h3>
+              <p className="text-(--brand-gray)">Creating dishes that delight and satisfy every guest</p>
             </div>
           </div>
         </div>
@@ -129,7 +129,7 @@ const StaffPage = () => {
           {staffMembers.map((member, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl overflow-hidden border border-[#5C4033]/20 shadow-lg hover:border-[#A04040]/40 transition-all duration-300 group"
+              className="bg-(--brand-white) rounded-2xl overflow-hidden border border-(--brand-gray)/20 shadow-lg hover:border-(--brand-warm-brown)/40 transition-all duration-300 group"
             >
               <div className="relative h-96 overflow-hidden">
                 <img
@@ -137,15 +137,15 @@ const StaffPage = () => {
                   alt={member.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-[#A04040]/80 to-transparent">
-                  <h3 className="text-2xl font-bold text-[#FAF5F0] mb-2">
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-(--brand-warm-brown) to-transparent">
+                  <h3 className="text-2xl font-bold text-(--brand-background) mb-2">
                     {member.name}
                   </h3>
-                  <p className="text-[#A9745B] font-semibold mb-2">{member.role}</p>
+                  <p className="text-(--brand-primary) font-semibold mb-2">{member.role}</p>
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-[#5C4033] leading-relaxed">
+                <p className="text-(--brand-gray) leading-relaxed">
                   {member.description}
                 </p>
               </div>
@@ -154,23 +154,23 @@ const StaffPage = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center bg-white rounded-2xl p-12 border border-[#5C4033]/20 shadow-lg">
+        <div className="text-center bg-(--brand-white) rounded-2xl p-12 border border-(--brand-gray)/20 shadow-lg">
           <h2 className="heading mb-4">
             Experience Our Culinary Excellence
           </h2>
-          <p className="text-[#5C4033] mb-8 max-w-2xl mx-auto">
+          <p className="text-(--brand-gray) mb-8 max-w-2xl mx-auto">
             Our catering team is ready to serve you exceptional meals throughout your stay. Explore our dining options and book your culinary experience today.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href="/booking"
-              className="px-8 py-4 bg-gradient-to-r from-[#A04040] to-[#800000] text-white font-semibold rounded-full hover:from-[#800000] hover:to-[#A04040] transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="px-8 py-4 bg-gradient-to-r from-(--brand-warm-brown) to-(--brand-black) text-(--text-on-dark) font-semibold rounded-full hover:from-(--brand-black) hover:to-(--brand-warm-brown) transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Book Your Stay
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-4 bg-[#5C4033]/10 text-[#A04040] font-semibold rounded-full border border-[#800000]/10 hover:bg-[#5C4033]/20 hover:border-[#A04040]/30 transition-all duration-300"
+              className="px-8 py-4 bg-(--brand-gray)/10 text-(--brand-warm-brown) font-semibold rounded-full border border-(--brand-black)/10 hover:bg-(--brand-gray)/20 hover:border-(--brand-warm-brown)/30 transition-all duration-300"
             >
               Contact Us
             </Link>

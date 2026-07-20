@@ -11,15 +11,15 @@ const GlobalStyles = () => (
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --brown:       #8F5F2F;
-      --brown-dark:  #4A2400;
-      --brown-deep:  #5C4033;
-      --gold:        #B99A66;
-      --sand:        #D2BB9E;
-      --blush:       #D7BFA8;
-      --peach:       #FFD3A3;
-      --cream:       #FAF6F0;
-      --white:       #FFFFFF;
+      --brown:       var(--brand-warm-brown);
+      --brown-dark:  var(--brand-black);
+      --brown-deep:  var(--brand-gray);
+      --gold:        var(--brand-primary);
+      --sand:        var(--brand-light-brown);
+      --blush:       var(--brand-blush);
+      --peach:       var(--brand-peach);
+      --cream:       var(--brand-background);
+      --white:       var(--brand-white);
       --font-serif:  'Cormorant Garamond', Georgia, serif;
       --font-sans:   'Jost', system-ui, sans-serif;
       --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -65,7 +65,7 @@ const GlobalStyles = () => (
       color: color-mix(in srgb, var(--brand-background) 78%, transparent);
     }
     .features-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
-    .feature-card { padding: 1.5rem; border: 1px solid rgba(185,154,102,.2); background: white; transition: border-color .25s, transform .25s; }
+    .feature-card { padding: 1.5rem; border: 1px solid color-mix(in srgb, var(--brand-primary) 20%, transparent); background: var(--brand-white); transition: border-color .25s, transform .25s; }
     .feature-card:hover { border-color: var(--gold); transform: translateY(-3px); }
     .feature-card h4 { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--brown); margin-bottom: .4rem; }
     .feature-card p { font-size: .85rem; color: var(--brown-dark); opacity: .75; line-height: 1.6; }
@@ -231,7 +231,7 @@ const GlobalStyles = () => (
       inset: 0;
       background:
         linear-gradient(90deg, rgba(74, 22, 6, .1) 0%, rgba(74, 22, 6, .08) 34%, rgba(74, 22, 6, .02) 72%),
-        linear-gradient(180deg, rgba(0, 0, 0, .02) 0%, rgba(74, 22, 6, .1) 100%);
+        linear-gradient(180deg, color-mix(in srgb, var(--brand-black) 2%, transparent) 0%, color-mix(in srgb, var(--brand-warm-brown) 10%, transparent) 100%);
       z-index: -2;
       pointer-events: none;
     }
@@ -262,7 +262,7 @@ const GlobalStyles = () => (
       margin: 0 0 1.2rem;
       max-width: 720px;
       text-transform: uppercase;
-      text-shadow: 0 8px 26px rgba(0, 0, 0, .38);
+      text-shadow: 0 8px 26px color-mix(in srgb, var(--brand-black) 38%, transparent);
     }
     .events-showcase-desc {
       color: rgba(255, 255, 255, .88);
@@ -271,7 +271,7 @@ const GlobalStyles = () => (
       line-height: 1.7;
       margin: 0 0 1.7rem;
       max-width: 600px;
-      text-shadow: 0 5px 18px rgba(0, 0, 0, .42);
+      text-shadow: 0 5px 18px color-mix(in srgb, var(--brand-black) 42%, transparent);
     }
     .events-full-link {
       display: inline-flex;
@@ -341,7 +341,7 @@ const GlobalStyles = () => (
       font-size: .88rem;
       font-weight: 800;
       line-height: 1.35;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, .45);
+      text-shadow: 0 2px 12px color-mix(in srgb, var(--brand-black) 45%, transparent);
     }
     .event-card-desc {
       color: rgba(255, 255, 255, .72);
@@ -478,7 +478,7 @@ const GlobalStyles = () => (
       inset: 0;
       background:
         linear-gradient(90deg, rgba(74, 22, 6, .1) 0%, rgba(74, 22, 6, .08) 34%, rgba(74, 22, 6, .02) 72%),
-        linear-gradient(180deg, rgba(0, 0, 0, .02) 0%, rgba(74, 22, 6, .1) 100%);
+        linear-gradient(180deg, color-mix(in srgb, var(--brand-black) 2%, transparent) 0%, color-mix(in srgb, var(--brand-warm-brown) 10%, transparent) 100%);
       z-index: -2;
       pointer-events: none;
     }
@@ -498,7 +498,7 @@ const GlobalStyles = () => (
       letter-spacing: .22em;
       margin: 0 0 .85rem;
       text-transform: uppercase;
-      text-shadow: 0 5px 18px rgba(0, 0, 0, .35);
+      text-shadow: 0 5px 18px color-mix(in srgb, var(--brand-black) 35%, transparent);
     }
     .activities-showcase-title {
       color: var(--gold);
@@ -510,7 +510,7 @@ const GlobalStyles = () => (
       margin: 0 0 1.2rem;
       max-width: 720px;
       text-transform: uppercase;
-      text-shadow: 0 8px 26px rgba(0, 0, 0, .38);
+      text-shadow: 0 8px 26px color-mix(in srgb, var(--brand-black) 38%, transparent);
     }
     .activities-showcase-desc {
       color: rgba(255, 255, 255, .88);
@@ -519,7 +519,7 @@ const GlobalStyles = () => (
       line-height: 1.7;
       margin: 0 0 1.7rem;
       max-width: 600px;
-      text-shadow: 0 5px 18px rgba(0, 0, 0, .42);
+      text-shadow: 0 5px 18px color-mix(in srgb, var(--brand-black) 42%, transparent);
     }
     .activities-full-link {
       display: inline-flex;
@@ -589,7 +589,7 @@ const GlobalStyles = () => (
       font-size: .88rem;
       font-weight: 800;
       line-height: 1.35;
-      text-shadow: 0 2px 12px rgba(0, 0, 0, .45);
+      text-shadow: 0 2px 12px color-mix(in srgb, var(--brand-black) 45%, transparent);
     }
     .activity-card-desc {
       color: rgba(255, 255, 255, .72);
@@ -607,8 +607,8 @@ const GlobalStyles = () => (
     .stat-num { font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; color: var(--gold); display: block; line-height: 1; }
     .stat-label { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--brown-dark); opacity: .65; margin-top: .4rem; display: block; }
     .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .review-card { padding: 2rem; border: 1px solid rgba(185,154,102,.22); background: var(--white); transition: border-color .25s; }
-    .review-card:hover { border-color: rgba(185,154,102,.5); }
+    .review-card { padding: 2rem; border: 1px solid color-mix(in srgb, var(--brand-primary) 22%, transparent); background: var(--white); transition: border-color .25s; }
+    .review-card:hover { border-color: color-mix(in srgb, var(--brand-primary) 50%, transparent); }
     .review-quote { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 300; color: var(--gold); opacity: .4; line-height: .8; margin-bottom: 1rem; }
     .review-text { font-size: .95rem; line-height: 1.75; color: var(--brown-dark); opacity: .8; margin-bottom: 1.5rem; }
     .review-author { font-family: var(--font-serif); font-size: 1rem; font-style: italic; color: var(--gold); }

@@ -133,15 +133,15 @@ const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap');
 
   :root {
-    --brown:      #8F5F2F;
-    --brown-dark: #4A2400;
-    --brown-deep: #5C4033;
-    --gold:       #B99A66;
-    --sand:       #D2BB9E;
-    --blush:      #D7BFA8;
-    --peach:      #FFD3A3;
-    --cream:      #FAF6F0;
-    --white:      #FFFFFF;
+    --brown:      var(--brand-warm-brown);
+    --brown-dark: var(--brand-black);
+    --brown-deep: var(--brand-gray);
+    --gold:       var(--brand-primary);
+    --sand:       var(--brand-light-brown);
+    --blush:      var(--brand-blush);
+    --peach:      var(--brand-peach);
+    --cream:      var(--brand-background);
+    --white:      var(--brand-white);
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans:  'Jost', system-ui, sans-serif;
     --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
@@ -314,7 +314,7 @@ const styles = `
 
   .bp-panel-dark .bp-subcopy,
   .bp-panel-dark .bp-summary-value {
-    color: rgba(255,211,163,.78);
+    color: color-mix(in srgb, var(--brand-peach) 78%, transparent);
   }
 
   .bp-grid {
@@ -626,7 +626,7 @@ const styles = `
   .bp-summary-list {
     display: grid;
     gap: 1px;
-    background: rgba(255,211,163,.18);
+    background: color-mix(in srgb, var(--brand-peach) 18%, transparent);
   }
 
   .bp-summary-item {
@@ -668,7 +668,7 @@ const styles = `
   }
 
   .bp-confirmation p {
-    color: rgba(255,211,163,.8);
+    color: color-mix(in srgb, var(--brand-peach) 80%, transparent);
     line-height: 1.75;
     margin: .55rem 0;
   }
