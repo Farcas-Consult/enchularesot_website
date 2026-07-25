@@ -14,6 +14,9 @@ interface GalleryImage {
 
 const galleryImages: GalleryImage[] = [
   { src: `${S3_BASE}/Image31.jpeg`, alt: "Surroundings 5", category: "Exterior" },
+  { src: `${S3_BASE}/Image42.jpeg`, alt: "Luxury Bathroom", category: "Exterior" },
+  { src: `${S3_BASE}/Image43.jpeg`, alt: "Luxury Bathroom", category: "Exterior" },
+  { src: `${S3_BASE}/Image44.jpeg`, alt: "Luxury Bathroom", category: "Exterior" },
   { src: `${S3_BASE}/Image32.jpeg`, alt: "Pathway 1", category: "Exterior" },
   { src: `${S3_BASE}/Image33.jpeg`, alt: "Resort pathway", category: "Exterior" },
   { src: `${S3_BASE}/Image34.jpeg`, alt: "Luxury Resort Exterior", category: "Exterior" },
