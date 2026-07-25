@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
             </div>
             <div>
               <h2 className="text-xl font-semibold text-(--brand-primary) mb-1 flex items-center gap-2 font-lora"><Mail className="inline w-5 h-5 text-(--brand-primary)" /> Email</h2>
-              <p className="text-(--brand-black) font-nunito">info@enchularesort.co.ke</p>
+              <p className="text-(--brand-black) font-nunito">info@enchularesort.com</p>
             </div>
             <div>
               <h2 className="text-xl font-semibold text-(--brand-primary) mb-1 flex items-center gap-2 font-lora"><MapPin className="inline w-5 h-5 text-(--brand-primary)" /> Address</h2>

@@ -4,8 +4,12 @@ import tls from "node:tls";
 
 export const runtime = "nodejs";
 
-const RESERVATIONS_EMAIL = "info@enchularesort.co.ke";
-const DEFAULT_FROM_EMAIL = "Enchula Resort <bookings@enchularesort.co.ke>";
+const VERIFIED_EMAIL_DOMAIN = "enchularesort.com";
+const RESERVATIONS_EMAIL =
+  process.env.RESERVATIONS_TO_EMAIL ||
+  process.env.NEXT_PUBLIC_RESERVATIONS_TO_EMAIL ||
+  `info@${VERIFIED_EMAIL_DOMAIN}`;
+const DEFAULT_FROM_EMAIL = `Enchula Resort <bookings@${VERIFIED_EMAIL_DOMAIN}>`;
 const EMAIL_COLORS = {
   primary: "#B99A66",
   warmBrown: "#8F5F2F",
@@ -109,6 +113,9 @@ const sanitizeHeader = (value: string) => value.replace(/[\r\n]+/g, " ").trim();
 
 const encodeBase64 = (value: string) => Buffer.from(value, "utf8").toString("base64");
 
+const normalizeVerifiedSender = (value: string) =>
+  value.replace(/@enchularesort\.co\.ke\b/g, `@${VERIFIED_EMAIL_DOMAIN}`);
+
 const sendCommand = (
   socket: SmtpSocket,
   command: string | null,
@@ -178,7 +185,7 @@ const connectSmtp = (host: string, port: number, secure: boolean) =>
   });
 
 const sendSmtpMail = async (config: SmtpConfig) => {
-  const localName = process.env.SMTP_HELO_NAME || "enchularesort.co.ke";
+  const localName = process.env.SMTP_HELO_NAME || VERIFIED_EMAIL_DOMAIN;
   let socket = await connectSmtp(config.host, config.port, config.secure);
 
   try {
@@ -212,7 +219,7 @@ const sendSmtpMail = async (config: SmtpConfig) => {
       config.replyTo ? `Reply-To: ${sanitizeHeader(config.replyTo)}` : "",
       `Subject: ${sanitizeHeader(config.subject)}`,
       `Date: ${new Date().toUTCString()}`,
-      `Message-ID: <${Date.now()}@enchularesort.co.ke>`,
+      `Message-ID: <${Date.now()}@${VERIFIED_EMAIL_DOMAIN}>`,
       "MIME-Version: 1.0",
       "Content-Type: text/html; charset=UTF-8",
       "",
@@ -229,77 +236,138 @@ const sendSmtpMail = async (config: SmtpConfig) => {
   }
 };
 
-const buildReservationEmailContent = (bookingData: BookingRequest, requestNumber: string) => `
+const buildReservationEmailContent = (bookingData: BookingRequest) => `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: ${EMAIL_COLORS.gray}; background: ${EMAIL_COLORS.background}; margin: 0; }
-    .container { max-width: 680px; margin: 0 auto; padding: 24px; }
-    .header { background: ${EMAIL_COLORS.black}; color: ${EMAIL_COLORS.white}; padding: 24px; text-align: center; }
-    .content { background: ${EMAIL_COLORS.white}; padding: 28px; }
-    .section { border-top: 1px solid ${EMAIL_COLORS.lightBrown}; padding-top: 18px; margin-top: 18px; }
-    .label { font-weight: bold; color: ${EMAIL_COLORS.warmBrown}; }
-    .next-steps { background: ${EMAIL_COLORS.peach}; border: 1px solid ${EMAIL_COLORS.lightBrown}; padding: 16px 20px; }
-    .footer { text-align: center; padding: 18px; color: ${EMAIL_COLORS.gray}; font-size: 12px; }
+    body { background: ${EMAIL_COLORS.background}; color: ${EMAIL_COLORS.gray}; font-family: Arial, sans-serif; line-height: 1.55; margin: 0; }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 28px 14px; }
+    .document { background: ${EMAIL_COLORS.white}; border: 1px solid ${EMAIL_COLORS.lightBrown}; border-radius: 18px; overflow: hidden; }
+    .header { background: ${EMAIL_COLORS.black}; color: ${EMAIL_COLORS.white}; padding: 30px; }
+    .eyebrow { color: ${EMAIL_COLORS.peach}; font-size: 12px; font-weight: 700; letter-spacing: 2.4px; margin: 0 0 10px; text-transform: uppercase; }
+    h1 { color: ${EMAIL_COLORS.white}; font-size: 30px; line-height: 1.15; margin: 0; }
+    .submitted { color: ${EMAIL_COLORS.lightBrown}; margin: 12px 0 0; }
+    .content { padding: 28px; }
+    .intro { color: ${EMAIL_COLORS.gray}; font-size: 15px; margin: 0 0 22px; }
+    .summary { background: ${EMAIL_COLORS.background}; border: 1px solid ${EMAIL_COLORS.lightBrown}; border-radius: 14px; margin-bottom: 22px; padding: 18px; }
+    .summary h2, .section h2 { color: ${EMAIL_COLORS.black}; font-size: 17px; margin: 0 0 14px; }
+    .grid { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .item { background: ${EMAIL_COLORS.white}; border: 1px solid ${EMAIL_COLORS.lightBrown}; border-radius: 12px; padding: 14px; }
+    .item.wide { grid-column: 1 / -1; }
+    .label { color: ${EMAIL_COLORS.warmBrown}; display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.4px; margin-bottom: 5px; text-transform: uppercase; }
+    .value { color: ${EMAIL_COLORS.black}; font-size: 15px; font-weight: 700; margin: 0; }
+    .muted { color: ${EMAIL_COLORS.gray}; font-size: 14px; margin: 4px 0 0; }
+    .section { border-top: 1px solid ${EMAIL_COLORS.lightBrown}; margin-top: 24px; padding-top: 22px; }
+    .section ul { list-style: none; margin: 0; padding: 0; }
+    .section li { background: ${EMAIL_COLORS.background}; border: 1px solid ${EMAIL_COLORS.lightBrown}; border-radius: 12px; color: ${EMAIL_COLORS.gray}; margin-bottom: 10px; padding: 14px; }
+    .section li strong { color: ${EMAIL_COLORS.black}; }
+    .next-steps { background: ${EMAIL_COLORS.peach}; border-radius: 14px; color: ${EMAIL_COLORS.black}; margin-top: 24px; padding: 18px 20px; }
+    .next-steps strong { display: block; margin-bottom: 8px; }
+    .next-steps ol { margin: 0; padding-left: 20px; }
+    .footer { color: ${EMAIL_COLORS.gray}; font-size: 12px; padding: 20px 28px 28px; text-align: center; }
+    @media (max-width: 620px) {
+      .header, .content { padding: 22px; }
+      .grid { grid-template-columns: 1fr; }
+      .item.wide { grid-column: auto; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>New Reservation Request</h1>
-      <p>Enchula Resort booking form</p>
-    </div>
-    <div class="content">
-      <p>A guest has submitted a reservation request through the website.</p>
-
-      <div class="next-steps">
-        <strong>Reservations team next steps:</strong>
-        <ol>
-          <li>Confirm room availability.</li>
-          <li>Confirm the final price, if applicable.</li>
-          <li>Arrange payment and finalize the reservation.</li>
-        </ol>
+  <div class="wrap">
+    <div class="document">
+      <div class="header">
+        <p class="eyebrow">Enchula Resort Booking</p>
+        <h1>New Reservation Request</h1>
+        <p class="submitted">Submitted ${escapeHtml(new Date().toLocaleString("en-KE", { timeZone: "Africa/Nairobi" }))}</p>
       </div>
+      <div class="content">
+        <p class="intro">A guest has submitted a booking request through the website. The information below is ready for availability, pricing, and payment follow-up.</p>
 
-      <div class="section">
-        <h3>Request Details</h3>
-        <p><span class="label">Request Number:</span> ${escapeHtml(requestNumber)}</p>
-        <p><span class="label">Submitted:</span> ${escapeHtml(new Date().toLocaleString("en-KE", { timeZone: "Africa/Nairobi" }))}</p>
-        <p><span class="label">Check-in:</span> ${escapeHtml(bookingData.checkIn || "Not selected")}</p>
-        <p><span class="label">Check-out:</span> ${escapeHtml(bookingData.checkOut || "Not selected")}</p>
-        <p><span class="label">Nights:</span> ${escapeHtml(bookingData.nights ?? "To be confirmed")}</p>
-        <p><span class="label">Room Type:</span> ${escapeHtml(bookingData.roomType || "Not selected")}</p>
-        <p><span class="label">Residency:</span> ${escapeHtml(bookingData.residencyLabel || "To be confirmed")}</p>
-        <p><span class="label">Occupancy:</span> ${escapeHtml(bookingData.occupancyLabel || "To be confirmed")}</p>
-        <p><span class="label">Meal Plan:</span> ${escapeHtml(bookingData.mealPlanLabel || "To be confirmed")}</p>
-        <p><span class="label">Nightly Rate:</span> ${escapeHtml(formatMoney(bookingData.nightlyRate))}</p>
-        <p><span class="label">Estimated Room Total:</span> ${escapeHtml(formatMoney(bookingData.estimatedRoomTotal))}</p>
-      </div>
+        <div class="summary">
+          <h2>Stay Summary</h2>
+          <div class="grid">
+            <div class="item">
+              <span class="label">Check-in</span>
+              <p class="value">${escapeHtml(bookingData.checkIn || "Not selected")}</p>
+            </div>
+            <div class="item">
+              <span class="label">Check-out</span>
+              <p class="value">${escapeHtml(bookingData.checkOut || "Not selected")}</p>
+            </div>
+            <div class="item">
+              <span class="label">Nights</span>
+              <p class="value">${escapeHtml(bookingData.nights ?? "To be confirmed")}</p>
+            </div>
+            <div class="item">
+              <span class="label">Room Type</span>
+              <p class="value">${escapeHtml(bookingData.roomType || "Not selected")}</p>
+            </div>
+            <div class="item">
+              <span class="label">Meal Plan</span>
+              <p class="value">${escapeHtml(bookingData.mealPlanLabel || "To be confirmed")}</p>
+            </div>
+            <div class="item">
+              <span class="label">Estimated Total</span>
+              <p class="value">${escapeHtml(formatMoney(bookingData.estimatedRoomTotal))}</p>
+              <p class="muted">Nightly rate: ${escapeHtml(formatMoney(bookingData.nightlyRate))}</p>
+            </div>
+            <div class="item wide">
+              <span class="label">Rate Details</span>
+              <p class="value">${escapeHtml(bookingData.residencyLabel || "To be confirmed")} / ${escapeHtml(bookingData.occupancyLabel || "To be confirmed")}</p>
+            </div>
+          </div>
+        </div>
 
-      <div class="section">
-        <h3>Guest Information</h3>
-        <p><span class="label">Name:</span> ${escapeHtml(bookingData.guestName || "Not provided")}</p>
-        <p><span class="label">Email:</span> ${escapeHtml(bookingData.guestEmail || "Not provided")}</p>
-        <p><span class="label">Phone:</span> ${escapeHtml(bookingData.guestPhone || "Not provided")}</p>
-        <p><span class="label">Adults:</span> ${escapeHtml(bookingData.adults ?? 0)}</p>
-        <p><span class="label">Children (4-16):</span> ${escapeHtml(bookingData.children ?? 0)}</p>
-        <p><span class="label">Infants (0-3):</span> ${escapeHtml(bookingData.infants ?? 0)}</p>
-      </div>
+        <div class="section">
+          <h2>Guest Information</h2>
+          <div class="grid">
+            <div class="item">
+              <span class="label">Name</span>
+              <p class="value">${escapeHtml(bookingData.guestName || "Not provided")}</p>
+            </div>
+            <div class="item">
+              <span class="label">Email</span>
+              <p class="value">${escapeHtml(bookingData.guestEmail || "Not provided")}</p>
+            </div>
+            <div class="item">
+              <span class="label">Phone</span>
+              <p class="value">${escapeHtml(bookingData.guestPhone || "Not provided")}</p>
+            </div>
+            <div class="item">
+              <span class="label">Guests</span>
+              <p class="value">${escapeHtml(bookingData.adults ?? 0)} adults, ${escapeHtml(bookingData.children ?? 0)} children, ${escapeHtml(bookingData.infants ?? 0)} infants</p>
+              <p class="muted">Children 4-16, infants 0-3</p>
+            </div>
+          </div>
+        </div>
 
-      <div class="section">
-        <h3>Additional Services</h3>
-        ${formatServices(bookingData.additionalServices)}
-      </div>
+        <div class="section">
+          <h2>Additional Services</h2>
+          ${formatServices(bookingData.additionalServices)}
+        </div>
 
-      <div class="section">
-        <h3>Special Requests</h3>
-        <p>${escapeHtml(bookingData.specialRequests || "No special requests added.")}</p>
+        <div class="section">
+          <h2>Special Requests</h2>
+          <div class="item wide">
+            <p class="value">${escapeHtml(bookingData.specialRequests || "No special requests added.")}</p>
+          </div>
+        </div>
+
+        <div class="next-steps">
+          <strong>Reservations team next steps</strong>
+          <ol>
+            <li>Confirm room availability.</li>
+            <li>Confirm the final price, if applicable.</li>
+            <li>Arrange payment and finalize the reservation.</li>
+          </ol>
+        </div>
       </div>
-    </div>
-    <div class="footer">
-      <p>Enchula Resort | Nairobi-Namanga Rd, Kajiado, Kenya | ${RESERVATIONS_EMAIL}</p>
+      <div class="footer">
+        Enchula Resort | Nairobi-Namanga Rd, Kajiado, Kenya | ${RESERVATIONS_EMAIL}
+      </div>
     </div>
   </div>
 </body>
@@ -311,12 +379,13 @@ export async function POST(request: NextRequest) {
     const bookingData = await request.json();
     const reservationData = bookingData as BookingRequest;
     const requestNumber = `ENCH-${Date.now()}`;
-    const reservationEmailContent = buildReservationEmailContent(reservationData, requestNumber);
+    const reservationEmailContent = buildReservationEmailContent(reservationData);
     const resendApiKey = process.env.RESEND_API_KEY;
-    const fromEmail =
+    const fromEmail = normalizeVerifiedSender(
       process.env.RESERVATIONS_FROM_EMAIL ||
-      process.env.NEXT_PUBLIC_RESERVATIONS_FROM_EMAIL ||
-      DEFAULT_FROM_EMAIL;
+        process.env.NEXT_PUBLIC_RESERVATIONS_FROM_EMAIL ||
+        DEFAULT_FROM_EMAIL
+    );
 
     if (!resendApiKey) {
       console.error("RESEND_API_KEY is not configured. Reservation request was not emailed.", {

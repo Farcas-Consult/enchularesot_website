@@ -5,15 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
-const LOGO_SRC = `${S3_BASE}/Logo10.png`;
 
 type OccupancyType = "single" | "double";
 type MealPlan = "bedBreakfast" | "halfBoard" | "fullBoard";
-
-type PreparedReservation = {
-  subject: string;
-  requestNumber: string;
-};
 
 const roomTypes = [
   {
@@ -709,80 +703,6 @@ const styles = `
     color: #9f1d1d;
   }
 
-  .bp-request-doc {
-    background: var(--white);
-    color: var(--brown-dark);
-    margin-top: 2rem;
-    padding: clamp(1.3rem, 3vw, 2rem);
-    text-align: left;
-  }
-
-  .bp-request-header {
-    align-items: center;
-    border-bottom: 1px solid color-mix(in srgb, var(--brand-light-brown) 45%, transparent);
-    display: flex;
-    gap: 1.25rem;
-    justify-content: space-between;
-    padding-bottom: 1rem;
-  }
-
-  .bp-request-logo {
-    height: auto;
-    width: 150px;
-  }
-
-  .bp-request-meta {
-    color: rgba(74,36,0,.68);
-    font-size: .82rem;
-    font-weight: 700;
-    letter-spacing: .1em;
-    text-align: right;
-    text-transform: uppercase;
-  }
-
-  .bp-request-doc h3 {
-    color: var(--brown-dark);
-    font-family: var(--font-serif);
-    font-size: clamp(1.7rem, 3vw, 2.5rem);
-    font-weight: 300;
-    line-height: 1.05;
-    margin: 1.4rem 0 1rem;
-  }
-
-  .bp-request-grid {
-    display: grid;
-    gap: 1px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    background: color-mix(in srgb, var(--brand-light-brown) 38%, transparent);
-  }
-
-  .bp-request-item {
-    background: var(--white);
-    padding: .95rem;
-  }
-
-  .bp-request-item span {
-    color: var(--brown);
-    display: block;
-    font-size: .68rem;
-    font-weight: 800;
-    letter-spacing: .13em;
-    margin-bottom: .3rem;
-    text-transform: uppercase;
-  }
-
-  .bp-request-item strong,
-  .bp-request-item p {
-    color: var(--brown-dark);
-    font-size: .96rem;
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  .bp-request-wide {
-    grid-column: 1 / -1;
-  }
-
   .bp-terms {
     color: rgba(74,36,0,.68);
     font-size: .83rem;
@@ -834,18 +754,9 @@ const styles = `
       padding: 2rem 1rem;
     }
 
-    .bp-request-header,
     .bp-confirmation-actions {
       align-items: stretch;
       flex-direction: column;
-    }
-
-    .bp-request-meta {
-      text-align: left;
-    }
-
-    .bp-request-grid {
-      grid-template-columns: 1fr;
     }
 
     .bp-step {
@@ -894,7 +805,6 @@ const BookingPage = () => {
     specialRequests: "",
   });
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [preparedReservation, setPreparedReservation] = useState<PreparedReservation | null>(null);
   const [isSubmittingBooking, setIsSubmittingBooking] = useState(false);
   const [bookingSubmitError, setBookingSubmitError] = useState("");
   const today = new Date().toISOString().split("T")[0];
@@ -987,11 +897,6 @@ const BookingPage = () => {
         throw new Error(result.error || result.details || "Unable to send the booking request.");
       }
 
-      const requestNumber = result.requestNumber || `ENCH-${Date.now()}`;
-      setPreparedReservation({
-        requestNumber,
-        subject: `Reservation Request ${requestNumber} - ${guestInfo.name}`,
-      });
       setShowConfirmation(true);
     } catch (error) {
       setBookingSubmitError(
@@ -1038,12 +943,8 @@ const BookingPage = () => {
         {showConfirmation ? (
           <div className="bp-confirmation">
             <div className="bp-eyebrow" style={{ justifyContent: "center" }}>Request sent</div>
-            <h2>Your reservation request has been sent.</h2>
-            <p>Thank you, {guestInfo.name}. The hotel has received the full booking document by email.</p>
-            <p>
-              The reservations team will confirm availability, final pricing, payment, and
-              reservation details.
-            </p>
+            <h2>Booking request sent.</h2>
+            <p>Thank you, {guestInfo.name}. The hotel has received your booking request.</p>
             <div className="bp-confirmation-actions">
               <button
                 type="button"
@@ -1058,63 +959,6 @@ const BookingPage = () => {
               <a className="bp-btn bp-btn-dark" href="tel:+254727000027">
                 Call Reception
               </a>
-            </div>
-
-            <div className="bp-request-doc" aria-label="Reservation request preview">
-              <div className="bp-request-header">
-                <Image src={LOGO_SRC} alt="Enchula Resort" width={180} height={120} className="bp-request-logo" />
-                <div className="bp-request-meta">
-                  <div>Reservation Request</div>
-                  <div>{preparedReservation?.requestNumber || "Sent to hotel"}</div>
-                </div>
-              </div>
-              <h3>{preparedReservation?.subject || "Reservation Request"}</h3>
-              <div className="bp-request-grid">
-                <div className="bp-request-item">
-                  <span>Guest</span>
-                  <strong>{guestInfo.name}</strong>
-                </div>
-                <div className="bp-request-item">
-                  <span>Contact</span>
-                  <p>{guestInfo.email}<br />{guestInfo.phone}</p>
-                </div>
-                <div className="bp-request-item">
-                  <span>Dates</span>
-                  <p>{formatDate(checkIn)} - {formatDate(checkOut)}<br />{nights || "To be confirmed"} night{nights !== 1 ? "s" : ""}</p>
-                </div>
-                <div className="bp-request-item">
-                  <span>Room</span>
-                  <strong>{selectedRoomData?.name || "Not selected"}</strong>
-                </div>
-                <div className="bp-request-item">
-                  <span>Guests</span>
-                  <p>{guestsText}</p>
-                </div>
-                <div className="bp-request-item">
-                  <span>Estimated Total</span>
-                  <strong>{estimatedRoomTotal ? `Kshs. ${estimatedRoomTotal.toLocaleString()}` : "To be confirmed"}</strong>
-                </div>
-                <div className="bp-request-item bp-request-wide">
-                  <span>Pricing</span>
-                  <p>
-                    {isKenyanResident ? "Resident" : "Non-resident"} / {occupancyType === "single" ? "Single occupancy" : "Double occupancy"} / {mealPlanLabels[mealPlan]}
-                    <br />
-                    {currentRate ? `Kshs. ${currentRate.toLocaleString()} per night` : "Rate to be confirmed"}
-                  </p>
-                </div>
-                <div className="bp-request-item bp-request-wide">
-                  <span>Additional Reservations</span>
-                  <p>
-                    {selectedServiceDetails.length
-                      ? selectedServiceDetails.map((service) => `${service.name} - ${service.description}`).join("; ")
-                      : "No additional reservations selected."}
-                  </p>
-                </div>
-                <div className="bp-request-item bp-request-wide">
-                  <span>Special Requests</span>
-                  <p>{guestInfo.specialRequests || "No special requests added."}</p>
-                </div>
-              </div>
             </div>
           </div>
         ) : (
