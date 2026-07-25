@@ -816,7 +816,7 @@ export default function DiningPage() {
       <div id="dining-experience" className="dp-section dp-editorial-section">
 
         <div className="dp-journey-heading">
-          <p className="dp-journey-label">Dining Journey</p>
+          <p className="dp-journey-label">Dining</p>
           <h2>From morning ease to <em>evening flavor</em></h2>
           <p>
             Move from slow breakfasts to relaxed lunches, lounge drinks, and shared dinners with fresh plates, familiar favorites, and warm service that makes every meal feel settled.

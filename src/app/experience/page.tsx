@@ -34,7 +34,7 @@ const experiences = [
   {
     name: "Outdoor Picnics",
     kicker: "Open-air moments",
-    image: `${S3_BASE}/Outdoor1.jpeg`,
+    image: `${S3_BASE}/Picnic.jpeg`,
     description:
       "Settle into scenic grounds for relaxed picnics, casual celebrations, and slow afternoons with resort service close by.",
     features: ["Scenic grounds", "Casual gatherings", "Anytime leisure"],
@@ -42,7 +42,7 @@ const experiences = [
   {
     name: "Guided Nature Walks",
     kicker: "Nature and calm",
-    image: `${S3_BASE}/Nature.jpeg`,
+    image: `${S3_BASE}/Outdoor1.jpeg`,
     description:
       "Explore the resort surroundings with guides who help guests notice the local landscape, plants, and quiet natural details.",
     features: ["Morning walks", "Local flora", "Guided pace"],
@@ -692,7 +692,7 @@ export default function ExperiencesPage() {
 
       <div id="experiences" className="xp-section xp-editorial-section">
         <div className="xp-journey-heading">
-          <p className="xp-journey-label">Experience Journey</p>
+          <p className="xp-journey-label">Activities and Experiences</p>
           <h2>Resort days made for <em>play and ease</em></h2>
           <p>
             Enjoy pool time, games, family moments, fresh air, and small discoveries across the grounds, with experiences that make the day feel active, relaxed, and memorable.

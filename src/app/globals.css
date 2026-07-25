@@ -390,6 +390,43 @@ main section:nth-of-type(odd) .motion-text.motion-in {
     }
 }
 
+/* Intro section labels inspired by the hero eyebrow treatment. */
+.dp-journey-heading,
+.ep-journey-heading,
+.xp-journey-heading,
+.vt-journey-heading,
+.wp-journey-heading {
+    text-align: center !important;
+}
+
+.dp-journey-label,
+.ep-journey-label,
+.xp-journey-label,
+.vt-journey-label,
+.wp-journey-label {
+    align-items: center !important;
+    color: color-mix(in srgb, var(--brand-primary) 82%, var(--brand-peach)) !important;
+    display: inline-flex !important;
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: .72rem !important;
+    font-weight: 700 !important;
+    justify-content: center !important;
+    letter-spacing: .28em !important;
+    line-height: 1.2 !important;
+    margin: 0 auto 1.65rem !important;
+    opacity: 1 !important;
+    text-transform: uppercase !important;
+    width: auto !important;
+}
+
+.dp-journey-label::after,
+.ep-journey-label::after,
+.xp-journey-label::after,
+.vt-journey-label::after,
+.wp-journey-label::after {
+    content: none !important;
+}
+
 /* Site-wide content typography contrast.
    Page components define many local style blocks, so these final rules keep
    headings, copy, and section labels consistent across the full website. */
@@ -1353,5 +1390,76 @@ video {
         max-width: none !important;
         padding-left: 1rem !important;
         padding-right: 1rem !important;
+    }
+}
+
+/* Final CTA and wellness label visibility overrides. */
+.dp-reserve,
+.ep-contact,
+.xp-cta,
+.vt-cta,
+.wp-cta,
+.gs-cta {
+    color: var(--text-on-dark) !important;
+    overflow: visible !important;
+    position: relative !important;
+}
+
+.dp-reserve *,
+.ep-contact *,
+.xp-cta *,
+.vt-cta *,
+.wp-cta *,
+.gs-cta * {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.dp-reserve h2,
+.ep-contact h2,
+.xp-cta h2,
+.vt-cta h2,
+.wp-cta h2,
+.gs-cta h2 {
+    color: var(--text-on-dark) !important;
+    font-weight: 300 !important;
+    opacity: 1 !important;
+}
+
+.dp-reserve p,
+.ep-contact p,
+.xp-cta p,
+.vt-cta p,
+.wp-cta p,
+.gs-cta p {
+    color: color-mix(in srgb, var(--brand-peach) 82%, var(--text-on-dark)) !important;
+    opacity: 1 !important;
+}
+
+.wp-section-heading .wp-kicker {
+    font-size: .86rem !important;
+    line-height: 1.4 !important;
+}
+
+/* Tighten the first intro/detail section directly after each page hero. */
+.rp-hero + .rp-detail,
+.dp-hero + .dp-editorial-section,
+.ep-hero + .ep-editorial-section,
+.xp-hero + .xp-editorial-section,
+.gp-hero + .gp-intro-section,
+.vt-hero + .vt-intro-section,
+.wp-hero + .wp-wellness-intro-section {
+    padding-top: clamp(1.35rem, 2.4vw, 2.25rem) !important;
+}
+
+@media (max-width: 760px) {
+    .rp-hero + .rp-detail,
+    .dp-hero + .dp-editorial-section,
+    .ep-hero + .ep-editorial-section,
+    .xp-hero + .xp-editorial-section,
+    .gp-hero + .gp-intro-section,
+    .vt-hero + .vt-intro-section,
+    .wp-hero + .wp-wellness-intro-section {
+        padding-top: 1.1rem !important;
     }
 }

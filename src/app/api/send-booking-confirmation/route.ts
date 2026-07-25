@@ -284,8 +284,8 @@ const buildReservationEmailContent = (bookingData: BookingRequest, requestNumber
         <p><span class="label">Email:</span> ${escapeHtml(bookingData.guestEmail || "Not provided")}</p>
         <p><span class="label">Phone:</span> ${escapeHtml(bookingData.guestPhone || "Not provided")}</p>
         <p><span class="label">Adults:</span> ${escapeHtml(bookingData.adults ?? 0)}</p>
-        <p><span class="label">Children (2-12):</span> ${escapeHtml(bookingData.children ?? 0)}</p>
-        <p><span class="label">Infants (0-2):</span> ${escapeHtml(bookingData.infants ?? 0)}</p>
+        <p><span class="label">Children (4-16):</span> ${escapeHtml(bookingData.children ?? 0)}</p>
+        <p><span class="label">Infants (0-3):</span> ${escapeHtml(bookingData.infants ?? 0)}</p>
       </div>
 
       <div class="section">

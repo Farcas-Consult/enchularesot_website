@@ -6,14 +6,11 @@ import Link from "next/link";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 const LOGO_SRC = `${S3_BASE}/Logo10.png`;
-const RESERVATIONS_EMAIL = "info@enchularesort.co.ke";
 
 type OccupancyType = "single" | "double";
 type MealPlan = "bedBreakfast" | "halfBoard" | "fullBoard";
 
-type PreparedEmail = {
-  mailtoHref: string;
-  gmailHref: string;
+type PreparedReservation = {
   subject: string;
   requestNumber: string;
 };
@@ -700,6 +697,18 @@ const styles = `
     color: var(--brown-dark);
   }
 
+  .bp-form-status {
+    color: var(--brown-dark);
+    font-size: .9rem;
+    line-height: 1.6;
+    margin: .25rem 0 0;
+    width: 100%;
+  }
+
+  .bp-form-status.bp-error {
+    color: #9f1d1d;
+  }
+
   .bp-request-doc {
     background: var(--white);
     color: var(--brown-dark);
@@ -885,7 +894,9 @@ const BookingPage = () => {
     specialRequests: "",
   });
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [preparedEmail, setPreparedEmail] = useState<PreparedEmail | null>(null);
+  const [preparedReservation, setPreparedReservation] = useState<PreparedReservation | null>(null);
+  const [isSubmittingBooking, setIsSubmittingBooking] = useState(false);
+  const [bookingSubmitError, setBookingSubmitError] = useState("");
   const today = new Date().toISOString().split("T")[0];
 
   const selectedRoomData = selectedRoom ? roomTypes.find((room) => room.id === selectedRoom) : null;
@@ -938,86 +949,59 @@ const BookingPage = () => {
   const formatDate = (date: string) =>
     date ? new Date(`${date}T00:00:00`).toLocaleDateString("en-KE") : "Not selected";
 
-  const buildReservationEmail = (requestNumber: string, submittedAt: string) => {
-    const serviceLines = selectedServiceDetails.length
-      ? selectedServiceDetails
-          .map(
-            (service, index) =>
-              `${index + 1}. ${service.name} (${service.category}) - ${service.description}`
-          )
-          .join("\n")
-      : "No additional reservations selected.";
+  const buildBookingPayload = () => ({
+    guestName: guestInfo.name,
+    guestEmail: guestInfo.email,
+    guestPhone: guestInfo.phone,
+    checkIn: formatDate(checkIn),
+    checkOut: formatDate(checkOut),
+    nights: nights || undefined,
+    roomType: selectedRoomData?.name || "Not selected",
+    residencyLabel: isKenyanResident ? "Resident" : "Non-resident",
+    occupancyLabel: occupancyType === "single" ? "Single occupancy" : "Double occupancy",
+    mealPlanLabel: mealPlanLabels[mealPlan],
+    nightlyRate: currentRate,
+    estimatedRoomTotal,
+    adults,
+    children: childrenCount,
+    infants: infantCount,
+    additionalServices: selectedServiceDetails,
+    specialRequests: guestInfo.specialRequests,
+  });
 
-    const subject = `Reservation Request ${requestNumber} - ${guestInfo.name}`;
-    const body = [
-      "ENCHULA RESORT RESERVATION REQUEST",
-      "===================================",
-      "",
-      `Request Number: ${requestNumber}`,
-      `Submitted: ${submittedAt}`,
-      "",
-      "GUEST INFORMATION",
-      "-----------------",
-      `Full Name: ${guestInfo.name}`,
-      `Email: ${guestInfo.email}`,
-      `Phone: ${guestInfo.phone}`,
-      "",
-      "STAY DETAILS",
-      "------------",
-      `Check-in: ${formatDate(checkIn)}`,
-      `Check-out: ${formatDate(checkOut)}`,
-      `Nights: ${nights || "To be confirmed"}`,
-      `Room Type: ${selectedRoomData?.name || "Not selected"}`,
-      `Residency: ${isKenyanResident ? "Resident" : "Non-resident"}`,
-      `Occupancy: ${occupancyType === "single" ? "Single occupancy" : "Double occupancy"}`,
-      `Meal Plan: ${mealPlanLabels[mealPlan]}`,
-      `Nightly Rate: ${currentRate ? `Kshs. ${currentRate.toLocaleString()}` : "To be confirmed"}`,
-      `Estimated Room Total: ${estimatedRoomTotal ? `Kshs. ${estimatedRoomTotal.toLocaleString()}` : "To be confirmed"}`,
-      "",
-      "GUESTS",
-      "------",
-      `Adults: ${adults}`,
-      `Children: ${childrenCount}`,
-      `Infants: ${infantCount}`,
-      "",
-      "ADDITIONAL RESERVATIONS",
-      "-----------------------",
-      serviceLines,
-      "",
-      "SPECIAL REQUESTS",
-      "----------------",
-      guestInfo.specialRequests || "No special requests added.",
-      "",
-      "Please confirm availability, final pricing, payment details, and the reservation.",
-    ].join("\n");
-
-    return { subject, body };
-  };
-
-  const buildEmailLinks = () => {
-    const requestNumber =
-      preparedEmail?.requestNumber ||
-      `ENCH-${new Date().toISOString().slice(0, 10).replace(/-/g, "")}-${guestInfo.phone.replace(/\D/g, "").slice(-4) || "REQ"}`;
-    const submittedAt = new Date().toLocaleString("en-KE", { timeZone: "Africa/Nairobi" });
-    const { subject, body } = buildReservationEmail(requestNumber, submittedAt);
-    const encodedSubject = encodeURIComponent(subject);
-    const encodedBody = encodeURIComponent(body);
-
-    return {
-      mailtoHref: `mailto:${RESERVATIONS_EMAIL}?subject=${encodedSubject}&body=${encodedBody}`,
-      gmailHref: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(RESERVATIONS_EMAIL)}&su=${encodedSubject}&body=${encodedBody}`,
-      subject,
-      requestNumber,
-    };
-  };
-
-  const emailLinks = buildEmailLinks();
-
-  const handleBooking = () => {
+  const handleBooking = async () => {
     if (!guestInfo.name || !guestInfo.email || !guestInfo.phone) return;
 
-    setPreparedEmail(emailLinks);
-    setShowConfirmation(true);
+    setIsSubmittingBooking(true);
+    setBookingSubmitError("");
+
+    try {
+      const response = await fetch("/api/send-booking-confirmation", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(buildBookingPayload()),
+      });
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || result.details || "Unable to send the booking request.");
+      }
+
+      const requestNumber = result.requestNumber || `ENCH-${Date.now()}`;
+      setPreparedReservation({
+        requestNumber,
+        subject: `Reservation Request ${requestNumber} - ${guestInfo.name}`,
+      });
+      setShowConfirmation(true);
+    } catch (error) {
+      setBookingSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Unable to send the booking request. Please try again."
+      );
+    } finally {
+      setIsSubmittingBooking(false);
+    }
   };
 
   const guestsText = `${adults} adult${adults !== 1 ? "s" : ""}${childrenCount ? `, ${childrenCount} child${childrenCount !== 1 ? "ren" : ""}` : ""}${infantCount ? `, ${infantCount} infant${infantCount !== 1 ? "s" : ""}` : ""}`;
@@ -1035,7 +1019,7 @@ const BookingPage = () => {
             </h1>
             <p className="bp-lead">
               Choose your dates, room, meal plan, and any extras in one calm booking flow. The
-              form prepares a clean email request for you to send to the reservations team, who
+              form sends a clean booking document directly to the reservations team, who
               will confirm availability, final pricing, payment, and reservation details.
             </p>
           </div>
@@ -1053,24 +1037,14 @@ const BookingPage = () => {
 
         {showConfirmation ? (
           <div className="bp-confirmation">
-            <div className="bp-eyebrow" style={{ justifyContent: "center" }}>Email ready</div>
-            <h2>Send your reservation request.</h2>
-            <p>Thank you, {guestInfo.name}. Your email app should open with the booking details already filled in.</p>
+            <div className="bp-eyebrow" style={{ justifyContent: "center" }}>Request sent</div>
+            <h2>Your reservation request has been sent.</h2>
+            <p>Thank you, {guestInfo.name}. The hotel has received the full booking document by email.</p>
             <p>
-              Review the message, then send it to Enchula Resort so the reservations team can
-              confirm availability and payment details.
+              The reservations team will confirm availability, final pricing, payment, and
+              reservation details.
             </p>
             <div className="bp-confirmation-actions">
-              {preparedEmail && (
-                <>
-                  <a className="bp-btn bp-btn-dark" href={preparedEmail.mailtoHref}>
-                    Open Email App
-                  </a>
-                  <a className="bp-btn" href={preparedEmail.gmailHref} target="_blank" rel="noopener noreferrer">
-                    Open Gmail
-                  </a>
-                </>
-              )}
               <button
                 type="button"
                 className="bp-btn"
@@ -1081,6 +1055,9 @@ const BookingPage = () => {
               >
                 Edit Details
               </button>
+              <a className="bp-btn bp-btn-dark" href="tel:+254727000027">
+                Call Reception
+              </a>
             </div>
 
             <div className="bp-request-doc" aria-label="Reservation request preview">
@@ -1088,10 +1065,10 @@ const BookingPage = () => {
                 <Image src={LOGO_SRC} alt="Enchula Resort" width={180} height={120} className="bp-request-logo" />
                 <div className="bp-request-meta">
                   <div>Reservation Request</div>
-                  <div>{preparedEmail?.requestNumber || "Ready to send"}</div>
+                  <div>{preparedReservation?.requestNumber || "Sent to hotel"}</div>
                 </div>
               </div>
-              <h3>{preparedEmail?.subject || "Reservation Request"}</h3>
+              <h3>{preparedReservation?.subject || "Reservation Request"}</h3>
               <div className="bp-request-grid">
                 <div className="bp-request-item">
                   <span>Guest</span>
@@ -1163,55 +1140,59 @@ const BookingPage = () => {
                   <>
                     <div className="bp-panel">
                       <h2 className="bp-panel-title">Your stay</h2>
-                      <div className="bp-grid bp-grid-4">
-                        <div className="bp-field">
-                          <label htmlFor="check-in">Check-in</label>
-                          <input
-                            id="check-in"
-                            type="date"
-                            min={today}
-                            value={checkIn}
-                            onChange={(event) => setCheckIn(event.target.value)}
-                            className="bp-input"
-                          />
-                        </div>
-                        <div className="bp-field">
-                          <label htmlFor="check-out">Check-out</label>
-                          <input
-                            id="check-out"
-                            type="date"
-                            min={checkIn || today}
-                            value={checkOut}
-                            onChange={(event) => setCheckOut(event.target.value)}
-                            className="bp-input"
-                          />
-                        </div>
-                        {[
-                          { label: "Adults (17+)", value: adults, setter: setAdults, max: 6 },
-                          { label: "Children (4-16)", value: childrenCount, setter: setChildrenCount, max: 4 },
-                          { label: "Infants (0-3)", value: infantCount, setter: setInfantCount, max: 4 },
-                        ].map((guest) => (
-                          <div className="bp-counter" key={guest.label}>
-                            <span>{guest.label}</span>
-                            <div className="bp-counter-controls">
-                              <button
-                                type="button"
-                                className="bp-counter-btn"
-                                onClick={() => guest.value > 0 && guest.setter(guest.value - 1)}
-                              >
-                                -
-                              </button>
-                              <strong>{guest.value}</strong>
-                              <button
-                                type="button"
-                                className="bp-counter-btn"
-                                onClick={() => guest.value < guest.max && guest.setter(guest.value + 1)}
-                              >
-                                +
-                              </button>
-                            </div>
+                      <div className="bp-grid">
+                        <div className="bp-grid bp-grid-2">
+                          <div className="bp-field">
+                            <label htmlFor="check-in">Check-in</label>
+                            <input
+                              id="check-in"
+                              type="date"
+                              min={today}
+                              value={checkIn}
+                              onChange={(event) => setCheckIn(event.target.value)}
+                              className="bp-input"
+                            />
                           </div>
-                        ))}
+                          <div className="bp-field">
+                            <label htmlFor="check-out">Check-out</label>
+                            <input
+                              id="check-out"
+                              type="date"
+                              min={checkIn || today}
+                              value={checkOut}
+                              onChange={(event) => setCheckOut(event.target.value)}
+                              className="bp-input"
+                            />
+                          </div>
+                        </div>
+                        <div className="bp-grid bp-grid-3">
+                          {[
+                            { label: "Adults (17+)", value: adults, setter: setAdults, max: 6 },
+                            { label: "Children (4-16)", value: childrenCount, setter: setChildrenCount, max: 4 },
+                            { label: "Infants (0-3)", value: infantCount, setter: setInfantCount, max: 4 },
+                          ].map((guest) => (
+                            <div className="bp-counter" key={guest.label}>
+                              <span>{guest.label}</span>
+                              <div className="bp-counter-controls">
+                                <button
+                                  type="button"
+                                  className="bp-counter-btn"
+                                  onClick={() => guest.value > 0 && guest.setter(guest.value - 1)}
+                                >
+                                  -
+                                </button>
+                                <strong>{guest.value}</strong>
+                                <button
+                                  type="button"
+                                  className="bp-counter-btn"
+                                  onClick={() => guest.value < guest.max && guest.setter(guest.value + 1)}
+                                >
+                                  +
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
@@ -1429,30 +1410,27 @@ const BookingPage = () => {
                         Back
                       </button>
                       {guestInfo.name && guestInfo.email && guestInfo.phone ? (
-                        <>
-                          <a className="bp-btn bp-btn-dark" href={emailLinks.mailtoHref} onClick={handleBooking}>
-                            Open Email App
-                          </a>
-                          <a
-                            className="bp-btn"
-                            href={emailLinks.gmailHref}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={handleBooking}
-                          >
-                            Open Gmail
-                          </a>
-                        </>
+                        <button
+                          type="button"
+                          className="bp-btn bp-btn-dark"
+                          onClick={handleBooking}
+                          disabled={isSubmittingBooking}
+                        >
+                          {isSubmittingBooking ? "Sending Request..." : "Send Booking Request"}
+                        </button>
                       ) : (
                         <button type="button" disabled className="bp-btn bp-btn-dark">
-                          Open Email to Send Request
+                          Complete Guest Details
                         </button>
+                      )}
+                      {bookingSubmitError && (
+                        <p className="bp-form-status bp-error">{bookingSubmitError}</p>
                       )}
                     </div>
 
                     <div className="bp-terms">
                       <p>
-                        By sending the email, you agree to our <Link href="/terms">Terms & Conditions</Link>.
+                        By submitting the request, you agree to our <Link href="/terms">Terms & Conditions</Link>.
                       </p>
                       <p>Questions? Call us at <strong>0727000027</strong>.</p>
                     </div>

@@ -732,7 +732,7 @@ export default function EventsPage() {
 
       <div id="events-intro" className="ep-editorial-section">
         <div className="ep-journey-heading">
-          <p className="ep-journey-label">Events Journey</p>
+          <p className="ep-journey-label">Conferences and Events</p>
           <h2>Gatherings shaped <em>with care</em></h2>
           <p>
             From focused meetings to social celebrations and active team sessions, each event is guided by thoughtful planning, flexible spaces, and warm coordination from arrival to close.
@@ -755,7 +755,7 @@ export default function EventsPage() {
       <div id="event-sections" className="ep-section">
         <motion.div className="ep-section-heading" {...reveal}>
           <div>
-            <div className="ep-kicker">Planning and hosting</div>
+            <p className="ep-journey-label">Events</p>
             <h2 className="ep-heading">
               Three ways to gather, <em>one thoughtful team</em>
             </h2>

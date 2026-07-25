@@ -1025,7 +1025,7 @@ export default function WellnessFitnessPage() {
       <div id="wellness-spaces" className="wp-section wp-wellness-intro-section">
 
         <div className="wp-journey-heading">
-          <p className="wp-journey-label">Wellness Journey</p>
+          <p className="wp-journey-label">Wellness and Fitness</p>
           <h2>Our <em>Wellness Journey</em></h2>
           <p>
             Start with movement, continue into recovery, and make space for a calm reset with wellness facilities and access options that support both routine and rest.

@@ -914,7 +914,7 @@ export default function VirtualTourPage() {
 
       <div id="tour-intro" className="vt-intro-section">
         <div className="vt-journey-heading">
-          <p className="vt-journey-label">Virtual Tour Journey</p>
+          <p className="vt-journey-label">Virtual Tour</p>
           <h2>See the resort <em>before you arrive</em></h2>
           <p>
             Preview the route, arrival points, resort spaces, and gathering areas before your visit, so every turn feels familiar and your stay begins with confidence.
