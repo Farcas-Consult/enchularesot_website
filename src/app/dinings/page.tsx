@@ -227,22 +227,37 @@ const styles = `
     text-align: center;
   }
 
-  .dp-journey-heading h3 {
+  .dp-journey-label {
+    color: var(--gold);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    margin: 0 0 .85rem;
+    text-transform: uppercase;
+  }
+
+  .dp-journey-heading h2 {
     color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
     font-family: var(--font-sans);
-    font-size: clamp(1.45rem, 2.4vw, 1.8rem);
-    font-weight: 700;
+    font-size: clamp(1.65rem, 3vw, 2.85rem);
+    font-weight: 800;
     letter-spacing: .04em;
     line-height: 1.1;
     margin: 0 0 .75rem;
     text-transform: uppercase;
   }
 
+  .dp-journey-heading h2 em {
+    font-style: italic;
+  }
+
   .dp-journey-heading p {
     color: rgba(74,36,0,.72);
-    font-size: .92rem;
-    font-weight: 700;
-    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 92ch;
   }
 
   .dp-journey {
@@ -801,8 +816,11 @@ export default function DiningPage() {
       <div id="dining-experience" className="dp-section dp-editorial-section">
 
         <div className="dp-journey-heading">
-          <h3>Our Dining Journey</h3>
-          <p>A natural rhythm of breakfast, dining, lounge moments, and gathering</p>
+          <p className="dp-journey-label">Dining Journey</p>
+          <h2>From morning ease to <em>evening flavor</em></h2>
+          <p>
+            Move from slow breakfasts to relaxed lunches, lounge drinks, and shared dinners with fresh plates, familiar favorites, and warm service that makes every meal feel settled.
+          </p>
         </div>
 
         <div className="dp-journey" aria-label="Dining experience overview">

@@ -257,22 +257,37 @@ const styles = `
     text-align: center;
   }
 
-  .ep-journey-heading h3 {
+  .ep-journey-label {
+    color: var(--gold);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    margin: 0 0 .85rem;
+    text-transform: uppercase;
+  }
+
+  .ep-journey-heading h2 {
     color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
     font-family: var(--font-sans);
-    font-size: clamp(1.45rem, 2.4vw, 1.8rem);
-    font-weight: 700;
+    font-size: clamp(1.65rem, 3vw, 2.85rem);
+    font-weight: 800;
     letter-spacing: .04em;
     line-height: 1.1;
     margin: 0 0 .75rem;
     text-transform: uppercase;
   }
 
+  .ep-journey-heading h2 em {
+    font-style: italic;
+  }
+
   .ep-journey-heading p {
     color: rgba(74,36,0,.72);
-    font-size: .92rem;
-    font-weight: 700;
-    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 92ch;
   }
 
   .ep-journey {
@@ -717,8 +732,11 @@ export default function EventsPage() {
 
       <div id="events-intro" className="ep-editorial-section">
         <div className="ep-journey-heading">
-          <h3>Our Events Journey</h3>
-          <p>A natural rhythm of meeting, celebrating, and connecting</p>
+          <p className="ep-journey-label">Events Journey</p>
+          <h2>Gatherings shaped <em>with care</em></h2>
+          <p>
+            From focused meetings to social celebrations and active team sessions, each event is guided by thoughtful planning, flexible spaces, and warm coordination from arrival to close.
+          </p>
         </div>
 
         <div className="ep-journey" aria-label="Events overview">

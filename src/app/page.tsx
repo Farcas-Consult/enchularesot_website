@@ -28,7 +28,7 @@ const GlobalStyles = () => (
     body { font-family: var(--font-sans); background: var(--cream); color: var(--brown-dark); }
 
     /* ── Section ── */
-    .section { padding: 7rem 1.5rem; }
+    .section { padding: 3rem 1.5rem; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
     .section-label {
       font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
@@ -37,12 +37,12 @@ const GlobalStyles = () => (
     }
     .section-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
     .section-title {
-      font-family: var(--font-serif); font-size: clamp(2.2rem, 4vw, 3.8rem);
-      font-weight: 300; color: var(--brown); line-height: 1.1;
+      font-family: var(--font-serif); font-size: clamp(1.65rem, 2.7vw, 2.65rem);
+      font-weight: 700; color: var(--brand-black); line-height: 1.1;
       letter-spacing: -.01em; margin-bottom: 1.5rem;
     }
     .section-title em { font-style: italic; }
-    .section-body { font-size: 1.05rem; line-height: 1.8; color: var(--brown-dark); opacity: .8; max-width: 56ch; }
+    .section-body { font-size: 1.05rem; line-height: 1.8; color: color-mix(in srgb, var(--brand-gray) 72%, var(--brand-background)); opacity: .82; max-width: 56ch; }
     .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--sand), transparent); }
 
     /* ── About ── */
@@ -67,13 +67,13 @@ const GlobalStyles = () => (
     .features-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2.5rem; }
     .feature-card { padding: 1.5rem; border: 1px solid color-mix(in srgb, var(--brand-primary) 20%, transparent); background: var(--brand-white); transition: border-color .25s, transform .25s; }
     .feature-card:hover { border-color: var(--gold); transform: translateY(-3px); }
-    .feature-card h4 { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--brown); margin-bottom: .4rem; }
+    .feature-card h4 { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; color: var(--brand-black); margin-bottom: .4rem; }
     .feature-card p { font-size: .85rem; color: var(--brown-dark); opacity: .75; line-height: 1.6; }
 
     /* ── Rooms preview ── */
     .rooms-preview {
       background: var(--cream);
-      padding: clamp(4.5rem, 8vw, 7rem) 1.5rem;
+      padding: clamp(2rem, 4vw, 3rem) 1.5rem;
     }
     .rooms-preview-header {
       margin: 0 auto clamp(2rem, 4vw, 3rem);
@@ -81,34 +81,36 @@ const GlobalStyles = () => (
       text-align: center;
     }
     .rooms-preview-title {
-      color: color-mix(in srgb, var(--brand-black) 78%, var(--brown));
+      color: var(--brand-black);
       font-family: var(--font-sans);
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      font-weight: 700;
+      font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+      font-weight: 800;
       letter-spacing: .04em;
       line-height: 1;
       margin: 0 0 1rem;
       text-transform: uppercase;
     }
     .rooms-preview-subtitle {
-      color: rgba(74, 36, 0, .74);
-      font-size: clamp(.95rem, 1.25vw, 1.08rem);
-      line-height: 1.6;
-      margin: 0;
+      color: color-mix(in srgb, var(--brand-gray) 72%, var(--brand-background));
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin: 0 auto;
+      max-width: 96ch;
+      opacity: .82;
     }
     .rooms-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: clamp(1.25rem, 2.2vw, 1.75rem);
       margin: 0 auto;
-      max-width: 1180px;
+      max-width: min(1500px, calc(100% - 2rem));
     }
     .room-card {
       color: var(--white);
       min-width: 0;
     }
     .room-card-media {
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 16 / 11;
       background: var(--sand);
       overflow: hidden;
       position: relative;
@@ -212,7 +214,7 @@ const GlobalStyles = () => (
     .events-showcase {
       background: var(--brand-background);
       color: var(--brand-black);
-      padding: clamp(4.5rem, 8vw, 7rem) 1.5rem;
+      padding: clamp(2rem, 4vw, 3rem) 1.5rem;
     }
     .events-showcase-inner {
       width: min(1180px, calc(100% - 3rem));
@@ -262,10 +264,10 @@ const GlobalStyles = () => (
       text-transform: uppercase;
     }
     .events-showcase-title {
-      color: color-mix(in srgb, var(--brand-black) 76%, var(--brand-warm-brown));
+      color: var(--brand-black);
       font-family: var(--font-serif);
-      font-size: clamp(2.25rem, 4.5vw, 4.4rem);
-      font-weight: 600;
+      font-size: clamp(1.65rem, 3vw, 2.85rem);
+      font-weight: 800;
       letter-spacing: 0;
       line-height: 1;
       margin: 0 0 1.2rem;
@@ -274,12 +276,13 @@ const GlobalStyles = () => (
       text-shadow: none;
     }
     .events-showcase-desc {
-      color: color-mix(in srgb, var(--brand-gray) 86%, var(--brand-black));
-      font-size: clamp(.92rem, 1.05vw, 1rem);
-      font-weight: 600;
-      line-height: 1.7;
+      color: color-mix(in srgb, var(--brand-gray) 72%, var(--brand-background));
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.8;
       margin: 0 0 1.7rem;
-      max-width: 600px;
+      max-width: 56ch;
+      opacity: .82;
       text-shadow: none;
     }
     .events-full-link {
@@ -340,7 +343,7 @@ const GlobalStyles = () => (
     .dining-preview {
       background: var(--cream);
       overflow: hidden;
-      padding: clamp(4.5rem, 8vw, 7rem) 0;
+      padding: clamp(2rem, 4vw, 3rem) 0;
     }
     .dining-header {
       margin: 0 auto clamp(2rem, 4vw, 3rem);
@@ -349,26 +352,28 @@ const GlobalStyles = () => (
       text-align: center;
     }
     .dining-title {
-      color: color-mix(in srgb, var(--brand-black) 78%, var(--brown));
+      color: var(--brand-black);
       font-family: var(--font-sans);
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      font-weight: 700;
+      font-size: clamp(1.55rem, 2.7vw, 2.25rem);
+      font-weight: 800;
       letter-spacing: .04em;
       line-height: 1;
       margin: 0 0 1rem;
       text-transform: uppercase;
     }
     .dining-subtitle {
-      color: rgba(74, 36, 0, .74);
-      font-size: clamp(.95rem, 1.25vw, 1.08rem);
-      line-height: 1.6;
-      margin: 0;
+      color: color-mix(in srgb, var(--brand-gray) 72%, var(--brand-background));
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin: 0 auto;
+      max-width: 96ch;
+      opacity: .82;
     }
     .dining-carousel {
       margin: 0 auto;
-      max-width: 1180px;
+      max-width: min(1500px, calc(100% - 2rem));
       overflow: hidden;
-      padding: 0 1.5rem;
+      padding: 0 1rem;
     }
     .dining-strip {
       display: grid;
@@ -376,7 +381,7 @@ const GlobalStyles = () => (
       gap: clamp(1.25rem, 2.2vw, 1.75rem);
     }
     .dining-card {
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 16 / 11;
       background: var(--sand);
       overflow: hidden;
       position: relative;
@@ -426,7 +431,15 @@ const GlobalStyles = () => (
     .activities-showcase {
       background: var(--brand-background);
       color: var(--brand-black);
-      padding: clamp(4.5rem, 8vw, 7rem) 1.5rem;
+      padding: clamp(2rem, 4vw, 3rem) 1.5rem;
+    }
+    .activities-showcase-inner {
+      width: min(1180px, calc(100% - 3rem));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(320px, .86fr) minmax(0, 1.14fr);
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
     }
     .activities-showcase-header {
       width: min(1180px, calc(100% - 3rem));
@@ -487,6 +500,32 @@ const GlobalStyles = () => (
       background: var(--brand-peach);
       border-color: var(--brand-peach);
     }
+    .activities-image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-auto-rows: auto;
+      align-items: stretch;
+      gap: .85rem;
+    }
+    .activities-image-tile {
+      aspect-ratio: 4 / 3;
+      background: var(--sand);
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .activities-image-tile img {
+      display: block;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .55s var(--ease-out), filter .3s var(--ease-out);
+      width: 100%;
+    }
+    .activities-image-tile.active img,
+    .activities-image-tile:hover img {
+      filter: saturate(.96) contrast(.98) brightness(.94);
+      transform: scale(1.04);
+    }
     .activities-showcase-content {
       display: flex;
       flex-direction: column;
@@ -502,10 +541,10 @@ const GlobalStyles = () => (
       text-shadow: none;
     }
     .activities-showcase-title {
-      color: color-mix(in srgb, var(--brand-black) 76%, var(--brand-warm-brown));
+      color: var(--brand-black);
       font-family: var(--font-serif);
-      font-size: clamp(2.25rem, 4.5vw, 4.4rem);
-      font-weight: 600;
+      font-size: clamp(1.65rem, 3vw, 2.85rem);
+      font-weight: 800;
       letter-spacing: 0;
       line-height: 1;
       margin: 0 0 1.2rem;
@@ -514,12 +553,13 @@ const GlobalStyles = () => (
       text-shadow: none;
     }
     .activities-showcase-desc {
-      color: color-mix(in srgb, var(--brand-gray) 86%, var(--brand-black));
-      font-size: clamp(.92rem, 1.05vw, 1rem);
-      font-weight: 600;
-      line-height: 1.7;
+      color: color-mix(in srgb, var(--brand-gray) 72%, var(--brand-background));
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.8;
       margin: 0 0 1.7rem;
-      max-width: 600px;
+      max-width: 56ch;
+      opacity: .82;
       text-shadow: none;
     }
     .activities-full-link {
@@ -587,7 +627,7 @@ const GlobalStyles = () => (
     .review-card { padding: 2rem; border: 1px solid color-mix(in srgb, var(--brand-primary) 22%, transparent); background: var(--white); transition: border-color .25s; }
     .review-card:hover { border-color: color-mix(in srgb, var(--brand-primary) 50%, transparent); }
     .review-quote { font-family: var(--font-serif); font-size: 3.5rem; font-weight: 300; color: var(--gold); opacity: .4; line-height: .8; margin-bottom: 1rem; }
-    .review-text { font-size: .95rem; line-height: 1.75; color: var(--brown-dark); opacity: .8; margin-bottom: 1.5rem; }
+    .review-text { font-size: .95rem; line-height: 1.75; color: color-mix(in srgb, var(--brand-gray) 72%, var(--brand-background)); opacity: .82; margin-bottom: 1.5rem; }
     .review-author { font-family: var(--font-serif); font-size: 1rem; font-style: italic; color: var(--gold); }
 
     /* ── Animations ── */
@@ -601,28 +641,32 @@ const GlobalStyles = () => (
       .dining-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .dining-card:nth-child(3) { display: none; }
       .reviews-grid { grid-template-columns: 1fr; }
-      .section { padding: 4rem 1.25rem; }
+      .section { padding: 2.5rem 1.25rem; }
       .events-showcase-inner { grid-template-columns: 1fr; width: min(100% - 2rem, 720px); }
       .events-card-row { max-width: 100%; }
+      .activities-showcase-inner { grid-template-columns: 1fr; width: min(100% - 2rem, 720px); }
       .activities-showcase-block { grid-template-columns: 1fr; }
       .activities-showcase-header,
       .activities-showcase-list { width: min(100% - 2rem, 720px); }
     }
 
     @media (max-width: 640px) {
-      .dining-preview { padding: 4rem 0; }
+      .dining-preview { padding: 2.5rem 0; }
       .dining-strip { grid-template-columns: 1fr; gap: .85rem; }
-      .dining-card { aspect-ratio: 4 / 5; }
+      .dining-card { aspect-ratio: 16 / 11; }
       .dining-card:nth-child(2),
       .dining-card:nth-child(3) { display: none; }
       .room-card { height: auto !important; }
       .room-card-actions { flex-direction: column; gap: .65rem; }
       .room-card-action { width: 100%; }
-      .events-showcase { padding: 4rem 1rem; }
+      .events-showcase { padding: 2.5rem 1rem; }
       .events-image-grid { grid-template-columns: 1fr; }
       .events-card-row { gap: .65rem; }
       .event-card { flex: 1 1 100%; }
-      .activities-showcase { padding: 4rem 1rem; }
+      .activities-showcase { padding: 2.5rem 1rem; }
+      .activities-image-grid { grid-template-columns: 1fr; }
+      .activities-card-row { gap: .65rem; }
+      .activity-card { flex: 1 1 100%; }
       .activities-media-frame { aspect-ratio: 4 / 3; }
     }
   `}</style>
@@ -710,7 +754,9 @@ function RoomsPreview() {
     <section id="rooms" className="rooms-preview">
       <div className="rooms-preview-header fade-in">
         <h2 className="rooms-preview-title">ROOMS</h2>
-        <p className="rooms-preview-subtitle">Your private retreat at Enchula Resort</p>
+        <p className="rooms-preview-subtitle">
+          Your private retreat at Enchula Resort, with calm interiors, generous comfort, and restful views designed for unhurried stays. Each room is prepared for easy relaxation, whether you are visiting for a quiet weekend, a family escape, or a business stopover.
+        </p>
       </div>
 
       <div className="rooms-grid fade-in">
@@ -733,7 +779,7 @@ function RoomsPreview() {
                 <p className="room-card-price">{r.price}</p>
                 <div className="room-card-actions">
                   <a className="room-card-action" href={`/rooms#${r.anchor}`}>
-                    View More
+                    Explore More
                   </a>
                   <a className="room-card-action" href="/booking">
                     Book Now
@@ -856,7 +902,7 @@ function Events() {
 // ─── Dining ──────────────────────────────────────────────────────────────────
 function Dining() {
   const items = [
-    { src: `${S3_BASE}/Dining1.jpeg`, alt: "Dining at Enchula Resort" },
+    { src: `${S3_BASE}/Serving.jpeg`, alt: "Dining at Enchula Resort" },
     { src: `${S3_BASE}/Dining2.jpeg`, alt: "Lounge dining at Enchula Resort" },
     { src: `${S3_BASE}/Image4.jpeg`, alt: "Dining space at Enchula Resort" },
   ];
@@ -864,8 +910,10 @@ function Dining() {
   return (
     <section id="dining" className="dining-preview">
       <div className="dining-header fade-in">
-        <h2 className="dining-title">Dining &amp; Bars</h2>
-        <p className="dining-subtitle">Where every meal becomes an occasion</p>
+        <h2 className="dining-title">Dining</h2>
+        <p className="dining-subtitle">
+          Where every meal becomes an occasion, from relaxed poolside bites to hearty flavors shared in warm resort spaces. Enjoy fresh ingredients, familiar favorites, and attentive service that makes breakfast, lunch, and dinner feel effortless.
+        </p>
       </div>
 
       <div className="dining-carousel fade-in">
@@ -880,7 +928,7 @@ function Dining() {
 
       <div className="dining-actions fade-in">
         <a href="/dinings" className="dining-full-link">
-          View More
+          Explore More
         </a>
       </div>
     </section>
@@ -947,27 +995,29 @@ function ActivitiesShowcase() {
       images: [`${S3_BASE}/Kids.jpeg`],
     },
   ];
-  const [activeActivityImages, setActiveActivityImages] = useState(() => items.map(() => 0));
+  const [active, setActive] = useState(0);
+  const [activePhoto, setActivePhoto] = useState(0);
+  const activeActivity = items[active];
+  const activityCount = items.length;
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      setActiveActivityImages((currentImages) =>
-        currentImages.map((currentImage, itemIndex) => {
-          const imageCount = items[itemIndex].images.length;
-          return imageCount > 1 ? (currentImage + 1) % imageCount : 0;
-        })
-      );
+      setActivePhoto((currentPhoto) => {
+        if (currentPhoto + 1 < activeActivity.images.length) {
+          return currentPhoto + 1;
+        }
+
+        setActive((currentActivity) => (currentActivity + 1) % activityCount);
+        return 0;
+      });
     }, 3000);
 
     return () => window.clearInterval(timer);
-  }, [items]);
+  }, [active, activeActivity.images.length, activityCount]);
 
-  const handleActivityImageSelect = (itemIndex: number, imageIndex: number) => {
-    setActiveActivityImages((currentImages) =>
-      currentImages.map((currentImage, currentIndex) =>
-        currentIndex === itemIndex ? imageIndex : currentImage
-      )
-    );
+  const handleActivitySelect = (index: number) => {
+    setActive(index);
+    setActivePhoto(0);
   };
 
   return (
@@ -976,58 +1026,43 @@ function ActivitiesShowcase() {
       className="activities-showcase fade-in"
       aria-label="Activities and experiences"
     >
-      <div className="activities-showcase-header">
+      <div className="activities-showcase-inner">
         <div className="activities-showcase-content">
           <p className="activities-showcase-kicker">Leisure at Enchula Resort</p>
           <h2 className="activities-showcase-title">Activities &amp; Experiences</h2>
-          <p className="activities-showcase-desc">
-            Pool time, games, and family-friendly moments across the resort grounds.
-          </p>
+          <p className="activities-showcase-desc">{activeActivity.detail}</p>
           <a href="/experience" className="activities-full-link">
             Discover More
           </a>
+
+          <div className="activities-card-row" aria-label="Activity subsections">
+            {items.map((item, index) => (
+              <button
+                type="button"
+                key={item.title}
+                className={`activity-card ${index === active ? "active" : ""}`}
+                onClick={() => handleActivitySelect(index)}
+              >
+                <span className="activity-card-name">{item.title}</span>
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div className="activities-showcase-list">
-        {items.map((item, itemIndex) => (
-          <article className="activities-showcase-block" key={item.title}>
-            <div className="activities-media-frame">
-              {item.images.map((image, imageIndex) => (
-                <img
-                  key={image}
-                  src={image}
-                  alt={`${item.title} at Enchula Resort ${imageIndex + 1}`}
-                  className={`activities-media-img ${
-                    imageIndex === activeActivityImages[itemIndex] ? "active" : ""
-                  }`}
-                  loading={itemIndex === 0 && imageIndex === 0 ? "eager" : "lazy"}
-                />
-              ))}
-              {item.images.length > 1 && (
-                <div className="activities-media-dots" aria-label={`${item.title} photos`}>
-                  {item.images.map((image, imageIndex) => (
-                    <button
-                      aria-label={`${item.title} photo ${imageIndex + 1}`}
-                      className={`activities-media-dot ${
-                        imageIndex === activeActivityImages[itemIndex] ? "active" : ""
-                      }`}
-                      key={image}
-                      type="button"
-                      onClick={() => handleActivityImageSelect(itemIndex, imageIndex)}
-                    />
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="activities-showcase-content">
-              <p className="activities-showcase-kicker">{item.desc}</p>
-              <h3 className="activities-showcase-title">{item.title}</h3>
-              <p className="activities-showcase-desc">{item.detail}</p>
-            </div>
-          </article>
-        ))}
+        <div className="activities-image-grid" aria-label={`${activeActivity.title} photos`}>
+          {activeActivity.images.slice(0, 6).map((image, imageIndex) => (
+            <figure
+              className={`activities-image-tile ${imageIndex === activePhoto ? "active" : ""}`}
+              key={image}
+            >
+              <img
+                src={image}
+                alt={`${activeActivity.title} at Enchula Resort ${imageIndex + 1}`}
+                loading={imageIndex === 0 ? "eager" : "lazy"}
+              />
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   );

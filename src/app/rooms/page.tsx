@@ -541,30 +541,28 @@ const styles = `
   .rp-other-card-cta {
     display: inline-flex;
     align-items: center;
+    align-self: flex-start;
+    justify-content: center;
     gap: .45rem;
+    min-height: 42px;
+    padding: .75rem 1rem;
+    border: 1px solid var(--gold);
+    background: var(--gold);
+    color: var(--brown-dark);
     font-size: .68rem;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 600;
+    font-weight: 800;
     opacity: 0;
     transform: translateY(8px);
-    transition: opacity .3s .05s, transform .3s .05s;
+    transition: opacity .3s .05s, transform .3s .05s, background .25s, border-color .25s;
   }
 
   .rp-other-card:hover .rp-other-card-cta {
+    background: var(--peach);
+    border-color: var(--peach);
     opacity: 1;
     transform: translateY(0);
-  }
-
-  .rp-other-card-num {
-    position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
-    font-family: var(--font-serif);
-    font-size: .75rem;
-    color: rgba(255,255,255,.35);
-    letter-spacing: .06em;
   }
 
   /* ── Responsive ── */
@@ -792,7 +790,7 @@ export default function RoomsPage() {
           </h2>
 
           <div className="rp-other-grid">
-            {otherRooms.map((r, i) => (
+            {otherRooms.map((r) => (
               <div
                 key={r.id}
                 className="rp-other-card"
@@ -812,7 +810,6 @@ export default function RoomsPage() {
                     <span style={{ transition: "transform .25s", display: "inline-block" }}>→</span>
                   </span>
                 </div>
-                <span className="rp-other-card-num">0{i + 1}</span>
               </div>
             ))}
           </div>

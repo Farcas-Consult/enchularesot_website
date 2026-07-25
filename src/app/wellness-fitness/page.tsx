@@ -309,22 +309,37 @@ const styles = `
     text-align: center;
   }
 
-  .wp-journey-heading h3 {
+  .wp-journey-label {
+    color: var(--brand-primary);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    margin: 0 0 .85rem;
+    text-transform: uppercase;
+  }
+
+  .wp-journey-heading h2 {
     color: color-mix(in srgb, var(--brand-black) 84%, var(--brand-gray));
     font-family: var(--wp-sans);
-    font-size: clamp(1.45rem, 2.4vw, 1.8rem);
-    font-weight: 700;
+    font-size: clamp(1.65rem, 3vw, 2.85rem);
+    font-weight: 800;
     letter-spacing: .04em;
     line-height: 1.1;
     margin: 0 0 .75rem;
     text-transform: uppercase;
   }
 
+  .wp-journey-heading h2 em {
+    font-style: italic;
+  }
+
   .wp-journey-heading p {
     color: color-mix(in srgb, var(--brand-black) 72%, var(--brand-background));
-    font-size: .92rem;
-    font-weight: 700;
-    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 92ch;
   }
 
   .wp-section-heading {
@@ -1010,8 +1025,11 @@ export default function WellnessFitnessPage() {
       <div id="wellness-spaces" className="wp-section wp-wellness-intro-section">
 
         <div className="wp-journey-heading">
-          <h3>Our Wellness Journey</h3>
-          <p>A natural rhythm of fitness, recovery, reset, and access</p>
+          <p className="wp-journey-label">Wellness Journey</p>
+          <h2>Our <em>Wellness Journey</em></h2>
+          <p>
+            Start with movement, continue into recovery, and make space for a calm reset with wellness facilities and access options that support both routine and rest.
+          </p>
         </div>
 
         <div className="wp-journey" aria-label="Wellness experience overview">

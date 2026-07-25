@@ -211,22 +211,38 @@ const styles = `
     text-align: center;
   }
 
-  .vt-journey-heading h3 {
+  .vt-journey-label {
+    color: var(--gold);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    margin: 0 0 .85rem;
+    text-transform: uppercase;
+  }
+
+  .vt-journey-heading h2 {
     color: var(--brown-dark);
     font-family: var(--font-sans);
     font-size: clamp(1.8rem, 3vw, 2.8rem);
-    font-weight: 400;
+    font-weight: 800;
     letter-spacing: .08em;
+    line-height: 1.1;
     margin: 0;
     text-transform: uppercase;
   }
 
+  .vt-journey-heading h2 em {
+    font-style: italic;
+  }
+
   .vt-journey-heading p {
     color: var(--brown-deep);
-    font-size: .95rem;
-    letter-spacing: .08em;
-    margin: .7rem 0 0;
-    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 0;
+    line-height: 1.7;
+    margin: .7rem auto 0;
+    max-width: 92ch;
+    text-transform: none;
   }
 
   .vt-journey {
@@ -898,8 +914,11 @@ export default function VirtualTourPage() {
 
       <div id="tour-intro" className="vt-intro-section">
         <div className="vt-journey-heading">
-          <h3>Our Virtual Tour Journey</h3>
-          <p>A natural rhythm of arrival, stay, gathering, and settling in</p>
+          <p className="vt-journey-label">Virtual Tour Journey</p>
+          <h2>See the resort <em>before you arrive</em></h2>
+          <p>
+            Preview the route, arrival points, resort spaces, and gathering areas before your visit, so every turn feels familiar and your stay begins with confidence.
+          </p>
         </div>
 
         <div className="vt-journey" aria-label="Virtual tour overview">

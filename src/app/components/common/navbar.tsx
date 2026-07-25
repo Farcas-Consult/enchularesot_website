@@ -114,7 +114,7 @@ export default function Navbar() {
           font-family: 'Cormorant Garamond', Georgia, serif;
           font-size: .68rem; letter-spacing: .28em; text-transform: uppercase;
           color: color-mix(in srgb, var(--brand-peach) 72%, transparent); font-weight: 400;
-          margin-top: -2.4rem;
+          margin-top: -1.8rem;
         }
 
         .nav-links-row {

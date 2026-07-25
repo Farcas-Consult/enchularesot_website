@@ -279,22 +279,37 @@ const styles = `
     text-align: center;
   }
 
-  .xp-journey-heading h3 {
+  .xp-journey-label {
+    color: var(--gold);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .22em;
+    margin: 0 0 .85rem;
+    text-transform: uppercase;
+  }
+
+  .xp-journey-heading h2 {
     color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
     font-family: var(--font-sans);
-    font-size: clamp(1.45rem, 2.4vw, 1.8rem);
-    font-weight: 700;
+    font-size: clamp(1.65rem, 3vw, 2.85rem);
+    font-weight: 800;
     letter-spacing: .04em;
     line-height: 1.1;
     margin: 0 0 .75rem;
     text-transform: uppercase;
   }
 
+  .xp-journey-heading h2 em {
+    font-style: italic;
+  }
+
   .xp-journey-heading p {
     color: rgba(74,36,0,.72);
-    font-size: .92rem;
-    font-weight: 700;
-    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.7;
+    margin: 0 auto;
+    max-width: 92ch;
   }
 
   .xp-journey {
@@ -677,8 +692,11 @@ export default function ExperiencesPage() {
 
       <div id="experiences" className="xp-section xp-editorial-section">
         <div className="xp-journey-heading">
-          <h3>Our Experience Journey</h3>
-          <p>A natural rhythm of swimming, play, family time, fresh air, and discovery</p>
+          <p className="xp-journey-label">Experience Journey</p>
+          <h2>Resort days made for <em>play and ease</em></h2>
+          <p>
+            Enjoy pool time, games, family moments, fresh air, and small discoveries across the grounds, with experiences that make the day feel active, relaxed, and memorable.
+          </p>
         </div>
 
         <div className="xp-journey" aria-label="Experience overview">
