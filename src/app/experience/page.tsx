@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Baby, Footprints, Gamepad2, Utensils, Waves } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const S3_BASE = "https://enchula-resort-4376242942.s3.eu-west-1.amazonaws.com/app";
 
@@ -10,7 +11,7 @@ const experiences = [
   {
     name: "Swimming Pool",
     kicker: "Poolside leisure",
-    image: `${S3_BASE}/Swimmingpool.jpeg`,
+    images: [`${S3_BASE}/Swimmingpool.jpeg`, `${S3_BASE}/Image39.jpeg`],
     description:
       "Take a refreshing dip, lounge in the warm Kenyan sun, or spend an easy afternoon by the water with family and friends.",
     features: ["Daytime access", "Family friendly", "Poolside lounging"],
@@ -18,7 +19,7 @@ const experiences = [
   {
     name: "Games and Recreation",
     kicker: "Play and unwind",
-    image: `${S3_BASE}/Games1.jpeg`,
+    images: [`${S3_BASE}/Games1.jpeg`, `${S3_BASE}/Games2.jpeg`, `${S3_BASE}/Games3.jpeg`],
     description:
       "Enjoy indoor and outdoor recreation for all ages, from board games and light sports to relaxed resort competitions.",
     features: ["Board games", "Group play", "Evening recreation"],
@@ -26,7 +27,7 @@ const experiences = [
   {
     name: "Kids Activities",
     kicker: "Young explorers",
-    image: `${S3_BASE}/Kids.jpeg`,
+    images: [`${S3_BASE}/IMG_2277.webp`, `${S3_BASE}/Kids.jpeg`],
     description:
       "Creative, supervised activities keep children engaged, entertained, and inspired throughout the stay.",
     features: ["Creative play", "Supervised fun", "Family stays"],
@@ -34,7 +35,7 @@ const experiences = [
   {
     name: "Outdoor Picnics",
     kicker: "Open-air moments",
-    image: `${S3_BASE}/Picnic.jpeg`,
+    images: [`${S3_BASE}/Picnic.jpeg`, `${S3_BASE}/Outdoor1.jpeg`],
     description:
       "Settle into scenic grounds for relaxed picnics, casual celebrations, and slow afternoons with resort service close by.",
     features: ["Scenic grounds", "Casual gatherings", "Anytime leisure"],
@@ -42,7 +43,7 @@ const experiences = [
   {
     name: "Guided Nature Walks",
     kicker: "Nature and calm",
-    image: `${S3_BASE}/Outdoor1.jpeg`,
+    images: [`${S3_BASE}/Outdoor1.jpeg`, `${S3_BASE}/Outdoor2.jpeg`],
     description:
       "Explore the resort surroundings with guides who help guests notice the local landscape, plants, and quiet natural details.",
     features: ["Morning walks", "Local flora", "Guided pace"],
@@ -289,7 +290,7 @@ const styles = `
   }
 
   .xp-journey-heading h2 {
-    color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
+    color: var(--brown-dark);
     font-family: var(--font-sans);
     font-size: clamp(1.65rem, 3vw, 2.85rem);
     font-weight: 800;
@@ -300,16 +301,18 @@ const styles = `
   }
 
   .xp-journey-heading h2 em {
+    color: var(--brown);
     font-style: italic;
   }
 
   .xp-journey-heading p {
-    color: rgba(74,36,0,.72);
+    color: color-mix(in srgb, var(--brand-gray) 72%, var(--brand-background));
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.7;
     margin: 0 auto;
     max-width: 92ch;
+    opacity: 1;
   }
 
   .xp-journey {
@@ -355,14 +358,49 @@ const styles = `
   }
 
   .xp-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     filter: saturate(.88) sepia(.08) contrast(.94) brightness(.98);
-    transition: transform 1s var(--ease-out);
+    opacity: 0;
+    transform: scale(1.035);
+    transition: opacity 1s var(--ease-out), transform 1.2s var(--ease-out);
+  }
+
+  .xp-img.active {
+    opacity: 1;
+    transform: scale(1.01);
   }
 
   .xp-card:hover .xp-img,
   .xp-activity:hover .xp-img {
     transform: scale(1.035);
+  }
+
+  .xp-activity-dots {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    z-index: 2;
+    display: flex;
+    gap: .45rem;
+  }
+
+  .xp-activity-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--white) 72%, transparent);
+    background: color-mix(in srgb, var(--white) 35%, transparent);
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .xp-activity-dot.active {
+    background: var(--peach);
+    border-color: var(--peach);
   }
 
   .xp-card-contain .xp-card-media {
@@ -659,6 +697,60 @@ const styles = `
   }
 `;
 
+function ExperienceCard({ experience }: { experience: { name: string; kicker: string; images: string[]; description: string; features: string[] } }) {
+  const [activeImage, setActiveImage] = useState(0);
+
+  useEffect(() => {
+    if (experience.images.length <= 1) return;
+
+    const timer = window.setInterval(() => {
+      setActiveImage((current) => (current + 1) % experience.images.length);
+    }, 3000);
+
+    return () => window.clearInterval(timer);
+  }, [experience.images]);
+
+  return (
+    <article className="xp-activity" key={experience.name}>
+      <div className="xp-activity-media">
+        {experience.images.map((image, index) => (
+          <Image
+            key={`${experience.name}-${image}`}
+            src={image}
+            alt={experience.name}
+            fill
+            className={`xp-img ${index === activeImage ? "active" : ""}`}
+            sizes="(max-width: 980px) 100vw, 50vw"
+          />
+        ))}
+        {experience.images.length > 1 && (
+          <div className="xp-activity-dots" aria-label={`${experience.name} image gallery`}>
+            {experience.images.map((image, index) => (
+              <button
+                key={`${experience.name}-dot-${image}`}
+                type="button"
+                aria-label={`View slide ${index + 1} for ${experience.name}`}
+                className={`xp-activity-dot ${index === activeImage ? "active" : ""}`}
+                onClick={() => setActiveImage(index)}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="xp-activity-content">
+        <div className="xp-kicker">{experience.kicker}</div>
+        <h3 className="xp-activity-title">{experience.name}</h3>
+        <p className="xp-copy">{experience.description}</p>
+        <ul className="xp-tags">
+          {experience.features.map((feature) => (
+            <li key={feature}>{feature}</li>
+          ))}
+        </ul>
+      </div>
+    </article>
+  );
+}
+
 export default function ExperiencesPage() {
   return (
     <section id="experience-activities" className="xp-root">
@@ -724,27 +816,7 @@ export default function ExperiencesPage() {
 
         <div className="xp-activity-list">
           {experiences.map((experience) => (
-            <article className="xp-activity" key={experience.name}>
-              <div className="xp-activity-media">
-                <Image
-                  src={experience.image}
-                  alt={experience.name}
-                  fill
-                  className="xp-img"
-                  sizes="(max-width: 980px) 100vw, 50vw"
-                />
-              </div>
-              <div className="xp-activity-content">
-                <div className="xp-kicker">{experience.kicker}</div>
-                <h3 className="xp-activity-title">{experience.name}</h3>
-                <p className="xp-copy">{experience.description}</p>
-                <ul className="xp-tags">
-                  {experience.features.map((feature) => (
-                    <li key={feature}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-            </article>
+            <ExperienceCard key={experience.name} experience={experience} />
           ))}
         </div>
 

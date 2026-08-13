@@ -110,7 +110,7 @@ const GlobalStyles = () => (
       min-width: 0;
     }
     .room-card-media {
-      aspect-ratio: 16 / 11;
+      aspect-ratio: 4 / 3;
       background: var(--sand);
       overflow: hidden;
       position: relative;
@@ -779,7 +779,7 @@ function RoomsPreview() {
                 <p className="room-card-price">{r.price}</p>
                 <div className="room-card-actions">
                   <a className="room-card-action" href={`/rooms#${r.anchor}`}>
-                    Explore More
+                    Explore
                   </a>
                   <a className="room-card-action" href="/booking">
                     Book Now
@@ -928,43 +928,8 @@ function Dining() {
 
       <div className="dining-actions fade-in">
         <a href="/dinings" className="dining-full-link">
-          Explore More
+          Explore
         </a>
-      </div>
-    </section>
-  );
-}
-
-// ─── Activities ──────────────────────────────────────────────────────────────
-function Activities() {
-  const items = [
-    { title: "Swimming Pool",    desc: "Take a refreshing dip or lounge by our sparkling pool, perfect for relaxation and family fun in the warm Kenyan sun.", images: [`${S3_BASE}/Swimmingpool.jpeg`] },
-    { title: "Games & Recreation", desc: "Enjoy a variety of indoor and outdoor games for all ages — from board games and sports to evening tournaments.",       images: [`${S3_BASE}/Games1.jpeg`, `${S3_BASE}/Games2.jpeg`, `${S3_BASE}/Games3.jpeg`] },
-    { title: "Kids Activities",  desc: "Creative and supervised activities designed to keep children entertained, engaged, and inspired throughout their stay.", images: [`${S3_BASE}/IMG_2277.webp`] },
-  ];
-  return (
-    <section id="activities" className="section" style={{ background: "var(--cream)", padding: "7rem 0" }}>
-      <div className="section-inner" style={{ padding: "0 1.5rem", marginBottom: "4rem" }}>
-        <p className="section-label fade-in">Leisure</p>
-        <h2 className="section-title fade-in">Activities &amp; <em>Experiences</em></h2>
-        <a href="/experience" className="activities-full-link fade-in">
-          View Experiences Page
-        </a>
-      </div>
-      <div className="activities-list fade-in">
-        {items.map(a => (
-          <div key={a.title} className="activity-row">
-            <div className={`activity-img ${a.images.length > 1 ? "activity-img-grid" : ""}`}>
-              {a.images.map((src, index) => (
-                <img key={src} src={src} alt={`${a.title} ${index + 1}`} loading="lazy" />
-              ))}
-            </div>
-            <div className="activity-content">
-              <h3>{a.title}</h3>
-              <p>{a.desc}</p>
-            </div>
-          </div>
-        ))}
       </div>
     </section>
   );

@@ -213,6 +213,22 @@ const styles = `
     font-style: italic;
   }
 
+  .wp-journey-heading h2,
+  .wp-card-title,
+  .wp-cta h2 {
+    color: var(--brand-black) !important;
+    font-weight: 800;
+  }
+
+  .wp-journey-heading p,
+  .wp-card-text,
+  .wp-cta p,
+  .wp-intro {
+    color: color-mix(in srgb, var(--brand-gray) 72%, var(--brand-background));
+    font-weight: 600;
+    opacity: 1;
+  }
+
   .wp-intro {
     max-width: 740px;
     margin: 1.5rem auto 2rem;

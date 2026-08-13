@@ -267,7 +267,7 @@ const styles = `
   }
 
   .ep-journey-heading h2 {
-    color: color-mix(in srgb, var(--brown-dark) 84%, var(--brown-deep));
+    color: var(--brown-dark);
     font-family: var(--font-sans);
     font-size: clamp(1.65rem, 3vw, 2.85rem);
     font-weight: 800;
@@ -278,16 +278,18 @@ const styles = `
   }
 
   .ep-journey-heading h2 em {
+    color: var(--brown);
     font-style: italic;
   }
 
   .ep-journey-heading p {
-    color: rgba(74,36,0,.72);
+    color: color-mix(in srgb, var(--brand-gray) 72%, var(--brand-background));
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.7;
     margin: 0 auto;
     max-width: 92ch;
+    opacity: 1;
   }
 
   .ep-journey {
