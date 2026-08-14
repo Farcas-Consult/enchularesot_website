@@ -1042,7 +1042,7 @@ export default function WellnessFitnessPage() {
 
         <div className="wp-journey-heading">
           <p className="wp-journey-label">Wellness and Fitness</p>
-          <h2>Our <em>Wellness Journey</em></h2>
+          <h2>Our Wellness Journey</h2>
           <p>
             Start with movement, continue into recovery, and make space for a calm reset with wellness facilities and access options that support both routine and rest.
           </p>

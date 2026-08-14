@@ -735,7 +735,7 @@ export default function EventsPage() {
       <div id="events-intro" className="ep-editorial-section">
         <div className="ep-journey-heading">
           <p className="ep-journey-label">Conferences and Events</p>
-          <h2>Gatherings shaped <em>with care</em></h2>
+          <h2>Gatherings shaped with care</h2>
           <p>
             From focused meetings to social celebrations and active team sessions, each event is guided by thoughtful planning, flexible spaces, and warm coordination from arrival to close.
           </p>

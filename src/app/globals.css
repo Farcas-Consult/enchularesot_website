@@ -1463,3 +1463,81 @@ video {
         padding-top: 1.1rem !important;
     }
 }
+
+/* Final resort typography contrast pass for content pages. */
+.dp-root .dp-title,
+.ep-root .ep-title,
+.xp-root .xp-title,
+.vt-root .vt-title,
+.wp-root .wp-title {
+    color: var(--text-on-dark) !important;
+    font-weight: 800 !important;
+}
+
+.dp-journey-heading h2,
+.ep-journey-heading h2,
+.xp-journey-heading h2,
+.vt-journey-heading h2,
+.wp-journey-heading h2,
+.dp-heading,
+.ep-heading,
+.xp-heading,
+.vt-heading,
+.wp-heading {
+    color: var(--brand-black) !important;
+    font-weight: 900 !important;
+}
+
+.dp-journey-heading h2 em,
+.ep-journey-heading h2 em,
+.xp-journey-heading h2 em,
+.vt-journey-heading h2 em,
+.wp-journey-heading h2 em {
+    color: inherit !important;
+    font-style: normal !important;
+}
+
+.dp-card-title,
+.ep-card-title,
+.xp-activity-title,
+.vt-panel-title,
+.vt-step strong,
+.wp-card-title,
+.wp-split-detail .wp-card-title,
+.dp-journey-item strong,
+.ep-journey-item strong,
+.xp-journey-item strong,
+.vt-journey-item strong,
+.wp-journey-item strong,
+.event-card-name,
+.activity-card-name {
+    color: var(--brand-black) !important;
+    font-weight: 900 !important;
+}
+
+.dp-journey-heading p,
+.ep-journey-heading p,
+.xp-journey-heading p,
+.vt-journey-heading p,
+.wp-journey-heading p,
+.dp-copy,
+.dp-card-text,
+.dp-editorial-lead,
+.dp-editorial-copy,
+.ep-copy,
+.ep-editorial-lead,
+.ep-editorial-copy,
+.xp-copy,
+.xp-editorial-lead,
+.xp-editorial-copy,
+.vt-copy,
+.vt-step p,
+.vt-note span,
+.wp-copy,
+.wp-card-text,
+.wp-editorial-lead,
+.wp-editorial-copy,
+.wp-split-detail .wp-card-text {
+    color: color-mix(in srgb, var(--brand-gray) 88%, var(--brand-black)) !important;
+    opacity: 1 !important;
+}

@@ -27,7 +27,7 @@ const experiences = [
   {
     name: "Kids Activities",
     kicker: "Young explorers",
-    images: [`${S3_BASE}/IMG_2277.webp`, `${S3_BASE}/Kids.jpeg`],
+    images: [ `${S3_BASE}/Kids.jpeg`],
     description:
       "Creative, supervised activities keep children engaged, entertained, and inspired throughout the stay.",
     features: ["Creative play", "Supervised fun", "Family stays"],
@@ -35,7 +35,7 @@ const experiences = [
   {
     name: "Outdoor Picnics",
     kicker: "Open-air moments",
-    images: [`${S3_BASE}/Picnic.jpeg`, `${S3_BASE}/Outdoor1.jpeg`],
+    images: [`${S3_BASE}/Picnic.jpeg`],
     description:
       "Settle into scenic grounds for relaxed picnics, casual celebrations, and slow afternoons with resort service close by.",
     features: ["Scenic grounds", "Casual gatherings", "Anytime leisure"],
@@ -43,7 +43,7 @@ const experiences = [
   {
     name: "Guided Nature Walks",
     kicker: "Nature and calm",
-    images: [`${S3_BASE}/Outdoor1.jpeg`, `${S3_BASE}/Outdoor2.jpeg`],
+    images: [`${S3_BASE}/Outdoor1.jpeg`],
     description:
       "Explore the resort surroundings with guides who help guests notice the local landscape, plants, and quiet natural details.",
     features: ["Morning walks", "Local flora", "Guided pace"],
@@ -785,7 +785,7 @@ export default function ExperiencesPage() {
       <div id="experiences" className="xp-section xp-editorial-section">
         <div className="xp-journey-heading">
           <p className="xp-journey-label">Activities and Experiences</p>
-          <h2>Resort days made for <em>play and ease</em></h2>
+          <h2>Resort days made for play and ease</h2>
           <p>
             Enjoy pool time, games, family moments, fresh air, and small discoveries across the grounds, with experiences that make the day feel active, relaxed, and memorable.
           </p>

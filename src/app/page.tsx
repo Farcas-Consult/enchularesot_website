@@ -101,16 +101,16 @@ const GlobalStyles = () => (
     .rooms-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: clamp(1.25rem, 2.2vw, 1.75rem);
+      gap: clamp(1.25rem, 2vw, 1.75rem);
       margin: 0 auto;
-      max-width: min(1500px, calc(100% - 2rem));
+      max-width: min(1760px, calc(100% - .5rem));
     }
     .room-card {
       color: var(--white);
       min-width: 0;
     }
     .room-card-media {
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 5 / 4.6;
       background: var(--sand);
       overflow: hidden;
       position: relative;
@@ -943,14 +943,14 @@ function ActivitiesShowcase() {
       desc: "Poolside leisure",
       detail:
         "Take a refreshing dip or lounge by our sparkling pool, perfect for relaxation and family fun in the warm Kenyan sun.",
-      images: [`${S3_BASE}/Swimmingpool.jpeg`, `${S3_BASE}/Image39.jpeg`],
+      images: [`${S3_BASE}/Swimmingpool.jpeg`],
     },
     {
       title: "Games & Recreation",
       desc: "Play and unwind",
       detail:
         "Enjoy a variety of indoor and outdoor games for all ages, from board games and sports to evening tournaments.",
-      images: [`${S3_BASE}/Games1.jpeg`, `${S3_BASE}/Games2.jpeg`, `${S3_BASE}/Games3.jpeg`],
+      images: [`${S3_BASE}/Games1.jpeg`],
     },
     {
       title: "Kids Activities",
